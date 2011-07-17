@@ -7,7 +7,7 @@ package stuylib.io;
 //TODO: Import WPIlibj stuff
 /**
  *
- * @author Ginkgo
+ * @author Alejandro Carrillo
  */
 public class Log {
     
