@@ -12,6 +12,15 @@ package stuylib.io;
 public class Log {
     
     private StringBuffer concatString;
+    private int logState;
+
+    private static final int DEBUG_STDOUT_MODE  = 0;
+    private static final int DEBUG_CATSTR_MODE  = 1;
+    private static final int FMS_WRITELOG_MODE  = 2;
+
+    public Log(int state) {
+       logState = state;
+    }
     /**
      * Determines what to do with input:
      * 1. Print to stdout
@@ -23,20 +32,22 @@ public class Log {
      */
     public void write(String s) {
         /* pseudocode */
-        /*
-         * switch (robot_status) {
-         * case debug_mode:
-         *     System.out.println(s);
-         *     break;
-         * case comp_mode:
-         *     Append s to a file, neatly
-         *     break;
-         * case concat_mode:
-         *     concatString += s;
-         *     break;
-         * 
-         */
+        
+         switch (logState) {
+        //TODO:  Implement this
+         
+         case DEBUG_STDOUT_MODE:
+             System.out.println(s);
+             break;
+         case DEBUG_CATSTR_MODE:
+             concatString.append(s);
+             break;
+         case FMS_WRITELOG_MODE:
+             //Write to a file
+             break;
+
+         
+         }
+    
     }
-    
-    
 }
