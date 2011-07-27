@@ -18,9 +18,9 @@ public class Log {
     private StringBuffer logString; // For DEBUG_CATSTR mode
     private int logState;
     // Three possible states
-    private static final int DEBUG_STDOUT = 0;  // For printing log data to stdout, the default mode
-    private static final int DEBUG_CATSTR = 1;  // For appending log data to a string, which is printed at the end
-    private static final int FMS_WRITELOG = 2;  // When in FMS mode, will write data to a log file
+    public static final int DEBUG_STDOUT = 0;  // For printing log data to stdout, the default mode
+    public static final int DEBUG_CATSTR = 1;  // For appending log data to a string, which is printed at the end
+    public static final int FMS_WRITELOG = 2;  // When in FMS mode, will write data to a log file
     private OutputStreamWriter writer;
 
     /**
