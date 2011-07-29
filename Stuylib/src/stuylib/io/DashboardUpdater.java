@@ -4,6 +4,8 @@
  */
 package stuylib.io;
 
+import edu.wpi.first.wpilibj.Dashboard;
+import edu.wpi.first.wpilibj.DriverStation;
 import java.util.Timer;
 import java.util.TimerTask;
 
@@ -33,10 +35,10 @@ public class DashboardUpdater {
      * also be reflected in the dashboard's LabVIEW code.
      */
     public void updateDashboard() {
-        //Dashboard lowDashData = DriverStation.getInstance().getDashboardPackerLow();
+        Dashboard lowDashData = DriverStation.getInstance().getDashboardPackerLow();
         
         // Pack stuff
         
-        //lowDashData.commit();
+        lowDashData.commit();
     }
 }
