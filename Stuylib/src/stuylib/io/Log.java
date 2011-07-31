@@ -10,7 +10,12 @@ import java.io.OutputStreamWriter;
 import javax.microedition.io.Connector;
 
 /**
+ * This is a helper class for UserIO.  It handles logging logic for the UserOutput write() function, by determining whether to:
+ * 1. print data to stdout
+ * 2. aggregate data, then print all at once in the end
+ * 3. write data to a logfile
  *
+ * NOTE: When using this class, you MUST call the close() method if you wish for expected behavior!
  * @author Alejandro Carrillo
  */
 public class Log {
