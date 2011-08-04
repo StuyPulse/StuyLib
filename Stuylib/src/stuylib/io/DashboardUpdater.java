@@ -16,13 +16,13 @@ import java.util.Vector;
  * @author Kevin Wang
  */
 public class DashboardUpdater {
-    Object robot;
-    Vector booleans, doubles, ints, strings;
+    private Object robot;
+    private Vector booleans, doubles, ints, strings;
     
-    final int NUM_BOOLEANS = 20;
-    final int NUM_DOUBLES = 20;
-    final int NUM_INTS = 5;
-    final int NUM_STRINGS = 5;
+    private final int NUM_BOOLEANS = 20;
+    private final int NUM_DOUBLES = 20;
+    private final int NUM_INTS = 5;
+    private final int NUM_STRINGS = 5;
     
     /**
      * Starts a timer to update the dashboard every 0.1 seconds.
@@ -43,7 +43,7 @@ public class DashboardUpdater {
         }, 0, 100);
     }
     
-    public void packData() {
+    private void packData() {
 //        addBoolean(true);
 //        addDouble(6.94);
 //        addInt(694);
@@ -59,7 +59,7 @@ public class DashboardUpdater {
      * Note that any changes to the dashboard packet structure made here must
      * also be reflected in the dashboard's LabVIEW code.
      */
-    public void updateDashboard() {
+    private void updateDashboard() {
         Dashboard lowDashData = DriverStation.getInstance().getDashboardPackerLow();
         
         { // Booleans
@@ -113,23 +113,23 @@ public class DashboardUpdater {
         lowDashData.commit();
     }
     
-    public void addBoolean(boolean value) {
+    private void addBoolean(boolean value) {
         booleans.add(value);
     }
     
-    public void addDouble(double value) {
+    private void addDouble(double value) {
         doubles.add(value);
     }
     
-    public void addInt(int value) {
+    private void addInt(int value) {
         ints.add(value);
     }
     
-    public void addString(String value) {
+    private void addString(String value) {
         strings.add(value);
     }
     
-    public void resetVectors() {
+    private void resetVectors() {
         booleans.removeAllElements();
         doubles.removeAllElements();
         ints.removeAllElements();
