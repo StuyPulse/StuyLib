@@ -37,7 +37,81 @@ public class DashboardUpdater {
     public void updateDashboard() {
         Dashboard lowDashData = DriverStation.getInstance().getDashboardPackerLow();
         
-        // Pack stuff
+        // Boolean Cluster
+        lowDashData.addCluster();
+        {
+          lowDashData.addBoolean(boolean 0);
+          lowDashData.addBoolean(boolean 0);
+          lowDashData.addBoolean(boolean 0);
+          lowDashData.addBoolean(boolean 0);
+          lowDashData.addBoolean(boolean 0);
+          lowDashData.addBoolean(boolean 0);
+          lowDashData.addBoolean(boolean 0);
+          lowDashData.addBoolean(boolean 0);
+          lowDashData.addBoolean(boolean 0);
+          lowDashData.addBoolean(boolean 0);
+          lowDashData.addBoolean(boolean 0);
+          lowDashData.addBoolean(boolean 0);
+          lowDashData.addBoolean(boolean 0);
+          lowDashData.addBoolean(boolean 0);
+          lowDashData.addBoolean(boolean 0);
+          lowDashData.addBoolean(boolean 0);
+          lowDashData.addBoolean(boolean 0);
+          lowDashData.addBoolean(boolean 0);
+          lowDashData.addBoolean(boolean 0);
+          lowDashData.addBoolean(boolean 0);
+          lowDashData.addBoolean(boolean 0);
+        }
+        lowDashData.finalizeCluster();
+        
+        // Float Cluster
+        lowDashData.addCluster();
+        {
+         lowDashData.addFloat(float 0.0);
+         lowDashData.addFloat(float 0.0);
+         lowDashData.addFloat(float 0.0);
+         lowDashData.addFloat(float 0.0);
+         lowDashData.addFloat(float 0.0);
+         lowDashData.addFloat(float 0.0);
+         lowDashData.addFloat(float 0.0);
+         lowDashData.addFloat(float 0.0);
+         lowDashData.addFloat(float 0.0);
+         lowDashData.addFloat(float 0.0);
+         lowDashData.addFloat(float 0.0);
+         lowDashData.addFloat(float 0.0);
+         lowDashData.addFloat(float 0.0);
+         lowDashData.addFloat(float 0.0);
+         lowDashData.addFloat(float 0.0);
+         lowDashData.addFloat(float 0.0);
+         lowDashData.addFloat(float 0.0);
+         lowDashData.addFloat(float 0.0);
+         lowDashData.addFloat(float 0.0);
+         lowDashData.addFloat(float 0.0);
+         lowDashData.addFloat(float 0.0);
+        }
+        lowDashData.finalizeCluster();
+        
+        // Int Cluster
+        lowDashData.addCluster();
+        {
+         lowDashData.addInt(int 0);
+         lowDashData.addInt(int 0);
+         lowDashData.addInt(int 0);
+         lowDashData.addInt(int 0);
+         lowDashData.addInt(int 0);
+        }
+        lowDashData.finalizeCluster();
+        
+        // String Cluster
+        lowDashData.addCluster();
+        {
+         lowDashData.addString(string " ");
+         lowDashData.addString(string " ");
+         lowDashData.addString(string " ");
+         lowDashData.addString(string " ");
+         lowDashData.addString(string " ");
+        }
+        lowDashData.finalizeCluster();
         
         lowDashData.commit();
     }
