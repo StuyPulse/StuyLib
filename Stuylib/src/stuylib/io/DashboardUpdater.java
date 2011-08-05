@@ -44,12 +44,12 @@ public class DashboardUpdater {
      */
     public DashboardUpdater(Object robot) { // "Object" MUST be replaced by the main robot class
         this.robot = robot;
-        resetBuffer();
         
         Timer dashTimer = new Timer();
         dashTimer.schedule(new TimerTask() {
             @Override
             public void run() {
+                resetBuffer();
                 defineDashboardDatatype();
                 commit();
             }
@@ -112,7 +112,6 @@ public class DashboardUpdater {
         lowDashData.finalizeCluster();
         
         lowDashData.commit();
-        resetBuffer();
     }
     
     private void addBoolean(boolean value) {
