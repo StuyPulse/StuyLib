@@ -8,7 +8,6 @@ import edu.wpi.first.wpilibj.Dashboard;
 import edu.wpi.first.wpilibj.DriverStation;
 import java.util.Timer;
 import java.util.TimerTask;
-import java.util.Vector;
 
 /**
  * Handles the transmission of user-defined data to a PC running LabVIEW dashboard software.
@@ -16,41 +15,45 @@ import java.util.Vector;
  * @author Kevin Wang
  */
 public class DashboardUpdater {
-    private Object robot;
-    private Vector booleans, doubles, ints, strings;
-    
     private final int NUM_BOOLEANS = 20;
     private final int NUM_DOUBLES = 20;
     private final int NUM_INTS = 5;
     private final int NUM_STRINGS = 5;
+    
+    private final int UPDATE_PERIOD_MS = 100;
+    
+    private boolean[] booleans = new boolean[NUM_BOOLEANS];
+    private double[] doubles = new double[NUM_DOUBLES];
+    private int[] ints = new int[NUM_INTS];
+    private String[] strings = new String[NUM_STRINGS];
+    
+    private int booleansIndex, doublesIndex, intsIndex, stringsIndex;
+    
+    private Object robot;
     
     /**
      * Starts a timer to update the dashboard every 0.1 seconds.
      */
     public DashboardUpdater(Object robot) {
         this.robot = robot;
-        
-        booleans = new Vector();
-        doubles = new Vector();
-        ints = new Vector();
-        strings = new Vector();
+        resetBuffer();
         
         Timer dashTimer = new Timer();
         dashTimer.schedule(new TimerTask() {
+            @Override
             public void run() {
-                packData();
+                updateDashboard();
             }
-        }, 0, 100);
+        }, 0, UPDATE_PERIOD_MS);
     }
     
-    private void packData() {
+    private void updateDashboard() {
 //        addBoolean(true);
 //        addDouble(6.94);
 //        addInt(694);
 //        addString("Stuypulse");
         
-        updateDashboard();
-        resetVectors();
+        commit();
     }
     
     /**
@@ -59,80 +62,90 @@ public class DashboardUpdater {
      * Note that any changes to the dashboard packet structure made here must
      * also be reflected in the dashboard's LabVIEW code.
      */
-    private void updateDashboard() {
+    private void commit() {
         Dashboard lowDashData = DriverStation.getInstance().getDashboardPackerLow();
         
-        { // Booleans
-            int i = 0;
-            while (i < booleans.size()) {
-                lowDashData.addBoolean((Boolean)booleans.elementAt(i));
-                i++;
+        lowDashData.addCluster();
+        {
+            // Array of booleans
+            lowDashData.addArray();
+            {
+                for (int i = 0; i < booleans.length; i++)
+                    lowDashData.addBoolean(booleans[i]);
             }
-            while (i < NUM_BOOLEANS) {
-                lowDashData.addBoolean(false);
-                i++;
+            lowDashData.finalizeArray();
+            
+            // Array of doubles
+            lowDashData.addArray();
+            {
+                for (int i = 0; i < doubles.length; i++)
+                    lowDashData.addDouble(doubles[i]);
             }
+            lowDashData.finalizeArray();
+            
+            // Array of ints
+            lowDashData.addArray();
+            {
+                for (int i = 0; i < ints.length; i++)
+                    lowDashData.addInt(ints[i]);
+            }
+            lowDashData.finalizeArray();
+            
+            // Array of strings
+            lowDashData.addArray();
+            {
+                for (int i = 0; i < strings.length; i++)
+                    lowDashData.addString(strings[i]);
+            }
+            lowDashData.finalizeArray();
         }
-        
-        { // Doubles
-            int i = 0;
-            while (i < doubles.size()) {
-                lowDashData.addDouble((Double)doubles.elementAt(i));
-                i++;
-            }
-            while (i < NUM_DOUBLES) {
-                lowDashData.addDouble(0.0);
-                i++;
-            }
-        }
-        
-        { // Ints
-            int i = 0;
-            while (i < ints.size()) {
-                lowDashData.addInt((Integer)ints.elementAt(i));
-                i++;
-            }
-            while (i < NUM_INTS) {
-                lowDashData.addInt(0);
-                i++;
-            }
-        }
-        
-        { // Strings
-            int i = 0;
-            while (i < strings.size()) {
-                lowDashData.addString((String)strings.elementAt(i));
-                i++;
-            }
-            while (i < NUM_STRINGS) {
-                lowDashData.addString("");
-                i++;
-            }
-        }
+        lowDashData.finalizeCluster();
         
         lowDashData.commit();
+        resetBuffer();
     }
     
     private void addBoolean(boolean value) {
-        booleans.add(value);
+        booleans[booleansIndex++] = value;
+    }
+    
+    private void addBoolean(boolean value, int index) {
+        booleans[index] = value;
     }
     
     private void addDouble(double value) {
-        doubles.add(value);
+        doubles[doublesIndex++] = value;
+    }
+    
+    private void addDouble(double value, int index) {
+        doubles[index] = value;
     }
     
     private void addInt(int value) {
-        ints.add(value);
+        ints[intsIndex++] = value;
+    }
+    
+    private void addInt(int value, int index) {
+        ints[index] = value;
     }
     
     private void addString(String value) {
-        strings.add(value);
+        strings[stringsIndex++] = value;
     }
     
-    private void resetVectors() {
-        booleans.removeAllElements();
-        doubles.removeAllElements();
-        ints.removeAllElements();
-        strings.removeAllElements();
+    private void addString(String value, int index) {
+        strings[index] = value;
+    }
+    
+    private void resetBuffer() {
+        for (int i = 0; i < booleans.length; i++)
+            booleans[i] = false;
+        for (int i = 0; i < doubles.length; i++)
+            doubles[i] = 0.0;
+        for (int i = 0; i < ints.length; i++)
+            ints[i] = 0;
+        for (int i = 0; i < strings.length; i++)
+            strings[i] = "";
+        booleansIndex = doublesIndex = intsIndex = stringsIndex = 0;
     }
 }
