@@ -5,6 +5,9 @@ try:
 except:
     import fake_wpilib as wpilib
 
+import threading
+import time
+
 class MyRobot(wpilib.SimpleRobot):
     def __init__(self):
         self.v = wpilib.Jaguar(1)
@@ -13,29 +16,42 @@ class MyRobot(wpilib.SimpleRobot):
         self.arm_gyro = wpilib.Gyro(1)
         self.left_enc = wpilib.Encoder(6, 5)
         self.right_enc = wpilib.Encoder(8, 7)
+        #self.drive_gyro_rate = wpilib.Gyro(9)
+        #self.drive_gyro_accumulator = Accumulator(self.drive_gyro_rate.GetAngle)
+        #self.drive_gyro_accumulator.setDaemon(True)
+        #self.drive_gyro_accumulator.start()
 
+    
+        self.drive_gyro_accumulator = Accumulator(self.gyro_rate)
+        self.drive_gyro_accumulator.setDaemon(True)
+        self.drive_gyro_accumulator.start()
+
+    def gyro_rate(self):
+        return 10 * (self.left_enc.GetRate() - self.right_enc.GetRate())
+	
     def Autonomous(self):
-        """p = wpilib.PIDController(15, 1, 0, self.arm_gyro, self.arm_motor, 0.5)
-        p.SetInputRange(-3.14, 3.14)
-        p.SetOutputRange(-1, 1)
-        p.SetSetpoint(0)
-        p.Enable()"""
+        self.v.Set(0.6)
+        self.w.Set(-0.6)
+        while True:
+            print("gyro rate:", self.gyro_rate(), "gyro angle:", self.drive_gyro_accumulator.val)
+            time.sleep(0.25)
 
-        class DT:
-            def PIDGet(myself):
-                return (self.left_enc.GetDistance() + self.right_enc.GetDistance())/2
+class Accumulator(threading.Thread):
+    def __init__(self, sensor_func):
+        self.sensor_func = sensor_func
+        self.val = 0
+        self.last_time = time.clock()
+        threading.Thread.__init__(self)
 
-            def PIDWrite(myself, out):
-                self.v.Set(out)
-                self.w.Set(out)
-
-        dt = DT()
-
-        l = wpilib.PIDController(.015, 0.0005, 0, dt, dt, 0.5)
-        l.SetInputRange(-1000, 1000)
-        l.SetOutputRange(-1, 1)
-        l.SetSetpoint(60)
-        l.Enable()
+    def run(self):
+        while True:
+            current_time = time.clock()
+            dt = current_time - self.last_time
+            sensor_val = self.sensor_func()
+            self.val += sensor_val * dt
+            self.last_time = current_time
+            time.sleep(0.5)
+            
 
 def run():
     robot = MyRobot()
