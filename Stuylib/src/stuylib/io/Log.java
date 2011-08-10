@@ -8,6 +8,9 @@ import com.sun.squawk.microedition.io.FileConnection;
 import java.io.IOException;
 import java.io.OutputStreamWriter;
 import javax.microedition.io.Connector;
+import java.text.SimpleDateFormat;
+import java.util.Date;
+
 
 /**
  * This is a helper class for UserIO.  It handles logging logic for the UserOutput write() function, by determining whether to:
@@ -26,6 +29,7 @@ public class Log {
     public static final int DEBUG_STDOUT = 0;  // For printing log data to stdout, the default mode
     public static final int DEBUG_CATSTR = 1;  // For appending log data to a string, which is printed at the end
     public static final int FMS_WRITELOG = 2;  // When in FMS mode, will write data to a log file
+    public static final String NEW_LINE = System.getProperty("line.separator");
     private OutputStreamWriter writer;
 
     /**
@@ -51,17 +55,23 @@ public class Log {
         }
     }
 
+
+    private void write(String message, Object logger, String mode) {
+        Date date = new Date();
+        SimpleDateFormat sdf = new SimpleDateFormat("d MMM yyyy HH:mm:ss ");
+        String prefix = "[" + sdf.format(date) + " @" + logger.getClass().getName() + " ] " + mode +" - "; // Records timestamp and origin
+        String data = prefix + message;
+
+        writer(data);  // Logs the message string
+    }
+
     /**
      * Prepares regular input for writing via the writer() method
      * @param s message string
      * @param logger calling object
      */
     public void write(String message, Object logger) {
-        /* pseudocode */
-        String prefix = "[" + System.currentTimeMillis() + " @" + logger.getClass().getName() + " ] INFO - "; // Records timestamp and origin
-        String data = prefix + message;
-
-        writer(data);  // Logs the message string
+        write(message, logger, "INFO");
     }
 
     /**
@@ -71,11 +81,7 @@ public class Log {
      * @param logger calling object
      */
     public void write(Exception e, Object logger) {
-        /* pseudocode */
-        String prefix = "[" + System.currentTimeMillis() + " @" + logger.getClass().getName() + " ] ERROR - "; // Records timestamp and origin
-        String data = prefix + e.getMessage(); // Creates data String from Exception data
-
-        writer(data); // Logs the message String
+        write(e.getMessage(), logger, "ERROR");
     }
 
     /**
@@ -90,7 +96,7 @@ public class Log {
         switch (logState) {
 
             case DEBUG_CATSTR:
-                logString.append(data + "\n"); // Appends data to the logString
+                logString.append(data + NEW_LINE); // Appends data to the logString
                 break;
             case FMS_WRITELOG:
                 try {
