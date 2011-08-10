@@ -21,12 +21,15 @@ import javax.microedition.io.Connector;
 public class Log {
 
     private StringBuffer logString; // For DEBUG_CATSTR mode
-    private int logState;
+    public int logState;
     // Three possible states
     public static final int DEBUG_STDOUT = 0;  // For printing log data to stdout, the default mode
     public static final int DEBUG_CATSTR = 1;  // For appending log data to a string, which is printed at the end
     public static final int FMS_WRITELOG = 2;  // When in FMS mode, will write data to a log file
     private OutputStreamWriter writer;
+    String date; //MM/DD/YY
+    int mnum;
+    double ms;
 
     /**
      * If DEBUG_STDOUT is passed, then the write() method will print data to stdout
@@ -42,7 +45,7 @@ public class Log {
         }
         else if (logState == FMS_WRITELOG) {
             try {
-                String url = "file:///competition.log";
+                String url = "file:///" + date + "match:" + mnum + "." + ms +".log";
                 FileConnection c = (FileConnection) Connector.open(url);
                 writer = new OutputStreamWriter(c.openOutputStream());
             } catch (Exception e) {
@@ -56,7 +59,7 @@ public class Log {
      * @param s message string
      * @param logger calling object
      */
-    public void write(String message, Object logger) {
+    public void write(String message, Object context) {
         /* pseudocode */
         String prefix = "[" + System.currentTimeMillis() + " @" + logger.getClass().getName() + " ] INFO - "; // Records timestamp and origin
         String data = prefix + message;
