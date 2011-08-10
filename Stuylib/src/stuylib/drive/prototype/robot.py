@@ -33,7 +33,7 @@ class MyRobot(wpilib.SimpleRobot):
         self.v.Set(0.6)
         self.w.Set(-0.6)
         while True:
-            print("gyro rate:", self.gyro_rate(), "gyro angle:", self.drive_gyro_accumulator.val)
+            print("gyro rate:", self.gyro_rate(), "gyro angle:", self.drive_gyro_accumulator.PIDGet())
             time.sleep(0.25)
 
 class Accumulator(threading.Thread):
@@ -42,6 +42,9 @@ class Accumulator(threading.Thread):
         self.val = 0
         self.last_time = time.clock()
         threading.Thread.__init__(self)
+
+    def PIDGet(self):
+        return self.val
 
     def run(self):
         while True:
