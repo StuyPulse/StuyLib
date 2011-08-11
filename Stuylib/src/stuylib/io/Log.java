@@ -35,6 +35,7 @@ public class Log {
     // wil be used for filename
     String date; //MM/DD/YY
     int mnum;
+    double ms;
 
     /**
      * If DEBUG_STDOUT is passed, then the write() method will print data to stdout
@@ -45,13 +46,12 @@ public class Log {
      */
     public Log(int state) {
         logState = state;
-        String fh = makeFileHandle();
         if (logState == DEBUG_CATSTR) {
             logString = new StringBuffer("");
         }
         else if (logState == FMS_WRITELOG) {
             try {
-                String url = "file:///" + fh +".log";
+                String url = "file:///" + date + "match:" + mnum + "." + ms +".log";
                 FileConnection c = (FileConnection) Connector.open(url);
                 writer = new OutputStreamWriter(c.openOutputStream());
             } catch (Exception e) {
@@ -59,14 +59,7 @@ public class Log {
             }
         }
     }
-    public string makeFileHandle(){
-        Date date = new Date();
-        String s = date.toString();
-        mnum = 0//will be fixed later
-        //dow mon dd hh:mm:ss zzz yyyy 
-        s = s.subString(5,10)+s.subString(25)+"match"+mnum+"."date.getTime();
-        return s
-    }
+
 
     private void write(String message, Object logger, String mode) {
         Date date = new Date();
