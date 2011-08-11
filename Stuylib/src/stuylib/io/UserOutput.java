@@ -13,9 +13,6 @@ public class UserOutput {
     Object robot;
     Log logger;
     String longstr;
-    Object EnhancedIO;
-    DigitalInput DI;
-    DigitalOutput DO;
 
     public UserOutput(Object robot, int state) {
         dashboardUpdater = new DashboardUpdater(robot);
@@ -23,12 +20,6 @@ public class UserOutput {
         logger = new Log(state);
 
     }
-    //stuff needs to happen here
-    public void makeDigitalIO(int channel){
-        DI = new DigitalInput(channel);
-        DO = new DigitalOutput(channel);
-    }
-    
 
     public void log(String s){
         logger.write(s, robot);
@@ -67,5 +58,13 @@ public class UserOutput {
         String s = b + "";
         logger.write(s, robot);
     }
+
+
+
+
+
+
+
+
 
 }
