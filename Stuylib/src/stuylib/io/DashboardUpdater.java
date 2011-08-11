@@ -16,6 +16,12 @@ import java.util.TimerTask;
  * @author Kevin Wang
  */
 public class DashboardUpdater {
+    // Module numbers
+    private final int ANALOG_MODULE_1 = 1;
+    private final int ANALOG_MODULE_2 = 2;
+    private final int DIGITAL_MODULE_1 = 4;
+    private final int DIGITAL_MODULE_2 = 6;
+  
     // Quantities of each variable type
     private final int NUM_BOOLEANS = 20;
     private final int NUM_DOUBLES = 20;
@@ -75,6 +81,75 @@ public class DashboardUpdater {
     private void commit() {
         Dashboard lowDashData = DriverStation.getInstance().getDashboardPackerLow();
         
+        // Sensor data
+        lowDashData.addCluster();
+        {
+            // Analog Modules
+            lowDashData.addCluster();
+            {
+                lowDashData.addCluster();
+                {
+                    for (int i = 1; i <= 8; i++) {
+                        lowDashData.addFloat((float) AnalogModule.getInstance(ANALOG_MODULE_1).getAverageVoltage(i));
+                    }
+                }
+                lowDashData.finalizeCluster();
+                lowDashData.addCluster();
+                {
+                    for (int i = 1; i <= 8; i++) {
+                        lowDashData.addFloat((float) AnalogModule.getInstance(ANALOG_MODULE_2).getAverageVoltage(i));
+                    }
+                }
+                lowDashData.finalizeCluster();
+            }
+            lowDashData.finalizeCluster();
+
+            // Digital Modules
+            lowDashData.addCluster();
+            {  // Digital Module 1
+                lowDashData.addCluster();
+                {
+                    int module = DIGITAL_MODULE_1;
+                    lowDashData.addByte(DigitalModule.getInstance(module).getRelayForward());
+                    lowDashData.addByte(DigitalModule.getInstance(module).getRelayForward());
+                    lowDashData.addShort(DigitalModule.getInstance(module).getAllDIO());
+                    lowDashData.addShort(DigitalModule.getInstance(module).getDIODirection());
+                    lowDashData.addCluster();
+                    {
+                        for (int i = 1; i <= 10; i++) {
+                        lowDashData.addByte((byte) DigitalModule.getInstance(module).getPWM(i));
+                    }
+                  }
+                  lowDashData.finalizeCluster();
+                }
+                lowDashData.finalizeCluster();
+
+                // Digital Module 2
+                lowDashData.addCluster();
+                {
+                    int module = DIGITAL_MODULE_2;
+                    lowDashData.addByte(DigitalModule.getInstance(module).getRelayForward());
+                    lowDashData.addByte(DigitalModule.getInstance(module).getRelayReverse());
+                    lowDashData.addShort(DigitalModule.getInstance(module).getAllDIO());
+                    lowDashData.addShort(DigitalModule.getInstance(module).getDIODirection());
+                    lowDashData.addCluster();
+                    {
+                        for (int i = 1; i <= 10; i++) {
+                        lowDashData.addByte((byte) DigitalModule.getInstance(module).getPWM(i));
+                    }
+                  }
+                  lowDashData.finalizeCluster();
+                }
+                lowDashData.finalizeCluster();
+
+            }
+            lowDashData.finalizeCluster();
+
+            lowDashData.addByte((byte) 0);
+        }
+        lowDashData.finalizeCluster();
+        
+        // Non-sensor data
         lowDashData.addCluster();
         {
             // Array of booleans
