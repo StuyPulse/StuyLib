@@ -8,6 +8,9 @@ import com.sun.squawk.microedition.io.FileConnection;
 import java.io.IOException;
 import java.io.OutputStreamWriter;
 import javax.microedition.io.Connector;
+import java.text.SimpleDateFormat;
+import java.util.Date;
+
 
 /**
  * This is a helper class for UserIO.  It handles logging logic for the UserOutput write() function, by determining whether to:
@@ -21,12 +24,17 @@ import javax.microedition.io.Connector;
 public class Log {
 
     private StringBuffer logString; // For DEBUG_CATSTR mode
-    private int logState;
+    public int logState;
     // Three possible states
     public static final int DEBUG_STDOUT = 0;  // For printing log data to stdout, the default mode
     public static final int DEBUG_CATSTR = 1;  // For appending log data to a string, which is printed at the end
     public static final int FMS_WRITELOG = 2;  // When in FMS mode, will write data to a log file
+    public static final String NEW_LINE = System.getProperty("line.separator");
     private OutputStreamWriter writer;
+    
+    // wil be used for filename
+    String date; //MM/DD/YY
+    int mnum;
 
     /**
      * If DEBUG_STDOUT is passed, then the write() method will print data to stdout
@@ -37,18 +45,36 @@ public class Log {
      */
     public Log(int state) {
         logState = state;
+        String fh = makeFileHandle();
         if (logState == DEBUG_CATSTR) {
             logString = new StringBuffer("");
         }
         else if (logState == FMS_WRITELOG) {
             try {
-                String url = "file:///competition.log";
+                String url = "file:///" + fh +".log";
                 FileConnection c = (FileConnection) Connector.open(url);
                 writer = new OutputStreamWriter(c.openOutputStream());
             } catch (Exception e) {
                 e.printStackTrace();
             }
         }
+    }
+    public string makeFileHandle(){
+        Date date = new Date();
+        String s = date.toString();
+        mnum = 0//will be fixed later
+        //dow mon dd hh:mm:ss zzz yyyy 
+        s = s.subString(5,10)+s.subString(25)+"match"+mnum+"."date.getTime();
+        return s
+    }
+
+    private void write(String message, Object logger, String mode) {
+        Date date = new Date();
+        SimpleDateFormat sdf = new SimpleDateFormat("d MMM yyyy HH:mm:ss ");
+        String prefix = "[" + sdf.format(date) + " @" + logger.getClass().getName() + " ] " + mode +" - "; // Records timestamp and origin
+        String data = prefix + message;
+
+        writer(data);  // Logs the message string
     }
 
     /**
@@ -57,11 +83,7 @@ public class Log {
      * @param logger calling object
      */
     public void write(String message, Object logger) {
-        /* pseudocode */
-        String prefix = "[" + System.currentTimeMillis() + " @" + logger.getClass().getName() + " ] INFO - "; // Records timestamp and origin
-        String data = prefix + message;
-
-        writer(data);  // Logs the message string
+        write(message, logger, "INFO");
     }
 
     /**
@@ -71,11 +93,7 @@ public class Log {
      * @param logger calling object
      */
     public void write(Exception e, Object logger) {
-        /* pseudocode */
-        String prefix = "[" + System.currentTimeMillis() + " @" + logger.getClass().getName() + " ] ERROR - "; // Records timestamp and origin
-        String data = prefix + e.getMessage(); // Creates data String from Exception data
-
-        writer(data); // Logs the message String
+        write(e.getMessage(), logger, "ERROR");
     }
 
     /**
@@ -90,7 +108,7 @@ public class Log {
         switch (logState) {
 
             case DEBUG_CATSTR:
-                logString.append(data + "\n"); // Appends data to the logString
+                logString.append(data + NEW_LINE); // Appends data to the logString
                 break;
             case FMS_WRITELOG:
                 try {
