@@ -1,0 +1,54 @@
+try:
+    import wpilib
+except:
+    import fake_wpilib as wpilib
+
+import threading
+import time
+import math
+
+class heading_drive:
+    def __init__(self, drive):
+        self.drive = drive
+    def PIDWrite(self, out):
+        self.drive.left_motor.Set(-out)
+        self.drive.right_motor.Set(out)
+
+class dt:
+    def __init__(self):
+        self.left_motor = wpilib.Jaguar(1)
+        self.right_motor = wpilib.Jaguar(2)
+        self.left_enc = wpilib.Encoder(6, 5)
+        self.right_enc = wpilib.Encoder(8, 7)
+        self.drive_gyro_accumulator = Accumulator(self.gyro_rate)
+        self.drive_gyro_accumulator.setDaemon(True)
+        self.drive_gyro_accumulator.start()
+        self.heading_drive = heading_drive(self)
+        
+        self.heading_control = wpilib.PIDController(0.5, 0, 0, \
+                                                    self.drive_gyro_accumulator, \
+                                                    self.heading_drive)
+        self.heading_control.SetOutputRange(-1, 1)
+        self.heading_control.SetInputRange(-2*math.pi, 2*math.pi)
+        self.heading_control.SetContinuous(False)
+        
+    def gyro_rate(self):
+        return (self.right_enc.GetRate() - self.left_enc.GetRate())/5
+        
+class Accumulator(threading.Thread):
+    def __init__(self, sensor_func):
+        self.sensor_func = sensor_func
+        self.val = 0
+        self.last_time = time.clock()
+        threading.Thread.__init__(self)
+
+    def PIDGet(self):
+        return self.val
+
+    def run(self):
+        while True:
+            current_time = time.clock()
+            dt = current_time - self.last_time
+            sensor_val = self.sensor_func()
+            self.val += sensor_val * dt
+            self.last_time = current_time

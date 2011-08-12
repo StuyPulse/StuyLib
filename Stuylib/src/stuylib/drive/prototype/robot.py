@@ -7,54 +7,23 @@ except:
 
 import threading
 import time
+import math
+import drive
 
 class MyRobot(wpilib.SimpleRobot):
     def __init__(self):
-        self.v = wpilib.Jaguar(1)
-        self.w = wpilib.Jaguar(2)
         self.arm_motor = wpilib.Jaguar(3)
         self.arm_gyro = wpilib.Gyro(1)
-        self.left_enc = wpilib.Encoder(6, 5)
-        self.right_enc = wpilib.Encoder(8, 7)
-        #self.drive_gyro_rate = wpilib.Gyro(9)
-        #self.drive_gyro_accumulator = Accumulator(self.drive_gyro_rate.GetAngle)
-        #self.drive_gyro_accumulator.setDaemon(True)
-        #self.drive_gyro_accumulator.start()
-
+        self.drive_train = drive.dt()
     
-        self.drive_gyro_accumulator = Accumulator(self.gyro_rate)
-        self.drive_gyro_accumulator.setDaemon(True)
-        self.drive_gyro_accumulator.start()
-
-    def gyro_rate(self):
-        return 10 * (self.left_enc.GetRate() - self.right_enc.GetRate())
-	
     def Autonomous(self):
-        self.v.Set(0.6)
-        self.w.Set(-0.6)
+        self.drive_train.heading_control.SetSetpoint(math.pi)
+        self.drive_train.heading_control.Enable()
+        #self.drive_train.
         while True:
-            print("gyro rate:", self.gyro_rate(), "gyro angle:", self.drive_gyro_accumulator.PIDGet())
+            print("gyro rate:", self.drive_train.gyro_rate(), \
+                  "gyro angle:", self.drive_train.drive_gyro_accumulator.PIDGet())
             time.sleep(0.25)
-
-class Accumulator(threading.Thread):
-    def __init__(self, sensor_func):
-        self.sensor_func = sensor_func
-        self.val = 0
-        self.last_time = time.clock()
-        threading.Thread.__init__(self)
-
-    def PIDGet(self):
-        return self.val
-
-    def run(self):
-        while True:
-            current_time = time.clock()
-            dt = current_time - self.last_time
-            sensor_val = self.sensor_func()
-            self.val += sensor_val * dt
-            self.last_time = current_time
-            time.sleep(0.5)
-            
 
 def run():
     robot = MyRobot()
