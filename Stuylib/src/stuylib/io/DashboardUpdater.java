@@ -4,7 +4,9 @@
  */
 package stuylib.io;
 
+import edu.wpi.first.wpilibj.AnalogModule;
 import edu.wpi.first.wpilibj.Dashboard;
+import edu.wpi.first.wpilibj.DigitalModule;
 import edu.wpi.first.wpilibj.DriverStation;
 import java.util.Timer;
 import java.util.TimerTask;
