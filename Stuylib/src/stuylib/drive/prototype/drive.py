@@ -13,7 +13,7 @@ class heading_drive:
     def PIDWrite(self, out):
         self.drive.left_motor.Set(-out)
         self.drive.right_motor.Set(out)
-
+        
 class dt:
     def __init__(self):
         self.left_motor = wpilib.Jaguar(1)
@@ -38,17 +38,20 @@ class dt:
 class Accumulator(threading.Thread):
     def __init__(self, sensor_func):
         self.sensor_func = sensor_func
-        self.val = 0
+        self.last_sensor_val = 0
         self.last_time = time.clock()
+        self.integral = 0
         threading.Thread.__init__(self)
 
     def PIDGet(self):
-        return self.val
+        return self.integral
 
     def run(self):
         while True:
             current_time = time.clock()
-            dt = current_time - self.last_time
             sensor_val = self.sensor_func()
-            self.val += sensor_val * dt
+            dt = current_time - self.last_time
+            trapezoid = (sensor_val + self.last_sensor_val) * dt / 2
+            self.integral += trapezoid
             self.last_time = current_time
+            self.last_sensor_val = sensor_val
