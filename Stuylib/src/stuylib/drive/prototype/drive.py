@@ -34,6 +34,14 @@ class dt:
         
     def gyro_rate(self):
         return (self.right_enc.GetRate() - self.left_enc.GetRate())/5
+    
+    def face(self, theta):
+        self.heading_control.SetSetpoint(theta)
+        self.heading_control.Enable()
+    
+    def translate(self, x, y):
+        turn(math.atan2(y, x))
+        forward(math.sqrt(x*x + y*y))
         
 class Accumulator(threading.Thread):
     def __init__(self, sensor_func):
