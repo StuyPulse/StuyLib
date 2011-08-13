@@ -25,7 +25,7 @@ class dt:
         self.drive_gyro_accumulator.start()
         self.heading_drive = heading_drive(self)
         
-        self.heading_control = wpilib.PIDController(0.5, 0, 0, \
+        self.heading_control = wpilib.PIDController(0.5, 0.04, 0, \
                                                     self.drive_gyro_accumulator, \
                                                     self.heading_drive)
         self.heading_control.SetOutputRange(-1, 1)
@@ -38,11 +38,31 @@ class dt:
     def face(self, theta):
         self.heading_control.SetSetpoint(theta)
         self.heading_control.Enable()
+        time.sleep(1)
+        while abs(self.heading_control.m_prevError) > 0.1:
+            pass
+        self.heading_control.Disable()
+        self.heading_drive.PIDWrite(0)
+    
+    def forward(self, dist):
+        print("go forward:", dist)
+        begin_dist = self.distance_traveled()
+        while self.distance_traveled() - begin_dist < dist:
+            #print("begin_dist:", begin_dist, \
+            #      "distance_traveled:", self.distance_traveled(), \
+            #      "to go:", self.distance_traveled() - begin_dist - dist)
+            self.left_motor.Set(1)
+            self.right_motor.Set(1)
+        self.left_motor.Set(0)
+        self.right_motor.Set(0)
     
     def translate(self, x, y):
-        turn(math.atan2(y, x))
-        forward(math.sqrt(x*x + y*y))
-        
+        self.face(math.atan2(y, x))
+        self.forward(math.sqrt(x*x + y*y))
+    
+    def distance_traveled(self):
+        return (self.left_enc.GetDistance() + self.right_enc.GetDistance()) / 2
+    
 class Accumulator(threading.Thread):
     def __init__(self, sensor_func):
         self.sensor_func = sensor_func

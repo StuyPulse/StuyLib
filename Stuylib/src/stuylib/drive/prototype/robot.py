@@ -17,11 +17,7 @@ class MyRobot(wpilib.SimpleRobot):
         self.drive_train = drive.dt()
     
     def Autonomous(self):
-        self.drive_train.face(math.pi)
-        while True:
-            print("gyro rate:", self.drive_train.gyro_rate(), \
-                  "gyro angle:", self.drive_train.drive_gyro_accumulator.PIDGet())
-            time.sleep(0.25)
+        self.drive_train.translate(13, 3)
 
 def run():
     robot = MyRobot()
