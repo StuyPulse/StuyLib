@@ -33,7 +33,7 @@ class dt:
         self.heading_control.SetContinuous(False)
         
     def gyro_rate(self):
-        return (self.right_enc.GetRate() - self.left_enc.GetRate())/5
+        return (self.right_enc.GetRate() - self.left_enc.GetRate())*3/20
     
     def face(self, theta):
         self.heading_control.SetSetpoint(theta)
