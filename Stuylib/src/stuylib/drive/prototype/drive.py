@@ -1,7 +1,7 @@
 try:
     import wpilib
 except:
-    import fake_wpilib as wpilib
+    from fake_wpilib import fake_wpilib as wpilib
 
 import threading
 import time
