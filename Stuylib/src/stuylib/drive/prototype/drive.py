@@ -32,6 +32,8 @@ class dt:
         self.heading_control.SetInputRange(-2*math.pi, 2*math.pi)
         self.heading_control.SetContinuous(False)
         
+        self.coord = CoordinateEstimator(self)
+        
     def gyro_rate(self):
         return (self.right_enc.GetRate() - self.left_enc.GetRate())*3/20
     
@@ -47,10 +49,16 @@ class dt:
     def forward(self, dist):
         print("go forward:", dist)
         begin_dist = self.distance_traveled()
+        last_print_time = time.clock()
         while self.distance_traveled() - begin_dist < dist:
             #print("begin_dist:", begin_dist, \
             #      "distance_traveled:", self.distance_traveled(), \
             #      "to go:", self.distance_traveled() - begin_dist - dist)
+            
+            if time.clock() - last_print_time > 0.25:
+                last_print_time = time.clock()
+                print("x:", self.coord.x(), "y:", self.coord.y(), "to go:", self.distance_traveled() - begin_dist - dist)
+            
             self.left_motor.Set(1)
             self.right_motor.Set(1)
         self.left_motor.Set(0)
@@ -62,6 +70,27 @@ class dt:
     
     def distance_traveled(self):
         return (self.left_enc.GetDistance() + self.right_enc.GetDistance()) / 2
+    
+class CoordinateEstimator:
+    def __init__(self, drive):
+        def dx():
+            return (drive.left_enc.GetRate() + drive.right_enc.GetRate())/2 * math.cos(drive.drive_gyro_accumulator.PIDGet())
+        def dy():
+            return (drive.left_enc.GetRate() + drive.right_enc.GetRate())/2 * math.sin(drive.drive_gyro_accumulator.PIDGet())
+        
+        self.x_accum = Accumulator(dx)
+        self.x_accum.setDaemon(True)
+        self.x_accum.start()
+        
+        self.y_accum = Accumulator(dy)
+        self.y_accum.setDaemon(True)
+        self.y_accum.start()
+        
+    def x(self):
+        return self.x_accum.PIDGet()
+        
+    def y(self):
+        return self.y_accum.PIDGet()
     
 class Accumulator(threading.Thread):
     def __init__(self, sensor_func):
