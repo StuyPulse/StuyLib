@@ -18,6 +18,10 @@ class MyRobot(wpilib.SimpleRobot):
     
     def Autonomous(self):
         self.drive_train.translate(13, 3)
+        while True:
+            print("dist:", self.drive_train.distance_traveled(), \
+                  "x:", self.drive_train.coord.x(), "y:", self.drive_train.coord.y())
+            time.sleep(0.1)
 
 def run():
     robot = MyRobot()

@@ -41,28 +41,29 @@ class dt:
         self.heading_control.SetSetpoint(theta)
         self.heading_control.Enable()
         time.sleep(1)
-        while abs(self.heading_control.m_prevError) > 0.1:
-            pass
+        while abs(theta - self.drive_gyro_accumulator.PIDGet()) > 0.01:
+            print("angle error:", abs(theta - self.drive_gyro_accumulator.PIDGet()))
         self.heading_control.Disable()
         self.heading_drive.PIDWrite(0)
+        print("angle error:", abs(theta - self.drive_gyro_accumulator.PIDGet()))
+        print("------ Done turning ----------")
     
     def forward(self, dist):
         print("go forward:", dist)
         begin_dist = self.distance_traveled()
         last_print_time = time.clock()
         while self.distance_traveled() - begin_dist < dist:
-            #print("begin_dist:", begin_dist, \
-            #      "distance_traveled:", self.distance_traveled(), \
-            #      "to go:", self.distance_traveled() - begin_dist - dist)
-            
-            if time.clock() - last_print_time > 0.25:
-                last_print_time = time.clock()
-                print("x:", self.coord.x(), "y:", self.coord.y(), "to go:", self.distance_traveled() - begin_dist - dist)
+            print("dist:", self.distance_traveled(), \
+                  "x:", self.coord.x(), "y:", self.coord.y())
             
             self.left_motor.Set(1)
             self.right_motor.Set(1)
-        self.left_motor.Set(0)
-        self.right_motor.Set(0)
+        self.left_motor.Set(-1)
+        self.right_motor.Set(-1)
+        print("-------- Done going forward ------")
+        print("dist:", self.distance_traveled(), \
+              "x:", self.coord.x(), "y:", self.coord.y())
+        
     
     def translate(self, x, y):
         self.face(math.atan2(y, x))
