@@ -52,14 +52,27 @@ class dt:
         print("go forward:", dist)
         begin_dist = self.distance_traveled()
         last_print_time = time.clock()
-        while self.distance_traveled() - begin_dist < dist:
+        while self.distance_traveled() - begin_dist < dist/10:
+            print("dist:", self.distance_traveled(), \
+                  "x:", self.coord.x(), "y:", self.coord.y())
+            
+            self.left_motor.Set(0.4)
+            self.right_motor.Set(0.4)
+        while self.distance_traveled() - begin_dist < dist*6/10:
             print("dist:", self.distance_traveled(), \
                   "x:", self.coord.x(), "y:", self.coord.y())
             
             self.left_motor.Set(1)
             self.right_motor.Set(1)
-        self.left_motor.Set(-1)
-        self.right_motor.Set(-1)
+        while self.distance_traveled() - begin_dist < dist:
+            print("dist:", self.distance_traveled(), \
+                  "x:", self.coord.x(), "y:", self.coord.y())
+            
+            self.left_motor.Set(-1)
+            self.right_motor.Set(-1)
+        
+        self.left_motor.Set(0)
+        self.right_motor.Set(0)
         print("-------- Done going forward ------")
         print("dist:", self.distance_traveled(), \
               "x:", self.coord.x(), "y:", self.coord.y())
