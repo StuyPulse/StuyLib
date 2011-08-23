@@ -59,13 +59,13 @@ public class Log {
             }
         }
     }
-    public string makeFileHandle(){
+    public String makeFileHandle(){
         Date date = new Date();
         String s = date.toString();
-        mnum = 0//will be fixed later
+        mnum = 0;//will be fixed later
         //dow mon dd hh:mm:ss zzz yyyy 
-        s = s.subString(5,10)+s.subString(25)+"match"+mnum+"."date.getTime();
-        return s
+        s = s.substring(5,10) + s.substring(25) + "match" + mnum + "." + date.getTime();
+        return s;
     }
 
     private void write(String message, Object logger, String mode) {

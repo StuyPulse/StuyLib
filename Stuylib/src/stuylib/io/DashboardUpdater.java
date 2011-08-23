@@ -8,6 +8,7 @@ import edu.wpi.first.wpilibj.AnalogModule;
 import edu.wpi.first.wpilibj.Dashboard;
 import edu.wpi.first.wpilibj.DigitalModule;
 import edu.wpi.first.wpilibj.DriverStation;
+import edu.wpi.first.wpilibj.Joystick;
 import java.util.Timer;
 import java.util.TimerTask;
 
@@ -189,7 +190,7 @@ public class DashboardUpdater {
               }
               lowDashData.finalizeCluster();
             }
-            lowDastData.finalizeCluster();
+            lowDashData.finalizeCluster();
             
             // Right Joystick
             lowDashData.addCluster();
