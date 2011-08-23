@@ -1,0 +1,21 @@
+Team 694 presents:
+   _____ _               _ _ _     
+  / ____| |             | (_) |    
+ | (___ | |_ _   _ _   _| |_| |__  
+  \___ \| __| | | | | | | | | '_ \ 
+  ____) | |_| |_| | |_| | | | |_) |
+ |_____/ \__|\__,_|\__, |_|_|_.__/ 
+                    __/ |          
+                   |___/           
+
+Stuylib is both a toolkit and a framework for WPIlibj projects. When completed,
+Stuylib will simplify user I/O, provide easy-to-use methods for developing complex
+autonomous robot routines through various drive systems, and provide users with a
+flexible LabVIEW dashboard that is both dynamic and robust.
+
+***Features***
+ - A Cartesian coordinate system that works with sensors and motors to control
+    robot locomotion
+ - Support for various drivetrain systems and methods of teleoperated control
+ - A LabVIEW Dashboard that reports all sensor data, providing users with information 
+    that can be analyzed later to "replay" a match from the robot's perspective

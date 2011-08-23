@@ -1,0 +1,140 @@
+[1mdiff --cc Stuylib/src/stuylib/io/DashboardUpdater.java[m
+[1mindex e68e0eb,ecc6107..0000000[m
+[1m--- a/Stuylib/src/stuylib/io/DashboardUpdater.java[m
+[1m+++ b/Stuylib/src/stuylib/io/DashboardUpdater.java[m
+[36m@@@ -34,84 -59,56 +59,134 @@@[m [mpublic class DashboardUpdater [m
+       * Note that any changes to the dashboard packet structure made here must[m
+       * also be reflected in the dashboard's LabVIEW code.[m
+       */[m
+[31m-     public void updateDashboard() {[m
+[32m+     private void updateDashboard() {[m
+          Dashboard lowDashData = DriverStation.getInstance().getDashboardPackerLow();[m
+          [m
+[32m++<<<<<<< HEAD[m
+[32m +        // Boolean Cluster[m
+[32m +        lowDashData.addCluster();[m
+[32m +        {[m
+[32m +          lowDashData.addBoolean(boolean 0);[m
+[32m +          lowDashData.addBoolean(boolean 0);[m
+[32m +          lowDashData.addBoolean(boolean 0);[m
+[32m +          lowDashData.addBoolean(boolean 0);[m
+[32m +          lowDashData.addBoolean(boolean 0);[m
+[32m +          lowDashData.addBoolean(boolean 0);[m
+[32m +          lowDashData.addBoolean(boolean 0);[m
+[32m +          lowDashData.addBoolean(boolean 0);[m
+[32m +          lowDashData.addBoolean(boolean 0);[m
+[32m +          lowDashData.addBoolean(boolean 0);[m
+[32m +          lowDashData.addBoolean(boolean 0);[m
+[32m +          lowDashData.addBoolean(boolean 0);[m
+[32m +          lowDashData.addBoolean(boolean 0);[m
+[32m +          lowDashData.addBoolean(boolean 0);[m
+[32m +          lowDashData.addBoolean(boolean 0);[m
+[32m +          lowDashData.addBoolean(boolean 0);[m
+[32m +          lowDashData.addBoolean(boolean 0);[m
+[32m +          lowDashData.addBoolean(boolean 0);[m
+[32m +          lowDashData.addBoolean(boolean 0);[m
+[32m +          lowDashData.addBoolean(boolean 0);[m
+[32m +          lowDashData.addBoolean(boolean 0);[m
+[32m +        }[m
+[32m +        lowDashData.finalizeCluster();[m
+[32m +        [m
+[32m +        // Float Cluster[m
+[32m +        lowDashData.addCluster();[m
+[32m +        {[m
+[32m +         lowDashData.addFloat(float 0.0);[m
+[32m +         lowDashData.addFloat(float 0.0);[m
+[32m +         lowDashData.addFloat(float 0.0);[m
+[32m +         lowDashData.addFloat(float 0.0);[m
+[32m +         lowDashData.addFloat(float 0.0);[m
+[32m +         lowDashData.addFloat(float 0.0);[m
+[32m +         lowDashData.addFloat(float 0.0);[m
+[32m +         lowDashData.addFloat(float 0.0);[m
+[32m +         lowDashData.addFloat(float 0.0);[m
+[32m +         lowDashData.addFloat(float 0.0);[m
+[32m +         lowDashData.addFloat(float 0.0);[m
+[32m +         lowDashData.addFloat(float 0.0);[m
+[32m +         lowDashData.addFloat(float 0.0);[m
+[32m +         lowDashData.addFloat(float 0.0);[m
+[32m +         lowDashData.addFloat(float 0.0);[m
+[32m +         lowDashData.addFloat(float 0.0);[m
+[32m +         lowDashData.addFloat(float 0.0);[m
+[32m +         lowDashData.addFloat(float 0.0);[m
+[32m +         lowDashData.addFloat(float 0.0);[m
+[32m +         lowDashData.addFloat(float 0.0);[m
+[32m +         lowDashData.addFloat(float 0.0);[m
+[32m +        }[m
+[32m +        lowDashData.finalizeCluster();[m
+[32m +        [m
+[32m +        // Int Cluster[m
+[32m +        lowDashData.addCluster();[m
+[32m +        {[m
+[32m +         lowDashData.addInt(int 0);[m
+[32m +         lowDashData.addInt(int 0);[m
+[32m +         lowDashData.addInt(int 0);[m
+[32m +         lowDashData.addInt(int 0);[m
+[32m +         lowDashData.addInt(int 0);[m
+[32m +        }[m
+[32m +        lowDashData.finalizeCluster();[m
+[32m +        [m
+[32m +        // String Cluster[m
+[32m +        lowDashData.addCluster();[m
+[32m +        {[m
+[32m +         lowDashData.addString(string " ");[m
+[32m +         lowDashData.addString(string " ");[m
+[32m +         lowDashData.addString(string " ");[m
+[32m +         lowDashData.addString(string " ");[m
+[32m +         lowDashData.addString(string " ");[m
+[32m +        }[m
+[32m +        lowDashData.finalizeCluster();[m
+[32m++=======[m
+[32m+         { // Booleans[m
+[32m+             int i = 0;[m
+[32m+             while (i < booleans.size()) {[m
+[32m+                 lowDashData.addBoolean((Boolean)booleans.elementAt(i));[m
+[32m+                 i++;[m
+[32m+             }[m
+[32m+             while (i < NUM_BOOLEANS) {[m
+[32m+                 lowDashData.addBoolean(false);[m
+[32m+                 i++;[m
+[32m+             }[m
+[32m+         }[m
+[32m+         [m
+[32m+         { // Doubles[m
+[32m+             int i = 0;[m
+[32m+             while (i < doubles.size()) {[m
+[32m+                 lowDashData.addDouble((Double)doubles.elementAt(i));[m
+[32m+                 i++;[m
+[32m+             }[m
+[32m+             while (i < NUM_DOUBLES) {[m
+[32m+                 lowDashData.addDouble(0.0);[m
+[32m+                 i++;[m
+[32m+             }[m
+[32m+         }[m
+[32m+         [m
+[32m+         { // Ints[m
+[32m+             int i = 0;[m
+[32m+             while (i < ints.size()) {[m
+[32m+                 lowDashData.addInt((Integer)ints.elementAt(i));[m
+[32m+                 i++;[m
+[32m+             }[m
+[32m+             while (i < NUM_INTS) {[m
+[32m+                 lowDashData.addInt(0);[m
+[32m+                 i++;[m
+[32m+             }[m
+[32m+         }[m
+[32m+         [m
+[32m+         { // Strings[m
+[32m+             int i = 0;[m
+[32m+             while (i < strings.size()) {[m
+[32m+                 lowDashData.addString((String)strings.elementAt(i));[m
+[32m+                 i++;[m
+[32m+             }[m
+[32m+             while (i < NUM_STRINGS) {[m
+[32m+                 lowDashData.addString("");[m
+[32m+                 i++;[m
+[32m+             }[m
+[32m+         }[m
+[32m++>>>>>>> 3c3719014e8c173c42ccc5f0b8cef785f078ea2b[m
+          [m
+          lowDashData.commit();[m
+      }[m

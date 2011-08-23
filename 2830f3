@@ -1,0 +1,120 @@
+[33mcommit 2830f3a31722c31b5d144cd91910364de8dbbae8[m
+Author: Eric Lam <captainpicardlam@gmail.com>
+Date:   Wed Aug 3 20:32:49 2011 -0400
+
+    Added clusters with zeros, falses, and empty strings.
+
+[33mcommit 236abcde64d530d238302eea48b65bc21267cb79[m
+Author: Alejandro Carrillo <aecarrillo594@gmail.com>
+Date:   Sat Jul 30 21:19:36 2011 -0400
+
+    Added SensorHelper and XEncoder.  Both still require more development.  Also improved documentation for Log.java somewhat
+
+[33mcommit d481e3c13bf3eb7eec3f4bddbae247789fceae8e[m
+Author: Blake Elias <blakeelias@gmail.com>
+Date:   Sat Jul 30 20:00:24 2011 -0400
+
+    Read from properties file
+
+[33mcommit b56705a143893e565b49ea947fae6bfd5d5fad53[m
+Author: Blake Elias <blakeelias@gmail.com>
+Date:   Sat Jul 30 19:38:43 2011 -0400
+
+    Created stuylib.util package and Config class
+
+[33mcommit f440ae6df4232c0d5c0d9833ab015201c4f477b9[m
+Author: Kevin Wang <born2run5000@yahoo.com>
+Date:   Fri Jul 29 22:55:38 2011 +0800
+
+    Added imports in DashboardUpdater and uncommented some lines that depended on those imports.
+
+[33mcommit 5b9677e0b50edab16036e94b460601ec80158f05[m
+Author: Kevin Wang <born2run5000@yahoo.com>
+Date:   Fri Jul 29 22:52:59 2011 +0800
+
+    Fixed .gitignore, removed stuff to ignore from repo.
+
+[33mcommit 2a1cde9f53698bae31020efcf7aed862fed40abc[m
+Author: Kevin Wang <born2run5000@yahoo.com>
+Date:   Fri Jul 29 22:36:31 2011 +0800
+
+    Added .gitignore file.
+
+[33mcommit 7d63bdeec1f645f7b870c10391b4b2b687d1b1b5[m
+Author: Alejandro Carrillo <aecarrillo594@gmail.com>
+Date:   Tue Jul 26 23:17:28 2011 -0400
+
+    Fixed log state constant accesibility bug
+
+[33mcommit 1e55bb919ae442280163094954b233a02282c662[m
+Author: Alejandro Carrillo <aecarrillo594@gmail.com>
+Date:   Sat Jul 23 23:35:51 2011 -0400
+
+    Added WPIlibj and SquawkVM .jar files necessary for compiling
+
+[33mcommit 5b82f3dee10c35e4e47c8a94277ae027487cde39[m
+Author: Alejandro Carrillo <aecarrillo594@gmail.com>
+Date:   Sat Jul 23 23:22:46 2011 -0400
+
+    Configured library to allow WPIlibj and com.squawk.microedition imports,
+    finished implementing the Log class, closes #2
+
+[33mcommit 5dc8c703f8f6c5764b195ecb7628c6638ce08b83[m
+Author: Alejandro Carrillo <aecarrillo594@gmail.com>
+Date:   Thu Jul 21 00:19:46 2011 -0400
+
+    established the logging protocol: [<timestamp> @<calling_object>] <Message>
+
+[33mcommit 2996c64f1f0d0986bf2c5e1b2b27df97524d5cfc[m
+Author: Alejandro Carrillo <aecarrillo594@gmail.com>
+Date:   Wed Jul 20 00:33:04 2011 -0400
+
+    started implementing the write() method
+
+[33mcommit eb7daf28918b9b28546e410550baa8ade1d96acb[m
+Author: Kevin Wang <born2run5000@yahoo.com>
+Date:   Tue Jul 19 22:56:21 2011 +0800
+
+    Created DashboardUpdater class. Did not use the name "Dashboard" because it would conflict with the WPILibJ class with the same name.
+
+[33mcommit dd14623e4f831b2f096fc4c66f4fe7675e4a23a0[m
+Author: Alejandro Carrillo <aecarrillo594@gmail.com>
+Date:   Sat Jul 16 22:14:34 2011 -0700
+
+    Minor name change in header comment.
+
+[33mcommit 7cf7eaf2c98c54b5508813c27412efc0a0e7d0b0[m
+Author: Alejandro Carrillo <aecarrillo594@gmail.com>
+Date:   Sun Jul 17 01:11:20 2011 -0400
+
+    Added src dir
+
+[33mcommit c20cdc3e585b96d32de7acbe71ad3f2553715922[m
+Author: Alejandro Carrillo <aecarrillo594@gmail.com>
+Date:   Sun Jul 17 00:41:16 2011 -0400
+
+    Added FRC lib
+
+[33mcommit fd91f90887271681993f283bff0173877ca90eda[m
+Author: Alejandro Carrillo <aecarrillo594@gmail.com>
+Date:   Sun Jul 17 00:38:51 2011 -0400
+
+    Added project folder
+
+[33mcommit cbb63723adf3663874d7803111f83aea278d2bd2[m
+Author: Alejandro Carrillo <aecarrillo594@gmail.com>
+Date:   Thu Jul 14 10:13:59 2011 -0700
+
+    Updated README
+
+[33mcommit 6d329da46fa15af7941c473779cac1079cfe0f20[m
+Author: Alejandro Carrillo <aecarrillo594@gmail.com>
+Date:   Thu Jul 14 10:11:42 2011 -0700
+
+    Updated README
+
+[33mcommit 247b4af41739435b427abe7092a99db26703c996[m
+Author: Alejandro Carrillo <aecarrillo594@gmail.com>
+Date:   Thu Jun 30 23:26:05 2011 -0400
+
+    eyy
