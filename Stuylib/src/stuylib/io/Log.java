@@ -10,7 +10,7 @@ import java.io.OutputStreamWriter;
 import javax.microedition.io.Connector;
 import java.text.SimpleDateFormat;
 import java.util.Date;
-
+import com.sun.squawk.io.BufferedWriter;
 
 /**
  * This is a helper class for UserIO.  It handles logging logic for the UserOutput write() function, by determining whether to:
@@ -31,7 +31,6 @@ public class Log {
     public static final int FMS_WRITELOG = 2;  // When in FMS mode, will write data to a log file
     public static final String NEW_LINE = System.getProperty("line.separator");
     private OutputStreamWriter writer;
-    
     // wil be used for filename
     String date; //MM/DD/YY
     int mnum;
@@ -48,30 +47,31 @@ public class Log {
         String fh = makeFileHandle();
         if (logState == DEBUG_CATSTR) {
             logString = new StringBuffer("");
-        }
-        else if (logState == FMS_WRITELOG) {
+        } else if (logState == FMS_WRITELOG) {
             try {
-                String url = "file:///" + fh +".log";
-                FileConnection c = (FileConnection) Connector.open(url);
+                String url = "file:///" + fh + ".log";
+                FileConnection c = (FileConnection) Connector.open(url, Connector.WRITE); // Creates file on cRIO
+                c.create(); // Don't worry about it
                 writer = new OutputStreamWriter(c.openOutputStream());
             } catch (Exception e) {
                 e.printStackTrace();
             }
         }
     }
-    public String makeFileHandle(){
+
+    public String makeFileHandle() {
         Date date = new Date();
         String s = date.toString();
         mnum = 0;//will be fixed later
         //dow mon dd hh:mm:ss zzz yyyy 
-        s = s.substring(5,10) + s.substring(25) + "match" + mnum + "." + date.getTime();
+        s = s.substring(5, 10) + s.substring(25) + "match" + mnum + "." + date.getTime();
         return s;
     }
 
     private void write(String message, Object logger, String mode) {
         Date date = new Date();
         SimpleDateFormat sdf = new SimpleDateFormat("d MMM yyyy HH:mm:ss ");
-        String prefix = "[" + sdf.format(date) + " @" + logger.getClass().getName() + " ] " + mode +" - "; // Records timestamp and origin
+        String prefix = "[" + sdf.format(date) + " @" + logger.getClass().getName() + " ] " + mode + " - "; // Records timestamp and origin
         String data = prefix + message;
 
         writer(data);  // Logs the message string
