@@ -9,6 +9,8 @@ public class DriveTrain {
     VictorSpeed rear_left_motor;
     VictorSpeed rear_right_motor;
 
+    RobotDrive rd;
+
     Gyro g;
 
     DriveTrain(DriveConfig O) {
@@ -21,6 +23,24 @@ public class DriveTrain {
         rear_right_motor = new VictorSpeed(O.getRearRightMotorChannel(),
                 O.getRearRightEncoderChannel()[0], O.getRearRightEncoderChannel()[1], true, O);
 
+        rd = new RobotDrive(front_left_motor,
+                            rear_left_motor,
+                            front_right_motor,
+                            rear_right_motor);
+
         g = new Gyro(O.getGyroChannel());
+    }
+}
+
+class HeadingDrive implements PIDOutput {
+
+    DriveTrain dt;
+
+    public HeadingDrive(DriveTrain dt) {
+        this.dt = dt;
+    }
+
+    public void pidWrite(double out) {
+        dt.rd.tankDrive(-out, out);
     }
 }
