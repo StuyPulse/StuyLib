@@ -26,5 +26,8 @@ public interface DriveConfig {
 
     public double getEncoderRadPerPulse();
 
-    
+
+    public int getGyroChannel();
+
+
 }
