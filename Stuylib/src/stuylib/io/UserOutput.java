@@ -17,23 +17,17 @@ public class UserOutput {
     DigitalInput DI;
     DigitalOutput DO;
 
-    public UserOutput(Object robot, int state) {
-        dashboardUpdater = new DashboardUpdater(robot);
-        this.robot = robot;
+    public UserOutput(UserInput in, int state) {
+        dashboardUpdater = new DashboardUpdater(in);
         logger = new Log(state);
 
     }
-    //stuff needs to happen here
-    public void makeDigitalIO(int channel){
-        DI = new DigitalInput(channel);
-        DO = new DigitalOutput(channel);
-    }
+
+
     
 
     public void log(String s){
         logger.write(s, robot);
-
-
     }
     public void log(int i ){
         String s = i + "";

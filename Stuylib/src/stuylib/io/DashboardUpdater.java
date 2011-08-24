@@ -24,17 +24,6 @@ public class DashboardUpdater {
     private final int ANALOG_MODULE_2 = 2;
     private final int DIGITAL_MODULE_1 = 4;
     private final int DIGITAL_MODULE_2 = 6;
-  
-    // Enhanced I/O Stuff. Joystick values will probably change?
-    private final int LEFT_STICK_PORT = 1;
-    private final int RIGHT_STICK_PORT = 2;
-    private final int EXTRA_STICK_1_PORT = 3;
-    private final int EXTRA_STICK_2_PORT = 4;
-    // Amount of buttons on each joystick. 11 is using the assumption of Attack 3's.
-    private final int LEFT_STICK_BUTTONS = 11;
-    private final int RIGHT_STICK_BUTTONS = 11;
-    private final int EXTRA_STICK_1_BUTTONS = 11;
-    private final int EXTRA_STICK_2_BUTTONS = 11;
     
     // Quantities of each variable type
     private final int NUM_BOOLEANS = 20;
@@ -55,15 +44,15 @@ public class DashboardUpdater {
     private int booleansIndex, doublesIndex, intsIndex, stringsIndex;
     
     // Reference to the main robot object
-    private Object robot; // "Object" MUST be replaced by the main robot class
+    private UserInput in; // "Object" MUST be replaced by the main robot class
     
     /**
      * Initializes the buffer and starts a timer to update the dashboard every 0.1 seconds.
      * 
      * @param robot Reference to the main robot object
      */
-    public DashboardUpdater(Object robot) { // "Object" MUST be replaced by the main robot class
-        this.robot = robot;
+    public DashboardUpdater(UserInput in) { // "Object" MUST be replaced by the main robot class
+        this.in = in;
         
         Timer dashTimer = new Timer();
         dashTimer.schedule(new TimerTask() {
@@ -177,15 +166,15 @@ public class DashboardUpdater {
             { // Joystick X and Y Axes
               lowDashData.addCluster();
               {
-                lowDashData.addDouble(Joystick(LEFT_STICK_PORT).getX());
-                lowDashData.addDouble(Joystick(LEFT_STICK_PORT).getY());
+                lowDashData.addDouble(in.left_stick.getX());
+                lowDashData.addDouble(in.left_stick.getY());
               }
               lowDashData.finalizeCluster();
               // Adds Joystick Buttons
               lowDashData.addCluster();
               {
-                for (int i = 1; i <= LEFT_STICK_BUTTONS; i++) {
-                        lowDashData.addBoolean(Joystick(LEFT_STICK_PORT).getRawButton(i));
+                for (int i = 1; i <= in.ATTACK_3_BUTTONS; i++) {
+                        lowDashData.addBoolean(in.left_stick.getRawButton(i));
                     }
               }
               lowDashData.finalizeCluster();
@@ -197,60 +186,60 @@ public class DashboardUpdater {
             { // Joystick X and Y Axes
               lowDashData.addCluster();
               {
-                lowDashData.addDouble(Joystick(RIGHT_STICK_PORT).getX());
-                lowDashData.addDouble(Joystick(RIGHT_STICK_PORT).getY());
+                lowDashData.addDouble(in.right_stick.getX());
+                lowDashData.addDouble(in.right_stick.getY());
               }
               lowDashData.finalizeCluster();
               // Adds Joystick Buttons
               lowDashData.addCluster();
               {
-                for (int i = 1; i <= RIGHT_STICK_BUTTONS; i++) {
-                        lowDashData.addBoolean(Joystick(RIGHT_STICK_PORT).getRawButton(i));
+                for (int i = 1; i <= in.ATTACK_3_BUTTONS; i++) {
+                        lowDashData.addBoolean(in.right_stick.getRawButton(i));
                     }
               }
               lowDashData.finalizeCluster();
             }
-            lowDastData.finalizeCluster();
+            lowDashData.finalizeCluster();
             
             // Extra Joystick 1
             lowDashData.addCluster();
             { // Joystick X and Y Axes
               lowDashData.addCluster();
               {
-                lowDashData.addDouble(Joystick(EXTRA_STICK_1_PORT).getX());
-                lowDashData.addDouble(Joystick(EXTRA_STICK_1_PORT).getY());
+                lowDashData.addDouble(in.extra_stick_1.getX());
+                lowDashData.addDouble(in.extra_stick_1.getY());
               }
               lowDashData.finalizeCluster();
               // Adds Joystick Buttons
               lowDashData.addCluster();
               {
-                for (int i = 1; i <= EXTRA_STICK_1_BUTTONS; i++) {
-                        lowDashData.addBoolean(Joystick(EXTRA_STICK_1_BUTTONS).getRawButton(i));
+                for (int i = 1; i <= in.ATTACK_3_BUTTONS; i++) {
+                        lowDashData.addBoolean(in.extra_stick_1.getRawButton(i));
                     }
               }
               lowDashData.finalizeCluster();
             }
-            lowDastData.finalizeCluster();
+            lowDashData.finalizeCluster();
             
             // Extra Joystick 2
             lowDashData.addCluster();
             { // Joystick X and Y Axes
               lowDashData.addCluster();
               {
-                lowDashData.addDouble(Joystick(EXTRA_STICK_2_PORT).getX());
-                lowDashData.addDouble(Joystick(EXTRA_STICK_2_PORT).getY());
+                lowDashData.addDouble(in.extra_stick_2.getX());
+                lowDashData.addDouble(in.extra_stick_2.getY());
               }
               lowDashData.finalizeCluster();
               // Adds Joystick Buttons
               lowDashData.addCluster();
               {
-                for (int i = 1; i <= EXTRA_STICK_2_BUTTONS; i++) {
-                        lowDashData.addBoolean(Joystick(EXTRA_STICK_2_BUTTONS).getRawButton(i));
+                for (int i = 1; i <= in.ATTACK_3_BUTTONS; i++) {
+                        lowDashData.addBoolean(in.extra_stick_2.getRawButton(i));
                     }
               }
               lowDashData.finalizeCluster();
             }
-            lowDastData.finalizeCluster();
+            lowDashData.finalizeCluster();
           }
           lowDashData.finalizeCluster();
           
@@ -259,7 +248,7 @@ public class DashboardUpdater {
         lowDashData.finalizeCluster();
         
         
-        // Non-sensor data
+        // Non-sensor data / Miscellaneous stuff
         lowDashData.addCluster();
         {
             // Array of booleans
