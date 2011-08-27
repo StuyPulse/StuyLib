@@ -1,4 +1,4 @@
-package stuylib.drive.prototype;
+package stuylib.drive;
 
 import edu.wpi.first.wpilibj.*;
 
