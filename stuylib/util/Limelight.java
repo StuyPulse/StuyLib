@@ -9,6 +9,7 @@ import edu.wpi.first.networktables.NetworkTableInstance;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 
 public class Limelight {
+    
     // Network Table used to contact Lime Light
     private static final NetworkTableInstance mTableInstance = NetworkTableInstance.getDefault();
     private static final NetworkTable mTable = mTableInstance.getTable("limelight");
