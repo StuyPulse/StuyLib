@@ -4,6 +4,12 @@ import edu.wpi.first.wpilibj.Joystick;
 
 import stuylib.util.Gamepad;
 
+/**
+ * Implementation of a Dummy Controller for the Gamepad Class
+ * 
+ * @author Sam (sam.belliveau@gmail.com)
+ */
+
 public class NullGamepad extends Gamepad {
     
     /********************/

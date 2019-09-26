@@ -5,9 +5,9 @@ import edu.wpi.first.wpilibj.Joystick;
 import stuylib.util.Gamepad;
 
 /**
- * Implementation of PS4 Controller
+ * Implementation of the PS4 for the Gamepad Class
  * 
- * @author Sam B.
+ * @author Sam (sam.belliveau@gmail.com)
  */
 
 public class PS4 extends Gamepad {

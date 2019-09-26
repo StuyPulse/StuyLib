@@ -5,9 +5,10 @@ import edu.wpi.first.wpilibj.Joystick;
 import stuylib.util.Gamepad;
 
 /**
- * Implementation of Logitech Controller
+ * Implementation of Logitech Controller and 
+ * its 2 Modes for the Gamepad Class
  * 
- * @author Sam B.
+ * @author Sam (sam.belliveau@gmail.com)
  */
 
 public class Logitech extends Gamepad {
