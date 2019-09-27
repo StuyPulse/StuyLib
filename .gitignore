@@ -1,5 +1,5 @@
-.gradle/
-.settings/
-.vscode/
-bin/
-build/
+bin
+build
+
+.*/
+.*
