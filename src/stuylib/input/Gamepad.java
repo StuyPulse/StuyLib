@@ -55,8 +55,8 @@ public class Gamepad {
 
 
     /**
-     * Initialize Gamepad with joystick
-     * @param joy WPI Joystick
+     * Initialize Gamepad Nothing
+     * Joystick will be set to null
      */
     public Gamepad() {
         this.mJoy = null;
@@ -74,7 +74,7 @@ public class Gamepad {
 
     /**
     * Initialize Gamepad with port
-    * @param joy Joystick port
+    * @param port Joystick port
     */
     public Gamepad(int port) {
         this.mJoy = new Joystick(port);

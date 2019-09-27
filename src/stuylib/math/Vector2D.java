@@ -73,7 +73,7 @@ public class Vector2D {
     /**
      * Rotate Vector2D around point
      * @param angdeg (degrees) amount to rotate around
-     * @param other point to rotate around
+     * @param origin point to rotate around
      * @return result of rotation
      */
     public Vector2D rotate(double angdeg, Vector2D origin) {

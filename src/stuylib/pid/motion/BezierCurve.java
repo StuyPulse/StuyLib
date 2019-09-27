@@ -1,4 +1,4 @@
-package stuylib.math.motionprofiling;
+package stuylib.pid.motion;
 
 import stuylib.math.Vector2D;
 

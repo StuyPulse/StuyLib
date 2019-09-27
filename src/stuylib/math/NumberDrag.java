@@ -32,7 +32,7 @@ public class NumberDrag {
      * the more smooth the outputs are,
      * the lower the value, the faster it
      * converges
-     * @param drag drag amount, > 0
+     * @param drag drag amount, must be greater than 0
      */
     public NumberDrag(double drag) {
         mValue = 0;
