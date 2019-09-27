@@ -1,13 +1,15 @@
 package stuylib.util;
 
-public class InputScales {
-    
-    /**** What Is The Input Scalar Class? ****
-     * The input scalar class is a class
-     * that packages many different 
-     * functions that can help with 
-     * squaring inputs etc.
-     */
+/** 
+ * The input scalar class is a class
+ * that packages many different 
+ * functions that can help with 
+ * squaring inputs etc.
+ * 
+ * @author Sam (sam.belliveau@gmail.com)
+ */
+
+public class InputScale {
 
     public static double limit(double x) {
         return Math.max(Math.min(x, 1.0), -1.0);
