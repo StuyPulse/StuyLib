@@ -21,16 +21,8 @@ configurations {
 dependencies { 
    compile wpi.deps.wpilib()
    compile wpi.deps.vendor.java()
-
-   // jaxDoclet "wpi.deps.wpilib"
-   // jaxDoclet "wpi.vendor.java"
 }
 
 javadoc {
    source = sourceSets.main.allJava
-}
-
-task makeApiDocs(type: Javadoc) {
-  source = sourceSets.main.allJava
-  destinationDir = reporting.file("api-docs")
 }
