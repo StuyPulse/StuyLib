@@ -1,4 +1,4 @@
-package stuylib.util;
+package stuylib.math;
 
 /** 
  * The input scalar class is a class
@@ -9,7 +9,7 @@ package stuylib.util;
  * @author Sam (sam.belliveau@gmail.com)
  */
 
-public class InputScale {
+public class InputScaler {
 
     public static double limit(double x) {
         return Math.max(Math.min(x, 1.0), -1.0);

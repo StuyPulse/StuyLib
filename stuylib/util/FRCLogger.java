@@ -13,6 +13,12 @@ import java.util.logging.Logger;
  */
 
 public class FRCLogger {
+
+    /**
+     * Implementable interface with getLog() function.
+     * This lets us pass in subsystems that implement
+     * loggable to our logger in a very easy way.
+     */
     public interface Loggable {
         public String getLog();
     }
@@ -20,11 +26,15 @@ public class FRCLogger {
     private Logger mLogger;
     private FileHandler mFileHandler;
 
-    FRCLogger(String logName) {
+    /**
+     * Open FRCLogger
+     * @param file file name
+     */
+    FRCLogger(String file) {
         mLogger = Logger.getLogger(FRCLogger.class.getName());
 
         try {
-            mFileHandler = new FileHandler("./Logs/" + logName + ".log");
+            mFileHandler = new FileHandler("./Logs/" + file + ".log");
         } catch(Exception e) {
             e.printStackTrace();
         }

@@ -1,12 +1,12 @@
-package stuylib.util;
+package stuylib.input;
 
 import edu.wpi.first.wpilibj.buttons.Button;
 import edu.wpi.first.wpilibj.DriverStation;
 import edu.wpi.first.wpilibj.Joystick;
 
-import stuylib.util.gamepads.NullGamepad;
-import stuylib.util.gamepads.Logitech;
-import stuylib.util.gamepads.PS4;
+import stuylib.input.gamepads.NullGamepad;
+import stuylib.input.gamepads.Logitech;
+import stuylib.input.gamepads.PS4;
 
 /**
  * An abstract class for using gamepads with different interfaces.

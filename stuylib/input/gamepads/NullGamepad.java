@@ -1,96 +1,87 @@
-package stuylib.util.gamepads;
+package stuylib.input.gamepads;
 
 import edu.wpi.first.wpilibj.Joystick;
 
-import stuylib.util.Gamepad;
+import stuylib.input.Gamepad;
 
 /**
- * Implementation of the PS4 for the Gamepad Class
+ * Implementation of a Dummy Controller for the Gamepad Class
  * 
  * @author Sam (sam.belliveau@gmail.com)
  */
 
-public class PS4 extends Gamepad {
+public class NullGamepad extends Gamepad {
     
     /********************/
     /*** CONSTRUCTORS ***/
     /********************/
-    public PS4(Joystick joy) {
+    public NullGamepad(Joystick joy) {
         super(joy);
     }    
 
 
-    public PS4(int port) {
+    public NullGamepad(int port) {
         super(port);
     }
 
-
-    /**********************/
-    /*** CONTROL STICKS ***/
-    /**********************/
+    /**************************/
+    /*** LEFT CONTROL STICK ***/
+    /**************************/
     @Override
-    public double getLeftX() {
-        return getRawAxis(0);
-    }
+    public double getLeftX() { return 0.0; }
 
     @Override
-    public double getLeftY() {
-        return -getRawAxis(1);
-    }
+    public double getLeftY() { return 0.0; }
 
     @Override
-    public double getRightX() {
-        return getRawAxis(2);
-    }
+    public double getRightX() { return 0.0; }
 
     @Override
-    public double getRightY() {
-        return -getRawAxis(5);
-    }
+    public double getRightY() { return 0.0; }
 
 
     /**********************/
     /*** D-PAD CONTROLS ***/
     /**********************/
     public boolean getRawDPadUp() {
-        return getJoystick().getPOV() == 0;
+        return false;
     }
     
     public boolean getRawDPadDown() {
-        return getJoystick().getPOV() == 180;
+        return false;
     }
     
     public boolean getRawDPadLeft() {
-        return getJoystick().getPOV() == 270;
+        return false;
     }
     
     public boolean getRawDPadRight() {
-        return getJoystick().getPOV() == 90;
+        return false;
     }
 
 
     /*******************/
     /*** LEFT BUMPER ***/
     /*******************/
-    public boolean getRawLeftBumper() { 
-        return getRawButton(5); 
-    }
+    @Override
+    public boolean getRawLeftBumper() { return false; }
 
 
     /********************/
     /*** RIGHT BUMPER ***/
     /********************/
-    public boolean getRawRightBumper() { 
-        return getRawButton(6); 
-    }
+    @Override
+    public boolean getRawRightBumper() { return false; }
 
 
     /********************/
     /*** LEFT TRIGGER ***/
     /********************/
     @Override
-    public double getRawLeftTriggerAxis() {
-        return (getRawAxis(3) + 1.0) / 2.0;
+    public double getRawLeftTriggerAxis() { return 0.0; }
+
+    public boolean getRawLeftTrigger() {
+        return getRawLeftTriggerAxis() > TRIGGER_AXIS_THRESHOLD;
     }
 
 
@@ -98,8 +89,10 @@ public class PS4 extends Gamepad {
     /*** RIGHT TRIGGER ***/
     /*********************/
     @Override
-    public double getRawRightTriggerAxis() {
-        return (getRawAxis(4) + 1.0) / 2.0;
+    public double getRawRightTriggerAxis() { return 0; }
+
+    public boolean getRawRightTrigger() {
+        return getRawRightTriggerAxis() > TRIGGER_AXIS_THRESHOLD;
     }
 
 
@@ -107,79 +100,61 @@ public class PS4 extends Gamepad {
     /*** LEFT BUTTON ***/
     /*******************/
     @Override
-    public boolean getRawLeftButton() {
-        return getRawButton(1);
-    }
+    public boolean getRawLeftButton() { return false; }
 
 
     /********************/
     /*** RIGHT BUTTON ***/
     /********************/
     @Override
-    public boolean getRawRightButton() {
-        return getRawButton(3);
-    }
+    public boolean getRawRightButton() { return false; }
 
 
     /******************/
     /*** TOP BUTTON ***/
     /******************/
     @Override
-    public boolean getRawTopButton() {
-        return getRawButton(4);
-    }
+    public boolean getRawTopButton() { return false; }
 
 
     /*********************/
     /*** BOTTOM BUTTON ***/
     /*********************/
     @Override
-    public boolean getRawBottomButton() {
-        return getRawButton(2);
-    }
+    public boolean getRawBottomButton() { return false; }
 
 
     /*********************/
     /*** SELECT BUTTON ***/
     /*********************/
     @Override
-    public boolean getRawSelectButton() {
-        return getRawButton(9);
-    }
+    public boolean getRawSelectButton() { return false; }
 
 
     /********************/
     /*** START BUTTON ***/
     /********************/
     @Override
-    public boolean getRawStartButton() {
-        return getRawButton(10);
-    }
+    public boolean getRawStartButton() { return false; }
 
 
     /**************************/
     /*** LEFT ANALOG BUTTON ***/
     /**************************/
     @Override
-    public boolean getRawLeftAnalogButton() {
-        return getRawButton(11);
-    }
+    public boolean getRawLeftAnalogButton() { return false; }
 
 
     /***************************/
     /*** RIGHT ANALOG BUTTON ***/
     /***************************/
     @Override
-    public boolean getRawRightAnalogButton() {
-        return getRawButton(12);
-    }
+    public boolean getRawRightAnalogButton() { return false; }
 
 
     /*********************/
     /*** OPTION BUTTON ***/
     /*********************/
     @Override
-    public boolean getRawOptionButton() {
-        return getRawButton(10);
-    }
+    public boolean getRawOptionButton() { return false; }
 }

@@ -1,7 +1,7 @@
 /* Lime Light Docs: http://docs.limelightvision.io/en/latest/networktables_api.html# */
 /* StuyPulse 694, Stuyvesant Highschool, NY */
 
-package stuylib.util;
+package stuylib.network;
 
 import edu.wpi.first.networktables.NetworkTable;
 import edu.wpi.first.networktables.NetworkTableEntry;
