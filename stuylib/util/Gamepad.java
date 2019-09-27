@@ -77,8 +77,8 @@ public class Gamepad {
                 return new PS4(port);
             default:
                 System.err.println(
-                    "Unknown Controller \"" + (DriverStation.getInstance().getJoystickName(port)) + "\" \n" +
-                    "\tID: " + (DriverStation.getInstance().getJoystickType(port)) + "\n" + 
+                    "Unknown Controller [" + (DriverStation.getInstance().getJoystickName(port)) + "] \n" +
+                    "\tType: " + (DriverStation.getInstance().getJoystickType(port)) + "\n" + 
                     "\tPort: " + (port));
                 return new NullGamepad(port);
         }
