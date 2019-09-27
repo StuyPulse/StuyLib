@@ -3,7 +3,6 @@
 package stuylib.network;
 
 import java.util.Set;
-import java.lang.Number;
 
 import edu.wpi.first.networktables.NetworkTable;
 import edu.wpi.first.networktables.TableEntryListener;

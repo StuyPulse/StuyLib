@@ -6,7 +6,7 @@ plugins {
 sourceSets {
    main {
       java {
-         srcDir "./src/stuylib"
+         srcDir "src"
       }
    }
 }
