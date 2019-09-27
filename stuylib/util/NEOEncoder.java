@@ -2,6 +2,14 @@ package stuylib.util;
 
 import com.revrobotics.CANEncoder;
 
+/**
+ * A NEOEncoder class that lets you discard 
+ * movement in the event of a gear switch, 
+ * while keeping distance traveled
+ * 
+ * @author Sam (sam.belliveau@gmail.com)
+ */
+
 public final class NEOEncoder {
     
     // Store distance traveled
@@ -35,7 +43,7 @@ public final class NEOEncoder {
      * This will let you ignore errors that come up when shifting gears,
      * but still get total distance moved
      */
-    public void disgardMovement() {
+    public void disgard() {
         mLastPosition = encoder.getPosition();
     }
 
