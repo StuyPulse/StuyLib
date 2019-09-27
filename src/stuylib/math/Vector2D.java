@@ -15,7 +15,7 @@ public class Vector2D {
     /**
      * Make a Vector2D at 0, 0
      */
-    Vector2D() {
+    public Vector2D() {
         this.x = 0;
         this.y = 0;
     }
@@ -24,12 +24,12 @@ public class Vector2D {
      * Initialize Vector2D using an array of 2 doubles
      * @param in an array of 2 numbers
      */
-    Vector2D(double[] in) {
+    public Vector2D(double[] in) {
         this.x = in[0];
         this.y = in[1];
     }
 
-    Vector2D(double x, double y) {
+    public Vector2D(double x, double y) {
         this.x = x;
         this.y = y;
     }

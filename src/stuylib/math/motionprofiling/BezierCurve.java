@@ -6,7 +6,7 @@ public class BezierCurve {
 
     // Weighted sum of points
     private static Vector2D average(Vector2D a, Vector2D b, double preportion) {
-        Vector2D out = new Vector2D();
+        Vector2D out = new Vector2D(0, 0);
         out.x = a.x * preportion + b.x * (1.0 - preportion);
         out.y = a.y * preportion + b.y * (1.0 - preportion);
         
@@ -41,7 +41,7 @@ public class BezierCurve {
 
         path[0] = points[1];
         for(int i = 1; i < accuracy; ++i) {
-            path[i] = HelperFunctions.getPosition(points, ((double)i)/((double)accuracy));
+            path[i] = getPosition(points, ((double)i)/((double)accuracy));
         }
 
         path[accuracy] = points[points.length - 1];

@@ -1,5 +1,7 @@
 package stuylib.network.limelight;
 
+import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
+
 import stuylib.network.limelight.Limelight;
 
 /**
@@ -10,6 +12,10 @@ import stuylib.network.limelight.Limelight;
  */
 
 class Filters {
+    
+    // Toggle for posting to SmartDashboard
+    public static boolean POST_TO_SMART_DASHBOARD = true;
+
     /**
      * @param targetHeightThreshold Height threshold for target
      * @param minRatio              Min ratio for the blue aspect ratio
@@ -45,16 +51,12 @@ class Filters {
             DEFAULT_ANGLE_THRESHOLD);
     }
 
-    /* Commonly Used Contour Information */
-    // Whether the limelight has any valid targets (0 or 1)
-    private static NetworkTableEntry validTargetEntry = table.getEntry("tv");
-    
     /**
      * Decides if a target shows up on limelight screen
      * @return If it has any target
      */
     public static boolean hasAnyTarget() {
-        boolean validTarget = validTargetEntry.getDouble(0) > 0.5;
+        boolean validTarget = Limelight.hasValidTarget();
 
         if (POST_TO_SMART_DASHBOARD) {
             SmartDashboard.putBoolean("Valid Target", validTarget);
@@ -68,7 +70,7 @@ class Filters {
      * @return If the target fits the height threshold
      */
     public static boolean hasValidHeight(double targetHeightThreshold) {
-        boolean validHeight = getTargetYAngle() < targetHeightThreshold;
+        boolean validHeight = Limelight.getTargetYAngle() < targetHeightThreshold;
 
         if (POST_TO_SMART_DASHBOARD) {
             SmartDashboard.putBoolean("Valid Height", validHeight);
@@ -86,7 +88,7 @@ class Filters {
      * @return If the blue aspect ratio fits the thresholds
      */
     public static boolean hasValidBlueAspectRatio(double minRatio, double maxRatio) {
-        double aspectRatio = getHorizontalSidelength() / getVerticalSidelength();
+        double aspectRatio = Limelight.getHorizontalSidelength() / Limelight.getVerticalSidelength();
         boolean validRatio = aspectRatio > minRatio && aspectRatio < maxRatio;
 
         if (POST_TO_SMART_DASHBOARD) {
@@ -102,7 +104,7 @@ class Filters {
      * @return if the skew is less than the maximum skew
      */
     public static boolean hasValidBlueOrientation(double angleThreshold) {
-        double skew = Math.abs(getTargetSkew());
+        double skew = Math.abs(Limelight.getTargetSkew());
         boolean validOrientation = Math.min(skew, 90.0 - skew) <= angleThreshold;
 
         if (POST_TO_SMART_DASHBOARD) {

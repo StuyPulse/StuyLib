@@ -76,7 +76,7 @@ public class Limelight {
      * Decides if a target shows up on limelight screen
      * @return If it has any target
      */
-    public static boolean hasAnyTarget() {
+    public static boolean hasValidTarget() {
         boolean validTarget = mValidTargetEntry.getDouble(0) > 0.5;
 
         if (POST_TO_SMART_DASHBOARD) {
