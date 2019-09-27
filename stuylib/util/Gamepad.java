@@ -81,7 +81,7 @@ public class Gamepad {
     }
 
 
-    public static Gamepad openPort(int port) {
+    public static Gamepad getNewGamepad(int port) {
         switch (DriverStation.getInstance().getJoystickType(port)) {
             case 1:
                 return new Logitech.XMode(port);
