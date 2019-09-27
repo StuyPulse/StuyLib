@@ -1,12 +1,11 @@
 package stuylib.util;
 
-import edu.wpi.first.wpilibj.DriverStation;
-import edu.wpi.first.wpilibj.GenericHID;
-import edu.wpi.first.wpilibj.Joystick;
 import edu.wpi.first.wpilibj.buttons.Button;
+import edu.wpi.first.wpilibj.DriverStation;
+import edu.wpi.first.wpilibj.Joystick;
 
-import stuylib.util.gamepads.Logitech;
 import stuylib.util.gamepads.NullGamepad;
+import stuylib.util.gamepads.Logitech;
 import stuylib.util.gamepads.PS4;
 
 /**
