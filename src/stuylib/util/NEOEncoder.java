@@ -1,6 +1,6 @@
 package stuylib.util;
 
-import com.revrobotics.CANEncoder;
+////// import com.revrobotics.CANEncoder;
 
 /**
  * A NEOEncoder class that lets you discard 
@@ -10,32 +10,35 @@ import com.revrobotics.CANEncoder;
  * @author Sam (sam.belliveau@gmail.com)
  */
 
+////// many lines are commented out as com.revrobotics 
+////// is not installed on my computer, just remove
+////// the //////'s when compiling
+
 public final class NEOEncoder {
     
     // Store distance traveled
     private double mTotalDistanceMoved;
 
     // Store last location and take the difference
-    private double mLastPosition;
+    ////// private double mLastPosition;
 
     // Encoder variable
-    private CANEncoder mEncoder;
+    ////// private CANEncoder mEncoder;
 
     /**
      * @param encoder Encoder used to track distance
      */
-    public NEOEncoder(CANEncoder encoder) {
-        mEncoder = encoder;
-        mTotalDistanceMoved = 0;
-        mLastPosition = encoder.getPosition();
-    }
+    ////// public NEOEncoder(CANEncoder encoder) {
+        ////// mEncoder = encoder;
+        ////// reset();
+    ////// }
 
     /**
      * Reset encoder and make distance traveled 0
      */
-    public void resetEncoder() {
+    public void reset() {
         mTotalDistanceMoved = 0;
-        disgardMovement();
+        disgard();
     }
 
     /**
@@ -44,7 +47,7 @@ public final class NEOEncoder {
      * but still get total distance moved
      */
     public void disgard() {
-        mLastPosition = encoder.getPosition();
+        ////// mLastPosition = encoder.getPosition();
     }
 
     /**
@@ -52,9 +55,9 @@ public final class NEOEncoder {
      * @return Total distance moved
      */
     public double getPosition() {
-        double currentPosition = encoder.getPosition();
-        mTotalDistanceMoved = currentPosition - mLastPosition;
-        mLastPosition = currentPosition;
+        ////// double currentPosition = encoder.getPosition();
+        ////// mTotalDistanceMoved = currentPosition - mLastPosition;
+        ////// mLastPosition = currentPosition;
         return mTotalDistanceMoved;
     }
 }

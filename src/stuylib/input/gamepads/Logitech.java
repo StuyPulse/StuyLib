@@ -43,10 +43,8 @@ public class Logitech extends Gamepad {
         return getRawAxis(4);
     }
 
-    @Override
-    public double getRightY() {
-        return false;
-    }
+    // @Override
+    // public double getRightY() {}
 
 
     /**********************/

@@ -22,6 +22,8 @@ public class NumberDrag {
      * drag value, which is 2.
      */
     public NumberDrag() {
+        mValue = 0;
+        mDrag = 2;
     }
 
     /**
@@ -33,6 +35,7 @@ public class NumberDrag {
      * @param drag drag amount, > 0
      */
     public NumberDrag(double drag) {
+        mValue = 0;
         mDrag = drag;
     }
 
@@ -50,5 +53,6 @@ public class NumberDrag {
         mValue *= mDrag - 1;
         mValue += input;
         mValue /= mDrag;
+        return mValue;
     }
 }

@@ -1,5 +1,14 @@
-# BetterStuyLib
-Clean, Standardized, Robust utilitys for use int robot code. Try to include javadocs in all files.
+# StuyLib
+
+StuyLib is a collection of tools commonly and or uncommonly used in robot code.
+The point of this library is to have a standard library for these tools that are
+maintained separetly from the robot code. Because these tools are core tools, it
+is important that any changes not be made as a requirement for a new robot arises.
+This includes, importing robot code, robot dependant constants, and any other 
+changes that could just be added to the robot instead.
+
+All source code is in `src`.
+
 > The rest of this file is mostly copied from [here](https://github.com/FRCTeam2910/Common-Public/blob/master/README.md)
 
 ## How to use in another project

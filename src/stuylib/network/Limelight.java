@@ -27,7 +27,7 @@ public class Limelight {
 
     // Uses network tables to check status of limelight
     private static final NetworkTableEntry mTimingTestEntry = mTable.getEntry("TIMING_TEST_ENTRY");
-    private static final boolean mTimingTestEntryValue = false;
+    private static boolean mTimingTestEntryValue = false;
 
     public static final long MAX_UPDATE_TIME = 125_000; // Micro Seconds = 0.125 Seconds
     public static final long MIN_WARNING_TIME = 500_000; // Micro Seconds = 0.5 Seconds
@@ -83,8 +83,7 @@ public class Limelight {
             SmartDashboard.putBoolean("Valid Target", validTarget);
         }
 
-        return validTarget
-            && (!IS_CONNECTED_REQUIRED || isConnected());;
+        return validTarget && (!IS_CONNECTED_REQUIRED || isConnected());
     }
 
 
