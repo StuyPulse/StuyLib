@@ -81,10 +81,13 @@ public class Gamepad {
             case 21:
                 return new PS4(port);
             default:
-                System.err.println(
+                System.err.println( // Report debug info if controller is not known
                     "Unknown Controller [" + (DriverStation.getInstance().getJoystickName(port)) + "] \n" +
                     "\tType: " + (DriverStation.getInstance().getJoystickType(port)) + "\n" + 
                     "\tPort: " + (port));
+                
+                // Return gamepad that always returns false for 
+                // every button, as if controller is not connected
                 return new NullGamepad(port);
         }
     }
