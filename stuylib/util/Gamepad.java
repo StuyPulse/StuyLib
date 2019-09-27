@@ -91,7 +91,7 @@ public class Gamepad {
                 return new PS4(port);
             default:// Report debug info if controller is not known
                 System.err.println("Unknown Controller [" + (DriverStation.getInstance().getJoystickName(port)) + "]");
-                System.err.println("\tType: " + (DriverStation.getInstance().getJoystickType(port)))
+                System.err.println("\tType: " + (DriverStation.getInstance().getJoystickType(port)));
                 System.err.println("\tPort: " + (port));
                 
                 // Return gamepad that always returns false for 
@@ -125,7 +125,7 @@ public class Gamepad {
      * @return the value of the button
      */
     public final boolean getRawButton(int button) {
-        if(getJoystick() -= null) { return false; }
+        if(getJoystick() == null) { return false; }
         return getJoystick().getRawButton(button);
     }
 
