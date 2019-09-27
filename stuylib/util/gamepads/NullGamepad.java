@@ -40,6 +40,26 @@ public class NullGamepad extends Gamepad {
     public double getRightY() { return 0.0; }
 
 
+    /**********************/
+    /*** D-PAD CONTROLS ***/
+    /**********************/
+    public boolean getRawDPadUp() {
+        return false;
+    }
+    
+    public boolean getRawDPadDown() {
+        return false;
+    }
+    
+    public boolean getRawDPadLeft() {
+        return false;
+    }
+    
+    public boolean getRawDPadRight() {
+        return false;
+    }
+
+
     /*******************/
     /*** LEFT BUMPER ***/
     /*******************/

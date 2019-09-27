@@ -11,6 +11,13 @@ import edu.wpi.first.networktables.NetworkTableEntry;
 import edu.wpi.first.networktables.NetworkTableInstance;
 import edu.wpi.first.networktables.PersistentException;
 
+/**
+ * The NetworkTableClient is a very fast way
+ * to easily interface with a network table
+ * 
+ * @author Sam (sam.belliveau@gmail.com)
+ */
+
 public class NetworkTableClient {
     
     /* Members */

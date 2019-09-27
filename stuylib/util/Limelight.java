@@ -8,6 +8,13 @@ import edu.wpi.first.networktables.NetworkTableEntry;
 import edu.wpi.first.networktables.NetworkTableInstance;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 
+/**
+ * This is a class that lets you interface with
+ * the limelight network table. 
+ * 
+ * @author Sam (sam.belliveau@gmail.com)
+ */
+
 public class Limelight {
     // Network Table used to contact Lime Light
     private static final NetworkTableInstance mTableInstance = NetworkTableInstance.getDefault();

@@ -58,6 +58,15 @@ public class Gamepad {
      * Initialize Gamepad with joystick
      * @param joy WPI Joystick
      */
+    public Gamepad() {
+        this.mJoy = null;
+    }    
+    
+
+    /**
+     * Initialize Gamepad with joystick
+     * @param joy WPI Joystick
+     */
     public Gamepad(Joystick joy) {
         this.mJoy = joy;
     }    
@@ -80,11 +89,10 @@ public class Gamepad {
                 return new Logitech.DMode(port);
             case 21:
                 return new PS4(port);
-            default:
-                System.err.println( // Report debug info if controller is not known
-                    "Unknown Controller [" + (DriverStation.getInstance().getJoystickName(port)) + "] \n" +
-                    "\tType: " + (DriverStation.getInstance().getJoystickType(port)) + "\n" + 
-                    "\tPort: " + (port));
+            default:// Report debug info if controller is not known
+                System.err.println("Unknown Controller [" + (DriverStation.getInstance().getJoystickName(port)) + "]");
+                System.err.println("\tType: " + (DriverStation.getInstance().getJoystickType(port)))
+                System.err.println("\tPort: " + (port));
                 
                 // Return gamepad that always returns false for 
                 // every button, as if controller is not connected
@@ -117,6 +125,7 @@ public class Gamepad {
      * @return the value of the button
      */
     public final boolean getRawButton(int button) {
+        if(getJoystick() -= null) { return false; }
         return getJoystick().getRawButton(button);
     }
 
@@ -135,6 +144,7 @@ public class Gamepad {
      * @return the value of the axis
      */
     public final double getRawAxis(int axis) {
+        if(getJoystick() == null) { return 0.0; }
         return getJoystick().getRawAxis(axis);
     }
 
@@ -174,18 +184,15 @@ public class Gamepad {
     public double getRightY() { return 0.0; }
     
 
-    /********************/
-    /*** ENTIRE D-PAD ***/
-    /********************/
+    /**********************/
+    /*** D-PAD CONTROLS ***/
+    /**********************/
 
     /**
      * The upper d-pad button.
      * @return if upper d-pad button is pressed
      */
-    public boolean getRawDPadUp() {
-        return getJoystick().getPOV() == 0;
-    }
-
+    public boolean getRawDPadUp() { return false; }
     public final Button getDPadUp() {
         return new GamepadButton(() -> this.getRawDPadUp());
     }
@@ -194,10 +201,7 @@ public class Gamepad {
      * The lower d-pad button.
      * @return if lower d-pad button is pressed
      */
-    public boolean getRawDPadDown() {
-        return getJoystick().getPOV() == 180;
-    }
-
+    public boolean getRawDPadDown() { return false; }
     public final Button getDPadDown() {
         return new GamepadButton(() -> this.getRawDPadDown());
     }
@@ -206,10 +210,7 @@ public class Gamepad {
      * The left d-pad button.
      * @return if left d-pad button is pressed
      */
-    public boolean getRawDPadLeft() {
-        return getJoystick().getPOV() == 270;
-    }
-
+    public boolean getRawDPadLeft() { return false; }
     public final Button getDPadLeft() {
         return new GamepadButton(() -> this.getRawDPadLeft());
     }
@@ -219,10 +220,7 @@ public class Gamepad {
      * The right d-pad button.
      * @return if right d-pad button is pressed
      */
-    public boolean getRawDPadRight() {
-        return getJoystick().getPOV() == 90;
-    }
-
+    public boolean getRawDPadRight() { return false; }
     public final Button getDPadRight() {
         return new GamepadButton(() -> this.getRawDPadRight());
     }

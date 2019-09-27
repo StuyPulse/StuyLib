@@ -49,6 +49,26 @@ public class PS4 extends Gamepad {
     }
 
 
+    /**********************/
+    /*** D-PAD CONTROLS ***/
+    /**********************/
+    public boolean getRawDPadUp() {
+        return getJoystick().getPOV() == 0;
+    }
+    
+    public boolean getRawDPadDown() {
+        return getJoystick().getPOV() == 180;
+    }
+    
+    public boolean getRawDPadLeft() {
+        return getJoystick().getPOV() == 270;
+    }
+    
+    public boolean getRawDPadRight() {
+        return getJoystick().getPOV() == 90;
+    }
+
+
     /*******************/
     /*** LEFT BUMPER ***/
     /*******************/

@@ -43,8 +43,30 @@ public class Logitech extends Gamepad {
         return getRawAxis(4);
     }
 
-    // @Override
-    // public double getRightY() {}
+    @Override
+    public double getRightY() {
+        return false;
+    }
+
+
+    /**********************/
+    /*** D-PAD CONTROLS ***/
+    /**********************/
+    public boolean getRawDPadUp() {
+        return getJoystick().getPOV() == 0;
+    }
+    
+    public boolean getRawDPadDown() {
+        return getJoystick().getPOV() == 180;
+    }
+    
+    public boolean getRawDPadLeft() {
+        return getJoystick().getPOV() == 270;
+    }
+    
+    public boolean getRawDPadRight() {
+        return getJoystick().getPOV() == 90;
+    }
 
 
     /*******************/
