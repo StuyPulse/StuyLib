@@ -43,7 +43,7 @@ public final class NEOEncoder {
      * but still get total distance moved
      */
     public void disgard() {
-        mLastPosition = encoder.getPosition();
+        mLastPosition = mEncoder.getPosition();
     }
 
     /**
@@ -51,7 +51,7 @@ public final class NEOEncoder {
      * @return Total distance moved
      */
     public double getPosition() {
-        double currentPosition = encoder.getPosition();
+        double currentPosition = mEncoder.getPosition();
         mTotalDistanceMoved = currentPosition - mLastPosition;
         mLastPosition = currentPosition;
         return mTotalDistanceMoved;
