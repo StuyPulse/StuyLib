@@ -8,6 +8,8 @@ import stuylib.input.gamepads.NullGamepad;
 import stuylib.input.gamepads.Logitech;
 import stuylib.input.gamepads.PS4;
 
+import stuylib.misc.LambdaButton;
+
 /**
  * An abstract class for using gamepads with different interfaces.
  * You can implement this class in another file, and then use it
@@ -140,7 +142,7 @@ public class Gamepad {
      * @return the value of the button
      */
     public final Button getButton(int button) {
-        return new GamepadButton(() -> getRawButton(button));
+        return new LambdaButton(() -> getRawButton(button));
     }
 
     /**
@@ -199,7 +201,7 @@ public class Gamepad {
      */
     public boolean getRawDPadUp() { return false; }
     public final Button getDPadUp() {
-        return new GamepadButton(() -> this.getRawDPadUp());
+        return new LambdaButton(() -> this.getRawDPadUp());
     }
     
     /**
@@ -208,7 +210,7 @@ public class Gamepad {
      */
     public boolean getRawDPadDown() { return false; }
     public final Button getDPadDown() {
-        return new GamepadButton(() -> this.getRawDPadDown());
+        return new LambdaButton(() -> this.getRawDPadDown());
     }
     
     /**
@@ -217,7 +219,7 @@ public class Gamepad {
      */
     public boolean getRawDPadLeft() { return false; }
     public final Button getDPadLeft() {
-        return new GamepadButton(() -> this.getRawDPadLeft());
+        return new LambdaButton(() -> this.getRawDPadLeft());
     }
     
 
@@ -227,7 +229,7 @@ public class Gamepad {
      */
     public boolean getRawDPadRight() { return false; }
     public final Button getDPadRight() {
-        return new GamepadButton(() -> this.getRawDPadRight());
+        return new LambdaButton(() -> this.getRawDPadRight());
     }
 
 
@@ -236,7 +238,7 @@ public class Gamepad {
     /*******************/
     public boolean getRawLeftBumper() { return false; }
     public final Button getLeftBumper() {
-        return new GamepadButton(() -> this.getRawLeftBumper());
+        return new LambdaButton(() -> this.getRawLeftBumper());
     }
 
 
@@ -245,7 +247,7 @@ public class Gamepad {
     /********************/
     public boolean getRawRightBumper() { return false; }
     public final Button getRightBumper() {
-        return new GamepadButton(() -> this.getRawRightBumper());
+        return new LambdaButton(() -> this.getRawRightBumper());
     }
 
 
@@ -259,7 +261,7 @@ public class Gamepad {
     }
 
     public final Button getLeftTrigger() { 
-        return new GamepadButton(() -> this.getRawLeftTrigger());
+        return new LambdaButton(() -> this.getRawLeftTrigger());
     } 
 
 
@@ -273,7 +275,7 @@ public class Gamepad {
     }
 
     public final Button getRightTrigger() { 
-        return new GamepadButton(() -> this.getRawRightTrigger());
+        return new LambdaButton(() -> this.getRawRightTrigger());
     } 
 
 
@@ -283,7 +285,7 @@ public class Gamepad {
     public boolean getRawLeftButton() { return false; }
 
     public final Button getLeftButton() { 
-        return new GamepadButton(() -> this.getRawLeftButton());
+        return new LambdaButton(() -> this.getRawLeftButton());
     } 
 
 
@@ -293,7 +295,7 @@ public class Gamepad {
     public boolean getRawRightButton() { return false; }
 
     public final Button getRightButton() { 
-        return new GamepadButton(() -> this.getRawRightButton());
+        return new LambdaButton(() -> this.getRawRightButton());
     } 
 
 
@@ -303,7 +305,7 @@ public class Gamepad {
     public boolean getRawTopButton() { return false; }
 
     public final Button getTopButton() { 
-        return new GamepadButton(() -> this.getRawTopButton());
+        return new LambdaButton(() -> this.getRawTopButton());
     } 
 
 
@@ -313,7 +315,7 @@ public class Gamepad {
     public boolean getRawBottomButton() { return false; }
 
     public final Button getBottomButton() { 
-        return new GamepadButton(() -> this.getRawBottomButton());
+        return new LambdaButton(() -> this.getRawBottomButton());
     } 
 
 
@@ -323,7 +325,7 @@ public class Gamepad {
     public boolean getRawSelectButton() { return false; }
 
     public final Button getSelectButton() { 
-        return new GamepadButton(() -> this.getRawSelectButton());
+        return new LambdaButton(() -> this.getRawSelectButton());
     } 
 
 
@@ -333,7 +335,7 @@ public class Gamepad {
     public boolean getRawStartButton() { return false; }
 
     public final Button getStartButton() { 
-        return new GamepadButton(() -> this.getRawStartButton());
+        return new LambdaButton(() -> this.getRawStartButton());
     } 
 
 
@@ -343,7 +345,7 @@ public class Gamepad {
     public boolean getRawLeftAnalogButton() { return false; }
 
     public final Button getLeftAnalogButton() { 
-        return new GamepadButton(() -> this.getRawLeftAnalogButton());
+        return new LambdaButton(() -> this.getRawLeftAnalogButton());
     } 
 
 
@@ -353,7 +355,7 @@ public class Gamepad {
     public boolean getRawRightAnalogButton() { return false; }
 
     public final Button getRightAnalogButton() { 
-        return new GamepadButton(() -> this.getRawRightAnalogButton());
+        return new LambdaButton(() -> this.getRawRightAnalogButton());
     } 
 
 
@@ -363,38 +365,11 @@ public class Gamepad {
     public boolean getRawOptionButton() { return false; }
 
     public final Button getOptionButton() { 
-        return new GamepadButton(() -> this.getRawOptionButton());
+        return new LambdaButton(() -> this.getRawOptionButton());
     } 
 
-
-    /****************************/
-    /*** GAMEPAD BUTTON CLASS ***/
-    /****************************/
-    /**
-     * Lets us treat any function as an individual button
-     */
-    public static class GamepadButton extends Button {
-        /**
-         * Lets us recieve a function to use as a button
-         */
-        public interface RawButton {
-            public boolean check();
-        }
-
-        // Stores Function
-        private RawButton mButton;
-
-        /**
-         * Gives class lambda that will be used in get()
-         * @param lambda Boolean function used as button
-         */
-        public GamepadButton(RawButton lambda) {
-            this.mButton = lambda;
-        }
-
-        @Override
-        public boolean get() {
-            return mButton.check();
-        }
-    }
+    /**************/
+    /*** RUMBLE ***/
+    /**************/
+    public void rumble(double intensity) {}
 }

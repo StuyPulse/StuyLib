@@ -1,6 +1,7 @@
 package stuylib.input.gamepads;
 
 import edu.wpi.first.wpilibj.Joystick;
+import edu.wpi.first.wpilibj.GenericHID;
 
 import stuylib.input.Gamepad;
 
@@ -50,18 +51,22 @@ public class Logitech extends Gamepad {
     /**********************/
     /*** D-PAD CONTROLS ***/
     /**********************/
+    @Override
     public boolean getRawDPadUp() {
         return getJoystick().getPOV() == 0;
     }
     
+    @Override
     public boolean getRawDPadDown() {
         return getJoystick().getPOV() == 180;
     }
     
+    @Override
     public boolean getRawDPadLeft() {
         return getJoystick().getPOV() == 270;
     }
     
+    @Override
     public boolean getRawDPadRight() {
         return getJoystick().getPOV() == 90;
     }
@@ -70,6 +75,7 @@ public class Logitech extends Gamepad {
     /*******************/
     /*** LEFT BUMPER ***/
     /*******************/
+    @Override
     public boolean getRawLeftBumper() { 
         return getRawButton(5); 
     }
@@ -78,10 +84,21 @@ public class Logitech extends Gamepad {
     /********************/
     /*** RIGHT BUMPER ***/
     /********************/
+    @Override
     public boolean getRawRightBumper() { 
         return getRawButton(6); 
     }
 
+
+    /**************/
+    /*** RUMBLE ***/
+    /**************/
+    @Override
+    public void rumble(double intensity){
+        getJoystick().setRumble(GenericHID.RumbleType.kLeftRumble, intensity);
+        getJoystick().setRumble(GenericHID.RumbleType.kRightRumble, intensity);
+    }
+    
     
     /**
      * There is a switch on the back of the controller

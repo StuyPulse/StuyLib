@@ -1,4 +1,4 @@
-package stuylib.util;
+package stuylib.misc;
 
 import com.revrobotics.CANEncoder;
 

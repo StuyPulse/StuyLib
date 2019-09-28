@@ -524,6 +524,8 @@ public class LegacyGamepad extends Joystick {
      * 
      * Lets us treat the D-Pad axis as individual buttons
      */
+
+    @Deprecated
     public static class DPadButton extends Button {
         public static enum Direction {
             UP, DOWN, LEFT, RIGHT
@@ -559,6 +561,8 @@ public class LegacyGamepad extends Joystick {
      * 
      * Lets us treat the Left trigger as an individual button in SWITCH_X mode
      */
+
+    @Deprecated
     public static class LeftTriggerButton extends Button {
         private LegacyGamepad gamepad;
 
@@ -577,6 +581,8 @@ public class LegacyGamepad extends Joystick {
      * 
      * Lets us treat the right trigger as an individual button in SWITCH_X mode
      */
+
+    @Deprecated
     public static class RightTriggerButton extends Button {
         private LegacyGamepad gamepad;
 

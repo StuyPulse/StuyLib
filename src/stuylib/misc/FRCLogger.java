@@ -1,4 +1,4 @@
-package stuylib.util;
+package stuylib.misc;
 
 import java.util.logging.SimpleFormatter;
 
