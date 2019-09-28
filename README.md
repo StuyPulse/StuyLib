@@ -17,7 +17,7 @@ The common library is imported into a project by using
 [Git submodules](https://git-scm.com/book/en/v2/Git-Tools-Submodules). In
 order to add this project as a submodule run `git submodule add
 git@github.com:StuyPulse/StuyLib2020.git stuylib` in your project's root
-directory. This will clone this repository into the directory `betterstuylib`.
+directory. This will clone this repository into the directory `stuylib`.
 
 ### Using the Common library
 

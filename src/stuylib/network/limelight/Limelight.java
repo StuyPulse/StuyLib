@@ -76,6 +76,7 @@ public class Limelight {
      * Decides if a target shows up on limelight screen
      * @return If it has any target
      */
+    @SuppressWarnings("unused")
     public static boolean hasValidTarget() {
         boolean validTarget = mValidTargetEntry.getDouble(0) > 0.5;
 

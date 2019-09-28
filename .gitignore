@@ -1,4 +1,10 @@
-bin
-build
+.gradle/
+.settings/
+.vscode/
+bin/
+build/
 
-.*/
+.project
+
+*.class
+*.jar
