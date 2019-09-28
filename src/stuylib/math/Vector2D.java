@@ -29,6 +29,11 @@ public class Vector2D {
         this.y = in[1];
     }
 
+    /**
+     * Initialize Vector2D using 2 doubles
+     * @param x first number, x
+     * @param y second number, y
+     */
     public Vector2D(double x, double y) {
         this.x = x;
         this.y = y;
@@ -36,6 +41,7 @@ public class Vector2D {
 
     /**
      * Get x, y coordinates as an array
+     * @return array of doubles
      */
     public double[] getArray() {
         return new double[]{x, y};
@@ -100,26 +106,56 @@ public class Vector2D {
         return rotate(angdeg, new Vector2D(0,0));
     }
 
+    /**
+     * Add two Vector2Ds
+     * @param other the other Vector2D
+     * @return result of calculation
+     */
     public Vector2D add(Vector2D other) {
         return new Vector2D(this.x + other.x, this.y + other.y);
     }
 
+    /**
+     * Sub two Vector2Ds
+     * @param other the other Vector2D
+     * @return result of calculation
+     */
     public Vector2D sub(Vector2D other) {
         return new Vector2D(this.x - other.x, this.y - other.y);
     }
 
+    /**
+     * Mul two Vector2Ds
+     * @param other the other Vector2D
+     * @return result of calculation
+     */
     public Vector2D mul(Vector2D other) {
         return new Vector2D(this.x * other.x, this.y * other.y);
     }
 
+    /**
+     * Mul Vector2D and Double
+     * @param other the other double
+     * @return result of calculation
+     */
     public Vector2D mul(double other) {
         return new Vector2D(this.x * other, this.y * other);
     }
 
+    /**
+     * Div two Vector2Ds
+     * @param other the other Vector2D
+     * @return result of calculation
+     */
     public Vector2D div(Vector2D other) {
         return new Vector2D(this.x / other.x, this.y / other.y);
     }
 
+    /**
+     * Div Vector2D and Double
+     * @param other the other double
+     * @return result of calculation
+     */
     public Vector2D div(double other) {
         return new Vector2D(this.x / other, this.y / other);
     }

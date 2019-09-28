@@ -15,6 +15,7 @@ import edu.wpi.first.wpilibj.buttons.JoystickButton;
  * @author wangmeister
  */
 
+@Deprecated
 public class LegacyGamepad extends Joystick {
     // Threshold for whether we're "pressing" the trigger
     private static final double RAW_TRIGGER_PRESS_AXIS_THRESHOLD = 0.1;

@@ -80,7 +80,12 @@ public class Gamepad {
         this.mJoy = new Joystick(port);
     }
 
-
+    /**
+     * Create new gamepad and get the 
+     * gamepad type from driver station
+     * @param port port of new gamepad
+     * @return New Gamepad
+     */
     public static Gamepad getNewGamepad(int port) {
         switch (DriverStation.getInstance().getJoystickType(port)) {
             case 1:

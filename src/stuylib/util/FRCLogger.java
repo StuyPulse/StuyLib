@@ -43,6 +43,10 @@ public class FRCLogger {
         mLogger.addHandler(mFileHandler);
     }
 
+    /**
+     * Log Loggable Class
+     * @param in Loggable Class
+     */
     public void log(Loggable in) {
         mLogger.info(
             in.getClass().getName().toUpperCase() + ":\n" + 
@@ -50,10 +54,18 @@ public class FRCLogger {
         );
     }
 
+    /**
+     * Log String as Info
+     * @param info the information
+     */
     public void logInfo(String info) {
         mLogger.info(info);
     }
 
+    /**
+     * Log String as Error
+     * @param error the error
+     */
     public void logError(String error) {
         mLogger.severe(error);
     }
