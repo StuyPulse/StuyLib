@@ -8,30 +8,30 @@ This includes, importing robot code, robot dependant constants, and any other
 changes that could just be added to the robot instead.
 
 
-# Where to find the .jar files and java docs
+## Where to find the .jar files and java docs
 
 You shall find all the .jar files and their corrisponding javadocs on the [release page](https://github.com/StuyPulse/StuyLib/releases).
 
 
-# Notable Utilitys
+## Notable Utilitys
 
- - File
+### File
    - CSVReader.java <- Reads CSV Files
    - CSVWriter.java <- Writes CSV Files
 
- - Input
+### Input
    - Gamepad.java <- Gets Gamepad Input
 
- - Misc
+### Misc
    - LambdaButton.java <- Easily Create Buttons with Lambdas
 
- - Network
+### Network
    - Limelight
      - Limelight.java <- Interact with Limelight
      - Filters.java <- Bluebox Filtering for Limelight
 
 
-# Rules for Code Submission
+## Rules for Code Submission
 
 As is standard for most Git Repos, you must make a branch and then create a pull request. 
 A pull request may be merged by any of the project managers at any time. The list of managers
@@ -47,7 +47,7 @@ along with an author tag that serves 2 purposes:
  - Allows people to ask you questions in the future
 
 
-# Managers
+## Managers
 
 Current StuyLib Managers
 
