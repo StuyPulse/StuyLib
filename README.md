@@ -7,30 +7,52 @@ is important that any changes not be made as a requirement for a new robot arise
 This includes, importing robot code, robot dependant constants, and any other 
 changes that could just be added to the robot instead.
 
-All source code is in `src`.
 
-> The rest of this file is mostly copied from [here](https://github.com/FRCTeam2910/Common-Public/blob/master/README.md)
+# Where to find the .jar files and java docs
 
-## How to use in another project
+You shall find all the .jar files and their corrisponding javadocs on the [release page](https://github.com/StuyPulse/StuyLib/releases).
 
-The common library is imported into a project by using
-[Git submodules](https://git-scm.com/book/en/v2/Git-Tools-Submodules). In
-order to add this project as a submodule run `git submodule add
-git@github.com:StuyPulse/StuyLib2020.git stuylib` in your project's root
-directory. This will clone this repository into the directory `stuylib`.
 
-### Using the Common library
+# Notable Utilitys
 
-A dependency on the common library can be created by adding the following to
-your `build.gradle` file:
-```gradle
-dependencies {
-    ...
-    compile project(':stuylib')
-    ...
-}
-```
-The following also needs to be added to your `settings.gradle` file:
-```gradle
-include ':stuylib'
-```
+ - File
+   - CSVReader.java <- Reads CSV Files
+   - CSVWriter.java <- Writes CSV Files
+
+ - Input
+   - Gamepad.java <- Gets Gamepad Input
+
+ - Misc
+   - LambdaButton.java <- Easily Create Buttons with Lambdas
+
+ - Network
+   - Limelight
+     - Limelight.java <- Interact with Limelight
+     - Filters.java <- Bluebox Filtering for Limelight
+
+
+# Rules for Code Submission
+
+As is standard for most Git Repos, you must make a branch and then create a pull request. 
+A pull request may be merged by any of the project managers at any time. The list of managers
+may be seen in the list down below.
+
+Code should preferably contain java docs for each function, but exceptions can be made for
+functions in which the name is self explanatory. 
+
+Each class should contain a comment that gives a description for what each class does,
+along with an author tag that serves 2 purposes:
+
+ - Flex that you wrote a class
+ - Allows people to ask you questions in the future
+
+
+# Managers
+
+Current StuyLib Managers
+
+ - [Pratham Rawat](https://github.com/PrathamRawat)
+ - [Renee Mui](https://github.com/rmui10)
+ - [Sam Belliveau](https://github.com/Sam-Belliveau)
+ - [Winston Peng](https://github.com/CreativePenguin)
+
