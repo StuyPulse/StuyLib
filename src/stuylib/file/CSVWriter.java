@@ -15,6 +15,9 @@ import java.io.IOException;
  */
 public class CSVWriter {
 
+    // CSV Splitter
+    private static final String SPLIT_TOKEN = ",";
+
     // FileWriter that has CSV File open
     FileWriter mCSVFile;
 
@@ -44,13 +47,27 @@ public class CSVWriter {
     }
 
     /**
+     * Write String to CSV file
+     * @param data string
+     * @throws IOException error writing to file
+     */
+    public void write(String data) throws IOException {
+        if(data.contains(SPLIT_TOKEN))
+        {
+            throw new IOException("Data being written to CSV contains comma!");
+        } else {
+            mCSVFile.append(data);
+            mCSVFile.append(SPLIT_TOKEN);
+        }
+    }
+
+    /**
      * Write object to CSV file
      * @param data object that implements toString
      * @throws IOException error writing to file
      */
     public void write(Object data) throws IOException {
-        mCSVFile.append(data.toString());
-        mCSVFile.append(", ");
+        write(data.toString());
     }
 
     /**
@@ -59,8 +76,7 @@ public class CSVWriter {
      * @throws IOException error writing to file
      */
     public void write(double data) throws IOException {
-        mCSVFile.append(Double.toString(data));
-        mCSVFile.append(", ");
+        write(Double.toString(data));
     }
 
     /**
@@ -69,8 +85,7 @@ public class CSVWriter {
      * @throws IOException error writing to file
      */
     public void write(int data) throws IOException {
-        mCSVFile.append(Integer.toString(data));
-        mCSVFile.append(", ");
+        write(Integer.toString(data));
     }
 
     /**
@@ -79,8 +94,7 @@ public class CSVWriter {
      * @throws IOException error writing to file
      */
     public void write(long data) throws IOException {
-        mCSVFile.append(Long.toString(data));
-        mCSVFile.append(", ");
+        write(Long.toString(data));
     }
 
     /**

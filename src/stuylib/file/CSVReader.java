@@ -19,6 +19,9 @@ import java.util.Vector;
 
 public class CSVReader {
 
+    // CSV Splitter
+    private static final String SPLIT_TOKEN = ",";
+
     // File Path
     private String mCSVFilePath;
 
@@ -61,7 +64,7 @@ public class CSVReader {
 
         String line;
         while((line = mCSVReader.readLine()) != null) {
-            String[] lineInfo = line.split(",");
+            String[] lineInfo = line.split(SPLIT_TOKEN);
 
             for(String str : lineInfo) {
                 mCSVData.add(new Element(str));
