@@ -9,7 +9,7 @@ import edu.wpi.first.wpilibj.buttons.Button;
  * for every special case.
  * 
  * To make a button, use:
- * new LambdaButton( () -> Function() );
+ * new LambdaButton( [LAMBDA] );
  * 
  * This button will fire whenever Function()
  * returns true.
