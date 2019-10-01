@@ -5,5 +5,5 @@ package stuylib.file.csv;
  * for each of the csv files to work.
  */
 interface CSVCommon {
-    String SPLIT_TOKEN = ",";
+    String SPLIT_TOKEN = ",\t";
 }

@@ -119,7 +119,7 @@ public class CSVReader implements Iterable<CSVElement> {
      * @return element as custom CSVElement type
      * @throws IndexOutOfBoundsException if the index is higher than the amount of elements
      */
-    public CSVElement at(int index) throws IndexOutOfBoundsException {
+    public CSVElement get(int index) throws IndexOutOfBoundsException {
         if(index < size()) {
             return mCSVData.get(index);
         } else {
@@ -133,8 +133,8 @@ public class CSVReader implements Iterable<CSVElement> {
      * @return string of the element
      * @throws IndexOutOfBoundsException if the index is higher than the amount of elements
      */
-    public String stringAt(int index) throws IndexOutOfBoundsException {
-        return at(index).toString();
+    public String getString(int index) throws IndexOutOfBoundsException {
+        return get(index).toString();
     }
 
     /**
@@ -143,8 +143,8 @@ public class CSVReader implements Iterable<CSVElement> {
      * @return double representation of the element
      * @throws IndexOutOfBoundsException if the index is higher than the amount of elements
      */
-    public Number doubleAt(int index) throws IndexOutOfBoundsException {
-        return at(index).toDouble();
+    public double getDouble(int index) throws IndexOutOfBoundsException {
+        return get(index).toDouble();
     }
 
 
@@ -154,8 +154,8 @@ public class CSVReader implements Iterable<CSVElement> {
      * @return number representation of the element
      * @throws IndexOutOfBoundsException if the index is higher than the amount of elements
      */
-    public Number numberAt(int index) throws IndexOutOfBoundsException {
-        return at(index).toNumber();
+    public Number getNumber(int index) throws IndexOutOfBoundsException {
+        return get(index).toNumber();
     }
 
     /**
@@ -165,7 +165,7 @@ public class CSVReader implements Iterable<CSVElement> {
      * @throws IndexOutOfBoundsException
      */
     public boolean isNumber(int index) throws IndexOutOfBoundsException {
-        return at(index).isNumber();
+        return get(index).isNumber();
     }
 
     /**
@@ -177,8 +177,8 @@ public class CSVReader implements Iterable<CSVElement> {
         StringBuilder csv = new StringBuilder();
 
         for(int i = 0; i < mCSVData.size(); ++i) {
-            csv.append(at(i).toNumber());
-            csv.append(", ");
+            csv.append(get(i).toNumber());
+            csv.append(CSVCommon.SPLIT_TOKEN);
         }
 
         return csv.toString();

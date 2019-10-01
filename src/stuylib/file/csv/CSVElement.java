@@ -12,6 +12,7 @@ package stuylib.file.csv;
  * @author Sam (sam.belliveau@gmail.com)
  */
 public class CSVElement {
+    
     // If value is a number
     boolean mIsNumber;
 
