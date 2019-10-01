@@ -1,7 +1,9 @@
-package stuylib.file;
+package stuylib.file.csv;
 
 import java.io.FileWriter;
 import java.io.IOException;
+
+import stuylib.file.csv.CSVCommon;
 
 /**
  * CSVWriter class that allows you to write to a 
@@ -14,9 +16,6 @@ import java.io.IOException;
  * @author Sam (sam.belliveau@gmail.com)
  */
 public class CSVWriter {
-
-    // CSV Splitter
-    private static final String SPLIT_TOKEN = ",";
 
     // FileWriter that has CSV File open
     FileWriter mCSVFile;
@@ -52,12 +51,12 @@ public class CSVWriter {
      * @throws IOException error writing to file
      */
     public void write(String data) throws IOException {
-        if(data.contains(SPLIT_TOKEN))
+        if(data.contains(CSVCommon.SPLIT_TOKEN))
         {
             throw new IOException("Data being written to CSV contains comma!");
         } else {
             mCSVFile.append(data);
-            mCSVFile.append(SPLIT_TOKEN);
+            mCSVFile.append(CSVCommon.SPLIT_TOKEN);
         }
     }
 

@@ -1,9 +1,13 @@
-package stuylib.file;
+package stuylib.file.csv;
 
 import java.io.BufferedReader;
 import java.io.FileReader;
 import java.io.IOException;
 import java.util.Vector;
+import java.util.Iterator;
+
+import stuylib.file.csv.CSVElement;
+import stuylib.file.csv.CSVCommon;
 
 /**
  * Read CSV Files with a bunch of epic features.
@@ -17,16 +21,13 @@ import java.util.Vector;
  * @author Sam (sam.belliveau@gmail.com)
  */
 
-public class CSVReader {
-
-    // CSV Splitter
-    private static final String SPLIT_TOKEN = ",";
+public class CSVReader implements Iterable<CSVElement> {
 
     // File Path
     private String mCSVFilePath;
 
     // Data of CSV Reader
-    private Vector<Element> mCSVData;
+    private Vector<CSVElement> mCSVData;
 
     /**
      * Open CSVReader with file
@@ -50,7 +51,7 @@ public class CSVReader {
      * Recommended to call read() after this
      */
     public void clearData() {
-        mCSVData = new Vector<Element>();
+        mCSVData = new Vector<CSVElement>();
     }
 
     /**
@@ -64,10 +65,10 @@ public class CSVReader {
 
         String line;
         while((line = mCSVReader.readLine()) != null) {
-            String[] lineInfo = line.split(SPLIT_TOKEN);
+            String[] lineInfo = line.split(CSVCommon.SPLIT_TOKEN);
 
             for(String str : lineInfo) {
-                mCSVData.add(new Element(str));
+                mCSVData.add(new CSVElement(str));
             }
         }
 
@@ -94,8 +95,8 @@ public class CSVReader {
      * Get a String Array of the CSV Data
      * @return String array
      */
-    public Element[] getCSVData() {
-        Element[] data = new Element[mCSVData.size()];
+    public CSVElement[] getCSVData() {
+        CSVElement[] data = new CSVElement[mCSVData.size()];
 
         for(int i = 0; i < mCSVData.size(); ++i) {
             data[i] = mCSVData.get(i);
@@ -113,12 +114,12 @@ public class CSVReader {
     }
 
     /**
-     * Get element of CSV as custom element type
+     * Get element of CSV as CSVElement type
      * @param index element position
-     * @return element as custom Element type
+     * @return element as custom CSVElement type
      * @throws IndexOutOfBoundsException if the index is higher than the amount of elements
      */
-    public Element at(int index) throws IndexOutOfBoundsException {
+    public CSVElement at(int index) throws IndexOutOfBoundsException {
         if(index < size()) {
             return mCSVData.get(index);
         } else {
@@ -184,118 +185,10 @@ public class CSVReader {
     }
 
     /**
-     * Stores the data for each element in a 
-     * custom class. This is to prevent the 
-     * need to parse doubles over and over
-     * again, when we can just store it as a
-     * double.
+     * Allows the CSVReader class to be iterated over
+     * @return iterator of type CSVElement
      */
-    public class Element {
-        // If value is a number
-        boolean mIsNumber;
-
-        // Value as Double
-        double mNumberValue;
-
-        // Value as String
-        String mStringValue;
-
-        /**
-         * Initialize with string
-         * @param value desired value
-         */
-        public Element(String value) {
-            setValue(value);
-        }
-
-        /**
-         * Set internal value
-         * @param value desired value
-         * @return if value was a number
-         */
-        public boolean setValue(String value) {
-            mStringValue = value.trim();
-            try {
-                mNumberValue = Double.parseDouble(mStringValue);
-                mIsNumber = true;
-            } catch (NumberFormatException e) {
-                mNumberValue = Double.NaN;
-                mIsNumber = false;
-            }
-
-            return mIsNumber;
-        }
-        
-        /**
-         * Value of element as a string
-         * @return value as a string
-         */
-        public String asString() {
-            return mStringValue;
-        }
-
-        /**
-         * Value of element as a number
-         * @return value as a number
-         */
-        public Number asNumber() {
-            return Double.valueOf(mNumberValue);
-        }
-
-        /**
-         * Value of element as a double
-         * @return value as a double
-         */
-        public double asDouble() {
-            return mNumberValue;
-        }
-        
-        /**
-         * Value of element as a string
-         * @return value as a string
-         */
-        public String toString() {
-            return asString();
-        }
-
-        /**
-         * Value of element as a number
-         * @return value as a number
-         */
-        public Number toNumber() {
-            return asNumber();
-        }
-
-        /**
-         * Value of element as a double
-         * @return value as a double
-         */
-        public double toDouble() {
-            return asDouble();
-        }
-
-        /**
-         * Returns if the element is a string
-         * @return if the element is a string
-         */
-        public boolean isString() {
-            return !mIsNumber;
-        }
-
-        /**
-         * Returns if the element is a number
-         * @return if the element is a number
-         */
-        public boolean isNumber() {
-            return mIsNumber;
-        }
-
-        /**
-         * Returns if the element is a double
-         * @return if the element is a double
-         */
-        public boolean isDouble() {
-            return mIsNumber;
-        }
+    public Iterator<CSVElement> iterator() {
+        return mCSVData.iterator();
     }
 }
