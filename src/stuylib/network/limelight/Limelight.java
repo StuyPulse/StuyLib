@@ -275,6 +275,10 @@ public class Limelight {
     private static final NetworkTableEntry mSolve3DEntry = mTable.getEntry("camtran");
     private static final double[] mDefaultSolve3DArray = new double[6];
 
+    /**
+     * Get Solve3D Result from network table
+     * @return Solve 3D Result
+     */
     public static Solve3DResult getSolve3D() {
         return new Solve3DResult(mSolve3DEntry.getDoubleArray(mDefaultSolve3DArray));
     }
