@@ -7,7 +7,7 @@ import java.util.Vector;
 import java.util.Iterator;
 
 import stuylib.file.csv.CSVElement;
-import stuylib.file.csv.CSVCommon;
+import stuylib.file.csv.CSVType;
 
 /**
  * Read CSV Files with a bunch of epic features.
@@ -29,21 +29,42 @@ public class CSVReader implements Iterable<CSVElement> {
     // Data of CSV Reader
     private Vector<CSVElement> mCSVData;
 
+    // Stores Delimiter
+    private CSVType mCSVType;
+
+    /**
+     * Open CSVReader with file and CSV type
+     * @param file file path
+     * @param type CSV type
+     */
+    public CSVReader(String file, CSVType type) throws IOException {
+        setCSVType(type);
+        open(file);
+    }
+
     /**
      * Open CSVReader with file
-     * @param filePath file path
+     * @param file file path
      */
-    public CSVReader(String filePath) throws IOException {
-        open(filePath);
+    public CSVReader(String file) throws IOException {
+        this(file, CSVType.DEFAULT);
     }
 
     /**
      * Open file
-     * @param filePath file path
+     * @param file file path
      */
-    public void open(String filePath) throws IOException {
-        mCSVFilePath = filePath;
+    public void open(String file) throws IOException {
+        mCSVFilePath = file;
         read();
+    }
+
+    /**
+     * Set CSV type
+     * @param type CSV Type
+     */
+    public void setCSVType(CSVType type) {
+        mCSVType = type;
     }
 
     /**
@@ -65,7 +86,7 @@ public class CSVReader implements Iterable<CSVElement> {
 
         String line;
         while((line = mCSVReader.readLine()) != null) {
-            String[] lineInfo = line.split(CSVCommon.SPLIT_TOKEN);
+            String[] lineInfo = line.split(mCSVType.getDelimiter());
 
             for(String str : lineInfo) {
                 mCSVData.add(new CSVElement(str));
@@ -178,7 +199,7 @@ public class CSVReader implements Iterable<CSVElement> {
 
         for(int i = 0; i < mCSVData.size(); ++i) {
             csv.append(get(i).toNumber());
-            csv.append(CSVCommon.SPLIT_TOKEN);
+            csv.append(mCSVType.getDelimiter());
         }
 
         return csv.toString();

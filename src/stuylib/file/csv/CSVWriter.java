@@ -3,7 +3,7 @@ package stuylib.file.csv;
 import java.io.FileWriter;
 import java.io.IOException;
 
-import stuylib.file.csv.CSVCommon;
+import stuylib.file.csv.CSVType;
 
 /**
  * CSVWriter class that allows you to write to a 
@@ -20,13 +20,27 @@ public class CSVWriter {
     // FileWriter that has CSV File open
     FileWriter mCSVFile;
 
+    // Stores Delimiter
+    CSVType mCSVType;
+
+    /**
+     * Open CSV File with file name file and csv type
+     * @param file file name
+     * @param type type of csv file
+     * @throws IOException error with opening file
+     */
+    public CSVWriter(String file, CSVType type) throws IOException {
+        setCSVType(type);
+        open(file);
+    }
+
     /**
      * Open CSV File with file name file
      * @param file file name
      * @throws IOException error with opening file
      */
     public CSVWriter(String file) throws IOException {
-        open(file);
+        this(file, CSVType.DEFAULT);
     }
 
     /**
@@ -36,6 +50,14 @@ public class CSVWriter {
      */
     public void open(String file) throws IOException {
         mCSVFile = new FileWriter(file);
+    }
+
+    /**
+     * Set CSV type
+     * @param type CSV Type
+     */
+    public void setCSVType(CSVType type) {
+        mCSVType = type;
     }
 
     /**
@@ -51,12 +73,12 @@ public class CSVWriter {
      * @throws IOException error writing to file
      */
     public void write(String data) throws IOException {
-        if(data.contains(CSVCommon.SPLIT_TOKEN))
+        if(data.contains(mCSVType.getDelimiter()))
         {
             throw new IOException("Data being written to CSV contains comma!");
         } else {
             mCSVFile.append(data);
-            mCSVFile.append(CSVCommon.SPLIT_TOKEN);
+            mCSVFile.append(mCSVType.getDelimiter());
         }
     }
 
