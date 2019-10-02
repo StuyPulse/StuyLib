@@ -8,6 +8,8 @@ import edu.wpi.first.networktables.NetworkTableEntry;
 import edu.wpi.first.networktables.NetworkTableInstance;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 
+import stuylib.network.limelight.Solve3DResult;
+
 /**
  * This is a class that lets you interface with
  * the limelight network table. 
@@ -269,6 +271,13 @@ public class Limelight {
         return mTable.getEntry("cy" + crosshair).getDouble(0);
     }
 
+    /* Solve 3D */
+    private static final NetworkTableEntry mSolve3DEntry = mTable.getEntry("camtran");
+    private static final double[] mDefaultSolve3DArray = new double[6];
+
+    public static Solve3DResult getSolve3D() {
+        return new Solve3DResult(mSolve3DEntry.getDoubleArray(mDefaultSolve3DArray));
+    }
 
     /* Custom Grip Values */
     // Return data given by custom GRIP pipeline
