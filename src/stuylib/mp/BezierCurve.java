@@ -1,4 +1,4 @@
-package stuylib.pid.motion;
+package stuylib.mp;
 
 import stuylib.math.Vector2D;
 
