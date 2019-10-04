@@ -1,8 +1,8 @@
 package stuylib.file.csv;
 
-import java.io.BufferedReader;
-import java.io.FileReader;
+import java.io.File;
 import java.io.IOException;
+import java.util.Scanner;
 import java.util.Vector;
 import java.util.Iterator;
 
@@ -82,18 +82,14 @@ public class CSVReader implements Iterable<CSVElement> {
     public void read() throws IOException {
         clearData();
 
-        BufferedReader mCSVReader = new BufferedReader(new FileReader(mCSVFilePath));
+        Scanner csvfile = new Scanner(new File(mCSVFilePath));
+        csvfile.useDelimiter(mCSVType.getDelimiter());
 
-        String line;
-        while((line = mCSVReader.readLine()) != null) {
-            String[] lineInfo = line.split(mCSVType.getDelimiter());
-
-            for(String str : lineInfo) {
-                mCSVData.add(new CSVElement(str));
-            }
+        while(csvfile.hasNext()) {
+            mCSVData.add(new CSVElement(csvfile.next()));
         }
 
-        mCSVReader.close();
+        csvfile.close();
     }
 
     /**
