@@ -3,6 +3,7 @@ plugins {
     id "edu.wpi.first.GradleRIO" version "2019.1.1"
 }
 
+/*
 sourceSets {
    main {
       java {
@@ -17,9 +18,16 @@ sourceSets {
    //   }
    // }
 }
+ */
 
 sourceCompatibility = JavaVersion.VERSION_11
 targetCompatibility = JavaVersion.VERSION_11
+
+allprojects {
+    repositories {
+        maven{ url 'https://jitpack.io' }
+    }
+}
 
 configurations {
   jaxDoclet
