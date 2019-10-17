@@ -24,11 +24,11 @@ public class NumberDrag {
      * the lower the value, the faster it
      * converges
      * 
-     * @param drag drag amount, must be positive
+     * @param drag drag (drag > 0.5)
      */
     public NumberDrag(double drag) {
         mValue = 0;
-        mDrag = Math.abs(drag);
+        mDrag = Math.max(0.5 + 1.0/256.0, drag);
     }
 
     /**
@@ -42,9 +42,6 @@ public class NumberDrag {
      * @return dragged number
      */
     public double drag(double input) {
-        mValue *= mDrag;
-        mValue += input;
-        mValue /= mDrag + 1;
-        return mValue;
+        return (mValue += ((input - mValue) / mDrag));
     }
 }

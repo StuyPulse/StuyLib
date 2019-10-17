@@ -49,20 +49,28 @@ public class InputScaler {
     }
 
     /**
-     * As apposed to squaring and cubing inputs
-     * to get a finer control over smaller values,
-     * I prepose this circular algorithm. 
-     * https://www.desmos.com/calculator/msqknwjdk7
-     * /\ Shows how it gives a nicer, more rounded
-     * curve which still speeds up, but also gives
-     * the ability for fine control
+     * Use the shape of a circle with
+     * power p to scale the input
+     * @param x input
+     * @param p power (p > 1)
+     * @return circular return
+     */
+    public static double circular(double x, double p) {
+        double sign = Math.signum(x);
+        p = Math.max(1, p);
+        x = limit(Math.abs(x));
+        x = 1.0 - Math.pow(x, p);
+        x = 1.0 - Math.pow(x, 1.0 / p);
+        x *= sign;
+        return limit(x);
+    }
+
+    /**
+     * Use the shape of a circle to scale the input
      * @param x input
      * @return circular return
      */
     public static double circular(double x) {
-        double sign = Math.signum(x);
-        x = 1.0 - Math.sqrt(1.0 - x*x);
-        x *= sign;
-        return limit(x);
+        return circular(x, 2);
     }
 }
