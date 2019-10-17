@@ -1,8 +1,8 @@
-package stuylib.network.limelight;
+package edu.stuylib.network.limelight;
 
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 
-import stuylib.network.limelight.Limelight;
+import edu.stuylib.network.limelight.Limelight;
 
 /**
  * Do bluebox filtering here until limelight updates their code.

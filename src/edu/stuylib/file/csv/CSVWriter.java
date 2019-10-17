@@ -1,9 +1,9 @@
-package stuylib.file.csv;
+package edu.stuylib.file.csv;
 
 import java.io.FileWriter;
 import java.io.IOException;
 
-import stuylib.file.csv.CSVType;
+import edu.stuylib.file.csv.CSVType;
 
 /**
  * CSVWriter class that allows you to write to a 
@@ -15,6 +15,7 @@ import stuylib.file.csv.CSVType;
  * 
  * @author Sam (sam.belliveau@gmail.com)
  */
+
 public class CSVWriter {
 
     // FileWriter that has CSV File open

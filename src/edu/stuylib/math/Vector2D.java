@@ -1,4 +1,4 @@
-package stuylib.math;
+package edu.stuylib.math;
 
 /**
  * Simple coordinate class that defines

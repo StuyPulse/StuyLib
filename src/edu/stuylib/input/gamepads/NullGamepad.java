@@ -1,8 +1,8 @@
-package stuylib.input.gamepads;
+package edu.stuylib.input.gamepads;
+
+import edu.stuylib.input.Gamepad;
 
 import edu.wpi.first.wpilibj.Joystick;
-
-import stuylib.input.Gamepad;
 
 /**
  * Implementation of a Dummy Controller for the Gamepad Class

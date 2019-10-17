@@ -1,4 +1,4 @@
-package stuylib.file.csv;
+package edu.stuylib.file.csv;
 
 import java.io.File;
 import java.io.IOException;
@@ -6,8 +6,8 @@ import java.util.Scanner;
 import java.util.Vector;
 import java.util.Iterator;
 
-import stuylib.file.csv.CSVElement;
-import stuylib.file.csv.CSVType;
+import edu.stuylib.file.csv.CSVElement;
+import edu.stuylib.file.csv.CSVType;
 
 /**
  * Read CSV Files with a bunch of epic features.

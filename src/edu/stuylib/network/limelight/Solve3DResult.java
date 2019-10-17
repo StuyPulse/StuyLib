@@ -1,4 +1,4 @@
-package stuylib.network.limelight;
+package edu.stuylib.network.limelight;
 
 /**
  * Class that is used to return solve 3D
@@ -6,6 +6,7 @@ package stuylib.network.limelight;
  * 
  * @author Sam (sam.belliveau@gmail.com)
  */
+
 class Solve3DResult {
 
     // Position Data

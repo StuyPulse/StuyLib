@@ -1,9 +1,9 @@
-package stuylib.input.gamepads;
+package edu.stuylib.input.gamepads;
 
-import edu.wpi.first.wpilibj.Joystick;
+import edu.stuylib.input.Gamepad;
+
 import edu.wpi.first.wpilibj.GenericHID;
-
-import stuylib.input.Gamepad;
+import edu.wpi.first.wpilibj.Joystick;
 
 /**
  * Implementation of Logitech Controller and 

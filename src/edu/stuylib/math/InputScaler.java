@@ -1,4 +1,4 @@
-package stuylib.math;
+package edu.stuylib.math;
 
 /** 
  * The input scalar class is a class
@@ -61,8 +61,7 @@ public class InputScaler {
      */
     public static double circular(double x) {
         double sign = Math.signum(x);
-        x = Math.sqrt(1.0 - square(x));
-        x = 1.0 - x;
+        x = 1.0 - Math.sqrt(1.0 - x*x);
         x *= sign;
         return limit(x);
     }

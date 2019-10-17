@@ -1,4 +1,4 @@
-package stuylib.math;
+package edu.stuylib.math;
 
 /**
  * NumberDrag is a class that lets you smooth out
@@ -14,17 +14,8 @@ package stuylib.math;
 public class NumberDrag {
 
     // Values needed for number drag
-    private static double mValue = 0.0;
-    private static double mDrag = 2;
-    
-    /**
-     * Initialize NumberDrag with default
-     * drag value, which is 2.
-     */
-    public NumberDrag() {
-        mValue = 0;
-        mDrag = 2;
-    }
+    private static double mValue;
+    private static double mDrag;
 
     /**
      * Initialize NumberDrag with custom
@@ -33,11 +24,11 @@ public class NumberDrag {
      * the lower the value, the faster it
      * converges
      * 
-     * @param drag drag amount, must be greater than 0
+     * @param drag drag amount, must be positive
      */
     public NumberDrag(double drag) {
         mValue = 0;
-        mDrag = drag;
+        mDrag = Math.abs(drag);
     }
 
     /**
@@ -51,9 +42,9 @@ public class NumberDrag {
      * @return dragged number
      */
     public double drag(double input) {
-        mValue *= mDrag - 1;
+        mValue *= mDrag;
         mValue += input;
-        mValue /= mDrag;
+        mValue /= mDrag + 1;
         return mValue;
     }
 }

@@ -1,6 +1,6 @@
-package stuylib.mp;
+package edu.stuylib.mp;
 
-import stuylib.math.Vector2D;
+import edu.stuylib.math.Vector2D;
 
 public class BezierCurve {
 

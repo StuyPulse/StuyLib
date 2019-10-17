@@ -1,4 +1,4 @@
-package stuylib.file.csv;
+package edu.stuylib.file.csv;
 
 /**
  * Stores the data for each element in a 
@@ -11,6 +11,7 @@ package stuylib.file.csv;
  * 
  * @author Sam (sam.belliveau@gmail.com)
  */
+
 public class CSVElement {
 
     // If value is a number

@@ -1,4 +1,4 @@
-package stuylib.file.csv;
+package edu.stuylib.file.csv;
 
 /**
  * Contains all the information needed
@@ -6,6 +6,7 @@ package stuylib.file.csv;
  * 
  * Mainly contains the delimiter for each class
  */
+
 public enum CSVType {
 
     DEFAULT(","), EXCEL(","), MYSQL("\t"), TCSV(",\t");

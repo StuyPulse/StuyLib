@@ -1,4 +1,4 @@
-package stuylib.input;
+package edu.stuylib.input;
 
 import edu.wpi.first.wpilibj.DriverStation;
 import edu.wpi.first.wpilibj.GenericHID;

@@ -1,14 +1,14 @@
 /* Lime Light Docs: http://docs.limelightvision.io/en/latest/networktables_api.html# */
 /* StuyPulse 694, Stuyvesant Highschool, NY */
 
-package stuylib.network.limelight;
+package edu.stuylib.network.limelight;
 
 import edu.wpi.first.networktables.NetworkTable;
 import edu.wpi.first.networktables.NetworkTableEntry;
 import edu.wpi.first.networktables.NetworkTableInstance;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 
-import stuylib.network.limelight.Solve3DResult;
+import edu.stuylib.network.limelight.Solve3DResult;
 
 /**
  * This is a class that lets you interface with

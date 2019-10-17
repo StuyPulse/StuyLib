@@ -1,14 +1,14 @@
 /* http://first.wpi.edu/FRC/roborio/release/docs/java/ */
 
-package stuylib.network;
+package edu.stuylib.network;
 
 import java.util.Set;
 
 import edu.wpi.first.networktables.NetworkTable;
-import edu.wpi.first.networktables.TableEntryListener;
 import edu.wpi.first.networktables.NetworkTableEntry;
 import edu.wpi.first.networktables.NetworkTableInstance;
 import edu.wpi.first.networktables.PersistentException;
+import edu.wpi.first.networktables.TableEntryListener;
 
 /**
  * The NetworkTableClient is a very fast way
