@@ -32,6 +32,38 @@ public class NumberDrag {
     }
 
     /**
+     * Get drag value
+     * @return drag value
+     */
+    public double getDrag() {
+        return mDrag;
+    }
+
+    /**
+     * Get current value of number drag
+     * @return value
+     */
+    public double getValue() {
+        return mValue;
+    }
+
+    /**
+     * Set drag value
+     * @param drag new value
+     */
+    public void setDrag(double drag) {
+        mDrag = drag;
+    }
+
+    /**
+     * Set value
+     * @param value new value
+     */
+    public void setValue(double value) {
+        mValue = value;
+    }
+
+    /**
      * Smooth out input with past values,
      * this creates a smoothed out plot
      * over many iterations, and can help

@@ -123,4 +123,12 @@ public class Vector2D {
     public Vector2D sub(Vector2D other) {
         return new Vector2D(this.x - other.x, this.y - other.y);
     }
+
+    /**
+     * Convert to a string
+     * @return string value
+     */
+    public String toString() {
+        return "(" + x + ", " + y + ")";
+    }
 }
