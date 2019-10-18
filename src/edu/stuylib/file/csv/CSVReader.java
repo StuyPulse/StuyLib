@@ -63,7 +63,7 @@ public class CSVReader implements Iterable<CSVElement> {
      * Set CSV type
      * @param type CSV Type
      */
-    public void setCSVType(CSVType type) {
+    private void setCSVType(CSVType type) {
         mCSVType = type;
     }
 

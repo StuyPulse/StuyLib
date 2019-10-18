@@ -2,6 +2,10 @@ package edu.stuylib.mp;
 
 import edu.stuylib.math.Vector2D;
 
+/**
+ * NOT DONE DO NOT USE
+ */
+
 public class BezierCurve {
 
     // Weighted sum of points

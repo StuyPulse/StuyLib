@@ -3,8 +3,6 @@ package edu.stuylib.file.csv;
 import java.io.FileWriter;
 import java.io.IOException;
 
-import edu.stuylib.file.csv.CSVType;
-
 /**
  * CSVWriter class that allows you to write to a 
  * file in the format of a CSV. It automatically
@@ -54,18 +52,18 @@ public class CSVWriter {
     }
 
     /**
+     * Closes CSV File
+     */
+    public void close() throws IOException {
+        mCSVFile.close();
+    }
+
+    /**
      * Set CSV type
      * @param type CSV Type
      */
     public void setCSVType(CSVType type) {
         mCSVType = type;
-    }
-
-    /**
-     * Closes CSV File
-     */
-    public void close() throws IOException {
-        mCSVFile.close();
     }
 
     /**
@@ -99,15 +97,6 @@ public class CSVWriter {
      */
     public void write(double data) throws IOException {
         write(Double.toString(data));
-    }
-
-    /**
-     * Write int to CSV file
-     * @param data int that you want to write
-     * @throws IOException error writing to file
-     */
-    public void write(int data) throws IOException {
-        write(Integer.toString(data));
     }
 
     /**

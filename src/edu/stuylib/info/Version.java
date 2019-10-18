@@ -32,7 +32,9 @@ class Version implements Comparable<Version> {
      * @param minor minor value
      */
     public Version(int major, int minor) {
-        this(major, minor, 0);
+        mMajor = Math.max(0, major);
+        mMinor = Math.max(0, minor);
+        mPatch = -1;
     }
 
     /**
@@ -60,25 +62,37 @@ class Version implements Comparable<Version> {
     }
 
     /**
-     * Compare two versions
-     */
-    public final int compareTo(Version other) {
-        int result = 0;
-        result += 100 * Math.max(-1, Math.min(1, getMajor() - other.getMajor()));
-        result += 10  * Math.max(-1, Math.min(1, getMinor() - other.getMinor()));
-        result += 1   * Math.max(-1, Math.min(1, getPatch() - other.getPatch()));
-        return result;
-    }
-
-    /**
      * Convert version into string
      */
     public final String toString() {
         String out = "";
         out += "v" + mMajor;
         out += "." + mMinor;
-        if(mPatch > 0) out += "." + mPatch;
+        if(mPatch >= 0) out += "." + mPatch;
         return out;
+    }
+
+    /**
+     * Compare two integers for compare two
+     * @param a first int
+     * @param b second int
+     * @return result
+     */
+    private final int compareInts(int a, int b) {
+        if(a < b) { return -1; }
+        if(a > b) { return 1;  }
+        return 0;
+    }
+
+    /**
+     * Compare two versions
+     */
+    public final int compareTo(Version other) {
+        int result = 0;
+        result += 4 * compareInts(this.getMajor(), other.getMajor());
+        result += 2 * compareInts(this.getMinor(), other.getMinor());
+        result += 1 * compareInts(this.getPatch(), other.getPatch());
+        return result;
     }
 
 }

@@ -123,40 +123,4 @@ public class Vector2D {
     public Vector2D sub(Vector2D other) {
         return new Vector2D(this.x - other.x, this.y - other.y);
     }
-
-    /**
-     * Mul two Vector2Ds
-     * @param other the other Vector2D
-     * @return result of calculation
-     */
-    public Vector2D mul(Vector2D other) {
-        return new Vector2D(this.x * other.x, this.y * other.y);
-    }
-
-    /**
-     * Mul Vector2D and Double
-     * @param other the other double
-     * @return result of calculation
-     */
-    public Vector2D mul(double other) {
-        return new Vector2D(this.x * other, this.y * other);
-    }
-
-    /**
-     * Div two Vector2Ds
-     * @param other the other Vector2D
-     * @return result of calculation
-     */
-    public Vector2D div(Vector2D other) {
-        return new Vector2D(this.x / other.x, this.y / other.y);
-    }
-
-    /**
-     * Div Vector2D and Double
-     * @param other the other double
-     * @return result of calculation
-     */
-    public Vector2D div(double other) {
-        return new Vector2D(this.x / other, this.y / other);
-    }
 }

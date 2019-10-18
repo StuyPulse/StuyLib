@@ -17,7 +17,9 @@ public class InputScaler {
      * @return limited input
      */
     public static double limit(double x) {
-        return Math.max(Math.min(x, 1.0), -1.0);
+        if(x > 1.0)  return 1.0;
+        if(x < -1.0) return -1.0;
+        return x;
     }
 
     /**
@@ -57,11 +59,14 @@ public class InputScaler {
      */
     public static double circular(double x, double p) {
         double sign = Math.signum(x);
-        p = Math.max(1, p);
         x = limit(Math.abs(x));
+
+        p = Math.max(1.0, p);
+
         x = 1.0 - Math.pow(x, p);
         x = 1.0 - Math.pow(x, 1.0 / p);
         x *= sign;
+        
         return limit(x);
     }
 

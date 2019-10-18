@@ -41,7 +41,7 @@ public class LambdaButton extends Button {
     }
 
     /**
-     * Gives class lambda that will be used in get()
+     * Gpves class lambda that will be used in get()
      * @param lambda Boolean function used as button
      */
     public LambdaButton(ButtonCheck lambda) {

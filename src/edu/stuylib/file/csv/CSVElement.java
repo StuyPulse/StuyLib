@@ -53,7 +53,7 @@ public class CSVElement {
      * Value of element as a string
      * @return value as a string
      */
-    public String asString() {
+    public String toString() {
         return mStringValue;
     }
 
@@ -61,40 +61,23 @@ public class CSVElement {
      * Value of element as a number
      * @return value as a number
      */
-    public Number asNumber() {
-        return Double.valueOf(mNumberValue);
+    public Number toNumber() throws NumberFormatException {
+        return Double.valueOf(toDouble());
     }
 
     /**
      * Value of element as a double
      * @return value as a double
      */
-    public double asDouble() {
-        return mNumberValue;
-    }
-    
-    /**
-     * Value of element as a string
-     * @return value as a string
-     */
-    public String toString() {
-        return asString();
-    }
-
-    /**
-     * Value of element as a number
-     * @return value as a number
-     */
-    public Number toNumber() {
-        return asNumber();
-    }
-
-    /**
-     * Value of element as a double
-     * @return value as a double
-     */
-    public double toDouble() {
-        return asDouble();
+    public double toDouble() throws NumberFormatException {
+        if(isDouble()) { return mNumberValue; }
+        else { 
+            String message = "";
+            message += "Attempted to read \"";
+            message += mStringValue;
+            message += "\" as a Number but failed!";
+            throw new NumberFormatException(message); 
+        }
     }
 
     /**
