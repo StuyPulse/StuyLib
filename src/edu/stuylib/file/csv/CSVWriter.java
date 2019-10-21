@@ -113,9 +113,7 @@ public class CSVWriter {
      * @param data array of objects that implements toString
      * @throws IOException error writing to file
      */
-    public void write(Iterable<Object> data) throws IOException {
-        for(Object d : data) {
-            write(d.toString());
-        }
+    public <T> void write(Iterable<T> data) throws IOException {
+        for(T d : data) { write(d); }
     }
 }
