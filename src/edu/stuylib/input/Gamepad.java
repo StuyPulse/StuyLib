@@ -4,7 +4,7 @@ import edu.stuylib.input.gamepads.Logitech;
 import edu.stuylib.input.gamepads.NullGamepad;
 import edu.stuylib.input.gamepads.PS4;
 
-import edu.stuylib.misc.LambdaButton;
+import edu.stuylib.input.LambdaButton;
 
 import edu.wpi.first.wpilibj.DriverStation;
 import edu.wpi.first.wpilibj.Joystick;

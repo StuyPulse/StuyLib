@@ -74,6 +74,9 @@ public class NumberDrag {
      * @return dragged number
      */
     public double drag(double input) {
-        return (mValue += ((input - mValue) / mDrag));
+        mValue *= mDrag;
+        mValue += input;
+        mValue /= mDrag + 1;
+        return mValue;
     }
 }

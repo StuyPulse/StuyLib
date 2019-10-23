@@ -1,4 +1,4 @@
-package edu.stuylib.misc;
+package edu.stuylib.input;
 
 import edu.wpi.first.wpilibj.buttons.Button;
 
