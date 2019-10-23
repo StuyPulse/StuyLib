@@ -24,11 +24,11 @@ public class NumberDrag {
      * the lower the value, the faster it
      * converges
      * 
-     * @param drag drag (drag > 0.5)
+     * @param drag drag (drag > 0.5625)
      */
     public NumberDrag(double drag) {
         mValue = 0;
-        mDrag = Math.max(0.5 + 1.0/256.0, drag);
+        mDrag = Math.max(0.5625, drag);
     }
 
     /**
