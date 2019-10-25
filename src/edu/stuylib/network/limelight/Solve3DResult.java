@@ -7,7 +7,7 @@ package edu.stuylib.network.limelight;
  * @author Sam (sam.belliveau@gmail.com)
  */
 
-class Solve3DResult {
+public class Solve3DResult {
 
     // Position Data
     private double mX;

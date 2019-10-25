@@ -7,7 +7,7 @@ package edu.stuylib.info;
  * @author Sam (sam.belliveau@gmail.com)
  */
 
-class Version implements Comparable<Version> {
+public class Version implements Comparable<Version> {
 
     // Storage of version
     private int mMajor;

@@ -26,25 +26,25 @@ public class NetworkTableClient {
 
     /* Constructors */
     // Default Instance and Custom DataTable
-    NetworkTableClient(String dataTable) {
+    public NetworkTableClient(String dataTable) {
         this(dataTable, NetworkTableInstance.getDefault());
     }
 
     // Custom Instance and Custom DataTable
-    NetworkTableClient(String dataTable, NetworkTableInstance instance) {
+    public NetworkTableClient(String dataTable, NetworkTableInstance instance) {
         mInstance = instance;
-        openTable(dataTable);
+        setTable(dataTable);
     }
 
     /* Opens Table After Initalizing */
     // Opens Network table after constructing
-    public void openTable(String dataTableName) {
+    public void setTable(String dataTableName) {
         mTableName = dataTableName;
         mTable = mInstance.getTable(dataTableName);
     }
 
     /* Returns name of the datatable */
-    public String tableName() {
+    public String getTableName() {
         return mTableName;
     }
 

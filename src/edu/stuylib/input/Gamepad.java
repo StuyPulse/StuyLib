@@ -41,6 +41,13 @@ import edu.wpi.first.wpilibj.buttons.Button;
  * set to the port number. This will be the Joystick that
  * the Gamepad class will interact with.
  * 
+ * If you do not initialize with a Joystick, everything
+ * will still work except for
+ * - getRawButton(int id)
+ * - getButton(int id)
+ * - getRawAxit(int id)
+ * which will return either false or 0.0
+ * 
  * The difference between the implementations of the 
  * Gamepad class is how it interacts with the underlying
  * Joystick class.
@@ -50,14 +57,14 @@ import edu.wpi.first.wpilibj.buttons.Button;
 
 public class Gamepad {
 
-    /******************************/
-    /*** TRIGGER AXIS THRESHOLD ***/
-    /******************************/
-    protected static final double TRIGGER_AXIS_THRESHOLD = 2.0 / 16.0;
+    /**
+     * Underlying Joystick Class
+     */
+    private Joystick mJoy;
 
 
     /**
-     * Initialize Gamepad Nothing
+     * Initialize Gamepad without Joystick
      * Joystick will be set to null
      */
     public Gamepad() {
@@ -108,15 +115,17 @@ public class Gamepad {
     }
 
 
+    /********************************/
+    /*** JOYSTICK GETTERS/SETTERS ***/
+    /********************************/
+
     /**
-     * Underlying Joystick Class
+     * Checks if Gamepad has joystick set
+     * @return if Gamepad has Joystic set
      */
-    protected Joystick mJoy;
-
-
-    /***********************/
-    /*** GETTERS/SETTERS ***/
-    /***********************/
+    public final boolean hasJoystick() {
+        return getJoystick() != null;
+    }
 
     /**
      * Get underlying joystick
@@ -132,7 +141,7 @@ public class Gamepad {
      * @return the value of the button
      */
     public final boolean getRawButton(int button) {
-        if(getJoystick() == null) { return false; }
+        if(!hasJoystick()) { return false; }
         return getJoystick().getRawButton(button);
     }
 
@@ -151,7 +160,7 @@ public class Gamepad {
      * @return the value of the axis
      */
     public final double getRawAxis(int axis) {
-        if(getJoystick() == null) { return 0.0; }
+        if(!hasJoystick()) { return 0.0; }
         return getJoystick().getRawAxis(axis);
     }
 
@@ -249,6 +258,12 @@ public class Gamepad {
     public final Button getRightBumper() {
         return new LambdaButton(() -> this.getRawRightBumper());
     }
+
+
+    /******************************/
+    /*** TRIGGER AXIS THRESHOLD ***/
+    /******************************/
+    protected static final double TRIGGER_AXIS_THRESHOLD = 2.0 / 16.0;
 
 
     /********************/
