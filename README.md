@@ -8,28 +8,9 @@ This includes, importing robot code, robot dependant constants, and any other
 changes that could just be added to the robot instead.
 
 
-## Where to find the .jar files and java docs
+## Where to find the .jar files
 
-You shall find all the .jar files and their corrisponding javadocs on the [release page](https://github.com/StuyPulse/StuyLib/releases).
-
-
-## Notable Utilitys
-
-### File
-   - CSVReader.java <- Reads CSV Files
-   - CSVWriter.java <- Writes CSV Files
-
-### Input
-   - Gamepad.java <- Gets Gamepad Input
-
-### Misc
-   - LambdaButton.java <- Easily Create Buttons with Lambdas
-
-### Network
-   - Limelight
-     - Limelight.java <- Interact with Limelight
-     - Filters.java <- Bluebox Filtering for Limelight
-
+You shall find all the .jar files on the [release page](https://github.com/StuyPulse/StuyLib/releases).
 
 ## Rules for Code Submission
 
