@@ -40,9 +40,8 @@ public class NetKeyWindow extends Frame {
         // Set Title and Open Network Table
         super("Network Keyboard Input [" + table + "]");
 
-        int team = -1;
-
         // Get team number from user
+        int team = -1;
         while(team < 0) {
             try {
                 String teamNum = JOptionPane.showInputDialog("Enter Team Number:");
@@ -50,6 +49,8 @@ public class NetKeyWindow extends Frame {
                 team = conversion;
             } catch(Exception e) {}
         }
+
+        setTitle("Network Keyboard Input [" + table + ", " + team + "]");
 
         addKeyListener(new NetKeyListener(team, table));
         add(new Label("Focus This Window To Capture Key Strokes!", Label.CENTER));
