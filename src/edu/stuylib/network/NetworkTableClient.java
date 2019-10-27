@@ -27,11 +27,11 @@ public class NetworkTableClient {
     /* Constructors */
     // Default Instance and Custom DataTable
     public NetworkTableClient(String dataTable) {
-        this(dataTable, NetworkTableInstance.getDefault());
+        this(NetworkTableInstance.getDefault(), dataTable);
     }
 
     // Custom Instance and Custom DataTable
-    public NetworkTableClient(String dataTable, NetworkTableInstance instance) {
+    public NetworkTableClient(NetworkTableInstance instance, String dataTable) {
         mInstance = instance;
         setTable(dataTable);
     }
@@ -46,6 +46,11 @@ public class NetworkTableClient {
     /* Returns name of the datatable */
     public String getTableName() {
         return mTableName;
+    }
+
+    /* Returns network table instance */
+    public NetworkTableInstance getInstance() {
+        return mInstance;
     }
 
     /* Saving and writing tables to files */

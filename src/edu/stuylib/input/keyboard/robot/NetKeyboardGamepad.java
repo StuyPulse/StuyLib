@@ -1,7 +1,7 @@
-package edu.stuylib.input.keyboard.client;
+package edu.stuylib.input.keyboard.robot;
 
 import edu.stuylib.input.Gamepad;
-import edu.stuylib.input.keyboard.client.NetKeyboard;
+import edu.stuylib.input.keyboard.robot.NetKeyboard;
 import edu.stuylib.input.LambdaButton;
 
 import edu.wpi.first.wpilibj.buttons.Button;

@@ -1,4 +1,6 @@
-package edu.stuylib.input.keyboard.server;
+package edu.stuylib.input.keyboard.computer;
+
+import edu.wpi.first.networktables.NetworkTableInstance;
 
 import edu.stuylib.input.keyboard.NetKeyboardInfo;
 import edu.stuylib.network.NetworkTableClient;
@@ -27,25 +29,29 @@ public class NetKeyListener implements KeyListener {
     private NetworkTableClient mKeyboardTable;
 
     /**
-     * Initializes Keyboard State with
-     * default network table "StuyLibNetworkKeyboard"
+     * Initialize NetKeyListener with team number
+     * @param team team number of robot
      */
-    public NetKeyListener() {
-        this(NetKeyboardInfo.DEFAULT_TABLE);
+    public NetKeyListener(int team) {
+        this(team, NetKeyboardInfo.DEFAULT_TABLE);
     }
 
     /**
-     * Initializes Keyboard State with
-     * default network table "NetworkKeyboard"
+     * Initialize NetKeyListener with team number and table name
+     * @param team team number of robot
+     * @param table table name of network table
      */
-    public NetKeyListener(String table) {
-        mKeyboardTable = new NetworkTableClient(table);
+    public NetKeyListener(int team, String table) {
+        NetworkTableInstance inst = NetworkTableInstance.create();
+        inst.startClientTeam(team);
+        mKeyboardTable = new NetworkTableClient(inst, table);
     }
 
-
-    /*************************/
-    /*** KEY LISTENER CODE ***/
-    /*************************/
+    /**
+     * Gets key name from key event
+     * @param e key event
+     * @return key name
+     */
     private String getKeyName(KeyEvent e) {
         return NetKeyboardInfo.sanatize(KeyEvent.getKeyText(e.getKeyCode()));
     }

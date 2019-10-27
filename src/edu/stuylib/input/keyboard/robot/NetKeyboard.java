@@ -1,4 +1,4 @@
-package edu.stuylib.input.keyboard.client;
+package edu.stuylib.input.keyboard.robot;
 
 import edu.stuylib.input.keyboard.NetKeyboardInfo;
 import edu.stuylib.network.NetworkTableClient;
