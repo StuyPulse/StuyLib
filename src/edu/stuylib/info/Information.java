@@ -7,5 +7,5 @@ import edu.stuylib.info.Version;
  */
 public interface Information {
     // Current version of stuylib
-    final Version STUYLIB_VER = new Version(1,2);
+    final Version STUYLIB_VER = new Version(1,2,1);
 }
