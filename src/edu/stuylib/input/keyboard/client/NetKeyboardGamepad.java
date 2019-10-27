@@ -1,7 +1,7 @@
-package edu.stuylib.input.keyboard;
+package edu.stuylib.input.keyboard.client;
 
 import edu.stuylib.input.Gamepad;
-import edu.stuylib.input.keyboard.NetworkKeyboard;
+import edu.stuylib.input.keyboard.client.NetKeyboard;
 import edu.stuylib.input.LambdaButton;
 
 import edu.wpi.first.wpilibj.buttons.Button;
@@ -14,27 +14,27 @@ import edu.wpi.first.wpilibj.buttons.Button;
  * @author Sam (sam.belliveau@gmail.com)
  */
 
-public class KeyboardGamepad extends Gamepad {
+public class NetKeyboardGamepad extends Gamepad {
 
     /**
      * Underlying Network Keyboard
      */
-    private NetworkKeyboard mKeyboard;
+    private NetKeyboard mKeyboard;
 
     /**
      * Opens Default Network Keyboard Table
      */
-    public KeyboardGamepad() {
-        this(NetworkKeyboard.DEFAULT_TABLE);
+    public NetKeyboardGamepad() {
+        this(NetKeyboard.DEFAULT_TABLE);
     }
 
     /**
      * Opens Custom Network Keyboard Table
      * @param table table name
      */
-    public KeyboardGamepad(String table) {
+    public NetKeyboardGamepad(String table) {
         super();
-        mKeyboard = new NetworkKeyboard(table);
+        mKeyboard = new NetKeyboard(table);
     }
 
     /**

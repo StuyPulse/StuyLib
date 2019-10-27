@@ -1,5 +1,6 @@
-package edu.stuylib.input.keyboard;
+package edu.stuylib.input.keyboard.server;
 
+import edu.stuylib.input.keyboard.NetKeyboardInfo;
 import edu.stuylib.network.NetworkTableClient;
 
 import java.awt.event.KeyListener;
@@ -14,17 +15,11 @@ import java.awt.event.KeyEvent;
  * This would not be used on the robot,
  * but should be used on the users computer
  * 
- * Because of the lag of network tables, it
- * is advised that you only use this for testing
+ * Make an AWT window to use this listener
  * 
  * @author Sam (sam.belliveau@gmail.com)
  */
-public class NetworkKeyListener implements KeyListener {
-
-    /**
-     * Default Table Name
-     */
-    public static final String DEFAULT_TABLE = "StuyLibNetworkKeyboard";
+public class NetKeyListener implements KeyListener {
     
     /**
      * Network Table for which key presses go
@@ -35,15 +30,15 @@ public class NetworkKeyListener implements KeyListener {
      * Initializes Keyboard State with
      * default network table "StuyLibNetworkKeyboard"
      */
-    public NetworkKeyListener() {
-        this(DEFAULT_TABLE);
+    public NetKeyListener() {
+        this(NetKeyboardInfo.DEFAULT_TABLE);
     }
 
     /**
      * Initializes Keyboard State with
      * default network table "NetworkKeyboard"
      */
-    public NetworkKeyListener(String table) {
+    public NetKeyListener(String table) {
         mKeyboardTable = new NetworkTableClient(table);
     }
 
@@ -52,7 +47,7 @@ public class NetworkKeyListener implements KeyListener {
     /*** KEY LISTENER CODE ***/
     /*************************/
     private String getKeyName(KeyEvent e) {
-        return KeyEvent.getKeyText(e.getKeyCode()).toUpperCase();
+        return NetKeyboardInfo.sanatize(KeyEvent.getKeyText(e.getKeyCode()));
     }
 
     /**

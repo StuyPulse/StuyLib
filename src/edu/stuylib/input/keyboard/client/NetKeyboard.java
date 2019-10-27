@@ -1,6 +1,6 @@
-package edu.stuylib.input.keyboard;
+package edu.stuylib.input.keyboard.client;
 
-import edu.stuylib.input.keyboard.NetworkKeyListener;
+import edu.stuylib.input.keyboard.NetKeyboardInfo;
 import edu.stuylib.network.NetworkTableClient;
 
 /**
@@ -10,12 +10,12 @@ import edu.stuylib.network.NetworkTableClient;
  * @author Sam (sam.belliveau@gmail.com)
  */
 
-public class NetworkKeyboard {
+public class NetKeyboard {
 
     /**
      * Default Table Name
      */
-    public static final String DEFAULT_TABLE = NetworkKeyListener.DEFAULT_TABLE;
+    public static final String DEFAULT_TABLE = NetKeyboardInfo.DEFAULT_TABLE;
 
     /**
      * Table where key information is stored
@@ -26,7 +26,7 @@ public class NetworkKeyboard {
      * Creates NetworkKeyboard on table
      * "StuyLibNetworkKeyboard"
      */
-    public NetworkKeyboard() {
+    public NetKeyboard() {
         this(DEFAULT_TABLE);
     }
 
@@ -34,7 +34,7 @@ public class NetworkKeyboard {
      * Creates NetworkKeyboard on custom table
      * @param table
      */
-    public NetworkKeyboard(String table) {
+    public NetKeyboard(String table) {
         mKeyboardTable = new NetworkTableClient(table);
     }
 
@@ -44,6 +44,6 @@ public class NetworkKeyboard {
      * @return if key is pressed
      */
     public boolean isKeyPressed(String key) {
-        return mKeyboardTable.getBoolean(key);
+        return mKeyboardTable.getBoolean(NetKeyboardInfo.sanatize(key));
     }
 }
