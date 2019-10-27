@@ -1,7 +1,10 @@
 package edu.stuylib.file.csv;
 
+import java.io.Closeable;
 import java.io.FileWriter;
 import java.io.IOException;
+
+import java.io.Flushable;
 
 /**
  * CSVWriter class that allows you to write to a 
@@ -14,7 +17,7 @@ import java.io.IOException;
  * @author Sam (sam.belliveau@gmail.com)
  */
 
-public class CSVWriter {
+public class CSVWriter implements Flushable, Closeable, AutoCloseable {
 
     // FileWriter that has CSV File open
     FileWriter mCSVFile;
@@ -56,6 +59,13 @@ public class CSVWriter {
      */
     public void close() throws IOException {
         mCSVFile.close();
+    }
+
+    /**
+     * Flushes CSV File
+     */
+    public void flush() throws IOException {
+        mCSVFile.flush();
     }
 
     /**
@@ -106,14 +116,5 @@ public class CSVWriter {
      */
     public void write(long data) throws IOException {
         write(Long.toString(data));
-    }
-
-    /**
-     * Write object array to CSV file
-     * @param data array of objects that implements toString
-     * @throws IOException error writing to file
-     */
-    public <T> void write(Iterable<T> data) throws IOException {
-        for(T d : data) { write(d); }
     }
 }
