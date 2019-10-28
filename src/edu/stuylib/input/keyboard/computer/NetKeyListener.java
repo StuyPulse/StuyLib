@@ -26,6 +26,10 @@ import java.util.Iterator;
  */
 public class NetKeyListener implements KeyListener, Iterable<String> {
     
+    ///////////////
+    // VARIABLES //
+    /////////////// 
+
     /**
      * Network Table for which key presses go
      */
@@ -35,6 +39,10 @@ public class NetKeyListener implements KeyListener, Iterable<String> {
      * Set of current keys being pressed
      */
     private HashSet<String> mKeysPressed;
+
+    //////////////////
+    // CONSTRUCTORS // 
+    //////////////////
 
     /**
      * Initialize NetKeyListener with team number
@@ -62,6 +70,10 @@ public class NetKeyListener implements KeyListener, Iterable<String> {
         mKeysPressed = new HashSet<String>(16, 0.75f);
     }
 
+    ///////////////////////
+    // HASHSET INTERFACE //
+    ///////////////////////
+
     /**
      * Returns iterator to hash set
      * @return Hash Set Iterator
@@ -70,9 +82,18 @@ public class NetKeyListener implements KeyListener, Iterable<String> {
         return mKeysPressed.iterator();
     }
 
+    /**
+     * Checks if key is pressed
+     * @param key key name
+     * @return if key is pressed
+     */
     public boolean isKeyPressed(String key) {
         return mKeysPressed.contains(NetKeyboardInfo.sanatize(key));
     }
+
+    ////////////////////////
+    // KEY LISTENER STUFF //
+    ////////////////////////
 
     /**
      * Gets key name from key event
