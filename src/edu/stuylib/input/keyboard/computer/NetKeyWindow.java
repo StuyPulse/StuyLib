@@ -3,10 +3,14 @@ package edu.stuylib.input.keyboard.computer;
 import edu.stuylib.input.keyboard.NetKeyboardInfo;
 import edu.stuylib.input.keyboard.computer.NetKeyListener;
 
-import java.awt.Frame;
-import java.awt.Label;
-import java.awt.FlowLayout;
+import java.awt.Color;
+import java.awt.GridBagLayout;
+
+import javax.swing.border.LineBorder;
 import javax.swing.JOptionPane;
+import javax.swing.JLabel;
+import javax.swing.JFrame;
+import javax.swing.JPanel;
 
 /**
  * This is a simple class that
@@ -18,7 +22,7 @@ import javax.swing.JOptionPane;
  * @author Sam (sam.belliveau@gmail.com)
  */
 
-public class NetKeyWindow extends Frame {
+public class NetKeyWindow extends JFrame {
 
     /**
      * Serial Version UID for Frame
@@ -63,12 +67,15 @@ public class NetKeyWindow extends Frame {
         setTitle("Network Keyboard Input [" + table + "]");
 
         // Message
-        Label message = new Label("[Sending Keyboard Input to Robot Team " + team + "]", Label.CENTER);
-        add(message);
-        
+        JLabel message = new JLabel("[Sending Keyboard Input to Robot Team " + team + "]");
+        message.setBorder(new LineBorder(Color.BLACK, 4));
+
+        // Message Panel
+        final JPanel messagePanel = new JPanel(new GridBagLayout());
+        messagePanel.add(message);
+        getContentPane().add(messagePanel);
+
         // Pack and Set Size
-        setLayout(new FlowLayout());
-        setSize(640, 480);
         pack();
 
         // Set Visible

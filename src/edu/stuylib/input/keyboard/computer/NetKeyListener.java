@@ -71,7 +71,7 @@ public class NetKeyListener implements KeyListener, Iterable<String> {
     }
 
     public boolean isKeyPressed(String key) {
-        return mKeysPressed.contains(key);
+        return mKeysPressed.contains(NetKeyboardInfo.sanatize(key));
     }
 
     /**
