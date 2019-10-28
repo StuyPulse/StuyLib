@@ -26,6 +26,11 @@ public class NetKeyWindow extends Frame {
     private static final long serialVersionUID = -8251414743098271551L;
 
     /**
+     * NetKeyListener for window
+     */
+    private NetKeyListener mListener;
+
+    /**
      * Create default KeyboardInputWindow (RECOMMENDED)
      */
     public NetKeyWindow() {
@@ -52,7 +57,8 @@ public class NetKeyWindow extends Frame {
 
         setTitle("Network Keyboard Input [" + table + ", " + team + "]");
 
-        addKeyListener(new NetKeyListener(team, table));
+        mListener = new NetKeyListener(team, table);
+        addKeyListener(mListener);
         add(new Label("Focus This Window To Capture Key Strokes!", Label.CENTER));
         setLayout(new FlowLayout());
         setSize(640, 480);
