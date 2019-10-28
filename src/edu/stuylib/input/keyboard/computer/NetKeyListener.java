@@ -41,6 +41,7 @@ public class NetKeyListener implements KeyListener, Iterable<String> {
      * @param team team number of robot
      */
     public NetKeyListener(int team) {
+        // Default Table
         this(team, NetKeyboardInfo.DEFAULT_TABLE);
     }
 
@@ -50,10 +51,15 @@ public class NetKeyListener implements KeyListener, Iterable<String> {
      * @param table table name of network table
      */
     public NetKeyListener(int team, String table) {
+        // Connect to robot instead of making a server
         NetworkTableInstance inst = NetworkTableInstance.create();
         inst.startClientTeam(team);
+
+        // Connect table to robot
         mKeyboardTable = new NetworkTableClient(inst, table);
-        mKeysPressed = new HashSet<String>(96, 0.8f);
+
+        // Rare for more than 16 keys to be pressed
+        mKeysPressed = new HashSet<String>(16, 0.75f);
     }
 
     /**
@@ -62,6 +68,10 @@ public class NetKeyListener implements KeyListener, Iterable<String> {
      */
     public Iterator<String> iterator() {
         return mKeysPressed.iterator();
+    }
+
+    public boolean isKeyPressed(String key) {
+        return mKeysPressed.contains(key);
     }
 
     /**

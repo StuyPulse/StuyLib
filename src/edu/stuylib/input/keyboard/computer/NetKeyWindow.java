@@ -55,14 +55,23 @@ public class NetKeyWindow extends Frame {
             } catch(Exception e) {}
         }
 
-        setTitle("Network Keyboard Input [" + table + ", " + team + "]");
-
+        // Connect NetKeyListener
         mListener = new NetKeyListener(team, table);
         addKeyListener(mListener);
-        add(new Label("Focus This Window To Capture Key Strokes!", Label.CENTER));
+
+        // Set Title
+        setTitle("Network Keyboard Input [" + table + "]");
+
+        // Message
+        Label message = new Label("[Sending Keyboard Input to Robot Team " + team + "]", Label.CENTER);
+        add(message);
+        
+        // Pack and Set Size
         setLayout(new FlowLayout());
         setSize(640, 480);
         pack();
+
+        // Set Visible
         setVisible(true);
     }
 }
