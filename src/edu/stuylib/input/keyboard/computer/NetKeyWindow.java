@@ -1,6 +1,5 @@
 package edu.stuylib.input.keyboard.computer;
 
-import edu.stuylib.input.keyboard.NetKeyboardInfo;
 import edu.stuylib.input.keyboard.computer.NetKeyListener;
 
 import java.awt.Color;
