@@ -52,13 +52,6 @@ public class NetKeyListener implements KeyListener {
     }
 
     /**
-     * This doesn't do anything as 
-     * it does not apply to our use
-     * @param e Key Event
-     */
-    public void keyTyped(KeyEvent e) {}
-
-    /**
      * Adds Key from Key Event to State
      * @param e Key Event
      */
@@ -73,4 +66,11 @@ public class NetKeyListener implements KeyListener {
     public void keyReleased(KeyEvent e) {
         mKeyboardTable.setBoolean(getKeyName(e), false);
     }
+
+    /**
+     * This doesn't do anything as 
+     * it does not apply to our use
+     * @param e Key Event
+     */
+    public void keyTyped(KeyEvent e) {}
 }
