@@ -68,7 +68,7 @@ public class NetKeyWindow extends JFrame {
         setTitle("Network Keyboard Input [Team: " + team + ", Port: " + port + "]");
 
         // Message
-        JLabel message = new JLabel("[Sending Keyboard Input to Team: " + team + ", Port: " + port + "]");
+        JLabel message = new JLabel("Sending Keyboard Input to [Team: " + team + ", Port: " + port + "]");
         message.setBorder(new LineBorder(Color.BLACK, 4));
 
         // Message Panel
