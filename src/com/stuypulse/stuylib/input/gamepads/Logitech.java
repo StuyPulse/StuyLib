@@ -26,27 +26,6 @@ public class Logitech extends Gamepad {
         super(port);
     }
 
-    /**********************/
-    /*** CONTROL STICKS ***/
-    /**********************/
-    @Override
-    public double getLeftX() {
-        return getRawAxis(0);
-    }
-
-    @Override
-    public double getLeftY() {
-        return -getRawAxis(1);
-    }
-
-    @Override
-    public double getRightX() {
-        return getRawAxis(4);
-    }
-
-    // @Override
-    // public double getRightY() {}
-
 
     /**********************/
     /*** D-PAD CONTROLS ***/
@@ -69,34 +48,6 @@ public class Logitech extends Gamepad {
     @Override
     public boolean getRawDPadRight() {
         return getJoystick().getPOV() == 90;
-    }
-
-
-    /*******************/
-    /*** LEFT BUMPER ***/
-    /*******************/
-    @Override
-    public boolean getRawLeftBumper() { 
-        return getRawButton(5); 
-    }
-
-
-    /********************/
-    /*** RIGHT BUMPER ***/
-    /********************/
-    @Override
-    public boolean getRawRightBumper() { 
-        return getRawButton(6); 
-    }
-
-
-    /**************/
-    /*** RUMBLE ***/
-    /**************/
-    @Override
-    public void rumble(double intensity){
-        getJoystick().setRumble(GenericHID.RumbleType.kLeftRumble, intensity);
-        getJoystick().setRumble(GenericHID.RumbleType.kRightRumble, intensity);
     }
     
     
@@ -122,8 +73,41 @@ public class Logitech extends Gamepad {
         /*** CONTROL STICKS ***/
         /**********************/
         @Override
+        public double getLeftX() {
+            return getRawAxis(0);
+        }
+
+        @Override
+        public double getLeftY() {
+            return -getRawAxis(1);
+        }
+
+        @Override
+        public double getRightX() {
+            return getRawAxis(4);
+        }
+
+        @Override
         public double getRightY() {
             return -getRawAxis(3);
+        }
+
+
+        /*******************/
+        /*** LEFT BUMPER ***/
+        /*******************/
+        @Override
+        public boolean getRawLeftBumper() { 
+            return getRawButton(5); 
+        }
+    
+    
+        /********************/
+        /*** RIGHT BUMPER ***/
+        /********************/
+        @Override
+        public boolean getRawRightBumper() { 
+            return getRawButton(6); 
         }
 
 
@@ -215,12 +199,22 @@ public class Logitech extends Gamepad {
         public boolean getRawRightAnalogButton() {
             return getRawButton(12);
         }
+
+
+        /**************/
+        /*** RUMBLE ***/
+        /**************/
+        @Override
+        public void rumble(double intensity){
+            getJoystick().setRumble(GenericHID.RumbleType.kLeftRumble, intensity);
+            getJoystick().setRumble(GenericHID.RumbleType.kRightRumble, intensity);
+        }
     }
 
 
     /**
      * There is a switch on the back of the controller
-     * this is for when the switch is in the D position
+     * this is for when the switch is in the X position
      */
     public static class XMode extends Logitech {
     
@@ -241,8 +235,41 @@ public class Logitech extends Gamepad {
         /*** CONTROL STICKS ***/
         /**********************/
         @Override
+        public double getLeftX() {
+            return getRawAxis(0);
+        }
+
+        @Override
+        public double getLeftY() {
+            return -getRawAxis(1);
+        }
+
+        @Override
+        public double getRightX() {
+            return getRawAxis(4);
+        }
+
+        @Override
         public double getRightY() {
             return -getRawAxis(5);
+        }
+
+
+        /*******************/
+        /*** LEFT BUMPER ***/
+        /*******************/
+        @Override
+        public boolean getRawLeftBumper() { 
+            return getRawButton(5); 
+        }
+
+
+        /********************/
+        /*** RIGHT BUMPER ***/
+        /********************/
+        @Override
+        public boolean getRawRightBumper() { 
+            return getRawButton(6); 
         }
 
 
@@ -332,6 +359,16 @@ public class Logitech extends Gamepad {
         @Override
         public boolean getRawRightAnalogButton() {
             return getRawButton(10);
+        }
+
+
+        /**************/
+        /*** RUMBLE ***/
+        /**************/
+        @Override
+        public void rumble(double intensity){
+            getJoystick().setRumble(GenericHID.RumbleType.kLeftRumble, intensity);
+            getJoystick().setRumble(GenericHID.RumbleType.kRightRumble, intensity);
         }
     }
 }
