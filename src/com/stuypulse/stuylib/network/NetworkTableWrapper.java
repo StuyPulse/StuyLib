@@ -48,8 +48,29 @@ public class NetworkTableWrapper {
      * @param instance custom network table instance
      */
     public NetworkTableWrapper(NetworkTableInstance instance, String tableName) {
-        mInstance = instance;
+        setInstance(instance);
         setTable(tableName);
+    }
+
+    /**
+     * Sets instance of NetworkTableWrapper.
+     * WARNING: you must call setTable() after
+     * setInstance() or else you WILL get a 
+     * NullPointerException
+     * @param instance new NetworkTableInstance
+     */
+    public void setInstance(NetworkTableInstance instance) {
+        mInstance = instance;
+        mTableName = null;
+        mTable = null;
+    }
+
+    /**
+     * Gets current network table instance
+     * @return current network table instance
+     */
+    public NetworkTableInstance getInstance() {
+        return mInstance;
     }
 
     /**
@@ -60,6 +81,9 @@ public class NetworkTableWrapper {
         if(getInstance() != null) {
             mTableName = tableName;
             mTable = getInstance().getTable(tableName);
+        } else {
+            mTableName = null;
+            mTable = null;
         }
     }
 
@@ -69,14 +93,6 @@ public class NetworkTableWrapper {
      */
     public String getTable() {
         return mTableName;
-    }
-
-    /**
-     * Gets current network table instance
-     * @return current network table instance
-     */
-    public NetworkTableInstance getInstance() {
-        return mInstance;
     }
 
     /**
