@@ -120,8 +120,8 @@ public class Gamepad {
     /********************************/
 
     /**
-     * Checks if Gamepad has joystick set
-     * @return if Gamepad has Joystic set
+     * Checks if Gamepad has a Joystick
+     * @return if Gamepad has a Joystick
      */
     public final boolean hasJoystick() {
         return getJoystick() != null;
