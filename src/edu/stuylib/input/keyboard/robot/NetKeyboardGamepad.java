@@ -22,19 +22,12 @@ public class NetKeyboardGamepad extends Gamepad {
     private NetKeyboard mKeyboard;
 
     /**
-     * Opens Default Network Keyboard Table
+     * Opens Network Keyboard Gamepad
+     * @param port virtual port
      */
-    public NetKeyboardGamepad() {
-        this(NetKeyboard.DEFAULT_TABLE);
-    }
-
-    /**
-     * Opens Custom Network Keyboard Table
-     * @param table table name
-     */
-    public NetKeyboardGamepad(String table) {
+    public NetKeyboardGamepad(int port) {
         super();
-        mKeyboard = new NetKeyboard(table);
+        mKeyboard = new NetKeyboard(port);
     }
 
     /**

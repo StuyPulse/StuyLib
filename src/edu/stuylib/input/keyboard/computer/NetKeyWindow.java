@@ -35,39 +35,41 @@ public class NetKeyWindow extends JFrame {
     private NetKeyListener mListener;
 
     /**
-     * Create default KeyboardInputWindow (RECOMMENDED)
+     * Opens Network Keyboard Input Window
      */
     public NetKeyWindow() {
-        this(NetKeyboardInfo.DEFAULT_TABLE);
-    }
-
-    /**
-     * Open custom table for KeyboardInputWindow
-     * @param table table
-     */
-    public NetKeyWindow(String table) {
         // Set Title and Open Network Table
-        super("Network Keyboard Input [" + table + "]");
+        super("Network Keyboard Input");
 
         // Get team number from user
-        int team = -1;
-        while(team < 0) {
+        int team;
+        do {
             try {
                 String teamNum = JOptionPane.showInputDialog("Enter Team Number:");
-                int conversion = Integer.parseInt(teamNum);
-                team = conversion;
-            } catch(Exception e) {}
+                team = Integer.parseInt(teamNum);
+            } catch(Exception e) {
+                team = -1;
+            }
+        } while(team < 0);
+
+        // Get keyboard port from user
+        int port = 0;
+        try {
+            String keyboardPort = JOptionPane.showInputDialog("Enter Virtual Keyboard Port (Default=0):");
+            port = Integer.parseInt(keyboardPort);
+        } catch(Exception e) { 
+            port = 0;
         }
 
         // Connect NetKeyListener
-        mListener = new NetKeyListener(team, table);
+        mListener = new NetKeyListener(team, port);
         addKeyListener(mListener);
 
         // Set Title
-        setTitle("Network Keyboard Input [" + table + "]");
+        setTitle("Network Keyboard Input [Team: " + team + ", Port: " + port + "]");
 
         // Message
-        JLabel message = new JLabel("[Sending Keyboard Input to Robot Team " + team + "]");
+        JLabel message = new JLabel("[Sending Keyboard Input to Team: " + team + ", Port: " + port + "]");
         message.setBorder(new LineBorder(Color.BLACK, 4));
 
         // Message Panel

@@ -9,11 +9,22 @@ package edu.stuylib.input.keyboard;
  * be used in the network table keyboard
  */
 public interface NetKeyboardInfo {
-    // Default table when nothing is givin
-    public static final String DEFAULT_TABLE = "StuyLibNetworkKeyboard";
+    
+    /**
+     * Gets name of network table for Network Keyboard
+     * and its virtual port number
+     * @param port virtual port number
+     * @return network table name
+     */
+    public static String getTabelName(int port) {
+        return ("NetworkKeyboard/port/" + Integer.toString(Math.abs(port)));
+    }
 
-    // How to sanatize the inputs given to network
-    // table so that it is not case sensitive
+    /**
+     * Sanatize key names to prevent caps issues
+     * @param key unsanatized key name
+     * @return sanatized key name
+     */
     public static String sanatize(String key) {
         return key.toUpperCase().trim();
     }

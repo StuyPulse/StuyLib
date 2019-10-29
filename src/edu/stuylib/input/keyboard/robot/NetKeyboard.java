@@ -13,29 +13,16 @@ import edu.stuylib.network.NetworkTableClient;
 public class NetKeyboard {
 
     /**
-     * Default Table Name
-     */
-    public static final String DEFAULT_TABLE = NetKeyboardInfo.DEFAULT_TABLE;
-
-    /**
      * Table where key information is stored
      */
     private NetworkTableClient mKeyboardTable;
 
     /**
-     * Creates NetworkKeyboard on table
-     * "StuyLibNetworkKeyboard"
-     */
-    public NetKeyboard() {
-        this(DEFAULT_TABLE);
-    }
-
-    /**
      * Creates NetworkKeyboard on custom table
      * @param table
      */
-    public NetKeyboard(String table) {
-        mKeyboardTable = new NetworkTableClient(table);
+    public NetKeyboard(int port) {
+        mKeyboardTable = new NetworkTableClient(NetKeyboardInfo.getTabelName(port));
     }
 
     /**

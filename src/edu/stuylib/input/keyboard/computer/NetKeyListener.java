@@ -45,26 +45,17 @@ public class NetKeyListener implements KeyListener, Iterable<String> {
     //////////////////
 
     /**
-     * Initialize NetKeyListener with team number
+     * Initialize Network Keyboard Listener
      * @param team team number of robot
+     * @param table virtual keyboard port
      */
-    public NetKeyListener(int team) {
-        // Default Table
-        this(team, NetKeyboardInfo.DEFAULT_TABLE);
-    }
-
-    /**
-     * Initialize NetKeyListener with team number and table name
-     * @param team team number of robot
-     * @param table table name of network table
-     */
-    public NetKeyListener(int team, String table) {
+    public NetKeyListener(int team, int port) {
         // Connect to robot instead of making a server
         NetworkTableInstance inst = NetworkTableInstance.create();
         inst.startClientTeam(team);
 
         // Connect table to robot
-        mKeyboardTable = new NetworkTableClient(inst, table);
+        mKeyboardTable = new NetworkTableClient(inst, NetKeyboardInfo.getTabelName(port));
 
         // Rare for more than 16 keys to be pressed
         mKeysPressed = new HashSet<String>(16, 0.75f);
