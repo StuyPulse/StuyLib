@@ -3,13 +3,10 @@ package com.stuypulse.stuylib.input.keyboard.computer;
 import edu.wpi.first.networktables.NetworkTableInstance;
 
 import com.stuypulse.stuylib.input.keyboard.NetKeyboardInfo;
-import com.stuypulse.stuylib.network.NetworkTableClient;
+import com.stuypulse.stuylib.network.NetworkTableWrapper;
 
 import java.awt.event.KeyListener;
 import java.awt.event.KeyEvent;
-
-import java.util.HashSet;
-import java.util.Iterator;
 
 /**
  * A KeyListener that uploads all of the
@@ -24,25 +21,12 @@ import java.util.Iterator;
  * 
  * @author Sam (sam.belliveau@gmail.com)
  */
-public class NetKeyListener implements KeyListener, Iterable<String> {
-    
-    ///////////////
-    // VARIABLES //
-    /////////////// 
+public class NetKeyListener implements KeyListener {
 
     /**
      * Network Table for which key presses go
      */
-    private NetworkTableClient mKeyboardTable;
-
-    /**
-     * Set of current keys being pressed
-     */
-    private HashSet<String> mKeysPressed;
-
-    //////////////////
-    // CONSTRUCTORS // 
-    //////////////////
+    private NetworkTableWrapper mKeyboardTable;
 
     /**
      * Initialize Network Keyboard Listener
@@ -55,36 +39,8 @@ public class NetKeyListener implements KeyListener, Iterable<String> {
         inst.startClientTeam(team);
 
         // Connect table to robot
-        mKeyboardTable = new NetworkTableClient(inst, NetKeyboardInfo.getTabelName(port));
-
-        // Rare for more than 16 keys to be pressed
-        mKeysPressed = new HashSet<String>(16, 0.75f);
+        mKeyboardTable = new NetworkTableWrapper(inst, NetKeyboardInfo.getTabelName(port));
     }
-
-    ///////////////////////
-    // HASHSET INTERFACE //
-    ///////////////////////
-
-    /**
-     * Returns iterator to hash set
-     * @return Hash Set Iterator
-     */
-    public Iterator<String> iterator() {
-        return mKeysPressed.iterator();
-    }
-
-    /**
-     * Checks if key is pressed
-     * @param key key name
-     * @return if key is pressed
-     */
-    public boolean isKeyPressed(String key) {
-        return mKeysPressed.contains(NetKeyboardInfo.sanatize(key));
-    }
-
-    ////////////////////////
-    // KEY LISTENER STUFF //
-    ////////////////////////
 
     /**
      * Gets key name from key event
@@ -107,9 +63,7 @@ public class NetKeyListener implements KeyListener, Iterable<String> {
      * @param e Key Event
      */
     public void keyPressed(KeyEvent e) {
-        String keyName = getKeyName(e);
-        mKeysPressed.add(keyName);
-        mKeyboardTable.setBoolean(keyName, true);
+        mKeyboardTable.setBoolean(getKeyName(e), true);
     }
 
     /**
@@ -117,8 +71,6 @@ public class NetKeyListener implements KeyListener, Iterable<String> {
      * @param e Key Event
      */
     public void keyReleased(KeyEvent e) {
-        String keyName = getKeyName(e);
-        mKeysPressed.remove(keyName);
-        mKeyboardTable.setBoolean(keyName, false);
+        mKeyboardTable.setBoolean(getKeyName(e), false);
     }
 }

@@ -1,7 +1,7 @@
 package com.stuypulse.stuylib.input.keyboard.robot;
 
 import com.stuypulse.stuylib.input.keyboard.NetKeyboardInfo;
-import com.stuypulse.stuylib.network.NetworkTableClient;
+import com.stuypulse.stuylib.network.NetworkTableWrapper;
 
 /**
  * This class lets you recieve keyboard
@@ -15,14 +15,14 @@ public class NetKeyboard {
     /**
      * Table where key information is stored
      */
-    private NetworkTableClient mKeyboardTable;
+    private NetworkTableWrapper mKeyboardTable;
 
     /**
      * Creates NetworkKeyboard on custom table
      * @param table
      */
     public NetKeyboard(int port) {
-        mKeyboardTable = new NetworkTableClient(NetKeyboardInfo.getTabelName(port));
+        mKeyboardTable = new NetworkTableWrapper(NetKeyboardInfo.getTabelName(port));
     }
 
     /**
