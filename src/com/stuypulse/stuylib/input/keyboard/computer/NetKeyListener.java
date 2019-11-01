@@ -1,7 +1,5 @@
 package com.stuypulse.stuylib.input.keyboard.computer;
 
-import edu.wpi.first.networktables.NetworkTableInstance;
-
 import com.stuypulse.stuylib.input.keyboard.NetKeyboardInfo;
 import com.stuypulse.stuylib.network.NetworkTableWrapper;
 
@@ -34,12 +32,7 @@ public class NetKeyListener implements KeyListener {
      * @param table virtual keyboard port
      */
     public NetKeyListener(int team, int port) {
-        // Connect to robot instead of making a server
-        NetworkTableInstance inst = NetworkTableInstance.create();
-        inst.startClientTeam(team);
-
-        // Connect table to robot
-        mKeyboardTable = new NetworkTableWrapper(inst, NetKeyboardInfo.getTabelName(port));
+        mKeyboardTable = NetworkTableWrapper.open(team, NetKeyboardInfo.getTabelName(port));
     }
 
     /**

@@ -3,6 +3,8 @@ package com.stuypulse.stuylib.input.keyboard.robot;
 import com.stuypulse.stuylib.input.keyboard.NetKeyboardInfo;
 import com.stuypulse.stuylib.network.NetworkTableWrapper;
 
+import java.util.Set;
+
 /**
  * This class lets you recieve keyboard
  * presses from a computer on the robot
@@ -18,11 +20,21 @@ public class NetKeyboard {
     private NetworkTableWrapper mKeyboardTable;
 
     /**
-     * Creates NetworkKeyboard on custom table
-     * @param table
+     * Creates NetworkKeyboard on robot
+     * @param port virtual port number (unsure, use 0)
      */
     public NetKeyboard(int port) {
-        mKeyboardTable = new NetworkTableWrapper(NetKeyboardInfo.getTabelName(port));
+        mKeyboardTable = NetworkTableWrapper.open(NetKeyboardInfo.getTabelName(port));
+    }
+
+    /**
+     * Creates NetworkKeyboard that is
+     * connected to the robot from elsewhere
+     * @param team robot team number
+     * @param port virtual port number (unsure, use 0)
+     */
+    public NetKeyboard(int team, int port) {
+        mKeyboardTable = NetworkTableWrapper.open(team, NetKeyboardInfo.getTabelName(port));
     }
 
     /**
@@ -32,5 +44,20 @@ public class NetKeyboard {
      */
     public boolean isKeyPressed(String key) {
         return mKeyboardTable.getBoolean(NetKeyboardInfo.sanatize(key));
+    }
+
+    /**
+     * Returns Set of Strings with the names 
+     * of every key that is pressed
+     * @return set of strings
+     */
+    public Set<String> getKeysPressed() {
+        Set<String> keysPressed = mKeyboardTable.getKeys();
+        for(String s : keysPressed) {
+            if(!mKeyboardTable.getBoolean(s)) {
+                keysPressed.remove(s);
+            }
+        }
+        return keysPressed;
     }
 }

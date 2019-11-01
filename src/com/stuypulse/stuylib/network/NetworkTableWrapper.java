@@ -21,24 +21,44 @@ import edu.wpi.first.networktables.NetworkTableInstance;
 
 public class NetworkTableWrapper {
 
-    // Instance contains IP/Related information
-    private NetworkTableInstance mInstance; 
-    
-    // Current Data Table
-    private NetworkTable mTable; 
-    
-    // Name of Data Table
-    private String mTableName = "";
+    /**
+     * Opens network table on local device.
+     * IE a robot opens a network table for 
+     * other devices to connect to
+     * @param table network table name
+     * @return Configured Network Table Wrapper
+     */
+    public static NetworkTableWrapper open(String table) {
+        return open(NetworkTableInstance.getDefault(), table);
+    }
 
     /**
-     * Creates a Network Table Wrapper opened on
-     * table "tableName", and with the default
-     * NetworkTableInstance (ie. opening a server on the robot)
-     * @param tableName network table name
+     * Opens network table that is connected to
+     * a robot. IE a program connecting to a robot.
+     * @param team team number
+     * @param table network table name
+     * @return Configured Network Table Wrapper
      */
-    public NetworkTableWrapper(String tableName) {
-        this(NetworkTableInstance.getDefault(), tableName);
+    public static NetworkTableWrapper open(int team, String table) {
+        NetworkTableInstance instance = NetworkTableInstance.create();
+        instance.startClientTeam(team);
+        return open(instance, table);
     }
+
+    /**
+     * Opens network table with special instance.
+     * @param instance NetworkTableInstance
+     * @param table network table name
+     * @return Configured Network Table Wrapper
+     */
+    public static NetworkTableWrapper open(NetworkTableInstance instance, String table) {
+        return new NetworkTableWrapper(instance, table);
+    }
+
+    // Variables
+    private NetworkTableInstance mInstance; // Instance contains IP/Related information
+    private NetworkTable mTable; // Current Data Table
+    private String mTableName = ""; // Name of Data Table
 
     /**
      * Creates a Network Table Wrapper opened on
@@ -47,22 +67,10 @@ public class NetworkTableWrapper {
      * @param tableName network table name
      * @param instance custom network table instance
      */
-    public NetworkTableWrapper(NetworkTableInstance instance, String tableName) {
-        setInstance(instance);
-        setTable(tableName);
-    }
-
-    /**
-     * Sets instance of NetworkTableWrapper.
-     * WARNING: you must call setTable() after
-     * setInstance() or else you WILL get a 
-     * NullPointerException
-     * @param instance new NetworkTableInstance
-     */
-    public void setInstance(NetworkTableInstance instance) {
+    private NetworkTableWrapper(NetworkTableInstance instance, String table) {
         mInstance = instance;
-        mTableName = null;
-        mTable = null;
+        mTable = mInstance.getTable(table);
+        mTableName = table;
     }
 
     /**
@@ -71,20 +79,6 @@ public class NetworkTableWrapper {
      */
     public NetworkTableInstance getInstance() {
         return mInstance;
-    }
-
-    /**
-     * Sets current network table
-     * @param tableName new network table
-     */
-    public void setTable(String tableName) {
-        if(getInstance() != null) {
-            mTableName = tableName;
-            mTable = getInstance().getTable(tableName);
-        } else {
-            mTableName = null;
-            mTable = null;
-        }
     }
 
     /**
