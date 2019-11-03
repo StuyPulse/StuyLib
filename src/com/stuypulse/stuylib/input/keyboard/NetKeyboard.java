@@ -78,7 +78,7 @@ public class NetKeyboard {
      * @param val new value for key
      */
     public void setKey(String key, boolean val) {
-        mKeyboardTable.getBoolean(Constants.sanatize(key));
+        mKeyboardTable.setBoolean(Constants.sanatize(key), val);
     }
     
 
