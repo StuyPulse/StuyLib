@@ -28,7 +28,7 @@ public class NetKeyListener extends KeyAdapter {
     /**
      * Initialize Network Keyboard Listener
      * @param team team number of robot
-     * @param table virtual keyboard port
+     * @param port virtual keyboard port
      */
     public NetKeyListener(int team, int port) {
         mNetKeyboard = new NetKeyboard(team, port);

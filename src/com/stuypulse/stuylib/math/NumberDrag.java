@@ -24,7 +24,7 @@ public class NumberDrag {
      * the lower the value, the faster it
      * converges
      * 
-     * @param drag drag (drag > 0)
+     * @param drag drag (drag is positive)
      */
     public NumberDrag(double drag) {
         mValue = 0;
@@ -45,22 +45,6 @@ public class NumberDrag {
      */
     public double getValue() {
         return mValue;
-    }
-
-    /**
-     * Set drag value
-     * @param drag new value
-     */
-    public void setDrag(double drag) {
-        mDrag = drag;
-    }
-
-    /**
-     * Set value
-     * @param value new value
-     */
-    public void setValue(double value) {
-        mValue = value;
     }
 
     /**

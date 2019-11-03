@@ -54,7 +54,7 @@ public class InputScaler {
      * Use the shape of a circle with
      * power p to scale the input
      * @param x input
-     * @param p power (p > 1)
+     * @param p power (p greater than 1)
      * @return circular return
      */
     public static double circular(double x, double p) {
