@@ -35,6 +35,14 @@ public class NetKeyListener extends KeyAdapter {
     }
 
     /**
+     * Returns underlying NetKeyboard class
+     * @return underlying NetKeyboard class
+     */
+    public NetKeyboard getNetKeyboard() {
+        return mNetKeyboard;
+    }
+
+    /**
      * Checks if network table is connected
      * @return if network table is connected
      */
