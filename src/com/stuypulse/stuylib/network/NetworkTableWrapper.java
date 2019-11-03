@@ -21,6 +21,10 @@ import edu.wpi.first.networktables.NetworkTableInstance;
 
 public class NetworkTableWrapper {
 
+    /*********************/
+    /***** FACTORIES *****/
+    /*********************/
+
     /**
      * Opens network table on local device.
      * IE a robot opens a network table for 
@@ -55,10 +59,17 @@ public class NetworkTableWrapper {
         return new NetworkTableWrapper(instance, table);
     }
 
-    // Variables
+    /*********************/
+    /***** VARIABLES *****/
+    /*********************/
+
     private NetworkTableInstance mInstance; // Instance contains IP/Related information
     private NetworkTable mTable; // Current Data Table
     private String mTableName = ""; // Name of Data Table
+
+    /************************/
+    /***** CONSTRUCTORS *****/
+    /************************/
 
     /**
      * Creates a Network Table Wrapper opened on
@@ -73,6 +84,10 @@ public class NetworkTableWrapper {
         mTableName = table;
     }
 
+    /****************************/
+    /***** VARIABLE GETTERS *****/
+    /****************************/
+
     /**
      * Gets current network table instance
      * @return current network table instance
@@ -85,8 +100,36 @@ public class NetworkTableWrapper {
      * Gets current network table
      * @return current network table
      */
-    public String getTable() {
+    public NetworkTable getTable() {
+        return mTable;
+    }
+
+    /**
+     * Gets current network table name
+     * @return current network table name
+     */
+    public String getTableName() {
         return mTableName;
+    }
+
+    /************************/
+    /***** MISC GETTERS *****/
+    /************************/
+
+    /**
+     * Checks if network table is connected
+     * @return if network table is connected
+     */
+    public boolean isConnected() {
+        return getInstance().isConnected();
+    }
+
+    /**
+     * Gets a set of all key names in network table
+     * @return set of key names in network table
+     */
+    public Set<String> getKeys() {
+        return mTable.getKeys();
     }
 
     /**
@@ -96,14 +139,6 @@ public class NetworkTableWrapper {
      */
     public NetworkTableEntry getRawEntry(String key) {
         return mTable.getEntry(key);
-    }
-
-    /**
-     * Gets a set of all key names in network table
-     * @return set of key names in network table
-     */
-    public Set<String> getKeys() {
-        return mTable.getKeys();
     }
 
     /**

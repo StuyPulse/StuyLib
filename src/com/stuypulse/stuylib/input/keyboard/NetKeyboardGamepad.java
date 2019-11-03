@@ -1,7 +1,7 @@
-package com.stuypulse.stuylib.input.keyboard.robot;
+package com.stuypulse.stuylib.input.keyboard;
 
 import com.stuypulse.stuylib.input.Gamepad;
-import com.stuypulse.stuylib.input.keyboard.robot.NetKeyboard;
+import com.stuypulse.stuylib.input.keyboard.NetKeyboard;
 import com.stuypulse.stuylib.input.LambdaButton;
 
 import edu.wpi.first.wpilibj.buttons.Button;
@@ -45,7 +45,7 @@ public class NetKeyboardGamepad extends Gamepad {
      * @return if key is pressed
      */
     public final boolean getRawKey(String key) {
-        return mKeyboard.isKeyPressed(key);
+        return mKeyboard.getKey(key);
     }
 
     /**********************/

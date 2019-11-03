@@ -1,9 +1,8 @@
 package com.stuypulse.stuylib.input.keyboard.computer;
 
-import com.stuypulse.stuylib.input.keyboard.NetKeyboardInfo;
-import com.stuypulse.stuylib.network.NetworkTableWrapper;
+import com.stuypulse.stuylib.input.keyboard.NetKeyboard;
 
-import java.awt.event.KeyListener;
+import java.awt.event.KeyAdapter;
 import java.awt.event.KeyEvent;
 
 /**
@@ -19,12 +18,12 @@ import java.awt.event.KeyEvent;
  * 
  * @author Sam (sam.belliveau@gmail.com)
  */
-public class NetKeyListener implements KeyListener {
+public class NetKeyListener extends KeyAdapter {
 
     /**
      * Network Table for which key presses go
      */
-    private NetworkTableWrapper mKeyboardTable;
+    private NetKeyboard mNetKeyboard;
 
     /**
      * Initialize Network Keyboard Listener
@@ -32,16 +31,15 @@ public class NetKeyListener implements KeyListener {
      * @param table virtual keyboard port
      */
     public NetKeyListener(int team, int port) {
-        mKeyboardTable = NetworkTableWrapper.open(team, NetKeyboardInfo.getTabelName(port));
+        mNetKeyboard = new NetKeyboard(team, port);
     }
 
     /**
-     * Gets key name from key event
-     * @param e key event
-     * @return key name
+     * Checks if network table is connected
+     * @return if network table is connected
      */
-    private String getKeyName(KeyEvent e) {
-        return NetKeyboardInfo.sanatize(KeyEvent.getKeyText(e.getKeyCode()));
+    public boolean isConnected() {
+        return mNetKeyboard.isConnected();
     }
 
     /**
@@ -49,7 +47,7 @@ public class NetKeyListener implements KeyListener {
      * @param e Key Event
      */
     public void keyPressed(KeyEvent e) {
-        mKeyboardTable.setBoolean(getKeyName(e), true);
+        mNetKeyboard.setKey(KeyEvent.getKeyText(e.getKeyCode()), true);
     }
 
     /**
@@ -57,13 +55,6 @@ public class NetKeyListener implements KeyListener {
      * @param e Key Event
      */
     public void keyReleased(KeyEvent e) {
-        mKeyboardTable.setBoolean(getKeyName(e), false);
+        mNetKeyboard.setKey(KeyEvent.getKeyText(e.getKeyCode()), false);
     }
-
-    /**
-     * This doesn't do anything as 
-     * it does not apply to our use
-     * @param e Key Event
-     */
-    public void keyTyped(KeyEvent e) {}
 }
