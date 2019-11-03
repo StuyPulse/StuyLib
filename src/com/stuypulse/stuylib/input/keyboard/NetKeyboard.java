@@ -8,30 +8,34 @@ import java.util.Set;
  * This class lets you send and recieve 
  * keyboard information over network tables
  * 
+ * Every other class will interact with the
+ * network keyboards through this class
+ * 
  * @author Sam (sam.belliveau@gmail.com)
  */
 
 public class NetKeyboard {
 
-    /**
-     * Gets name of network table for Network Keyboard
-     * and its virtual port number
-     * @param port virtual port number
-     * @return network table name
-     */
-    private static String getTabelName(int port) {
-        return ("NetworkKeyboard/port/" + Integer.toString(Math.abs(port)));
-    }
+    private interface Constants {
+        /**
+         * Gets name of network table for Network Keyboard
+         * and its virtual port number
+         * @param port virtual port number
+         * @return network table name
+         */
+        public static String getTabelName(int port) {
+            return ("NetworkKeyboard/port/" + Integer.toString(Math.abs(port)));
+        }
 
-    /**
-     * Sanatize key names to prevent caps issues
-     * @param key unsanatized key name
-     * @return sanatized key name
-     */
-    private static String sanatize(String key) {
-        return key.toUpperCase().trim();
+        /**
+         * Sanatize key names to prevent caps issues
+         * @param key unsanatized key name
+         * @return sanatized key name
+         */
+        public static String sanatize(String key) {
+            return key.toUpperCase().trim();
+        }
     }
-
 
     /**
      * Table where key information is stored
@@ -44,7 +48,7 @@ public class NetKeyboard {
      * @param port virtual port number (unsure, use 0)
      */
     public NetKeyboard(int port) {
-        mKeyboardTable = NetworkTableWrapper.open(getTabelName(port));
+        mKeyboardTable = NetworkTableWrapper.open(Constants.getTabelName(port));
     }
 
     /**
@@ -54,7 +58,7 @@ public class NetKeyboard {
      * @param port virtual port number (unsure, use 0)
      */
     public NetKeyboard(int team, int port) {
-        mKeyboardTable = NetworkTableWrapper.open(team, getTabelName(port));
+        mKeyboardTable = NetworkTableWrapper.open(team, Constants.getTabelName(port));
     }
 
 
@@ -73,7 +77,7 @@ public class NetKeyboard {
      * @param val new value for key
      */
     public void setKey(String key, boolean val) {
-        mKeyboardTable.getBoolean(sanatize(key));
+        mKeyboardTable.getBoolean(Constants.sanatize(key));
     }
     
 
@@ -83,7 +87,7 @@ public class NetKeyboard {
      * @return if key is pressed
      */
     public boolean getKey(String key) {
-        return mKeyboardTable.getBoolean(sanatize(key));
+        return mKeyboardTable.getBoolean(Constants.sanatize(key));
     }
 
     /**
