@@ -6,7 +6,7 @@ package com.stuypulse.stuylib.math;
  * @author Sam (sam.belliveau@gmail.com)
  */
 
-public class RateLimiter {
+public class RateLimit {
 
     private double mLastValue; // Stores current value
     private double mRateLimit; // Stores max rate limit
@@ -16,7 +16,7 @@ public class RateLimiter {
      * specified rate limit
      * @param rateLimit desired rate limit
      */
-    public RateLimiter(double rateLimit) {
+    public RateLimit(double rateLimit) {
         mLastValue = 0;
         mRateLimit = rateLimit;
     }
