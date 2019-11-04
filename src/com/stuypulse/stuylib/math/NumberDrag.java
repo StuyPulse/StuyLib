@@ -14,8 +14,8 @@ package com.stuypulse.stuylib.math;
 public class NumberDrag {
 
     // Values needed for number drag
-    private static double mValue;
-    private static double mDrag;
+    private double mValue;
+    private double mDrag;
 
     /**
      * Initialize NumberDrag with custom
