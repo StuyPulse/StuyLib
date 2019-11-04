@@ -1,4 +1,4 @@
-package com.stuypulse.stuylib.input.keyboard;
+package com.stuypulse.stuylib.input.gamepads;
 
 import com.stuypulse.stuylib.input.Gamepad;
 import com.stuypulse.stuylib.input.keyboard.NetKeyboard;
@@ -14,7 +14,7 @@ import edu.wpi.first.wpilibj.buttons.Button;
  * @author Sam (sam.belliveau@gmail.com)
  */
 
-public class NetKeyboardGamepad extends Gamepad {
+public class NetKeyGamepad extends Gamepad {
 
     /**
      * Underlying Network Keyboard
@@ -25,7 +25,7 @@ public class NetKeyboardGamepad extends Gamepad {
      * Opens Network Keyboard Gamepad
      * @param port virtual port
      */
-    public NetKeyboardGamepad(int port) {
+    public NetKeyGamepad(int port) {
         super();
         mKeyboard = new NetKeyboard(port);
     }

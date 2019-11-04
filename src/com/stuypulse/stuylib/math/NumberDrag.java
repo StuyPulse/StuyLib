@@ -57,7 +57,7 @@ public class NumberDrag {
      * @param input requested value to converge on
      * @return dragged number
      */
-    public double drag(double input) {
+    public double get(double input) {
         mValue *= mDrag;
         mValue += input;
         mValue /= mDrag + 1;

@@ -34,6 +34,7 @@ public class NetKeyListener extends KeyAdapter {
         mNetKeyboard = new NetKeyboard(team, port);
     }
 
+    
     /**
      * Returns underlying NetKeyboard class
      * @return underlying NetKeyboard class
@@ -42,6 +43,7 @@ public class NetKeyListener extends KeyAdapter {
         return mNetKeyboard;
     }
 
+
     /**
      * Checks if network table is connected
      * @return if network table is connected
@@ -49,6 +51,7 @@ public class NetKeyListener extends KeyAdapter {
     public boolean isConnected() {
         return mNetKeyboard.isConnected();
     }
+
 
     /**
      * Adds Key from Key Event to State
