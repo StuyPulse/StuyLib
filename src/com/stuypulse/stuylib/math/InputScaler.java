@@ -31,7 +31,7 @@ public class InputScaler {
      * @return limited input
      */
     public static double limit(double x, double max) {
-        return limit(x, max, -max);
+        return limit(x, -max, max);
     }
 
     /**
@@ -85,7 +85,7 @@ public class InputScaler {
     public static double pow(double x, double power) {
         return limit(Math.pow(Math.abs(x), power) * Math.signum(x));
     }
-    
+
 
     /**
      * Use the shape of a circle with
