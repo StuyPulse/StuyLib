@@ -1,6 +1,6 @@
 package com.stuypulse.stuylib.math.stream;
 
-import com.stuypulse.stuylib.math.stream.Stream;
+import com.stuypulse.stuylib.math.stream.InputStream;
 import com.stuypulse.stuylib.math.stream.filter.StreamFilter;
 
 /**
@@ -10,17 +10,17 @@ import com.stuypulse.stuylib.math.stream.filter.StreamFilter;
  * 
  * @author Sam (sam.belliveau@gmail.com)
  */
-public class FilteredStream implements Stream {
+public class FilteredStream implements InputStream {
 
-    private Stream mStream; // Stream used
+    private InputStream mStream; // Stream used
     private StreamFilter mStreamFilter; // StreamFilter used
 
     /**
      * Makes filtered stream from stream and stream filter
-     * @param stream stream
-     * @param filter filter
+     * @param stream input stream
+     * @param filter stream filter
      */
-    public FilteredStream(Stream stream, StreamFilter filter) {
+    public FilteredStream(InputStream stream, StreamFilter filter) {
         mStream = stream;
         mStreamFilter = filter;
     }
