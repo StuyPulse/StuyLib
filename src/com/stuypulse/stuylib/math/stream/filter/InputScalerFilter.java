@@ -1,0 +1,69 @@
+package com.stuypulse.stuylib.math.stream.filter;
+
+import com.stuypulse.stuylib.math.InputScaler;
+
+/**
+ * A set of filters that uses algorithms from InputScaler
+ * that can be used as a StreamFilter.
+ * 
+ * @author Sam (sam.belliveau@gmail.com)
+ */
+public interface InputScalerFilter {
+
+    /**
+     * Stream Filter that squares each input
+     */
+    public static class Square extends LambdaFilter {
+        /**
+         * Makes filter that squares every value
+         */
+        public Square() {
+            super((x) -> InputScaler.square(x));
+        }
+    }
+
+    /**
+     * Stream Filter that cubes each input
+     */
+    public static class Cube extends LambdaFilter {
+        /**
+         * Makes filter that cubes every value
+         */
+        public Cube() {
+            super((x) -> InputScaler.cube(x));
+        }
+    }
+
+    /**
+     * Stream Filter that raises each input to a power
+     */
+    public static class Pow extends LambdaFilter {
+        /**
+         * @param power the power that the filter raises inputs to
+         */
+        public Pow(double power) {
+            super((x) -> InputScaler.pow(x, power));
+        }
+    }
+
+    /**
+     * Stream Filter that uses circular 
+     * algorithm to filter each input
+     */
+    public static class Circular extends LambdaFilter {
+        /**
+         * Uses circular algorithm with p value of 2
+         */
+        public Circular() {
+            super((x) -> InputScaler.circular(x));
+        }
+
+        /**
+         * Uses circular algorithm with custom p value
+         * @param p p value
+         */
+        public Circular(double p) {
+            super((x) -> InputScaler.circular(x, p));
+        }
+    }
+}
