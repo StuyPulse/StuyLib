@@ -14,11 +14,11 @@ public class InputScaler {
     /**
      * Limit input from max to min
      * @param x input
-     * @param max max value for x
      * @param min min value for x
+     * @param max max value for x
      * @return limited input
      */
-    public static double limit(double x, double max, double min) {
+    public static double limit(double x, double min, double max) {
         if(x > max) return max;
         if(x < min) return min;
         return x;
