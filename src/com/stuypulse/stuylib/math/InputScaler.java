@@ -12,14 +12,35 @@ package com.stuypulse.stuylib.math;
 public class InputScaler {
 
     /**
+     * Limit input from max to min
+     * @param x input
+     * @param max max value for x
+     * @param min min value for x
+     * @return limited input
+     */
+    public static double limit(double x, double max, double min) {
+        if(x > max) return max;
+        if(x < min) return min;
+        return x;
+    }
+
+    /**
+     * Limit input from max to -max
+     * @param x input
+     * @param max max and min value
+     * @return limited input
+     */
+    public static double limit(double x, double max) {
+        return limit(x, max, -max);
+    }
+
+    /**
      * Limit input from -1 to 1
      * @param x input
      * @return limited input
      */
     public static double limit(double x) {
-        if(x > 1.0)  return 1.0;
-        if(x < -1.0) return -1.0;
-        return x;
+        return limit(x, 1.0);
     }
 
     /**

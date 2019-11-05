@@ -1,0 +1,24 @@
+package com.stuypulse.stuylib.math.filter;
+
+/**
+ * This lets us make sub-classes that change
+ * can modify values in this way
+ * 
+ * @author Sam (sam.belliveau@gmail.com)
+ */
+
+public interface StreamFilter {
+    
+    /**
+     * Get current value of the StreamModifier
+     * @return
+     */
+    double get();
+
+    /**
+     * Get next value in StreamModifier
+     * @param next next input value
+     * @return next modified value
+     */
+    double get(double next);
+}
