@@ -10,16 +10,17 @@ import com.stuypulse.stuylib.math.stream.filter.StreamFilter;
  */
 public class StreamFilterGroup implements StreamFilter {
 
-    // Array of all the filters
-    private StreamFilter[] mFilters;
+    private double mLastValue; // Last Value of the Filters
+    private Iterable<StreamFilter> mFilters; // Array of all the filters
 
     /**
      * Make FilterCombo out of an 
      * array of stream filters
      * @param filters array of filters to be combined
      */
-    public StreamFilterGroup(StreamFilter[] filters) {
-        mFilters = filters.clone();
+    public StreamFilterGroup(Iterable<StreamFilter> filters) {
+        mLastValue = 0;
+        mFilters = filters;
     }
 
     /**
@@ -27,7 +28,7 @@ public class StreamFilterGroup implements StreamFilter {
      * @return current value of last filter
      */
     public double get() {
-        return mFilters[mFilters.length - 1].get();
+        return mLastValue;
     }
 
     /**
@@ -36,10 +37,13 @@ public class StreamFilterGroup implements StreamFilter {
      * @return filtered value
      */
     public double get(double next) {
-        double val = next;
-        for(int i = 0; i < mFilters.length; ++i) {
-            val = mFilters[i].get(val);
+        // Put mLastValue through each of the filters
+        mLastValue = next;
+        for(StreamFilter filter : mFilters) {
+            mLastValue = filter.get(mLastValue);
         }
-        return val;
+
+        // Return filtered value
+        return mLastValue;
     }
 }
