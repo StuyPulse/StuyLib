@@ -11,6 +11,19 @@ import com.stuypulse.stuylib.math.InputScaler;
 public interface InputScalerFilter {
 
     /**
+     * Stream Filter that deadbands each input
+     */
+    public static class Deadband extends LambdaFilter {
+        /**
+         * Makes filter that deadbands values within window
+         * @param window deadband window
+         */
+        public Deadband(double window) {
+            super((x) -> InputScaler.deadband(x, window));
+        }
+    }
+
+    /**
      * Stream Filter that squares each input
      */
     public static class Square extends LambdaFilter {

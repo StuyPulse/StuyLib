@@ -43,6 +43,19 @@ public class InputScaler {
         return limit(x, 1.0);
     }
 
+
+    /**
+     * Apply Deadband to value
+     * @param x value
+     * @param window deadband window
+     * @return deadbanded value
+     */
+    public static double deadband(double x, double window) {
+        if(Math.abs(x) < window) { return 0.0; }
+        else { return x; }
+    }
+
+
     /**
      * Square number
      * @param x input
@@ -51,6 +64,7 @@ public class InputScaler {
     public static double square(double x) {
         return limit(x * x * Math.signum(x));
     }
+
 
     /**
      * Cube number
@@ -61,6 +75,7 @@ public class InputScaler {
         return limit(x * x * x);
     }
 
+
     /**
      * Raise input to power and keep sign
      * @param x input
@@ -70,6 +85,7 @@ public class InputScaler {
     public static double pow(double x, double power) {
         return limit(Math.pow(Math.abs(x), power) * Math.signum(x));
     }
+    
 
     /**
      * Use the shape of a circle with
