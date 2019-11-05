@@ -1,6 +1,6 @@
-package com.stuypulse.stuylib.math.filter;
+package com.stuypulse.stuylib.math.stream.filter;
 
-import com.stuypulse.stuylib.math.filter.StreamFilter;
+import com.stuypulse.stuylib.math.stream.filter.StreamFilter;
 
 /**
  * A simple class that lets you combine multiple 
@@ -8,7 +8,6 @@ import com.stuypulse.stuylib.math.filter.StreamFilter;
  * 
  * @author Sam (sam.belliveau@gmail.com)
  */
-
 public class StreamFilterGroup implements StreamFilter {
 
     // Array of all the filters
