@@ -9,7 +9,7 @@ import java.util.ArrayDeque;
  * @author Sam (sam.belliveau@gmail.com)
  */
 
-public class SimMovingAverage implements StreamFilter {
+public class MovingAverage implements StreamFilter {
 
     private int mMaxSize; // Max Size of ArrayDeque
     private ArrayDeque<Double> mValues; // Array of Values 
@@ -18,7 +18,7 @@ public class SimMovingAverage implements StreamFilter {
      * Make Simple Moving Average with Max Array Size
      * @param maxSize max size of moving average
      */
-    public SimMovingAverage(int maxSize) {
+    public MovingAverage(int maxSize) {
         mMaxSize = Math.max(maxSize, 1);
         mValues = new ArrayDeque<Double>();
     }
