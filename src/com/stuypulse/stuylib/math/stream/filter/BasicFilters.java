@@ -8,7 +8,7 @@ import com.stuypulse.stuylib.math.InputScaler;
  * 
  * @author Sam (sam.belliveau@gmail.com)
  */
-public interface InputScalerFilter {
+public interface BasicFilters {
 
     /**
      * Stream Filter that deadbands each input
