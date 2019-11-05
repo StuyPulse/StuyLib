@@ -44,5 +44,4 @@ public class LambdaFilter implements StreamFilter {
     public double get(double next) {
         return mLastValue = mFilter.filter(next);
     }
-
 }

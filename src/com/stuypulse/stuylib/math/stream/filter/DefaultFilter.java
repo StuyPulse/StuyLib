@@ -35,5 +35,4 @@ public class DefaultFilter implements StreamFilter {
     public double get(double next) {
         return mLastValue = next;
     }
-
 }

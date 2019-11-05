@@ -3,6 +3,13 @@ package com.stuypulse.stuylib.math.stream;
 import com.stuypulse.stuylib.math.stream.Stream;
 import com.stuypulse.stuylib.math.stream.filter.StreamFilter;
 
+/**
+ * Takes a Stream and a StreamFilter and makes a FilteredStream
+ * 
+ * This could be used to automatically filter controller inputs
+ * 
+ * @author Sam (sam.belliveau@gmail.com)
+ */
 public class FilteredStream implements Stream {
 
     private Stream mStream; // Stream used
