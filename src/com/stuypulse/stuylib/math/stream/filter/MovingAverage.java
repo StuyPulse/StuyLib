@@ -1,7 +1,9 @@
 package com.stuypulse.stuylib.math.stream.filter;
 
 import com.stuypulse.stuylib.math.stream.filter.StreamFilter;
+import java.util.Queue;
 import java.util.ArrayDeque;
+
 
 /**
  * Simple implementation of an Simple Moving Average
@@ -11,28 +13,26 @@ import java.util.ArrayDeque;
 
 public class MovingAverage implements StreamFilter {
 
-    private int mMaxSize; // Max Size of ArrayDeque
-    private ArrayDeque<Double> mValues; // Array of Values 
+    private int mSize; // Size of Queue
+    private double mTotal; // Sum of all the elements
+    private Queue<Double> mValues; // Queue of Values 
 
     /**
      * Make Simple Moving Average with Max Array Size
-     * @param maxSize max size of moving average
+     * @param size size of moving average
      */
-    public MovingAverage(int maxSize) {
-        mMaxSize = Math.max(maxSize, 1);
-        mValues = new ArrayDeque<Double>();
+    public MovingAverage(int size) {
+        mSize = Math.max(size, 1);
+
+        mTotal = 0.0;
+        mValues = new ArrayDeque<Double>(mSize);
     }
 
     /**
      * @return current value
      */
     public double get() {
-        // Check if array has any values
-        if(mValues.size() > 0) {
-            return mValues.getLast();
-        } else {
-            return 0.0;
-        }
+        return mTotal / mSize;
     }
 
     /**
@@ -40,22 +40,14 @@ public class MovingAverage implements StreamFilter {
      * @return next value
      */
     public double get(double next) {
+        // Remove old value
+        mTotal -= mValues.remove();
+
         // Add new value
-        mValues.addLast(next);
-
-        // Remove old values if size is too big
-        if(mValues.size() > mMaxSize) {
-            mValues.removeFirst();
-        }
-
-        // Get average of values in array
-        double average = 0.0;
-        for(double item : mValues) {
-            average += item;
-        }
-        average /= mValues.size();
+        mValues.add(next);
+        mTotal += next;
 
         // Return average
-        return average;
+        return get();
     }
 }

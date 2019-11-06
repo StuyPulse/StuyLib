@@ -10,7 +10,7 @@ import com.stuypulse.stuylib.math.stream.filter.StreamFilter;
  * 
  * @author Sam (sam.belliveau@gmail.com)
  */
-public class FilteredStream implements InputStream {
+public class FilteredInputStream implements InputStream {
 
     private InputStream mStream; // Stream used
     private StreamFilter mStreamFilter; // StreamFilter used
@@ -20,7 +20,7 @@ public class FilteredStream implements InputStream {
      * @param stream input stream
      * @param filter stream filter
      */
-    public FilteredStream(InputStream stream, StreamFilter filter) {
+    public FilteredInputStream(InputStream stream, StreamFilter filter) {
         mStream = stream;
         mStreamFilter = filter;
     }
