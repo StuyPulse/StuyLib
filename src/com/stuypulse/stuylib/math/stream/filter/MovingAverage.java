@@ -23,9 +23,8 @@ public class MovingAverage implements StreamFilter {
      */
     public MovingAverage(int size) {
         mSize = Math.max(size, 1);
-
-        mTotal = 0.0;
         mValues = new ArrayDeque<Double>(mSize);
+        mTotal = 0.0;
     }
 
     /**
