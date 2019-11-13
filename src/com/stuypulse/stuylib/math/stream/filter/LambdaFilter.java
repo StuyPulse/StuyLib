@@ -18,23 +18,15 @@ public class LambdaFilter implements StreamFilter {
         public double filter(double val);
     }
 
-    private double mLastValue; // Last value lambda returned
-    private Filter mFilter; // Filter for the lambda filter
+    // Filter for the lambda filter
+    private Filter mFilter; 
 
     /**
      * Makes a Lambda Filter using user supplied lambda
      * @param lambda lambda that takes in double and gives out double
      */
     public LambdaFilter(Filter lambda) {
-        mLastValue = 0;
         mFilter = lambda;
-    }
-
-    /**
-     * @return last value
-     */
-    public double get() {
-        return mLastValue;
     }
 
     /**
@@ -42,6 +34,6 @@ public class LambdaFilter implements StreamFilter {
      * @return modified value
      */
     public double get(double next) {
-        return mLastValue = mFilter.filter(next);
+        return mFilter.filter(next);
     }
 }

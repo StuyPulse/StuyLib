@@ -28,13 +28,6 @@ public class MovingAverage implements StreamFilter {
     }
 
     /**
-     * @return current value
-     */
-    public double get() {
-        return mTotal / mSize;
-    }
-
-    /**
      * @param next next value in stream
      * @return next value
      */
@@ -47,6 +40,6 @@ public class MovingAverage implements StreamFilter {
         mTotal += next;
 
         // Return average
-        return get();
+        return mTotal / mSize;
     }
 }

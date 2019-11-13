@@ -29,7 +29,7 @@ public class FilteredInputStream implements InputStream {
      * Get next value from filtered stream
      * @return next value
      */
-    public double next() {
-        return mStreamFilter.get(mStream.next());
+    public double get() {
+        return mStreamFilter.get(mStream.get());
     }
 }

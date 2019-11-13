@@ -26,18 +26,10 @@ public class WeightedMovingAverage implements StreamFilter {
     }
 
     /**
-     * @return current value
-     */
-    public double get() {
-        return mValue;
-    }
-
-    /**
      * @param next next value in stream
      * @return next value
      */
     public double get(double next) {
-        mValue += (next - mValue) / mWeight;
-        return get();
+        return mValue += (next - mValue) / mWeight;
     }
 }

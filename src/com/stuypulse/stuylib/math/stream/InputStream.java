@@ -12,5 +12,5 @@ public interface InputStream {
      * Get the next value in the stream
      * @return next value in the stream
      */
-    public double next();
+    public double get();
 }

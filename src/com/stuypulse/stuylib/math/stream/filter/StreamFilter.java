@@ -7,12 +7,6 @@ package com.stuypulse.stuylib.math.stream.filter;
  * @author Sam (sam.belliveau@gmail.com)
  */
 public interface StreamFilter {
-    
-    /**
-     * Get current value of the StreamModifier
-     * @return
-     */
-    double get();
 
     /**
      * Get next value in StreamModifier

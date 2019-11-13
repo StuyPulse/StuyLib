@@ -11,28 +11,16 @@ import com.stuypulse.stuylib.math.stream.filter.StreamFilter;
 
 public class DefaultFilter implements StreamFilter {
 
-    // Last value lambda returned
-    private double mLastValue;
-
     /**
      * Makes a DefaultFilter
      */
-    public DefaultFilter() {
-        mLastValue = 0;
-    }
-
-    /**
-     * @return last value
-     */
-    public double get() {
-        return mLastValue;
-    }
+    public DefaultFilter() { }
 
     /**
      * @param next value
      * @return value
      */
     public double get(double next) {
-        return mLastValue = next;
+        return next;
     }
 }

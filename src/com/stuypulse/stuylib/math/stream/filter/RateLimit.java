@@ -25,18 +25,10 @@ public class RateLimit implements StreamFilter {
     }
 
     /**
-     * @return current value
-     */
-    public double get() {
-        return mLastValue;
-    }
-
-    /**
      * @param next next value in stream
      * @return next value
      */
     public double get(double next) {
-        mLastValue += InputScaler.limit(next - mLastValue, mRateLimit);
-        return mLastValue;
+        return mLastValue += InputScaler.limit(next - mLastValue, mRateLimit);
     }
 }
