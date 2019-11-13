@@ -52,7 +52,7 @@ public final class NEOEncoder {
      */
     public double getPosition() {
         double currentPosition = mEncoder.getPosition();
-        mTotalDistanceMoved = currentPosition - mLastPosition;
+        mTotalDistanceMoved += currentPosition - mLastPosition;
         mLastPosition = currentPosition;
         return mTotalDistanceMoved;
     }
