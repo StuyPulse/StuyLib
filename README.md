@@ -10,7 +10,7 @@ changes that could just be added to the robot instead.
 
 ## Where to find the .jar files
 
-You shall find all the .jar files on the [release page](https://github.com/StuyPulse/StuyLib/releases).
+You can find all the .jar files on the [release page](https://github.com/StuyPulse/StuyLib/releases).
 
 ## Rules for Code Submission
 
@@ -30,10 +30,13 @@ along with an author tag that serves 2 purposes:
 
 ## Managers
 
+Current Lead Programmers
+
+ - [Sam Belliveau](https://github.com/Sam-Belliveau)
+
 Current StuyLib Managers
 
+ - [Winston Peng](https://github.com/CreativePenguin)
  - [Pratham Rawat](https://github.com/PrathamRawat)
  - [Renee Mui](https://github.com/rmui10)
- - [Sam Belliveau](https://github.com/Sam-Belliveau)
- - [Winston Peng](https://github.com/CreativePenguin)
 
