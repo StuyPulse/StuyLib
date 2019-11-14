@@ -1,4 +1,4 @@
-# StuyLib
+![](https://github.com/StuyPulse/StuyLib/raw/master/Pictures/StuyLib%20Banner.png)
 
 StuyLib is a collection of tools commonly and or uncommonly used in robot code.
 The point of this library is to have a standard library for these tools that are
