@@ -8,3 +8,8 @@ build/
 
 *.class
 *.jar
+
+!lib/
+!src/
+!pictures/
+!vendordeps/
