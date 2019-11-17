@@ -1,4 +1,4 @@
-package com.stuypulse.stuylib.math.stream;
+package com.stuypulse.stuylib.math.streams;
 
 /**
  * A stream of doubles that is accessed 
@@ -6,7 +6,7 @@ package com.stuypulse.stuylib.math.stream;
  * 
  * @author Sam (sam.belliveau@gmail.com)
  */
-public interface InputStream {
+public interface IStream {
 
     /**
      * Get the next value in the stream

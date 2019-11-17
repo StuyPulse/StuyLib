@@ -1,6 +1,6 @@
-package com.stuypulse.stuylib.math.stream.filter;
+package com.stuypulse.stuylib.math.streams.filters;
 
-import com.stuypulse.stuylib.math.stream.filter.StreamFilter;
+import com.stuypulse.stuylib.math.streams.filters.IStreamFilter;
 
 /**
  * This class lets you take a lambda button and turn it 
@@ -9,7 +9,7 @@ import com.stuypulse.stuylib.math.stream.filter.StreamFilter;
  * @author Sam (sam.belliveau@gmail.com)
  */
 
-public class LambdaFilter implements StreamFilter {
+public class LambdaFilter implements IStreamFilter {
 
     /**
      * Simple class lets us pass lambdas into filter

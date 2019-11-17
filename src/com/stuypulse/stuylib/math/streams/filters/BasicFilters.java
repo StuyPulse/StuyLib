@@ -1,4 +1,4 @@
-package com.stuypulse.stuylib.math.stream.filter;
+package com.stuypulse.stuylib.math.streams.filters;
 
 import com.stuypulse.stuylib.math.InputScaler;
 

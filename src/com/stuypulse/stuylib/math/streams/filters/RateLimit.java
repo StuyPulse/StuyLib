@@ -1,6 +1,6 @@
-package com.stuypulse.stuylib.math.stream.filter;
+package com.stuypulse.stuylib.math.streams.filters;
 
-import com.stuypulse.stuylib.math.stream.filter.StreamFilter;
+import com.stuypulse.stuylib.math.streams.filters.IStreamFilter;
 import com.stuypulse.stuylib.math.InputScaler;
 
 /**
@@ -9,7 +9,7 @@ import com.stuypulse.stuylib.math.InputScaler;
  * @author Sam (sam.belliveau@gmail.com)
  */
 
-public class RateLimit implements StreamFilter {
+public class RateLimit implements IStreamFilter {
 
     private double mLastValue; // Stores current value
     private double mRateLimit; // Stores max rate limit

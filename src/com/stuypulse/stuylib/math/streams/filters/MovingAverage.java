@@ -1,8 +1,8 @@
-package com.stuypulse.stuylib.math.stream.filter;
+package com.stuypulse.stuylib.math.streams.filters;
 
-import com.stuypulse.stuylib.math.stream.filter.StreamFilter;
+import com.stuypulse.stuylib.math.streams.filters.IStreamFilter;
 import java.util.Queue;
-import java.util.ArrayDeque;
+import java.util.LinkedList;
 
 
 /**
@@ -11,7 +11,7 @@ import java.util.ArrayDeque;
  * @author Sam (sam.belliveau@gmail.com)
  */
 
-public class MovingAverage implements StreamFilter {
+public class MovingAverage implements IStreamFilter {
 
     private int mSize; // Size of Queue
     private double mTotal; // Sum of all the elements
@@ -23,8 +23,12 @@ public class MovingAverage implements StreamFilter {
      */
     public MovingAverage(int size) {
         mSize = Math.max(size, 1);
-        mValues = new ArrayDeque<Double>(mSize);
+        mValues = new LinkedList<>();
         mTotal = 0.0;
+
+        while(mValues.size() < mSize) {
+            mValues.add(0.0);
+        }
     }
 
     /**

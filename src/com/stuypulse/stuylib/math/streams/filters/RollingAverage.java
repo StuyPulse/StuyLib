@@ -1,6 +1,6 @@
-package com.stuypulse.stuylib.math.stream.filter;
+package com.stuypulse.stuylib.math.streams.filters;
 
-import com.stuypulse.stuylib.math.stream.filter.StreamFilter;
+import com.stuypulse.stuylib.math.streams.filters.IStreamFilter;
 
 /**
  * Simple implementation of an Weighted Moving Average
@@ -8,7 +8,7 @@ import com.stuypulse.stuylib.math.stream.filter.StreamFilter;
  * @author Sam (sam.belliveau@gmail.com)
  */
 
-public class WeightedMovingAverage implements StreamFilter {
+public class RollingAverage implements IStreamFilter {
 
     private double mValue; // Current Value
     private double mWeight; // Weight
@@ -20,7 +20,7 @@ public class WeightedMovingAverage implements StreamFilter {
      * The higher the weight, the longer it takes to update
      * @param weight weight (greater than or equal to 1)
      */
-    public WeightedMovingAverage(double weight) {
+    public RollingAverage(double weight) {
         mValue = 0;
         mWeight = Math.max(1, weight);
     }

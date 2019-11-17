@@ -1,6 +1,6 @@
-package com.stuypulse.stuylib.math.stream.filter;
+package com.stuypulse.stuylib.math.streams.filters;
 
-import com.stuypulse.stuylib.math.stream.filter.StreamFilter;
+import com.stuypulse.stuylib.math.streams.filters.IStreamFilter;
 
 /**
  * A simple class that lets you combine multiple 
@@ -8,17 +8,17 @@ import com.stuypulse.stuylib.math.stream.filter.StreamFilter;
  * 
  * @author Sam (sam.belliveau@gmail.com)
  */
-public class StreamFilterGroup implements StreamFilter {
+public class IStreamFilterGroup implements IStreamFilter {
 
     // Array of all the filters
-    private Iterable<StreamFilter> mFilters; 
+    private Iterable<IStreamFilter> mFilters; 
 
     /**
      * Make FilterCombo out of an 
      * array of stream filters
      * @param filters array of filters to be combined
      */
-    public StreamFilterGroup(Iterable<StreamFilter> filters) {
+    public IStreamFilterGroup(Iterable<IStreamFilter> filters) {
         mFilters = filters;
     }
 
@@ -30,7 +30,7 @@ public class StreamFilterGroup implements StreamFilter {
     public double get(double next) {
         // Put mLastValue through each of the filters
         double value = next;
-        for(StreamFilter filter : mFilters) {
+        for(IStreamFilter filter : mFilters) {
             value = filter.get(value);
         }
 

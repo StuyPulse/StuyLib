@@ -1,6 +1,6 @@
-package com.stuypulse.stuylib.math.stream.filter;
+package com.stuypulse.stuylib.math.streams.filters;
 
-import com.stuypulse.stuylib.math.stream.filter.StreamFilter;
+import com.stuypulse.stuylib.math.streams.filters.IStreamFilter;
 
 /**
  * This Filter just returns the last value, it can be used 
@@ -9,7 +9,7 @@ import com.stuypulse.stuylib.math.stream.filter.StreamFilter;
  * @author Sam (sam.belliveau@gmail.com)
  */
 
-public class DefaultFilter implements StreamFilter {
+public class DefaultFilter implements IStreamFilter {
 
     /**
      * Makes a DefaultFilter

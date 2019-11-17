@@ -1,4 +1,4 @@
-package com.stuypulse.stuylib.math.stream.filter;
+package com.stuypulse.stuylib.math.streams.filters;
 
 /**
  * This lets us make sub-classes that change
@@ -6,7 +6,7 @@ package com.stuypulse.stuylib.math.stream.filter;
  * 
  * @author Sam (sam.belliveau@gmail.com)
  */
-public interface StreamFilter {
+public interface IStreamFilter {
 
     /**
      * Get next value in StreamModifier
