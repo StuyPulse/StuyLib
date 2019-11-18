@@ -90,7 +90,7 @@ public class BufferedIStream implements IStream {
      */
     public double last(int delta) {
         delta = Math.min(Math.max(delta, 0), mBuffer.size() - 1);
-        return mBuffer.get((mBuffer.size() - 1) - limitedDelta);
+        return mBuffer.get((mBuffer.size() - 1) - delta);
     }
 
     /**
