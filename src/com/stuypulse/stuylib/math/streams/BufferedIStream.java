@@ -89,7 +89,24 @@ public class BufferedIStream implements IStream {
      * @return the value of that spot in the buffer
      */
     public double last(int delta) {
-        return mBuffer.get((mBuffer.size() - 1) - delta);
+        int limitedDelta = Math.min(Math.max(delta, 0), mBuffer.size() - 1);
+        return mBuffer.get((mBuffer.size() - 1) - limitedDelta);
+    }
+
+    /**
+     * Get the size of the buffer
+     * @return size of the buffer
+     */
+    public int getSize() {
+        return mSize;
+    }
+
+    /**
+     * Set the size of the buffer
+     * @param size the new size for the buffer
+     */
+    public void setSize(int size) {
+        mSize = size;
     }
 }
 
