@@ -8,6 +8,7 @@ import com.revrobotics.CANEncoder;
  * while keeping distance traveled
  * 
  * @author Sam (sam.belliveau@gmail.com)
+ * @author Ivan (iwei20@stuy.edu)
  */
 
 public final class NEOEncoder {
