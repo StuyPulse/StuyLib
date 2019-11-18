@@ -23,7 +23,7 @@ public class NetKeyboard {
          * @param port virtual port number
          * @return network table name
          */
-        public static String getTabelName(int port) {
+        public static String getTableName(int port) {
             return ("NetworkKeyboard/port/" + Integer.toString(Math.abs(port)));
         }
 
@@ -49,7 +49,7 @@ public class NetKeyboard {
      * @param port virtual port number (unsure, use 0)
      */
     public NetKeyboard(int port) {
-        mKeyboardTable = NetworkTableWrapper.open(Constants.getTabelName(port));
+        mKeyboardTable = NetworkTableWrapper.open(Constants.getTableName(port));
     }
 
     /**
@@ -59,7 +59,7 @@ public class NetKeyboard {
      * @param port virtual port number (unsure, use 0)
      */
     public NetKeyboard(int team, int port) {
-        mKeyboardTable = NetworkTableWrapper.open(team, Constants.getTabelName(port));
+        mKeyboardTable = NetworkTableWrapper.open(team, Constants.getTableName(port));
     }
 
 
