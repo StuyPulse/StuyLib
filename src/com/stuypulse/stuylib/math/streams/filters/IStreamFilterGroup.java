@@ -2,8 +2,6 @@ package com.stuypulse.stuylib.math.streams.filters;
 
 import com.stuypulse.stuylib.math.streams.filters.IStreamFilter;
 
-import java.util.ArrayList;
-
 /**
  * A simple class that lets you combine multiple 
  * stream filters into one stream filter
@@ -13,7 +11,7 @@ import java.util.ArrayList;
 public class IStreamFilterGroup implements IStreamFilter {
 
     // Array of all the filters
-    private ArrayList<IStreamFilter> mFilters; 
+    private IStreamFilter[] mFilters; 
 
     /**
      * Make FilterGroup out of an 
@@ -21,11 +19,7 @@ public class IStreamFilterGroup implements IStreamFilter {
      * @param filters va_list of filters to be combined
      */
     public IStreamFilterGroup(IStreamFilter... filters) {
-        mFilters = new ArrayList<>();
-
-        for(IStreamFilter filter : filters) {
-            mFilters.add(filter);
-        }
+        mFilters = filters;
     }
 
     /**
