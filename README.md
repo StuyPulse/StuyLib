@@ -38,12 +38,12 @@ At the top of each class, give a breif description of the class, along with an a
 
 # Current Positions
 
-Current Lead Maintainer
+Current Lead Repository Maintainer
 
  - [Sam Belliveau](https://github.com/Sam-Belliveau)
 
 
-Current Lead Programmers
+Current Programmers
 
  - [Kevin Cai](https://github.com/Kevin16777126)
  - [Winston Peng](https://github.com/CreativePenguin)
