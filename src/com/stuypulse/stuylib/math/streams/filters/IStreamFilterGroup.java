@@ -28,7 +28,7 @@ public class IStreamFilterGroup implements IStreamFilter {
      * @return filtered value
      */
     public double get(double next) {
-        // Put mLastValue through each of the filters
+        // Put next through each of the filters
         for(IStreamFilter filter : mFilters) {
             next = filter.get(next);
         }

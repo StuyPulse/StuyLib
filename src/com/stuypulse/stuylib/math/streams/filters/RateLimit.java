@@ -1,7 +1,7 @@
 package com.stuypulse.stuylib.math.streams.filters;
 
 import com.stuypulse.stuylib.math.streams.filters.IStreamFilter;
-import com.stuypulse.stuylib.math.InputScaler;
+import com.stuypulse.stuylib.math.SLMath;
 
 /**
  * This class lets you rate limit a stream of inputs
@@ -29,6 +29,6 @@ public class RateLimit implements IStreamFilter {
      * @return next value
      */
     public double get(double next) {
-        return mLastValue += InputScaler.limit(next - mLastValue, mRateLimit);
+        return mLastValue += SLMath.limit(next - mLastValue, mRateLimit);
     }
 }

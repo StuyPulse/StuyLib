@@ -1,15 +1,20 @@
 package com.stuypulse.stuylib.math;
 
 /** 
- * The input scalar class is a class
- * that packages many different 
- * functions that can help with 
- * squaring inputs etc.
+ * SLMath (StuyLib Math) is a class containing many
+ * algorithms that are useful for developing robot
+ * code. Algorithms include limit, deadband, raising
+ * to powers while keeping the sign, and some other 
+ * new algorithms we came up with. 
  * 
  * @author Sam (sam.belliveau@gmail.com)
  */
 
-public class InputScaler {
+public class SLMath {
+    
+    /**************/
+    /*** LIMITS ***/
+    /**************/
 
     /**
      * Limit input from max to min
@@ -43,6 +48,10 @@ public class InputScaler {
         return limit(x, 1.0);
     }
 
+    
+    /**************************/
+    /*** DEADBAND ALGORIGHM ***/
+    /**************************/
 
     /**
      * Apply Deadband to value
@@ -55,9 +64,14 @@ public class InputScaler {
         else { return x; }
     }
 
+    
+    /*****************************************/
+    /*** RAISE TO POWER WHILE KEEPING SIGN ***/
+    /*****************************************/
 
     /**
-     * Square number
+     * [WARNING! THIS WILL KEEP THE SIGN OF THE INPUT NUMBER]
+     * Square number and keep sign
      * @param x input
      * @return square input
      */
@@ -77,6 +91,7 @@ public class InputScaler {
 
 
     /**
+     * [WARNING! THIS WILL KEEP THE SIGN OF THE INPUT NUMBER]
      * Raise input to power and keep sign
      * @param x input
      * @param power power to raise x to
@@ -86,6 +101,10 @@ public class InputScaler {
         return limit(Math.pow(Math.abs(x), power) * Math.signum(x));
     }
 
+
+    /**************************/
+    /*** CIRCULAR ALGORIGHM ***/
+    /**************************/
 
     /**
      * Use the shape of a circle with
