@@ -6,6 +6,9 @@ import com.stuypulse.stuylib.math.streams.filters.IStreamFilter;
  * This class lets you take a lambda button and turn it 
  * into a filter that can be used with StreamFilter
  * 
+ * This is kindof pointless as IStreamFilters could be
+ * a lambda, but this makes the BasicFilters class easy
+ * 
  * @author Sam (sam.belliveau@gmail.com)
  */
 
