@@ -2,7 +2,7 @@ package com.stuypulse.stuylib.math.streams;
 
 import com.stuypulse.stuylib.math.streams.IStream;
 
-import java.util.ArrayList;
+import edu.wpi.first.wpilibj.CircularBuffer;
 
 /**
  * This class allows you to use an input stream
@@ -23,10 +23,9 @@ public class BufferedIStream implements IStream {
 
     /**
      * Stores the number of elements in the stream buffer,
-     * and stores the last n values in an array list
+     * and stores the last n values in a circular buffer
      */
-    private int mSize;
-    private ArrayList<Double> mBuffer;
+    private CircularBuffer mBuffer;
 
     /**
      * The input stream that is buffered. This class
@@ -40,29 +39,20 @@ public class BufferedIStream implements IStream {
      * @param size size of buffer
      */
     public BufferedIStream(IStream istream, int size) {
-        mSize = size;
-        mBuffer = new ArrayList<Double>();
+        mBuffer = new CircularBuffer(size);
         mIStream = istream;
+
+        for(int i = 0; i < size; ++i) {
+            mBuffer.addFirst(0.0);
+        }
     }
 
     /**
      * Creates a buffered istream with default buffer size (kDefaultSize)
-     * @param istream istream that will be buffered
+     * @param istream istren array listam that will be buffered
      */
     public BufferedIStream(IStream istream) {
         this(istream, kDefaultSize);
-    }
-
-    /**
-     * Adds a double to the buffer while keeping its size under control
-     * @param value value to be added to buffer
-     */
-    private void addToBuffer(double value) {
-        mBuffer.add(value);
-
-        while(mBuffer.size() > mSize) {
-            mBuffer.remove(0);
-        }
     }
 
     /**
@@ -71,7 +61,7 @@ public class BufferedIStream implements IStream {
      */
     public double get() {
         double value = mIStream.get();
-        this.addToBuffer(value);
+        mBuffer.addFirst(value);
         return value;
     }
 
@@ -89,24 +79,7 @@ public class BufferedIStream implements IStream {
      * @return the value of that spot in the buffer
      */
     public double last(int delta) {
-        delta = Math.min(Math.max(delta, 0), mBuffer.size() - 1);
-        return mBuffer.get((mBuffer.size() - 1) - delta);
-    }
-
-    /**
-     * Get the size of the buffer
-     * @return size of the buffer
-     */
-    public int getSize() {
-        return mSize;
-    }
-
-    /**
-     * Set the size of the buffer
-     * @param size the new size for the buffer
-     */
-    public void setSize(int size) {
-        mSize = size;
+        return mBuffer.get(delta);
     }
 }
 
