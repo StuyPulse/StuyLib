@@ -14,7 +14,7 @@ public class TimedRateLimit implements IStreamFilter {
 
     /**
      * This is the default unit when no unit is provided.
-     * 1.0 was choosen as it is most common for motor input
+     * 1.0 was chosen as it is most common for motor input
      * to be givin on a scale of -1.0 <=> 1.0
      */
     public static final double kDefaultUnit = 1.0;
@@ -28,7 +28,7 @@ public class TimedRateLimit implements IStreamFilter {
     /**
      * Makes a timed rate limit with a specified amount of time. This time 
      * denotes how long it would take for the value to change by one unit.
-     * @param time time for value to change by one unit (miliseconds)
+     * @param time time for value to change by one unit (milliseconds)
      * @param unit the size of a unit in rate limit
      */
     public TimedRateLimit(long time, double unit) {
@@ -42,7 +42,7 @@ public class TimedRateLimit implements IStreamFilter {
     /**
      * Makes a timed rate limit with a specified amount of time. This time 
      * denotes how long it would take for the value to change by one unit. (1.0)
-     * @param time time for value to change by one unit (miliseconds)
+     * @param time time for value to change by one unit (milliseconds)
      */
     public TimedRateLimit(long time) {
         this(time, kDefaultUnit);

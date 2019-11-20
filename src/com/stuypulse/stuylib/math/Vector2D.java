@@ -24,7 +24,10 @@ public class Vector2D {
      * Initialize Vector2D using an array of 2 doubles
      * @param in an array of 2 numbers
      */
-    public Vector2D(double[] in) {
+    public Vector2D(double[] in) throws Exception {
+        if(in.length > 2){
+            throw(new Exception("Vector only accepts two values!"));
+        }
         this.x = in[0];
         this.y = in[1];
     }

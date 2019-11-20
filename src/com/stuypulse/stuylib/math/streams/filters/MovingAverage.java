@@ -19,10 +19,14 @@ public class MovingAverage implements IStreamFilter {
 
     /**
      * Make Simple Moving Average with Max Array Size
-     * @param size size of moving average
+     * @param size size of queue of values calculated for moving average
      */
-    public MovingAverage(int size) {
-        mSize = Math.max(size, 1);
+    public MovingAverage(int size) throws Exception {
+        if(size <= 0){
+            throw(new Exception("Size should not be 0 or less!"));
+        }
+
+        mSize = size;
         mValues = new LinkedList<>();
         mTotal = 0.0;
 

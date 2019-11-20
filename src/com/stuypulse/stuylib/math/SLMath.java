@@ -103,7 +103,7 @@ public class SLMath {
 
 
     /**************************/
-    /*** CIRCULAR ALGORIGHM ***/
+    /*** CIRCULAR ALGORITHM ***/
     /**************************/
 
     /**

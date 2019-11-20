@@ -9,22 +9,22 @@ import com.stuypulse.stuylib.math.Vector2D;
 public class BezierCurve {
 
     // Weighted sum of points
-    private static Vector2D average(Vector2D a, Vector2D b, double preportion) {
+    private static Vector2D average(Vector2D a, Vector2D b, double proportion) {
         Vector2D out = new Vector2D(0, 0);
-        out.x = a.x * preportion + b.x * (1.0 - preportion);
-        out.y = a.y * preportion + b.y * (1.0 - preportion);
+        out.x = a.x * proportion + b.x * (1.0 - proportion);
+        out.y = a.y * proportion + b.y * (1.0 - proportion);
         
         return out;
     }
 
     // Weighted sum of points, and then weighted sum of those points
-    private static Vector2D getPosition(Vector2D[] points, double preportion) {
+    private static Vector2D getPosition(Vector2D[] points, double proportion) {
         // Make copy to do calculations on
         Vector2D[] lines = points.clone();
         
         for(int max = points.length - 1; max > 0; --max)
             for(int i = 0; i < max; ++i)
-                lines[i] = average(lines[i], lines[i+1], preportion);
+                lines[i] = average(lines[i], lines[i+1], proportion);
 
         return lines[0];
     }

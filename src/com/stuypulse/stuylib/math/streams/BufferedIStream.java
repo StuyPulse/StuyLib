@@ -8,7 +8,7 @@ import java.util.ArrayList;
  * This class allows you to use an input stream
  * while recording the last N values from the stream
  * 
- * It extends from IStream, so it also workes with 
+ * It extends from IStream, so it also works with 
  * the existing IStream classes
  * 
  * @author Kevin (kc16777216@gmail.com)
@@ -30,7 +30,7 @@ public class BufferedIStream implements IStream {
 
     /**
      * The input stream that is buffered. This class
-     * is effectivly passed through get()
+     * is effectively passed through get()
      */
     private IStream mIStream;
     
