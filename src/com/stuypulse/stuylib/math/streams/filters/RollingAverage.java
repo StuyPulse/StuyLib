@@ -15,10 +15,10 @@ public class RollingAverage implements IStreamFilter {
     private double mWeight; // Weight
 
     /**
-     * Make an Exponential Moving Average
-     * If exp = 1, it will instantly update
-     * The weight must be greater than or equal to 1
-     * The higher the weight, the longer it takes to update
+     * Make an Exponential Moving Average If exp = 1, it will instantly update The
+     * weight must be greater than or equal to 1 The higher the weight, the longer
+     * it takes to update
+     * 
      * @param weight weight (greater than or equal to 1)
      */
     public RollingAverage(double weight) {

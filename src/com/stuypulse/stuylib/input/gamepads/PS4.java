@@ -1,9 +1,8 @@
 package com.stuypulse.stuylib.input.gamepads;
 
-import com.stuypulse.stuylib.input.Gamepad;
+import com.stuypulse.stuylib.input.gamepads.WPIGamepad;
 
 import edu.wpi.first.wpilibj.GenericHID;
-import edu.wpi.first.wpilibj.Joystick;
 
 /**
  * Implementation of the PS4 for the Gamepad Class
@@ -11,20 +10,15 @@ import edu.wpi.first.wpilibj.Joystick;
  * @author Sam (sam.belliveau@gmail.com)
  */
 
-public class PS4 extends Gamepad {
-    
+public class PS4 extends WPIGamepad {
+
     /********************/
     /*** CONSTRUCTORS ***/
     /********************/
-    public PS4(Joystick joy) {
-        super(joy);
-    }    
-
 
     public PS4(int port) {
         super(port);
     }
-
 
     /**********************/
     /*** CONTROL STICKS ***/
@@ -49,7 +43,6 @@ public class PS4 extends Gamepad {
         return -getRawAxis(5);
     }
 
-
     /**********************/
     /*** D-PAD CONTROLS ***/
     /**********************/
@@ -57,40 +50,37 @@ public class PS4 extends Gamepad {
     public boolean getRawDPadUp() {
         return getJoystick().getPOV() == 0;
     }
-    
+
     @Override
     public boolean getRawDPadDown() {
         return getJoystick().getPOV() == 180;
     }
-    
+
     @Override
     public boolean getRawDPadLeft() {
         return getJoystick().getPOV() == 270;
     }
-    
+
     @Override
     public boolean getRawDPadRight() {
         return getJoystick().getPOV() == 90;
     }
 
-
     /*******************/
     /*** LEFT BUMPER ***/
     /*******************/
     @Override
-    public boolean getRawLeftBumper() { 
-        return getRawButton(5); 
+    public boolean getRawLeftBumper() {
+        return getRawButton(5);
     }
-
 
     /********************/
     /*** RIGHT BUMPER ***/
     /********************/
     @Override
-    public boolean getRawRightBumper() { 
-        return getRawButton(6); 
+    public boolean getRawRightBumper() {
+        return getRawButton(6);
     }
-
 
     /********************/
     /*** LEFT TRIGGER ***/
@@ -100,7 +90,6 @@ public class PS4 extends Gamepad {
         return (getRawAxis(3) + 1.0) / 2.0;
     }
 
-
     /*********************/
     /*** RIGHT TRIGGER ***/
     /*********************/
@@ -108,7 +97,6 @@ public class PS4 extends Gamepad {
     public double getRawRightTriggerAxis() {
         return (getRawAxis(4) + 1.0) / 2.0;
     }
-
 
     /*******************/
     /*** LEFT BUTTON ***/
@@ -118,7 +106,6 @@ public class PS4 extends Gamepad {
         return getRawButton(1);
     }
 
-
     /********************/
     /*** RIGHT BUTTON ***/
     /********************/
@@ -126,7 +113,6 @@ public class PS4 extends Gamepad {
     public boolean getRawRightButton() {
         return getRawButton(3);
     }
-
 
     /******************/
     /*** TOP BUTTON ***/
@@ -136,7 +122,6 @@ public class PS4 extends Gamepad {
         return getRawButton(4);
     }
 
-
     /*********************/
     /*** BOTTOM BUTTON ***/
     /*********************/
@@ -144,7 +129,6 @@ public class PS4 extends Gamepad {
     public boolean getRawBottomButton() {
         return getRawButton(2);
     }
-
 
     /*********************/
     /*** SELECT BUTTON ***/
@@ -154,7 +138,6 @@ public class PS4 extends Gamepad {
         return getRawButton(9);
     }
 
-
     /********************/
     /*** START BUTTON ***/
     /********************/
@@ -162,7 +145,6 @@ public class PS4 extends Gamepad {
     public boolean getRawStartButton() {
         return getRawButton(10);
     }
-
 
     /**************************/
     /*** LEFT ANALOG BUTTON ***/
@@ -172,7 +154,6 @@ public class PS4 extends Gamepad {
         return getRawButton(11);
     }
 
-
     /***************************/
     /*** RIGHT ANALOG BUTTON ***/
     /***************************/
@@ -180,7 +161,6 @@ public class PS4 extends Gamepad {
     public boolean getRawRightAnalogButton() {
         return getRawButton(12);
     }
-
 
     /*********************/
     /*** OPTION BUTTON ***/
@@ -190,12 +170,11 @@ public class PS4 extends Gamepad {
         return getRawButton(10);
     }
 
-
     /**************/
     /*** RUMBLE ***/
     /**************/
     @Override
-    public void rumble(double intensity){
+    public void setRumble(double intensity) {
         getJoystick().setRumble(GenericHID.RumbleType.kLeftRumble, intensity);
         getJoystick().setRumble(GenericHID.RumbleType.kRightRumble, intensity);
     }

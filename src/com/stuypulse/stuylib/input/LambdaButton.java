@@ -3,16 +3,12 @@ package com.stuypulse.stuylib.input;
 import edu.wpi.first.wpilibj.buttons.Button;
 
 /**
- * This class lets you make a wpi button with
- * any function. This is useful as it removes
- * the need to create a seperate button class
- * for every special case.
+ * This class lets you make a wpi button with any function. This is useful as it
+ * removes the need to create a seperate button class for every special case.
  * 
- * To make a button, use:
- * new LambdaButton( [LAMBDA] );
+ * To make a button, use: new LambdaButton( [LAMBDA] );
  * 
- * This button will fire whenever Function()
- * returns true.
+ * This button will fire whenever Function() returns true.
  * 
  * @author Sam (sam.belliveau@gmail.com)
  */
@@ -27,21 +23,22 @@ public class LambdaButton extends Button {
     }
 
     /**
-     * what stores the functions that the button
-     * would call when get is calles
+     * what stores the functions that the button would call when get is calles
      */
     private ButtonCheck mButton;
 
     /**
-     * Initializes LambdaButton with a lambda that
-     * always returns false
+     * Initializes LambdaButton with a lambda that always returns false
      */
     public LambdaButton() {
-        this.mButton = () -> { return false; };
+        this.mButton = () -> {
+            return false;
+        };
     }
 
     /**
      * Gpves class lambda that will be used in get()
+     * 
      * @param lambda Boolean function used as button
      */
     public LambdaButton(ButtonCheck lambda) {
@@ -50,6 +47,7 @@ public class LambdaButton extends Button {
 
     /**
      * Gives class lambda that will be used in get()
+     * 
      * @param lambda Boolean function used as button
      */
     public void setButtonCheck(ButtonCheck lambda) {
@@ -58,6 +56,7 @@ public class LambdaButton extends Button {
 
     /**
      * Gets the lambda that the button uses
+     * 
      * @return the lambda
      */
     public ButtonCheck getButtonCheck() {
@@ -66,6 +65,7 @@ public class LambdaButton extends Button {
 
     /**
      * Override get funciton to make it work like a button
+     * 
      * @return boolean that the lambda returns
      */
     @Override

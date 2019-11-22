@@ -1,8 +1,7 @@
 package com.stuypulse.stuylib.file.csv;
 
 /**
- * Contains all the information needed
- * for each of the csv files to work.
+ * Contains all the information needed for each of the csv files to work.
  * 
  * Mainly contains the delimiter for each class
  */
@@ -11,7 +10,7 @@ public enum CSVType {
 
     DEFAULT(","), EXCEL(","), MYSQL("\t"), TCSV(",\t");
 
-    // Stores Seperator for CSV 
+    // Stores Seperator for CSV
     private String mDelimiter;
 
     // Constructor that sets the Delimiter

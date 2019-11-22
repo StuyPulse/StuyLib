@@ -9,12 +9,11 @@ import edu.wpi.first.networktables.NetworkTableEntry;
 import edu.wpi.first.networktables.NetworkTableInstance;
 
 /**
- * The NetworkTableWrapper is a very fast way
- * to easily interface with a network table.
+ * The NetworkTableWrapper is a very fast way to easily interface with a network
+ * table.
  * 
- * If a function you want is not implemented,
- * use getTable(), getRawEntry(), or getInstance()
- * to call the function yourself
+ * If a function you want is not implemented, use getTable(), getRawEntry(), or
+ * getInstance() to call the function yourself
  * 
  * @author Sam (sam.belliveau@gmail.com)
  */
@@ -26,9 +25,9 @@ public class NetworkTableWrapper {
     /*********************/
 
     /**
-     * Opens network table on local device.
-     * IE a robot opens a network table for 
+     * Opens network table on local device. IE a robot opens a network table for
      * other devices to connect to
+     * 
      * @param table network table name
      * @return Configured Network Table Wrapper
      */
@@ -37,9 +36,10 @@ public class NetworkTableWrapper {
     }
 
     /**
-     * Opens network table that is connected to
-     * a robot. IE a program connecting to a robot.
-     * @param team team number
+     * Opens network table that is connected to a robot. IE a program connecting to
+     * a robot.
+     * 
+     * @param team  team number
      * @param table network table name
      * @return Configured Network Table Wrapper
      */
@@ -51,8 +51,9 @@ public class NetworkTableWrapper {
 
     /**
      * Opens network table with special instance.
+     * 
      * @param instance NetworkTableInstance
-     * @param table network table name
+     * @param table    network table name
      * @return Configured Network Table Wrapper
      */
     public static NetworkTableWrapper open(NetworkTableInstance instance, String table) {
@@ -62,7 +63,7 @@ public class NetworkTableWrapper {
     /*********************/
     /***** VARIABLES *****/
     /*********************/
-
+    
     private NetworkTableInstance mInstance; // Instance contains IP/Related information
     private NetworkTable mTable; // Current Data Table
     private String mTableName = ""; // Name of Data Table
@@ -72,11 +73,11 @@ public class NetworkTableWrapper {
     /************************/
 
     /**
-     * Creates a Network Table Wrapper opened on
-     * table "tableName", and with the a special
-     * NetworkTableInstance (ie. if you are making a client)
+     * Creates a Network Table Wrapper opened on table "tableName", and with the a
+     * special NetworkTableInstance (ie. if you are making a client)
+     * 
      * @param tableName network table name
-     * @param instance custom network table instance
+     * @param instance  custom network table instance
      */
     private NetworkTableWrapper(NetworkTableInstance instance, String table) {
         mInstance = instance;
@@ -90,6 +91,7 @@ public class NetworkTableWrapper {
 
     /**
      * Gets current network table instance
+     * 
      * @return current network table instance
      */
     public NetworkTableInstance getInstance() {
@@ -98,6 +100,7 @@ public class NetworkTableWrapper {
 
     /**
      * Gets current network table
+     * 
      * @return current network table
      */
     public NetworkTable getTable() {
@@ -106,6 +109,7 @@ public class NetworkTableWrapper {
 
     /**
      * Gets current network table name
+     * 
      * @return current network table name
      */
     public String getTableName() {
@@ -118,6 +122,7 @@ public class NetworkTableWrapper {
 
     /**
      * Checks if network table is connected
+     * 
      * @return if network table is connected
      */
     public boolean isConnected() {
@@ -126,6 +131,7 @@ public class NetworkTableWrapper {
 
     /**
      * Gets a set of all key names in network table
+     * 
      * @return set of key names in network table
      */
     public Set<String> getKeys() {
@@ -134,7 +140,8 @@ public class NetworkTableWrapper {
 
     /**
      * Get a NetworkTableEntry for a key
-     * @param key key name 
+     * 
+     * @param key key name
      * @return NetworkTableEntry for key
      */
     public NetworkTableEntry getRawEntry(String key) {
@@ -143,6 +150,7 @@ public class NetworkTableWrapper {
 
     /**
      * Checks if key is a valid entry
+     * 
      * @param key key name
      * @return if key is a valid entry
      */
@@ -152,13 +160,13 @@ public class NetworkTableWrapper {
 
     /**
      * Ckecks to see if network table contains key
+     * 
      * @param key key name
      * @return if network table contains key
      */
     public boolean containsKey(String key) {
         return mTable.containsKey(key);
     }
-
 
     /****************************************/
     /***** GETTING NETWORK TABLE VALUES *****/
@@ -171,6 +179,7 @@ public class NetworkTableWrapper {
 
     /**
      * Get boolean from network table
+     * 
      * @param key key name
      * @return value
      */
@@ -185,6 +194,7 @@ public class NetworkTableWrapper {
 
     /**
      * Get Double from network table
+     * 
      * @param key key name
      * @return value
      */
@@ -199,6 +209,7 @@ public class NetworkTableWrapper {
 
     /**
      * Get Number from network table
+     * 
      * @param key key name
      * @return value
      */
@@ -213,6 +224,7 @@ public class NetworkTableWrapper {
 
     /**
      * Get String from network table
+     * 
      * @param key key name
      * @return value
      */
@@ -220,14 +232,14 @@ public class NetworkTableWrapper {
         return getRawEntry(key).getString(DEFAULT_STRING);
     }
 
-
     /****************************************/
     /***** SETTING NETWORK TABLE VALUES *****/
     /****************************************/
 
     /**
      * Set boolean in network table
-     * @param key key name 
+     * 
+     * @param key   key name
      * @param value desired value
      * @return returns false if entry exists with other type
      */
@@ -237,7 +249,8 @@ public class NetworkTableWrapper {
 
     /**
      * Set double in network table
-     * @param key key name 
+     * 
+     * @param key   key name
      * @param value desired value
      * @return returns false if entry exists with other type
      */
@@ -247,7 +260,8 @@ public class NetworkTableWrapper {
 
     /**
      * Set Number in network table
-     * @param key key name 
+     * 
+     * @param key   key name
      * @param value desired value
      * @return returns false if entry exists with other type
      */
@@ -257,7 +271,8 @@ public class NetworkTableWrapper {
 
     /**
      * Set String in network table
-     * @param key key name 
+     * 
+     * @param key   key name
      * @param value desired value
      * @return returns false if entry exists with other type
      */

@@ -4,8 +4,8 @@ import com.stuypulse.stuylib.math.streams.filters.IStreamFilter;
 import com.stuypulse.stuylib.math.SLMath;
 
 /**
- * This class lets you rate limit a stream of inputs
- * where the values are limited based on time passed
+ * This class lets you rate limit a stream of inputs where the values are
+ * limited based on time passed
  * 
  * @author Sam (sam.belliveau@gmail.com)
  */
@@ -13,9 +13,8 @@ import com.stuypulse.stuylib.math.SLMath;
 public class TimedRateLimit implements IStreamFilter {
 
     /**
-     * This is the default unit when no unit is provided.
-     * 1.0 was choosen as it is most common for motor input
-     * to be givin on a scale of -1.0 <=> 1.0
+     * This is the default unit when no unit is provided. 1.0 was choosen as it is
+     * most common for motor input to be givin on a scale of -1.0 <=> 1.0
      */
     public static final double kDefaultUnit = 1.0;
 
@@ -26,8 +25,9 @@ public class TimedRateLimit implements IStreamFilter {
     private long mLastTime; // Stores last time in nanoseconds
 
     /**
-     * Makes a timed rate limit with a specified amount of time. This time 
-     * denotes how long it would take for the value to change by one unit.
+     * Makes a timed rate limit with a specified amount of time. This time denotes
+     * how long it would take for the value to change by one unit.
+     * 
      * @param time time for value to change by one unit (miliseconds)
      * @param unit the size of a unit in rate limit
      */
@@ -35,13 +35,14 @@ public class TimedRateLimit implements IStreamFilter {
         mLastValue = 0;
         mLastTime = System.currentTimeMillis();
 
-        mTimePerUnit = time; 
-        mUnit = unit; 
+        mTimePerUnit = time;
+        mUnit = unit;
     }
 
     /**
-     * Makes a timed rate limit with a specified amount of time. This time 
-     * denotes how long it would take for the value to change by one unit. (1.0)
+     * Makes a timed rate limit with a specified amount of time. This time denotes
+     * how long it would take for the value to change by one unit. (1.0)
+     * 
      * @param time time for value to change by one unit (miliseconds)
      */
     public TimedRateLimit(long time) {
@@ -49,8 +50,9 @@ public class TimedRateLimit implements IStreamFilter {
     }
 
     /**
-     * Get the max amount that the filter will change 
-     * based on the time since last call
+     * Get the max amount that the filter will change based on the time since last
+     * call
+     * 
      * @return
      */
     private double getLimit() {

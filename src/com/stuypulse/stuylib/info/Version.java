@@ -1,8 +1,7 @@
 package com.stuypulse.stuylib.info;
 
 /**
- * This class holds version information
- * that can be printed and comparted
+ * This class holds version information that can be printed and comparted
  * 
  * @author Sam (sam.belliveau@gmail.com)
  */
@@ -13,9 +12,10 @@ public class Version implements Comparable<Version> {
     private int mMajor;
     private int mMinor;
     private int mPatch;
-    
+
     /**
      * Initalize Version with all parameters
+     * 
      * @param major major value
      * @param minor minor value
      * @param patch patch value
@@ -28,6 +28,7 @@ public class Version implements Comparable<Version> {
 
     /**
      * Initalize Version with all parameters but patch
+     * 
      * @param major major value
      * @param minor minor value
      */
@@ -39,6 +40,7 @@ public class Version implements Comparable<Version> {
 
     /**
      * Get Major Value
+     * 
      * @return major value
      */
     public final int getMajor() {
@@ -47,6 +49,7 @@ public class Version implements Comparable<Version> {
 
     /**
      * Get Minor Value
+     * 
      * @return minor value
      */
     public final int getMinor() {
@@ -55,6 +58,7 @@ public class Version implements Comparable<Version> {
 
     /**
      * Get Patch Value
+     * 
      * @return patch value
      */
     public final int getPatch() {
@@ -66,21 +70,29 @@ public class Version implements Comparable<Version> {
      */
     public final String toString() {
         String out = "";
-        if(mMajor >= 0) out += "v" + Math.max(0, mMajor);
-        if(mMinor >= 0) out += "." + Math.max(0, mMinor);
-        if(mPatch >= 0) out += "." + Math.max(0, mPatch);
+        if (mMajor >= 0)
+            out += "v" + Math.max(0, mMajor);
+        if (mMinor >= 0)
+            out += "." + Math.max(0, mMinor);
+        if (mPatch >= 0)
+            out += "." + Math.max(0, mPatch);
         return out;
     }
 
     /**
      * Compare two integers for compare two
+     * 
      * @param a first int
      * @param b second int
      * @return result
      */
     private final int compareInts(int a, int b) {
-        if(Math.max(0, a) < Math.max(0, b)) { return -1; }
-        if(Math.max(0, a) > Math.max(0, b)) { return  1; }
+        if (Math.max(0, a) < Math.max(0, b)) {
+            return -1;
+        }
+        if (Math.max(0, a) > Math.max(0, b)) {
+            return 1;
+        }
         return 0;
     }
 
@@ -89,9 +101,12 @@ public class Version implements Comparable<Version> {
      */
     public final int compareTo(Version other) {
         int result = 0;
-        if(mMajor >= 0) result += 4 * compareInts(this.getMajor(), other.getMajor());
-        if(mMinor >= 0) result += 2 * compareInts(this.getMinor(), other.getMinor());
-        if(mPatch >= 0) result += 1 * compareInts(this.getPatch(), other.getPatch());
+        if (mMajor >= 0)
+            result += 4 * compareInts(this.getMajor(), other.getMajor());
+        if (mMinor >= 0)
+            result += 2 * compareInts(this.getMinor(), other.getMinor());
+        if (mPatch >= 0)
+            result += 1 * compareInts(this.getPatch(), other.getPatch());
         return result;
     }
 

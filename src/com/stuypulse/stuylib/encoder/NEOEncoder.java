@@ -3,16 +3,15 @@ package com.stuypulse.stuylib.encoder;
 import com.revrobotics.CANEncoder;
 
 /**
- * A NEOEncoder class that lets you discard 
- * movement in the event of a gear switch, 
- * while keeping distance traveled
+ * A NEOEncoder class that lets you discard movement in the event of a gear
+ * switch, while keeping distance traveled
  * 
  * @author Sam (sam.belliveau@gmail.com)
  * @author Ivan (iwei20@stuy.edu)
  */
 
 public final class NEOEncoder {
-    
+
     // Store distance traveled
     private double mTotalDistanceMoved;
 
@@ -39,9 +38,9 @@ public final class NEOEncoder {
     }
 
     /**
-     * Put encoder in the same state as the last getPosition call.
-     * This will let you ignore errors that come up when shifting gears,
-     * but still get total distance moved
+     * Put encoder in the same state as the last getPosition call. This will let you
+     * ignore errors that come up when shifting gears, but still get total distance
+     * moved
      */
     public void disgard() {
         mLastPosition = mEncoder.getPosition();
@@ -49,6 +48,7 @@ public final class NEOEncoder {
 
     /**
      * Update the encoder state and get position
+     * 
      * @return Total distance moved
      */
     public double getPosition() {

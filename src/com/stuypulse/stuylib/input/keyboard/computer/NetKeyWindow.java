@@ -12,11 +12,8 @@ import javax.swing.JFrame;
 import javax.swing.JPanel;
 
 /**
- * This is a simple class that
- * opens a Java AWT window, which
- * has a KeyListener that uploads
- * keyboard information to a 
- * network table
+ * This is a simple class that opens a Java AWT window, which has a KeyListener
+ * that uploads keyboard information to a network table
  * 
  * @author Sam (sam.belliveau@gmail.com)
  */
@@ -46,17 +43,17 @@ public class NetKeyWindow extends JFrame {
             try {
                 String teamNum = JOptionPane.showInputDialog("Enter Team Number:");
                 team = Integer.parseInt(teamNum);
-            } catch(Exception e) {
+            } catch (Exception e) {
                 team = -1;
             }
-        } while(team < 0);
+        } while (team < 0);
 
         // Get keyboard port from user
         int port = 0;
         try {
             String keyboardPort = JOptionPane.showInputDialog("Enter Virtual Keyboard Port (Default=0):");
             port = Integer.parseInt(keyboardPort);
-        } catch(Exception e) { 
+        } catch (Exception e) {
             port = 0;
         }
 

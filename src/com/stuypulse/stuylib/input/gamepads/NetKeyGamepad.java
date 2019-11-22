@@ -7,9 +7,7 @@ import com.stuypulse.stuylib.input.LambdaButton;
 import edu.wpi.first.wpilibj.buttons.Button;
 
 /**
- * This class takes data from a 
- * Network Keyboard and puts it
- * into a gamepad
+ * This class takes data from a Network Keyboard and puts it into a gamepad
  * 
  * @author Sam (sam.belliveau@gmail.com)
  */
@@ -23,15 +21,16 @@ public class NetKeyGamepad extends Gamepad {
 
     /**
      * Opens Network Keyboard Gamepad
+     * 
      * @param port virtual port
      */
     public NetKeyGamepad(int port) {
-        super();
         mKeyboard = new NetKeyboard(port);
     }
 
     /**
      * Get key name as WPI Button
+     * 
      * @param key key name
      * @return WPI Button
      */
@@ -41,6 +40,7 @@ public class NetKeyGamepad extends Gamepad {
 
     /**
      * Get boolean for if key is pressed
+     * 
      * @param key key name
      * @return if key is pressed
      */
@@ -53,26 +53,22 @@ public class NetKeyGamepad extends Gamepad {
     /**********************/
     @Override
     public double getLeftX() {
-        return (getRawKey("d") ?  1 : 0) +
-               (getRawKey("a") ? -1 : 0);
+        return (getRawKey("d") ? 1 : 0) + (getRawKey("a") ? -1 : 0);
     }
 
     @Override
     public double getLeftY() {
-        return (getRawKey("w") ?  1 : 0) +
-               (getRawKey("s") ? -1 : 0);
+        return (getRawKey("w") ? 1 : 0) + (getRawKey("s") ? -1 : 0);
     }
 
     @Override
     public double getRightX() {
-        return (getRawKey("l") ?  1 : 0) +
-               (getRawKey("j") ? -1 : 0);
+        return (getRawKey("l") ? 1 : 0) + (getRawKey("j") ? -1 : 0);
     }
 
     @Override
     public double getRightY() {
-        return (getRawKey("i") ?  1 : 0) +
-               (getRawKey("k") ? -1 : 0);
+        return (getRawKey("i") ? 1 : 0) + (getRawKey("k") ? -1 : 0);
     }
 
     /**********************/
@@ -82,17 +78,17 @@ public class NetKeyGamepad extends Gamepad {
     public boolean getRawDPadUp() {
         return getRawKey("up");
     }
-    
+
     @Override
     public boolean getRawDPadDown() {
         return getRawKey("down");
     }
-    
+
     @Override
     public boolean getRawDPadLeft() {
         return getRawKey("left");
     }
-    
+
     @Override
     public boolean getRawDPadRight() {
         return getRawKey("right");

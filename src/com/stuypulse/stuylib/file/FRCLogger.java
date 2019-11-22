@@ -5,9 +5,8 @@ import java.util.logging.SimpleFormatter;
 import java.util.logging.FileHandler;
 import java.util.logging.Logger;
 
-/** 
- * A class that will let you log any class
- * that implements loggable.
+/**
+ * A class that will let you log any class that implements loggable.
  * 
  * @author Sam (sam.belliveau@gmail.com)
  */
@@ -15,9 +14,8 @@ import java.util.logging.Logger;
 public class FRCLogger {
 
     /**
-     * Implementable interface with getLog() function.
-     * This lets us pass in subsystems that implement
-     * loggable to our logger in a very easy way.
+     * Implementable interface with getLog() function. This lets us pass in
+     * subsystems that implement loggable to our logger in a very easy way.
      */
     public interface Loggable {
         public String getLog();
@@ -28,6 +26,7 @@ public class FRCLogger {
 
     /**
      * Open FRCLogger
+     * 
      * @param file file name
      */
     FRCLogger(String file) {
@@ -35,7 +34,7 @@ public class FRCLogger {
 
         try {
             mFileHandler = new FileHandler("./Logs/" + file + ".log");
-        } catch(Exception e) {
+        } catch (Exception e) {
             e.printStackTrace();
         }
 
@@ -45,17 +44,16 @@ public class FRCLogger {
 
     /**
      * Log Loggable Class
+     * 
      * @param in Loggable Class
      */
     public void log(Loggable in) {
-        mLogger.info(
-            in.getClass().getName().toUpperCase() + ":\n" + 
-            in.getLog()
-        );
+        mLogger.info(in.getClass().getName().toUpperCase() + ":\n" + in.getLog());
     }
 
     /**
      * Log String as Info
+     * 
      * @param info the information
      */
     public void logInfo(String info) {
@@ -64,6 +62,7 @@ public class FRCLogger {
 
     /**
      * Log String as Error
+     * 
      * @param error the error
      */
     public void logError(String error) {

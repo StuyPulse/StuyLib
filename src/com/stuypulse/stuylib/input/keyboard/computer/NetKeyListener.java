@@ -6,18 +6,16 @@ import java.awt.event.KeyAdapter;
 import java.awt.event.KeyEvent;
 
 /**
- * A KeyListener that uploads all of the
- * key strokes to a network table where
- * they can then be recieved and put into
- * the robot
+ * A KeyListener that uploads all of the key strokes to a network table where
+ * they can then be recieved and put into the robot
  * 
- * This would not be used on the robot,
- * but should be used on the users computer
+ * This would not be used on the robot, but should be used on the users computer
  * 
  * Make an AWT window to use this listener
  * 
  * @author Sam (sam.belliveau@gmail.com)
  */
+
 public class NetKeyListener extends KeyAdapter {
 
     /**
@@ -27,6 +25,7 @@ public class NetKeyListener extends KeyAdapter {
 
     /**
      * Initialize Network Keyboard Listener
+     * 
      * @param team team number of robot
      * @param port virtual keyboard port
      */
@@ -34,27 +33,27 @@ public class NetKeyListener extends KeyAdapter {
         mNetKeyboard = new NetKeyboard(team, port);
     }
 
-    
     /**
      * Returns underlying NetKeyboard class
+     * 
      * @return underlying NetKeyboard class
      */
     public NetKeyboard getNetKeyboard() {
         return mNetKeyboard;
     }
 
-
     /**
      * Checks if network table is connected
+     * 
      * @return if network table is connected
      */
     public boolean isConnected() {
         return mNetKeyboard.isConnected();
     }
 
-
     /**
      * Adds Key from Key Event to State
+     * 
      * @param e Key Event
      */
     public void keyPressed(KeyEvent e) {
@@ -63,6 +62,7 @@ public class NetKeyListener extends KeyAdapter {
 
     /**
      * Removes Key from Key Event to State
+     * 
      * @param e Key Event
      */
     public void keyReleased(KeyEvent e) {

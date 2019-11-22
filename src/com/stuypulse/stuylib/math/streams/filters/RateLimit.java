@@ -15,8 +15,8 @@ public class RateLimit implements IStreamFilter {
     private double mRateLimit; // Stores max rate limit
 
     /**
-     * Makes a new rate limiter with 
-     * specified rate limit
+     * Makes a new rate limiter with specified rate limit
+     * 
      * @param rateLimit desired rate limit
      */
     public RateLimit(double rateLimit) {

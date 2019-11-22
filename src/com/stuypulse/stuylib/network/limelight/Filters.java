@@ -5,14 +5,14 @@ import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import com.stuypulse.stuylib.network.limelight.Limelight;
 
 /**
- * Do bluebox filtering here until limelight updates their code.
- * Just call hasValidTarget() to filter out errors
+ * Do bluebox filtering here until limelight updates their code. Just call
+ * hasValidTarget() to filter out errors
  * 
  * @author Kevin (k1029384756c@gmail.com)
  */
 
 class Filters {
-    
+
     // Toggle for posting to SmartDashboard
     public static boolean POST_TO_SMART_DASHBOARD = true;
 
@@ -23,36 +23,35 @@ class Filters {
      * @param angleThreshold        maximum skew the target can have
      * @return Whether or not the limelight has a target in view
      */
-    public static boolean hasValidTarget(
-            double targetHeightThreshold, 
-            double minRatio, double maxRatio,
+    public static boolean hasValidTarget(double targetHeightThreshold, double minRatio, double maxRatio,
             double angleThreshold) {
         return hasAnyTarget() 
              & hasValidHeight(targetHeightThreshold) 
              & hasValidBlueAspectRatio(minRatio, maxRatio)
              & hasValidBlueOrientation(angleThreshold);
     }
-    
+
     // Not final incase user wants
     // to change them at runtime
     public static double DEFAULT_TARGET_HEIGHT_THRESHOLD = 6;
     public static double DEFAULT_MIN_ASPECT_RATIO = 1.2;
     public static double DEFAULT_MAX_ASPECT_RATIO = 3.3;
     public static double DEFAULT_ANGLE_THRESHOLD = 25;
-    
+
     /**
      * @return Whether or not the limelight has a target in view
      */
     public static boolean hasValidTarget() {
-        return hasValidTarget(
-            DEFAULT_TARGET_HEIGHT_THRESHOLD, 
-            DEFAULT_MIN_ASPECT_RATIO, 
-            DEFAULT_MAX_ASPECT_RATIO,
-            DEFAULT_ANGLE_THRESHOLD);
+        return hasValidTarget( 
+                DEFAULT_TARGET_HEIGHT_THRESHOLD, 
+                DEFAULT_MIN_ASPECT_RATIO, 
+                DEFAULT_MAX_ASPECT_RATIO,
+                DEFAULT_ANGLE_THRESHOLD);
     }
 
     /**
      * Decides if a target shows up on limelight screen
+     * 
      * @return If it has any target
      */
     public static boolean hasAnyTarget() {
