@@ -75,9 +75,7 @@ public class WPIGamepad extends Gamepad {
      * @return the value of the button
      */
     public final boolean getRawButton(int button) {
-        if (!hasJoystick()) {
-            return false;
-        }
+        if (!hasJoystick()) { return false; }
         return getJoystick().getRawButton(button);
     }
 
@@ -98,9 +96,7 @@ public class WPIGamepad extends Gamepad {
      * @return the value of the axis
      */
     public final double getRawAxis(int axis) {
-        if (!hasJoystick()) {
-            return 0.0;
-        }
+        if (!hasJoystick()) { return 0.0; }
         return getJoystick().getRawAxis(axis);
     }
 }
