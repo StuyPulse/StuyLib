@@ -22,9 +22,9 @@ import com.stuypulse.stuylib.input.LambdaButton;
 
 public class Gamepad {
 
-    /*****************/
-    /*** FUNCTIONS ***/
-    /*****************/
+    /*******************************/
+    /*** IMPLEMENTABLE FUNCTIONS ***/
+    /*******************************/
 
     // Left Stick //
     public double getLeftX()    { return 0.0; }
@@ -67,9 +67,9 @@ public class Gamepad {
     public void setRumble(double intensity)     { return; }
 
     
-    /***********************************************/
-    /*** BUTTONS BASED OFF OF FUNCTIONS ***/
-    /***********************************************/
+    /**************************************************/
+    /*** BUTTONS BASED OFF OF IMPLEMENTED FUNCTIONS ***/
+    /**************************************************/
 
     // D-Pad //
     public final LambdaButton getDPadUp()       { return new LambdaButton(() -> this.getRawDPadUp()); }
