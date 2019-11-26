@@ -1,6 +1,7 @@
 package com.stuypulse.stuylib.input;
 
 import com.stuypulse.stuylib.input.LambdaButton;
+import com.stuypulse.stuylib.math.streams.IStream;
 
 /**
  * An class for using gamepads with different interfaces. You can
@@ -71,6 +72,14 @@ public class Gamepad {
     /*** BUTTONS BASED OFF OF IMPLEMENTED FUNCTIONS ***/
     /**************************************************/
 
+    // Left Stick //
+    public final IStream getLeftXStream()   { return () -> getLeftX(); }
+    public final IStream getLeftYStream()   { return () -> getLeftY(); }
+
+    // Right Stick //
+    public final IStream getRightXStream()  { return () -> getRightX(); }
+    public final IStream getRightYStream()  { return () -> getRightY(); }
+
     // D-Pad //
     public final LambdaButton getDPadUp()       { return new LambdaButton(() -> this.getRawDPadUp()); }
     public final LambdaButton getDPadDown()     { return new LambdaButton(() -> this.getRawDPadDown()); }
@@ -89,6 +98,9 @@ public class Gamepad {
 
     public final boolean getRawRightTrigger()   { return getRawRightTriggerAxis() > TRIGGER_AXIS_THRESHOLD; }
     public final LambdaButton getRightTrigger() { return new LambdaButton(() -> this.getRawRightTrigger()); }
+
+    public final IStream getLeftTriggerStream()  { return () -> getRawLeftTriggerAxis(); }
+    public final IStream getRightTriggerStream()  { return () -> getRawRightTriggerAxis(); }
 
     // Face Buttons // 
     public final LambdaButton getLeftButton()   { return new LambdaButton(() -> this.getRawLeftButton()); }
