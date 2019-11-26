@@ -1,4 +1,4 @@
-package com.stuypulse.stuylib.input.gamepads;
+package com.stuypulse.stuylib.input;
 
 import com.stuypulse.stuylib.input.Gamepad;
 import com.stuypulse.stuylib.input.LambdaButton;

@@ -3,7 +3,7 @@ package com.stuypulse.stuylib.input;
 import com.stuypulse.stuylib.input.LambdaButton;
 
 /**
- * An abstract class for using gamepads with different interfaces. You can
+ * An class for using gamepads with different interfaces. You can
  * implement this class in another file, and then use it with a standard
  * interface.
  * 
@@ -22,222 +22,86 @@ import com.stuypulse.stuylib.input.LambdaButton;
 
 public class Gamepad {
 
-    /**************************/
-    /*** LEFT CONTROL STICK ***/
-    /**************************/
-    public double getLeftX() {
-        return 0.0;
-    }
+    /*****************/
+    /*** FUNCTIONS ***/
+    /*****************/
 
-    public double getLeftY() {
-        return 0.0;
-    }
+    // Left Stick //
+    public double getLeftX()    { return 0.0; }
+    public double getLeftY()    { return 0.0; }
 
-    /***************************/
-    /*** RIGHT CONTROL STICK ***/
-    /***************************/
-    public double getRightX() {
-        return 0.0;
-    }
+    // Right Stick //
+    public double getRightX()   { return 0.0; }
+    public double getRightY()   { return 0.0; }
 
-    public double getRightY() {
-        return 0.0;
-    }
+    // D-Pad //
+    public boolean getRawDPadUp()   { return false; }
+    public boolean getRawDPadDown()     { return false; }
+    public boolean getRawDPadLeft()     { return false; }
+    public boolean getRawDPadRight()    { return false; }
 
-    /**********************/
-    /*** D-PAD CONTROLS ***/
-    /**********************/
-    public boolean getRawDPadUp() {
-        return false;
-    }
+    // Bumpers //
+    public boolean getRawLeftBumper()   { return false; }
+    public boolean getRawRightBumper()  { return false; }
+    
+    // Triggers //
+    public double getRawLeftTriggerAxis()   { return 0.0; }
+    public double getRawRightTriggerAxis()  { return 0.0; }
 
-    public final LambdaButton getDPadUp() {
-        return new LambdaButton(() -> this.getRawDPadUp());
-    }
+    // Face Buttons //
+    public boolean getRawLeftButton()   { return false; }
+    public boolean getRawRightButton()  { return false; }
+    public boolean getRawTopButton()    { return false; }
+    public boolean getRawBottomButton() { return false; }
 
-    public boolean getRawDPadDown() {
-        return false;
-    }
+    // Start / Select / Option //
+    public boolean getRawSelectButton() { return false; }
+    public boolean getRawStartButton()  { return false; }
+    public boolean getRawOptionButton() { return false; }
+    
+    // Analog Stick Buttons // 
+    public boolean getRawLeftAnalogButton()     { return false; }
+    public boolean getRawRightAnalogButton()    { return false; }
 
-    public final LambdaButton getDPadDown() {
-        return new LambdaButton(() -> this.getRawDPadDown());
-    }
+    // Rumble //
+    public void setRumble(double intensity) {}
 
-    public boolean getRawDPadLeft() {
-        return false;
-    }
+    
+    /***********************************************/
+    /*** BUTTONS BASED OFF OF FUNCTIONS ***/
+    /***********************************************/
 
-    public final LambdaButton getDPadLeft() {
-        return new LambdaButton(() -> this.getRawDPadLeft());
-    }
+    // D-Pad //
+    public final LambdaButton getDPadUp()       { return new LambdaButton(() -> this.getRawDPadUp()); }
+    public final LambdaButton getDPadDown()     { return new LambdaButton(() -> this.getRawDPadDown()); }
+    public final LambdaButton getDPadLeft()     { return new LambdaButton(() -> this.getRawDPadLeft()); }
+    public final LambdaButton getDPadRight()    { return new LambdaButton(() -> this.getRawDPadRight()); }
 
-    public boolean getRawDPadRight() {
-        return false;
-    }
+    // Bumpers //
+    public final LambdaButton getLeftBumper()   { return new LambdaButton(() -> this.getRawLeftBumper()); }
+    public final LambdaButton getRightBumper()  { return new LambdaButton(() -> this.getRawRightBumper()); }
 
-    public final LambdaButton getDPadRight() {
-        return new LambdaButton(() -> this.getRawDPadRight());
-    }
-
-    /*******************/
-    /*** LEFT BUMPER ***/
-    /*******************/
-    public boolean getRawLeftBumper() {
-        return false;
-    }
-
-    public final LambdaButton getLeftBumper() {
-        return new LambdaButton(() -> this.getRawLeftBumper());
-    }
-
-    /********************/
-    /*** RIGHT BUMPER ***/
-    /********************/
-    public boolean getRawRightBumper() {
-        return false;
-    }
-
-    public final LambdaButton getRightBumper() {
-        return new LambdaButton(() -> this.getRawRightBumper());
-    }
-
-    /******************************/
-    /*** TRIGGER AXIS THRESHOLD ***/
-    /******************************/
+    // Triggers //
     protected static final double TRIGGER_AXIS_THRESHOLD = 2.0 / 16.0;
 
-    /********************/
-    /*** LEFT TRIGGER ***/
-    /********************/
-    public double getRawLeftTriggerAxis() {
-        return 0.0;
-    }
+    public final boolean getRawLeftTrigger()    { return getRawLeftTriggerAxis() > TRIGGER_AXIS_THRESHOLD; }
+    public final LambdaButton getLeftTrigger()  { return new LambdaButton(() -> this.getRawLeftTrigger()); }
 
-    public boolean getRawLeftTrigger() {
-        return getRawLeftTriggerAxis() > TRIGGER_AXIS_THRESHOLD;
-    }
+    public final boolean getRawRightTrigger()   { return getRawRightTriggerAxis() > TRIGGER_AXIS_THRESHOLD; }
+    public final LambdaButton getRightTrigger() { return new LambdaButton(() -> this.getRawRightTrigger()); }
 
-    public final LambdaButton getLeftTrigger() {
-        return new LambdaButton(() -> this.getRawLeftTrigger());
-    }
+    // Face Buttons // 
+    public final LambdaButton getLeftButton()   { return new LambdaButton(() -> this.getRawLeftButton()); }
+    public final LambdaButton getRightButton()  { return new LambdaButton(() -> this.getRawRightButton()); }
+    public final LambdaButton getTopButton()    { return new LambdaButton(() -> this.getRawTopButton()); }
+    public final LambdaButton getBottomButton() { return new LambdaButton(() -> this.getRawBottomButton()); }
 
-    /*********************/
-    /*** RIGHT TRIGGER ***/
-    /*********************/
-    public double getRawRightTriggerAxis() {
-        return 0;
-    }
+    // Select / Start / Option //
+    public final LambdaButton getSelectButton() { return new LambdaButton(() -> this.getRawSelectButton()); }
+    public final LambdaButton getStartButton()  { return new LambdaButton(() -> this.getRawStartButton()); }
+    public final LambdaButton getOptionButton() { return new LambdaButton(() -> this.getRawOptionButton()); }
 
-    public boolean getRawRightTrigger() {
-        return getRawRightTriggerAxis() > TRIGGER_AXIS_THRESHOLD;
-    }
-
-    public final LambdaButton getRightTrigger() {
-        return new LambdaButton(() -> this.getRawRightTrigger());
-    }
-
-    /*******************/
-    /*** LEFT BUTTON ***/
-    /*******************/
-    public boolean getRawLeftButton() {
-        return false;
-    }
-
-    public final LambdaButton getLeftButton() {
-        return new LambdaButton(() -> this.getRawLeftButton());
-    }
-
-    /********************/
-    /*** RIGHT BUTTON ***/
-    /********************/
-    public boolean getRawRightButton() {
-        return false;
-    }
-
-    public final LambdaButton getRightButton() {
-        return new LambdaButton(() -> this.getRawRightButton());
-    }
-
-    /******************/
-    /*** TOP BUTTON ***/
-    /******************/
-    public boolean getRawTopButton() {
-        return false;
-    }
-
-    public final LambdaButton getTopButton() {
-        return new LambdaButton(() -> this.getRawTopButton());
-    }
-
-    /*********************/
-    /*** BOTTOM BUTTON ***/
-    /*********************/
-    public boolean getRawBottomButton() {
-        return false;
-    }
-
-    public final LambdaButton getBottomButton() {
-        return new LambdaButton(() -> this.getRawBottomButton());
-    }
-
-    /*********************/
-    /*** SELECT BUTTON ***/
-    /*********************/
-    public boolean getRawSelectButton() {
-        return false;
-    }
-
-    public final LambdaButton getSelectButton() {
-        return new LambdaButton(() -> this.getRawSelectButton());
-    }
-
-    /********************/
-    /*** START BUTTON ***/
-    /********************/
-    public boolean getRawStartButton() {
-        return false;
-    }
-
-    public final LambdaButton getStartButton() {
-        return new LambdaButton(() -> this.getRawStartButton());
-    }
-
-    /**************************/
-    /*** LEFT ANALOG BUTTON ***/
-    /**************************/
-    public boolean getRawLeftAnalogButton() {
-        return false;
-    }
-
-    public final LambdaButton getLeftAnalogButton() {
-        return new LambdaButton(() -> this.getRawLeftAnalogButton());
-    }
-
-    /***************************/
-    /*** RIGHT ANALOG BUTTON ***/
-    /***************************/
-    public boolean getRawRightAnalogButton() {
-        return false;
-    }
-
-    public final LambdaButton getRightAnalogButton() {
-        return new LambdaButton(() -> this.getRawRightAnalogButton());
-    }
-
-    /*********************/
-    /*** OPTION BUTTON ***/
-    /*********************/
-    public boolean getRawOptionButton() {
-        return false;
-    }
-
-    public final LambdaButton getOptionButton() {
-        return new LambdaButton(() -> this.getRawOptionButton());
-    }
-
-    /**************/
-    /*** RUMBLE ***/
-    /**************/
-    public void setRumble(double intensity) {
-    }
+    // Analog Stick Buttons // 
+    public final LambdaButton getLeftAnalogButton()     { return new LambdaButton(() -> this.getRawLeftAnalogButton()); }
+    public final LambdaButton getRightAnalogButton()    { return new LambdaButton(() -> this.getRawRightAnalogButton()); }
 }

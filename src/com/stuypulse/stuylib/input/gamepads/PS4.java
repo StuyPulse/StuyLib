@@ -1,6 +1,6 @@
 package com.stuypulse.stuylib.input.gamepads;
 
-import com.stuypulse.stuylib.input.gamepads.WPIGamepad;
+import com.stuypulse.stuylib.input.WPIGamepad;
 
 import edu.wpi.first.wpilibj.GenericHID;
 
