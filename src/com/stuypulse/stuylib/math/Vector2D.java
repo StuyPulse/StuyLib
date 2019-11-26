@@ -26,7 +26,7 @@ public class Vector2D {
      */
     public Vector2D(double[] in) throws Exception {
         if(in.length > 2){
-            throw(new Exception("Vector only accepts two values!"));
+            throw new RuntimeException("Vector only accepts two values!");
         }
         this.x = in[0];
         this.y = in[1];
