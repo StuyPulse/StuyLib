@@ -35,7 +35,7 @@ public class Gamepad {
     public double getRightY()   { return 0.0; }
 
     // D-Pad //
-    public boolean getRawDPadUp()   { return false; }
+    public boolean getRawDPadUp()       { return false; }
     public boolean getRawDPadDown()     { return false; }
     public boolean getRawDPadLeft()     { return false; }
     public boolean getRawDPadRight()    { return false; }
@@ -64,7 +64,7 @@ public class Gamepad {
     public boolean getRawRightAnalogButton()    { return false; }
 
     // Rumble //
-    public void setRumble(double intensity) {}
+    public void setRumble(double intensity)     { return; }
 
     
     /***********************************************/
