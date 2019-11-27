@@ -21,9 +21,9 @@ public class MovingAverage implements IStreamFilter {
      * 
      * @param size size of moving average
      */
-    public MovingAverage(int size) throws Exception {
-        if(size <= 0){
-            throw new RuntimeException("Size of moving average queue should not be 0 or less!");
+    public MovingAverage(int size) throws RuntimeException {
+        if(size <= 0) {
+            throw new RuntimeException("MovingAverage(int size) -> size of moving average must be atleast 1!");
         }
 
         mSize = size;
