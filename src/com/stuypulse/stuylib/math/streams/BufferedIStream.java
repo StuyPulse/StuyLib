@@ -28,7 +28,7 @@ public class BufferedIStream implements IStream {
     private CircularBuffer mBuffer;
 
     /**
-     * The input stream that is buffered. This class is effectivly passed through
+     * The input stream that is buffered. This class is effectively passed through
      * get()
      */
     private IStream mIStream;

@@ -24,7 +24,10 @@ public class Vector2D {
      * 
      * @param in an array of 2 numbers
      */
-    public Vector2D(double[] in) {
+    public Vector2D(double[] in) throws RuntimeException {
+        if(in.length != 2) {
+            throw new RuntimeException("Vector2D(double[] in) -> array must be of size 2!");
+        }
         this.x = in[0];
         this.y = in[1];
     }

@@ -21,8 +21,12 @@ public class MovingAverage implements IStreamFilter {
      * 
      * @param size size of moving average
      */
-    public MovingAverage(int size) {
-        mSize = Math.max(size, 1);
+    public MovingAverage(int size) throws RuntimeException {
+        if(size <= 0) {
+            throw new RuntimeException("MovingAverage(int size) -> size of moving average must be atleast 1!");
+        }
+
+        mSize = size;
         mValues = new LinkedList<>();
         mTotal = 0.0;
 
