@@ -1,8 +1,6 @@
 package com.stuypulse.stuylib.math.streams.filters;
 
 import com.stuypulse.stuylib.math.streams.filters.IStreamFilter;
-import com.stuypulse.stuylib.math.SLMath;
-
 /**
  * Simple implementation of an Exponential Moving Average
  * 
