@@ -10,6 +10,7 @@ import com.stuypulse.stuylib.math.streams.filters.IStreamFilter;
  * 
  * @author Sam (sam.belliveau@gmail.com)
  */
+
 public class FilteredIStream implements IStream {
 
     private IStream mStream; // Stream used
@@ -17,6 +18,7 @@ public class FilteredIStream implements IStream {
 
     /**
      * Makes filtered stream from stream and stream filter
+     * 
      * @param stream input stream
      * @param filter stream filter
      */
@@ -27,6 +29,7 @@ public class FilteredIStream implements IStream {
 
     /**
      * Get next value from filtered stream
+     * 
      * @return next value
      */
     public double get() {

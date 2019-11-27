@@ -4,7 +4,6 @@ import com.stuypulse.stuylib.math.streams.filters.IStreamFilter;
 import java.util.Queue;
 import java.util.LinkedList;
 
-
 /**
  * Simple implementation of an Simple Moving Average
  * 
@@ -15,11 +14,12 @@ public class MovingAverage implements IStreamFilter {
 
     private int mSize; // Size of Queue
     private double mTotal; // Sum of all the elements
-    private Queue<Double> mValues; // Queue of Values 
+    private Queue<Double> mValues; // Queue of Values
 
     /**
      * Make Simple Moving Average with Max Array Size
-     * @param size size of queue of values calculated for moving average
+     * 
+     * @param size size of moving average
      */
     public MovingAverage(int size) throws Exception {
         if(size <= 0){
@@ -30,7 +30,7 @@ public class MovingAverage implements IStreamFilter {
         mValues = new LinkedList<>();
         mTotal = 0.0;
 
-        while(mValues.size() < mSize) {
+        while (mValues.size() < mSize) {
             mValues.add(0.0);
         }
     }
