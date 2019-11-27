@@ -53,7 +53,7 @@ public class TimedRateLimit implements IStreamFilter {
      * Get the max amount that the filter will change based on the time since last
      * call
      * 
-     * @return
+     * @return get the limit based on time since last call
      */
     private double getLimit() {
         long current = System.currentTimeMillis();
