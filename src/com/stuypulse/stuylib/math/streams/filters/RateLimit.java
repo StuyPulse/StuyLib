@@ -1,6 +1,7 @@
 package com.stuypulse.stuylib.math.streams.filters;
 
 import com.stuypulse.stuylib.math.streams.filters.IStreamFilter;
+import com.stuypulse.stuylib.exception.ConstructionError;
 import com.stuypulse.stuylib.math.SLMath;
 
 /**
@@ -19,9 +20,9 @@ public class RateLimit implements IStreamFilter {
      * 
      * @param rateLimit desired rate limit
      */
-    public RateLimit(double rateLimit) throws RuntimeException {
-        if(rateLimit <= 0) {
-            throw new RuntimeException("RateLimit(double rateLimit) -> rateLimit must be greater than 0!");
+    public RateLimit(double rateLimit) throws ConstructionError {
+        if (rateLimit <= 0) {
+            throw new ConstructionError("RateLimit(double rateLimit)", "rateLimit must be greater than 0!");
         }
 
         mLastValue = 0;

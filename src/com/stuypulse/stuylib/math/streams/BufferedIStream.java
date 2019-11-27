@@ -1,6 +1,7 @@
 package com.stuypulse.stuylib.math.streams;
 
 import com.stuypulse.stuylib.math.streams.IStream;
+import com.stuypulse.stuylib.exception.ConstructionError;
 
 import edu.wpi.first.wpilibj.CircularBuffer;
 
@@ -39,7 +40,11 @@ public class BufferedIStream implements IStream {
      * @param istream istream that will be buffered
      * @param size    size of buffer
      */
-    public BufferedIStream(IStream istream, int size) {
+    public BufferedIStream(IStream istream, int size) throws ConstructionError {
+        if (size <= 0) {
+            throw new ConstructionError("BufferedIStream(IStream istream, int size)", "size must be greater than 0!");
+        }
+
         mBuffer = new CircularBuffer(size);
         mIStream = istream;
 

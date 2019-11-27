@@ -1,6 +1,8 @@
 package com.stuypulse.stuylib.math.streams.filters;
 
 import com.stuypulse.stuylib.math.streams.filters.IStreamFilter;
+import com.stuypulse.stuylib.exception.ConstructionError;
+
 import java.util.Queue;
 import java.util.LinkedList;
 
@@ -21,9 +23,9 @@ public class MovingAverage implements IStreamFilter {
      * 
      * @param size size of moving average
      */
-    public MovingAverage(int size) throws RuntimeException {
-        if(size <= 0) {
-            throw new RuntimeException("MovingAverage(int size) -> size of moving average must be greater than 0!");
+    public MovingAverage(int size) throws ConstructionError {
+        if (size <= 0) {
+            throw new ConstructionError("MovingAverage(int size)", "size must be greater than 0!");
         }
 
         mSize = size;

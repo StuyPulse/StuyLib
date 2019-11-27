@@ -1,5 +1,7 @@
 package com.stuypulse.stuylib.math;
 
+import com.stuypulse.stuylib.exception.ConstructionError;
+
 /**
  * Simple coordinate class that defines many helpful functions like
  * 
@@ -24,9 +26,9 @@ public class Vector2D {
      * 
      * @param in an array of 2 numbers
      */
-    public Vector2D(double[] in) throws RuntimeException {
+    public Vector2D(double[] in) throws ConstructionError {
         if(in.length != 2) {
-            throw new RuntimeException("Vector2D(double[] in) -> array must be of size 2!");
+            throw new ConstructionError("Vector2D(double[] in)",  "array in must be of size 2!");
         }
         
         this.x = in[0];

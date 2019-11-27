@@ -100,10 +100,10 @@ public class Logitech extends WPIGamepad {
         public double getRawRightTriggerAxis()  { return getRawAxis(3); }
 
         // Face Buttons //
-        public boolean getRawLeftButton()   { return getRawButton(1); }
+        public boolean getRawLeftButton()   { return getRawButton(3); }
         public boolean getRawRightButton()  { return getRawButton(3); }
         public boolean getRawTopButton()    { return getRawButton(4); }
-        public boolean getRawBottomButton() { return getRawButton(2); }
+        public boolean getRawBottomButton() { return getRawButton(1); }
 
         // Start / Select / Option //
         public boolean getRawSelectButton() { return getRawButton(7); }

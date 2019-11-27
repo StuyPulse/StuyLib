@@ -1,6 +1,8 @@
 package com.stuypulse.stuylib.math.streams.filters;
 
 import com.stuypulse.stuylib.math.streams.filters.IStreamFilter;
+import com.stuypulse.stuylib.exception.ConstructionError;
+
 /**
  * Simple implementation of an Exponential Moving Average
  * 
@@ -19,13 +21,13 @@ public class RollingAverage implements IStreamFilter {
      * 
      * @param weight weight (greater than or equal to 1)
      */
-    public RollingAverage(double weight) throws RuntimeException {
+    public RollingAverage(double weight) throws ConstructionError {
+        if (mWeight >= 2) {
+            throw new ConstructionError("RollingAverage(double weight)", "weigth must be greater than 0.5!");
+        }
+
         mValue = 0;
         mWeight = 1.0 / weight;
-
-        if(mWeight >= 2) {
-            throw new RuntimeException("RollingAverage(double weight) -> weigth value must be > 0.5!");
-        }
     }
 
     /**

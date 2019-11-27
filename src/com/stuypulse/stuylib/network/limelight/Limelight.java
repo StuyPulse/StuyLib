@@ -87,6 +87,7 @@ public class Limelight {
         return validTarget && (!IS_CONNECTED_REQUIRED || isConnected());
     }
 
+
     // Horizontal Offset From Crosshair To Target (-27 degrees to 27 degrees)
     public static final double MIN_X_ANGLE = -27;
     public static final double MAX_X_ANGLE = 27;
@@ -100,6 +101,7 @@ public class Limelight {
         return mXAngleEntry.getDouble(0);
     }
 
+
     // Vertical Offset From Crosshair To Target (-20.5 degrees to 20.5 degrees)
     public static final double MIN_Y_ANGLE = -20.5;
     public static final double MAX_Y_ANGLE = 20.5;
@@ -111,6 +113,7 @@ public class Limelight {
     public static double getTargetYAngle() {
         return mYAngleEntry.getDouble(0);
     }
+
 
     // Target Area (0% of image to 100% of image)
     public static final double MIN_TARGET_AREA = 0;
@@ -126,6 +129,7 @@ public class Limelight {
         return Math.min(mTargetAreaEntry.getDouble(0) / 100.0, 1);
     }
 
+
     // Skew or rotation (-90 degrees to 0 degrees)
     public static final double MIN_SKEW = -90;
     public static final double MAX_SKEW = 0;
@@ -137,6 +141,7 @@ public class Limelight {
     public static double getTargetSkew() {
         return mTargetSkewEntry.getDouble(0);
     }
+
 
     // The pipeline’s latency contribution (ms) Add at
     // least 11ms for image capture latency.
@@ -150,6 +155,7 @@ public class Limelight {
         // Add Image Capture Latency to get more accurate result
         return mLatencyEntry.getDouble(0) + IMAGE_CAPTURE_LATENCY;
     }
+
 
     // Pixel information returned from these functions
     public static final double MIN_SIDE_LENGTH = 0;
@@ -166,6 +172,7 @@ public class Limelight {
         return mShortestSideLengthEntry.getDouble(0);
     }
 
+
     private static final NetworkTableEntry mLongestSideLengthEntry = mTable.getEntry("tlong");
 
     /**
@@ -176,6 +183,7 @@ public class Limelight {
     public static double getLongestSidelength() {
         return mLongestSideLengthEntry.getDouble(0);
     }
+
 
     private static final NetworkTableEntry mHorizontalSideLengthEntry = mTable.getEntry("thor");
 
@@ -188,6 +196,7 @@ public class Limelight {
         return mHorizontalSideLengthEntry.getDouble(0);
     }
 
+
     private static final NetworkTableEntry mVerticalSideLengthEntry = mTable.getEntry("tvert");
 
     /**
@@ -198,6 +207,7 @@ public class Limelight {
     public static double getVerticalSidelength() {
         return mVerticalSideLengthEntry.getDouble(0);
     }
+
 
     /* Advanced Usage with Raw Contours (Not sent by default) */
     // Raw Contours are formatted as tx0, ty0, tx1, ty1, tx2, ty2
@@ -254,6 +264,7 @@ public class Limelight {
         return mTable.getEntry("cy" + crosshair).getDouble(0);
     }
 
+
     /* Solve 3D */
     private static final NetworkTableEntry mSolve3DEntry = mTable.getEntry("camtran");
     private static final double[] mDefaultSolve3DArray = new double[6];
@@ -266,6 +277,7 @@ public class Limelight {
     public static Solve3DResult getSolve3D() {
         return new Solve3DResult(mSolve3DEntry.getDoubleArray(mDefaultSolve3DArray));
     }
+
 
     /* Custom Grip Values */
     // Return data given by custom GRIP pipeline
@@ -303,6 +315,7 @@ public class Limelight {
         return mTable.getEntry(element).setString(value);
     }
 
+
     /* Camera Controls (Use Enums to prevent invalid inputs) */
     // LEDMode
     public enum LEDMode {
@@ -331,6 +344,7 @@ public class Limelight {
         mLEDModeEntry.setNumber(mode.getCodeValue());
     }
 
+
     // CAM_MODE
     public enum CamMode {
         VISION(0), // Use limelight for CV
@@ -356,6 +370,7 @@ public class Limelight {
         mCamModeEntry.setNumber(mode.getCodeValue());
     }
 
+
     // PIPELINE
     private static final NetworkTableEntry mPipelineEntry = mTable.getEntry("pipeline");
 
@@ -374,6 +389,7 @@ public class Limelight {
     public static double getPipeline() {
         return mGetPipelineEntry.getDouble(0);
     }
+
 
     // STREAM
     public enum CameraStream { // PIP = Picture-In-Picture
@@ -401,6 +417,7 @@ public class Limelight {
         mCameraStreamEntry.setNumber(stream.getCodeValue());
     }
 
+    
     // SNAPSHOT_MODE
     public enum SnapshotMode {
         STOP(0), // Don't take snapshots

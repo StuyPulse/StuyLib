@@ -1,6 +1,7 @@
 package com.stuypulse.stuylib.math.streams.filters;
 
 import com.stuypulse.stuylib.math.streams.filters.IStreamFilter;
+import com.stuypulse.stuylib.exception.ConstructionError;
 import com.stuypulse.stuylib.math.SLMath;
 
 /**
@@ -31,7 +32,15 @@ public class TimedRateLimit implements IStreamFilter {
      * @param time time for value to change by one unit (miliseconds)
      * @param unit the size of a unit in rate limit
      */
-    public TimedRateLimit(long time, double unit) {
+    public TimedRateLimit(long time, double unit) throws ConstructionError {
+        if (time <= 0) {
+            throw new ConstructionError("TimedRateLimit(long time, double unit)", "time must be greater than 0!");
+        }
+
+        if (unit <= 0.0) {
+            throw new ConstructionError("TimedRateLimit(long time, double unit)", "unit must be greater than 0!");
+        }
+
         mLastValue = 0;
         mLastTime = System.currentTimeMillis();
 
