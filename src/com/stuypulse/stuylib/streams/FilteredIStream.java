@@ -1,7 +1,7 @@
-package com.stuypulse.stuylib.math.streams;
+package com.stuypulse.stuylib.streams;
 
-import com.stuypulse.stuylib.math.streams.IStream;
-import com.stuypulse.stuylib.math.streams.filters.IStreamFilter;
+import com.stuypulse.stuylib.streams.IStream;
+import com.stuypulse.stuylib.streams.filters.IStreamFilter;
 
 /**
  * Takes a Stream and a StreamFilter and makes a FilteredStream

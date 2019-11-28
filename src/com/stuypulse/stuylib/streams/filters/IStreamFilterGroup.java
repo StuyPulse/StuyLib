@@ -1,6 +1,6 @@
-package com.stuypulse.stuylib.math.streams.filters;
+package com.stuypulse.stuylib.streams.filters;
 
-import com.stuypulse.stuylib.math.streams.filters.IStreamFilter;
+import com.stuypulse.stuylib.streams.filters.IStreamFilter;
 
 /**
  * A simple class that lets you combine multiple stream filters into one stream

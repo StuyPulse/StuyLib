@@ -1,4 +1,4 @@
-package com.stuypulse.stuylib.math.streams;
+package com.stuypulse.stuylib.streams;
 
 /**
  * A stream of doubles that is accessed with the next function

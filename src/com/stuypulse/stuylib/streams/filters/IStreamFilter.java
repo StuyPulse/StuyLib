@@ -1,4 +1,4 @@
-package com.stuypulse.stuylib.math.streams.filters;
+package com.stuypulse.stuylib.streams.filters;
 
 /**
  * This lets us make sub-classes that change can modify values in this way

@@ -1,7 +1,7 @@
 package com.stuypulse.stuylib.input;
 
 import com.stuypulse.stuylib.input.LambdaButton;
-import com.stuypulse.stuylib.math.streams.IStream;
+import com.stuypulse.stuylib.streams.IStream;
 
 /**
  * An class for using gamepads with different interfaces. You can

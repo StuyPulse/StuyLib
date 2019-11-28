@@ -1,6 +1,6 @@
-package com.stuypulse.stuylib.math.streams.filters;
+package com.stuypulse.stuylib.streams.filters;
 
-import com.stuypulse.stuylib.math.streams.filters.IStreamFilter;
+import com.stuypulse.stuylib.streams.filters.IStreamFilter;
 import com.stuypulse.stuylib.exception.ConstructionError;
 
 /**
@@ -22,7 +22,7 @@ public class RollingAverage implements IStreamFilter {
      * @param weight weight (greater than or equal to 1)
      */
     public RollingAverage(double weight) throws ConstructionError {
-        if (mWeight >= 2) {
+        if (weight <= 0.5) {
             throw new ConstructionError("RollingAverage(double weight)", "weigth must be greater than 0.5!");
         }
 

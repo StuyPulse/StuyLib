@@ -1,6 +1,6 @@
-package com.stuypulse.stuylib.math.streams;
+package com.stuypulse.stuylib.streams;
 
-import com.stuypulse.stuylib.math.streams.IStream;
+import com.stuypulse.stuylib.streams.IStream;
 import com.stuypulse.stuylib.exception.ConstructionError;
 
 /**
