@@ -30,6 +30,15 @@ public class NetKeyWindow extends JFrame {
      */
     private NetKeyListener mListener;
 
+    private void updateKeyListener(int team, int port) {
+        if(mListener != null) {
+            removeKeyListener(mListener);
+        }
+
+        mListener = new NetKeyListener(team, port);
+        addKeyListener(mListener);
+    }
+
     /**
      * Opens Network Keyboard Input Window
      */
