@@ -186,4 +186,13 @@ public class PIDController implements IStream {
             return p_out + i_out + d_out;
         }
     }
+
+    /**
+     * Gets the last error from the error stream. Updates with get() command.
+     * 
+     * @return The last error from the error stream. 
+     */
+    public double getError() {
+        return mLastError;
+    }
 }

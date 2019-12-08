@@ -27,7 +27,7 @@
     catch(err) {
     }
 //-->
-var data = {"i0":10,"i1":10,"i2":10,"i3":10,"i4":10,"i5":10,"i6":10,"i7":10,"i8":10,"i9":10};
+var data = {"i0":10,"i1":10,"i2":10,"i3":10,"i4":10,"i5":10,"i6":10,"i7":10,"i8":10,"i9":10,"i10":10};
 var tabs = {65535:["t0","All Methods"],2:["t2","Instance Methods"],8:["t4","Concrete Methods"]};
 var altColor = "altColor";
 var rowColor = "rowColor";
@@ -205,55 +205,62 @@ implements <a href="../streams/IStream.html" title="interface in com.stuypulse.s
 </td>
 </tr>
 <tr id="i2" class="altColor">
+<td class="colFirst"><code>double</code></td>
+<th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#getError()">getError</a></span>()</code></th>
+<td class="colLast">
+<div class="block">Gets the last error from the error stream.</div>
+</td>
+</tr>
+<tr id="i3" class="rowColor">
 <td class="colFirst"><code><a href="../streams/IStream.html" title="interface in com.stuypulse.stuylib.streams">IStream</a></code></td>
 <th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#getErrorStream()">getErrorStream</a></span>()</code></th>
 <td class="colLast">
 <div class="block">Gets the error stream being used by the controller</div>
 </td>
 </tr>
-<tr id="i3" class="rowColor">
+<tr id="i4" class="altColor">
 <td class="colFirst"><code>double</code></td>
 <th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#getI()">getI</a></span>()</code></th>
 <td class="colLast">
 <div class="block">Gets the P value being used by the PID controller.</div>
 </td>
 </tr>
-<tr id="i4" class="altColor">
+<tr id="i5" class="rowColor">
 <td class="colFirst"><code>double</code></td>
 <th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#getP()">getP</a></span>()</code></th>
 <td class="colLast">
 <div class="block">Gets the P value being used by the PID controller.</div>
 </td>
 </tr>
-<tr id="i5" class="rowColor">
+<tr id="i6" class="altColor">
 <td class="colFirst"><code>void</code></td>
 <th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#reset()">reset</a></span>()</code></th>
 <td class="colLast">
 <div class="block">Resets the PIDController.</div>
 </td>
 </tr>
-<tr id="i6" class="altColor">
+<tr id="i7" class="rowColor">
 <td class="colFirst"><code>void</code></td>
 <th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#setD(double)">setD</a></span>&#8203;(double&nbsp;d)</code></th>
 <td class="colLast">
 <div class="block">Changes the D value that will be used by the PID controller.</div>
 </td>
 </tr>
-<tr id="i7" class="rowColor">
+<tr id="i8" class="altColor">
 <td class="colFirst"><code>void</code></td>
 <th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#setErrorStream(com.stuypulse.stuylib.streams.IStream)">setErrorStream</a></span>&#8203;(<a href="../streams/IStream.html" title="interface in com.stuypulse.stuylib.streams">IStream</a>&nbsp;errorStream)</code></th>
 <td class="colLast">
 <div class="block">Sets the error stream that will be used by the PID controller.</div>
 </td>
 </tr>
-<tr id="i8" class="altColor">
+<tr id="i9" class="rowColor">
 <td class="colFirst"><code>void</code></td>
 <th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#setI(double)">setI</a></span>&#8203;(double&nbsp;i)</code></th>
 <td class="colLast">
 <div class="block">Changes the I value that will be used by the PID controller.</div>
 </td>
 </tr>
-<tr id="i9" class="rowColor">
+<tr id="i10" class="altColor">
 <td class="colFirst"><code>void</code></td>
 <th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#setP(double)">setP</a></span>&#8203;(double&nbsp;p)</code></th>
 <td class="colLast">
@@ -441,7 +448,7 @@ implements <a href="../streams/IStream.html" title="interface in com.stuypulse.s
 <a id="get()">
 <!--   -->
 </a>
-<ul class="blockListLast">
+<ul class="blockList">
 <li class="blockList">
 <h4>get</h4>
 <pre class="methodSignature">public&nbsp;double&nbsp;get()</pre>
@@ -451,6 +458,20 @@ implements <a href="../streams/IStream.html" title="interface in com.stuypulse.s
 <dd><code><a href="../streams/IStream.html#get()">get</a></code>&nbsp;in interface&nbsp;<code><a href="../streams/IStream.html" title="interface in com.stuypulse.stuylib.streams">IStream</a></code></dd>
 <dt><span class="returnLabel">Returns:</span></dt>
 <dd>The calculated value for the PIDController</dd>
+</dl>
+</li>
+</ul>
+<a id="getError()">
+<!--   -->
+</a>
+<ul class="blockListLast">
+<li class="blockList">
+<h4>getError</h4>
+<pre class="methodSignature">public&nbsp;double&nbsp;getError()</pre>
+<div class="block">Gets the last error from the error stream. Updates with get() command.</div>
+<dl>
+<dt><span class="returnLabel">Returns:</span></dt>
+<dd>The last error from the error stream.</dd>
 </dl>
 </li>
 </ul>
