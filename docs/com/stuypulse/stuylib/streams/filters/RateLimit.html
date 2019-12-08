@@ -165,14 +165,6 @@ extends <a href="OnDerivative.html" title="class in com.stuypulse.stuylib.stream
 <div class="block">Makes a new rate limiter with specified rate limit</div>
 </td>
 </tr>
-<tr class="rowColor">
-<th class="colConstructorName" scope="row"><code><span class="memberNameLink"><a href="#%3Cinit%3E(double,double)">RateLimit</a></span>&#8203;(double&nbsp;accelLimit,
-         double&nbsp;decelLimit)</code></th>
-<td class="colLast">
-<div class="block">Makes a new rate limiter with specified rate limit for accelerating and
- decelerating.</div>
-</td>
-</tr>
 </table>
 </li>
 </ul>
@@ -217,7 +209,7 @@ extends <a href="OnDerivative.html" title="class in com.stuypulse.stuylib.stream
 <a id="&lt;init&gt;(double)">
 <!--   -->
 </a>
-<ul class="blockList">
+<ul class="blockListLast">
 <li class="blockList">
 <h4>RateLimit</h4>
 <pre>public&nbsp;RateLimit&#8203;(double&nbsp;rateLimit)
@@ -226,26 +218,6 @@ extends <a href="OnDerivative.html" title="class in com.stuypulse.stuylib.stream
 <dl>
 <dt><span class="paramLabel">Parameters:</span></dt>
 <dd><code>rateLimit</code> - desired rate limit</dd>
-<dt><span class="throwsLabel">Throws:</span></dt>
-<dd><code><a href="../../exception/ConstructionError.html" title="class in com.stuypulse.stuylib.exception">ConstructionError</a></code></dd>
-</dl>
-</li>
-</ul>
-<a id="&lt;init&gt;(double,double)">
-<!--   -->
-</a>
-<ul class="blockListLast">
-<li class="blockList">
-<h4>RateLimit</h4>
-<pre>public&nbsp;RateLimit&#8203;(double&nbsp;accelLimit,
-                 double&nbsp;decelLimit)
-          throws <a href="../../exception/ConstructionError.html" title="class in com.stuypulse.stuylib.exception">ConstructionError</a></pre>
-<div class="block">Makes a new rate limiter with specified rate limit for accelerating and
- decelerating. This allows for more control over how the moves</div>
-<dl>
-<dt><span class="paramLabel">Parameters:</span></dt>
-<dd><code>accelLimit</code> - desired rate limit when accelerating</dd>
-<dd><code>decelLimit</code> - desired rate limit when decelerating</dd>
 <dt><span class="throwsLabel">Throws:</span></dt>
 <dd><code><a href="../../exception/ConstructionError.html" title="class in com.stuypulse.stuylib.exception">ConstructionError</a></code></dd>
 </dl>

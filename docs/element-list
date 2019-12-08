@@ -10,5 +10,6 @@ com.stuypulse.stuylib.input.keyboard.computer
 com.stuypulse.stuylib.math
 com.stuypulse.stuylib.network
 com.stuypulse.stuylib.network.limelight
+com.stuypulse.stuylib.pid
 com.stuypulse.stuylib.streams
 com.stuypulse.stuylib.streams.filters
