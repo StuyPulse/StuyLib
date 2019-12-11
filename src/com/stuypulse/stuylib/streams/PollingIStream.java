@@ -30,16 +30,16 @@ public class PollingIStream extends Thread implements IStream {
      * Creates a PollingIStream from an IStream and a time value
      * 
      * @param stream  istream to poll from
-     * @param deltams time inbetween each poll in ms
+     * @param hz Number of calls per second
      */
-    public PollingIStream(IStream stream, long deltams) {
-        if (deltams <= 0) {
+    public PollingIStream(IStream stream, long hz) {
+        if (hz <= 0) {
             throw new ConstructionError("PollingIStream(IStream stream, long deltams)", "deltams must be greater than 0!");
         }
 
         mRunning = true;
         mStream = stream;
-        mDelta = deltams;
+        mDelta = (long)Math.floor(1000.0 / hz);
         mResult = 0;
         start();
     }
@@ -47,27 +47,25 @@ public class PollingIStream extends Thread implements IStream {
     /**
      * Poll the IStream and put it in mResult
      */
-    public synchronized void run() {
+    public void run() {
         while (mRunning) {
             mResult = mStream.get();
-            try {
-                Thread.sleep(mDelta);
-            } catch (InterruptedException e) {
-            }
+            try { Thread.sleep(mDelta); } 
+            catch (InterruptedException e) {}
         }
     }
 
     /**
      * Stops polling the IStream
      */
-    public synchronized void stopPolling() {
+    public void stopPolling() {
         mRunning = false;
     }
 
     /**
      * Get the last value from the IStream that was polled
      */
-    public synchronized double get() {
+    public double get() {
         return mResult;
     }
 }
