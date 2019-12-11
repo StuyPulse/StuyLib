@@ -68,9 +68,19 @@ public class BufferedIStream implements IStream {
      * @return value from the istream
      */
     public double get() {
+        return get(0);
+    }
+
+    /**
+     * Get value from istream and add value to buffer
+     * 
+     * @param delta how far back in the buffer to go
+     * @return value from the istream
+     */
+    public double get(int delta) {
         double value = mIStream.get();
         mBuffer.addFirst(value);
-        return value;
+        return last(delta);
     }
 
     /**
