@@ -34,12 +34,12 @@ public class PollingIStream extends Thread implements IStream {
      */
     public PollingIStream(IStream stream, long hz) {
         if (hz <= 0) {
-            throw new ConstructionError("PollingIStream(IStream stream, long deltams)", "deltams must be greater than 0!");
+            throw new ConstructionError("PollingIStream(IStream stream, long hz)", "hz must be greater than 0!");
         }
 
         mRunning = true;
         mStream = stream;
-        mDelta = (long)Math.floor(1000.0 / hz);
+        mDelta = 1000 / hz;
         mResult = 0;
         start();
     }
