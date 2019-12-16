@@ -15,7 +15,7 @@ public class TimedRateLimit implements IStreamFilter {
 
     /**
      * This is the default unit when no unit is provided. 1.0 was choosen as it is
-     * most common for motor input to be givin on a scale of -1.0 <=> 1.0
+     * most common for motor input to be givin on a scale of -1.0 - 1.0
      */
     public static final double kDefaultUnit = 1.0;
 

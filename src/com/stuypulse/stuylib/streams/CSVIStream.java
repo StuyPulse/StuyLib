@@ -5,8 +5,6 @@ import com.stuypulse.stuylib.streams.IStream;
 import java.io.IOException;
 import java.util.Iterator;
 
-import com.stuypulse.stuylib.exception.ConstructionError;
-
 import com.stuypulse.stuylib.file.csv.*;
 
 /**

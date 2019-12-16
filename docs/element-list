@@ -1,0 +1,13 @@
+com.stuypulse.stuylib.exception
+com.stuypulse.stuylib.file
+com.stuypulse.stuylib.file.csv
+com.stuypulse.stuylib.info
+com.stuypulse.stuylib.input
+com.stuypulse.stuylib.input.gamepads
+com.stuypulse.stuylib.input.keyboard
+com.stuypulse.stuylib.input.keyboard.computer
+com.stuypulse.stuylib.math
+com.stuypulse.stuylib.network
+com.stuypulse.stuylib.network.limelight
+com.stuypulse.stuylib.streams
+com.stuypulse.stuylib.streams.filters
