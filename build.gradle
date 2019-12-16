@@ -33,5 +33,5 @@ dependencies {
 }
 
 javadoc {
-   source = sourceSets.main.allJava
+  destinationDir = file('docs/')
 }
