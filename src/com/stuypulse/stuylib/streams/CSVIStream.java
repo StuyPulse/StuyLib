@@ -17,6 +17,10 @@ import com.stuypulse.stuylib.file.csv.*;
  */
 public class CSVIStream {
 
+    /**
+     * This CSVIStream writer let an IStream pass through while recording
+     * the values of the IStream into a CSV file. 
+     */
     public static class Writer implements IStream {
         /**
          * The IStream that will be read from into the CSV file
@@ -66,6 +70,10 @@ public class CSVIStream {
 
     }
 
+    /**
+     * This CSVIStream Reader lets you replay a CSV file as 
+     * if it was anyother IStream
+     */
     public static class Reader implements IStream {
         /**
          * Iterator over the elements of the CSV file
