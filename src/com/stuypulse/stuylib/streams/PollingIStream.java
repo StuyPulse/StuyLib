@@ -49,9 +49,9 @@ public class PollingIStream extends Thread implements IStream {
      */
     public void run() {
         while (mRunning) {
-            mResult = mStream.get();
             try { Thread.sleep(mDelta); } 
             catch (InterruptedException e) {}
+            set(mStream.get());
         }
     }
 
@@ -63,9 +63,18 @@ public class PollingIStream extends Thread implements IStream {
     }
 
     /**
-     * Get the last value from the IStream that was polled
+     * Thread safe write to the double mResult
+     * @param value new value for mResult
      */
-    public double get() {
+    private synchronized void set(double value) {
+        mResult = value;
+    }
+
+    /**
+     * Thread safe read to the double mResult
+     * @return mResult
+     */
+    public synchronized double get() {
         return mResult;
     }
 }
