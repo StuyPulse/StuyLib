@@ -11,8 +11,8 @@ import com.stuypulse.stuylib.exception.ConstructionError;
 
 public class RollingAverage implements IStreamFilter {
 
-    private double mValue; // Current Value
-    private double mWeight; // Weight
+    private double mValue; 
+    private double mWeight;
 
     /**
      * Make an Exponential Moving Average If exp = 1, it will instantly update The
@@ -30,10 +30,6 @@ public class RollingAverage implements IStreamFilter {
         mWeight = 1.0 / weight;
     }
 
-    /**
-     * @param next next value in stream
-     * @return next value
-     */
     public double get(double next) {
         return mValue += (next - mValue) * mWeight;
     }

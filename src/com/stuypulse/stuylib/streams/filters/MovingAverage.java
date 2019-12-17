@@ -14,9 +14,9 @@ import java.util.LinkedList;
 
 public class MovingAverage implements IStreamFilter {
 
-    private int mSize; // Size of Queue
-    private double mTotal; // Sum of all the elements
-    private Queue<Double> mValues; // Queue of Values
+    private int mSize;
+    private double mTotal;
+    private Queue<Double> mValues;
 
     /**
      * Make Simple Moving Average with Max Array Size
@@ -37,10 +37,6 @@ public class MovingAverage implements IStreamFilter {
         }
     }
 
-    /**
-     * @param next next value in stream
-     * @return next value
-     */
     public double get(double next) {
         // Remove old value
         mTotal -= mValues.remove();

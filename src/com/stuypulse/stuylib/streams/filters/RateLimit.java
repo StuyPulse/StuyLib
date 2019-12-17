@@ -12,8 +12,8 @@ import com.stuypulse.stuylib.math.SLMath;
 
 public class RateLimit implements IStreamFilter {
 
-    private double mLastValue; // Stores current value
-    private double mRateLimit; // Stores max rate limit
+    private double mLastValue;
+    private double mRateLimit;
 
     /**
      * Makes a new rate limiter with specified rate limit
@@ -29,10 +29,6 @@ public class RateLimit implements IStreamFilter {
         mRateLimit = rateLimit;
     }
 
-    /**
-     * @param next next value in stream
-     * @return next value
-     */
     public double get(double next) {
         return mLastValue += SLMath.limit(next - mLastValue, mRateLimit);
     }

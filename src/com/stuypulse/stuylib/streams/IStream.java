@@ -1,7 +1,7 @@
 package com.stuypulse.stuylib.streams;
 
 /**
- * A stream of doubles that is accessed with the next function
+ * A stream of doubles that is accessed with the .get() function
  * 
  * @author Sam (sam.belliveau@gmail.com)
  */

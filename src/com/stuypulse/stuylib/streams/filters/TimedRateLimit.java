@@ -71,10 +71,6 @@ public class TimedRateLimit implements IStreamFilter {
         return limit;
     }
 
-    /**
-     * @param next next value in stream
-     * @return next value
-     */
     public double get(double next) {
         return mLastValue += SLMath.limit(next - mLastValue, getLimit());
     }

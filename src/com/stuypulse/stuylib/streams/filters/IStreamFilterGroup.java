@@ -23,12 +23,6 @@ public class IStreamFilterGroup implements IStreamFilter {
         mFilters = filters;
     }
 
-    /**
-     * Filter value through all filters
-     * 
-     * @param next next value in stream
-     * @return filtered value
-     */
     public double get(double next) {
         // Put next through each of the filters
         for (IStreamFilter filter : mFilters) {
