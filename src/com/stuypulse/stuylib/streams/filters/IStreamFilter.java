@@ -9,7 +9,7 @@ package com.stuypulse.stuylib.streams.filters;
 public interface IStreamFilter {
 
     /**
-     * Get next value in StreamModifier
+     * Get next value in Filter based on the next value given
      * 
      * @param next next input value
      * @return next modified value
