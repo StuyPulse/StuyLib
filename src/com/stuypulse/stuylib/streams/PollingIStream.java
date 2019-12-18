@@ -29,8 +29,8 @@ public class PollingIStream extends Thread implements IStream {
     /**
      * Creates a PollingIStream from an IStream and a time value
      * 
-     * @param stream  istream to poll from
-     * @param hz Number of calls per second
+     * @param stream istream to poll from
+     * @param hz     Number of calls per second
      */
     public PollingIStream(IStream stream, double hz) {
         if (hz <= 0) {
@@ -39,7 +39,7 @@ public class PollingIStream extends Thread implements IStream {
 
         mRunning = true;
         mStream = stream;
-        mDelta = (long)(1000.0 / hz);
+        mDelta = (long) (1000.0 / hz);
         mResult = 0;
         start();
     }
@@ -49,15 +49,18 @@ public class PollingIStream extends Thread implements IStream {
      */
     public void run() {
         while (mRunning) {
-            try { Thread.sleep(mDelta); } 
-            catch (InterruptedException e) 
-            { mRunning = false; }
+            try {
+                Thread.sleep(mDelta);
+            } catch (InterruptedException e) {
+                mRunning = false;
+            }
             set(mStream.get());
         }
     }
 
     /**
      * Thread safe write to the double mResult
+     * 
      * @param value new value for mResult
      */
     private synchronized void set(double value) {
@@ -66,6 +69,7 @@ public class PollingIStream extends Thread implements IStream {
 
     /**
      * Thread safe read to the double mResult
+     * 
      * @return mResult
      */
     public synchronized double get() {

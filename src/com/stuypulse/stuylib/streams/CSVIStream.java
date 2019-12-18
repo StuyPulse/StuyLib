@@ -8,8 +8,8 @@ import java.util.Iterator;
 import com.stuypulse.stuylib.file.csv.*;
 
 /**
- * Class Writer allows you to read input from an IStream into a CSV file
- * Class Reader is an IStream that reads from CSV file
+ * Class Writer allows you to read input from an IStream into a CSV file Class
+ * Reader is an IStream that reads from CSV file
  * 
  * They extend from IStream, so they also work with the existing IStream classes
  * 
@@ -18,8 +18,8 @@ import com.stuypulse.stuylib.file.csv.*;
 public class CSVIStream {
 
     /**
-     * This CSVIStream writer let an IStream pass through while recording
-     * the values of the IStream into a CSV file. 
+     * This CSVIStream writer let an IStream pass through while recording the values
+     * of the IStream into a CSV file.
      */
     public static class Writer implements IStream {
         /**
@@ -33,11 +33,11 @@ public class CSVIStream {
         private CSVWriter mCSVFile;
 
         /**
-         * Makes a new IStream that, while getting values, will record them 
-         * in a CSV file
+         * Makes a new IStream that, while getting values, will record them in a CSV
+         * file
          * 
          * @param filepath path of the CSV file to write to
-         * @param stream IStream to read in from
+         * @param stream   IStream to read in from
          */
         public Writer(String filepath, IStream stream) {
             mStream = stream;
@@ -50,10 +50,9 @@ public class CSVIStream {
         }
 
         /**
-         * Gets the next value from the IStream and records it
-         * in a CSV file
+         * Gets the next value from the IStream and records it in a CSV file
          * 
-         * @return next value in the IStream 
+         * @return next value in the IStream
          */
         public double get() {
             double result = mStream.get();
@@ -71,15 +70,15 @@ public class CSVIStream {
     }
 
     /**
-     * This CSVIStream Reader lets you replay a CSV file as 
-     * if it was anyother IStream
+     * This CSVIStream Reader lets you replay a CSV file as if it was anyother
+     * IStream
      */
     public static class Reader implements IStream {
         /**
          * Iterator over the elements of the CSV file
          */
         private Iterator<CSVElement> mCSVData;
-        
+
         /**
          * Makes a new IStream sourcing from a CSV file
          * 
@@ -100,7 +99,8 @@ public class CSVIStream {
          * @return next value of the CSV file
          */
         public double get() {
-            if (mCSVData == null) return 0.0;
+            if (mCSVData == null)
+                return 0.0;
             return (mCSVData.hasNext()) ? mCSVData.next().toDouble() : 0.0;
         }
     }
