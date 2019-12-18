@@ -32,14 +32,14 @@ public class PollingIStream extends Thread implements IStream {
      * @param stream  istream to poll from
      * @param hz Number of calls per second
      */
-    public PollingIStream(IStream stream, long hz) {
+    public PollingIStream(IStream stream, double hz) {
         if (hz <= 0) {
             throw new ConstructionError("PollingIStream(IStream stream, long hz)", "hz must be greater than 0!");
         }
 
         mRunning = true;
         mStream = stream;
-        mDelta = 1000 / hz;
+        mDelta = (long)(1000.0 / hz);
         mResult = 0;
         start();
     }
@@ -50,16 +50,10 @@ public class PollingIStream extends Thread implements IStream {
     public void run() {
         while (mRunning) {
             try { Thread.sleep(mDelta); } 
-            catch (InterruptedException e) {}
+            catch (InterruptedException e) 
+            { mRunning = false; }
             set(mStream.get());
         }
-    }
-
-    /**
-     * Stops polling the IStream
-     */
-    public void stopPolling() {
-        mRunning = false;
     }
 
     /**
