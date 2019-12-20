@@ -41,6 +41,9 @@ public class PollingIStream extends Thread implements IStream {
         mStream = stream;
         mDelta = (long) (1000.0 / hz);
         mResult = 0;
+
+        setName("PollingIStreamThread : " + System.currentTimeMillis());
+        setDaemon(true);
         start();
     }
 
@@ -49,12 +52,12 @@ public class PollingIStream extends Thread implements IStream {
      */
     public void run() {
         while (mRunning) {
+            set(mStream.get());
             try {
                 Thread.sleep(mDelta);
             } catch (InterruptedException e) {
                 mRunning = false;
             }
-            set(mStream.get());
         }
     }
 
