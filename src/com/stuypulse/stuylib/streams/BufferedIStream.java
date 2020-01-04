@@ -3,7 +3,7 @@ package com.stuypulse.stuylib.streams;
 import com.stuypulse.stuylib.streams.IStream;
 import com.stuypulse.stuylib.exception.ConstructionError;
 
-import edu.wpi.first.wpilibj.CircularBuffer;
+import java.util.ArrayList;
 
 /**
  * This class allows you to use an input stream while recording the last N
@@ -22,16 +22,7 @@ public class BufferedIStream implements IStream {
      */
     public static final int kDefaultSize = 50;
 
-    /**
-     * Stores the number of elements in the stream buffer, and stores the last n
-     * values in a circular buffer
-     */
-    private CircularBuffer mBuffer;
-
-    /**
-     * The input stream that is buffered. This class is effectively passed through
-     * get()
-     */
+    private ArrayList<Double> mBuffer;
     private IStream mIStream;
 
     /**
@@ -45,12 +36,8 @@ public class BufferedIStream implements IStream {
             throw new ConstructionError("BufferedIStream(IStream istream, int size)", "size must be greater than 0!");
         }
 
-        mBuffer = new CircularBuffer(size);
+        mBuffer = new ArrayList<Double>(size);
         mIStream = istream;
-
-        for (int i = 0; i < size; ++i) {
-            mBuffer.addFirst(0.0);
-        }
     }
 
     /**
@@ -78,8 +65,11 @@ public class BufferedIStream implements IStream {
      * @return value from the istream
      */
     public double get(int delta) {
-        double value = mIStream.get();
-        mBuffer.addFirst(value);
+        for (int i = mBuffer.size() - 1; i > 0; --i) {
+            mBuffer.set(i, mBuffer.get(i - 1));
+        }
+        
+        mBuffer.set(0, mIStream.get());
         return last(delta);
     }
 

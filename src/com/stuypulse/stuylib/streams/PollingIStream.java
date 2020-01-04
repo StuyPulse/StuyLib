@@ -3,6 +3,9 @@ package com.stuypulse.stuylib.streams;
 import com.stuypulse.stuylib.streams.IStream;
 import com.stuypulse.stuylib.exception.ConstructionError;
 
+import java.util.Timer;
+import java.util.TimerTask;
+
 /**
  * Takes an IStream and an IStreamFilter and makes a PollingIStream
  * 
@@ -12,19 +15,10 @@ import com.stuypulse.stuylib.exception.ConstructionError;
  * @author Sam (sam.belliveau@gmail.com)
  */
 
-public class PollingIStream extends Thread implements IStream {
+public class PollingIStream implements IStream {
 
-    // If the class should be polling or not
-    private boolean mRunning;
-
-    // The stream that this class polls from
-    private IStream mStream;
-
-    // The result of each poll
-    private double mResult;
-
-    // Time inbetween each poll
-    private long mDelta;
+    private Timer mTimer;
+    private volatile double mResult;
 
     /**
      * Creates a PollingIStream from an IStream and a time value
@@ -37,37 +31,14 @@ public class PollingIStream extends Thread implements IStream {
             throw new ConstructionError("PollingIStream(IStream stream, long hz)", "hz must be greater than 0!");
         }
 
-        mRunning = true;
-        mStream = stream;
-        mDelta = (long) (1000.0 / hz);
-        mResult = 0;
-
-        setName("PollingIStreamThread : " + System.currentTimeMillis());
-        setDaemon(true);
-        start();
-    }
-
-    /**
-     * Poll the IStream and put it in mResult
-     */
-    public void run() {
-        while (mRunning) {
-            set(mStream.get());
-            try {
-                Thread.sleep(mDelta);
-            } catch (InterruptedException e) {
-                mRunning = false;
-            }
-        }
-    }
-
-    /**
-     * Thread safe write to the double mResult
-     * 
-     * @param value new value for mResult
-     */
-    private synchronized void set(double value) {
-        mResult = value;
+        mTimer = new Timer();
+        mTimer.scheduleAtFixedRate(
+            new TimerTask() {
+                public void run() {
+                    mResult = stream.get();
+                }
+            }, 0, (long)(1000.0 / hz)
+        );
     }
 
     /**
