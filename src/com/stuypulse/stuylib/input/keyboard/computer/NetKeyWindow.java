@@ -2,13 +2,21 @@ package com.stuypulse.stuylib.input.keyboard.computer;
 
 import com.stuypulse.stuylib.input.keyboard.computer.NetKeyListener;
 
-import java.awt.*;
-import java.awt.event.*;
-import javax.swing.*;
+import java.awt.Color;
+import java.awt.GridBagLayout;
+
+import javax.swing.border.LineBorder;
+import javax.swing.JOptionPane;
+import javax.swing.JLabel;
+import javax.swing.JFrame;
+import javax.swing.JPanel;
 
 /**
- * This is a simple class that opens a Java AWT window, which has a KeyListener
- * that uploads keyboard information to a network table
+ * This is a simple class that
+ * opens a Java AWT window, which
+ * has a KeyListener that uploads
+ * keyboard information to a 
+ * network table
  * 
  * @author Sam (sam.belliveau@gmail.com)
  */
@@ -26,103 +34,49 @@ public class NetKeyWindow extends JFrame {
     private NetKeyListener mListener;
 
     /**
-     * Different Layouts for the different inputs 
-     */
-    private JPanel team_panel;
-    private JPanel port_panel;
-    private JPanel connect_panel;
-
-    /**
-     * Different items in the window that will be used
-     */
-    private JTextField team_input; 
-    private JComboBox<Integer> port_input; 
-    private JButton connect_button; 
-    
-    /**
-     * Updates team listener with specified team # and port #
-     * @param team team #
-     * @param port port #
-     */
-    private void updateKeyListener(int team, int port) {
-        // Remove old key listener
-        if(mListener != null) {
-            removeKeyListener(mListener);
-        }
-
-        // Add key listener
-        mListener = new NetKeyListener(team, port);
-        addKeyListener(mListener);
-
-        // Set Title to Configuration
-        setTitle("Network Keyboard Input [Team: " + team + ", Port: " + port + "]");
-    }
-
-    /**
-     * Updates team listener with the values from the window
-     */
-    private void updateKeyListener() {
-        int team = 0;
-        int port = (Integer)port_input.getSelectedItem();
-
-        try {
-            team = Integer.valueOf(team_input.getText());
-        } catch (NumberFormatException e) {
-            team = 0;
-        }
-
-        updateKeyListener(team, port);
-    }
-
-    /**
      * Opens Network Keyboard Input Window
      */
     public NetKeyWindow() {
         // Set Title and Open Network Table
         super("Network Keyboard Input");
 
-        // Setup the panels
-        team_panel = new JPanel();
-        port_panel = new JPanel();
-        connect_panel = new JPanel();
-
-        // Set the layout for each of the panels
-        team_panel.setLayout(new FlowLayout());
-        port_panel.setLayout(new FlowLayout());
-        connect_panel.setLayout(new FlowLayout());
-        
-        // Say what each entry does
-        team_panel.add(new JLabel("Team Number: "));
-        port_panel.add(new JLabel("Selected Port: "));
-
-        // Make text feild for team number
-        team_input = new JTextField(5);
-        team_input.setText("694");
-        team_panel.add(team_input);
-
-        // Port number combo box
-        port_input = new JComboBox<Integer>(new Integer[]{0, 1, 2, 3});
-        port_input.setSelectedIndex(0);
-        port_panel.add(port_input);
-
-        // Make a button that connects the user to that team number and port
-        connect_button = new JButton("Connect To Network Keyboard");
-        connect_button.addActionListener(new ActionListener() {
-            public void actionPerformed(ActionEvent e) {
-                updateKeyListener();
+        // Get team number from user
+        int team;
+        do {
+            try {
+                String teamNum = JOptionPane.showInputDialog("Enter Team Number:");
+                team = Integer.parseInt(teamNum);
+            } catch(Exception e) {
+                team = -1;
             }
-        });
-        connect_panel.add(connect_button);
+        } while(team < 0);
 
-        // Layout for entire window
-        setLayout(new BorderLayout(4, 4));
+        // Get keyboard port from user
+        int port = 0;
+        try {
+            String keyboardPort = JOptionPane.showInputDialog("Enter Virtual Keyboard Port (Default=0):");
+            port = Integer.parseInt(keyboardPort);
+        } catch(Exception e) { 
+            port = 0;
+        }
 
-        // Add each of the panels
-        add(team_panel, BorderLayout.NORTH);
-        add(port_panel, BorderLayout.CENTER);
-        add(connect_panel, BorderLayout.SOUTH);
+        // Connect NetKeyListener
+        mListener = new NetKeyListener(team, port);
+        addKeyListener(mListener);
 
-        // Pack
+        // Set Title
+        setTitle("Network Keyboard Input [Team: " + team + ", Port: " + port + "]");
+
+        // Message
+        JLabel message = new JLabel("Sending Keyboard Input to [Team: " + team + ", Port: " + port + "]");
+        message.setBorder(new LineBorder(Color.BLACK, 4));
+
+        // Message Panel
+        final JPanel messagePanel = new JPanel(new GridBagLayout());
+        messagePanel.add(message);
+        getContentPane().add(messagePanel);
+
+        // Pack and Set Size
         pack();
 
         // Set Visible

@@ -2,6 +2,7 @@ package com.stuypulse.stuylib.streams;
 
 import com.stuypulse.stuylib.streams.IStream;
 import com.stuypulse.stuylib.streams.filters.IStreamFilter;
+import com.stuypulse.stuylib.streams.filters.IStreamFilterGroup;
 
 /**
  * Takes a Stream and a StreamFilter and makes a FilteredStream
@@ -22,9 +23,9 @@ public class FilteredIStream implements IStream {
      * @param stream input stream
      * @param filter stream filter
      */
-    public FilteredIStream(IStream stream, IStreamFilter filter) {
+    public FilteredIStream(IStream stream, IStreamFilter... filter) {
         mStream = stream;
-        mStreamFilter = filter;
+        mStreamFilter = new IStreamFilterGroup(filter);
     }
 
     /**

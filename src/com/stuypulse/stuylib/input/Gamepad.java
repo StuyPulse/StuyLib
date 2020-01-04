@@ -1,7 +1,6 @@
 package com.stuypulse.stuylib.input;
 
 import com.stuypulse.stuylib.input.LambdaButton;
-import com.stuypulse.stuylib.streams.IStream;
 
 /**
  * An class for using gamepads with different interfaces. You can
@@ -73,12 +72,24 @@ public class Gamepad {
     /**************************************************/
 
     // Left Stick //
-    public final IStream getLeftXStream()   { return () -> getLeftX(); }
-    public final IStream getLeftYStream()   { return () -> getLeftY(); }
+    public final double getLeftMag() { return Math.hypot(getLeftX(), getLeftY()); }
+    public final double getLeftAngle() { 
+        double x = getLeftX();
+        double y = getLeftY();
+        
+        if(x == 0 && y == 0) { return 0; }
+        else { return Math.toDegrees(Math.atan2(y, x)); }
+    }
 
     // Right Stick //
-    public final IStream getRightXStream()  { return () -> getRightX(); }
-    public final IStream getRightYStream()  { return () -> getRightY(); }
+    public final double getRightMag() { return Math.hypot(getRightX(), getRightY()); }
+    public final double getRightAngle() { 
+        double x = getRightX();
+        double y = getRightY();
+        
+        if(x == 0 && y == 0) { return 0; }
+        else { return Math.toDegrees(Math.atan2(y, x)); }
+    }
 
     // D-Pad //
     public final LambdaButton getDPadUp()       { return new LambdaButton(() -> this.getRawDPadUp()); }
@@ -98,9 +109,6 @@ public class Gamepad {
 
     public final boolean getRawRightTrigger()   { return getRawRightTriggerAxis() > TRIGGER_AXIS_THRESHOLD; }
     public final LambdaButton getRightTrigger() { return new LambdaButton(() -> this.getRawRightTrigger()); }
-
-    public final IStream getLeftTriggerStream()  { return () -> getRawLeftTriggerAxis(); }
-    public final IStream getRightTriggerStream()  { return () -> getRawRightTriggerAxis(); }
 
     // Face Buttons // 
     public final LambdaButton getLeftButton()   { return new LambdaButton(() -> this.getRawLeftButton()); }
