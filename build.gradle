@@ -1,7 +1,10 @@
 plugins {
-    id "java-library"
-    id "edu.wpi.first.GradleRIO" version "2019.1.1"
+   id "java"
+   id "edu.wpi.first.GradleRIO" version "2020.1.2"
 }
+
+sourceCompatibility = JavaVersion.VERSION_11
+targetCompatibility = JavaVersion.VERSION_11
 
 sourceSets {
    main {
@@ -18,18 +21,24 @@ sourceSets {
    // }
 }
 
-sourceCompatibility = JavaVersion.VERSION_11
-targetCompatibility = JavaVersion.VERSION_11
-
 configurations {
    jaxDoclet
-   shade
-   compile.extendsFrom shade
 }
 
 dependencies { 
-   compile wpi.deps.wpilib()
-   compile wpi.deps.vendor.java()
+   implementation wpi.deps.wpilib()
+   nativeZip wpi.deps.wpilibJni(wpi.platforms.roborio)
+   nativeDesktopZip wpi.deps.wpilibJni(wpi.platforms.desktop)
+
+   implementation wpi.deps.vendor.java()
+   nativeZip wpi.deps.vendor.jni(wpi.platforms.roborio)
+   nativeDesktopZip wpi.deps.vendor.jni(wpi.platforms.desktop)
+
+   testImplementation 'junit:junit:4.12'
+
+   // Enable simulation gui support. Must check the box in vscode to enable support
+   // upon debugging
+   simulation wpi.deps.sim.gui(wpi.platforms.desktop, false)
 }
 
 javadoc {
