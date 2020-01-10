@@ -30,10 +30,15 @@ dependencies {
    nativeZip wpi.deps.wpilibJni(wpi.platforms.roborio)
    nativeDesktopZip wpi.deps.wpilibJni(wpi.platforms.desktop)
 
-
    implementation wpi.deps.vendor.java()
    nativeZip wpi.deps.vendor.jni(wpi.platforms.roborio)
    nativeDesktopZip wpi.deps.vendor.jni(wpi.platforms.desktop)
+
+   testImplementation 'junit:junit:4.12'
+
+   // Enable simulation gui support. Must check the box in vscode to enable support
+   // upon debugging
+   simulation wpi.deps.sim.gui(wpi.platforms.desktop, false)
 }
 
 javadoc {
