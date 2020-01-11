@@ -3,31 +3,34 @@ package com.stuypulse.stuylib.file;
 import java.util.logging.SimpleFormatter;
 
 import java.util.logging.FileHandler;
+import java.util.logging.Level;
 import java.util.logging.Logger;
 
 /**
  * A class that will let you log any class that implements loggable.
  * 
  * @author Sam (sam.belliveau@gmail.com)
+ * @author Ivan (ivanw8288@gmail.com)
+ * @author Ayan ()
  */
 
 public class FRCLogger {
-
     /**
-     * Implementable interface with getLog() function. This lets us pass in
-     * subsystems that implement loggable to our logger in a very easy way.
+     * The Loggable interface should be implemented by a class that can 
+     * return a useful piece of data that can be called on demand to be written
+     * into the log.
      */
     public interface Loggable {
-        public String getLog();
+        public String putLog();
     }
 
     private Logger mLogger;
     private FileHandler mFileHandler;
 
     /**
-     * Open FRCLogger
+     * Open a new FRCLogger
      * 
-     * @param file file name
+     * @param file Name of the file to be written to.
      */
     FRCLogger(String file) {
         mLogger = Logger.getLogger(FRCLogger.class.getName());
@@ -35,6 +38,7 @@ public class FRCLogger {
         try {
             mFileHandler = new FileHandler("./Logs/" + file + ".log");
         } catch (Exception e) {
+            logError(this, e);
             e.printStackTrace();
         }
 
@@ -43,29 +47,34 @@ public class FRCLogger {
     }
 
     /**
-     * Log Loggable Class
+     * Adds a new log entry to the log.
      * 
-     * @param in Loggable Class
+     * @param level Level of severity of the log entry.
+     * @param T Object that is the source of the log entry.
+     * @param toLog Log entry message.
      */
-    public void log(Loggable in) {
-        mLogger.info(in.getClass().getName().toUpperCase() + ":\n" + in.getLog());
+    public <T> void log(Level level, T obj, String toLog) {
+        mLogger.log(level, obj.getClass().getName().toUpperCase() + ": ", toLog);
     }
 
     /**
-     * Log String as Info
+     * Grabs next putInfo() from the class implementing Loggable, and logs the
+     * returned data entry under the info tab with the class' name.
      * 
-     * @param info the information
+     * @param toLog Class implementing Loggable
      */
-    public void logInfo(String info) {
-        mLogger.info(info);
+    public void log(Loggable toLog) {
+        mLogger.info(toLog.getClass().getName().toUpperCase() + ":\n" + toLog.putLog());
     }
 
     /**
-     * Log String as Error
+     * Log an error.  Should be used in conjunction with try/catch.
      * 
-     * @param error the error
+     * @param obj Object that is the source of the error.
+     * @param e Exception, usually from try/catch
      */
-    public void logError(String error) {
-        mLogger.severe(error);
+    public <T> void logError(T obj, Exception e) {
+        mLogger.severe("Exception thrown from " + obj.getClass().getName().toUpperCase() + ":\n" + e);
     }
+
 }
