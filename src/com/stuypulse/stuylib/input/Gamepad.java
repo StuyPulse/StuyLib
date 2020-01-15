@@ -102,7 +102,7 @@ public class Gamepad {
     public final LambdaButton getRightBumper()  { return new LambdaButton(() -> this.getRawRightBumper()); }
 
     // Triggers //
-    protected static final double TRIGGER_AXIS_THRESHOLD = 2.0 / 16.0;
+    protected static final double TRIGGER_AXIS_THRESHOLD = 3.0 / 16.0;
 
     public final boolean getRawLeftTrigger()    { return getRawLeftTriggerAxis() > TRIGGER_AXIS_THRESHOLD; }
     public final LambdaButton getLeftTrigger()  { return new LambdaButton(() -> this.getRawLeftTrigger()); }

@@ -39,7 +39,7 @@ public class Logitech extends WPIGamepad {
         public double getLeftY()    { return -getRawAxis(1); }
 
         // Right Stick //
-        public double getRightX()   { return getRawAxis(4); }
+        public double getRightX()   { return getRawAxis(2); }
         public double getRightY()   { return -getRawAxis(3); }
 
         // Bumpers //
@@ -89,7 +89,7 @@ public class Logitech extends WPIGamepad {
 
         // Right Stick //
         public double getRightX()   { return getRawAxis(4); }
-        public double getRightY()   { return -getRawAxis(3); }
+        public double getRightY()   { return -getRawAxis(5); }
 
         // Bumpers //
         public boolean getRawLeftBumper()   { return getRawButton(5); }
@@ -101,7 +101,7 @@ public class Logitech extends WPIGamepad {
 
         // Face Buttons //
         public boolean getRawLeftButton()   { return getRawButton(3); }
-        public boolean getRawRightButton()  { return getRawButton(3); }
+        public boolean getRawRightButton()  { return getRawButton(2); }
         public boolean getRawTopButton()    { return getRawButton(4); }
         public boolean getRawBottomButton() { return getRawButton(1); }
 

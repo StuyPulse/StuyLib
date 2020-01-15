@@ -8,7 +8,7 @@ import com.stuypulse.stuylib.info.Version;
 
 public interface Information {
     // Current version of stuylib
-    final Version STUYLIB_VER = new Version(1, 7, 1);
+    final Version STUYLIB_VER = new Version(1, 8);
 
     // Name of library + Version
     final String LIB_NAME = "StuyLib " + STUYLIB_VER;
