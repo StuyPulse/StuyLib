@@ -107,6 +107,10 @@ $('.navPadding').css('padding-top', $('.fixedNav').css("height"));
 </a>
 <h2 class="title">B</h2>
 <dl>
+<dt><a href="com/stuypulse/stuylib/input/buttons/BooleanProvider.html" title="interface in com.stuypulse.stuylib.input.buttons"><span class="typeNameLink">BooleanProvider</span></a> - Interface in <a href="com/stuypulse/stuylib/input/buttons/package-summary.html">com.stuypulse.stuylib.input.buttons</a></dt>
+<dd>
+<div class="block">Interface that provides boolean for button classes</div>
+</dd>
 <dt><a href="com/stuypulse/stuylib/streams/BufferedIStream.html" title="class in com.stuypulse.stuylib.streams"><span class="typeNameLink">BufferedIStream</span></a> - Class in <a href="com/stuypulse/stuylib/streams/package-summary.html">com.stuypulse.stuylib.streams</a></dt>
 <dd>
 <div class="block">This class allows you to use an input stream while recording the last N
@@ -121,6 +125,19 @@ $('.navPadding').css('padding-top', $('.fixedNav').css("height"));
 <dt><span class="memberNameLink"><a href="com/stuypulse/stuylib/streams/BufferedIStream.html#%3Cinit%3E(com.stuypulse.stuylib.streams.IStream,int)">BufferedIStream(IStream, int)</a></span> - Constructor for class com.stuypulse.stuylib.streams.<a href="com/stuypulse/stuylib/streams/BufferedIStream.html" title="class in com.stuypulse.stuylib.streams">BufferedIStream</a></dt>
 <dd>
 <div class="block">Creates a buffered istream with an istream and a custom buffer size</div>
+</dd>
+<dt><a href="com/stuypulse/stuylib/input/buttons/ButtonWrapper.html" title="class in com.stuypulse.stuylib.input.buttons"><span class="typeNameLink">ButtonWrapper</span></a> - Class in <a href="com/stuypulse/stuylib/input/buttons/package-summary.html">com.stuypulse.stuylib.input.buttons</a></dt>
+<dd>
+<div class="block">This class helps us bridge the gap between new and old code
+ by allowing one button class to provide a new and old button.</div>
+</dd>
+<dt><span class="memberNameLink"><a href="com/stuypulse/stuylib/input/buttons/ButtonWrapper.html#%3Cinit%3E()">ButtonWrapper()</a></span> - Constructor for class com.stuypulse.stuylib.input.buttons.<a href="com/stuypulse/stuylib/input/buttons/ButtonWrapper.html" title="class in com.stuypulse.stuylib.input.buttons">ButtonWrapper</a></dt>
+<dd>
+<div class="block">Initializes ButtonWrapper with a lambda that always returns false</div>
+</dd>
+<dt><span class="memberNameLink"><a href="com/stuypulse/stuylib/input/buttons/ButtonWrapper.html#%3Cinit%3E(com.stuypulse.stuylib.input.buttons.BooleanProvider)">ButtonWrapper(BooleanProvider)</a></span> - Constructor for class com.stuypulse.stuylib.input.buttons.<a href="com/stuypulse/stuylib/input/buttons/ButtonWrapper.html" title="class in com.stuypulse.stuylib.input.buttons">ButtonWrapper</a></dt>
+<dd>
+<div class="block">Initializes ButtonWrapper with a lambda that will be used when calling .get()</div>
 </dd>
 </dl>
 <a id="I:C">
@@ -161,6 +178,8 @@ $('.navPadding').css('padding-top', $('.fixedNav').css("height"));
 <dt><a href="com/stuypulse/stuylib/info/package-summary.html">com.stuypulse.stuylib.info</a> - package com.stuypulse.stuylib.info</dt>
 <dd>&nbsp;</dd>
 <dt><a href="com/stuypulse/stuylib/input/package-summary.html">com.stuypulse.stuylib.input</a> - package com.stuypulse.stuylib.input</dt>
+<dd>&nbsp;</dd>
+<dt><a href="com/stuypulse/stuylib/input/buttons/package-summary.html">com.stuypulse.stuylib.input.buttons</a> - package com.stuypulse.stuylib.input.buttons</dt>
 <dd>&nbsp;</dd>
 <dt><a href="com/stuypulse/stuylib/input/gamepads/package-summary.html">com.stuypulse.stuylib.input.gamepads</a> - package com.stuypulse.stuylib.input.gamepads</dt>
 <dd>&nbsp;</dd>
@@ -373,9 +392,13 @@ $('.navPadding').css('padding-top', $('.fixedNav').css("height"));
 </dd>
 <dt><span class="memberNameLink"><a href="com/stuypulse/stuylib/input/Gamepad.html#%3Cinit%3E()">Gamepad()</a></span> - Constructor for class com.stuypulse.stuylib.input.<a href="com/stuypulse/stuylib/input/Gamepad.html" title="class in com.stuypulse.stuylib.input">Gamepad</a></dt>
 <dd>&nbsp;</dd>
-<dt><span class="memberNameLink"><a href="com/stuypulse/stuylib/input/LambdaButton.ButtonCheck.html#get()">get()</a></span> - Method in interface com.stuypulse.stuylib.input.<a href="com/stuypulse/stuylib/input/LambdaButton.ButtonCheck.html" title="interface in com.stuypulse.stuylib.input">LambdaButton.ButtonCheck</a></dt>
+<dt><span class="memberNameLink"><a href="com/stuypulse/stuylib/input/buttons/BooleanProvider.html#get()">get()</a></span> - Method in interface com.stuypulse.stuylib.input.buttons.<a href="com/stuypulse/stuylib/input/buttons/BooleanProvider.html" title="interface in com.stuypulse.stuylib.input.buttons">BooleanProvider</a></dt>
 <dd>&nbsp;</dd>
-<dt><span class="memberNameLink"><a href="com/stuypulse/stuylib/input/LambdaButton.html#get()">get()</a></span> - Method in class com.stuypulse.stuylib.input.<a href="com/stuypulse/stuylib/input/LambdaButton.html" title="class in com.stuypulse.stuylib.input">LambdaButton</a></dt>
+<dt><span class="memberNameLink"><a href="com/stuypulse/stuylib/input/buttons/NewButton.html#get()">get()</a></span> - Method in class com.stuypulse.stuylib.input.buttons.<a href="com/stuypulse/stuylib/input/buttons/NewButton.html" title="class in com.stuypulse.stuylib.input.buttons">NewButton</a></dt>
+<dd>
+<div class="block">Override get funciton to make it work like a button</div>
+</dd>
+<dt><span class="memberNameLink"><a href="com/stuypulse/stuylib/input/buttons/OldButton.html#get()">get()</a></span> - Method in class com.stuypulse.stuylib.input.buttons.<a href="com/stuypulse/stuylib/input/buttons/OldButton.html" title="class in com.stuypulse.stuylib.input.buttons">OldButton</a></dt>
 <dd>
 <div class="block">Override get funciton to make it work like a button</div>
 </dd>
@@ -442,10 +465,6 @@ $('.navPadding').css('padding-top', $('.fixedNav').css("height"));
 <dt><span class="memberNameLink"><a href="com/stuypulse/stuylib/input/WPIGamepad.html#getButton(int)">getButton(int)</a></span> - Method in class com.stuypulse.stuylib.input.<a href="com/stuypulse/stuylib/input/WPIGamepad.html" title="class in com.stuypulse.stuylib.input">WPIGamepad</a></dt>
 <dd>
 <div class="block">Get button from underlying joystick</div>
-</dd>
-<dt><span class="memberNameLink"><a href="com/stuypulse/stuylib/input/LambdaButton.html#getButtonCheck()">getButtonCheck()</a></span> - Method in class com.stuypulse.stuylib.input.<a href="com/stuypulse/stuylib/input/LambdaButton.html" title="class in com.stuypulse.stuylib.input">LambdaButton</a></dt>
-<dd>
-<div class="block">Gets the lambda that the button uses</div>
 </dd>
 <dt><span class="memberNameLink"><a href="com/stuypulse/stuylib/network/limelight/Limelight.CameraStream.html#getCodeValue()">getCodeValue()</a></span> - Method in enum com.stuypulse.stuylib.network.limelight.<a href="com/stuypulse/stuylib/network/limelight/Limelight.CameraStream.html" title="enum in com.stuypulse.stuylib.network.limelight">Limelight.CameraStream</a></dt>
 <dd>&nbsp;</dd>
@@ -974,22 +993,6 @@ $('.navPadding').css('padding-top', $('.fixedNav').css("height"));
 </a>
 <h2 class="title">L</h2>
 <dl>
-<dt><a href="com/stuypulse/stuylib/input/LambdaButton.html" title="class in com.stuypulse.stuylib.input"><span class="typeNameLink">LambdaButton</span></a> - Class in <a href="com/stuypulse/stuylib/input/package-summary.html">com.stuypulse.stuylib.input</a></dt>
-<dd>
-<div class="block">This class lets you make a wpi button with any function.</div>
-</dd>
-<dt><span class="memberNameLink"><a href="com/stuypulse/stuylib/input/LambdaButton.html#%3Cinit%3E()">LambdaButton()</a></span> - Constructor for class com.stuypulse.stuylib.input.<a href="com/stuypulse/stuylib/input/LambdaButton.html" title="class in com.stuypulse.stuylib.input">LambdaButton</a></dt>
-<dd>
-<div class="block">Initializes LambdaButton with a lambda that always returns false</div>
-</dd>
-<dt><span class="memberNameLink"><a href="com/stuypulse/stuylib/input/LambdaButton.html#%3Cinit%3E(com.stuypulse.stuylib.input.LambdaButton.ButtonCheck)">LambdaButton(LambdaButton.ButtonCheck)</a></span> - Constructor for class com.stuypulse.stuylib.input.<a href="com/stuypulse/stuylib/input/LambdaButton.html" title="class in com.stuypulse.stuylib.input">LambdaButton</a></dt>
-<dd>
-<div class="block">Gpves class lambda that will be used in get()</div>
-</dd>
-<dt><a href="com/stuypulse/stuylib/input/LambdaButton.ButtonCheck.html" title="interface in com.stuypulse.stuylib.input"><span class="typeNameLink">LambdaButton.ButtonCheck</span></a> - Interface in <a href="com/stuypulse/stuylib/input/package-summary.html">com.stuypulse.stuylib.input</a></dt>
-<dd>
-<div class="block">Lets us recieve a function to use as a button</div>
-</dd>
 <dt><span class="memberNameLink"><a href="com/stuypulse/stuylib/streams/BufferedIStream.html#last()">last()</a></span> - Method in class com.stuypulse.stuylib.streams.<a href="com/stuypulse/stuylib/streams/BufferedIStream.html" title="class in com.stuypulse.stuylib.streams">BufferedIStream</a></dt>
 <dd>
 <div class="block">Get the most recent value from the istream</div>
@@ -1154,12 +1157,42 @@ $('.navPadding').css('padding-top', $('.fixedNav').css("height"));
 <div class="block">The NetworkTableWrapper is a very fast way to easily interface with a network
  table.</div>
 </dd>
+<dt><a href="com/stuypulse/stuylib/input/buttons/NewButton.html" title="class in com.stuypulse.stuylib.input.buttons"><span class="typeNameLink">NewButton</span></a> - Class in <a href="com/stuypulse/stuylib/input/buttons/package-summary.html">com.stuypulse.stuylib.input.buttons</a></dt>
+<dd>
+<div class="block">This class will let us use the new button by 
+ providing a lambda for it to use</div>
+</dd>
+<dt><span class="memberNameLink"><a href="com/stuypulse/stuylib/input/buttons/NewButton.html#%3Cinit%3E()">NewButton()</a></span> - Constructor for class com.stuypulse.stuylib.input.buttons.<a href="com/stuypulse/stuylib/input/buttons/NewButton.html" title="class in com.stuypulse.stuylib.input.buttons">NewButton</a></dt>
+<dd>
+<div class="block">Initializes NewButton with a lambda that always returns false</div>
+</dd>
+<dt><span class="memberNameLink"><a href="com/stuypulse/stuylib/input/buttons/NewButton.html#%3Cinit%3E(com.stuypulse.stuylib.input.buttons.BooleanProvider)">NewButton(BooleanProvider)</a></span> - Constructor for class com.stuypulse.stuylib.input.buttons.<a href="com/stuypulse/stuylib/input/buttons/NewButton.html" title="class in com.stuypulse.stuylib.input.buttons">NewButton</a></dt>
+<dd>
+<div class="block">Initializes NewButton with a lambda that will be used when calling .get()</div>
+</dd>
 </dl>
 <a id="I:O">
 <!--   -->
 </a>
 <h2 class="title">O</h2>
 <dl>
+<dt><span class="memberNameLink"><a href="com/stuypulse/stuylib/input/buttons/ButtonWrapper.html#old()">old()</a></span> - Method in class com.stuypulse.stuylib.input.buttons.<a href="com/stuypulse/stuylib/input/buttons/ButtonWrapper.html" title="class in com.stuypulse.stuylib.input.buttons">ButtonWrapper</a></dt>
+<dd>
+<div class="block">Get the the old button version of this class for use in legacy code</div>
+</dd>
+<dt><a href="com/stuypulse/stuylib/input/buttons/OldButton.html" title="class in com.stuypulse.stuylib.input.buttons"><span class="typeNameLink">OldButton</span></a> - Class in <a href="com/stuypulse/stuylib/input/buttons/package-summary.html">com.stuypulse.stuylib.input.buttons</a></dt>
+<dd>
+<div class="block">This class will let us use the old button by 
+ providing a lambda for it to use</div>
+</dd>
+<dt><span class="memberNameLink"><a href="com/stuypulse/stuylib/input/buttons/OldButton.html#%3Cinit%3E()">OldButton()</a></span> - Constructor for class com.stuypulse.stuylib.input.buttons.<a href="com/stuypulse/stuylib/input/buttons/OldButton.html" title="class in com.stuypulse.stuylib.input.buttons">OldButton</a></dt>
+<dd>
+<div class="block">Initializes OldButton with a lambda that always returns false</div>
+</dd>
+<dt><span class="memberNameLink"><a href="com/stuypulse/stuylib/input/buttons/OldButton.html#%3Cinit%3E(com.stuypulse.stuylib.input.buttons.BooleanProvider)">OldButton(BooleanProvider)</a></span> - Constructor for class com.stuypulse.stuylib.input.buttons.<a href="com/stuypulse/stuylib/input/buttons/OldButton.html" title="class in com.stuypulse.stuylib.input.buttons">OldButton</a></dt>
+<dd>
+<div class="block">Initializes OldButton with a lambda that will be used when calling .get()</div>
+</dd>
 <dt><span class="memberNameLink"><a href="com/stuypulse/stuylib/network/NetworkTableWrapper.html#open(int,java.lang.String)">open(int, String)</a></span> - Static method in class com.stuypulse.stuylib.network.<a href="com/stuypulse/stuylib/network/NetworkTableWrapper.html" title="class in com.stuypulse.stuylib.network">NetworkTableWrapper</a></dt>
 <dd>
 <div class="block">Opens network table that is connected to a robot.</div>
@@ -1269,10 +1302,6 @@ $('.navPadding').css('padding-top', $('.fixedNav').css("height"));
 <dd>
 <div class="block">Set boolean in network table</div>
 </dd>
-<dt><span class="memberNameLink"><a href="com/stuypulse/stuylib/input/LambdaButton.html#setButtonCheck(com.stuypulse.stuylib.input.LambdaButton.ButtonCheck)">setButtonCheck(LambdaButton.ButtonCheck)</a></span> - Method in class com.stuypulse.stuylib.input.<a href="com/stuypulse/stuylib/input/LambdaButton.html" title="class in com.stuypulse.stuylib.input">LambdaButton</a></dt>
-<dd>
-<div class="block">Gives class lambda that will be used in get()</div>
-</dd>
 <dt><span class="memberNameLink"><a href="com/stuypulse/stuylib/network/limelight/Limelight.html#setCameraStream(com.stuypulse.stuylib.network.limelight.Limelight.CameraStream)">setCameraStream(Limelight.CameraStream)</a></span> - Static method in class com.stuypulse.stuylib.network.limelight.<a href="com/stuypulse/stuylib/network/limelight/Limelight.html" title="class in com.stuypulse.stuylib.network.limelight">Limelight</a></dt>
 <dd>&nbsp;</dd>
 <dt><span class="memberNameLink"><a href="com/stuypulse/stuylib/network/limelight/Limelight.html#setCamMode(com.stuypulse.stuylib.network.limelight.Limelight.CamMode)">setCamMode(Limelight.CamMode)</a></span> - Static method in class com.stuypulse.stuylib.network.limelight.<a href="com/stuypulse/stuylib/network/limelight/Limelight.html" title="class in com.stuypulse.stuylib.network.limelight">Limelight</a></dt>
@@ -1303,12 +1332,10 @@ $('.navPadding').css('padding-top', $('.fixedNav').css("height"));
 <dd>&nbsp;</dd>
 <dt><span class="memberNameLink"><a href="com/stuypulse/stuylib/input/Gamepad.html#setRumble(double)">setRumble(double)</a></span> - Method in class com.stuypulse.stuylib.input.<a href="com/stuypulse/stuylib/input/Gamepad.html" title="class in com.stuypulse.stuylib.input">Gamepad</a></dt>
 <dd>&nbsp;</dd>
-<dt><span class="memberNameLink"><a href="com/stuypulse/stuylib/input/gamepads/Logitech.DMode.html#setRumble(double)">setRumble(double)</a></span> - Method in class com.stuypulse.stuylib.input.gamepads.<a href="com/stuypulse/stuylib/input/gamepads/Logitech.DMode.html" title="class in com.stuypulse.stuylib.input.gamepads">Logitech.DMode</a></dt>
-<dd>&nbsp;</dd>
-<dt><span class="memberNameLink"><a href="com/stuypulse/stuylib/input/gamepads/Logitech.XMode.html#setRumble(double)">setRumble(double)</a></span> - Method in class com.stuypulse.stuylib.input.gamepads.<a href="com/stuypulse/stuylib/input/gamepads/Logitech.XMode.html" title="class in com.stuypulse.stuylib.input.gamepads">Logitech.XMode</a></dt>
-<dd>&nbsp;</dd>
-<dt><span class="memberNameLink"><a href="com/stuypulse/stuylib/input/gamepads/PS4.html#setRumble(double)">setRumble(double)</a></span> - Method in class com.stuypulse.stuylib.input.gamepads.<a href="com/stuypulse/stuylib/input/gamepads/PS4.html" title="class in com.stuypulse.stuylib.input.gamepads">PS4</a></dt>
-<dd>&nbsp;</dd>
+<dt><span class="memberNameLink"><a href="com/stuypulse/stuylib/input/WPIGamepad.html#setRumble(double)">setRumble(double)</a></span> - Method in class com.stuypulse.stuylib.input.<a href="com/stuypulse/stuylib/input/WPIGamepad.html" title="class in com.stuypulse.stuylib.input">WPIGamepad</a></dt>
+<dd>
+<div class="block">Set the rumble intensity of the gamepad</div>
+</dd>
 <dt><span class="memberNameLink"><a href="com/stuypulse/stuylib/network/limelight/Limelight.html#setSnapshotMode(com.stuypulse.stuylib.network.limelight.Limelight.SnapshotMode)">setSnapshotMode(Limelight.SnapshotMode)</a></span> - Static method in class com.stuypulse.stuylib.network.limelight.<a href="com/stuypulse/stuylib/network/limelight/Limelight.html" title="class in com.stuypulse.stuylib.network.limelight">Limelight</a></dt>
 <dd>&nbsp;</dd>
 <dt><span class="memberNameLink"><a href="com/stuypulse/stuylib/network/NetworkTableWrapper.html#setString(java.lang.String,java.lang.String)">setString(String, String)</a></span> - Method in class com.stuypulse.stuylib.network.<a href="com/stuypulse/stuylib/network/NetworkTableWrapper.html" title="class in com.stuypulse.stuylib.network">NetworkTableWrapper</a></dt>
