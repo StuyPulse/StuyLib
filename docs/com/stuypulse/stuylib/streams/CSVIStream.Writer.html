@@ -171,6 +171,15 @@ implements <a href="IStream.html" title="interface in com.stuypulse.stuylib.stre
  file</div>
 </td>
 </tr>
+<tr class="rowColor">
+<th class="colConstructorName" scope="row"><code><span class="memberNameLink"><a href="#%3Cinit%3E(java.lang.String,com.stuypulse.stuylib.streams.IStream,int)">Writer</a></span>&#8203;(java.lang.String&nbsp;filepath,
+      <a href="IStream.html" title="interface in com.stuypulse.stuylib.streams">IStream</a>&nbsp;stream,
+      int&nbsp;flushRate)</code></th>
+<td class="colLast">
+<div class="block">Makes a new IStream that, while getting values, will record them in a CSV
+ file</div>
+</td>
+</tr>
 </table>
 </li>
 </ul>
@@ -220,6 +229,25 @@ implements <a href="IStream.html" title="interface in com.stuypulse.stuylib.stre
 <!--   -->
 </a>
 <h3>Constructor Detail</h3>
+<a id="&lt;init&gt;(java.lang.String,com.stuypulse.stuylib.streams.IStream,int)">
+<!--   -->
+</a>
+<ul class="blockList">
+<li class="blockList">
+<h4>Writer</h4>
+<pre>public&nbsp;Writer&#8203;(java.lang.String&nbsp;filepath,
+              <a href="IStream.html" title="interface in com.stuypulse.stuylib.streams">IStream</a>&nbsp;stream,
+              int&nbsp;flushRate)</pre>
+<div class="block">Makes a new IStream that, while getting values, will record them in a CSV
+ file</div>
+<dl>
+<dt><span class="paramLabel">Parameters:</span></dt>
+<dd><code>filepath</code> - path of the CSV file to write to</dd>
+<dd><code>stream</code> - IStream to read in from</dd>
+<dd><code>flushRate</code> - how many times .get should be called before it flushes</dd>
+</dl>
+</li>
+</ul>
 <a id="&lt;init&gt;(java.lang.String,com.stuypulse.stuylib.streams.IStream)">
 <!--   -->
 </a>

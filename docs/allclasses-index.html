@@ -27,7 +27,7 @@
     catch(err) {
     }
 //-->
-var data = {"i0":1,"i1":2,"i2":2,"i3":8,"i4":2,"i5":2,"i6":2,"i7":2,"i8":2,"i9":4,"i10":2,"i11":2,"i12":2,"i13":2,"i14":1,"i15":2,"i16":1,"i17":2,"i18":1,"i19":1,"i20":2,"i21":2,"i22":4,"i23":4,"i24":4,"i25":4,"i26":2,"i27":2,"i28":2,"i29":2,"i30":2,"i31":2,"i32":2,"i33":2,"i34":2,"i35":2,"i36":2,"i37":2,"i38":2,"i39":2,"i40":2,"i41":2,"i42":1,"i43":2,"i44":2,"i45":2,"i46":2,"i47":2};
+var data = {"i0":1,"i1":2,"i2":2,"i3":8,"i4":2,"i5":2,"i6":2,"i7":2,"i8":2,"i9":4,"i10":2,"i11":2,"i12":2,"i13":1,"i14":2,"i15":1,"i16":1,"i17":1,"i18":2,"i19":2,"i20":2,"i21":4,"i22":4,"i23":4,"i24":4,"i25":2,"i26":2,"i27":2,"i28":2,"i29":2,"i30":2,"i31":2,"i32":2,"i33":2,"i34":2,"i35":2,"i36":2,"i37":2,"i38":2,"i39":2,"i40":2,"i41":2,"i42":1,"i43":2,"i44":2,"i45":2,"i46":2,"i47":2};
 var tabs = {65535:["t0","All Classes"],1:["t1","Interface Summary"],2:["t2","Class Summary"],4:["t3","Enum Summary"],8:["t4","Exception Summary"]};
 var altColor = "altColor";
 var rowColor = "rowColor";
@@ -187,12 +187,6 @@ $('.navPadding').css('padding-top', $('.fixedNav').css("height"));
 </th>
 </tr>
 <tr id="i11" class="rowColor">
-<td class="colFirst"><a href="com/stuypulse/stuylib/streams/filters/DerivativeFilter.html" title="class in com.stuypulse.stuylib.streams.filters">DerivativeFilter</a></td>
-<th class="colLast" scope="row">
-<div class="block">This class lets you rate limit a stream of inputs</div>
-</th>
-</tr>
-<tr id="i12" class="altColor">
 <td class="colFirst"><a href="com/stuypulse/stuylib/streams/FilteredIStream.html" title="class in com.stuypulse.stuylib.streams">FilteredIStream</a></td>
 <th class="colLast" scope="row">
 <div class="block">Takes a Stream and a StreamFilter and makes a FilteredStream
@@ -200,104 +194,104 @@ $('.navPadding').css('padding-top', $('.fixedNav').css("height"));
  This could be used to automatically filter controller inputs</div>
 </th>
 </tr>
-<tr id="i13" class="rowColor">
+<tr id="i12" class="altColor">
 <td class="colFirst"><a href="com/stuypulse/stuylib/file/FRCLogger.html" title="class in com.stuypulse.stuylib.file">FRCLogger</a></td>
 <th class="colLast" scope="row">
 <div class="block">A class that will let you log any class that implements loggable.</div>
 </th>
 </tr>
-<tr id="i14" class="altColor">
+<tr id="i13" class="rowColor">
 <td class="colFirst"><a href="com/stuypulse/stuylib/file/FRCLogger.Loggable.html" title="interface in com.stuypulse.stuylib.file">FRCLogger.Loggable</a></td>
 <th class="colLast" scope="row">
 <div class="block">Implementable interface with getLog() function.</div>
 </th>
 </tr>
-<tr id="i15" class="rowColor">
+<tr id="i14" class="altColor">
 <td class="colFirst"><a href="com/stuypulse/stuylib/input/Gamepad.html" title="class in com.stuypulse.stuylib.input">Gamepad</a></td>
 <th class="colLast" scope="row">
 <div class="block">An class for using gamepads with different interfaces.</div>
 </th>
 </tr>
-<tr id="i16" class="altColor">
+<tr id="i15" class="rowColor">
 <td class="colFirst"><a href="com/stuypulse/stuylib/info/Information.html" title="interface in com.stuypulse.stuylib.info">Information</a></td>
 <th class="colLast" scope="row">
 <div class="block">Holds information about stuylib</div>
 </th>
 </tr>
-<tr id="i17" class="rowColor">
-<td class="colFirst"><a href="com/stuypulse/stuylib/streams/filters/IntegralFilter.html" title="class in com.stuypulse.stuylib.streams.filters">IntegralFilter</a></td>
-<th class="colLast" scope="row">
-<div class="block">This class lets you take the integral of an IStream using a filter</div>
-</th>
-</tr>
-<tr id="i18" class="altColor">
+<tr id="i16" class="altColor">
 <td class="colFirst"><a href="com/stuypulse/stuylib/streams/IStream.html" title="interface in com.stuypulse.stuylib.streams">IStream</a></td>
 <th class="colLast" scope="row">
 <div class="block">A stream of doubles that is accessed with the .get() function</div>
 </th>
 </tr>
-<tr id="i19" class="rowColor">
+<tr id="i17" class="rowColor">
 <td class="colFirst"><a href="com/stuypulse/stuylib/streams/filters/IStreamFilter.html" title="interface in com.stuypulse.stuylib.streams.filters">IStreamFilter</a></td>
 <th class="colLast" scope="row">
 <div class="block">This lets us make sub-classes that change can modify values in this way</div>
 </th>
 </tr>
-<tr id="i20" class="altColor">
+<tr id="i18" class="altColor">
 <td class="colFirst"><a href="com/stuypulse/stuylib/streams/filters/IStreamFilterGroup.html" title="class in com.stuypulse.stuylib.streams.filters">IStreamFilterGroup</a></td>
 <th class="colLast" scope="row">
 <div class="block">A simple class that lets you combine multiple stream filters into one stream
  filter</div>
 </th>
 </tr>
-<tr id="i21" class="rowColor">
+<tr id="i19" class="rowColor">
+<td class="colFirst"><a href="com/stuypulse/stuylib/streams/filters/JerkLimit.html" title="class in com.stuypulse.stuylib.streams.filters">JerkLimit</a></td>
+<th class="colLast" scope="row">
+<div class="block">This class lets you limit the jerk a stream of inputs</div>
+</th>
+</tr>
+<tr id="i20" class="altColor">
 <td class="colFirst"><a href="com/stuypulse/stuylib/network/limelight/Limelight.html" title="class in com.stuypulse.stuylib.network.limelight">Limelight</a></td>
 <th class="colLast" scope="row">
 <div class="block">This is a class that lets you interface with the limelight network table.</div>
 </th>
 </tr>
-<tr id="i22" class="altColor">
+<tr id="i21" class="rowColor">
 <td class="colFirst"><a href="com/stuypulse/stuylib/network/limelight/Limelight.CameraStream.html" title="enum in com.stuypulse.stuylib.network.limelight">Limelight.CameraStream</a></td>
 <th class="colLast" scope="row">&nbsp;</th>
 </tr>
-<tr id="i23" class="rowColor">
+<tr id="i22" class="altColor">
 <td class="colFirst"><a href="com/stuypulse/stuylib/network/limelight/Limelight.CamMode.html" title="enum in com.stuypulse.stuylib.network.limelight">Limelight.CamMode</a></td>
 <th class="colLast" scope="row">&nbsp;</th>
 </tr>
-<tr id="i24" class="altColor">
+<tr id="i23" class="rowColor">
 <td class="colFirst"><a href="com/stuypulse/stuylib/network/limelight/Limelight.LEDMode.html" title="enum in com.stuypulse.stuylib.network.limelight">Limelight.LEDMode</a></td>
 <th class="colLast" scope="row">&nbsp;</th>
 </tr>
-<tr id="i25" class="rowColor">
+<tr id="i24" class="altColor">
 <td class="colFirst"><a href="com/stuypulse/stuylib/network/limelight/Limelight.SnapshotMode.html" title="enum in com.stuypulse.stuylib.network.limelight">Limelight.SnapshotMode</a></td>
 <th class="colLast" scope="row">&nbsp;</th>
 </tr>
-<tr id="i26" class="altColor">
+<tr id="i25" class="rowColor">
 <td class="colFirst"><a href="com/stuypulse/stuylib/input/gamepads/Logitech.html" title="class in com.stuypulse.stuylib.input.gamepads">Logitech</a></td>
 <th class="colLast" scope="row">
 <div class="block">Implementation of Logitech Controller and its 2 Modes for the Gamepad Class</div>
 </th>
 </tr>
-<tr id="i27" class="rowColor">
+<tr id="i26" class="altColor">
 <td class="colFirst"><a href="com/stuypulse/stuylib/input/gamepads/Logitech.DMode.html" title="class in com.stuypulse.stuylib.input.gamepads">Logitech.DMode</a></td>
 <th class="colLast" scope="row">
 <div class="block">There is a switch on the back of the controller this is for when the switch
  is in the D position</div>
 </th>
 </tr>
-<tr id="i28" class="altColor">
+<tr id="i27" class="rowColor">
 <td class="colFirst"><a href="com/stuypulse/stuylib/input/gamepads/Logitech.XMode.html" title="class in com.stuypulse.stuylib.input.gamepads">Logitech.XMode</a></td>
 <th class="colLast" scope="row">
 <div class="block">There is a switch on the back of the controller this is for when the switch
  is in the X position</div>
 </th>
 </tr>
-<tr id="i29" class="rowColor">
+<tr id="i28" class="altColor">
 <td class="colFirst"><a href="com/stuypulse/stuylib/streams/filters/MovingAverage.html" title="class in com.stuypulse.stuylib.streams.filters">MovingAverage</a></td>
 <th class="colLast" scope="row">
 <div class="block">Simple implementation of an Simple Moving Average</div>
 </th>
 </tr>
-<tr id="i30" class="altColor">
+<tr id="i29" class="rowColor">
 <td class="colFirst"><a href="com/stuypulse/stuylib/input/keyboard/NetKeyboard.html" title="class in com.stuypulse.stuylib.input.keyboard">NetKeyboard</a></td>
 <th class="colLast" scope="row">
 <div class="block">This class lets you send and recieve keyboard information over network tables
@@ -305,13 +299,13 @@ $('.navPadding').css('padding-top', $('.fixedNav').css("height"));
  Every other class will interact with the network keyboards through this class</div>
 </th>
 </tr>
-<tr id="i31" class="rowColor">
+<tr id="i30" class="altColor">
 <td class="colFirst"><a href="com/stuypulse/stuylib/input/gamepads/NetKeyGamepad.html" title="class in com.stuypulse.stuylib.input.gamepads">NetKeyGamepad</a></td>
 <th class="colLast" scope="row">
 <div class="block">This class takes data from a Network Keyboard and puts it into a gamepad</div>
 </th>
 </tr>
-<tr id="i32" class="altColor">
+<tr id="i31" class="rowColor">
 <td class="colFirst"><a href="com/stuypulse/stuylib/input/keyboard/computer/NetKeyListener.html" title="class in com.stuypulse.stuylib.input.keyboard.computer">NetKeyListener</a></td>
 <th class="colLast" scope="row">
 <div class="block">A KeyListener that uploads all of the key strokes to a network table where
@@ -322,7 +316,7 @@ $('.navPadding').css('padding-top', $('.fixedNav').css("height"));
  Make an AWT window to use this listener</div>
 </th>
 </tr>
-<tr id="i33" class="rowColor">
+<tr id="i32" class="altColor">
 <td class="colFirst"><a href="com/stuypulse/stuylib/input/keyboard/computer/NetKeyWindow.html" title="class in com.stuypulse.stuylib.input.keyboard.computer">NetKeyWindow</a></td>
 <th class="colLast" scope="row">
 <div class="block">This is a simple class that
@@ -332,25 +326,32 @@ $('.navPadding').css('padding-top', $('.fixedNav').css("height"));
  network table</div>
 </th>
 </tr>
-<tr id="i34" class="altColor">
+<tr id="i33" class="rowColor">
 <td class="colFirst"><a href="com/stuypulse/stuylib/network/NetworkTableWrapper.html" title="class in com.stuypulse.stuylib.network">NetworkTableWrapper</a></td>
 <th class="colLast" scope="row">
 <div class="block">The NetworkTableWrapper is a very fast way to easily interface with a network
  table.</div>
 </th>
 </tr>
-<tr id="i35" class="rowColor">
+<tr id="i34" class="altColor">
 <td class="colFirst"><a href="com/stuypulse/stuylib/input/buttons/NewButton.html" title="class in com.stuypulse.stuylib.input.buttons">NewButton</a></td>
 <th class="colLast" scope="row">
 <div class="block">This class will let us use the new button by 
  providing a lambda for it to use</div>
 </th>
 </tr>
-<tr id="i36" class="altColor">
+<tr id="i35" class="rowColor">
 <td class="colFirst"><a href="com/stuypulse/stuylib/input/buttons/OldButton.html" title="class in com.stuypulse.stuylib.input.buttons">OldButton</a></td>
 <th class="colLast" scope="row">
 <div class="block">This class will let us use the old button by 
  providing a lambda for it to use</div>
+</th>
+</tr>
+<tr id="i36" class="altColor">
+<td class="colFirst"><a href="com/stuypulse/stuylib/streams/filters/OnDerivative.html" title="class in com.stuypulse.stuylib.streams.filters">OnDerivative</a></td>
+<th class="colLast" scope="row">
+<div class="block">This class lets you take a simple filter like "x * 0.5" and apply it
+ to the derivative of the IStream.</div>
 </th>
 </tr>
 <tr id="i37" class="rowColor">

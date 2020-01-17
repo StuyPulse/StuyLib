@@ -27,26 +27,39 @@ public class CSVIStream {
          */
         private IStream mStream;
 
-        /**
-         * The file that will be written to from the IStream
-         */
         private CSVWriter mCSVFile;
+        private int mFlushRate;
+        private int mFlushCount;
 
         /**
          * Makes a new IStream that, while getting values, will record them in a CSV
          * file
          * 
-         * @param filepath path of the CSV file to write to
-         * @param stream   IStream to read in from
+         * @param filepath  path of the CSV file to write to
+         * @param stream    IStream to read in from
+         * @param flushRate how many times .get should be called before it flushes
          */
-        public Writer(String filepath, IStream stream) {
+        public Writer(String filepath, IStream stream, int flushRate) {
             mStream = stream;
+            mFlushRate = flushRate;
+            mFlushCount = 0;
             try {
                 mCSVFile = new CSVWriter(filepath);
             } catch (IOException e) {
                 e.printStackTrace();
                 mCSVFile = null;
             }
+        }
+
+        /**
+         * Makes a new IStream that, while getting values, will record them in a CSV
+         * file
+         * 
+         * @param filepath  path of the CSV file to write to
+         * @param stream    IStream to read in from
+         */
+        public Writer(String filepath, IStream stream) {
+            this(filepath, stream, 100);
         }
 
         /**
@@ -59,7 +72,11 @@ public class CSVIStream {
             try {
                 if (mCSVFile != null) {
                     mCSVFile.write(result);
-                    mCSVFile.flush();
+
+                    if (++mFlushCount > mFlushRate) {
+                        mFlushCount = 0;
+                        mCSVFile.flush();
+                    }
                 }
             } catch (IOException e) {
                 e.printStackTrace();

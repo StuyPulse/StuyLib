@@ -27,12 +27,6 @@
     catch(err) {
     }
 //-->
-var data = {"i0":10};
-var tabs = {65535:["t0","All Methods"],2:["t2","Instance Methods"],8:["t4","Concrete Methods"]};
-var altColor = "altColor";
-var rowColor = "rowColor";
-var tableTab = "tableTab";
-var activeTableTab = "activeTableTab";
 var pathtoroot = "../../../../../";
 var useModuleDirectories = true;
 loadScripts(document, 'script');</script>
@@ -97,7 +91,7 @@ loadScripts(document, 'script');</script>
 <li>Detail:&nbsp;</li>
 <li>Field&nbsp;|&nbsp;</li>
 <li><a href="#constructor.detail">Constr</a>&nbsp;|&nbsp;</li>
-<li><a href="#method.detail">Method</a></li>
+<li>Method</li>
 </ul>
 </div>
 <a id="skip.navbar.top">
@@ -123,7 +117,12 @@ $('.navPadding').css('padding-top', $('.fixedNav').css("height"));
 <li>java.lang.Object</li>
 <li>
 <ul class="inheritance">
+<li><a href="OnDerivative.html" title="class in com.stuypulse.stuylib.streams.filters">com.stuypulse.stuylib.streams.filters.OnDerivative</a></li>
+<li>
+<ul class="inheritance">
 <li>com.stuypulse.stuylib.streams.filters.RateLimit</li>
+</ul>
+</li>
 </ul>
 </li>
 </ul>
@@ -136,8 +135,7 @@ $('.navPadding').css('padding-top', $('.fixedNav').css("height"));
 </dl>
 <hr>
 <pre>public class <span class="typeNameLabel">RateLimit</span>
-extends java.lang.Object
-implements <a href="IStreamFilter.html" title="interface in com.stuypulse.stuylib.streams.filters">IStreamFilter</a></pre>
+extends <a href="OnDerivative.html" title="class in com.stuypulse.stuylib.streams.filters">OnDerivative</a></pre>
 <div class="block">This class lets you rate limit a stream of inputs</div>
 </li>
 </ul>
@@ -175,21 +173,13 @@ implements <a href="IStreamFilter.html" title="interface in com.stuypulse.stuyli
 <!--   -->
 </a>
 <h3>Method Summary</h3>
-<table class="memberSummary">
-<caption><span id="t0" class="activeTableTab"><span>All Methods</span><span class="tabEnd">&nbsp;</span></span><span id="t2" class="tableTab"><span><a href="javascript:show(2);">Instance Methods</a></span><span class="tabEnd">&nbsp;</span></span><span id="t4" class="tableTab"><span><a href="javascript:show(8);">Concrete Methods</a></span><span class="tabEnd">&nbsp;</span></span></caption>
-<tr>
-<th class="colFirst" scope="col">Modifier and Type</th>
-<th class="colSecond" scope="col">Method</th>
-<th class="colLast" scope="col">Description</th>
-</tr>
-<tr id="i0" class="altColor">
-<td class="colFirst"><code>double</code></td>
-<th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#get(double)">get</a></span>&#8203;(double&nbsp;next)</code></th>
-<td class="colLast">
-<div class="block">Get next value in Filter based on the next value given</div>
-</td>
-</tr>
-</table>
+<ul class="blockList">
+<li class="blockList"><a id="methods.inherited.from.class.com.stuypulse.stuylib.streams.filters.OnDerivative">
+<!--   -->
+</a>
+<h3>Methods inherited from class&nbsp;com.stuypulse.stuylib.streams.filters.<a href="OnDerivative.html" title="class in com.stuypulse.stuylib.streams.filters">OnDerivative</a></h3>
+<code><a href="OnDerivative.html#get(double)">get</a></code></li>
+</ul>
 <ul class="blockList">
 <li class="blockList"><a id="methods.inherited.from.class.java.lang.Object">
 <!--   -->
@@ -227,35 +217,6 @@ implements <a href="IStreamFilter.html" title="interface in com.stuypulse.stuyli
 <dd><code>rateLimit</code> - desired rate limit</dd>
 <dt><span class="throwsLabel">Throws:</span></dt>
 <dd><code><a href="../../exception/ConstructionError.html" title="class in com.stuypulse.stuylib.exception">ConstructionError</a></code></dd>
-</dl>
-</li>
-</ul>
-</li>
-</ul>
-</section>
-<!-- ============ METHOD DETAIL ========== -->
-<section role="region">
-<ul class="blockList">
-<li class="blockList"><a id="method.detail">
-<!--   -->
-</a>
-<h3>Method Detail</h3>
-<a id="get(double)">
-<!--   -->
-</a>
-<ul class="blockListLast">
-<li class="blockList">
-<h4>get</h4>
-<pre class="methodSignature">public&nbsp;double&nbsp;get&#8203;(double&nbsp;next)</pre>
-<div class="block"><span class="descfrmTypeLabel">Description copied from interface:&nbsp;<code><a href="IStreamFilter.html#get(double)">IStreamFilter</a></code></span></div>
-<div class="block">Get next value in Filter based on the next value given</div>
-<dl>
-<dt><span class="overrideSpecifyLabel">Specified by:</span></dt>
-<dd><code><a href="IStreamFilter.html#get(double)">get</a></code>&nbsp;in interface&nbsp;<code><a href="IStreamFilter.html" title="interface in com.stuypulse.stuylib.streams.filters">IStreamFilter</a></code></dd>
-<dt><span class="paramLabel">Parameters:</span></dt>
-<dd><code>next</code> - next input value</dd>
-<dt><span class="returnLabel">Returns:</span></dt>
-<dd>next modified value</dd>
 </dl>
 </li>
 </ul>
@@ -319,7 +280,7 @@ implements <a href="IStreamFilter.html" title="interface in com.stuypulse.stuyli
 <li>Detail:&nbsp;</li>
 <li>Field&nbsp;|&nbsp;</li>
 <li><a href="#constructor.detail">Constr</a>&nbsp;|&nbsp;</li>
-<li><a href="#method.detail">Method</a></li>
+<li>Method</li>
 </ul>
 </div>
 <a id="skip.navbar.bottom">
