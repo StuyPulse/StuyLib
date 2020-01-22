@@ -9,7 +9,7 @@ import edu.wpi.first.networktables.NetworkTableEntry;
 import edu.wpi.first.networktables.NetworkTableInstance;
 
 /**
- * The NetworkTableWrapper is a very fast way to easily interface with a network
+ * The SLNetworkTable is a very fast way to easily interface with a network
  * table.
  * 
  * If a function you want is not implemented, use getTable(), getRawEntry(), or
@@ -18,7 +18,7 @@ import edu.wpi.first.networktables.NetworkTableInstance;
  * @author Sam (sam.belliveau@gmail.com)
  */
 
-public class NetworkTableWrapper {
+public class SLNetworkTable {
 
     /*********************/
     /***** FACTORIES *****/
@@ -31,7 +31,7 @@ public class NetworkTableWrapper {
      * @param table network table name
      * @return Configured Network Table Wrapper
      */
-    public static NetworkTableWrapper open(String table) {
+    public static SLNetworkTable open(String table) {
         return open(NetworkTableInstance.getDefault(), table);
     }
 
@@ -43,7 +43,7 @@ public class NetworkTableWrapper {
      * @param table network table name
      * @return Configured Network Table Wrapper
      */
-    public static NetworkTableWrapper open(int team, String table) {
+    public static SLNetworkTable open(int team, String table) {
         NetworkTableInstance instance = NetworkTableInstance.create();
         instance.startClientTeam(team);
         return open(instance, table);
@@ -56,8 +56,8 @@ public class NetworkTableWrapper {
      * @param table    network table name
      * @return Configured Network Table Wrapper
      */
-    public static NetworkTableWrapper open(NetworkTableInstance instance, String table) {
-        return new NetworkTableWrapper(instance, table);
+    public static SLNetworkTable open(NetworkTableInstance instance, String table) {
+        return new SLNetworkTable(instance, table);
     }
 
     /*********************/
@@ -79,7 +79,7 @@ public class NetworkTableWrapper {
      * @param tableName network table name
      * @param instance  custom network table instance
      */
-    private NetworkTableWrapper(NetworkTableInstance instance, String table) {
+    private SLNetworkTable(NetworkTableInstance instance, String table) {
         mInstance = instance;
         mTable = mInstance.getTable(table);
         mTableName = table;

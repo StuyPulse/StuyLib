@@ -22,16 +22,13 @@ public class Limelight {
     private static final NetworkTableInstance mTableInstance = NetworkTableInstance.getDefault();
     private static final NetworkTable mTable = mTableInstance.getTable("limelight");
 
-    // Toggle for posting to SmartDashboard
-    public static boolean POST_TO_SMART_DASHBOARD = true;
-
     // Uses network tables to check status of limelight
     private static final NetworkTableEntry mTimingTestEntry = mTable.getEntry("TIMING_TEST_ENTRY");
     private static boolean mTimingTestEntryValue = false;
 
     public static final long MAX_UPDATE_TIME = 125_000; // Micro Seconds = 0.125 Seconds
     public static final long MIN_WARNING_TIME = 500_000; // Micro Seconds = 0.5 Seconds
-    public static final long MAX_WARNING_TIME = 2_500_000; // Micro Seconds = 5.0 Seconds
+    public static final long MAX_WARNING_TIME = 2_500_000; // Micro Seconds = 2.5 Seconds
 
     public static final boolean IS_CONNECTED_REQUIRED = false;
 
@@ -52,11 +49,6 @@ public class Limelight {
         long timeDifference = currentTime - lastUpdate;
         boolean connected = timeDifference < MAX_UPDATE_TIME;
 
-        if (POST_TO_SMART_DASHBOARD) {
-            SmartDashboard.putBoolean("Limelight Connected", connected);
-            SmartDashboard.putNumber("Limelight Time Difference", timeDifference);
-        }
-
         if (MIN_WARNING_TIME < timeDifference && timeDifference < MAX_WARNING_TIME) {
             double milli = (double) timeDifference / 1000.0;
 
@@ -72,19 +64,12 @@ public class Limelight {
     private static final NetworkTableEntry mValidTargetEntry = mTable.getEntry("tv");
 
     /**
-     * Decides if a target shows up on limelight screen
+     * Get Whether the limelight has any valid targets
      * 
-     * @return If it has any target
+     * @return Whether the limelight has any valid targets
      */
-    @SuppressWarnings("unused")
     public static boolean hasValidTarget() {
-        boolean validTarget = mValidTargetEntry.getDouble(0) > 0.5;
-
-        if (POST_TO_SMART_DASHBOARD) {
-            SmartDashboard.putBoolean("Valid Target", validTarget);
-        }
-
-        return validTarget && (!IS_CONNECTED_REQUIRED || isConnected());
+        return (mValidTargetEntry.getDouble(0) > 0.5) && (!IS_CONNECTED_REQUIRED || isConnected());
     }
 
 
@@ -94,8 +79,9 @@ public class Limelight {
     private static final NetworkTableEntry mXAngleEntry = mTable.getEntry("tx");
 
     /**
+     * Get The Horizontal Offset From Crosshair To Target (-27 degrees to 27 degrees)
      * 
-     * @return Horizontal side length of the target
+     * @return Horizontal Offset From Crosshair To Target (-27 degrees to 27 degrees)
      */
     public static double getTargetXAngle() {
         return mXAngleEntry.getDouble(0);
@@ -108,7 +94,9 @@ public class Limelight {
     private static final NetworkTableEntry mYAngleEntry = mTable.getEntry("ty");
 
     /**
-     * @return The vertical angle of the target
+     * Get The Vertical Offset From Crosshair To Target (-20.5 degrees to 20.5 degrees)
+     * 
+     * @return Vertical Offset From Crosshair To Target (-20.5 degrees to 20.5 degrees)
      */
     public static double getTargetYAngle() {
         return mYAngleEntry.getDouble(0);
@@ -121,6 +109,8 @@ public class Limelight {
     private static final NetworkTableEntry mTargetAreaEntry = mTable.getEntry("ta");
 
     /**
+     * Get the percent of the screen the target takes up on a scale of 0 to 1
+     * 
      * @return Percent of the screen the target takes up on a scale of 0 to 1
      */
     public static double getTargetArea() {
@@ -136,7 +126,9 @@ public class Limelight {
     private static final NetworkTableEntry mTargetSkewEntry = mTable.getEntry("ts");
 
     /**
-     * @return Skew of the Target
+     * Get the Skew or rotation (-90 degrees to 0 degrees)
+     * 
+     * @return Skew or rotation (-90 degrees to 0 degrees)
      */
     public static double getTargetSkew() {
         return mTargetSkewEntry.getDouble(0);
@@ -149,6 +141,8 @@ public class Limelight {
     private static final NetworkTableEntry mLatencyEntry = mTable.getEntry("tl");
 
     /**
+     * Get the latency of limelight information in milli-seconds
+     * 
      * @return Latency of limelight information in milli-seconds
      */
     public static double getLatencyMs() {
@@ -164,7 +158,7 @@ public class Limelight {
     private static final NetworkTableEntry mShortestSideLengthEntry = mTable.getEntry("tshort");
 
     /**
-     * Sidelength of shortest side of the fitted bounding box (0 - 320 pixels)
+     * Get the sidelength of shortest side of the fitted bounding box (0 - 320 pixels)
      * 
      * @return Shortest side length of target in pixels
      */
@@ -176,7 +170,7 @@ public class Limelight {
     private static final NetworkTableEntry mLongestSideLengthEntry = mTable.getEntry("tlong");
 
     /**
-     * Sidelength of longest side of the fitted bounding box (0 - 320 pixels)
+     * Get the sidelength of longest side of the fitted bounding box (0 - 320 pixels)
      * 
      * @return Longest side length of the target in pixels
      */
@@ -188,7 +182,7 @@ public class Limelight {
     private static final NetworkTableEntry mHorizontalSideLengthEntry = mTable.getEntry("thor");
 
     /**
-     * Horizontal sidelength of the rough bounding box (0 - 320 pixels)
+     * Get the horizontal sidelength of the rough bounding box (0 - 320 pixels)
      * 
      * @return Horizontal side length of target in pixels
      */
@@ -200,7 +194,7 @@ public class Limelight {
     private static final NetworkTableEntry mVerticalSideLengthEntry = mTable.getEntry("tvert");
 
     /**
-     * Vertical sidelength of the rough bounding box (0 - 320 pixels)
+     * Get the vertical sidelength of the rough bounding box (0 - 320 pixels)
      * 
      * @return Vertical side length of target in pixels
      */
