@@ -32,7 +32,7 @@ public class RollingAverage extends OnDerivative {
      * it takes to change value
      * 
      * @param accel_weight weight when accelerating
-     * @param accel_weight weight when decelerating
+     * @param decel_weight weight when decelerating
      */
     public RollingAverage(double accel_weight, double decel_weight) throws ConstructionError {
         super((x) -> (x < 0) ? (x / decel_weight) : (x / accel_weight));

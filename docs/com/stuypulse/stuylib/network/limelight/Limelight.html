@@ -267,11 +267,6 @@ extends java.lang.Object</pre>
 <th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#MIN_Y_ANGLE">MIN_Y_ANGLE</a></span></code></th>
 <td class="colLast">&nbsp;</td>
 </tr>
-<tr class="rowColor">
-<td class="colFirst"><code>static boolean</code></td>
-<th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#POST_TO_SMART_DASHBOARD">POST_TO_SMART_DASHBOARD</a></span></code></th>
-<td class="colLast">&nbsp;</td>
-</tr>
 </table>
 </li>
 </ul>
@@ -330,19 +325,21 @@ extends java.lang.Object</pre>
 <td class="colFirst"><code>static double</code></td>
 <th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#getHorizontalSidelength()">getHorizontalSidelength</a></span>()</code></th>
 <td class="colLast">
-<div class="block">Horizontal sidelength of the rough bounding box (0 - 320 pixels)</div>
+<div class="block">Get the horizontal sidelength of the rough bounding box (0 - 320 pixels)</div>
 </td>
 </tr>
 <tr id="i4" class="altColor">
 <td class="colFirst"><code>static double</code></td>
 <th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#getLatencyMs()">getLatencyMs</a></span>()</code></th>
-<td class="colLast">&nbsp;</td>
+<td class="colLast">
+<div class="block">Get the latency of limelight information in milli-seconds</div>
+</td>
 </tr>
 <tr id="i5" class="rowColor">
 <td class="colFirst"><code>static double</code></td>
 <th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#getLongestSidelength()">getLongestSidelength</a></span>()</code></th>
 <td class="colLast">
-<div class="block">Sidelength of longest side of the fitted bounding box (0 - 320 pixels)</div>
+<div class="block">Get the sidelength of longest side of the fitted bounding box (0 - 320 pixels)</div>
 </td>
 </tr>
 <tr id="i6" class="altColor">
@@ -379,7 +376,7 @@ extends java.lang.Object</pre>
 <td class="colFirst"><code>static double</code></td>
 <th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#getShortestSidelength()">getShortestSidelength</a></span>()</code></th>
 <td class="colLast">
-<div class="block">Sidelength of shortest side of the fitted bounding box (0 - 320 pixels)</div>
+<div class="block">Get the sidelength of shortest side of the fitted bounding box (0 - 320 pixels)</div>
 </td>
 </tr>
 <tr id="i13" class="rowColor">
@@ -392,41 +389,51 @@ extends java.lang.Object</pre>
 <tr id="i14" class="altColor">
 <td class="colFirst"><code>static double</code></td>
 <th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#getTargetArea()">getTargetArea</a></span>()</code></th>
-<td class="colLast">&nbsp;</td>
+<td class="colLast">
+<div class="block">Get the percent of the screen the target takes up on a scale of 0 to 1</div>
+</td>
 </tr>
 <tr id="i15" class="rowColor">
 <td class="colFirst"><code>static double</code></td>
 <th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#getTargetSkew()">getTargetSkew</a></span>()</code></th>
-<td class="colLast">&nbsp;</td>
+<td class="colLast">
+<div class="block">Get the Skew or rotation (-90 degrees to 0 degrees)</div>
+</td>
 </tr>
 <tr id="i16" class="altColor">
 <td class="colFirst"><code>static double</code></td>
 <th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#getTargetXAngle()">getTargetXAngle</a></span>()</code></th>
-<td class="colLast">&nbsp;</td>
+<td class="colLast">
+<div class="block">Get The Horizontal Offset From Crosshair To Target (-27 degrees to 27 degrees)</div>
+</td>
 </tr>
 <tr id="i17" class="rowColor">
 <td class="colFirst"><code>static double</code></td>
 <th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#getTargetYAngle()">getTargetYAngle</a></span>()</code></th>
-<td class="colLast">&nbsp;</td>
+<td class="colLast">
+<div class="block">Get The Vertical Offset From Crosshair To Target (-20.5 degrees to 20.5 degrees)</div>
+</td>
 </tr>
 <tr id="i18" class="altColor">
 <td class="colFirst"><code>static double</code></td>
 <th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#getVerticalSidelength()">getVerticalSidelength</a></span>()</code></th>
 <td class="colLast">
-<div class="block">Vertical sidelength of the rough bounding box (0 - 320 pixels)</div>
+<div class="block">Get the vertical sidelength of the rough bounding box (0 - 320 pixels)</div>
 </td>
 </tr>
 <tr id="i19" class="rowColor">
 <td class="colFirst"><code>static boolean</code></td>
 <th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#hasValidTarget()">hasValidTarget</a></span>()</code></th>
 <td class="colLast">
-<div class="block">Decides if a target shows up on limelight screen</div>
+<div class="block">Get Whether the limelight has any valid targets</div>
 </td>
 </tr>
 <tr id="i20" class="altColor">
 <td class="colFirst"><code>static boolean</code></td>
 <th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#isConnected()">isConnected</a></span>()</code></th>
-<td class="colLast">&nbsp;</td>
+<td class="colLast">
+<div class="block">Check if the limelight is connected by using a timing test</div>
+</td>
 </tr>
 <tr id="i21" class="rowColor">
 <td class="colFirst"><code>static void</code></td>
@@ -489,15 +496,6 @@ extends java.lang.Object</pre>
 <!--   -->
 </a>
 <h3>Field Detail</h3>
-<a id="POST_TO_SMART_DASHBOARD">
-<!--   -->
-</a>
-<ul class="blockList">
-<li class="blockList">
-<h4>POST_TO_SMART_DASHBOARD</h4>
-<pre>public static&nbsp;boolean POST_TO_SMART_DASHBOARD</pre>
-</li>
-</ul>
 <a id="MAX_UPDATE_TIME">
 <!--   -->
 </a>
@@ -729,6 +727,7 @@ extends java.lang.Object</pre>
 <li class="blockList">
 <h4>isConnected</h4>
 <pre class="methodSignature">public static&nbsp;boolean&nbsp;isConnected()</pre>
+<div class="block">Check if the limelight is connected by using a timing test</div>
 <dl>
 <dt><span class="returnLabel">Returns:</span></dt>
 <dd>if limelight is connected</dd>
@@ -742,10 +741,10 @@ extends java.lang.Object</pre>
 <li class="blockList">
 <h4>hasValidTarget</h4>
 <pre class="methodSignature">public static&nbsp;boolean&nbsp;hasValidTarget()</pre>
-<div class="block">Decides if a target shows up on limelight screen</div>
+<div class="block">Get Whether the limelight has any valid targets</div>
 <dl>
 <dt><span class="returnLabel">Returns:</span></dt>
-<dd>If it has any target</dd>
+<dd>Whether the limelight has any valid targets</dd>
 </dl>
 </li>
 </ul>
@@ -756,9 +755,10 @@ extends java.lang.Object</pre>
 <li class="blockList">
 <h4>getTargetXAngle</h4>
 <pre class="methodSignature">public static&nbsp;double&nbsp;getTargetXAngle()</pre>
+<div class="block">Get The Horizontal Offset From Crosshair To Target (-27 degrees to 27 degrees)</div>
 <dl>
 <dt><span class="returnLabel">Returns:</span></dt>
-<dd>Horizontal side length of the target</dd>
+<dd>Horizontal Offset From Crosshair To Target (-27 degrees to 27 degrees)</dd>
 </dl>
 </li>
 </ul>
@@ -769,9 +769,10 @@ extends java.lang.Object</pre>
 <li class="blockList">
 <h4>getTargetYAngle</h4>
 <pre class="methodSignature">public static&nbsp;double&nbsp;getTargetYAngle()</pre>
+<div class="block">Get The Vertical Offset From Crosshair To Target (-20.5 degrees to 20.5 degrees)</div>
 <dl>
 <dt><span class="returnLabel">Returns:</span></dt>
-<dd>The vertical angle of the target</dd>
+<dd>Vertical Offset From Crosshair To Target (-20.5 degrees to 20.5 degrees)</dd>
 </dl>
 </li>
 </ul>
@@ -782,6 +783,7 @@ extends java.lang.Object</pre>
 <li class="blockList">
 <h4>getTargetArea</h4>
 <pre class="methodSignature">public static&nbsp;double&nbsp;getTargetArea()</pre>
+<div class="block">Get the percent of the screen the target takes up on a scale of 0 to 1</div>
 <dl>
 <dt><span class="returnLabel">Returns:</span></dt>
 <dd>Percent of the screen the target takes up on a scale of 0 to 1</dd>
@@ -795,9 +797,10 @@ extends java.lang.Object</pre>
 <li class="blockList">
 <h4>getTargetSkew</h4>
 <pre class="methodSignature">public static&nbsp;double&nbsp;getTargetSkew()</pre>
+<div class="block">Get the Skew or rotation (-90 degrees to 0 degrees)</div>
 <dl>
 <dt><span class="returnLabel">Returns:</span></dt>
-<dd>Skew of the Target</dd>
+<dd>Skew or rotation (-90 degrees to 0 degrees)</dd>
 </dl>
 </li>
 </ul>
@@ -808,6 +811,7 @@ extends java.lang.Object</pre>
 <li class="blockList">
 <h4>getLatencyMs</h4>
 <pre class="methodSignature">public static&nbsp;double&nbsp;getLatencyMs()</pre>
+<div class="block">Get the latency of limelight information in milli-seconds</div>
 <dl>
 <dt><span class="returnLabel">Returns:</span></dt>
 <dd>Latency of limelight information in milli-seconds</dd>
@@ -821,7 +825,7 @@ extends java.lang.Object</pre>
 <li class="blockList">
 <h4>getShortestSidelength</h4>
 <pre class="methodSignature">public static&nbsp;double&nbsp;getShortestSidelength()</pre>
-<div class="block">Sidelength of shortest side of the fitted bounding box (0 - 320 pixels)</div>
+<div class="block">Get the sidelength of shortest side of the fitted bounding box (0 - 320 pixels)</div>
 <dl>
 <dt><span class="returnLabel">Returns:</span></dt>
 <dd>Shortest side length of target in pixels</dd>
@@ -835,7 +839,7 @@ extends java.lang.Object</pre>
 <li class="blockList">
 <h4>getLongestSidelength</h4>
 <pre class="methodSignature">public static&nbsp;double&nbsp;getLongestSidelength()</pre>
-<div class="block">Sidelength of longest side of the fitted bounding box (0 - 320 pixels)</div>
+<div class="block">Get the sidelength of longest side of the fitted bounding box (0 - 320 pixels)</div>
 <dl>
 <dt><span class="returnLabel">Returns:</span></dt>
 <dd>Longest side length of the target in pixels</dd>
@@ -849,7 +853,7 @@ extends java.lang.Object</pre>
 <li class="blockList">
 <h4>getHorizontalSidelength</h4>
 <pre class="methodSignature">public static&nbsp;double&nbsp;getHorizontalSidelength()</pre>
-<div class="block">Horizontal sidelength of the rough bounding box (0 - 320 pixels)</div>
+<div class="block">Get the horizontal sidelength of the rough bounding box (0 - 320 pixels)</div>
 <dl>
 <dt><span class="returnLabel">Returns:</span></dt>
 <dd>Horizontal side length of target in pixels</dd>
@@ -863,7 +867,7 @@ extends java.lang.Object</pre>
 <li class="blockList">
 <h4>getVerticalSidelength</h4>
 <pre class="methodSignature">public static&nbsp;double&nbsp;getVerticalSidelength()</pre>
-<div class="block">Vertical sidelength of the rough bounding box (0 - 320 pixels)</div>
+<div class="block">Get the vertical sidelength of the rough bounding box (0 - 320 pixels)</div>
 <dl>
 <dt><span class="returnLabel">Returns:</span></dt>
 <dd>Vertical side length of target in pixels</dd>

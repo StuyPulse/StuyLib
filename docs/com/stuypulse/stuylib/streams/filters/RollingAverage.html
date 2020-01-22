@@ -163,6 +163,14 @@ extends <a href="OnDerivative.html" title="class in com.stuypulse.stuylib.stream
  weight must be greater than or equal to 1.</div>
 </td>
 </tr>
+<tr class="rowColor">
+<th class="colConstructorName" scope="row"><code><span class="memberNameLink"><a href="#%3Cinit%3E(double,double)">RollingAverage</a></span>&#8203;(double&nbsp;accel_weight,
+              double&nbsp;decel_weight)</code></th>
+<td class="colLast">
+<div class="block">Make an Exponential Moving Average If exp = 1, it will instantly update The
+ weight must be greater than or equal to 1.</div>
+</td>
+</tr>
 </table>
 </li>
 </ul>
@@ -207,7 +215,7 @@ extends <a href="OnDerivative.html" title="class in com.stuypulse.stuylib.stream
 <a id="&lt;init&gt;(double)">
 <!--   -->
 </a>
-<ul class="blockListLast">
+<ul class="blockList">
 <li class="blockList">
 <h4>RollingAverage</h4>
 <pre>public&nbsp;RollingAverage&#8203;(double&nbsp;weight)
@@ -218,6 +226,27 @@ extends <a href="OnDerivative.html" title="class in com.stuypulse.stuylib.stream
 <dl>
 <dt><span class="paramLabel">Parameters:</span></dt>
 <dd><code>weight</code> - weight (greater than or equal to 1)</dd>
+<dt><span class="throwsLabel">Throws:</span></dt>
+<dd><code><a href="../../exception/ConstructionError.html" title="class in com.stuypulse.stuylib.exception">ConstructionError</a></code></dd>
+</dl>
+</li>
+</ul>
+<a id="&lt;init&gt;(double,double)">
+<!--   -->
+</a>
+<ul class="blockListLast">
+<li class="blockList">
+<h4>RollingAverage</h4>
+<pre>public&nbsp;RollingAverage&#8203;(double&nbsp;accel_weight,
+                      double&nbsp;decel_weight)
+               throws <a href="../../exception/ConstructionError.html" title="class in com.stuypulse.stuylib.exception">ConstructionError</a></pre>
+<div class="block">Make an Exponential Moving Average If exp = 1, it will instantly update The
+ weight must be greater than or equal to 1. The higher the weight, the longer
+ it takes to change value</div>
+<dl>
+<dt><span class="paramLabel">Parameters:</span></dt>
+<dd><code>accel_weight</code> - weight when accelerating</dd>
+<dd><code>accel_weight</code> - weight when decelerating</dd>
 <dt><span class="throwsLabel">Throws:</span></dt>
 <dd><code><a href="../../exception/ConstructionError.html" title="class in com.stuypulse.stuylib.exception">ConstructionError</a></code></dd>
 </dl>

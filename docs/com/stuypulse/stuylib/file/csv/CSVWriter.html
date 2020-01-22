@@ -27,7 +27,7 @@
     catch(err) {
     }
 //-->
-var data = {"i0":10,"i1":10,"i2":10,"i3":10,"i4":10,"i5":10,"i6":10,"i7":10};
+var data = {"i0":10,"i1":10,"i2":10,"i3":10,"i4":10,"i5":10,"i6":10};
 var tabs = {65535:["t0","All Methods"],2:["t2","Instance Methods"],8:["t4","Concrete Methods"]};
 var altColor = "altColor";
 var rowColor = "rowColor";
@@ -208,40 +208,33 @@ implements java.io.Flushable, java.io.Closeable, java.lang.AutoCloseable</pre>
 </tr>
 <tr id="i2" class="altColor">
 <td class="colFirst"><code>void</code></td>
-<th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#open(java.lang.String)">open</a></span>&#8203;(java.lang.String&nbsp;file)</code></th>
-<td class="colLast">
-<div class="block">Open CSV File with file name file</div>
-</td>
-</tr>
-<tr id="i3" class="rowColor">
-<td class="colFirst"><code>void</code></td>
 <th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#setCSVType(com.stuypulse.stuylib.file.csv.CSVType)">setCSVType</a></span>&#8203;(<a href="CSVType.html" title="enum in com.stuypulse.stuylib.file.csv">CSVType</a>&nbsp;type)</code></th>
 <td class="colLast">
 <div class="block">Set CSV type</div>
 </td>
 </tr>
-<tr id="i4" class="altColor">
+<tr id="i3" class="rowColor">
 <td class="colFirst"><code>void</code></td>
 <th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#write(double)">write</a></span>&#8203;(double&nbsp;data)</code></th>
 <td class="colLast">
 <div class="block">Write double to CSV file</div>
 </td>
 </tr>
-<tr id="i5" class="rowColor">
+<tr id="i4" class="altColor">
 <td class="colFirst"><code>void</code></td>
 <th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#write(long)">write</a></span>&#8203;(long&nbsp;data)</code></th>
 <td class="colLast">
 <div class="block">Write long to CSV file</div>
 </td>
 </tr>
-<tr id="i6" class="altColor">
+<tr id="i5" class="rowColor">
 <td class="colFirst"><code>void</code></td>
 <th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#write(java.lang.Object)">write</a></span>&#8203;(java.lang.Object&nbsp;data)</code></th>
 <td class="colLast">
 <div class="block">Write object to CSV file</div>
 </td>
 </tr>
-<tr id="i7" class="rowColor">
+<tr id="i6" class="altColor">
 <td class="colFirst"><code>void</code></td>
 <th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#write(java.lang.String)">write</a></span>&#8203;(java.lang.String&nbsp;data)</code></th>
 <td class="colLast">
@@ -286,6 +279,7 @@ implements java.io.Flushable, java.io.Closeable, java.lang.AutoCloseable</pre>
 <dt><span class="paramLabel">Parameters:</span></dt>
 <dd><code>file</code> - file name</dd>
 <dd><code>type</code> - type of csv file</dd>
+<dd><code>append</code> - if the csv file should be added onto or rewritten</dd>
 <dt><span class="throwsLabel">Throws:</span></dt>
 <dd><code>java.io.IOException</code> - error with opening file</dd>
 </dl>
@@ -318,23 +312,6 @@ implements java.io.Flushable, java.io.Closeable, java.lang.AutoCloseable</pre>
 <!--   -->
 </a>
 <h3>Method Detail</h3>
-<a id="open(java.lang.String)">
-<!--   -->
-</a>
-<ul class="blockList">
-<li class="blockList">
-<h4>open</h4>
-<pre class="methodSignature">public&nbsp;void&nbsp;open&#8203;(java.lang.String&nbsp;file)
-          throws java.io.IOException</pre>
-<div class="block">Open CSV File with file name file</div>
-<dl>
-<dt><span class="paramLabel">Parameters:</span></dt>
-<dd><code>file</code> - file name</dd>
-<dt><span class="throwsLabel">Throws:</span></dt>
-<dd><code>java.io.IOException</code> - error with opening file</dd>
-</dl>
-</li>
-</ul>
 <a id="close()">
 <!--   -->
 </a>
