@@ -28,11 +28,12 @@ public class CSVWriter implements Flushable, Closeable, AutoCloseable {
      * 
      * @param file file name
      * @param type type of csv file
+     * @param append if the csv file should be added onto or rewritten
      * @throws IOException error with opening file
      */
     public CSVWriter(String file, CSVType type) throws IOException {
-        setCSVType(type);
-        open(file);
+        mCSVType = type;
+        mCSVFile = new FileWriter(file);
     }
 
     /**
@@ -43,16 +44,6 @@ public class CSVWriter implements Flushable, Closeable, AutoCloseable {
      */
     public CSVWriter(String file) throws IOException {
         this(file, CSVType.DEFAULT);
-    }
-
-    /**
-     * Open CSV File with file name file
-     * 
-     * @param file file name
-     * @throws IOException error with opening file
-     */
-    public void open(String file) throws IOException {
-        mCSVFile = new FileWriter(file);
     }
 
     /**
@@ -75,7 +66,6 @@ public class CSVWriter implements Flushable, Closeable, AutoCloseable {
      * @param type CSV Type
      */
     public void setCSVType(CSVType type) {
-        mCSVType = type;
     }
 
     /**
