@@ -6,7 +6,6 @@ package com.stuypulse.stuylib.network.limelight;
 import edu.wpi.first.networktables.NetworkTable;
 import edu.wpi.first.networktables.NetworkTableEntry;
 import edu.wpi.first.networktables.NetworkTableInstance;
-import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 
 import com.stuypulse.stuylib.network.limelight.Solve3DResult;
 
@@ -26,13 +25,15 @@ public class Limelight {
     private static final NetworkTableEntry mTimingTestEntry = mTable.getEntry("TIMING_TEST_ENTRY");
     private static boolean mTimingTestEntryValue = false;
 
-    public static final long MAX_UPDATE_TIME = 125_000; // Micro Seconds = 0.125 Seconds
+    public static final long MAX_UPDATE_TIME = 250_000; // Micro Seconds = 0.25 Seconds
     public static final long MIN_WARNING_TIME = 500_000; // Micro Seconds = 0.5 Seconds
     public static final long MAX_WARNING_TIME = 2_500_000; // Micro Seconds = 2.5 Seconds
 
-    public static final boolean IS_CONNECTED_REQUIRED = false;
+    public static final boolean IS_CONNECTED_REQUIRED = true;
 
     /**
+     * Check if the limelight is connected by using a timing test
+     * 
      * @return if limelight is connected
      */
     public static boolean isConnected() {
@@ -43,7 +44,8 @@ public class Limelight {
 
         // Get most recent update from limelight
         long lastUpdate = mLatencyEntry.getLastChange(); // Latency is always updated
-        lastUpdate = Math.max(lastUpdate, mValidTargetEntry.getLastChange());
+        lastUpdate = Math.max(lastUpdate, mXAngleEntry.getLastChange());
+        lastUpdate = Math.max(lastUpdate, mYAngleEntry.getLastChange());
 
         // Calculate limelights last update
         long timeDifference = currentTime - lastUpdate;
@@ -59,6 +61,7 @@ public class Limelight {
         return connected;
     }
 
+
     /* Commonly Used Contour Information */
     // Whether the limelight has any valid targets (0 or 1)
     private static final NetworkTableEntry mValidTargetEntry = mTable.getEntry("tv");
@@ -69,7 +72,8 @@ public class Limelight {
      * @return Whether the limelight has any valid targets
      */
     public static boolean hasValidTarget() {
-        return (mValidTargetEntry.getDouble(0) > 0.5) && (!IS_CONNECTED_REQUIRED || isConnected());
+        // If the limelight is disconnected, then the valid target entry can freeze
+        return (mValidTargetEntry.getDouble(0) > 0.5) && (isConnected());
     }
 
 
