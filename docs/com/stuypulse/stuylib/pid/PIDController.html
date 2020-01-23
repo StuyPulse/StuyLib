@@ -167,7 +167,9 @@ implements <a href="../streams/IStream.html" title="interface in com.stuypulse.s
 <th class="colConstructorName" scope="row"><code><span class="memberNameLink"><a href="#%3Cinit%3E(double,double,double)">PIDController</a></span>&#8203;(double&nbsp;p,
              double&nbsp;i,
              double&nbsp;d)</code></th>
-<td class="colLast">&nbsp;</td>
+<td class="colLast">
+<div class="block">Initialize a PIDController using PID multipliers.</div>
+</td>
 </tr>
 <tr class="rowColor">
 <th class="colConstructorName" scope="row"><code><span class="memberNameLink"><a href="#%3Cinit%3E(com.stuypulse.stuylib.streams.IStream,double,double,double)">PIDController</a></span>&#8203;(<a href="../streams/IStream.html" title="interface in com.stuypulse.stuylib.streams">IStream</a>&nbsp;errorStream,
@@ -333,6 +335,16 @@ implements <a href="../streams/IStream.html" title="interface in com.stuypulse.s
 <pre>public&nbsp;PIDController&#8203;(double&nbsp;p,
                      double&nbsp;i,
                      double&nbsp;d)</pre>
+<div class="block">Initialize a PIDController using PID multipliers.
+ 
+ Warning: Without specifying the errorStream, the PIDController will throw an
+ error when .get() is called with no parameters.</div>
+<dl>
+<dt><span class="paramLabel">Parameters:</span></dt>
+<dd><code>p</code> - The Proportional Multiplier</dd>
+<dd><code>i</code> - The Integral Multiplier</dd>
+<dd><code>d</code> - The Derivative Multiplier</dd>
+</dl>
 </li>
 </ul>
 </li>
@@ -492,8 +504,8 @@ implements <a href="../streams/IStream.html" title="interface in com.stuypulse.s
 <li class="blockList">
 <h4>get</h4>
 <pre class="methodSignature">public&nbsp;double&nbsp;get()</pre>
-<div class="block">Calculate the value that the PIDController wants to move at.
- This is the same as using get(error), but it defaults to the mErrorStream.
+<div class="block">Calculate the value that the PIDController wants to move at. This is the same
+ as using get(error), but it defaults to the mErrorStream.
  
  If no error stream is provided, then it throws a runtime error.</div>
 <dl>
