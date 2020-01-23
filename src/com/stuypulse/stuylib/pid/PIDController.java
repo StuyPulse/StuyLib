@@ -44,6 +44,10 @@ public class PIDController implements IStream {
         reset();
     }
 
+    public PIDController(double p, double i, double d) {
+        this(null, p, i, d);
+    }
+
     /**
      * Gets the error stream being used by the controller
      * 
@@ -153,9 +157,10 @@ public class PIDController implements IStream {
     /**
      * Calculate the value that the PIDController wants to move at.
      * 
-     * @return The calculated value for the PIDController
+     * @param error the error that the controller will use
+     * @return the calculated result from the PIDController
      */
-    public double get() {
+    public double get(double error) {
         // Get the amount of time since the last get() was called
         double dt = getTimeDifference();
 
@@ -165,9 +170,6 @@ public class PIDController implements IStream {
             reset();
             return 0.0;
         } else {
-            // Get the new error from the Error Stream
-            double error = mErrorStream.get();
-
             // Calculate P Component
             double p_out = error * mP;
 
@@ -184,6 +186,23 @@ public class PIDController implements IStream {
 
             // Return the calculated result
             return p_out + i_out + d_out;
+        }
+
+    }
+
+    /**
+     * Calculate the value that the PIDController wants to move at.
+     * This is the same as using get(error), but it defaults to the mErrorStream.
+     * 
+     * If no error stream is provided, then it throws a runtime error.
+     * 
+     * @return The calculated value for the PIDController
+     */
+    public double get() {
+        if(mErrorStream != null) {
+            return get(mErrorStream.get());
+        } else {
+            throw new RuntimeException("Uninitialized Error Stream!");
         }
     }
 
