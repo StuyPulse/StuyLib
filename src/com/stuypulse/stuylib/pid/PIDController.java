@@ -44,6 +44,16 @@ public class PIDController implements IStream {
         reset();
     }
 
+    /**
+     * Initialize a PIDController using PID multipliers.
+     * 
+     * Warning: Without specifying the errorStream, the PIDController will throw an
+     * error when .get() is called with no parameters.
+     * 
+     * @param p The Proportional Multiplier
+     * @param i The Integral Multiplier
+     * @param d The Derivative Multiplier
+     */
     public PIDController(double p, double i, double d) {
         this(null, p, i, d);
     }
@@ -191,15 +201,15 @@ public class PIDController implements IStream {
     }
 
     /**
-     * Calculate the value that the PIDController wants to move at.
-     * This is the same as using get(error), but it defaults to the mErrorStream.
+     * Calculate the value that the PIDController wants to move at. This is the same
+     * as using get(error), but it defaults to the mErrorStream.
      * 
      * If no error stream is provided, then it throws a runtime error.
      * 
      * @return The calculated value for the PIDController
      */
     public double get() {
-        if(mErrorStream != null) {
+        if (mErrorStream != null) {
             return get(mErrorStream.get());
         } else {
             throw new RuntimeException("Uninitialized Error Stream!");
@@ -209,7 +219,7 @@ public class PIDController implements IStream {
     /**
      * Gets the last error from the error stream. Updates with get() command.
      * 
-     * @return The last error from the error stream. 
+     * @return The last error from the error stream.
      */
     public double getError() {
         return mLastError;
