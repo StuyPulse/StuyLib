@@ -25,6 +25,8 @@ public class ButtonWrapper extends NewButton {
 
     /**
      * Initializes ButtonWrapper with a lambda that will be used when calling .get()
+     * 
+     * @param lambda lambda that provides the boolean the button will use
      */
     public ButtonWrapper(BooleanProvider lambda) {
         super(lambda);

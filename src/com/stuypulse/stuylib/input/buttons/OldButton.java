@@ -19,6 +19,8 @@ public class OldButton extends Button {
 
     /**
      * Initializes OldButton with a lambda that will be used when calling .get()
+     * 
+     * @param lambda lambda that provides the boolean the button will use
      */
     public OldButton(BooleanProvider lambda) {
         this.mButton = lambda;
