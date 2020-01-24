@@ -27,7 +27,7 @@ public abstract class Controller {
      * @return time represented in seconds
      */
     protected static final double getCurrentTime() {
-        return System.nanoTime() / 1_000_000_000;
+        return System.nanoTime() / 1_000_000_000.0;
     }
 
     /**
