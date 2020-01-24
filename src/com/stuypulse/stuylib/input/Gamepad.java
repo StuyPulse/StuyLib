@@ -1,6 +1,6 @@
 package com.stuypulse.stuylib.input;
 
-import com.stuypulse.stuylib.input.LambdaButton;
+import com.stuypulse.stuylib.input.buttons.ButtonWrapper;
 
 /**
  * An class for using gamepads with different interfaces. You can
@@ -92,36 +92,36 @@ public class Gamepad {
     }
 
     // D-Pad //
-    public final LambdaButton getDPadUp()       { return new LambdaButton(() -> this.getRawDPadUp()); }
-    public final LambdaButton getDPadDown()     { return new LambdaButton(() -> this.getRawDPadDown()); }
-    public final LambdaButton getDPadLeft()     { return new LambdaButton(() -> this.getRawDPadLeft()); }
-    public final LambdaButton getDPadRight()    { return new LambdaButton(() -> this.getRawDPadRight()); }
+    public final ButtonWrapper getDPadUp()       { return new ButtonWrapper(() -> this.getRawDPadUp()); }
+    public final ButtonWrapper getDPadDown()     { return new ButtonWrapper(() -> this.getRawDPadDown()); }
+    public final ButtonWrapper getDPadLeft()     { return new ButtonWrapper(() -> this.getRawDPadLeft()); }
+    public final ButtonWrapper getDPadRight()    { return new ButtonWrapper(() -> this.getRawDPadRight()); }
 
     // Bumpers //
-    public final LambdaButton getLeftBumper()   { return new LambdaButton(() -> this.getRawLeftBumper()); }
-    public final LambdaButton getRightBumper()  { return new LambdaButton(() -> this.getRawRightBumper()); }
+    public final ButtonWrapper getLeftBumper()   { return new ButtonWrapper(() -> this.getRawLeftBumper()); }
+    public final ButtonWrapper getRightBumper()  { return new ButtonWrapper(() -> this.getRawRightBumper()); }
 
     // Triggers //
-    protected static final double TRIGGER_AXIS_THRESHOLD = 2.0 / 16.0;
+    protected static final double TRIGGER_AXIS_THRESHOLD = 3.0 / 16.0;
 
     public final boolean getRawLeftTrigger()    { return getRawLeftTriggerAxis() > TRIGGER_AXIS_THRESHOLD; }
-    public final LambdaButton getLeftTrigger()  { return new LambdaButton(() -> this.getRawLeftTrigger()); }
+    public final ButtonWrapper getLeftTrigger()  { return new ButtonWrapper(() -> this.getRawLeftTrigger()); }
 
     public final boolean getRawRightTrigger()   { return getRawRightTriggerAxis() > TRIGGER_AXIS_THRESHOLD; }
-    public final LambdaButton getRightTrigger() { return new LambdaButton(() -> this.getRawRightTrigger()); }
+    public final ButtonWrapper getRightTrigger() { return new ButtonWrapper(() -> this.getRawRightTrigger()); }
 
     // Face Buttons // 
-    public final LambdaButton getLeftButton()   { return new LambdaButton(() -> this.getRawLeftButton()); }
-    public final LambdaButton getRightButton()  { return new LambdaButton(() -> this.getRawRightButton()); }
-    public final LambdaButton getTopButton()    { return new LambdaButton(() -> this.getRawTopButton()); }
-    public final LambdaButton getBottomButton() { return new LambdaButton(() -> this.getRawBottomButton()); }
+    public final ButtonWrapper getLeftButton()   { return new ButtonWrapper(() -> this.getRawLeftButton()); }
+    public final ButtonWrapper getRightButton()  { return new ButtonWrapper(() -> this.getRawRightButton()); }
+    public final ButtonWrapper getTopButton()    { return new ButtonWrapper(() -> this.getRawTopButton()); }
+    public final ButtonWrapper getBottomButton() { return new ButtonWrapper(() -> this.getRawBottomButton()); }
 
     // Select / Start / Option //
-    public final LambdaButton getSelectButton() { return new LambdaButton(() -> this.getRawSelectButton()); }
-    public final LambdaButton getStartButton()  { return new LambdaButton(() -> this.getRawStartButton()); }
-    public final LambdaButton getOptionButton() { return new LambdaButton(() -> this.getRawOptionButton()); }
+    public final ButtonWrapper getSelectButton() { return new ButtonWrapper(() -> this.getRawSelectButton()); }
+    public final ButtonWrapper getStartButton()  { return new ButtonWrapper(() -> this.getRawStartButton()); }
+    public final ButtonWrapper getOptionButton() { return new ButtonWrapper(() -> this.getRawOptionButton()); }
 
     // Analog Stick Buttons // 
-    public final LambdaButton getLeftAnalogButton()     { return new LambdaButton(() -> this.getRawLeftAnalogButton()); }
-    public final LambdaButton getRightAnalogButton()    { return new LambdaButton(() -> this.getRawRightAnalogButton()); }
+    public final ButtonWrapper getLeftAnalogButton()     { return new ButtonWrapper(() -> this.getRawLeftAnalogButton()); }
+    public final ButtonWrapper getRightAnalogButton()    { return new ButtonWrapper(() -> this.getRawRightAnalogButton()); }
 }

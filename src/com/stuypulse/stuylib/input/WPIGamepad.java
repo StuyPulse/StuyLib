@@ -1,9 +1,10 @@
 package com.stuypulse.stuylib.input;
 
 import com.stuypulse.stuylib.input.Gamepad;
-import com.stuypulse.stuylib.input.LambdaButton;
+import com.stuypulse.stuylib.input.buttons.ButtonWrapper;
 
 import edu.wpi.first.wpilibj.Joystick;
+import edu.wpi.first.wpilibj.GenericHID;
 
 /**
  * WPI Gamepad extends Gamepad and adds functions that makes interacting with
@@ -85,8 +86,8 @@ public class WPIGamepad extends Gamepad {
      * @param button Joystick button id
      * @return the value of the button
      */
-    public final LambdaButton getButton(int button) {
-        return new LambdaButton(() -> getRawButton(button));
+    public final ButtonWrapper getButton(int button) {
+        return new ButtonWrapper(() -> getRawButton(button));
     }
 
     /**
@@ -98,5 +99,15 @@ public class WPIGamepad extends Gamepad {
     public final double getRawAxis(int axis) {
         if (!hasJoystick()) { return 0.0; }
         return getJoystick().getRawAxis(axis);
+    }
+
+    /**
+     * Set the rumble intensity of the gamepad
+     * 
+     * @param intensity intensity of the rumble
+     */
+    public final void setRumble(double intensity) {
+        getJoystick().setRumble(GenericHID.RumbleType.kLeftRumble, intensity);
+        getJoystick().setRumble(GenericHID.RumbleType.kRightRumble, intensity);
     }
 }

@@ -2,7 +2,7 @@ package com.stuypulse.stuylib.input.gamepads;
 
 import com.stuypulse.stuylib.input.Gamepad;
 import com.stuypulse.stuylib.input.keyboard.NetKeyboard;
-import com.stuypulse.stuylib.input.LambdaButton;
+import com.stuypulse.stuylib.input.buttons.ButtonWrapper;
 
 /**
  * This class takes data from a Network Keyboard and puts it into a gamepad
@@ -32,8 +32,8 @@ public class NetKeyGamepad extends Gamepad {
      * @param key key name
      * @return WPI Button
      */
-    public final LambdaButton getKey(String key) {
-        return new LambdaButton(() -> this.getRawKey(key));
+    public final ButtonWrapper getKey(String key) {
+        return new ButtonWrapper(() -> this.getRawKey(key));
     }
 
     /**

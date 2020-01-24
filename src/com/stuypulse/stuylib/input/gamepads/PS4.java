@@ -2,8 +2,6 @@ package com.stuypulse.stuylib.input.gamepads;
 
 import com.stuypulse.stuylib.input.WPIGamepad;
 
-import edu.wpi.first.wpilibj.GenericHID;
-
 /**
  * Implementation of the PS4 for the Gamepad Class
  * 
@@ -53,10 +51,4 @@ public class PS4 extends WPIGamepad {
     // Analog Stick Buttons // 
     public boolean getRawLeftAnalogButton()     { return getRawButton(11); }
     public boolean getRawRightAnalogButton()    { return getRawButton(12); }
-
-    // Rumble //
-    public void setRumble(double intensity) {
-        getJoystick().setRumble(GenericHID.RumbleType.kLeftRumble, intensity);
-        getJoystick().setRumble(GenericHID.RumbleType.kRightRumble, intensity);
-    }
 }

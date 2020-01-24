@@ -192,7 +192,8 @@ public class CSVReader implements Iterable<CSVElement> {
      * 
      * @param index element position
      * @return if element is of type double
-     * @throws IndexOutOfBoundsException
+     * @throws IndexOutOfBoundsException if the index is higher than the amount of
+     *                                   elements
      */
     public boolean isNumber(int index) throws IndexOutOfBoundsException {
         return get(index).isNumber();

@@ -34,7 +34,7 @@ When contributing code, as always, make a branch and a pull request.
 
 All code MUST be commented, and no single class should be to complicated.
 
-At the top of each class, give a breif description of the class, along with an author tag which contains an email just in case anybody has any questions on how to use it.
+At the top of each class, give a brief description of the class, along with an author tag which contains an email just in case anybody has any questions on how to use it.
 
 # Current Positions
 

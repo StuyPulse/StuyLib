@@ -1,6 +1,6 @@
 package com.stuypulse.stuylib.input.keyboard;
 
-import com.stuypulse.stuylib.network.NetworkTableWrapper;
+import com.stuypulse.stuylib.network.SLNetworkTable;
 
 import java.util.Set;
 
@@ -39,7 +39,7 @@ public class NetKeyboard {
     /**
      * Table where key information is stored
      */
-    private NetworkTableWrapper mKeyboardTable;
+    private SLNetworkTable mKeyboardTable;
 
     /**
      * Creates NetworkKeyboard on robot
@@ -47,7 +47,7 @@ public class NetKeyboard {
      * @param port virtual port number (unsure, use 0)
      */
     public NetKeyboard(int port) {
-        mKeyboardTable = NetworkTableWrapper.open(Constants.getTableName(port));
+        mKeyboardTable = SLNetworkTable.open(Constants.getTableName(port));
     }
 
     /**
@@ -57,7 +57,7 @@ public class NetKeyboard {
      * @param port virtual port number (unsure, use 0)
      */
     public NetKeyboard(int team, int port) {
-        mKeyboardTable = NetworkTableWrapper.open(team, Constants.getTableName(port));
+        mKeyboardTable = SLNetworkTable.open(team, Constants.getTableName(port));
     }
 
     /**
