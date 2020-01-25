@@ -1,6 +1,8 @@
 package com.stuypulse.stuylib.file;
 
 import java.util.logging.SimpleFormatter;
+import java.io.File;
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.logging.FileHandler;
 import java.util.logging.Level;
@@ -60,14 +62,14 @@ public class FRCLogger {
     /**
      * Open a new FRCLogger
      * 
-     * @param file Name of the file to write the logs to.
+     * @param dir Name of the file to write the logs to.
      */
-    FRCLogger(String file) {
+    FRCLogger(String path, String name) {
         mLogger = Logger.getLogger(FRCLogger.class.getName());
 
         try {
-            mFileHandler = new FileHandler("./Logs/" + file + ".log");
-        } catch (Exception e) {
+            mFileHandler = new FileHandler(path + "/Logs/" + name + ".log");
+        } catch (IOException e) {
             logError(this, e);
             e.printStackTrace();
         }
@@ -145,7 +147,7 @@ public class FRCLogger {
      * @param toLog Log entry message.
      */
     public <T> void logMisc(Level level, T obj, String toLog) {
-        mLogger.log(level, obj.getClass().getName().toUpperCase() + ": ", toLog);
+        mLogger.log(level, obj.getClass().getName().toUpperCase() + ":\n", toLog);
     }
 
     /**
