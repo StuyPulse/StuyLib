@@ -79,7 +79,16 @@ public class FRCLogger {
     }
 
     /**
-     * Registers a new Loggable that upon call of  will put the next
+     * Gets the list of registered loggables.
+     * 
+     * @return all registered loggables as an array.
+     */
+    public Loggable[] getLoggables() {
+        return (Loggable[])loggables.toArray();
+    }
+
+    /**
+     * Registers a new Loggable that upon call will put the next
      * getLogData() at level getLogLevel() to the log if it will
      * logThisIteration().
      * 
@@ -87,6 +96,22 @@ public class FRCLogger {
      */
     public void registerLoggable(Loggable loggable) {
         loggables.add(loggable);
+    }
+
+    /**
+     * Removes the Loggable implented object from the registered Loggables.
+     * 
+     * @param loggable Loggable to remove.
+     */
+    public void unregisterLoggable(Loggable loggable) {
+        loggables.remove(loggable);
+    }
+    
+    /**
+     * Clears the registered Loggables.
+     */
+    public void clearLoggables() {
+        loggables.clear();
     }
 
     /**
@@ -102,6 +127,8 @@ public class FRCLogger {
         }
 
     }
+
+
 
     /**
      * Forces Logger to log this Loggable.
