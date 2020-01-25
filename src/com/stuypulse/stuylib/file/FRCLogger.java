@@ -62,7 +62,8 @@ public class FRCLogger {
     /**
      * Open a new FRCLogger
      * 
-     * @param dir Name of the file to write the logs to.
+     * @param path Name of the director to store the log file to.
+     * @param name Name of the file to write logs to.
      */
     FRCLogger(String path, String name) {
         mLogger = Logger.getLogger(FRCLogger.class.getName());
