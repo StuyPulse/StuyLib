@@ -1,7 +1,7 @@
 package com.stuypulse.stuylib.file;
 
 import java.util.logging.SimpleFormatter;
-
+import java.util.ArrayList;
 import java.util.logging.FileHandler;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -21,11 +21,41 @@ public class FRCLogger {
      * into the log.
      */
     public interface Loggable {
-        public String putLog();
+        /**
+         * Implement this method with something that reports
+         * if any data from the class should be fed to the logger
+         * this iteration.
+         * 
+         * @return if any data from the class will be fed to the logger.
+         */
+        public boolean logThisIteration();
+
+        /**
+         * Implement this method with something that
+         * reports the level of severity the data should be
+         * logged at.
+         * 
+         * @return the level of the data that will be fed.
+         */
+        public default Level getLogLevel() {
+            return Level.INFO;
+        }
+
+        /**
+         * Implement this method with something that 
+         * reports the message or data that should be fed
+         * into the logger as a string.
+         * 
+         * @return the data to be fed into the logger.
+         */
+        public String getLogData();
+        
     }
 
     private Logger mLogger;
     private FileHandler mFileHandler;
+
+    private ArrayList<Loggable> loggables;
 
     /**
      * Open a new FRCLogger
@@ -44,6 +74,42 @@ public class FRCLogger {
 
         mFileHandler.setFormatter(new SimpleFormatter());
         mLogger.addHandler(mFileHandler);
+
+        loggables = new ArrayList<Loggable>();
+    }
+
+    /**
+     * Registers a new Loggable that upon call of  will put the next
+     * getLogData() at level getLogLevel() to the log if it will
+     * logThisIteration().
+     * 
+     * @param loggable Class implementing Loggable
+     */
+    public void registerLoggable(Loggable loggable) {
+        loggables.add(loggable);
+    }
+
+    /**
+     * Iterates through all the registered loggables and logs them with level and data,
+     * if logThisIteration() is true.
+     */
+    public void logRegisteredLoggables() {
+
+        for (Loggable loggable: loggables) {
+            if (loggable.logThisIteration()) {
+                logManualLoggable(loggable);
+            }
+        }
+
+    }
+
+    /**
+     * Forces Logger to log this Loggable.
+     * 
+     * @param loggable Loggable object to log.
+     */
+    public void logManualLoggable(Loggable loggable) {
+        mLogger.log(loggable.getLogLevel(), loggable.getClass().getName() + ":\n" + loggable.getLogData());
     }
 
     /**
@@ -53,18 +119,8 @@ public class FRCLogger {
      * @param T Object that is the source of the log entry.
      * @param toLog Log entry message.
      */
-    public <T> void log(Level level, T obj, String toLog) {
+    public <T> void logMisc(Level level, T obj, String toLog) {
         mLogger.log(level, obj.getClass().getName().toUpperCase() + ": ", toLog);
-    }
-
-    /**
-     * Grabs next putInfo() from the class implementing Loggable, and logs the
-     * returned data entry under the info tab with the class' name.
-     * 
-     * @param toLog Class implementing Loggable
-     */
-    public void log(Loggable toLog) {
-        mLogger.info(toLog.getClass().getName().toUpperCase() + ":\n" + toLog.putLog());
     }
 
     /**
