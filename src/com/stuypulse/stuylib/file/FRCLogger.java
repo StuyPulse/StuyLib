@@ -60,7 +60,7 @@ public class FRCLogger {
     /**
      * Open a new FRCLogger
      * 
-     * @param file Name of the file to be written to.
+     * @param file Name of the file to write the logs to.
      */
     FRCLogger(String file) {
         mLogger = Logger.getLogger(FRCLogger.class.getName());
@@ -79,9 +79,9 @@ public class FRCLogger {
     }
 
     /**
-     * Gets the list of registered loggables.
+     * Gets the list of registered Loggables.
      * 
-     * @return all registered loggables as an array.
+     * @return all registered Loggables as an array.
      */
     public Loggable[] getLoggables() {
         return (Loggable[])loggables.toArray();
@@ -115,7 +115,7 @@ public class FRCLogger {
     }
 
     /**
-     * Iterates through all the registered loggables and logs them with level and data,
+     * Iterates through all the registered Loggables and logs them with level and data,
      * if logThisIteration() is true.
      */
     public void logRegisteredLoggables() {
@@ -127,8 +127,6 @@ public class FRCLogger {
         }
 
     }
-
-
 
     /**
      * Forces Logger to log this Loggable.
