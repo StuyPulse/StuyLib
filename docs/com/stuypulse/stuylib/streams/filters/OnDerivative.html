@@ -136,15 +136,15 @@ $('.navPadding').css('padding-top', $('.fixedNav').css("height"));
 </dl>
 <dl>
 <dt>Direct Known Subclasses:</dt>
-<dd><code><a href="JerkLimit.html" title="class in com.stuypulse.stuylib.streams.filters">JerkLimit</a></code>, <code><a href="RateLimit.html" title="class in com.stuypulse.stuylib.streams.filters">RateLimit</a></code>, <code><a href="RollingAverage.html" title="class in com.stuypulse.stuylib.streams.filters">RollingAverage</a></code></dd>
+<dd><code><a href="RateLimit.html" title="class in com.stuypulse.stuylib.streams.filters">RateLimit</a></code>, <code><a href="RollingAverage.html" title="class in com.stuypulse.stuylib.streams.filters">RollingAverage</a></code></dd>
 </dl>
 <hr>
 <pre>public class <span class="typeNameLabel">OnDerivative</span>
 extends java.lang.Object
 implements <a href="IStreamFilter.html" title="interface in com.stuypulse.stuylib.streams.filters">IStreamFilter</a></pre>
-<div class="block">This class lets you take a simple filter like "x * 0.5" and apply it
- to the derivative of the IStream. This lets you build more complex filters
- more easily</div>
+<div class="block">This class lets you take a simple filter like "x * 0.5" and apply it to the
+ derivative of the IStream. This lets you build more complex filters more
+ easily</div>
 </li>
 </ul>
 </div>
@@ -166,6 +166,14 @@ implements <a href="IStreamFilter.html" title="interface in com.stuypulse.stuyli
 </tr>
 <tr class="altColor">
 <th class="colConstructorName" scope="row"><code><span class="memberNameLink"><a href="#%3Cinit%3E(com.stuypulse.stuylib.streams.filters.IStreamFilter)">OnDerivative</a></span>&#8203;(<a href="IStreamFilter.html" title="interface in com.stuypulse.stuylib.streams.filters">IStreamFilter</a>&nbsp;filter)</code></th>
+<td class="colLast">
+<div class="block">This will take the filter and make it apply to the derivative of stream givin
+ too it</div>
+</td>
+</tr>
+<tr class="rowColor">
+<th class="colConstructorName" scope="row"><code><span class="memberNameLink"><a href="#%3Cinit%3E(com.stuypulse.stuylib.streams.filters.IStreamFilter,boolean)">OnDerivative</a></span>&#8203;(<a href="IStreamFilter.html" title="interface in com.stuypulse.stuylib.streams.filters">IStreamFilter</a>&nbsp;filter,
+            boolean&nbsp;correctSign)</code></th>
 <td class="colLast">
 <div class="block">This will take the filter and make it apply to the derivative of stream givin
  too it</div>
@@ -220,6 +228,24 @@ implements <a href="IStreamFilter.html" title="interface in com.stuypulse.stuyli
 <!--   -->
 </a>
 <h3>Constructor Detail</h3>
+<a id="&lt;init&gt;(com.stuypulse.stuylib.streams.filters.IStreamFilter,boolean)">
+<!--   -->
+</a>
+<ul class="blockList">
+<li class="blockList">
+<h4>OnDerivative</h4>
+<pre>public&nbsp;OnDerivative&#8203;(<a href="IStreamFilter.html" title="interface in com.stuypulse.stuylib.streams.filters">IStreamFilter</a>&nbsp;filter,
+                    boolean&nbsp;correctSign)</pre>
+<div class="block">This will take the filter and make it apply to the derivative of stream givin
+ too it</div>
+<dl>
+<dt><span class="paramLabel">Parameters:</span></dt>
+<dd><code>filter</code> - filter that gets applied to the derivative of the stream</dd>
+<dd><code>correctSign</code> - correct the derivative so that it doesn't matter if its
+                    positive or negative. (false by default)</dd>
+</dl>
+</li>
+</ul>
 <a id="&lt;init&gt;(com.stuypulse.stuylib.streams.filters.IStreamFilter)">
 <!--   -->
 </a>

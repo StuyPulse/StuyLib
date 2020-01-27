@@ -1,6 +1,8 @@
 package com.stuypulse.stuylib.control;
 
 import com.stuypulse.stuylib.control.Controller;
+import com.stuypulse.stuylib.streams.filters.IStreamFilter;
+import com.stuypulse.stuylib.util.StopWatch;
 
 /**
  * This PID controller is built by extending the Controller class. It has a
@@ -30,25 +32,32 @@ public class PIDController extends Controller {
     // The Integral of the errors for the I Component
     private double mIntegral;
 
-    // The last time and last place used for calculations
-    private double mLastTime;
+    // The last error used for calculating derivatives
     private double mLastError;
 
+    // Timer used to get the time passed since last call
+    private StopWatch mTimer;
+
+    // Filters for the Integral and Derivative
+    private IStreamFilter mPFilter;
+    private IStreamFilter mIFilter;
+    private IStreamFilter mDFilter;
+
     /**
-     * Create PID controller and set each of its values
-     * 
      * @param p The Proportional Multiplier
      * @param i The Integral Multiplier
      * @param d The Derivative Multiplier
      */
     public PIDController(double p, double i, double d) {
+        mTimer = new StopWatch();
+        setPFilter(null);
+        setIFilter(null);
+        setDFilter(null);
         setPID(p, i, d);
         reset(0);
     }
 
     /**
-     * Gets the P value being used by the PID controller.
-     * 
      * @return the P value being used by the PID controller.
      */
     public double getP() {
@@ -56,8 +65,6 @@ public class PIDController extends Controller {
     }
 
     /**
-     * Gets the P value being used by the PID controller.
-     * 
      * @return the P value being used by the PID controller.
      */
     public double getI() {
@@ -65,8 +72,6 @@ public class PIDController extends Controller {
     }
 
     /**
-     * Gets the P value being used by the PID controller.
-     * 
      * @return the P value being used by the PID controller.
      */
     public double getD() {
@@ -74,56 +79,80 @@ public class PIDController extends Controller {
     }
 
     /**
-     * Changes the P value that will be used by the PID controller.
-     * 
      * @param p new p value used by the PID controller.
+     * @return refrence to PIDController (so you can chain the commands together)
      */
-    public void setP(double p) {
+    public PIDController setP(double p) {
         mP = Math.max(p, 0);
+        return this;
     }
 
     /**
-     * Changes the I value that will be used by the PID controller.
-     * 
      * @param i new i value used by the PID controller.
+     * @return refrence to PIDController (so you can chain the commands together)
      */
-    public void setI(double i) {
+    public PIDController setI(double i) {
         mI = Math.max(i, 0);
+        return this;
     }
 
     /**
-     * Changes the D value that will be used by the PID controller.
-     * 
      * @param d new d value used by the PID controller.
+     * @return refrence to PIDController (so you can chain the commands together)
      */
-    public void setD(double d) {
+    public PIDController setD(double d) {
         mD = Math.max(d, 0);
+        return this;
     }
 
     /**
-     * Changes the P, I, and D values that will be used by the PID controller.
-     * 
      * @param p new p value used by the PID controller.
      * @param i new i value used by the PID controller.
      * @param d new d value used by the PID controller.
+     * @return refrence to PIDController (so you can chain the commands together)
      */
-    public void setPID(double p, double i, double d) {
-        setP(p);
-        setI(i);
-        setD(d);
+    public PIDController setPID(double p, double i, double d) {
+        return setP(p).setI(i).setD(d);
     }
 
     /**
-     * Get the time difference since last call. This is done with the
-     * getCurrentTime() command and taking the difference since last call.
+     * It is really uncommon to see a filter being put on the P component. But this
+     * is here for completeness.
      * 
-     * @return The time difference since last call
+     * @param filter filter put on the P component of the PID Controller
+     * @return refrence to PIDController (so you can chain the commands together)
      */
-    private double getTimeDifference() {
-        double time = Controller.getCurrentTime();
-        double diff = time - mLastTime;
-        mLastTime = time;
-        return diff;
+    public PIDController setPFilter(IStreamFilter filter) {
+        // Use default filter if given null
+        mPFilter = (filter == null) ? ((x) -> x) : filter;
+        return this;
+    }
+
+    /**
+     * It is common for a limit filter to be put on the I component to prevent
+     * Integral Windup. You can use SLMath.limit(x) to do this.
+     * 
+     * @param filter filter put on the I component of the PID Controller
+     * @return refrence to PIDController (so you can chain the commands together)
+     */
+    public PIDController setIFilter(IStreamFilter filter) {
+        // Use default filter if given null
+        mPFilter = (filter == null) ? ((x) -> x) : filter;
+        return this;
+    }
+
+    /**
+     * Sometimes, it is nessisary to apply a low-pass filter to the D component to
+     * dampen noise. The D component is often really noisey, so putting a filter on
+     * it can improve performance.
+     * 
+     * @param filter filter put on the D component of the PID Controller
+     * @return refrence to PIDController (so you can chain the commands together)
+     */
+    public PIDController setDFilter(IStreamFilter filter) {
+        // Use default filter if given null
+        mPFilter = (filter == null) ? ((x) -> x) : filter;
+        return this;
     }
 
     /**
@@ -133,8 +162,8 @@ public class PIDController extends Controller {
      * 
      * @param error the error that you want to reset to
      */
-    public void reset(double error) {
-        mLastTime = getCurrentTime();
+    private void reset(double error) {
+        mTimer.reset();
         mLastError = error;
         mIntegral = 0;
     }
@@ -145,29 +174,27 @@ public class PIDController extends Controller {
      * @param error the error that the controller will use
      * @return the calculated result from the PIDController
      */
+    @Override
     public double update(double error) {
         // Get the amount of time since the last get() was called
-        double time_passed = getTimeDifference();
+        double time_passed = mTimer.reset();
 
         // Calculate P Component
-        double p_out = error * mP;
-
-        // Reset Integral if Error Has Crossed 0
-        if(Math.signum(mLastError) != Math.signum(error)) {
-            mIntegral = 0;
-        }
+        double p_out = mPFilter.get(error) * mP;
 
         // Calculate I Component
         mIntegral += error * time_passed;
+        mIntegral = mIFilter.get(mIntegral);
         double i_out = mIntegral * mI;
 
         // Calculate D Componenet
-        double diff = (error - mLastError) / time_passed;
-        double d_out = diff * mD;
+        double slope = (error - mLastError) / time_passed;
+        double d_out = mDFilter.get(slope) * mD;
 
         // Update Last Error for next get() call
         mLastError = error;
 
+        // Check if time passed exceeds reset limit
         if (time_passed < kMaxTimeBeforeReset) {
             // Return the calculated result
             return p_out + i_out + d_out;

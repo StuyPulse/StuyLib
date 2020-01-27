@@ -6,6 +6,9 @@ import com.stuypulse.stuylib.exception.ConstructionError;
 /**
  * Simple implementation of an Exponential Moving Average
  * 
+ * This is not time dependant, so the values will change if you change the rate
+ * that you call this filter, the filter will not adapt for that.
+ * 
  * @author Sam (sam.belliveau@gmail.com)
  */
 

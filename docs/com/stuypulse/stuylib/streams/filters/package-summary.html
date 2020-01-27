@@ -130,22 +130,23 @@ $('.navPadding').css('padding-top', $('.fixedNav').css("height"));
 </td>
 </tr>
 <tr class="rowColor">
-<th class="colFirst" scope="row"><a href="JerkLimit.html" title="class in com.stuypulse.stuylib.streams.filters">JerkLimit</a></th>
-<td class="colLast">
-<div class="block">This class lets you limit the jerk a stream of inputs</div>
-</td>
+<th class="colFirst" scope="row"><a href="LowPassFilter.html" title="class in com.stuypulse.stuylib.streams.filters">LowPassFilter</a></th>
+<td class="colLast">&nbsp;</td>
 </tr>
 <tr class="altColor">
 <th class="colFirst" scope="row"><a href="MovingAverage.html" title="class in com.stuypulse.stuylib.streams.filters">MovingAverage</a></th>
 <td class="colLast">
-<div class="block">Simple implementation of an Simple Moving Average</div>
+<div class="block">Simple implementation of an Simple Moving Average
+ 
+ This is not time dependant, so the values will change if you change the rate
+ that you call this filter, the filter will not adapt for that.</div>
 </td>
 </tr>
 <tr class="rowColor">
 <th class="colFirst" scope="row"><a href="OnDerivative.html" title="class in com.stuypulse.stuylib.streams.filters">OnDerivative</a></th>
 <td class="colLast">
-<div class="block">This class lets you take a simple filter like "x * 0.5" and apply it
- to the derivative of the IStream.</div>
+<div class="block">This class lets you take a simple filter like "x * 0.5" and apply it to the
+ derivative of the IStream.</div>
 </td>
 </tr>
 <tr class="altColor">
@@ -154,20 +155,19 @@ $('.navPadding').css('padding-top', $('.fixedNav').css("height"));
 <div class="block">This class lets you rate limit a stream of inputs
  
  That means that the value can not change more than a specified amount in one
- update</div>
+ update
+ 
+ This is not time dependant, so the values will change if you change the rate
+ that you call this filter, the filter will not adapt for that.</div>
 </td>
 </tr>
 <tr class="rowColor">
 <th class="colFirst" scope="row"><a href="RollingAverage.html" title="class in com.stuypulse.stuylib.streams.filters">RollingAverage</a></th>
 <td class="colLast">
-<div class="block">Simple implementation of an Exponential Moving Average</div>
-</td>
-</tr>
-<tr class="altColor">
-<th class="colFirst" scope="row"><a href="TimedRateLimit.html" title="class in com.stuypulse.stuylib.streams.filters">TimedRateLimit</a></th>
-<td class="colLast">
-<div class="block">This class lets you rate limit a stream of inputs where the values are
- limited based on time passed</div>
+<div class="block">Simple implementation of an Exponential Moving Average
+ 
+ This is not time dependant, so the values will change if you change the rate
+ that you call this filter, the filter will not adapt for that.</div>
 </td>
 </tr>
 </tbody>

@@ -27,8 +27,8 @@
     catch(err) {
     }
 //-->
-var data = {"i0":9,"i1":6,"i2":10};
-var tabs = {65535:["t0","All Methods"],1:["t1","Static Methods"],2:["t2","Instance Methods"],4:["t3","Abstract Methods"],8:["t4","Concrete Methods"]};
+var data = {"i0":6,"i1":10};
+var tabs = {65535:["t0","All Methods"],2:["t2","Instance Methods"],4:["t3","Abstract Methods"],8:["t4","Concrete Methods"]};
 var altColor = "altColor";
 var rowColor = "rowColor";
 var tableTab = "tableTab";
@@ -175,27 +175,20 @@ extends java.lang.Object</pre>
 </a>
 <h3>Method Summary</h3>
 <table class="memberSummary">
-<caption><span id="t0" class="activeTableTab"><span>All Methods</span><span class="tabEnd">&nbsp;</span></span><span id="t1" class="tableTab"><span><a href="javascript:show(1);">Static Methods</a></span><span class="tabEnd">&nbsp;</span></span><span id="t2" class="tableTab"><span><a href="javascript:show(2);">Instance Methods</a></span><span class="tabEnd">&nbsp;</span></span><span id="t3" class="tableTab"><span><a href="javascript:show(4);">Abstract Methods</a></span><span class="tabEnd">&nbsp;</span></span><span id="t4" class="tableTab"><span><a href="javascript:show(8);">Concrete Methods</a></span><span class="tabEnd">&nbsp;</span></span></caption>
+<caption><span id="t0" class="activeTableTab"><span>All Methods</span><span class="tabEnd">&nbsp;</span></span><span id="t2" class="tableTab"><span><a href="javascript:show(2);">Instance Methods</a></span><span class="tabEnd">&nbsp;</span></span><span id="t3" class="tableTab"><span><a href="javascript:show(4);">Abstract Methods</a></span><span class="tabEnd">&nbsp;</span></span><span id="t4" class="tableTab"><span><a href="javascript:show(8);">Concrete Methods</a></span><span class="tabEnd">&nbsp;</span></span></caption>
 <tr>
 <th class="colFirst" scope="col">Modifier and Type</th>
 <th class="colSecond" scope="col">Method</th>
 <th class="colLast" scope="col">Description</th>
 </tr>
 <tr id="i0" class="altColor">
-<td class="colFirst"><code>protected static double</code></td>
-<th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#getCurrentTime()">getCurrentTime</a></span>()</code></th>
-<td class="colLast">
-<div class="block">Get the current time relative time in seconds.</div>
-</td>
-</tr>
-<tr id="i1" class="rowColor">
 <td class="colFirst"><code>abstract double</code></td>
 <th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#update(double)">update</a></span>&#8203;(double&nbsp;error)</code></th>
 <td class="colLast">
 <div class="block">Update the controller with the error just measured</div>
 </td>
 </tr>
-<tr id="i2" class="altColor">
+<tr id="i1" class="rowColor">
 <td class="colFirst"><code>double</code></td>
 <th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#update(double,double)">update</a></span>&#8203;(double&nbsp;measurement,
       double&nbsp;setpoint)</code></th>
@@ -247,32 +240,6 @@ extends java.lang.Object</pre>
 <!--   -->
 </a>
 <h3>Method Detail</h3>
-<a id="getCurrentTime()">
-<!--   -->
-</a>
-<ul class="blockList">
-<li class="blockList">
-<h4>getCurrentTime</h4>
-<pre class="methodSignature">protected static final&nbsp;double&nbsp;getCurrentTime()</pre>
-<div class="block">Get the current time relative time in seconds. This is accurate to the nano
- second, but there are a few issues:
- 
- 1. Results are meaningless if not compared to past result 
- 2. Clocks on different threads give incorrect results 
- 3. Even through its to the nano second, its not 100% accurate
- 4. Calls made more than 292 years appart will give incorrect results
- 
- But we use it any way for controllers because:
- 
- 1. All time sampling is relative anyways 
- 2. A controller is only run on 1 thread 
- 3. Its better than getTimeMillis() due to resolution</div>
-<dl>
-<dt><span class="returnLabel">Returns:</span></dt>
-<dd>time represented in seconds</dd>
-</dl>
-</li>
-</ul>
 <a id="update(double,double)">
 <!--   -->
 </a>
