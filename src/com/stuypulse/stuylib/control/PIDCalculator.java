@@ -73,9 +73,11 @@ public class PIDCalculator extends Controller {
 
     /**
      * @param speed sets speed for motor output of controller
+     * @return the calculated result from the PIDController
      */
-    public void setControlSpeed(double speed) {
+    public PIDCalculator setControlSpeed(double speed) {
         mControlSpeed = speed;
+        return this;
     }
 
     /**
@@ -94,15 +96,12 @@ public class PIDCalculator extends Controller {
             if (mRunning) {
                 mPeriod = mPeriodFilter.get(mPeriodTimer.reset());
                 mAmplitude = mAmplitudeFilter.get((Math.abs(mWaveMax) + Math.abs(mWaveMin)) / 2.0);
-
-                mWaveMax = 0;
-                mWaveMin = 0;
             } else {
                 mPeriodTimer.reset();
-                mWaveMax = 0;
-                mWaveMin = 0;
             }
 
+            mWaveMax = 0;
+            mWaveMin = 0;
             mRunning = true;
         }
 
@@ -113,27 +112,17 @@ public class PIDCalculator extends Controller {
     }
 
     /**
-     * @return calculated P controller based off of measurements
+     * @param kP calculated kP constant
+     * @param kI calculated kI constant
+     * @param kD calculated kD constant
+     * @return calculated PID controller based off of measurements
      */
-    public PIDController getPController() {
-        if (mAmplitude > 0) {
-            double k = (4.0 * mControlSpeed) / (Math.PI * mAmplitude);
-
-            return new PIDController(0.5 * k, -1, -1);
-        } else {
-            return new PIDController(-1, -1, -1);
-        }
-    }
-
-    /**
-     * @return calculated PI controller based off of measurements
-     */
-    public PIDController getPIController() {
+    public PIDController getPIDController(double kP, double kI, double kD) {
         if (mAmplitude > 0) {
             double t = mPeriod;
             double k = (4.0 * mControlSpeed) / (Math.PI * mAmplitude);
 
-            return new PIDController(0.45 * k, 0.54 * k / t, -1);
+            return new PIDController(kP * k, kI * k / t, kD * k * t);
         } else {
             return new PIDController(-1, -1, -1);
         }
@@ -143,13 +132,20 @@ public class PIDCalculator extends Controller {
      * @return calculated PID controller based off of measurements
      */
     public PIDController getPIDController() {
-        if (mAmplitude > 0) {
-            double t = mPeriod;
-            double k = (4.0 * mControlSpeed) / (Math.PI * mAmplitude);
+        return getPIDController(0.6, 1.2, 3.0 / 40.0);
+    }
 
-            return new PIDController(0.6 * k, 1.2 * k / t, 3.0 * k * t / 40.0);
-        } else {
-            return new PIDController(-1, -1, -1);
-        }
+    /**
+     * @return calculated PI controller based off of measurements
+     */
+    public PIDController getPIController() {
+        return getPIDController(0.45, 0.54, -1);
+    }
+
+    /**
+     * @return calculated P controller based off of measurements
+     */
+    public PIDController getPController() {
+        return getPIDController(0.5, -1, -1);
     }
 }

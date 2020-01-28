@@ -22,7 +22,7 @@ public class PIDController extends Controller {
      * Amount of time inbetween .update() calls that is aloud before the controller
      * resets the system
      */
-    private static final double kMaxTimeBeforeReset = 1.0; // s
+    private static final double kMaxTimeBeforeReset = 0.25; // s
 
     // Constants used by the PID controller
     private double mP;
@@ -49,6 +49,57 @@ public class PIDController extends Controller {
         setIFilter(null);
         setPID(p, i, d);
         reset(0);
+    }
+
+    /**
+     * Resets the PIDController. This should be used if there is a large gap in time
+     * between a get call. The controller automatically calls this if it detects a
+     * gap greater than 1.0 second.
+     * 
+     * @param error the error that you want to reset to
+     */
+    private void reset(double error) {
+        mTimer.reset();
+        mLastError = error;
+        mIntegral = 0;
+    }
+
+    /**
+     * Calculate the value that the PIDController wants to move at.
+     * 
+     * @param error the error that the controller will use
+     * @return the calculated result from the PIDController
+     */
+    @Override
+    public double update(double error) {
+        // Get the amount of time since the last get() was called
+        double time_passed = mTimer.reset();
+
+        // Calculate P Component
+        double p_out = error * mP;
+
+        // Calculate I Component
+        mIntegral += error * time_passed;
+        mIntegral = mIFilter.get(mIntegral);
+        double i_out = mIntegral * mI;
+
+        // Calculate D Componenet
+        double slope = (error - mLastError) / time_passed;
+        double d_out = slope * mD;
+
+        // Update Last Error for next get() call
+        mLastError = error;
+
+        // Check if time passed exceeds reset limit
+        if (time_passed < kMaxTimeBeforeReset) {
+            // Return the calculated result
+            return p_out + i_out + d_out;
+        } else {
+            // If time in system is broken, then reset and return p part
+            // This is because the P part is not relative to time
+            reset(error);
+            return p_out;
+        }
     }
 
     /**
@@ -120,56 +171,5 @@ public class PIDController extends Controller {
         // Use default filter if given null
         mIFilter = (filter == null) ? ((x) -> x) : filter;
         return this;
-    }
-
-    /**
-     * Resets the PIDController. This should be used if there is a large gap in time
-     * between a get call. The controller automatically calls this if it detects a
-     * gap greater than 1.0 second.
-     * 
-     * @param error the error that you want to reset to
-     */
-    private void reset(double error) {
-        mTimer.reset();
-        mLastError = error;
-        mIntegral = 0;
-    }
-
-    /**
-     * Calculate the value that the PIDController wants to move at.
-     * 
-     * @param error the error that the controller will use
-     * @return the calculated result from the PIDController
-     */
-    @Override
-    public double update(double error) {
-        // Get the amount of time since the last get() was called
-        double time_passed = mTimer.reset();
-
-        // Calculate P Component
-        double p_out = error * mP;
-
-        // Calculate I Component
-        mIntegral += error * time_passed;
-        mIntegral = mIFilter.get(mIntegral);
-        double i_out = mIntegral * mI;
-
-        // Calculate D Componenet
-        double slope = (error - mLastError) / time_passed;
-        double d_out = slope * mD;
-
-        // Update Last Error for next get() call
-        mLastError = error;
-
-        // Check if time passed exceeds reset limit
-        if (time_passed < kMaxTimeBeforeReset) {
-            // Return the calculated result
-            return p_out + i_out + d_out;
-        } else {
-            // If time in system is broken, then reset and return p part
-            // This is because the P part is not relative to time
-            reset(error);
-            return p_out;
-        }
     }
 }
