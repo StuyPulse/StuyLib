@@ -29,19 +29,15 @@ public class PIDController extends Controller {
     private double mI;
     private double mD;
 
-    // The Integral of the errors for the I Component
+    // The Integral of the errors and filter for the I Component
     private double mIntegral;
+    private IStreamFilter mIFilter;
 
     // The last error used for calculating derivatives
     private double mLastError;
 
     // Timer used to get the time passed since last call
     private StopWatch mTimer;
-
-    // Filters for the Integral and Derivative
-    private IStreamFilter mPFilter;
-    private IStreamFilter mIFilter;
-    private IStreamFilter mDFilter;
 
     /**
      * @param p The Proportional Multiplier
@@ -50,9 +46,7 @@ public class PIDController extends Controller {
      */
     public PIDController(double p, double i, double d) {
         mTimer = new StopWatch();
-        setPFilter(null);
         setIFilter(null);
-        setDFilter(null);
         setPID(p, i, d);
         reset(0);
     }
@@ -116,19 +110,6 @@ public class PIDController extends Controller {
     }
 
     /**
-     * It is really uncommon to see a filter being put on the P component. But this
-     * is here for completeness.
-     * 
-     * @param filter filter put on the P component of the PID Controller
-     * @return refrence to PIDController (so you can chain the commands together)
-     */
-    public PIDController setPFilter(IStreamFilter filter) {
-        // Use default filter if given null
-        mPFilter = (filter == null) ? ((x) -> x) : filter;
-        return this;
-    }
-
-    /**
      * It is common for a limit filter to be put on the I component to prevent
      * Integral Windup. You can use SLMath.limit(x) to do this.
      * 
@@ -137,21 +118,7 @@ public class PIDController extends Controller {
      */
     public PIDController setIFilter(IStreamFilter filter) {
         // Use default filter if given null
-        mPFilter = (filter == null) ? ((x) -> x) : filter;
-        return this;
-    }
-
-    /**
-     * Sometimes, it is nessisary to apply a low-pass filter to the D component to
-     * dampen noise. The D component is often really noisey, so putting a filter on
-     * it can improve performance.
-     * 
-     * @param filter filter put on the D component of the PID Controller
-     * @return refrence to PIDController (so you can chain the commands together)
-     */
-    public PIDController setDFilter(IStreamFilter filter) {
-        // Use default filter if given null
-        mPFilter = (filter == null) ? ((x) -> x) : filter;
+        mIFilter = (filter == null) ? ((x) -> x) : filter;
         return this;
     }
 
@@ -180,7 +147,7 @@ public class PIDController extends Controller {
         double time_passed = mTimer.reset();
 
         // Calculate P Component
-        double p_out = mPFilter.get(error) * mP;
+        double p_out = error * mP;
 
         // Calculate I Component
         mIntegral += error * time_passed;
@@ -189,7 +156,7 @@ public class PIDController extends Controller {
 
         // Calculate D Componenet
         double slope = (error - mLastError) / time_passed;
-        double d_out = mDFilter.get(slope) * mD;
+        double d_out = slope * mD;
 
         // Update Last Error for next get() call
         mLastError = error;
@@ -204,14 +171,5 @@ public class PIDController extends Controller {
             reset(error);
             return p_out;
         }
-    }
-
-    /**
-     * Gets the last error from the error stream. Updates with get() command.
-     * 
-     * @return The last error from the error stream.
-     */
-    public double getError() {
-        return mLastError;
     }
 }
