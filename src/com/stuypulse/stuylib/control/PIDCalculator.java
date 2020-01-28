@@ -109,7 +109,7 @@ public class PIDCalculator extends Controller {
         mWaveMax = Math.max(mWaveMax, error);
         mWaveMin = Math.min(mWaveMin, error);
 
-        return -Math.signum(mLastError = error) * mControlSpeed;
+        return Math.signum(mLastError = error) * mControlSpeed;
     }
 
     /**
