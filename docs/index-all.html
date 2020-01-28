@@ -475,10 +475,6 @@ $('.navPadding').css('padding-top', $('.fixedNav').css("height"));
 <dd>&nbsp;</dd>
 <dt><span class="memberNameLink"><a href="com/stuypulse/stuylib/input/Gamepad.html#getDPadUp()">getDPadUp()</a></span> - Method in class com.stuypulse.stuylib.input.<a href="com/stuypulse/stuylib/input/Gamepad.html" title="class in com.stuypulse.stuylib.input">Gamepad</a></dt>
 <dd>&nbsp;</dd>
-<dt><span class="memberNameLink"><a href="com/stuypulse/stuylib/control/PIDController.html#getError()">getError()</a></span> - Method in class com.stuypulse.stuylib.control.<a href="com/stuypulse/stuylib/control/PIDController.html" title="class in com.stuypulse.stuylib.control">PIDController</a></dt>
-<dd>
-<div class="block">Gets the last error from the error stream.</div>
-</dd>
 <dt><span class="memberNameLink"><a href="com/stuypulse/stuylib/file/csv/CSVReader.html#getFilePath()">getFilePath()</a></span> - Method in class com.stuypulse.stuylib.file.csv.<a href="com/stuypulse/stuylib/file/csv/CSVReader.html" title="class in com.stuypulse.stuylib.file.csv">CSVReader</a></dt>
 <dd>
 <div class="block">Get the file path of the CSV File</div>
@@ -570,6 +566,12 @@ $('.navPadding').css('padding-top', $('.fixedNav').css("height"));
 <dt><span class="memberNameLink"><a href="com/stuypulse/stuylib/input/Gamepad.html#getOptionButton()">getOptionButton()</a></span> - Method in class com.stuypulse.stuylib.input.<a href="com/stuypulse/stuylib/input/Gamepad.html" title="class in com.stuypulse.stuylib.input">Gamepad</a></dt>
 <dd>&nbsp;</dd>
 <dt><span class="memberNameLink"><a href="com/stuypulse/stuylib/control/PIDController.html#getP()">getP()</a></span> - Method in class com.stuypulse.stuylib.control.<a href="com/stuypulse/stuylib/control/PIDController.html" title="class in com.stuypulse.stuylib.control">PIDController</a></dt>
+<dd>&nbsp;</dd>
+<dt><span class="memberNameLink"><a href="com/stuypulse/stuylib/control/PIDCalculator.html#getPController()">getPController()</a></span> - Method in class com.stuypulse.stuylib.control.<a href="com/stuypulse/stuylib/control/PIDCalculator.html" title="class in com.stuypulse.stuylib.control">PIDCalculator</a></dt>
+<dd>&nbsp;</dd>
+<dt><span class="memberNameLink"><a href="com/stuypulse/stuylib/control/PIDCalculator.html#getPIController()">getPIController()</a></span> - Method in class com.stuypulse.stuylib.control.<a href="com/stuypulse/stuylib/control/PIDCalculator.html" title="class in com.stuypulse.stuylib.control">PIDCalculator</a></dt>
+<dd>&nbsp;</dd>
+<dt><span class="memberNameLink"><a href="com/stuypulse/stuylib/control/PIDCalculator.html#getPIDController()">getPIDController()</a></span> - Method in class com.stuypulse.stuylib.control.<a href="com/stuypulse/stuylib/control/PIDCalculator.html" title="class in com.stuypulse.stuylib.control">PIDCalculator</a></dt>
 <dd>&nbsp;</dd>
 <dt><span class="memberNameLink"><a href="com/stuypulse/stuylib/network/limelight/Limelight.html#getPipeline()">getPipeline()</a></span> - Static method in class com.stuypulse.stuylib.network.limelight.<a href="com/stuypulse/stuylib/network/limelight/Limelight.html" title="class in com.stuypulse.stuylib.network.limelight">Limelight</a></dt>
 <dd>&nbsp;</dd>
@@ -1195,6 +1197,13 @@ $('.navPadding').css('padding-top', $('.fixedNav').css("height"));
 </a>
 <h2 class="title">P</h2>
 <dl>
+<dt><a href="com/stuypulse/stuylib/control/PIDCalculator.html" title="class in com.stuypulse.stuylib.control"><span class="typeNameLink">PIDCalculator</span></a> - Class in <a href="com/stuypulse/stuylib/control/package-summary.html">com.stuypulse.stuylib.control</a></dt>
+<dd>
+<div class="block">This is a Bang-Bang controller that while controlling the robot, will be able
+ to calculate the values for the PID controller.</div>
+</dd>
+<dt><span class="memberNameLink"><a href="com/stuypulse/stuylib/control/PIDCalculator.html#%3Cinit%3E(double)">PIDCalculator(double)</a></span> - Constructor for class com.stuypulse.stuylib.control.<a href="com/stuypulse/stuylib/control/PIDCalculator.html" title="class in com.stuypulse.stuylib.control">PIDCalculator</a></dt>
+<dd>&nbsp;</dd>
 <dt><a href="com/stuypulse/stuylib/control/PIDController.html" title="class in com.stuypulse.stuylib.control"><span class="typeNameLink">PIDController</span></a> - Class in <a href="com/stuypulse/stuylib/control/package-summary.html">com.stuypulse.stuylib.control</a></dt>
 <dd>
 <div class="block">This PID controller is built by extending the Controller class.</div>
@@ -1295,6 +1304,8 @@ $('.navPadding').css('padding-top', $('.fixedNav').css("height"));
 <dd>&nbsp;</dd>
 <dt><span class="memberNameLink"><a href="com/stuypulse/stuylib/network/limelight/Limelight.html#setCamMode(com.stuypulse.stuylib.network.limelight.Limelight.CamMode)">setCamMode(Limelight.CamMode)</a></span> - Static method in class com.stuypulse.stuylib.network.limelight.<a href="com/stuypulse/stuylib/network/limelight/Limelight.html" title="class in com.stuypulse.stuylib.network.limelight">Limelight</a></dt>
 <dd>&nbsp;</dd>
+<dt><span class="memberNameLink"><a href="com/stuypulse/stuylib/control/PIDCalculator.html#setControlSpeed(double)">setControlSpeed(double)</a></span> - Method in class com.stuypulse.stuylib.control.<a href="com/stuypulse/stuylib/control/PIDCalculator.html" title="class in com.stuypulse.stuylib.control">PIDCalculator</a></dt>
+<dd>&nbsp;</dd>
 <dt><span class="memberNameLink"><a href="com/stuypulse/stuylib/file/csv/CSVWriter.html#setCSVType(com.stuypulse.stuylib.file.csv.CSVType)">setCSVType(CSVType)</a></span> - Method in class com.stuypulse.stuylib.file.csv.<a href="com/stuypulse/stuylib/file/csv/CSVWriter.html" title="class in com.stuypulse.stuylib.file.csv">CSVWriter</a></dt>
 <dd>
 <div class="block">Set CSV type</div>
@@ -1305,11 +1316,6 @@ $('.navPadding').css('padding-top', $('.fixedNav').css("height"));
 <dd>&nbsp;</dd>
 <dt><span class="memberNameLink"><a href="com/stuypulse/stuylib/control/PIDController.html#setD(double)">setD(double)</a></span> - Method in class com.stuypulse.stuylib.control.<a href="com/stuypulse/stuylib/control/PIDController.html" title="class in com.stuypulse.stuylib.control">PIDController</a></dt>
 <dd>&nbsp;</dd>
-<dt><span class="memberNameLink"><a href="com/stuypulse/stuylib/control/PIDController.html#setDFilter(com.stuypulse.stuylib.streams.filters.IStreamFilter)">setDFilter(IStreamFilter)</a></span> - Method in class com.stuypulse.stuylib.control.<a href="com/stuypulse/stuylib/control/PIDController.html" title="class in com.stuypulse.stuylib.control">PIDController</a></dt>
-<dd>
-<div class="block">Sometimes, it is nessisary to apply a low-pass filter to the D component to
- dampen noise.</div>
-</dd>
 <dt><span class="memberNameLink"><a href="com/stuypulse/stuylib/network/SLNetworkTable.html#setDouble(java.lang.String,double)">setDouble(String, double)</a></span> - Method in class com.stuypulse.stuylib.network.<a href="com/stuypulse/stuylib/network/SLNetworkTable.html" title="class in com.stuypulse.stuylib.network">SLNetworkTable</a></dt>
 <dd>
 <div class="block">Set double in network table</div>
@@ -1333,10 +1339,6 @@ $('.navPadding').css('padding-top', $('.fixedNav').css("height"));
 </dd>
 <dt><span class="memberNameLink"><a href="com/stuypulse/stuylib/control/PIDController.html#setP(double)">setP(double)</a></span> - Method in class com.stuypulse.stuylib.control.<a href="com/stuypulse/stuylib/control/PIDController.html" title="class in com.stuypulse.stuylib.control">PIDController</a></dt>
 <dd>&nbsp;</dd>
-<dt><span class="memberNameLink"><a href="com/stuypulse/stuylib/control/PIDController.html#setPFilter(com.stuypulse.stuylib.streams.filters.IStreamFilter)">setPFilter(IStreamFilter)</a></span> - Method in class com.stuypulse.stuylib.control.<a href="com/stuypulse/stuylib/control/PIDController.html" title="class in com.stuypulse.stuylib.control">PIDController</a></dt>
-<dd>
-<div class="block">It is really uncommon to see a filter being put on the P component.</div>
-</dd>
 <dt><span class="memberNameLink"><a href="com/stuypulse/stuylib/control/PIDController.html#setPID(double,double,double)">setPID(double, double, double)</a></span> - Method in class com.stuypulse.stuylib.control.<a href="com/stuypulse/stuylib/control/PIDController.html" title="class in com.stuypulse.stuylib.control">PIDController</a></dt>
 <dd>&nbsp;</dd>
 <dt><span class="memberNameLink"><a href="com/stuypulse/stuylib/network/limelight/Limelight.html#setPipeline(int)">setPipeline(int)</a></span> - Static method in class com.stuypulse.stuylib.network.limelight.<a href="com/stuypulse/stuylib/network/limelight/Limelight.html" title="class in com.stuypulse.stuylib.network.limelight">Limelight</a></dt>
@@ -1452,6 +1454,11 @@ $('.navPadding').css('padding-top', $('.fixedNav').css("height"));
 <dt><span class="memberNameLink"><a href="com/stuypulse/stuylib/control/Controller.html#update(double)">update(double)</a></span> - Method in class com.stuypulse.stuylib.control.<a href="com/stuypulse/stuylib/control/Controller.html" title="class in com.stuypulse.stuylib.control">Controller</a></dt>
 <dd>
 <div class="block">Update the controller with the error just measured</div>
+</dd>
+<dt><span class="memberNameLink"><a href="com/stuypulse/stuylib/control/PIDCalculator.html#update(double)">update(double)</a></span> - Method in class com.stuypulse.stuylib.control.<a href="com/stuypulse/stuylib/control/PIDCalculator.html" title="class in com.stuypulse.stuylib.control">PIDCalculator</a></dt>
+<dd>
+<div class="block">Calculate the value that the controller wants to move at while calculating
+ the values for the PIDController</div>
 </dd>
 <dt><span class="memberNameLink"><a href="com/stuypulse/stuylib/control/PIDController.html#update(double)">update(double)</a></span> - Method in class com.stuypulse.stuylib.control.<a href="com/stuypulse/stuylib/control/PIDController.html" title="class in com.stuypulse.stuylib.control">PIDController</a></dt>
 <dd>
