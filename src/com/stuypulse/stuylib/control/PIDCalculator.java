@@ -10,6 +10,8 @@ import com.stuypulse.stuylib.util.StopWatch;
  * to calculate the values for the PID controller. It does this by taking the
  * results of oscillations, then creating a PIDController withe the correct
  * values once the oscilations have been measured.
+ * 
+ * @author Sam (sam.belliveau@gmail.com)
  */
 public class PIDCalculator extends Controller {
 
