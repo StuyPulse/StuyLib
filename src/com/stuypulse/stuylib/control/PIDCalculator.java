@@ -17,7 +17,7 @@ public class PIDCalculator extends Controller {
 
     // Maximum amount of time between update commands before the calculator resets
     // its measurements
-    private static final double kMaxTimeBeforeReset = 0.25;
+    private static final double kMaxTimeBeforeReset = 0.3;
 
     // The exponential weights when measuring the period and amplitude
     private static final double kPeriodAverageWeight = 4;
@@ -87,7 +87,7 @@ public class PIDCalculator extends Controller {
      * @param error the error that the controller will use
      * @return the calculated result from the controller
      */
-    public double update(double error) {
+    protected double update(double error) {
         if (mUpdateTimer.reset() > kMaxTimeBeforeReset) {
             mRunning = false;
         }

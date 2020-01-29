@@ -27,7 +27,7 @@
     catch(err) {
     }
 //-->
-var data = {"i0":6,"i1":10};
+var data = {"i0":10,"i1":10,"i2":10,"i3":10,"i4":10,"i5":10,"i6":6};
 var tabs = {65535:["t0","All Methods"],2:["t2","Instance Methods"],4:["t3","Abstract Methods"],8:["t4","Concrete Methods"]};
 var altColor = "altColor";
 var rowColor = "rowColor";
@@ -138,8 +138,10 @@ $('.navPadding').css('padding-top', $('.fixedNav').css("height"));
 <pre>public abstract class <span class="typeNameLabel">Controller</span>
 extends java.lang.Object</pre>
 <div class="block">The controller class is an abstract class that is used to create different
- controllers. All a class will need to do is implement update(double error)
- and the update(double measurement, double setpoint) function will also work.</div>
+ controllers. All a class will need to do is implement update(double error),
+ and then the user would use the calculate() functions, which work as a sort
+ of wrapper for the controllers. No matter what controller is used, these
+ functions will always work</div>
 </li>
 </ul>
 </div>
@@ -156,12 +158,16 @@ extends java.lang.Object</pre>
 <table class="memberSummary">
 <caption><span>Constructors</span><span class="tabEnd">&nbsp;</span></caption>
 <tr>
-<th class="colFirst" scope="col">Constructor</th>
+<th class="colFirst" scope="col">Modifier</th>
+<th class="colSecond" scope="col">Constructor</th>
 <th class="colLast" scope="col">Description</th>
 </tr>
 <tr class="altColor">
+<td class="colFirst"><code>protected </code></td>
 <th class="colConstructorName" scope="row"><code><span class="memberNameLink"><a href="#%3Cinit%3E()">Controller</a></span>()</code></th>
-<td class="colLast">&nbsp;</td>
+<td class="colLast">
+<div class="block">Creates a basic controller with everthing initialized</div>
+</td>
 </tr>
 </table>
 </li>
@@ -182,19 +188,57 @@ extends java.lang.Object</pre>
 <th class="colLast" scope="col">Description</th>
 </tr>
 <tr id="i0" class="altColor">
-<td class="colFirst"><code>abstract double</code></td>
-<th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#update(double)">update</a></span>&#8203;(double&nbsp;error)</code></th>
+<td class="colFirst"><code>double</code></td>
+<th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#calculate(double)">calculate</a></span>&#8203;(double&nbsp;error)</code></th>
 <td class="colLast">
-<div class="block">Update the controller with the error just measured</div>
+<div class="block">Update the controller with the measurement that was just made and the set
+ point you would like it to approach</div>
 </td>
 </tr>
 <tr id="i1" class="rowColor">
 <td class="colFirst"><code>double</code></td>
-<th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#update(double,double)">update</a></span>&#8203;(double&nbsp;measurement,
-      double&nbsp;setpoint)</code></th>
+<th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#calculate(double,double)">calculate</a></span>&#8203;(double&nbsp;measurement,
+         double&nbsp;setpoint)</code></th>
 <td class="colLast">
 <div class="block">Update the controller with the measurement that was just made and the set
  point you would like it to approach</div>
+</td>
+</tr>
+<tr id="i2" class="altColor">
+<td class="colFirst"><code>double</code></td>
+<th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#getError()">getError</a></span>()</code></th>
+<td class="colLast">
+<div class="block">Gets the error from the last time that .calculate() was called</div>
+</td>
+</tr>
+<tr id="i3" class="rowColor">
+<td class="colFirst"><code>double</code></td>
+<th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#getOutput()">getOutput</a></span>()</code></th>
+<td class="colLast">
+<div class="block">Gets the motor output from the last time that .calculate() was called</div>
+</td>
+</tr>
+<tr id="i4" class="altColor">
+<td class="colFirst"><code><a href="Controller.html" title="class in com.stuypulse.stuylib.control">Controller</a></code></td>
+<th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#setErrorFilter(com.stuypulse.stuylib.streams.filters.IStreamFilter)">setErrorFilter</a></span>&#8203;(<a href="../streams/filters/IStreamFilter.html" title="interface in com.stuypulse.stuylib.streams.filters">IStreamFilter</a>&nbsp;filter)</code></th>
+<td class="colLast">
+<div class="block">Lets you specify a filter that will be applied to all measurements that are
+ given to the controller.</div>
+</td>
+</tr>
+<tr id="i5" class="rowColor">
+<td class="colFirst"><code><a href="Controller.html" title="class in com.stuypulse.stuylib.control">Controller</a></code></td>
+<th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#setOutputFilter(com.stuypulse.stuylib.streams.filters.IStreamFilter)">setOutputFilter</a></span>&#8203;(<a href="../streams/filters/IStreamFilter.html" title="interface in com.stuypulse.stuylib.streams.filters">IStreamFilter</a>&nbsp;filter)</code></th>
+<td class="colLast">
+<div class="block">Lets you specify a filter that will be applied to all of the outputs of the
+ controller.</div>
+</td>
+</tr>
+<tr id="i6" class="altColor">
+<td class="colFirst"><code>protected abstract double</code></td>
+<th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#update(double)">update</a></span>&#8203;(double&nbsp;error)</code></th>
+<td class="colLast">
+<div class="block">Update the controller with the error just measured</div>
 </td>
 </tr>
 </table>
@@ -227,7 +271,8 @@ extends java.lang.Object</pre>
 <ul class="blockListLast">
 <li class="blockList">
 <h4>Controller</h4>
-<pre>public&nbsp;Controller()</pre>
+<pre>protected&nbsp;Controller()</pre>
+<div class="block">Creates a basic controller with everthing initialized</div>
 </li>
 </ul>
 </li>
@@ -240,14 +285,97 @@ extends java.lang.Object</pre>
 <!--   -->
 </a>
 <h3>Method Detail</h3>
-<a id="update(double,double)">
+<a id="setErrorFilter(com.stuypulse.stuylib.streams.filters.IStreamFilter)">
 <!--   -->
 </a>
 <ul class="blockList">
 <li class="blockList">
-<h4>update</h4>
-<pre class="methodSignature">public final&nbsp;double&nbsp;update&#8203;(double&nbsp;measurement,
-                           double&nbsp;setpoint)</pre>
+<h4>setErrorFilter</h4>
+<pre class="methodSignature">public final&nbsp;<a href="Controller.html" title="class in com.stuypulse.stuylib.control">Controller</a>&nbsp;setErrorFilter&#8203;(<a href="../streams/filters/IStreamFilter.html" title="interface in com.stuypulse.stuylib.streams.filters">IStreamFilter</a>&nbsp;filter)</pre>
+<div class="block">Lets you specify a filter that will be applied to all measurements that are
+ given to the controller.
+ 
+ A highly recommended option is the LowPassFilter due to its ability to remove
+ noise, and its ability to not lag behind when there has been a gap in calls.
+ This will slightly degrade the performance of the controller, but it may be
+ nessisary sometimes in order to get consistant results.
+ 
+ This will change the way the controller interacts with the robot and may
+ require more tuning to be done.
+ 
+ Passing in null will disable the filter.</div>
+<dl>
+<dt><span class="paramLabel">Parameters:</span></dt>
+<dd><code>filter</code> - filter to be applied to error measurements</dd>
+<dt><span class="returnLabel">Returns:</span></dt>
+<dd>refrence to the controller (so you can chain the commands together)</dd>
+</dl>
+</li>
+</ul>
+<a id="setOutputFilter(com.stuypulse.stuylib.streams.filters.IStreamFilter)">
+<!--   -->
+</a>
+<ul class="blockList">
+<li class="blockList">
+<h4>setOutputFilter</h4>
+<pre class="methodSignature">public final&nbsp;<a href="Controller.html" title="class in com.stuypulse.stuylib.control">Controller</a>&nbsp;setOutputFilter&#8203;(<a href="../streams/filters/IStreamFilter.html" title="interface in com.stuypulse.stuylib.streams.filters">IStreamFilter</a>&nbsp;filter)</pre>
+<div class="block">Lets you specify a filter that will be applied to all of the outputs of the
+ controller.
+ 
+ If the robot has a tendancy to jerk, or motions of the robot are too violent,
+ a filter like the LowPassFilter can reduce jerk while still letting the robot
+ get to max speed. This will slightly degrade the performance of the
+ controller, but it may be nessisary sometimes in order to get consistant
+ results.
+ 
+ This will change the way the controller interacts with the robot and may
+ require more tuning to be done.
+ 
+ Passing in null will disable the filter.</div>
+<dl>
+<dt><span class="paramLabel">Parameters:</span></dt>
+<dd><code>filter</code> - filter to be applied to the outputs of the controller</dd>
+<dt><span class="returnLabel">Returns:</span></dt>
+<dd>refrence to the controller (so you can chain the commands together)</dd>
+</dl>
+</li>
+</ul>
+<a id="getError()">
+<!--   -->
+</a>
+<ul class="blockList">
+<li class="blockList">
+<h4>getError</h4>
+<pre class="methodSignature">public final&nbsp;double&nbsp;getError()</pre>
+<div class="block">Gets the error from the last time that .calculate() was called</div>
+<dl>
+<dt><span class="returnLabel">Returns:</span></dt>
+<dd>error from the last time that .calculate() was called</dd>
+</dl>
+</li>
+</ul>
+<a id="getOutput()">
+<!--   -->
+</a>
+<ul class="blockList">
+<li class="blockList">
+<h4>getOutput</h4>
+<pre class="methodSignature">public final&nbsp;double&nbsp;getOutput()</pre>
+<div class="block">Gets the motor output from the last time that .calculate() was called</div>
+<dl>
+<dt><span class="returnLabel">Returns:</span></dt>
+<dd>the motor output from the last time that .calculate() was called</dd>
+</dl>
+</li>
+</ul>
+<a id="calculate(double,double)">
+<!--   -->
+</a>
+<ul class="blockList">
+<li class="blockList">
+<h4>calculate</h4>
+<pre class="methodSignature">public final&nbsp;double&nbsp;calculate&#8203;(double&nbsp;measurement,
+                              double&nbsp;setpoint)</pre>
 <div class="block">Update the controller with the measurement that was just made and the set
  point you would like it to approach</div>
 <dl>
@@ -259,13 +387,30 @@ extends java.lang.Object</pre>
 </dl>
 </li>
 </ul>
+<a id="calculate(double)">
+<!--   -->
+</a>
+<ul class="blockList">
+<li class="blockList">
+<h4>calculate</h4>
+<pre class="methodSignature">public final&nbsp;double&nbsp;calculate&#8203;(double&nbsp;error)</pre>
+<div class="block">Update the controller with the measurement that was just made and the set
+ point you would like it to approach</div>
+<dl>
+<dt><span class="paramLabel">Parameters:</span></dt>
+<dd><code>error</code> - the amount of error from the destination</dd>
+<dt><span class="returnLabel">Returns:</span></dt>
+<dd>controller output</dd>
+</dl>
+</li>
+</ul>
 <a id="update(double)">
 <!--   -->
 </a>
 <ul class="blockListLast">
 <li class="blockList">
 <h4>update</h4>
-<pre class="methodSignature">public abstract&nbsp;double&nbsp;update&#8203;(double&nbsp;error)</pre>
+<pre class="methodSignature">protected abstract&nbsp;double&nbsp;update&#8203;(double&nbsp;error)</pre>
 <div class="block">Update the controller with the error just measured</div>
 <dl>
 <dt><span class="paramLabel">Parameters:</span></dt>

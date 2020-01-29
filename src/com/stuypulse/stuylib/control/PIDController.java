@@ -22,7 +22,7 @@ public class PIDController extends Controller {
      * Amount of time inbetween .update() calls that is aloud before the controller
      * resets the system
      */
-    private static final double kMaxTimeBeforeReset = 0.25; // s
+    private static final double kMaxTimeBeforeReset = 0.3; // s
 
     // Constants used by the PID controller
     private double mP;
@@ -46,7 +46,7 @@ public class PIDController extends Controller {
      */
     public PIDController(double p, double i, double d) {
         mTimer = new StopWatch();
-        setIFilter(null);
+        setIntegratorFilter(null);
         setPID(p, i, d);
         reset(0);
     }
@@ -71,7 +71,7 @@ public class PIDController extends Controller {
      * @return the calculated result from the PIDController
      */
     @Override
-    public double update(double error) {
+    protected double update(double error) {
         // Get the amount of time since the last get() was called
         double time_passed = mTimer.reset();
 
@@ -164,10 +164,12 @@ public class PIDController extends Controller {
      * It is common for a limit filter to be put on the I component to prevent
      * Integral Windup. You can use SLMath.limit(x) to do this.
      * 
+     * Passing null will disable the filter
+     * 
      * @param filter filter put on the I component of the PID Controller
      * @return refrence to PIDController (so you can chain the commands together)
      */
-    public PIDController setIFilter(IStreamFilter filter) {
+    public PIDController setIntegratorFilter(IStreamFilter filter) {
         // Use default filter if given null
         mIFilter = (filter == null) ? ((x) -> x) : filter;
         return this;
