@@ -41,9 +41,6 @@ public class PIDCalculator extends Controller {
     private double mWaveMax;
     private double mWaveMin;
 
-    // Timer that measures time between updates
-    private StopWatch mUpdateTimer;
-
     // The last error given to the controller
     private double mLastError;
 
@@ -67,7 +64,6 @@ public class PIDCalculator extends Controller {
         mWaveMin = 0;
         mLastError = 0;
 
-        mUpdateTimer = new StopWatch();
         mRunning = false;
     }
 
@@ -87,15 +83,15 @@ public class PIDCalculator extends Controller {
      * @param error the error that the controller will use
      * @return the calculated result from the controller
      */
-    protected double update(double error) {
-        if (mUpdateTimer.reset() > kMaxTimeBeforeReset) {
+    protected double calculate(double error) {
+        if (getRate() > kMaxTimeBeforeReset) {
             mRunning = false;
         }
 
         if (mLastError < 0.0 && 0.0 <= error) {
             if (mRunning) {
                 mPeriod = mPeriodFilter.get(mPeriodTimer.reset());
-                mAmplitude = mAmplitudeFilter.get((Math.abs(mWaveMax) + Math.abs(mWaveMin)) / 2.0);
+                mAmplitude = mAmplitudeFilter.get((mWaveMax - mWaveMin) / 2.0);
             } else {
                 mPeriodTimer.reset();
             }

@@ -1,13 +1,17 @@
 package com.stuypulse.stuylib.control;
 
 import com.stuypulse.stuylib.streams.filters.IStreamFilter;
+import com.stuypulse.stuylib.util.StopWatch;
 
 /**
  * The controller class is an abstract class that is used to create different
- * controllers. All a class will need to do is implement update(double error),
- * and then the user would use the calculate() functions, which work as a sort
- * of wrapper for the controllers. No matter what controller is used, these
- * functions will always work
+ * controllers. All a class will need to do is implement calculate(double
+ * error), and then the user would use the update() functions, which work as a
+ * sort of wrapper for the controllers. No matter what controller is used, these
+ * functions will always work.
+ * 
+ * These functions in the controller are useful for an error based system, and
+ * are automatically managed, making implementations of PID easy.
  * 
  * @author Sam (sam.belliveau@gmail.com)
  */
@@ -26,21 +30,30 @@ public abstract class Controller {
 
     // Error and Error Filters
     private double mError;
+    private double mVelocity;
     private IStreamFilter mErrorFilter;
 
     // Output and Output Filters
     private double mOutput;
     private IStreamFilter mOutputFilter;
 
+    // Rate and Rate Timer
+    private double mRate;
+    private StopWatch mRateTimer;
+
     /**
      * Creates a basic controller with everthing initialized
      */
     protected Controller() {
         mError = 0.0;
+        mVelocity = 0.0;
         setErrorFilter(null);
 
         mOutput = 0.0;
         setOutputFilter(null);
+
+        mRate = -1.0;
+        mRateTimer = new StopWatch();
     }
 
     /**
@@ -89,21 +102,45 @@ public abstract class Controller {
     }
 
     /**
-     * Gets the error from the last time that .calculate() was called
+     * Gets the error from the last time that .update() was called
      * 
-     * @return error from the last time that .calculate() was called
+     * @return error from the last time that .update() was called
      */
     public final double getError() {
         return mError;
     }
 
     /**
-     * Gets the motor output from the last time that .calculate() was called
+     * Gets the velocity, which is represented as the change in error, from the last
+     * time that .update() was called
      * 
-     * @return the motor output from the last time that .calculate() was called
+     * @return velocity from the last time that .update() was called
+     */
+    public final double getVelocity() {
+        return mVelocity;
+    }
+
+    /**
+     * Gets the motor output from the last time that .update() was called
+     * 
+     * @return the motor output from the last time that .update() was called
      */
     public final double getOutput() {
         return mOutput;
+    }
+
+    /**
+     * Gets the rate of the controller during the last .update() command. This will
+     * only return the interval between the last .update() command and the one
+     * before it. Thus, the rate may be slightly inconsistant if the update command
+     * is not called regularly.
+     * 
+     * This function may be overridden if a special controller needs a custom rate.
+     * 
+     * @return the rate of the controller during the last .update() command
+     */
+    public double getRate() {
+        return mRate;
     }
 
     /**
@@ -116,8 +153,8 @@ public abstract class Controller {
      * @param setpoint    desired result
      * @return controller output
      */
-    public final double calculate(double measurement, double setpoint) {
-        return calculate(measurement - setpoint);
+    public final double update(double measurement, double setpoint) {
+        return update(measurement - setpoint);
     }
 
     /**
@@ -127,10 +164,21 @@ public abstract class Controller {
      * @param error the amount of error from the destination
      * @return controller output
      */
-    public final double calculate(double error) {
-        mError = mErrorFilter.get(error);
-        mOutput = mOutputFilter.get(update(mError));
-        return mOutput;
+    public final double update(double error) {
+        // Update rate with the amount of time since the last update
+        mRate = mRateTimer.reset();
+
+        // Filter the error with the error filter
+        error = mErrorFilter.get(error);
+
+        // Get the velocity based on the change in error and rate
+        mVelocity = (error - mError) / getRate();
+
+        // Update the error variable
+        mError = error;
+
+        // Return and Update the calculated output
+        return (mOutput = mOutputFilter.get(update(mError)));
     }
 
     /**
@@ -139,5 +187,5 @@ public abstract class Controller {
      * @param error error that was just measured
      * @return controller output.
      */
-    protected abstract double update(double error);
+    protected abstract double calculate(double error);
 }

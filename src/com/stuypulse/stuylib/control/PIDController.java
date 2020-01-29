@@ -2,7 +2,6 @@ package com.stuypulse.stuylib.control;
 
 import com.stuypulse.stuylib.control.Controller;
 import com.stuypulse.stuylib.streams.filters.IStreamFilter;
-import com.stuypulse.stuylib.util.StopWatch;
 
 /**
  * This PID controller is built by extending the Controller class. It has a
@@ -33,34 +32,21 @@ public class PIDController extends Controller {
     private double mIntegral;
     private IStreamFilter mIFilter;
 
-    // The last error used for calculating derivatives
-    private double mLastError;
-
-    // Timer used to get the time passed since last call
-    private StopWatch mTimer;
-
     /**
      * @param p The Proportional Multiplier
      * @param i The Integral Multiplier
      * @param d The Derivative Multiplier
      */
     public PIDController(double p, double i, double d) {
-        mTimer = new StopWatch();
         setIntegratorFilter(null);
         setPID(p, i, d);
-        reset(0);
+        reset();
     }
 
     /**
-     * Resets the PIDController. This should be used if there is a large gap in time
-     * between a get call. The controller automatically calls this if it detects a
-     * gap greater than 1.0 second.
-     * 
-     * @param error the error that you want to reset to
+     * Resets the integrator in the PIDController. This automatically gets called if the gap between update() commands is too large;
      */
-    private void reset(double error) {
-        mTimer.reset();
-        mLastError = error;
+    public void reset() {
         mIntegral = 0;
     }
 
@@ -71,33 +57,26 @@ public class PIDController extends Controller {
      * @return the calculated result from the PIDController
      */
     @Override
-    protected double update(double error) {
-        // Get the amount of time since the last get() was called
-        double time_passed = mTimer.reset();
-
+    protected double calculate(double error) {
         // Calculate P Component
         double p_out = error * mP;
 
         // Calculate I Component
-        mIntegral += error * time_passed;
+        mIntegral += error * getRate();
         mIntegral = mIFilter.get(mIntegral);
         double i_out = mIntegral * mI;
 
         // Calculate D Componenet
-        double slope = (error - mLastError) / time_passed;
-        double d_out = slope * mD;
-
-        // Update Last Error for next get() call
-        mLastError = error;
+        double d_out = getVelocity() * mD;
 
         // Check if time passed exceeds reset limit
-        if (time_passed < kMaxTimeBeforeReset) {
+        if (getRate() < kMaxTimeBeforeReset) {
             // Return the calculated result
             return p_out + i_out + d_out;
         } else {
             // If time in system is broken, then reset and return p part
             // This is because the P part is not relative to time
-            reset(error);
+            reset();
             return p_out;
         }
     }

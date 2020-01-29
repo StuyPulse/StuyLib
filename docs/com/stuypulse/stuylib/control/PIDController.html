@@ -27,7 +27,7 @@
     catch(err) {
     }
 //-->
-var data = {"i0":10,"i1":10,"i2":10,"i3":10,"i4":10,"i5":10,"i6":10,"i7":10,"i8":10};
+var data = {"i0":10,"i1":10,"i2":10,"i3":10,"i4":10,"i5":10,"i6":10,"i7":10,"i8":10,"i9":10};
 var tabs = {65535:["t0","All Methods"],2:["t2","Instance Methods"],8:["t4","Concrete Methods"]};
 var altColor = "altColor";
 var rowColor = "rowColor";
@@ -190,31 +190,45 @@ extends <a href="Controller.html" title="class in com.stuypulse.stuylib.control"
 <th class="colLast" scope="col">Description</th>
 </tr>
 <tr id="i0" class="altColor">
+<td class="colFirst"><code>protected double</code></td>
+<th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#calculate(double)">calculate</a></span>&#8203;(double&nbsp;error)</code></th>
+<td class="colLast">
+<div class="block">Calculate the value that the PIDController wants to move at.</div>
+</td>
+</tr>
+<tr id="i1" class="rowColor">
 <td class="colFirst"><code>double</code></td>
 <th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#getD()">getD</a></span>()</code></th>
 <td class="colLast">&nbsp;</td>
 </tr>
-<tr id="i1" class="rowColor">
+<tr id="i2" class="altColor">
 <td class="colFirst"><code>double</code></td>
 <th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#getI()">getI</a></span>()</code></th>
 <td class="colLast">&nbsp;</td>
 </tr>
-<tr id="i2" class="altColor">
+<tr id="i3" class="rowColor">
 <td class="colFirst"><code>double</code></td>
 <th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#getP()">getP</a></span>()</code></th>
 <td class="colLast">&nbsp;</td>
 </tr>
-<tr id="i3" class="rowColor">
+<tr id="i4" class="altColor">
+<td class="colFirst"><code>void</code></td>
+<th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#reset()">reset</a></span>()</code></th>
+<td class="colLast">
+<div class="block">Resets the integrator in the PIDController.</div>
+</td>
+</tr>
+<tr id="i5" class="rowColor">
 <td class="colFirst"><code><a href="PIDController.html" title="class in com.stuypulse.stuylib.control">PIDController</a></code></td>
 <th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#setD(double)">setD</a></span>&#8203;(double&nbsp;d)</code></th>
 <td class="colLast">&nbsp;</td>
 </tr>
-<tr id="i4" class="altColor">
+<tr id="i6" class="altColor">
 <td class="colFirst"><code><a href="PIDController.html" title="class in com.stuypulse.stuylib.control">PIDController</a></code></td>
 <th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#setI(double)">setI</a></span>&#8203;(double&nbsp;i)</code></th>
 <td class="colLast">&nbsp;</td>
 </tr>
-<tr id="i5" class="rowColor">
+<tr id="i7" class="rowColor">
 <td class="colFirst"><code><a href="PIDController.html" title="class in com.stuypulse.stuylib.control">PIDController</a></code></td>
 <th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#setIntegratorFilter(com.stuypulse.stuylib.streams.filters.IStreamFilter)">setIntegratorFilter</a></span>&#8203;(<a href="../streams/filters/IStreamFilter.html" title="interface in com.stuypulse.stuylib.streams.filters">IStreamFilter</a>&nbsp;filter)</code></th>
 <td class="colLast">
@@ -222,24 +236,17 @@ extends <a href="Controller.html" title="class in com.stuypulse.stuylib.control"
  Integral Windup.</div>
 </td>
 </tr>
-<tr id="i6" class="altColor">
+<tr id="i8" class="altColor">
 <td class="colFirst"><code><a href="PIDController.html" title="class in com.stuypulse.stuylib.control">PIDController</a></code></td>
 <th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#setP(double)">setP</a></span>&#8203;(double&nbsp;p)</code></th>
 <td class="colLast">&nbsp;</td>
 </tr>
-<tr id="i7" class="rowColor">
+<tr id="i9" class="rowColor">
 <td class="colFirst"><code><a href="PIDController.html" title="class in com.stuypulse.stuylib.control">PIDController</a></code></td>
 <th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#setPID(double,double,double)">setPID</a></span>&#8203;(double&nbsp;p,
       double&nbsp;i,
       double&nbsp;d)</code></th>
 <td class="colLast">&nbsp;</td>
-</tr>
-<tr id="i8" class="altColor">
-<td class="colFirst"><code>protected double</code></td>
-<th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#update(double)">update</a></span>&#8203;(double&nbsp;error)</code></th>
-<td class="colLast">
-<div class="block">Calculate the value that the PIDController wants to move at.</div>
-</td>
 </tr>
 </table>
 <ul class="blockList">
@@ -247,7 +254,7 @@ extends <a href="Controller.html" title="class in com.stuypulse.stuylib.control"
 <!--   -->
 </a>
 <h3>Methods inherited from class&nbsp;com.stuypulse.stuylib.control.<a href="Controller.html" title="class in com.stuypulse.stuylib.control">Controller</a></h3>
-<code><a href="Controller.html#calculate(double)">calculate</a>, <a href="Controller.html#calculate(double,double)">calculate</a>, <a href="Controller.html#getError()">getError</a>, <a href="Controller.html#getOutput()">getOutput</a>, <a href="Controller.html#setErrorFilter(com.stuypulse.stuylib.streams.filters.IStreamFilter)">setErrorFilter</a>, <a href="Controller.html#setOutputFilter(com.stuypulse.stuylib.streams.filters.IStreamFilter)">setOutputFilter</a></code></li>
+<code><a href="Controller.html#getError()">getError</a>, <a href="Controller.html#getOutput()">getOutput</a>, <a href="Controller.html#getRate()">getRate</a>, <a href="Controller.html#getVelocity()">getVelocity</a>, <a href="Controller.html#setErrorFilter(com.stuypulse.stuylib.streams.filters.IStreamFilter)">setErrorFilter</a>, <a href="Controller.html#setOutputFilter(com.stuypulse.stuylib.streams.filters.IStreamFilter)">setOutputFilter</a>, <a href="Controller.html#update(double)">update</a>, <a href="Controller.html#update(double,double)">update</a></code></li>
 </ul>
 <ul class="blockList">
 <li class="blockList"><a id="methods.inherited.from.class.java.lang.Object">
@@ -299,17 +306,27 @@ extends <a href="Controller.html" title="class in com.stuypulse.stuylib.control"
 <!--   -->
 </a>
 <h3>Method Detail</h3>
-<a id="update(double)">
+<a id="reset()">
 <!--   -->
 </a>
 <ul class="blockList">
 <li class="blockList">
-<h4>update</h4>
-<pre class="methodSignature">protected&nbsp;double&nbsp;update&#8203;(double&nbsp;error)</pre>
+<h4>reset</h4>
+<pre class="methodSignature">public&nbsp;void&nbsp;reset()</pre>
+<div class="block">Resets the integrator in the PIDController. This automatically gets called if the gap between update() commands is too large;</div>
+</li>
+</ul>
+<a id="calculate(double)">
+<!--   -->
+</a>
+<ul class="blockList">
+<li class="blockList">
+<h4>calculate</h4>
+<pre class="methodSignature">protected&nbsp;double&nbsp;calculate&#8203;(double&nbsp;error)</pre>
 <div class="block">Calculate the value that the PIDController wants to move at.</div>
 <dl>
 <dt><span class="overrideSpecifyLabel">Specified by:</span></dt>
-<dd><code><a href="Controller.html#update(double)">update</a></code>&nbsp;in class&nbsp;<code><a href="Controller.html" title="class in com.stuypulse.stuylib.control">Controller</a></code></dd>
+<dd><code><a href="Controller.html#calculate(double)">calculate</a></code>&nbsp;in class&nbsp;<code><a href="Controller.html" title="class in com.stuypulse.stuylib.control">Controller</a></code></dd>
 <dt><span class="paramLabel">Parameters:</span></dt>
 <dd><code>error</code> - the error that the controller will use</dd>
 <dt><span class="returnLabel">Returns:</span></dt>
