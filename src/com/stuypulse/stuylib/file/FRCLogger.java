@@ -13,7 +13,6 @@ import java.util.logging.Logger;
  * 
  * @author Sam (sam.belliveau@gmail.com)
  * @author Ivan (ivanw8288@gmail.com)
- * @author Ayan ()
  */
 
 public class FRCLogger {
@@ -30,7 +29,9 @@ public class FRCLogger {
          * 
          * @return if any data from the class will be fed to the logger.
          */
-        public boolean logThisIteration();
+        public default boolean logThisIteration() {
+            return true;
+        }
 
         /**
          * Implement this method with something that
@@ -102,7 +103,7 @@ public class FRCLogger {
     }
 
     /**
-     * Removes the Loggable implented object from the registered Loggables.
+     * Removes the Loggable implemented object from the registered Loggables.
      * 
      * @param loggable Loggable to remove.
      */
@@ -121,7 +122,7 @@ public class FRCLogger {
      * Iterates through all the registered Loggables and logs them with level and data,
      * if logThisIteration() is true.
      */
-    public void logRegisteredLoggables() {
+    public void logAllRegisteredLoggables() {
 
         for (Loggable loggable: loggables) {
             if (loggable.logThisIteration()) {
