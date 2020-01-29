@@ -110,6 +110,8 @@ public abstract class Controller {
      * Update the controller with the measurement that was just made and the set
      * point you would like it to approach
      * 
+     * This function just subtracts the two at this moment.
+     * 
      * @param measurement measurement of device just made
      * @param setpoint    desired result
      * @return controller output
@@ -119,8 +121,8 @@ public abstract class Controller {
     }
 
     /**
-     * Update the controller with the measurement that was just made and the set
-     * point you would like it to approach
+     * Update the controller with the error from the destination that you want to
+     * reach
      * 
      * @param error the amount of error from the destination
      * @return controller output

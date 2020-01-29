@@ -191,8 +191,8 @@ extends java.lang.Object</pre>
 <td class="colFirst"><code>double</code></td>
 <th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#calculate(double)">calculate</a></span>&#8203;(double&nbsp;error)</code></th>
 <td class="colLast">
-<div class="block">Update the controller with the measurement that was just made and the set
- point you would like it to approach</div>
+<div class="block">Update the controller with the error from the destination that you want to
+ reach</div>
 </td>
 </tr>
 <tr id="i1" class="rowColor">
@@ -201,7 +201,9 @@ extends java.lang.Object</pre>
          double&nbsp;setpoint)</code></th>
 <td class="colLast">
 <div class="block">Update the controller with the measurement that was just made and the set
- point you would like it to approach</div>
+ point you would like it to approach
+ 
+ This function just subtracts the two at this moment.</div>
 </td>
 </tr>
 <tr id="i2" class="altColor">
@@ -377,7 +379,9 @@ extends java.lang.Object</pre>
 <pre class="methodSignature">public final&nbsp;double&nbsp;calculate&#8203;(double&nbsp;measurement,
                               double&nbsp;setpoint)</pre>
 <div class="block">Update the controller with the measurement that was just made and the set
- point you would like it to approach</div>
+ point you would like it to approach
+ 
+ This function just subtracts the two at this moment.</div>
 <dl>
 <dt><span class="paramLabel">Parameters:</span></dt>
 <dd><code>measurement</code> - measurement of device just made</dd>
@@ -394,8 +398,8 @@ extends java.lang.Object</pre>
 <li class="blockList">
 <h4>calculate</h4>
 <pre class="methodSignature">public final&nbsp;double&nbsp;calculate&#8203;(double&nbsp;error)</pre>
-<div class="block">Update the controller with the measurement that was just made and the set
- point you would like it to approach</div>
+<div class="block">Update the controller with the error from the destination that you want to
+ reach</div>
 <dl>
 <dt><span class="paramLabel">Parameters:</span></dt>
 <dd><code>error</code> - the amount of error from the destination</dd>
