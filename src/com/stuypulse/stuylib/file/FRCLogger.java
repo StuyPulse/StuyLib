@@ -11,7 +11,6 @@ import java.util.logging.Logger;
 /**
  * A class that will let you log any class that implements loggable.
  * 
- * @author Sam (sam.belliveau@gmail.com)
  * @author Ivan (ivanw8288@gmail.com)
  */
 
