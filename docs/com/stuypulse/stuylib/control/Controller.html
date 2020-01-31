@@ -27,7 +27,7 @@
     catch(err) {
     }
 //-->
-var data = {"i0":6,"i1":10,"i2":10,"i3":10,"i4":10,"i5":10,"i6":10,"i7":10,"i8":10};
+var data = {"i0":6,"i1":10,"i2":10,"i3":10,"i4":10,"i5":10,"i6":10,"i7":10,"i8":10,"i9":10};
 var tabs = {65535:["t0","All Methods"],2:["t2","Instance Methods"],4:["t3","Abstract Methods"],8:["t4","Concrete Methods"]};
 var altColor = "altColor";
 var rowColor = "rowColor";
@@ -220,13 +220,21 @@ extends java.lang.Object</pre>
 </tr>
 <tr id="i4" class="altColor">
 <td class="colFirst"><code>double</code></td>
-<th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#getVelocity()">getVelocity</a></span>()</code></th>
+<th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#getRawVelocity()">getRawVelocity</a></span>()</code></th>
 <td class="colLast">
-<div class="block">Gets the velocity, which is represented as the change in error, from the last
+<div class="block">Gets the velocity, which is represented as the change in error since the last
  time that .update() was called</div>
 </td>
 </tr>
 <tr id="i5" class="rowColor">
+<td class="colFirst"><code>double</code></td>
+<th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#getVelocity()">getVelocity</a></span>()</code></th>
+<td class="colLast">
+<div class="block">Gets the velocity from the last time that .update() was called adjusted to
+ velocity per second</div>
+</td>
+</tr>
+<tr id="i6" class="altColor">
 <td class="colFirst"><code><a href="Controller.html" title="class in com.stuypulse.stuylib.control">Controller</a></code></td>
 <th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#setErrorFilter(com.stuypulse.stuylib.streams.filters.IStreamFilter)">setErrorFilter</a></span>&#8203;(<a href="../streams/filters/IStreamFilter.html" title="interface in com.stuypulse.stuylib.streams.filters">IStreamFilter</a>&nbsp;filter)</code></th>
 <td class="colLast">
@@ -234,7 +242,7 @@ extends java.lang.Object</pre>
  given to the controller.</div>
 </td>
 </tr>
-<tr id="i6" class="altColor">
+<tr id="i7" class="rowColor">
 <td class="colFirst"><code><a href="Controller.html" title="class in com.stuypulse.stuylib.control">Controller</a></code></td>
 <th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#setOutputFilter(com.stuypulse.stuylib.streams.filters.IStreamFilter)">setOutputFilter</a></span>&#8203;(<a href="../streams/filters/IStreamFilter.html" title="interface in com.stuypulse.stuylib.streams.filters">IStreamFilter</a>&nbsp;filter)</code></th>
 <td class="colLast">
@@ -242,7 +250,7 @@ extends java.lang.Object</pre>
  controller.</div>
 </td>
 </tr>
-<tr id="i7" class="rowColor">
+<tr id="i8" class="altColor">
 <td class="colFirst"><code>double</code></td>
 <th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#update(double)">update</a></span>&#8203;(double&nbsp;error)</code></th>
 <td class="colLast">
@@ -250,7 +258,7 @@ extends java.lang.Object</pre>
  reach</div>
 </td>
 </tr>
-<tr id="i8" class="altColor">
+<tr id="i9" class="rowColor">
 <td class="colFirst"><code>double</code></td>
 <th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#update(double,double)">update</a></span>&#8203;(double&nbsp;measurement,
       double&nbsp;setpoint)</code></th>
@@ -374,6 +382,21 @@ extends java.lang.Object</pre>
 </dl>
 </li>
 </ul>
+<a id="getRawVelocity()">
+<!--   -->
+</a>
+<ul class="blockList">
+<li class="blockList">
+<h4>getRawVelocity</h4>
+<pre class="methodSignature">public final&nbsp;double&nbsp;getRawVelocity()</pre>
+<div class="block">Gets the velocity, which is represented as the change in error since the last
+ time that .update() was called</div>
+<dl>
+<dt><span class="returnLabel">Returns:</span></dt>
+<dd>velocity from the last time that .update() was called</dd>
+</dl>
+</li>
+</ul>
 <a id="getVelocity()">
 <!--   -->
 </a>
@@ -381,8 +404,8 @@ extends java.lang.Object</pre>
 <li class="blockList">
 <h4>getVelocity</h4>
 <pre class="methodSignature">public final&nbsp;double&nbsp;getVelocity()</pre>
-<div class="block">Gets the velocity, which is represented as the change in error, from the last
- time that .update() was called</div>
+<div class="block">Gets the velocity from the last time that .update() was called adjusted to
+ velocity per second</div>
 <dl>
 <dt><span class="returnLabel">Returns:</span></dt>
 <dd>velocity from the last time that .update() was called</dd>

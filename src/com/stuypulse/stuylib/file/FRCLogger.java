@@ -143,7 +143,7 @@ public class FRCLogger {
      * Adds a new log entry to the log.
      * 
      * @param level Level of severity of the log entry.
-     * @param T Object that is the source of the log entry.
+     * @param obj Object that is the source of the log entry.
      * @param toLog Log entry message.
      */
     public <T> void logMisc(Level level, T obj, String toLog) {

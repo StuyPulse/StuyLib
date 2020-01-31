@@ -27,8 +27,8 @@
     catch(err) {
     }
 //-->
-var data = {"i0":6};
-var tabs = {65535:["t0","All Methods"],2:["t2","Instance Methods"],4:["t3","Abstract Methods"]};
+var data = {"i0":6,"i1":18,"i2":18};
+var tabs = {65535:["t0","All Methods"],2:["t2","Instance Methods"],4:["t3","Abstract Methods"],16:["t5","Default Methods"]};
 var altColor = "altColor";
 var rowColor = "rowColor";
 var tableTab = "tableTab";
@@ -128,8 +128,9 @@ $('.navPadding').css('padding-top', $('.fixedNav').css("height"));
 </dl>
 <hr>
 <pre>public static interface <span class="typeNameLabel">FRCLogger.Loggable</span></pre>
-<div class="block">Implementable interface with getLog() function. This lets us pass in
- subsystems that implement loggable to our logger in a very easy way.</div>
+<div class="block">The Loggable interface should be implemented by a class that can 
+ return a useful piece of data that can be called on demand to be written
+ into the log.</div>
 </li>
 </ul>
 </div>
@@ -144,7 +145,7 @@ $('.navPadding').css('padding-top', $('.fixedNav').css("height"));
 </a>
 <h3>Method Summary</h3>
 <table class="memberSummary">
-<caption><span id="t0" class="activeTableTab"><span>All Methods</span><span class="tabEnd">&nbsp;</span></span><span id="t2" class="tableTab"><span><a href="javascript:show(2);">Instance Methods</a></span><span class="tabEnd">&nbsp;</span></span><span id="t3" class="tableTab"><span><a href="javascript:show(4);">Abstract Methods</a></span><span class="tabEnd">&nbsp;</span></span></caption>
+<caption><span id="t0" class="activeTableTab"><span>All Methods</span><span class="tabEnd">&nbsp;</span></span><span id="t2" class="tableTab"><span><a href="javascript:show(2);">Instance Methods</a></span><span class="tabEnd">&nbsp;</span></span><span id="t3" class="tableTab"><span><a href="javascript:show(4);">Abstract Methods</a></span><span class="tabEnd">&nbsp;</span></span><span id="t5" class="tableTab"><span><a href="javascript:show(16);">Default Methods</a></span><span class="tabEnd">&nbsp;</span></span></caption>
 <tr>
 <th class="colFirst" scope="col">Modifier and Type</th>
 <th class="colSecond" scope="col">Method</th>
@@ -152,8 +153,30 @@ $('.navPadding').css('padding-top', $('.fixedNav').css("height"));
 </tr>
 <tr id="i0" class="altColor">
 <td class="colFirst"><code>java.lang.String</code></td>
-<th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#getLog()">getLog</a></span>()</code></th>
-<td class="colLast">&nbsp;</td>
+<th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#getLogData()">getLogData</a></span>()</code></th>
+<td class="colLast">
+<div class="block">Implement this method with something that 
+ reports the message or data that should be fed
+ into the logger as a string.</div>
+</td>
+</tr>
+<tr id="i1" class="rowColor">
+<td class="colFirst"><code>default java.util.logging.Level</code></td>
+<th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#getLogLevel()">getLogLevel</a></span>()</code></th>
+<td class="colLast">
+<div class="block">Implement this method with something that
+ reports the level of severity the data should be
+ logged at.</div>
+</td>
+</tr>
+<tr id="i2" class="altColor">
+<td class="colFirst"><code>default boolean</code></td>
+<th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#logThisIteration()">logThisIteration</a></span>()</code></th>
+<td class="colLast">
+<div class="block">Implement this method with something that reports
+ if any data from the class should be fed to the logger
+ this iteration.</div>
+</td>
 </tr>
 </table>
 </li>
@@ -172,13 +195,52 @@ $('.navPadding').css('padding-top', $('.fixedNav').css("height"));
 <!--   -->
 </a>
 <h3>Method Detail</h3>
-<a id="getLog()">
+<a id="logThisIteration()">
+<!--   -->
+</a>
+<ul class="blockList">
+<li class="blockList">
+<h4>logThisIteration</h4>
+<pre class="methodSignature">default&nbsp;boolean&nbsp;logThisIteration()</pre>
+<div class="block">Implement this method with something that reports
+ if any data from the class should be fed to the logger
+ this iteration.</div>
+<dl>
+<dt><span class="returnLabel">Returns:</span></dt>
+<dd>if any data from the class will be fed to the logger.</dd>
+</dl>
+</li>
+</ul>
+<a id="getLogLevel()">
+<!--   -->
+</a>
+<ul class="blockList">
+<li class="blockList">
+<h4>getLogLevel</h4>
+<pre class="methodSignature">default&nbsp;java.util.logging.Level&nbsp;getLogLevel()</pre>
+<div class="block">Implement this method with something that
+ reports the level of severity the data should be
+ logged at.</div>
+<dl>
+<dt><span class="returnLabel">Returns:</span></dt>
+<dd>the level of the data that will be fed.</dd>
+</dl>
+</li>
+</ul>
+<a id="getLogData()">
 <!--   -->
 </a>
 <ul class="blockListLast">
 <li class="blockList">
-<h4>getLog</h4>
-<pre class="methodSignature">java.lang.String&nbsp;getLog()</pre>
+<h4>getLogData</h4>
+<pre class="methodSignature">java.lang.String&nbsp;getLogData()</pre>
+<div class="block">Implement this method with something that 
+ reports the message or data that should be fed
+ into the logger as a string.</div>
+<dl>
+<dt><span class="returnLabel">Returns:</span></dt>
+<dd>the data to be fed into the logger.</dd>
+</dl>
 </li>
 </ul>
 </li>

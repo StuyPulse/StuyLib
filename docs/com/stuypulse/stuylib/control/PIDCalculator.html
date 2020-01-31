@@ -27,7 +27,7 @@
     catch(err) {
     }
 //-->
-var data = {"i0":10,"i1":10,"i2":10,"i3":10,"i4":10,"i5":10};
+var data = {"i0":10,"i1":10,"i2":10,"i3":10,"i4":10,"i5":10,"i6":10,"i7":10,"i8":10};
 var tabs = {65535:["t0","All Methods"],2:["t2","Instance Methods"],8:["t4","Concrete Methods"]};
 var altColor = "altColor";
 var rowColor = "rowColor";
@@ -192,30 +192,49 @@ extends <a href="Controller.html" title="class in com.stuypulse.stuylib.control"
 </td>
 </tr>
 <tr id="i1" class="rowColor">
+<td class="colFirst"><code>double</code></td>
+<th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#getK()">getK</a></span>()</code></th>
+<td class="colLast">
+<div class="block">Adjusted Amplitude of Oscillations</div>
+</td>
+</tr>
+<tr id="i2" class="altColor">
 <td class="colFirst"><code><a href="PIDController.html" title="class in com.stuypulse.stuylib.control">PIDController</a></code></td>
 <th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#getPController()">getPController</a></span>()</code></th>
 <td class="colLast">&nbsp;</td>
 </tr>
-<tr id="i2" class="altColor">
+<tr id="i3" class="rowColor">
 <td class="colFirst"><code><a href="PIDController.html" title="class in com.stuypulse.stuylib.control">PIDController</a></code></td>
 <th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#getPIController()">getPIController</a></span>()</code></th>
 <td class="colLast">&nbsp;</td>
 </tr>
-<tr id="i3" class="rowColor">
+<tr id="i4" class="altColor">
 <td class="colFirst"><code><a href="PIDController.html" title="class in com.stuypulse.stuylib.control">PIDController</a></code></td>
 <th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#getPIDController()">getPIDController</a></span>()</code></th>
 <td class="colLast">&nbsp;</td>
 </tr>
-<tr id="i4" class="altColor">
+<tr id="i5" class="rowColor">
 <td class="colFirst"><code><a href="PIDController.html" title="class in com.stuypulse.stuylib.control">PIDController</a></code></td>
 <th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#getPIDController(double,double,double)">getPIDController</a></span>&#8203;(double&nbsp;kP,
                 double&nbsp;kI,
                 double&nbsp;kD)</code></th>
 <td class="colLast">&nbsp;</td>
 </tr>
-<tr id="i5" class="rowColor">
+<tr id="i6" class="altColor">
+<td class="colFirst"><code>double</code></td>
+<th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#getT()">getT</a></span>()</code></th>
+<td class="colLast">
+<div class="block">Period of Oscillations</div>
+</td>
+</tr>
+<tr id="i7" class="rowColor">
 <td class="colFirst"><code><a href="PIDCalculator.html" title="class in com.stuypulse.stuylib.control">PIDCalculator</a></code></td>
 <th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#setControlSpeed(double)">setControlSpeed</a></span>&#8203;(double&nbsp;speed)</code></th>
+<td class="colLast">&nbsp;</td>
+</tr>
+<tr id="i8" class="altColor">
+<td class="colFirst"><code>java.lang.String</code></td>
+<th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#toString()">toString</a></span>()</code></th>
 <td class="colLast">&nbsp;</td>
 </tr>
 </table>
@@ -224,14 +243,14 @@ extends <a href="Controller.html" title="class in com.stuypulse.stuylib.control"
 <!--   -->
 </a>
 <h3>Methods inherited from class&nbsp;com.stuypulse.stuylib.control.<a href="Controller.html" title="class in com.stuypulse.stuylib.control">Controller</a></h3>
-<code><a href="Controller.html#getError()">getError</a>, <a href="Controller.html#getOutput()">getOutput</a>, <a href="Controller.html#getRate()">getRate</a>, <a href="Controller.html#getVelocity()">getVelocity</a>, <a href="Controller.html#setErrorFilter(com.stuypulse.stuylib.streams.filters.IStreamFilter)">setErrorFilter</a>, <a href="Controller.html#setOutputFilter(com.stuypulse.stuylib.streams.filters.IStreamFilter)">setOutputFilter</a>, <a href="Controller.html#update(double)">update</a>, <a href="Controller.html#update(double,double)">update</a></code></li>
+<code><a href="Controller.html#getError()">getError</a>, <a href="Controller.html#getOutput()">getOutput</a>, <a href="Controller.html#getRate()">getRate</a>, <a href="Controller.html#getRawVelocity()">getRawVelocity</a>, <a href="Controller.html#getVelocity()">getVelocity</a>, <a href="Controller.html#setErrorFilter(com.stuypulse.stuylib.streams.filters.IStreamFilter)">setErrorFilter</a>, <a href="Controller.html#setOutputFilter(com.stuypulse.stuylib.streams.filters.IStreamFilter)">setOutputFilter</a>, <a href="Controller.html#update(double)">update</a>, <a href="Controller.html#update(double,double)">update</a></code></li>
 </ul>
 <ul class="blockList">
 <li class="blockList"><a id="methods.inherited.from.class.java.lang.Object">
 <!--   -->
 </a>
 <h3>Methods inherited from class&nbsp;java.lang.Object</h3>
-<code>clone, equals, finalize, getClass, hashCode, notify, notifyAll, toString, wait, wait, wait</code></li>
+<code>clone, equals, finalize, getClass, hashCode, notify, notifyAll, wait, wait, wait</code></li>
 </ul>
 </li>
 </ul>
@@ -306,6 +325,34 @@ extends <a href="Controller.html" title="class in com.stuypulse.stuylib.control"
 </dl>
 </li>
 </ul>
+<a id="getK()">
+<!--   -->
+</a>
+<ul class="blockList">
+<li class="blockList">
+<h4>getK</h4>
+<pre class="methodSignature">public&nbsp;double&nbsp;getK()</pre>
+<div class="block">Adjusted Amplitude of Oscillations</div>
+<dl>
+<dt><span class="returnLabel">Returns:</span></dt>
+<dd>Get calculated K value for PID value equation</dd>
+</dl>
+</li>
+</ul>
+<a id="getT()">
+<!--   -->
+</a>
+<ul class="blockList">
+<li class="blockList">
+<h4>getT</h4>
+<pre class="methodSignature">public&nbsp;double&nbsp;getT()</pre>
+<div class="block">Period of Oscillations</div>
+<dl>
+<dt><span class="returnLabel">Returns:</span></dt>
+<dd>Get calculated T value for PID value equation</dd>
+</dl>
+</li>
+</ul>
 <a id="getPIDController(double,double,double)">
 <!--   -->
 </a>
@@ -354,13 +401,28 @@ extends <a href="Controller.html" title="class in com.stuypulse.stuylib.control"
 <a id="getPController()">
 <!--   -->
 </a>
-<ul class="blockListLast">
+<ul class="blockList">
 <li class="blockList">
 <h4>getPController</h4>
 <pre class="methodSignature">public&nbsp;<a href="PIDController.html" title="class in com.stuypulse.stuylib.control">PIDController</a>&nbsp;getPController()</pre>
 <dl>
 <dt><span class="returnLabel">Returns:</span></dt>
 <dd>calculated P controller based off of measurements</dd>
+</dl>
+</li>
+</ul>
+<a id="toString()">
+<!--   -->
+</a>
+<ul class="blockListLast">
+<li class="blockList">
+<h4>toString</h4>
+<pre class="methodSignature">public&nbsp;java.lang.String&nbsp;toString()</pre>
+<dl>
+<dt><span class="overrideSpecifyLabel">Overrides:</span></dt>
+<dd><code>toString</code>&nbsp;in class&nbsp;<code>java.lang.Object</code></dd>
+<dt><span class="returnLabel">Returns:</span></dt>
+<dd>information about this PIDController</dd>
 </dl>
 </li>
 </ul>
