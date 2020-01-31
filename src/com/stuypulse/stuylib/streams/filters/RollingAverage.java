@@ -24,8 +24,8 @@ public class RollingAverage extends OnDerivative {
     public RollingAverage(double weight) throws ConstructionError {
         super((x) -> x / weight);
 
-        if (weight <= 0.5) {
-            throw new ConstructionError("RollingAverage(double weight)", "weight must be greater than 0.5!");
+        if (weight <= 1.0) {
+            throw new ConstructionError("RollingAverage(double weight)", "weight must be greater than 1.0!");
         }
     }
 }

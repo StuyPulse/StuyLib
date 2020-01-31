@@ -26,7 +26,7 @@ public class RateLimit extends OnDerivative {
     public RateLimit(double rateLimit) throws ConstructionError {
         super((x) -> SLMath.limit(x, rateLimit));
 
-        if (rateLimit <= 0) {
+        if (rateLimit < 0.0) {
             throw new ConstructionError("RateLimit(double rateLimit)", "rateLimit must be greater than 0!");
         }
     }

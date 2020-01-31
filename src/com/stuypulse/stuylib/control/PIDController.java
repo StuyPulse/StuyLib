@@ -153,4 +153,14 @@ public class PIDController extends Controller {
         mIFilter = (filter == null) ? ((x) -> x) : filter;
         return this;
     }
+
+    /**
+     * @return information about this PIDController
+     */
+    public String toString() {
+        return 
+            "(P: "  + getP() + 
+            ", I: " + getI() + 
+            ", D: " + getD() + ")";
+    }
 }

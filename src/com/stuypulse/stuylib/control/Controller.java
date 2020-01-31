@@ -30,7 +30,7 @@ public abstract class Controller {
 
     // Error and Error Filters
     private double mError;
-    private double mVelocity;
+    private double mRawVelocity;
     private IStreamFilter mErrorFilter;
 
     // Output and Output Filters
@@ -46,7 +46,7 @@ public abstract class Controller {
      */
     protected Controller() {
         mError = 0.0;
-        mVelocity = 0.0;
+        mRawVelocity = 0.0;
         setErrorFilter(null);
 
         mOutput = 0.0;
@@ -111,13 +111,23 @@ public abstract class Controller {
     }
 
     /**
-     * Gets the velocity, which is represented as the change in error, from the last
+     * Gets the velocity, which is represented as the change in error since the last
      * time that .update() was called
      * 
      * @return velocity from the last time that .update() was called
      */
+    public final double getRawVelocity() {
+        return mRawVelocity;
+    }
+
+    /**
+     * Gets the velocity from the last time that .update() was called adjusted to
+     * velocity per second
+     * 
+     * @return velocity from the last time that .update() was called
+     */
     public final double getVelocity() {
-        return mVelocity;
+        return getRawVelocity() / getRate();
     }
 
     /**
@@ -171,14 +181,14 @@ public abstract class Controller {
         // Filter the error with the error filter
         error = mErrorFilter.get(error);
 
-        // Get the velocity based on the change in error and rate
-        mVelocity = (error - mError) / getRate();
+        // Get the velocity based on the change in error
+        mRawVelocity = error - mError;
 
         // Update the error variable
         mError = error;
 
         // Return and Update the calculated output
-        return (mOutput = mOutputFilter.get(update(mError)));
+        return (mOutput = mOutputFilter.get(calculate(mError)));
     }
 
     /**

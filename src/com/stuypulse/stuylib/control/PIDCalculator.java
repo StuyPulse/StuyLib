@@ -19,6 +19,9 @@ public class PIDCalculator extends Controller {
     // its measurements
     private static final double kMaxTimeBeforeReset = 0.3;
 
+    // The minimum period length that will be accepted as a valid period
+    private static final double kMinPeriodTime = 0.2;
+
     // The exponential weights when measuring the period and amplitude
     private static final double kPeriodAverageWeight = 4;
     private static final double kAmplitudeAverageWeight = 4;
@@ -82,21 +85,40 @@ public class PIDCalculator extends Controller {
             mRunning = false;
         }
 
-        if (0.0 <= error && error <= getVelocity() * getRate()) {
-            if (mRunning) {
-                mPeriod = mPeriodFilter.get(mPeriodTimer.reset());
-                mAmplitude = mAmplitudeFilter.get(mLocalMax);
-            } else {
-                mPeriodTimer.reset();
+        if (0.0 < error && 0.0 < getRawVelocity() && error < getRawVelocity()) {
+            double period = mPeriodTimer.reset();
+            double amplitude = mLocalMax;
+
+            if (mRunning && kMinPeriodTime < period) {
+                mPeriod = mPeriodFilter.get(period);
+                mAmplitude = mAmplitudeFilter.get(amplitude);
             }
 
             mLocalMax = 0;
             mRunning = true;
         }
 
-        mLocalMax = Math.max(Math.abs(mLocalMax), error);
+        mLocalMax = Math.max(Math.abs(mLocalMax), Math.abs(error));
 
-        return Math.signum(mLastError = error) * mControlSpeed;
+        return Math.signum(error) * mControlSpeed;
+    }
+
+    /**
+     * Adjusted Amplitude of Oscillations
+     * 
+     * @return Get calculated K value for PID value equation
+     */
+    public double getK() {
+        return (4.0 * mControlSpeed) / (Math.PI * mAmplitude);
+    }
+
+    /**
+     * Period of Oscillations
+     * 
+     * @return Get calculated T value for PID value equation
+     */
+    public double getT() {
+        return mPeriod;
     }
 
     /**
@@ -107,8 +129,8 @@ public class PIDCalculator extends Controller {
      */
     public PIDController getPIDController(double kP, double kI, double kD) {
         if (mAmplitude > 0) {
-            double t = mPeriod;
-            double k = (4.0 * mControlSpeed) / (Math.PI * mAmplitude);
+            double t = getT();
+            double k = getK();
 
             return new PIDController(kP * k, kI * k / t, kD * k * t);
         } else {
@@ -135,5 +157,12 @@ public class PIDCalculator extends Controller {
      */
     public PIDController getPController() {
         return getPIDController(0.5, -1, -1);
+    }
+
+    /**
+     * @return information about this PIDController
+     */
+    public String toString() {
+        return "(K: " + getK() + ", T: " + getT() + ")";
     }
 }
