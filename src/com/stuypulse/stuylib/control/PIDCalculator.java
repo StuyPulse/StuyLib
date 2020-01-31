@@ -38,11 +38,7 @@ public class PIDCalculator extends Controller {
     private StopWatch mPeriodTimer;
 
     // The min and max of the wave
-    private double mWaveMax;
-    private double mWaveMin;
-
-    // The last error given to the controller
-    private double mLastError;
+    private double mLocalMax;
 
     // Whether or not the system will measure the oscilation
     private boolean mRunning;
@@ -60,9 +56,7 @@ public class PIDCalculator extends Controller {
         mAmplitudeFilter = new RollingAverage(kAmplitudeAverageWeight);
 
         mPeriodTimer = new StopWatch();
-        mWaveMax = 0;
-        mWaveMin = 0;
-        mLastError = 0;
+        mLocalMax = 0;
 
         mRunning = false;
     }
@@ -88,21 +82,19 @@ public class PIDCalculator extends Controller {
             mRunning = false;
         }
 
-        if (mLastError < 0.0 && 0.0 <= error) {
+        if (0.0 <= error && error <= getVelocity() * getRate()) {
             if (mRunning) {
                 mPeriod = mPeriodFilter.get(mPeriodTimer.reset());
-                mAmplitude = mAmplitudeFilter.get((mWaveMax - mWaveMin) / 2.0);
+                mAmplitude = mAmplitudeFilter.get(mLocalMax);
             } else {
                 mPeriodTimer.reset();
             }
 
-            mWaveMax = 0;
-            mWaveMin = 0;
+            mLocalMax = 0;
             mRunning = true;
         }
 
-        mWaveMax = Math.max(mWaveMax, error);
-        mWaveMin = Math.min(mWaveMin, error);
+        mLocalMax = Math.max(Math.abs(mLocalMax), error);
 
         return Math.signum(mLastError = error) * mControlSpeed;
     }
