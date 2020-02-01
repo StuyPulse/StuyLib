@@ -8,7 +8,7 @@ package com.stuypulse.stuylib.math;
  * @author Sam (sam.belliveau@gmail.com)
  */
 
-public class SLMath {
+public final class SLMath {
 
     /**************/
     /*** LIMITS ***/
@@ -52,11 +52,11 @@ public class SLMath {
     }
 
     /**************************/
-    /*** DEADBAND ALGORIGHM ***/
+    /*** DEADBAND ALGORITHM ***/
     /**************************/
 
     /**
-     * Apply Deadband to value
+     * If x is below the window value, it returns 0
      * 
      * @param x      value
      * @param window deadband window
@@ -96,14 +96,14 @@ public class SLMath {
     }
 
     /**
-     * [WARNING! THIS WILL KEEP THE SIGN OF THE INPUT NUMBER] Raise input to power
-     * and keep sign
+     * spow (signed pow), raises a number to a power without affecting the sign of
+     * the number
      * 
      * @param x     input
      * @param power power to raise x to
      * @return input ^ power
      */
-    public static double pow(double x, double power) {
+    public static double spow(double x, double power) {
         return limit(Math.pow(Math.abs(x), power) * Math.signum(x));
     }
 
@@ -139,5 +139,81 @@ public class SLMath {
      */
     public static double circular(double x) {
         return circular(x, 2);
+    }
+
+    /*****************/
+    /*** MISC MATH ***/
+    /*****************/
+
+    /**
+     * fpow (fast pow), is a pow function that takes in an integer for the exponent.
+     * This allows it to be much faster on repeated calls due to the fact that it
+     * does not need to deal with fractional exponents.
+     * 
+     * @param base base of the power
+     * @param exp  integer exponent of power
+     * @return result of calculation
+     */
+    public static double fpow(double base, int exp) {
+        // Output of the fpow function
+        double out = 1.0;
+
+        // If the exponent is negative, divide instead of multiply
+        if (exp < 0) {
+            // Flip exponent to make calculations easier
+            exp = -exp;
+
+            // Fast integer power algorithm
+            while (exp > 0) {
+                if ((exp & 1) == 1) {
+                    out /= base;
+                }
+                base *= base;
+                exp >>= 1;
+            }
+        } else {
+            // Fast integer power algorithm
+            while (exp > 0) {
+                if ((exp & 1) == 1) {
+                    out *= base;
+                }
+                base *= base;
+                exp >>= 1;
+            }
+        }
+
+        // Return
+        return out;
+    }
+
+    /**
+     * Round a double by a certain amount of sigfigs and a certain base
+     * 
+     * @param n       number to round
+     * @param sigfigs amount of sigfigs to round it to
+     * @param base    base of digits during rounding (default: 10)
+     * @return rounded number
+     */
+    public static double round(double n, int sigfigs, int base) {
+        // Digit place that number starts at
+        int digits = (int) Math.floor(Math.log10(n));
+
+        // Amount to multiply before multiplying based on
+        // the sigfigs and digits in the number
+        double mul = fpow(base, sigfigs - digits);
+
+        // Round number by the multiplier calculated
+        return Math.round(n * mul) / mul;
+    }
+
+    /**
+     * Round a double by a certain amount of sigfigs in base 10
+     * 
+     * @param n       number to round
+     * @param sigfigs amount of sigfigs to round it to
+     * @return rounded number
+     */
+    public static double round(double n, int sigfigs) {
+        return round(n, sigfigs, 10);
     }
 }

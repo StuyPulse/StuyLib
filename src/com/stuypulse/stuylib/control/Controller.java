@@ -21,10 +21,10 @@ public abstract class Controller {
      * This function checks to see if a filter is null, if it is, it replaces it
      * with a default filter that doesn't do anything.
      * 
-     * @param filter filter you want sanatized
-     * @return sanatized filter
+     * @param filter filter you want sanitized
+     * @return sanitized filter
      */
-    private static final IStreamFilter sanatize(IStreamFilter filter) {
+    private static final IStreamFilter sanitize(IStreamFilter filter) {
         return (filter == null) ? (x -> x) : filter;
     }
 
@@ -42,7 +42,7 @@ public abstract class Controller {
     private StopWatch mRateTimer;
 
     /**
-     * Creates a basic controller with everthing initialized
+     * Creates a basic controller with everything initialized
      */
     protected Controller() {
         mError = 0.0;
@@ -63,7 +63,7 @@ public abstract class Controller {
      * A highly recommended option is the LowPassFilter due to its ability to remove
      * noise, and its ability to not lag behind when there has been a gap in calls.
      * This will slightly degrade the performance of the controller, but it may be
-     * nessisary sometimes in order to get consistant results.
+     * necessary sometimes in order to get consistent results.
      * 
      * This will change the way the controller interacts with the robot and may
      * require more tuning to be done.
@@ -71,10 +71,10 @@ public abstract class Controller {
      * Passing in null will disable the filter.
      * 
      * @param filter filter to be applied to error measurements
-     * @return refrence to the controller (so you can chain the commands together)
+     * @return reference to the controller (so you can chain the commands together)
      */
     public final Controller setErrorFilter(IStreamFilter filter) {
-        mErrorFilter = sanatize(filter);
+        mErrorFilter = sanitize(filter);
         return this;
     }
 
@@ -82,10 +82,10 @@ public abstract class Controller {
      * Lets you specify a filter that will be applied to all of the outputs of the
      * controller.
      * 
-     * If the robot has a tendancy to jerk, or motions of the robot are too violent,
+     * If the robot has a tendency to jerk, or motions of the robot are too violent,
      * a filter like the LowPassFilter can reduce jerk while still letting the robot
      * get to max speed. This will slightly degrade the performance of the
-     * controller, but it may be nessisary sometimes in order to get consistant
+     * controller, but it may be necessary sometimes in order to get consistent
      * results.
      * 
      * This will change the way the controller interacts with the robot and may
@@ -94,10 +94,10 @@ public abstract class Controller {
      * Passing in null will disable the filter.
      * 
      * @param filter filter to be applied to the outputs of the controller
-     * @return refrence to the controller (so you can chain the commands together)
+     * @return reference to the controller (so you can chain the commands together)
      */
     public final Controller setOutputFilter(IStreamFilter filter) {
-        mOutputFilter = sanatize(filter);
+        mOutputFilter = sanitize(filter);
         return this;
     }
 
@@ -142,7 +142,7 @@ public abstract class Controller {
     /**
      * Gets the rate of the controller during the last .update() command. This will
      * only return the interval between the last .update() command and the one
-     * before it. Thus, the rate may be slightly inconsistant if the update command
+     * before it. Thus, the rate may be slightly inconsistent if the update command
      * is not called regularly.
      * 
      * This function may be overridden if a special controller needs a custom rate.

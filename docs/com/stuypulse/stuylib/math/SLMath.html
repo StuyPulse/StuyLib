@@ -27,7 +27,7 @@
     catch(err) {
     }
 //-->
-var data = {"i0":9,"i1":9,"i2":9,"i3":9,"i4":9,"i5":9,"i6":9,"i7":9,"i8":9};
+var data = {"i0":9,"i1":9,"i2":9,"i3":9,"i4":9,"i5":9,"i6":9,"i7":9,"i8":9,"i9":9,"i10":9,"i11":9};
 var tabs = {65535:["t0","All Methods"],1:["t1","Static Methods"],8:["t4","Concrete Methods"]};
 var altColor = "altColor";
 var rowColor = "rowColor";
@@ -131,7 +131,7 @@ $('.navPadding').css('padding-top', $('.fixedNav').css("height"));
 <ul class="blockList">
 <li class="blockList">
 <hr>
-<pre>public class <span class="typeNameLabel">SLMath</span>
+<pre>public final class <span class="typeNameLabel">SLMath</span>
 extends java.lang.Object</pre>
 <div class="block">SLMath (StuyLib Math) is a class containing many algorithms that are useful
  for developing robot code. Algorithms include limit, deadband, raising to
@@ -204,17 +204,25 @@ extends java.lang.Object</pre>
 <th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#deadband(double,double)">deadband</a></span>&#8203;(double&nbsp;x,
         double&nbsp;window)</code></th>
 <td class="colLast">
-<div class="block">Apply Deadband to value</div>
+<div class="block">If x is below the window value, it returns 0</div>
 </td>
 </tr>
 <tr id="i4" class="altColor">
+<td class="colFirst"><code>static double</code></td>
+<th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#fpow(double,int)">fpow</a></span>&#8203;(double&nbsp;base,
+    int&nbsp;exp)</code></th>
+<td class="colLast">
+<div class="block">fpow (fast pow), is a pow function that takes in an integer for the exponent.</div>
+</td>
+</tr>
+<tr id="i5" class="rowColor">
 <td class="colFirst"><code>static double</code></td>
 <th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#limit(double)">limit</a></span>&#8203;(double&nbsp;x)</code></th>
 <td class="colLast">
 <div class="block">Limit input from -1 to 1</div>
 </td>
 </tr>
-<tr id="i5" class="rowColor">
+<tr id="i6" class="altColor">
 <td class="colFirst"><code>static double</code></td>
 <th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#limit(double,double)">limit</a></span>&#8203;(double&nbsp;x,
      double&nbsp;max)</code></th>
@@ -222,7 +230,7 @@ extends java.lang.Object</pre>
 <div class="block">Limit input from max to -max</div>
 </td>
 </tr>
-<tr id="i6" class="altColor">
+<tr id="i7" class="rowColor">
 <td class="colFirst"><code>static double</code></td>
 <th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#limit(double,double,double)">limit</a></span>&#8203;(double&nbsp;x,
      double&nbsp;min,
@@ -231,16 +239,33 @@ extends java.lang.Object</pre>
 <div class="block">Limit input from max to min</div>
 </td>
 </tr>
-<tr id="i7" class="rowColor">
+<tr id="i8" class="altColor">
 <td class="colFirst"><code>static double</code></td>
-<th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#pow(double,double)">pow</a></span>&#8203;(double&nbsp;x,
-   double&nbsp;power)</code></th>
+<th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#round(double,int)">round</a></span>&#8203;(double&nbsp;n,
+     int&nbsp;sigfigs)</code></th>
 <td class="colLast">
-<div class="block">[WARNING! THIS WILL KEEP THE SIGN OF THE INPUT NUMBER] Raise input to power
- and keep sign</div>
+<div class="block">Round a double by a certain amount of sigfigs in base 10</div>
 </td>
 </tr>
-<tr id="i8" class="altColor">
+<tr id="i9" class="rowColor">
+<td class="colFirst"><code>static double</code></td>
+<th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#round(double,int,int)">round</a></span>&#8203;(double&nbsp;n,
+     int&nbsp;sigfigs,
+     int&nbsp;base)</code></th>
+<td class="colLast">
+<div class="block">Round a double by a certain amount of sigfigs and a certain base</div>
+</td>
+</tr>
+<tr id="i10" class="altColor">
+<td class="colFirst"><code>static double</code></td>
+<th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#spow(double,double)">spow</a></span>&#8203;(double&nbsp;x,
+    double&nbsp;power)</code></th>
+<td class="colLast">
+<div class="block">spow (signed pow), raises a number to a power without affecting the sign of
+ the number</div>
+</td>
+</tr>
+<tr id="i11" class="rowColor">
 <td class="colFirst"><code>static double</code></td>
 <th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#square(double)">square</a></span>&#8203;(double&nbsp;x)</code></th>
 <td class="colLast">
@@ -353,7 +378,7 @@ extends java.lang.Object</pre>
 <h4>deadband</h4>
 <pre class="methodSignature">public static&nbsp;double&nbsp;deadband&#8203;(double&nbsp;x,
                               double&nbsp;window)</pre>
-<div class="block">Apply Deadband to value</div>
+<div class="block">If x is below the window value, it returns 0</div>
 <dl>
 <dt><span class="paramLabel">Parameters:</span></dt>
 <dd><code>x</code> - value</dd>
@@ -396,16 +421,16 @@ extends java.lang.Object</pre>
 </dl>
 </li>
 </ul>
-<a id="pow(double,double)">
+<a id="spow(double,double)">
 <!--   -->
 </a>
 <ul class="blockList">
 <li class="blockList">
-<h4>pow</h4>
-<pre class="methodSignature">public static&nbsp;double&nbsp;pow&#8203;(double&nbsp;x,
-                         double&nbsp;power)</pre>
-<div class="block">[WARNING! THIS WILL KEEP THE SIGN OF THE INPUT NUMBER] Raise input to power
- and keep sign</div>
+<h4>spow</h4>
+<pre class="methodSignature">public static&nbsp;double&nbsp;spow&#8203;(double&nbsp;x,
+                          double&nbsp;power)</pre>
+<div class="block">spow (signed pow), raises a number to a power without affecting the sign of
+ the number</div>
 <dl>
 <dt><span class="paramLabel">Parameters:</span></dt>
 <dd><code>x</code> - input</dd>
@@ -436,7 +461,7 @@ extends java.lang.Object</pre>
 <a id="circular(double)">
 <!--   -->
 </a>
-<ul class="blockListLast">
+<ul class="blockList">
 <li class="blockList">
 <h4>circular</h4>
 <pre class="methodSignature">public static&nbsp;double&nbsp;circular&#8203;(double&nbsp;x)</pre>
@@ -446,6 +471,64 @@ extends java.lang.Object</pre>
 <dd><code>x</code> - input</dd>
 <dt><span class="returnLabel">Returns:</span></dt>
 <dd>circular return</dd>
+</dl>
+</li>
+</ul>
+<a id="fpow(double,int)">
+<!--   -->
+</a>
+<ul class="blockList">
+<li class="blockList">
+<h4>fpow</h4>
+<pre class="methodSignature">public static&nbsp;double&nbsp;fpow&#8203;(double&nbsp;base,
+                          int&nbsp;exp)</pre>
+<div class="block">fpow (fast pow), is a pow function that takes in an integer for the exponent.
+ This allows it to be much faster on repeated calls due to the fact that it
+ does not need to deal with fractional exponents.</div>
+<dl>
+<dt><span class="paramLabel">Parameters:</span></dt>
+<dd><code>base</code> - base of the power</dd>
+<dd><code>exp</code> - integer exponent of power</dd>
+<dt><span class="returnLabel">Returns:</span></dt>
+<dd>result of calculation</dd>
+</dl>
+</li>
+</ul>
+<a id="round(double,int,int)">
+<!--   -->
+</a>
+<ul class="blockList">
+<li class="blockList">
+<h4>round</h4>
+<pre class="methodSignature">public static&nbsp;double&nbsp;round&#8203;(double&nbsp;n,
+                           int&nbsp;sigfigs,
+                           int&nbsp;base)</pre>
+<div class="block">Round a double by a certain amount of sigfigs and a certain base</div>
+<dl>
+<dt><span class="paramLabel">Parameters:</span></dt>
+<dd><code>n</code> - number to round</dd>
+<dd><code>sigfigs</code> - amount of sigfigs to round it to</dd>
+<dd><code>base</code> - base of digits during rounding (default: 10)</dd>
+<dt><span class="returnLabel">Returns:</span></dt>
+<dd>rounded number</dd>
+</dl>
+</li>
+</ul>
+<a id="round(double,int)">
+<!--   -->
+</a>
+<ul class="blockListLast">
+<li class="blockList">
+<h4>round</h4>
+<pre class="methodSignature">public static&nbsp;double&nbsp;round&#8203;(double&nbsp;n,
+                           int&nbsp;sigfigs)</pre>
+<div class="block">Round a double by a certain amount of sigfigs in base 10</div>
+<dl>
+<dt><span class="paramLabel">Parameters:</span></dt>
+<dd><code>n</code> - number to round</dd>
+<dd><code>sigfigs</code> - amount of sigfigs to round it to</dd>
+<dt><span class="returnLabel">Returns:</span></dt>
+<dd>rounded number</dd>
 </dl>
 </li>
 </ul>

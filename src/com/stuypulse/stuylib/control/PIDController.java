@@ -2,6 +2,7 @@ package com.stuypulse.stuylib.control;
 
 import com.stuypulse.stuylib.control.Controller;
 import com.stuypulse.stuylib.streams.filters.IStreamFilter;
+import com.stuypulse.stuylib.math.SLMath;
 
 /**
  * This PID controller is built by extending the Controller class. It has a
@@ -44,7 +45,15 @@ public class PIDController extends Controller {
     }
 
     /**
-     * Resets the integrator in the PIDController. This automatically gets called if the gap between update() commands is too large;
+     * Creates a blank PIDController that doesn't move
+     */
+    public PIDController() {
+        this(-1, -1, -1);
+    }
+
+    /**
+     * Resets the integrator in the PIDController. This automatically gets called if
+     * the gap between update() commands is too large
      */
     public void reset() {
         mIntegral = 0;
@@ -66,7 +75,7 @@ public class PIDController extends Controller {
         mIntegral = mIFilter.get(mIntegral);
         double i_out = mIntegral * mI;
 
-        // Calculate D Componenet
+        // Calculate D Component
         double d_out = getVelocity() * mD;
 
         // Check if time passed exceeds reset limit
@@ -159,8 +168,8 @@ public class PIDController extends Controller {
      */
     public String toString() {
         return 
-            "(P: "  + getP() + 
-            ", I: " + getI() + 
-            ", D: " + getD() + ")";
+            "(P: " + SLMath.round(getP(), 4) + 
+            ", I: " + SLMath.round(getI(), 4) + 
+            ", D: " + SLMath.round(getD(), 4) + ")";
     }
 }

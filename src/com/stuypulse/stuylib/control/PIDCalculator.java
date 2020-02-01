@@ -4,12 +4,13 @@ import com.stuypulse.stuylib.control.Controller;
 import com.stuypulse.stuylib.streams.filters.IStreamFilter;
 import com.stuypulse.stuylib.streams.filters.RollingAverage;
 import com.stuypulse.stuylib.util.StopWatch;
+import com.stuypulse.stuylib.math.SLMath;
 
 /**
  * This is a Bang-Bang controller that while controlling the robot, will be able
  * to calculate the values for the PID controller. It does this by taking the
  * results of oscillations, then creating a PIDController withe the correct
- * values once the oscilations have been measured.
+ * values once the oscillations have been measured.
  * 
  * @author Sam (sam.belliveau@gmail.com)
  */
@@ -43,7 +44,7 @@ public class PIDCalculator extends Controller {
     // The min and max of the wave
     private double mLocalMax;
 
-    // Whether or not the system will measure the oscilation
+    // Whether or not the system will measure the oscillation
     private boolean mRunning;
 
     /**
@@ -163,6 +164,9 @@ public class PIDCalculator extends Controller {
      * @return information about this PIDController
      */
     public String toString() {
-        return "(K: " + getK() + ", T: " + getT() + ")";
+        return 
+            "(K: " + SLMath.round(getK(), 4) + 
+            ", T: " + SLMath.round(getT(), 4) + ") "+ 
+            getPIDController().toString();
     }
 }

@@ -169,7 +169,7 @@ extends java.lang.Object</pre>
 <td class="colFirst"><code>protected </code></td>
 <th class="colConstructorName" scope="row"><code><span class="memberNameLink"><a href="#%3Cinit%3E()">Controller</a></span>()</code></th>
 <td class="colLast">
-<div class="block">Creates a basic controller with everthing initialized</div>
+<div class="block">Creates a basic controller with everything initialized</div>
 </td>
 </tr>
 </table>
@@ -300,7 +300,7 @@ extends java.lang.Object</pre>
 <li class="blockList">
 <h4>Controller</h4>
 <pre>protected&nbsp;Controller()</pre>
-<div class="block">Creates a basic controller with everthing initialized</div>
+<div class="block">Creates a basic controller with everything initialized</div>
 </li>
 </ul>
 </li>
@@ -326,7 +326,7 @@ extends java.lang.Object</pre>
  A highly recommended option is the LowPassFilter due to its ability to remove
  noise, and its ability to not lag behind when there has been a gap in calls.
  This will slightly degrade the performance of the controller, but it may be
- nessisary sometimes in order to get consistant results.
+ necessary sometimes in order to get consistent results.
  
  This will change the way the controller interacts with the robot and may
  require more tuning to be done.
@@ -336,7 +336,7 @@ extends java.lang.Object</pre>
 <dt><span class="paramLabel">Parameters:</span></dt>
 <dd><code>filter</code> - filter to be applied to error measurements</dd>
 <dt><span class="returnLabel">Returns:</span></dt>
-<dd>refrence to the controller (so you can chain the commands together)</dd>
+<dd>reference to the controller (so you can chain the commands together)</dd>
 </dl>
 </li>
 </ul>
@@ -350,10 +350,10 @@ extends java.lang.Object</pre>
 <div class="block">Lets you specify a filter that will be applied to all of the outputs of the
  controller.
  
- If the robot has a tendancy to jerk, or motions of the robot are too violent,
+ If the robot has a tendency to jerk, or motions of the robot are too violent,
  a filter like the LowPassFilter can reduce jerk while still letting the robot
  get to max speed. This will slightly degrade the performance of the
- controller, but it may be nessisary sometimes in order to get consistant
+ controller, but it may be necessary sometimes in order to get consistent
  results.
  
  This will change the way the controller interacts with the robot and may
@@ -364,7 +364,7 @@ extends java.lang.Object</pre>
 <dt><span class="paramLabel">Parameters:</span></dt>
 <dd><code>filter</code> - filter to be applied to the outputs of the controller</dd>
 <dt><span class="returnLabel">Returns:</span></dt>
-<dd>refrence to the controller (so you can chain the commands together)</dd>
+<dd>reference to the controller (so you can chain the commands together)</dd>
 </dl>
 </li>
 </ul>
@@ -435,7 +435,7 @@ extends java.lang.Object</pre>
 <pre class="methodSignature">public&nbsp;double&nbsp;getRate()</pre>
 <div class="block">Gets the rate of the controller during the last .update() command. This will
  only return the interval between the last .update() command and the one
- before it. Thus, the rate may be slightly inconsistant if the update command
+ before it. Thus, the rate may be slightly inconsistent if the update command
  is not called regularly.
  
  This function may be overridden if a special controller needs a custom rate.</div>

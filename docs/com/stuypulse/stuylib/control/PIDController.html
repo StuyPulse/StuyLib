@@ -166,6 +166,12 @@ extends <a href="Controller.html" title="class in com.stuypulse.stuylib.control"
 <th class="colLast" scope="col">Description</th>
 </tr>
 <tr class="altColor">
+<th class="colConstructorName" scope="row"><code><span class="memberNameLink"><a href="#%3Cinit%3E()">PIDController</a></span>()</code></th>
+<td class="colLast">
+<div class="block">Creates a blank PIDController that doesn't move</div>
+</td>
+</tr>
+<tr class="rowColor">
 <th class="colConstructorName" scope="row"><code><span class="memberNameLink"><a href="#%3Cinit%3E(double,double,double)">PIDController</a></span>&#8203;(double&nbsp;p,
              double&nbsp;i,
              double&nbsp;d)</code></th>
@@ -287,7 +293,7 @@ extends <a href="Controller.html" title="class in com.stuypulse.stuylib.control"
 <a id="&lt;init&gt;(double,double,double)">
 <!--   -->
 </a>
-<ul class="blockListLast">
+<ul class="blockList">
 <li class="blockList">
 <h4>PIDController</h4>
 <pre>public&nbsp;PIDController&#8203;(double&nbsp;p,
@@ -299,6 +305,16 @@ extends <a href="Controller.html" title="class in com.stuypulse.stuylib.control"
 <dd><code>i</code> - The Integral Multiplier</dd>
 <dd><code>d</code> - The Derivative Multiplier</dd>
 </dl>
+</li>
+</ul>
+<a id="&lt;init&gt;()">
+<!--   -->
+</a>
+<ul class="blockListLast">
+<li class="blockList">
+<h4>PIDController</h4>
+<pre>public&nbsp;PIDController()</pre>
+<div class="block">Creates a blank PIDController that doesn't move</div>
 </li>
 </ul>
 </li>
@@ -318,7 +334,8 @@ extends <a href="Controller.html" title="class in com.stuypulse.stuylib.control"
 <li class="blockList">
 <h4>reset</h4>
 <pre class="methodSignature">public&nbsp;void&nbsp;reset()</pre>
-<div class="block">Resets the integrator in the PIDController. This automatically gets called if the gap between update() commands is too large;</div>
+<div class="block">Resets the integrator in the PIDController. This automatically gets called if
+ the gap between update() commands is too large</div>
 </li>
 </ul>
 <a id="calculate(double)">
