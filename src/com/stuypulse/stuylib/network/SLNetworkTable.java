@@ -159,7 +159,7 @@ public class SLNetworkTable {
     }
 
     /**
-     * Ckecks to see if network table contains key
+     * Checks to see if network table contains key
      * 
      * @param key key name
      * @return if network table contains key

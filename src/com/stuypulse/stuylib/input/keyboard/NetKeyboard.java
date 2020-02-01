@@ -5,7 +5,7 @@ import com.stuypulse.stuylib.network.SLNetworkTable;
 import java.util.Set;
 
 /**
- * This class lets you send and recieve keyboard information over network tables
+ * This class lets you send and receive keyboard information over network tables
  * 
  * Every other class will interact with the network keyboards through this class
  * 
@@ -26,12 +26,12 @@ public class NetKeyboard {
         }
 
         /**
-         * Sanatize key names to prevent caps issues
+         * Sanitize key names to prevent caps issues
          * 
-         * @param key unsanatized key name
-         * @return sanatized key name
+         * @param key key name
+         * @return sanitized key name
          */
-        public static String sanatize(String key) {
+        public static String sanitize(String key) {
             return key.toUpperCase().trim();
         }
     }
@@ -76,7 +76,7 @@ public class NetKeyboard {
      * @param val new value for key
      */
     public void setKey(String key, boolean val) {
-        mKeyboardTable.setBoolean(Constants.sanatize(key), val);
+        mKeyboardTable.setBoolean(Constants.sanitize(key), val);
     }
 
     /**
@@ -86,7 +86,7 @@ public class NetKeyboard {
      * @return if key is pressed
      */
     public boolean getKey(String key) {
-        return mKeyboardTable.getBoolean(Constants.sanatize(key));
+        return mKeyboardTable.getBoolean(Constants.sanitize(key));
     }
 
     /**

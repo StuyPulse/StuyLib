@@ -2,7 +2,7 @@ package com.stuypulse.stuylib.util;
 
 /**
  * This StopWatch class helps classes who want their functions to be time
- * independant do that by giving them an easy way to get intervals of time.
+ * independent do that by giving them an easy way to get intervals of time.
  * 
  * This is better than just doing it in the class because it stores the time as
  * a long to keep accuracy, but converts it into a double for convenience.

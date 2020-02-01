@@ -56,7 +56,7 @@ public class Vector2D {
     }
 
     /**
-     * See if two Vector2D's equal eachother
+     * See if two Vector2D's equal each other
      * 
      * @param other other Vector2D
      * @return result

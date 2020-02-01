@@ -15,7 +15,7 @@ import com.stuypulse.stuylib.input.buttons.ButtonWrapper;
  * function will work.
  * 
  * This class does not come with a constructor because by itself, the class does
- * not do anything. You need to extend this class inorder to use it.
+ * not do anything. You need to extend this class in order to use it.
  * 
  * @author Sam (sam.belliveau@gmail.com)
  */

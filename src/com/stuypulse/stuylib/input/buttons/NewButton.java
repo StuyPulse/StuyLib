@@ -13,7 +13,7 @@ import edu.wpi.first.wpilibj2.command.button.Button;
 public class NewButton extends Button {
 
     /**
-     * what stores the functions that the button would call when get is calles
+     * what stores the functions that the button would call when get is called
      */
     private BooleanProvider mButton;
 
@@ -34,7 +34,7 @@ public class NewButton extends Button {
     }
 
 	/**
-     * Override get funciton to make it work like a button
+     * Override get function to make it work like a button
      * 
      * @return boolean that the lambda returns
      */

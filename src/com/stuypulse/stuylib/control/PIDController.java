@@ -19,7 +19,7 @@ import com.stuypulse.stuylib.math.SLMath;
 public class PIDController extends Controller {
 
     /**
-     * Amount of time inbetween .update() calls that is aloud before the controller
+     * Amount of time in between .update() calls that is aloud before the controller
      * resets the system
      */
     private static final double kMaxTimeBeforeReset = 0.3; // s
@@ -113,7 +113,7 @@ public class PIDController extends Controller {
 
     /**
      * @param p new p value used by the PID controller.
-     * @return refrence to PIDController (so you can chain the commands together)
+     * @return reference to PIDController (so you can chain the commands together)
      */
     public PIDController setP(double p) {
         mP = Math.max(p, 0);
@@ -122,7 +122,7 @@ public class PIDController extends Controller {
 
     /**
      * @param i new i value used by the PID controller.
-     * @return refrence to PIDController (so you can chain the commands together)
+     * @return reference to PIDController (so you can chain the commands together)
      */
     public PIDController setI(double i) {
         mI = Math.max(i, 0);
@@ -131,7 +131,7 @@ public class PIDController extends Controller {
 
     /**
      * @param d new d value used by the PID controller.
-     * @return refrence to PIDController (so you can chain the commands together)
+     * @return reference to PIDController (so you can chain the commands together)
      */
     public PIDController setD(double d) {
         mD = Math.max(d, 0);
@@ -142,7 +142,7 @@ public class PIDController extends Controller {
      * @param p new p value used by the PID controller.
      * @param i new i value used by the PID controller.
      * @param d new d value used by the PID controller.
-     * @return refrence to PIDController (so you can chain the commands together)
+     * @return reference to PIDController (so you can chain the commands together)
      */
     public PIDController setPID(double p, double i, double d) {
         return setP(p).setI(i).setD(d);
@@ -155,7 +155,7 @@ public class PIDController extends Controller {
      * Passing null will disable the filter
      * 
      * @param filter filter put on the I component of the PID Controller
-     * @return refrence to PIDController (so you can chain the commands together)
+     * @return reference to PIDController (so you can chain the commands together)
      */
     public PIDController setIntegratorFilter(IStreamFilter filter) {
         // Use default filter if given null

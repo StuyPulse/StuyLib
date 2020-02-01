@@ -7,7 +7,7 @@ import java.awt.event.KeyEvent;
 
 /**
  * A KeyListener that uploads all of the key strokes to a network table where
- * they can then be recieved and put into the robot
+ * they can then be received and put into the robot
  * 
  * This would not be used on the robot, but should be used on the users computer
  * 

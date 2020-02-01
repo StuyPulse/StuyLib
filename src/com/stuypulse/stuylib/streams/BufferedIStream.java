@@ -7,7 +7,7 @@ import com.stuypulse.stuylib.exception.ConstructionError;
  * This class allows you to use an input stream while recording the last N
  * values from the stream
  *
- * It extends from IStream, so it also workes with the existing IStream classes
+ * It extends from IStream, so it also works with the existing IStream classes
  *
  * @author Kevin (kc16777216@gmail.com)
  * @author Sam (sam.belliveau@gmail.com)
@@ -41,7 +41,7 @@ public class BufferedIStream implements IStream {
     /**
      * Creates a buffered istream with default buffer size (kDefaultSize)
      *
-     * @param istream istren array listam that will be buffered
+     * @param istream istream that will be buffered
      */
     public BufferedIStream(IStream istream) {
         this(istream, kDefaultSize);

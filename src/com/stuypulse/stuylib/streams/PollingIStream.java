@@ -9,7 +9,7 @@ import java.util.TimerTask;
 /**
  * Takes an IStream and an IStreamFilter and makes a PollingIStream
  * 
- * A PollingIStream calles .get() every x milliseconds instead of when the user
+ * A PollingIStream calls .get() every x milliseconds instead of when the user
  * calls get
  * 
  * @author Sam (sam.belliveau@gmail.com)

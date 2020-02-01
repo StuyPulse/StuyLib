@@ -129,7 +129,7 @@ public class CSVReader implements Iterable<CSVElement> {
     /**
      * Get amount of elements in csv file
      * 
-     * @return the amout of elements in the csv file
+     * @return the amount of elements in the csv file
      */
     public int size() {
         return mCSVData.size();

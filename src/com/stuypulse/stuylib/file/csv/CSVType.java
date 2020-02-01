@@ -10,7 +10,7 @@ public enum CSVType {
 
     DEFAULT(","), EXCEL(","), MYSQL("\t"), TCSV(",\t");
 
-    // Stores Seperator for CSV
+    // Stores Separator for CSV
     private String mDelimiter;
 
     // Constructor that sets the Delimiter

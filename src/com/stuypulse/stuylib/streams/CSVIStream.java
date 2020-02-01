@@ -87,7 +87,7 @@ public class CSVIStream {
     }
 
     /**
-     * This CSVIStream Reader lets you replay a CSV file as if it was anyother
+     * This CSVIStream Reader lets you replay a CSV file as if it was any other
      * IStream
      */
     public static class Reader implements IStream {
