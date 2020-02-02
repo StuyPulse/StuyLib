@@ -187,26 +187,6 @@ public final class SLMath {
     }
 
     /**
-     * Round a double by a certain amount of sigfigs and a certain base
-     * 
-     * @param n       number to round
-     * @param sigfigs amount of sigfigs to round it to
-     * @param base    base of digits during rounding (default: 10)
-     * @return rounded number
-     */
-    public static double round(double n, int sigfigs, int base) {
-        // Digit place that number starts at
-        int digits = (int) Math.floor(Math.log10(n));
-
-        // Amount to multiply before multiplying based on
-        // the sigfigs and digits in the number
-        double mul = fpow(base, sigfigs - digits);
-
-        // Round number by the multiplier calculated
-        return Math.round(n * mul) / mul;
-    }
-
-    /**
      * Round a double by a certain amount of sigfigs in base 10
      * 
      * @param n       number to round
@@ -214,6 +194,14 @@ public final class SLMath {
      * @return rounded number
      */
     public static double round(double n, int sigfigs) {
-        return round(n, sigfigs, 10);
+        // Digit place that number starts at
+        int digits = (int) Math.floor(Math.log10(n));
+
+        // Amount to multiply before multiplying based on
+        // the sigfigs and digits in the number
+        double mul = fpow(10.0, sigfigs - digits);
+
+        // Round number by the multiplier calculated
+        return Math.round(n * mul) / mul;
     }
 }

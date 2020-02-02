@@ -27,7 +27,7 @@
     catch(err) {
     }
 //-->
-var data = {"i0":10,"i1":10,"i2":10,"i3":10,"i4":10,"i5":10,"i6":10,"i7":10,"i8":10};
+var data = {"i0":10,"i1":10,"i2":10,"i3":10,"i4":10,"i5":10,"i6":10,"i7":10,"i8":10,"i9":10};
 var tabs = {65535:["t0","All Methods"],2:["t2","Instance Methods"],8:["t4","Concrete Methods"]};
 var altColor = "altColor";
 var rowColor = "rowColor";
@@ -205,34 +205,39 @@ extends <a href="Controller.html" title="class in com.stuypulse.stuylib.control"
 </tr>
 <tr id="i3" class="rowColor">
 <td class="colFirst"><code><a href="PIDController.html" title="class in com.stuypulse.stuylib.control">PIDController</a></code></td>
-<th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#getPIController()">getPIController</a></span>()</code></th>
+<th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#getPDController()">getPDController</a></span>()</code></th>
 <td class="colLast">&nbsp;</td>
 </tr>
 <tr id="i4" class="altColor">
 <td class="colFirst"><code><a href="PIDController.html" title="class in com.stuypulse.stuylib.control">PIDController</a></code></td>
-<th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#getPIDController()">getPIDController</a></span>()</code></th>
+<th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#getPIController()">getPIController</a></span>()</code></th>
 <td class="colLast">&nbsp;</td>
 </tr>
 <tr id="i5" class="rowColor">
+<td class="colFirst"><code><a href="PIDController.html" title="class in com.stuypulse.stuylib.control">PIDController</a></code></td>
+<th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#getPIDController()">getPIDController</a></span>()</code></th>
+<td class="colLast">&nbsp;</td>
+</tr>
+<tr id="i6" class="altColor">
 <td class="colFirst"><code><a href="PIDController.html" title="class in com.stuypulse.stuylib.control">PIDController</a></code></td>
 <th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#getPIDController(double,double,double)">getPIDController</a></span>&#8203;(double&nbsp;kP,
                 double&nbsp;kI,
                 double&nbsp;kD)</code></th>
 <td class="colLast">&nbsp;</td>
 </tr>
-<tr id="i6" class="altColor">
+<tr id="i7" class="rowColor">
 <td class="colFirst"><code>double</code></td>
 <th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#getT()">getT</a></span>()</code></th>
 <td class="colLast">
 <div class="block">Period of Oscillations</div>
 </td>
 </tr>
-<tr id="i7" class="rowColor">
+<tr id="i8" class="altColor">
 <td class="colFirst"><code><a href="PIDCalculator.html" title="class in com.stuypulse.stuylib.control">PIDCalculator</a></code></td>
 <th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#setControlSpeed(double)">setControlSpeed</a></span>&#8203;(double&nbsp;speed)</code></th>
 <td class="colLast">&nbsp;</td>
 </tr>
-<tr id="i8" class="altColor">
+<tr id="i9" class="rowColor">
 <td class="colFirst"><code>java.lang.String</code></td>
 <th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#toString()">toString</a></span>()</code></th>
 <td class="colLast">&nbsp;</td>
@@ -364,9 +369,9 @@ extends <a href="Controller.html" title="class in com.stuypulse.stuylib.control"
                                       double&nbsp;kD)</pre>
 <dl>
 <dt><span class="paramLabel">Parameters:</span></dt>
-<dd><code>kP</code> - calculated kP constant</dd>
-<dd><code>kI</code> - calculated kI constant</dd>
-<dd><code>kD</code> - calculated kD constant</dd>
+<dd><code>kP</code> - p multiplier when calculating values</dd>
+<dd><code>kI</code> - p multiplier when calculating values</dd>
+<dd><code>kD</code> - p multiplier when calculating values</dd>
 <dt><span class="returnLabel">Returns:</span></dt>
 <dd>calculated PID controller based off of measurements</dd>
 </dl>
@@ -395,6 +400,19 @@ extends <a href="Controller.html" title="class in com.stuypulse.stuylib.control"
 <dl>
 <dt><span class="returnLabel">Returns:</span></dt>
 <dd>calculated PI controller based off of measurements</dd>
+</dl>
+</li>
+</ul>
+<a id="getPDController()">
+<!--   -->
+</a>
+<ul class="blockList">
+<li class="blockList">
+<h4>getPDController</h4>
+<pre class="methodSignature">public&nbsp;<a href="PIDController.html" title="class in com.stuypulse.stuylib.control">PIDController</a>&nbsp;getPDController()</pre>
+<dl>
+<dt><span class="returnLabel">Returns:</span></dt>
+<dd>calculated PD controller based off of measurements</dd>
 </dl>
 </li>
 </ul>

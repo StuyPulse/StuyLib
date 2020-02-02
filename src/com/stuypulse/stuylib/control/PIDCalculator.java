@@ -2,6 +2,8 @@ package com.stuypulse.stuylib.control;
 
 import com.stuypulse.stuylib.control.Controller;
 import com.stuypulse.stuylib.streams.filters.IStreamFilter;
+import com.stuypulse.stuylib.streams.filters.IStreamFilterGroup;
+import com.stuypulse.stuylib.streams.filters.MovingAverage;
 import com.stuypulse.stuylib.streams.filters.RollingAverage;
 import com.stuypulse.stuylib.util.StopWatch;
 import com.stuypulse.stuylib.math.SLMath;
@@ -23,9 +25,15 @@ public class PIDCalculator extends Controller {
     // The minimum period length that will be accepted as a valid period
     private static final double kMinPeriodTime = 0.2;
 
-    // The exponential weights when measuring the period and amplitude
-    private static final double kPeriodAverageWeight = 4;
-    private static final double kAmplitudeAverageWeight = 4;
+    // The filter easuring the period and amplitude
+    private static IStreamFilter getMeasurementFilter() {
+        // This is a mix between accuracy and speed of updating.
+        // Takes about 6 periods to get accurate results
+        return new IStreamFilterGroup(
+            new MovingAverage(6),
+            new RollingAverage(2)
+        );
+    }
 
     // The speed that the bang bang controller will run at
     private double mControlSpeed;
@@ -54,10 +62,10 @@ public class PIDCalculator extends Controller {
         mControlSpeed = speed;
 
         mPeriod = 0;
-        mPeriodFilter = new RollingAverage(kPeriodAverageWeight);
+        mPeriodFilter = getMeasurementFilter();
 
         mAmplitude = 0;
-        mAmplitudeFilter = new RollingAverage(kAmplitudeAverageWeight);
+        mAmplitudeFilter = getMeasurementFilter();
 
         mPeriodTimer = new StopWatch();
         mLocalMax = 0;
@@ -82,25 +90,33 @@ public class PIDCalculator extends Controller {
      * @return the calculated result from the controller
      */
     protected double calculate(double error) {
+        // If there is a gap in updates, then disable until next period
         if (getRate() > kMaxTimeBeforeReset) {
             mRunning = false;
         }
 
-        if (0.0 < error && 0.0 < getRawVelocity() && error < getRawVelocity()) {
-            double period = mPeriodTimer.reset();
+        // Check if we crossed 0, ie, time for next update
+        double sign = Math.signum(error);
+        if ((error * sign) < (getRawVelocity() * sign)) {
+            // Get period and amplitude
+            double period = mPeriodTimer.reset() * 2.0;
             double amplitude = mLocalMax;
 
+            // If we are running and period is valid, record it
             if (mRunning && kMinPeriodTime < period) {
                 mPeriod = mPeriodFilter.get(period);
                 mAmplitude = mAmplitudeFilter.get(amplitude);
             }
 
+            // Reset everything
             mLocalMax = 0;
             mRunning = true;
         }
 
+        // Calculate amplitude by recording maximum
         mLocalMax = Math.max(Math.abs(mLocalMax), Math.abs(error));
 
+        // Return bang bang control
         return Math.signum(error) * mControlSpeed;
     }
 
@@ -123,17 +139,21 @@ public class PIDCalculator extends Controller {
     }
 
     /**
-     * @param kP calculated kP constant
-     * @param kI calculated kI constant
-     * @param kD calculated kD constant
+     * @param kP p multiplier when calculating values
+     * @param kI p multiplier when calculating values
+     * @param kD p multiplier when calculating values
      * @return calculated PID controller based off of measurements
      */
     public PIDController getPIDController(double kP, double kI, double kD) {
+        kP = Math.min(kP, 0.0);
+        kI = Math.min(kI, 0.0);
+        kD = Math.min(kD, 0.0);
+        
         if (mAmplitude > 0) {
             double t = getT();
             double k = getK();
 
-            return new PIDController(kP * k, kI * k / t, kD * k * t);
+            return new PIDController(kP * (k), kI * (k / t), kD * (k * t));
         } else {
             return new PIDController(-1, -1, -1);
         }
@@ -151,6 +171,13 @@ public class PIDCalculator extends Controller {
      */
     public PIDController getPIController() {
         return getPIDController(0.45, 0.54, -1);
+    }
+
+    /**
+     * @return calculated PD controller based off of measurements
+     */
+    public PIDController getPDController() {
+        return getPIDController(0.8, -1, 1.0 / 10.0);
     }
 
     /**
