@@ -96,7 +96,7 @@ public final class SLMath {
     }
 
     /**
-     * spow (signed pow), raises a number to a power without affecting the sign of
+     * spow (signless pow), raises a number to a power without affecting the sign of
      * the number
      * 
      * @param x     input
