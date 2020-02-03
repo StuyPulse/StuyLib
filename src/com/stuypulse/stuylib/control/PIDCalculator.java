@@ -145,9 +145,9 @@ public class PIDCalculator extends Controller {
      * @return calculated PID controller based off of measurements
      */
     public PIDController getPIDController(double kP, double kI, double kD) {
-        kP = Math.min(kP, 0.0);
-        kI = Math.min(kI, 0.0);
-        kD = Math.min(kD, 0.0);
+        kP = Math.max(kP, 0.0);
+        kI = Math.max(kI, 0.0);
+        kD = Math.max(kD, 0.0);
         
         if (mAmplitude > 0) {
             double t = getT();
