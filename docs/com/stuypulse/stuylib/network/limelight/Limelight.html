@@ -27,7 +27,7 @@
     catch(err) {
     }
 //-->
-var data = {"i0":9,"i1":9,"i2":9,"i3":9,"i4":9,"i5":9,"i6":9,"i7":9,"i8":9,"i9":9,"i10":9,"i11":9,"i12":9,"i13":9,"i14":9,"i15":9,"i16":9,"i17":9,"i18":9,"i19":9,"i20":9,"i21":9,"i22":9,"i23":9,"i24":9,"i25":9,"i26":9,"i27":9};
+var data = {"i0":9,"i1":9,"i2":9,"i3":9,"i4":9,"i5":9,"i6":9,"i7":9,"i8":9,"i9":9,"i10":9,"i11":9,"i12":9,"i13":9,"i14":9,"i15":9,"i16":9,"i17":9,"i18":9,"i19":9,"i20":9,"i21":9,"i22":9,"i23":9,"i24":9,"i25":9,"i26":9,"i27":9,"i28":9,"i29":9,"i30":9,"i31":9};
 var tabs = {65535:["t0","All Methods"],1:["t1","Static Methods"],8:["t4","Concrete Methods"]};
 var altColor = "altColor";
 var rowColor = "rowColor";
@@ -339,7 +339,8 @@ extends java.lang.Object</pre>
 <td class="colFirst"><code>static double</code></td>
 <th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#getLongestSidelength()">getLongestSidelength</a></span>()</code></th>
 <td class="colLast">
-<div class="block">Get the sidelength of longest side of the fitted bounding box (0 - 320 pixels)</div>
+<div class="block">Get the sidelength of longest side of the fitted bounding box (0 - 320
+ pixels)</div>
 </td>
 </tr>
 <tr id="i6" class="altColor">
@@ -376,7 +377,8 @@ extends java.lang.Object</pre>
 <td class="colFirst"><code>static double</code></td>
 <th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#getShortestSidelength()">getShortestSidelength</a></span>()</code></th>
 <td class="colLast">
-<div class="block">Get the sidelength of shortest side of the fitted bounding box (0 - 320 pixels)</div>
+<div class="block">Get the sidelength of shortest side of the fitted bounding box (0 - 320
+ pixels)</div>
 </td>
 </tr>
 <tr id="i13" class="rowColor">
@@ -394,80 +396,110 @@ extends java.lang.Object</pre>
 </td>
 </tr>
 <tr id="i15" class="rowColor">
+<td class="colFirst"><code>static double[]</code></td>
+<th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#getTargetCornerX()">getTargetCornerX</a></span>()</code></th>
+<td class="colLast">
+<div class="block">Get a number array of corner x-coordinates</div>
+</td>
+</tr>
+<tr id="i16" class="altColor">
+<td class="colFirst"><code>static double</code></td>
+<th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#getTargetCornerX(int)">getTargetCornerX</a></span>&#8203;(int&nbsp;corner)</code></th>
+<td class="colLast">
+<div class="block">Get the x axis of a corner on the target</div>
+</td>
+</tr>
+<tr id="i17" class="rowColor">
+<td class="colFirst"><code>static double[]</code></td>
+<th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#getTargetCornerY()">getTargetCornerY</a></span>()</code></th>
+<td class="colLast">
+<div class="block">Get a number array of corner y-coordinates</div>
+</td>
+</tr>
+<tr id="i18" class="altColor">
+<td class="colFirst"><code>static double</code></td>
+<th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#getTargetCornerY(int)">getTargetCornerY</a></span>&#8203;(int&nbsp;corner)</code></th>
+<td class="colLast">
+<div class="block">Get the x axis of a corner on the target</div>
+</td>
+</tr>
+<tr id="i19" class="rowColor">
 <td class="colFirst"><code>static double</code></td>
 <th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#getTargetSkew()">getTargetSkew</a></span>()</code></th>
 <td class="colLast">
 <div class="block">Get the Skew or rotation (-90 degrees to 0 degrees)</div>
 </td>
 </tr>
-<tr id="i16" class="altColor">
+<tr id="i20" class="altColor">
 <td class="colFirst"><code>static double</code></td>
 <th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#getTargetXAngle()">getTargetXAngle</a></span>()</code></th>
 <td class="colLast">
-<div class="block">Get The Horizontal Offset From Crosshair To Target (-27 degrees to 27 degrees)</div>
+<div class="block">Get The Horizontal Offset From Crosshair To Target (-27 degrees to 27
+ degrees)</div>
 </td>
 </tr>
-<tr id="i17" class="rowColor">
+<tr id="i21" class="rowColor">
 <td class="colFirst"><code>static double</code></td>
 <th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#getTargetYAngle()">getTargetYAngle</a></span>()</code></th>
 <td class="colLast">
-<div class="block">Get The Vertical Offset From Crosshair To Target (-20.5 degrees to 20.5 degrees)</div>
+<div class="block">Get The Vertical Offset From Crosshair To Target (-20.5 degrees to 20.5
+ degrees)</div>
 </td>
 </tr>
-<tr id="i18" class="altColor">
+<tr id="i22" class="altColor">
 <td class="colFirst"><code>static double</code></td>
 <th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#getVerticalSidelength()">getVerticalSidelength</a></span>()</code></th>
 <td class="colLast">
 <div class="block">Get the vertical sidelength of the rough bounding box (0 - 320 pixels)</div>
 </td>
 </tr>
-<tr id="i19" class="rowColor">
+<tr id="i23" class="rowColor">
 <td class="colFirst"><code>static boolean</code></td>
 <th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#hasValidTarget()">hasValidTarget</a></span>()</code></th>
 <td class="colLast">
 <div class="block">Get Whether the limelight has any valid targets</div>
 </td>
 </tr>
-<tr id="i20" class="altColor">
+<tr id="i24" class="altColor">
 <td class="colFirst"><code>static boolean</code></td>
 <th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#isConnected()">isConnected</a></span>()</code></th>
 <td class="colLast">
 <div class="block">Check if the limelight is connected by using a timing test</div>
 </td>
 </tr>
-<tr id="i21" class="rowColor">
+<tr id="i25" class="rowColor">
 <td class="colFirst"><code>static void</code></td>
 <th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#setCameraStream(com.stuypulse.stuylib.network.limelight.Limelight.CameraStream)">setCameraStream</a></span>&#8203;(<a href="Limelight.CameraStream.html" title="enum in com.stuypulse.stuylib.network.limelight">Limelight.CameraStream</a>&nbsp;stream)</code></th>
 <td class="colLast">&nbsp;</td>
 </tr>
-<tr id="i22" class="altColor">
+<tr id="i26" class="altColor">
 <td class="colFirst"><code>static void</code></td>
 <th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#setCamMode(com.stuypulse.stuylib.network.limelight.Limelight.CamMode)">setCamMode</a></span>&#8203;(<a href="Limelight.CamMode.html" title="enum in com.stuypulse.stuylib.network.limelight">Limelight.CamMode</a>&nbsp;mode)</code></th>
 <td class="colLast">&nbsp;</td>
 </tr>
-<tr id="i23" class="rowColor">
+<tr id="i27" class="rowColor">
 <td class="colFirst"><code>static boolean</code></td>
 <th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#setCustomNumber(java.lang.String,java.lang.Number)">setCustomNumber</a></span>&#8203;(java.lang.String&nbsp;element,
                java.lang.Number&nbsp;value)</code></th>
 <td class="colLast">&nbsp;</td>
 </tr>
-<tr id="i24" class="altColor">
+<tr id="i28" class="altColor">
 <td class="colFirst"><code>static boolean</code></td>
 <th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#setCustomString(java.lang.String,java.lang.String)">setCustomString</a></span>&#8203;(java.lang.String&nbsp;element,
                java.lang.String&nbsp;value)</code></th>
 <td class="colLast">&nbsp;</td>
 </tr>
-<tr id="i25" class="rowColor">
+<tr id="i29" class="rowColor">
 <td class="colFirst"><code>static void</code></td>
 <th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#setLEDMode(com.stuypulse.stuylib.network.limelight.Limelight.LEDMode)">setLEDMode</a></span>&#8203;(<a href="Limelight.LEDMode.html" title="enum in com.stuypulse.stuylib.network.limelight">Limelight.LEDMode</a>&nbsp;mode)</code></th>
 <td class="colLast">&nbsp;</td>
 </tr>
-<tr id="i26" class="altColor">
+<tr id="i30" class="altColor">
 <td class="colFirst"><code>static void</code></td>
 <th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#setPipeline(int)">setPipeline</a></span>&#8203;(int&nbsp;pipeline)</code></th>
 <td class="colLast">&nbsp;</td>
 </tr>
-<tr id="i27" class="rowColor">
+<tr id="i31" class="rowColor">
 <td class="colFirst"><code>static void</code></td>
 <th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#setSnapshotMode(com.stuypulse.stuylib.network.limelight.Limelight.SnapshotMode)">setSnapshotMode</a></span>&#8203;(<a href="Limelight.SnapshotMode.html" title="enum in com.stuypulse.stuylib.network.limelight">Limelight.SnapshotMode</a>&nbsp;mode)</code></th>
 <td class="colLast">&nbsp;</td>
@@ -755,10 +787,12 @@ extends java.lang.Object</pre>
 <li class="blockList">
 <h4>getTargetXAngle</h4>
 <pre class="methodSignature">public static&nbsp;double&nbsp;getTargetXAngle()</pre>
-<div class="block">Get The Horizontal Offset From Crosshair To Target (-27 degrees to 27 degrees)</div>
+<div class="block">Get The Horizontal Offset From Crosshair To Target (-27 degrees to 27
+ degrees)</div>
 <dl>
 <dt><span class="returnLabel">Returns:</span></dt>
-<dd>Horizontal Offset From Crosshair To Target (-27 degrees to 27 degrees)</dd>
+<dd>Horizontal Offset From Crosshair To Target (-27 degrees to 27
+         degrees)</dd>
 </dl>
 </li>
 </ul>
@@ -769,10 +803,12 @@ extends java.lang.Object</pre>
 <li class="blockList">
 <h4>getTargetYAngle</h4>
 <pre class="methodSignature">public static&nbsp;double&nbsp;getTargetYAngle()</pre>
-<div class="block">Get The Vertical Offset From Crosshair To Target (-20.5 degrees to 20.5 degrees)</div>
+<div class="block">Get The Vertical Offset From Crosshair To Target (-20.5 degrees to 20.5
+ degrees)</div>
 <dl>
 <dt><span class="returnLabel">Returns:</span></dt>
-<dd>Vertical Offset From Crosshair To Target (-20.5 degrees to 20.5 degrees)</dd>
+<dd>Vertical Offset From Crosshair To Target (-20.5 degrees to 20.5
+         degrees)</dd>
 </dl>
 </li>
 </ul>
@@ -825,7 +861,8 @@ extends java.lang.Object</pre>
 <li class="blockList">
 <h4>getShortestSidelength</h4>
 <pre class="methodSignature">public static&nbsp;double&nbsp;getShortestSidelength()</pre>
-<div class="block">Get the sidelength of shortest side of the fitted bounding box (0 - 320 pixels)</div>
+<div class="block">Get the sidelength of shortest side of the fitted bounding box (0 - 320
+ pixels)</div>
 <dl>
 <dt><span class="returnLabel">Returns:</span></dt>
 <dd>Shortest side length of target in pixels</dd>
@@ -839,7 +876,8 @@ extends java.lang.Object</pre>
 <li class="blockList">
 <h4>getLongestSidelength</h4>
 <pre class="methodSignature">public static&nbsp;double&nbsp;getLongestSidelength()</pre>
-<div class="block">Get the sidelength of longest side of the fitted bounding box (0 - 320 pixels)</div>
+<div class="block">Get the sidelength of longest side of the fitted bounding box (0 - 320
+ pixels)</div>
 <dl>
 <dt><span class="returnLabel">Returns:</span></dt>
 <dd>Longest side length of the target in pixels</dd>
@@ -871,6 +909,62 @@ extends java.lang.Object</pre>
 <dl>
 <dt><span class="returnLabel">Returns:</span></dt>
 <dd>Vertical side length of target in pixels</dd>
+</dl>
+</li>
+</ul>
+<a id="getTargetCornerX()">
+<!--   -->
+</a>
+<ul class="blockList">
+<li class="blockList">
+<h4>getTargetCornerX</h4>
+<pre class="methodSignature">public static&nbsp;double[]&nbsp;getTargetCornerX()</pre>
+<div class="block">Get a number array of corner x-coordinates</div>
+<dl>
+<dt><span class="returnLabel">Returns:</span></dt>
+<dd>Number array of corner x-coordinates</dd>
+</dl>
+</li>
+</ul>
+<a id="getTargetCornerX(int)">
+<!--   -->
+</a>
+<ul class="blockList">
+<li class="blockList">
+<h4>getTargetCornerX</h4>
+<pre class="methodSignature">public static&nbsp;double&nbsp;getTargetCornerX&#8203;(int&nbsp;corner)</pre>
+<div class="block">Get the x axis of a corner on the target</div>
+<dl>
+<dt><span class="returnLabel">Returns:</span></dt>
+<dd>The x axis of a corner on the target</dd>
+</dl>
+</li>
+</ul>
+<a id="getTargetCornerY()">
+<!--   -->
+</a>
+<ul class="blockList">
+<li class="blockList">
+<h4>getTargetCornerY</h4>
+<pre class="methodSignature">public static&nbsp;double[]&nbsp;getTargetCornerY()</pre>
+<div class="block">Get a number array of corner y-coordinates</div>
+<dl>
+<dt><span class="returnLabel">Returns:</span></dt>
+<dd>Number array of corner y-coordinates</dd>
+</dl>
+</li>
+</ul>
+<a id="getTargetCornerY(int)">
+<!--   -->
+</a>
+<ul class="blockList">
+<li class="blockList">
+<h4>getTargetCornerY</h4>
+<pre class="methodSignature">public static&nbsp;double&nbsp;getTargetCornerY&#8203;(int&nbsp;corner)</pre>
+<div class="block">Get the x axis of a corner on the target</div>
+<dl>
+<dt><span class="returnLabel">Returns:</span></dt>
+<dd>The x axis of a corner on the target</dd>
 </dl>
 </li>
 </ul>

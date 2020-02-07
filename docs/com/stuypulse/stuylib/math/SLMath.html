@@ -204,7 +204,7 @@ extends java.lang.Object</pre>
 <th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#deadband(double,double)">deadband</a></span>&#8203;(double&nbsp;x,
         double&nbsp;window)</code></th>
 <td class="colLast">
-<div class="block">If x is below the window value, it returns 0</div>
+<div class="block">Dead bands x value with window being the dead band.</div>
 </td>
 </tr>
 <tr id="i4" class="altColor">
@@ -369,7 +369,8 @@ extends java.lang.Object</pre>
 <h4>deadband</h4>
 <pre class="methodSignature">public static&nbsp;double&nbsp;deadband&#8203;(double&nbsp;x,
                               double&nbsp;window)</pre>
-<div class="block">If x is below the window value, it returns 0</div>
+<div class="block">Dead bands x value with window being the dead band.
+ all values for this are [-1.0...1.0]</div>
 <dl>
 <dt><span class="paramLabel">Parameters:</span></dt>
 <dd><code>x</code> - value</dd>

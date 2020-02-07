@@ -56,17 +56,20 @@ public final class SLMath {
     /**************************/
 
     /**
-     * If x is below the window value, it returns 0
+     * Dead bands x value with window being the dead band.
+     * all values for this are [-1.0...1.0]
      * 
      * @param x      value
      * @param window deadband window
      * @return deadbanded value
      */
     public static double deadband(double x, double window) {
+        window = Math.abs(window);
+
         if (Math.abs(x) < window) {
             return 0.0;
         } else {
-            return x;
+            return (x - Math.copySign(window, x)) / (1.0 - window);
         }
     }
 
@@ -195,7 +198,7 @@ public final class SLMath {
      */
     public static double round(double n, int sigfigs) {
         // Digit place that number starts at
-        int digits = (int) Math.floor(Math.log10(n));
+        int digits = (int) Math.floor(Math.log10(Math.abs(n)));
 
         // Amount to multiply before multiplying based on
         // the sigfigs and digits in the number

@@ -20,10 +20,7 @@ import javax.swing.JPanel;
 
 public class NetKeyWindow extends JFrame {
 
-    /**
-     * Serial Version UID for Frame
-     */
-    private static final long serialVersionUID = -8251414743098271551L;
+    private static final long serialVersionUID = 1L;
 
     /**
      * NetKeyListener for window

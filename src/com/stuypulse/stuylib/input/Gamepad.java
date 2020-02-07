@@ -92,6 +92,23 @@ public class Gamepad {
     }
 
     // D-Pad //
+    public final double getDPadX() {
+        return (getRawDPadRight() ? 1.0 : 0.0) - (getRawDPadLeft() ? 1.0 : 0.0);
+    }
+
+    public final double getDPadY() {
+        return (getRawDPadUp() ? 1.0 : 0.0) - (getRawDPadDown() ? 1.0 : 0.0);
+    }
+
+    public final double getDPadMag() { return Math.hypot(getDPadX(), getDPadY()); }
+    public final double getDPadAngle() { 
+        double x = getDPadX();
+        double y = getDPadY();
+        
+        if(x == 0 && y == 0) { return 0; }
+        else { return Math.toDegrees(Math.atan2(y, x)); }
+    }
+
     public final ButtonWrapper getDPadUp()       { return new ButtonWrapper(() -> this.getRawDPadUp()); }
     public final ButtonWrapper getDPadDown()     { return new ButtonWrapper(() -> this.getRawDPadDown()); }
     public final ButtonWrapper getDPadLeft()     { return new ButtonWrapper(() -> this.getRawDPadLeft()); }

@@ -4,7 +4,6 @@ import com.stuypulse.stuylib.input.Gamepad;
 import com.stuypulse.stuylib.input.buttons.ButtonWrapper;
 
 import edu.wpi.first.wpilibj.Joystick;
-import edu.wpi.first.wpilibj.GenericHID;
 
 /**
  * WPI Gamepad extends Gamepad and adds functions that makes interacting with
@@ -107,7 +106,7 @@ public class WPIGamepad extends Gamepad {
      * @param intensity intensity of the rumble
      */
     public final void setRumble(double intensity) {
-        getJoystick().setRumble(GenericHID.RumbleType.kLeftRumble, intensity);
-        getJoystick().setRumble(GenericHID.RumbleType.kRightRumble, intensity);
+        getJoystick().setRumble(Joystick.RumbleType.kLeftRumble, intensity);
+        getJoystick().setRumble(Joystick.RumbleType.kRightRumble, intensity);
     }
 }

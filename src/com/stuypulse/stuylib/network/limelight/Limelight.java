@@ -61,7 +61,6 @@ public class Limelight {
         return connected;
     }
 
-
     /* Commonly Used Contour Information */
     // Whether the limelight has any valid targets (0 or 1)
     private static final NetworkTableEntry mValidTargetEntry = mTable.getEntry("tv");
@@ -76,21 +75,21 @@ public class Limelight {
         return (mValidTargetEntry.getDouble(0) > 0.5) && (isConnected());
     }
 
-
     // Horizontal Offset From Crosshair To Target (-27 degrees to 27 degrees)
     public static final double MIN_X_ANGLE = -27;
     public static final double MAX_X_ANGLE = 27;
     private static final NetworkTableEntry mXAngleEntry = mTable.getEntry("tx");
 
     /**
-     * Get The Horizontal Offset From Crosshair To Target (-27 degrees to 27 degrees)
+     * Get The Horizontal Offset From Crosshair To Target (-27 degrees to 27
+     * degrees)
      * 
-     * @return Horizontal Offset From Crosshair To Target (-27 degrees to 27 degrees)
+     * @return Horizontal Offset From Crosshair To Target (-27 degrees to 27
+     *         degrees)
      */
     public static double getTargetXAngle() {
         return mXAngleEntry.getDouble(0);
     }
-
 
     // Vertical Offset From Crosshair To Target (-20.5 degrees to 20.5 degrees)
     public static final double MIN_Y_ANGLE = -20.5;
@@ -98,14 +97,15 @@ public class Limelight {
     private static final NetworkTableEntry mYAngleEntry = mTable.getEntry("ty");
 
     /**
-     * Get The Vertical Offset From Crosshair To Target (-20.5 degrees to 20.5 degrees)
+     * Get The Vertical Offset From Crosshair To Target (-20.5 degrees to 20.5
+     * degrees)
      * 
-     * @return Vertical Offset From Crosshair To Target (-20.5 degrees to 20.5 degrees)
+     * @return Vertical Offset From Crosshair To Target (-20.5 degrees to 20.5
+     *         degrees)
      */
     public static double getTargetYAngle() {
         return mYAngleEntry.getDouble(0);
     }
-
 
     // Target Area (0% of image to 100% of image)
     public static final double MIN_TARGET_AREA = 0;
@@ -123,7 +123,6 @@ public class Limelight {
         return Math.min(mTargetAreaEntry.getDouble(0) / 100.0, 1);
     }
 
-
     // Skew or rotation (-90 degrees to 0 degrees)
     public static final double MIN_SKEW = -90;
     public static final double MAX_SKEW = 0;
@@ -137,7 +136,6 @@ public class Limelight {
     public static double getTargetSkew() {
         return mTargetSkewEntry.getDouble(0);
     }
-
 
     // The pipeline’s latency contribution (ms) Add at
     // least 11ms for image capture latency.
@@ -154,7 +152,6 @@ public class Limelight {
         return mLatencyEntry.getDouble(0) + IMAGE_CAPTURE_LATENCY;
     }
 
-
     // Pixel information returned from these functions
     public static final double MIN_SIDE_LENGTH = 0;
     public static final double MAX_SIDE_LENGTH = 320;
@@ -162,7 +159,8 @@ public class Limelight {
     private static final NetworkTableEntry mShortestSideLengthEntry = mTable.getEntry("tshort");
 
     /**
-     * Get the sidelength of shortest side of the fitted bounding box (0 - 320 pixels)
+     * Get the sidelength of shortest side of the fitted bounding box (0 - 320
+     * pixels)
      * 
      * @return Shortest side length of target in pixels
      */
@@ -170,18 +168,17 @@ public class Limelight {
         return mShortestSideLengthEntry.getDouble(0);
     }
 
-
     private static final NetworkTableEntry mLongestSideLengthEntry = mTable.getEntry("tlong");
 
     /**
-     * Get the sidelength of longest side of the fitted bounding box (0 - 320 pixels)
+     * Get the sidelength of longest side of the fitted bounding box (0 - 320
+     * pixels)
      * 
      * @return Longest side length of the target in pixels
      */
     public static double getLongestSidelength() {
         return mLongestSideLengthEntry.getDouble(0);
     }
-
 
     private static final NetworkTableEntry mHorizontalSideLengthEntry = mTable.getEntry("thor");
 
@@ -194,7 +191,6 @@ public class Limelight {
         return mHorizontalSideLengthEntry.getDouble(0);
     }
 
-
     private static final NetworkTableEntry mVerticalSideLengthEntry = mTable.getEntry("tvert");
 
     /**
@@ -206,6 +202,46 @@ public class Limelight {
         return mVerticalSideLengthEntry.getDouble(0);
     }
 
+    /* Target Corner */
+    private static final NetworkTableEntry mTCornX = mTable.getEntry("tcornx");
+
+    /**
+     * Get a number array of corner x-coordinates
+     * 
+     * @return Number array of corner x-coordinates
+     */
+    public static double[] getTargetCornerX() {
+        return mTCornX.getDoubleArray(new double[] {});
+    }
+
+    /**
+     * Get the x axis of a corner on the target
+     * 
+     * @return The x axis of a corner on the target
+     */
+    public static double getTargetCornerX(int corner) {
+        return mTCornX.getDoubleArray(new double[] {})[corner];
+    }
+
+    private static final NetworkTableEntry mTCornY = mTable.getEntry("tcorny");
+
+    /**
+     * Get a number array of corner y-coordinates
+     * 
+     * @return Number array of corner y-coordinates
+     */
+    public static double[] getTargetCornerY() {
+        return mTCornY.getDoubleArray(new double[] {});
+    }
+
+    /**
+     * Get the x axis of a corner on the target
+     * 
+     * @return The x axis of a corner on the target
+     */
+    public static double getTargetCornerY(int corner) {
+        return mTCornY.getDoubleArray(new double[] {})[corner];
+    }
 
     /* Advanced Usage with Raw Contours (Not sent by default) */
     // Raw Contours are formatted as tx0, ty0, tx1, ty1, tx2, ty2
@@ -262,10 +298,8 @@ public class Limelight {
         return mTable.getEntry("cy" + crosshair).getDouble(0);
     }
 
-
     /* Solve 3D */
     private static final NetworkTableEntry mSolve3DEntry = mTable.getEntry("camtran");
-    private static final double[] mDefaultSolve3DArray = new double[6];
 
     /**
      * Get Solve3D Result from network table
@@ -273,9 +307,8 @@ public class Limelight {
      * @return Solve 3D Result
      */
     public static Solve3DResult getSolve3D() {
-        return new Solve3DResult(mSolve3DEntry.getDoubleArray(mDefaultSolve3DArray));
+        return new Solve3DResult(mSolve3DEntry.getDoubleArray(new double[] {}));
     }
-
 
     /* Custom Grip Values */
     // Return data given by custom GRIP pipeline
@@ -313,7 +346,6 @@ public class Limelight {
         return mTable.getEntry(element).setString(value);
     }
 
-
     /* Camera Controls (Use Enums to prevent invalid inputs) */
     // LEDMode
     public enum LEDMode {
@@ -342,7 +374,6 @@ public class Limelight {
         mLEDModeEntry.setNumber(mode.getCodeValue());
     }
 
-
     // CAM_MODE
     public enum CamMode {
         VISION(0), // Use limelight for CV
@@ -368,7 +399,6 @@ public class Limelight {
         mCamModeEntry.setNumber(mode.getCodeValue());
     }
 
-
     // PIPELINE
     private static final NetworkTableEntry mPipelineEntry = mTable.getEntry("pipeline");
 
@@ -387,7 +417,6 @@ public class Limelight {
     public static double getPipeline() {
         return mGetPipelineEntry.getDouble(0);
     }
-
 
     // STREAM
     public enum CameraStream { // PIP = Picture-In-Picture
@@ -415,7 +444,6 @@ public class Limelight {
         mCameraStreamEntry.setNumber(stream.getCodeValue());
     }
 
-    
     // SNAPSHOT_MODE
     public enum SnapshotMode {
         STOP(0), // Don't take snapshots
