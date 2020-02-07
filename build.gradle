@@ -3,6 +3,9 @@ plugins {
    id "edu.wpi.first.GradleRIO" version "2020.1.2"
 }
 
+group = 'com.stuypulse'
+version = '1.0.0'
+
 sourceCompatibility = JavaVersion.VERSION_11
 targetCompatibility = JavaVersion.VERSION_11
 
