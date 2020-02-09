@@ -30,8 +30,12 @@ public abstract class Controller {
 
     // Error and Error Filters
     private double mError;
-    private double mRawVelocity;
     private IStreamFilter mErrorFilter;
+
+    // Velocity, Raw Velocity and Velocity Filter
+    private double mVelocity;
+    private IStreamFilter mVelocityFilter;
+    private double mRawVelocity;
 
     // Output and Output Filters
     private double mOutput;
@@ -46,8 +50,11 @@ public abstract class Controller {
      */
     protected Controller() {
         mError = 0.0;
-        mRawVelocity = 0.0;
         setErrorFilter(null);
+
+        mRawVelocity = 0.0;
+        mVelocity = 0.0;
+        setVelocityFilter(null);
 
         mOutput = 0.0;
         setOutputFilter(null);
@@ -75,6 +82,22 @@ public abstract class Controller {
      */
     public final Controller setErrorFilter(IStreamFilter filter) {
         mErrorFilter = sanitize(filter);
+        return this;
+    }
+
+    /**
+     * Lets you specify a filter that will be applied to the velocity measurements.
+     * 
+     * This can be used to smooth out the otherwise noisy velocity values.
+     * 
+     * This can negatively affect things like the D in PID if set too high and it is
+     * recommended that you just filter the error instead.
+     * 
+     * @param filter filter to be applied to velocity measurements
+     * @return reference to the controller (so you can chain the commands together)
+     */
+    public final Controller setVelocityFilter(IStreamFilter filter) {
+        mVelocityFilter = sanitize(filter);
         return this;
     }
 
@@ -127,7 +150,7 @@ public abstract class Controller {
      * @return velocity from the last time that .update() was called
      */
     public final double getVelocity() {
-        return getRawVelocity() / getRate();
+        return mVelocity;
     }
 
     /**
@@ -151,6 +174,28 @@ public abstract class Controller {
      */
     public double getRate() {
         return mRate;
+    }
+
+    /**
+     * Get whether or not the Controller has arrived at the target.
+     * 
+     * @param maxError the maximum amount of error allowed
+     * @return if the controller has arrived at the target
+     */
+    public boolean isDone(double maxError) {
+        return (Math.abs(getError()) < Math.abs(maxError));
+    }
+
+    /**
+     * Get whether or not the Controller has arrived at the target.
+     * 
+     * @param maxError    the maximum amount of error allowed
+     * @param maxVelocity the maximum amount of change in error over a second
+     *                    allowed
+     * @return if the controller has arrived at the target
+     */
+    public boolean isDone(double maxError, double maxVelocity) {
+        return ((Math.abs(getError()) < Math.abs(maxError)) && (Math.abs(getVelocity()) < Math.abs(maxVelocity)));
     }
 
     /**
@@ -183,6 +228,7 @@ public abstract class Controller {
 
         // Get the velocity based on the change in error
         mRawVelocity = error - mError;
+        mVelocity = mVelocityFilter.get(mRawVelocity / getRate());
 
         // Update the error variable
         mError = error;
