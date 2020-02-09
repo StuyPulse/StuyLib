@@ -1,6 +1,5 @@
 package com.stuypulse.stuylib.file.csv;
 
-import java.io.Closeable;
 import java.io.FileWriter;
 import java.io.IOException;
 
@@ -15,7 +14,7 @@ import java.io.Flushable;
  * @author Sam (sam.belliveau@gmail.com)
  */
 
-public class CSVWriter implements Flushable, Closeable, AutoCloseable {
+public class CSVWriter implements Flushable, AutoCloseable {
 
     // FileWriter that has CSV File open
     FileWriter mCSVFile;
