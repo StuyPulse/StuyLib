@@ -11,7 +11,7 @@ import com.stuypulse.stuylib.input.WPIGamepad;
 public class Logitech extends WPIGamepad {
 
     // Constructor //
-    public Logitech(int port) {
+    protected Logitech(int port) {
         super(port);
     }
     
