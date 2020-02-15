@@ -2,7 +2,7 @@ package com.stuypulse.stuylib.network.limelight;
 
 /**
  * Class that is used to return solve 3D results from the limelight
- * 
+ *
  * @author Sam (sam.belliveau@gmail.com)
  */
 
@@ -20,7 +20,7 @@ public class Solve3DResult {
 
     /**
      * Initialize each part of the Solve3DResult
-     * 
+     *
      * @param x     x position
      * @param y     y position
      * @param z     z position
@@ -28,7 +28,8 @@ public class Solve3DResult {
      * @param yaw   yaw
      * @param roll  roll
      */
-    public Solve3DResult(double x, double y, double z, double pitch, double yaw, double roll) {
+    public Solve3DResult(double x, double y, double z, double pitch, double yaw,
+            double roll) {
         mX = x;
         mY = y;
         mZ = z;
@@ -40,7 +41,7 @@ public class Solve3DResult {
 
     /**
      * Parse data from array into class
-     * 
+     *
      * @param data array that the limelight returns
      */
     public Solve3DResult(double[] data) {
@@ -49,7 +50,7 @@ public class Solve3DResult {
 
     /**
      * Get x from Solve3D Result
-     * 
+     *
      * @return x position
      */
     public double getX() {
@@ -58,7 +59,7 @@ public class Solve3DResult {
 
     /**
      * Get y from Solve3D Result
-     * 
+     *
      * @return y position
      */
     public double getY() {
@@ -67,7 +68,7 @@ public class Solve3DResult {
 
     /**
      * Get z from Solve3D Result
-     * 
+     *
      * @return z position
      */
     public double getZ() {
@@ -76,7 +77,7 @@ public class Solve3DResult {
 
     /**
      * Get pitch from Solve3D Result
-     * 
+     *
      * @return pitch
      */
     public double getPitch() {
@@ -85,7 +86,7 @@ public class Solve3DResult {
 
     /**
      * Get yaw from Solve3D Result
-     * 
+     *
      * @return yaw
      */
     public double getYaw() {
@@ -94,7 +95,7 @@ public class Solve3DResult {
 
     /**
      * Get roll from Solve3D Result
-     * 
+     *
      * @return roll
      */
     public double getRoll() {

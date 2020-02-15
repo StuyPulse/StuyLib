@@ -9,10 +9,10 @@ import com.stuypulse.stuylib.util.StopWatch;
  * error), and then the user would use the update() functions, which work as a
  * sort of wrapper for the controllers. No matter what controller is used, these
  * functions will always work.
- * 
+ *
  * These functions in the controller are useful for an error based system, and
  * are automatically managed, making implementations of PID easy.
- * 
+ *
  * @author Sam (sam.belliveau@gmail.com)
  */
 public abstract class Controller {
@@ -20,7 +20,7 @@ public abstract class Controller {
     /**
      * This function checks to see if a filter is null, if it is, it replaces it
      * with a default filter that doesn't do anything.
-     * 
+     *
      * @param filter filter you want sanitized
      * @return sanitized filter
      */
@@ -64,21 +64,22 @@ public abstract class Controller {
     }
 
     /**
-     * Lets you specify a filter that will be applied to all measurements that are
-     * given to the controller.
-     * 
-     * A highly recommended option is the LowPassFilter due to its ability to remove
-     * noise, and its ability to not lag behind when there has been a gap in calls.
-     * This will slightly degrade the performance of the controller, but it may be
-     * necessary sometimes in order to get consistent results.
-     * 
+     * Lets you specify a filter that will be applied to all measurements that
+     * are given to the controller.
+     *
+     * A highly recommended option is the LowPassFilter due to its ability to
+     * remove noise, and its ability to not lag behind when there has been a gap
+     * in calls. This will slightly degrade the performance of the controller,
+     * but it may be necessary sometimes in order to get consistent results.
+     *
      * This will change the way the controller interacts with the robot and may
      * require more tuning to be done.
-     * 
+     *
      * Passing in null will disable the filter.
-     * 
+     *
      * @param filter filter to be applied to error measurements
-     * @return reference to the controller (so you can chain the commands together)
+     * @return reference to the controller (so you can chain the commands
+     *         together)
      */
     public final Controller setErrorFilter(IStreamFilter filter) {
         mErrorFilter = sanitize(filter);
@@ -86,15 +87,17 @@ public abstract class Controller {
     }
 
     /**
-     * Lets you specify a filter that will be applied to the velocity measurements.
-     * 
+     * Lets you specify a filter that will be applied to the velocity
+     * measurements.
+     *
      * This can be used to smooth out the otherwise noisy velocity values.
-     * 
-     * This can negatively affect things like the D in PID if set too high and it is
-     * recommended that you just filter the error instead.
-     * 
+     *
+     * This can negatively affect things like the D in PID if set too high and
+     * it is recommended that you just filter the error instead.
+     *
      * @param filter filter to be applied to velocity measurements
-     * @return reference to the controller (so you can chain the commands together)
+     * @return reference to the controller (so you can chain the commands
+     *         together)
      */
     public final Controller setVelocityFilter(IStreamFilter filter) {
         mVelocityFilter = sanitize(filter);
@@ -102,22 +105,23 @@ public abstract class Controller {
     }
 
     /**
-     * Lets you specify a filter that will be applied to all of the outputs of the
-     * controller.
-     * 
-     * If the robot has a tendency to jerk, or motions of the robot are too violent,
-     * a filter like the LowPassFilter can reduce jerk while still letting the robot
-     * get to max speed. This will slightly degrade the performance of the
-     * controller, but it may be necessary sometimes in order to get consistent
-     * results.
-     * 
+     * Lets you specify a filter that will be applied to all of the outputs of
+     * the controller.
+     *
+     * If the robot has a tendency to jerk, or motions of the robot are too
+     * violent, a filter like the LowPassFilter can reduce jerk while still
+     * letting the robot get to max speed. This will slightly degrade the
+     * performance of the controller, but it may be necessary sometimes in order
+     * to get consistent results.
+     *
      * This will change the way the controller interacts with the robot and may
      * require more tuning to be done.
-     * 
+     *
      * Passing in null will disable the filter.
-     * 
+     *
      * @param filter filter to be applied to the outputs of the controller
-     * @return reference to the controller (so you can chain the commands together)
+     * @return reference to the controller (so you can chain the commands
+     *         together)
      */
     public final Controller setOutputFilter(IStreamFilter filter) {
         mOutputFilter = sanitize(filter);
@@ -126,7 +130,7 @@ public abstract class Controller {
 
     /**
      * Gets the error from the last time that .update() was called
-     * 
+     *
      * @return error from the last time that .update() was called
      */
     public final double getError() {
@@ -134,9 +138,9 @@ public abstract class Controller {
     }
 
     /**
-     * Gets the velocity, which is represented as the change in error since the last
-     * time that .update() was called
-     * 
+     * Gets the velocity, which is represented as the change in error since the
+     * last time that .update() was called
+     *
      * @return velocity from the last time that .update() was called
      */
     public final double getRawVelocity() {
@@ -144,9 +148,9 @@ public abstract class Controller {
     }
 
     /**
-     * Gets the velocity from the last time that .update() was called adjusted to
-     * velocity per second
-     * 
+     * Gets the velocity from the last time that .update() was called adjusted
+     * to velocity per second
+     *
      * @return velocity from the last time that .update() was called
      */
     public final double getVelocity() {
@@ -155,7 +159,7 @@ public abstract class Controller {
 
     /**
      * Gets the motor output from the last time that .update() was called
-     * 
+     *
      * @return the motor output from the last time that .update() was called
      */
     public final double getOutput() {
@@ -163,13 +167,14 @@ public abstract class Controller {
     }
 
     /**
-     * Gets the rate of the controller during the last .update() command. This will
-     * only return the interval between the last .update() command and the one
-     * before it. Thus, the rate may be slightly inconsistent if the update command
-     * is not called regularly.
-     * 
-     * This function may be overridden if a special controller needs a custom rate.
-     * 
+     * Gets the rate of the controller during the last .update() command. This
+     * will only return the interval between the last .update() command and the
+     * one before it. Thus, the rate may be slightly inconsistent if the update
+     * command is not called regularly.
+     *
+     * This function may be overridden if a special controller needs a custom
+     * rate.
+     *
      * @return the rate of the controller during the last .update() command
      */
     public double getRate() {
@@ -178,32 +183,33 @@ public abstract class Controller {
 
     /**
      * Get whether or not the Controller has arrived at the target.
-     * 
+     *
      * @param maxError the maximum amount of error allowed
      * @return if the controller has arrived at the target
      */
     public boolean isDone(double maxError) {
-        return (Math.abs(getError()) < Math.abs(maxError));
+        return(Math.abs(getError()) < Math.abs(maxError));
     }
 
     /**
      * Get whether or not the Controller has arrived at the target.
-     * 
+     *
      * @param maxError    the maximum amount of error allowed
      * @param maxVelocity the maximum amount of change in error over a second
      *                    allowed
      * @return if the controller has arrived at the target
      */
     public boolean isDone(double maxError, double maxVelocity) {
-        return ((Math.abs(getError()) < Math.abs(maxError)) && (Math.abs(getVelocity()) < Math.abs(maxVelocity)));
+        return((Math.abs(getError()) < Math.abs(maxError))
+                && (Math.abs(getVelocity()) < Math.abs(maxVelocity)));
     }
 
     /**
      * Update the controller with the measurement that was just made and the set
      * point you would like it to approach
-     * 
+     *
      * This function just subtracts the two at this moment.
-     * 
+     *
      * @param measurement measurement of device just made
      * @param setpoint    desired result
      * @return controller output
@@ -213,9 +219,9 @@ public abstract class Controller {
     }
 
     /**
-     * Update the controller with the error from the destination that you want to
-     * reach
-     * 
+     * Update the controller with the error from the destination that you want
+     * to reach
+     *
      * @param error the amount of error from the destination
      * @return controller output
      */
@@ -234,12 +240,12 @@ public abstract class Controller {
         mError = error;
 
         // Return and Update the calculated output
-        return (mOutput = mOutputFilter.get(calculate(mError)));
+        return(mOutput = mOutputFilter.get(calculate(mError)));
     }
 
     /**
      * Update the controller with the error just measured
-     * 
+     *
      * @param error error that was just measured
      * @return controller output.
      */

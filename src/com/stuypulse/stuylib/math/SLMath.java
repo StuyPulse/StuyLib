@@ -4,7 +4,7 @@ package com.stuypulse.stuylib.math;
  * SLMath (StuyLib Math) is a class containing many algorithms that are useful
  * for developing robot code. Algorithms include limit, deadband, raising to
  * powers while keeping the sign, and some other new algorithms we came up with.
- * 
+ *
  * @author Sam (sam.belliveau@gmail.com)
  */
 
@@ -16,23 +16,23 @@ public final class SLMath {
 
     /**
      * Limit input from max to min
-     * 
+     *
      * @param x   input
      * @param min min value for x
      * @param max max value for x
      * @return limited input
      */
     public static double limit(double x, double min, double max) {
-        if (x > max)
+        if(x > max)
             return max;
-        if (x < min)
+        if(x < min)
             return min;
         return x;
     }
 
     /**
      * Limit input from max to -max
-     * 
+     *
      * @param x   input
      * @param max max and min value
      * @return limited input
@@ -43,7 +43,7 @@ public final class SLMath {
 
     /**
      * Limit input from -1 to 1
-     * 
+     *
      * @param x input
      * @return limited input
      */
@@ -56,9 +56,9 @@ public final class SLMath {
     /**************************/
 
     /**
-     * Dead bands x value with window being the dead band.
-     * all values for this are [-1.0...1.0]
-     * 
+     * Dead bands x value with window being the dead band. all values for this
+     * are [-1.0...1.0]
+     *
      * @param x      value
      * @param window deadband window
      * @return deadbanded value
@@ -66,7 +66,7 @@ public final class SLMath {
     public static double deadband(double x, double window) {
         window = Math.abs(window);
 
-        if (Math.abs(x) < window) {
+        if(Math.abs(x) < window) {
             return 0.0;
         } else {
             return (x - Math.copySign(window, x)) / (1.0 - window);
@@ -78,9 +78,9 @@ public final class SLMath {
     /*****************************************/
 
     /**
-     * [WARNING! THIS WILL KEEP THE SIGN OF THE INPUT NUMBER] Square number and keep
-     * sign
-     * 
+     * [WARNING! THIS WILL KEEP THE SIGN OF THE INPUT NUMBER] Square number and
+     * keep sign
+     *
      * @param x input
      * @return square input
      */
@@ -90,7 +90,7 @@ public final class SLMath {
 
     /**
      * Cube number
-     * 
+     *
      * @param x input
      * @return cubed input
      */
@@ -99,9 +99,9 @@ public final class SLMath {
     }
 
     /**
-     * spow (signless pow), raises a number to a power without affecting the sign of
-     * the number
-     * 
+     * spow (signless pow), raises a number to a power without affecting the
+     * sign of the number
+     *
      * @param x     input
      * @param power power to raise x to
      * @return input ^ power
@@ -116,7 +116,7 @@ public final class SLMath {
 
     /**
      * Use the shape of a circle with power p to scale the input
-     * 
+     *
      * @param x input
      * @param p power (p greater than 1)
      * @return circular return
@@ -136,7 +136,7 @@ public final class SLMath {
 
     /**
      * Use the shape of a circle to scale the input
-     * 
+     *
      * @param x input
      * @return circular return
      */
@@ -149,10 +149,10 @@ public final class SLMath {
     /*****************/
 
     /**
-     * fpow (fast pow), is a pow function that takes in an integer for the exponent.
-     * This allows it to be much faster on repeated calls due to the fact that it
-     * does not need to deal with fractional exponents.
-     * 
+     * fpow (fast pow), is a pow function that takes in an integer for the
+     * exponent. This allows it to be much faster on repeated calls due to the
+     * fact that it does not need to deal with fractional exponents.
+     *
      * @param base base of the power
      * @param exp  integer exponent of power
      * @return result of calculation
@@ -162,13 +162,13 @@ public final class SLMath {
         double out = 1.0;
 
         // If the exponent is negative, divide instead of multiply
-        if (exp < 0) {
+        if(exp < 0) {
             // Flip exponent to make calculations easier
             exp = -exp;
 
             // Fast integer power algorithm
-            while (exp > 0) {
-                if ((exp & 1) == 1) {
+            while(exp > 0) {
+                if((exp & 1) == 1) {
                     out /= base;
                 }
                 base *= base;
@@ -176,8 +176,8 @@ public final class SLMath {
             }
         } else {
             // Fast integer power algorithm
-            while (exp > 0) {
-                if ((exp & 1) == 1) {
+            while(exp > 0) {
+                if((exp & 1) == 1) {
                     out *= base;
                 }
                 base *= base;
@@ -191,7 +191,7 @@ public final class SLMath {
 
     /**
      * Round a double by a certain amount of sigfigs in base 10
-     * 
+     *
      * @param n       number to round
      * @param sigfigs amount of sigfigs to round it to
      * @return rounded number

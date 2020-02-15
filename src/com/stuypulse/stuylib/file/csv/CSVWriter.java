@@ -8,9 +8,9 @@ import java.io.Flushable;
 /**
  * CSVWriter class that allows you to write to a file in the format of a CSV. It
  * automatically adds commas and calls toString on objects.
- * 
+ *
  * Every function will throw an IOException if it arises.
- * 
+ *
  * @author Sam (sam.belliveau@gmail.com)
  */
 
@@ -24,7 +24,7 @@ public class CSVWriter implements Flushable, AutoCloseable {
 
     /**
      * Open CSV File with file name file and csv type
-     * 
+     *
      * @param file file name
      * @param type type of csv file
      * @throws IOException error with opening file
@@ -36,7 +36,7 @@ public class CSVWriter implements Flushable, AutoCloseable {
 
     /**
      * Open CSV File with file name file
-     * 
+     *
      * @param file file name
      * @throws IOException error with opening file
      */
@@ -60,7 +60,7 @@ public class CSVWriter implements Flushable, AutoCloseable {
 
     /**
      * Set CSV type
-     * 
+     *
      * @param type CSV Type
      */
     public void setCSVType(CSVType type) {
@@ -68,12 +68,12 @@ public class CSVWriter implements Flushable, AutoCloseable {
 
     /**
      * Write String to CSV file
-     * 
+     *
      * @param data string
      * @throws IOException error writing to file
      */
     public void write(String data) throws IOException {
-        if (data.contains(mCSVType.getDelimiter())) {
+        if(data.contains(mCSVType.getDelimiter())) {
             throw new IOException("Data being written to CSV contains comma!");
         } else {
             mCSVFile.append(data);
@@ -83,7 +83,7 @@ public class CSVWriter implements Flushable, AutoCloseable {
 
     /**
      * Write object to CSV file
-     * 
+     *
      * @param data object that implements toString
      * @throws IOException error writing to file
      */
@@ -93,7 +93,7 @@ public class CSVWriter implements Flushable, AutoCloseable {
 
     /**
      * Write double to CSV file
-     * 
+     *
      * @param data double that you want to write
      * @throws IOException error writing to file
      */
@@ -103,7 +103,7 @@ public class CSVWriter implements Flushable, AutoCloseable {
 
     /**
      * Write long to CSV file
-     * 
+     *
      * @param data long that you want to write
      * @throws IOException error writing to file
      */

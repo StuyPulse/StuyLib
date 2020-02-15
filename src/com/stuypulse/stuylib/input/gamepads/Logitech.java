@@ -4,7 +4,7 @@ import com.stuypulse.stuylib.input.WPIGamepad;
 
 /**
  * Implementation of Logitech Controller and its 2 Modes for the Gamepad Class
- * 
+ *
  * @author Sam (sam.belliveau@gmail.com)
  */
 
@@ -14,16 +14,27 @@ public class Logitech extends WPIGamepad {
     protected Logitech(int port) {
         super(port);
     }
-    
+
     // D-Pad //
-    public boolean getRawDPadUp()       { return getJoystick().getPOV() == 0; }
-    public boolean getRawDPadDown()     { return getJoystick().getPOV() == 180; }
-    public boolean getRawDPadLeft()     { return getJoystick().getPOV() == 270; }
-    public boolean getRawDPadRight()    { return getJoystick().getPOV() == 90; }
+    public boolean getRawDPadUp() {
+        return getJoystick().getPOV() == 0;
+    }
+
+    public boolean getRawDPadDown() {
+        return getJoystick().getPOV() == 180;
+    }
+
+    public boolean getRawDPadLeft() {
+        return getJoystick().getPOV() == 270;
+    }
+
+    public boolean getRawDPadRight() {
+        return getJoystick().getPOV() == 90;
+    }
 
     /**
-     * There is a switch on the back of the controller this is for when the switch
-     * is in the D position
+     * There is a switch on the back of the controller this is for when the
+     * switch is in the D position
      */
     public static class DMode extends Logitech {
 
@@ -33,40 +44,84 @@ public class Logitech extends WPIGamepad {
         }
 
         // Left Stick //
-        public double getLeftX()    { return getRawAxis(0); }
-        public double getLeftY()    { return -getRawAxis(1); }
+        public double getLeftX() {
+            return getRawAxis(0);
+        }
+
+        public double getLeftY() {
+            return -getRawAxis(1);
+        }
 
         // Right Stick //
-        public double getRightX()   { return getRawAxis(2); }
-        public double getRightY()   { return -getRawAxis(3); }
+        public double getRightX() {
+            return getRawAxis(2);
+        }
+
+        public double getRightY() {
+            return -getRawAxis(3);
+        }
 
         // Bumpers //
-        public boolean getRawLeftBumper()   { return getRawButton(5); }
-        public boolean getRawRightBumper()  { return getRawButton(6); }
+        public boolean getRawLeftBumper() {
+            return getRawButton(5);
+        }
+
+        public boolean getRawRightBumper() {
+            return getRawButton(6);
+        }
 
         // Triggers //
-        public double getRawLeftTriggerAxis()   { return getRawButton(7) ? 0.0 : 1.0; }
-        public double getRawRightTriggerAxis()  { return getRawButton(8) ? 0.0 : 1.0; }
+        public double getRawLeftTriggerAxis() {
+            return getRawButton(7) ? 0.0 : 1.0;
+        }
+
+        public double getRawRightTriggerAxis() {
+            return getRawButton(8) ? 0.0 : 1.0;
+        }
 
         // Face Buttons //
-        public boolean getRawLeftButton()   { return getRawButton(1); }
-        public boolean getRawRightButton()  { return getRawButton(3); }
-        public boolean getRawTopButton()    { return getRawButton(4); }
-        public boolean getRawBottomButton() { return getRawButton(2); }
+        public boolean getRawLeftButton() {
+            return getRawButton(1);
+        }
+
+        public boolean getRawRightButton() {
+            return getRawButton(3);
+        }
+
+        public boolean getRawTopButton() {
+            return getRawButton(4);
+        }
+
+        public boolean getRawBottomButton() {
+            return getRawButton(2);
+        }
 
         // Start / Select / Option //
-        public boolean getRawSelectButton() { return getRawButton(9); }
-        public boolean getRawStartButton()  { return getRawButton(10); }
-        public boolean getRawOptionButton() { return getRawButton(10); }
+        public boolean getRawSelectButton() {
+            return getRawButton(9);
+        }
 
-        // Analog Stick Buttons // 
-        public boolean getRawLeftAnalogButton()     { return getRawButton(11); }
-        public boolean getRawRightAnalogButton()    { return getRawButton(12); }
+        public boolean getRawStartButton() {
+            return getRawButton(10);
+        }
+
+        public boolean getRawOptionButton() {
+            return getRawButton(10);
+        }
+
+        // Analog Stick Buttons //
+        public boolean getRawLeftAnalogButton() {
+            return getRawButton(11);
+        }
+
+        public boolean getRawRightAnalogButton() {
+            return getRawButton(12);
+        }
     }
 
     /**
-     * There is a switch on the back of the controller this is for when the switch
-     * is in the X position
+     * There is a switch on the back of the controller this is for when the
+     * switch is in the X position
      */
     public static class XMode extends Logitech {
 
@@ -76,34 +131,78 @@ public class Logitech extends WPIGamepad {
         }
 
         // Left Stick //
-        public double getLeftX()    { return getRawAxis(0); }
-        public double getLeftY()    { return -getRawAxis(1); }
+        public double getLeftX() {
+            return getRawAxis(0);
+        }
+
+        public double getLeftY() {
+            return -getRawAxis(1);
+        }
 
         // Right Stick //
-        public double getRightX()   { return getRawAxis(4); }
-        public double getRightY()   { return -getRawAxis(5); }
+        public double getRightX() {
+            return getRawAxis(4);
+        }
+
+        public double getRightY() {
+            return -getRawAxis(5);
+        }
 
         // Bumpers //
-        public boolean getRawLeftBumper()   { return getRawButton(5); }
-        public boolean getRawRightBumper()  { return getRawButton(6); }
+        public boolean getRawLeftBumper() {
+            return getRawButton(5);
+        }
+
+        public boolean getRawRightBumper() {
+            return getRawButton(6);
+        }
 
         // Triggers //
-        public double getRawLeftTriggerAxis()   { return getRawAxis(2); }
-        public double getRawRightTriggerAxis()  { return getRawAxis(3); }
+        public double getRawLeftTriggerAxis() {
+            return getRawAxis(2);
+        }
+
+        public double getRawRightTriggerAxis() {
+            return getRawAxis(3);
+        }
 
         // Face Buttons //
-        public boolean getRawLeftButton()   { return getRawButton(3); }
-        public boolean getRawRightButton()  { return getRawButton(2); }
-        public boolean getRawTopButton()    { return getRawButton(4); }
-        public boolean getRawBottomButton() { return getRawButton(1); }
+        public boolean getRawLeftButton() {
+            return getRawButton(3);
+        }
+
+        public boolean getRawRightButton() {
+            return getRawButton(2);
+        }
+
+        public boolean getRawTopButton() {
+            return getRawButton(4);
+        }
+
+        public boolean getRawBottomButton() {
+            return getRawButton(1);
+        }
 
         // Start / Select / Option //
-        public boolean getRawSelectButton() { return getRawButton(7); }
-        public boolean getRawStartButton()  { return getRawButton(8); }
-        public boolean getRawOptionButton() { return getRawButton(8); }
+        public boolean getRawSelectButton() {
+            return getRawButton(7);
+        }
 
-        // Analog Stick Buttons // 
-        public boolean getRawLeftAnalogButton()     { return getRawButton(9); }
-        public boolean getRawRightAnalogButton()    { return getRawButton(10); }
+        public boolean getRawStartButton() {
+            return getRawButton(8);
+        }
+
+        public boolean getRawOptionButton() {
+            return getRawButton(8);
+        }
+
+        // Analog Stick Buttons //
+        public boolean getRawLeftAnalogButton() {
+            return getRawButton(9);
+        }
+
+        public boolean getRawRightAnalogButton() {
+            return getRawButton(10);
+        }
     }
 }

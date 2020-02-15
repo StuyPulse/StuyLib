@@ -2,7 +2,7 @@ package com.stuypulse.stuylib.file.csv;
 
 /**
  * Contains all the information needed for each of the csv files to work.
- * 
+ *
  * Mainly contains the delimiter for each class
  */
 
