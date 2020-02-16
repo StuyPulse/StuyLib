@@ -9,6 +9,8 @@ import com.stuypulse.stuylib.exception.ConstructionError;
  * Made for fast moving and smooth stock prices. Idk if it is good for robots or
  * not but its here.
  * 
+ * It creates a perfect S-curve, it is really good at reducing jerk.
+ * 
  * @author Sam (sam.belliveau@gmail.com)
  */
 

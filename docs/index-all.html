@@ -452,6 +452,8 @@ $('.navPadding').css('padding-top', $('.fixedNav').css("height"));
 <dd>
 <div class="block">Thread safe read to the double mResult</div>
 </dd>
+<dt><span class="memberNameLink"><a href="com/stuypulse/stuylib/streams/filters/HullMovingAverage.html#get(double)">get(double)</a></span> - Method in class com.stuypulse.stuylib.streams.filters.<a href="com/stuypulse/stuylib/streams/filters/HullMovingAverage.html" title="class in com.stuypulse.stuylib.streams.filters">HullMovingAverage</a></dt>
+<dd>&nbsp;</dd>
 <dt><span class="memberNameLink"><a href="com/stuypulse/stuylib/streams/filters/IStreamFilter.html#get(double)">get(double)</a></span> - Method in interface com.stuypulse.stuylib.streams.filters.<a href="com/stuypulse/stuylib/streams/filters/IStreamFilter.html" title="interface in com.stuypulse.stuylib.streams.filters">IStreamFilter</a></dt>
 <dd>
 <div class="block">Get next value in Filter based on the next value given</div>
@@ -467,6 +469,8 @@ $('.navPadding').css('padding-top', $('.fixedNav').css("height"));
 <dt><span class="memberNameLink"><a href="com/stuypulse/stuylib/streams/filters/OrderedLowPassFilter.html#get(double)">get(double)</a></span> - Method in class com.stuypulse.stuylib.streams.filters.<a href="com/stuypulse/stuylib/streams/filters/OrderedLowPassFilter.html" title="class in com.stuypulse.stuylib.streams.filters">OrderedLowPassFilter</a></dt>
 <dd>&nbsp;</dd>
 <dt><span class="memberNameLink"><a href="com/stuypulse/stuylib/streams/filters/OrderedRollingAverage.html#get(double)">get(double)</a></span> - Method in class com.stuypulse.stuylib.streams.filters.<a href="com/stuypulse/stuylib/streams/filters/OrderedRollingAverage.html" title="class in com.stuypulse.stuylib.streams.filters">OrderedRollingAverage</a></dt>
+<dd>&nbsp;</dd>
+<dt><span class="memberNameLink"><a href="com/stuypulse/stuylib/streams/filters/WeightedMovingAverage.html#get(double)">get(double)</a></span> - Method in class com.stuypulse.stuylib.streams.filters.<a href="com/stuypulse/stuylib/streams/filters/WeightedMovingAverage.html" title="class in com.stuypulse.stuylib.streams.filters">WeightedMovingAverage</a></dt>
 <dd>&nbsp;</dd>
 <dt><span class="memberNameLink"><a href="com/stuypulse/stuylib/file/csv/CSVReader.html#get(int)">get(int)</a></span> - Method in class com.stuypulse.stuylib.file.csv.<a href="com/stuypulse/stuylib/file/csv/CSVReader.html" title="class in com.stuypulse.stuylib.file.csv">CSVReader</a></dt>
 <dd>
@@ -1020,6 +1024,14 @@ $('.navPadding').css('padding-top', $('.fixedNav').css("height"));
 <dd>
 <div class="block">Get Whether the limelight has any valid targets</div>
 </dd>
+<dt><a href="com/stuypulse/stuylib/streams/filters/HullMovingAverage.html" title="class in com.stuypulse.stuylib.streams.filters"><span class="typeNameLink">HullMovingAverage</span></a> - Class in <a href="com/stuypulse/stuylib/streams/filters/package-summary.html">com.stuypulse.stuylib.streams.filters</a></dt>
+<dd>
+<div class="block">Implementation of Hull Moving Average.</div>
+</dd>
+<dt><span class="memberNameLink"><a href="com/stuypulse/stuylib/streams/filters/HullMovingAverage.html#%3Cinit%3E(int)">HullMovingAverage(int)</a></span> - Constructor for class com.stuypulse.stuylib.streams.filters.<a href="com/stuypulse/stuylib/streams/filters/HullMovingAverage.html" title="class in com.stuypulse.stuylib.streams.filters">HullMovingAverage</a></dt>
+<dd>
+<div class="block">Make Simple Moving Average with Max Array Size</div>
+</dd>
 </dl>
 <a id="I:I">
 <!--   -->
@@ -1049,6 +1061,14 @@ $('.navPadding').css('padding-top', $('.fixedNav').css("height"));
 <dt><span class="memberNameLink"><a href="com/stuypulse/stuylib/network/SLNetworkTable.html#isConnected()">isConnected()</a></span> - Method in class com.stuypulse.stuylib.network.<a href="com/stuypulse/stuylib/network/SLNetworkTable.html" title="class in com.stuypulse.stuylib.network">SLNetworkTable</a></dt>
 <dd>
 <div class="block">Checks if network table is connected</div>
+</dd>
+<dt><span class="memberNameLink"><a href="com/stuypulse/stuylib/control/Controller.html#isDone(double)">isDone(double)</a></span> - Method in class com.stuypulse.stuylib.control.<a href="com/stuypulse/stuylib/control/Controller.html" title="class in com.stuypulse.stuylib.control">Controller</a></dt>
+<dd>
+<div class="block">Get whether or not the Controller has arrived at the target.</div>
+</dd>
+<dt><span class="memberNameLink"><a href="com/stuypulse/stuylib/control/Controller.html#isDone(double,double)">isDone(double, double)</a></span> - Method in class com.stuypulse.stuylib.control.<a href="com/stuypulse/stuylib/control/Controller.html" title="class in com.stuypulse.stuylib.control">Controller</a></dt>
+<dd>
+<div class="block">Get whether or not the Controller has arrived at the target.</div>
 </dd>
 <dt><span class="memberNameLink"><a href="com/stuypulse/stuylib/file/csv/CSVElement.html#isDouble()">isDouble()</a></span> - Method in class com.stuypulse.stuylib.file.csv.<a href="com/stuypulse/stuylib/file/csv/CSVElement.html" title="class in com.stuypulse.stuylib.file.csv">CSVElement</a></dt>
 <dd>
@@ -1611,6 +1631,10 @@ $('.navPadding').css('padding-top', $('.fixedNav').css("height"));
 <dd>
 <div class="block">Set internal value</div>
 </dd>
+<dt><span class="memberNameLink"><a href="com/stuypulse/stuylib/control/Controller.html#setVelocityFilter(com.stuypulse.stuylib.streams.filters.IStreamFilter)">setVelocityFilter(IStreamFilter)</a></span> - Method in class com.stuypulse.stuylib.control.<a href="com/stuypulse/stuylib/control/Controller.html" title="class in com.stuypulse.stuylib.control">Controller</a></dt>
+<dd>
+<div class="block">Lets you specify a filter that will be applied to the velocity measurements.</div>
+</dd>
 <dt><span class="memberNameLink"><a href="com/stuypulse/stuylib/file/csv/CSVReader.html#size()">size()</a></span> - Method in class com.stuypulse.stuylib.file.csv.<a href="com/stuypulse/stuylib/file/csv/CSVReader.html" title="class in com.stuypulse.stuylib.file.csv">CSVReader</a></dt>
 <dd>
 <div class="block">Get amount of elements in csv file</div>
@@ -1845,6 +1869,14 @@ the order they are declared.</div>
 </a>
 <h2 class="title">W</h2>
 <dl>
+<dt><a href="com/stuypulse/stuylib/streams/filters/WeightedMovingAverage.html" title="class in com.stuypulse.stuylib.streams.filters"><span class="typeNameLink">WeightedMovingAverage</span></a> - Class in <a href="com/stuypulse/stuylib/streams/filters/package-summary.html">com.stuypulse.stuylib.streams.filters</a></dt>
+<dd>
+<div class="block">Implementation of Weighted Moving Average.</div>
+</dd>
+<dt><span class="memberNameLink"><a href="com/stuypulse/stuylib/streams/filters/WeightedMovingAverage.html#%3Cinit%3E(int)">WeightedMovingAverage(int)</a></span> - Constructor for class com.stuypulse.stuylib.streams.filters.<a href="com/stuypulse/stuylib/streams/filters/WeightedMovingAverage.html" title="class in com.stuypulse.stuylib.streams.filters">WeightedMovingAverage</a></dt>
+<dd>
+<div class="block">Make Simple Moving Average with Max Array Size</div>
+</dd>
 <dt><a href="com/stuypulse/stuylib/input/WPIGamepad.html" title="class in com.stuypulse.stuylib.input"><span class="typeNameLink">WPIGamepad</span></a> - Class in <a href="com/stuypulse/stuylib/input/package-summary.html">com.stuypulse.stuylib.input</a></dt>
 <dd>
 <div class="block">WPI Gamepad extends Gamepad and adds functions that makes interacting with
