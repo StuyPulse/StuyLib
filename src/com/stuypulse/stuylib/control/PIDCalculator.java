@@ -24,37 +24,7 @@ public class PIDCalculator extends Controller {
 
     // The minimum period length that will be accepted as a valid period
     private static final double kMinPeriodTime = 0.2;
-
-    /**
-     * Check https://blog.opticontrols.com/archives/124 for the diff between the
-     * algorithm types Different tuning methods were made for different
-     * algorithm types Also note that some of the comments about the individual
-     * enums might be inaccurate because they were written by a heretic that
-     * thinks Baby Yoda is ugly
-     */
-    public enum PIDAlgorithmType {
-        /**
-         * This basically means that the P, I, and D values are evaluated in
-         * parallel Ziegler Nichols method was developed for this
-         */
-        INTERACTIVE_ALGORITHM,
-        /**
-         * This means that k iadded separately, but derivative and integral are
-         * added in parallel
-         */
-        NONINTERACTIVE_ALGORITHM,
-        /**
-         * This method is stupid. It makes it so that instead of just changing
-         * the P value, you have to change all of them simultaneously to get the
-         * same effect. It radiates small pp energy
-         */
-        PARLLEL_ALGORITHM;
-    }
-
-    public enum TuningType {
-        COHEN_COON, ZIEGLER_NICHOLS, MINIMUM_IAE;
-    }
-
+    
     // The filter easuring the period and amplitude
     private static IStreamFilter getMeasurementFilter() {
         // This is a mix between accuracy and speed of updating.
@@ -82,6 +52,10 @@ public class PIDCalculator extends Controller {
 
     // Whether or not the system will measure the oscillation
     private boolean mRunning;
+    
+    private PIDTunerType mTuner;
+    
+    private double mDeadTime;
 
     /**
      * @param speed motor output for bang bang controller
@@ -97,6 +71,8 @@ public class PIDCalculator extends Controller {
 
         mPeriodTimer = new StopWatch();
         mLocalMax = 0;
+        
+        mDeadTime = -1;
 
         mRunning = false;
     }
@@ -117,6 +93,7 @@ public class PIDCalculator extends Controller {
      * @param error the error that the controller will use
      * @return the calculated result from the controller
      */
+    @Override
     protected double calculate(double error) {
         // If there is a gap in updates, then disable until next period
         if(getRate() > kMaxTimeBeforeReset) {
@@ -148,13 +125,6 @@ public class PIDCalculator extends Controller {
         return Math.signum(error) * mControlSpeed;
     }
 
-    protected double lambdaCalculate(double error) {
-        if(getRate() > kMaxTimeBeforeReset) {
-            mRunning = false;
-        }
-        return -1;
-    }
-
     /**
      * Adjusted Amplitude of Oscillations
      *
@@ -172,11 +142,33 @@ public class PIDCalculator extends Controller {
     public double getT() {
         return mPeriod;
     }
-
+    
     /**
+     * Set the type of PID tuning to calculate
+     * 
+     * @return Uses Builder notation, so returns instance of itself
+    */
+    public PIDCalculator setTunerType(PIDTunerType tuner) {
+        this.mTuner = tuner;
+        return this;
+    }
+    
+    /**
+     * Gets the 
+     * @return 
+     */
+    public PIDTunerType getTunerType() {
+        return mTuner;
+    }
+
+    //TODO: Fix Javadoc b/c Winston wrote it, and he's dumb
+    /**
+     * This method is used to return corrected PID values
+     * Use setTunerType() to change the tuner type. Default is Ziegler Nichols
+     * 
      * @param kP p multiplier when calculating values
-     * @param kI p multiplier when calculating values
-     * @param kD p multiplier when calculating values
+     * @param kI i multiplier when calculating values
+     * @param kD d multiplier when calculating values
      * @return calculated PID controller based off of measurements
      */
     public PIDController getPIDController(double kP, double kI, double kD) {
@@ -184,10 +176,12 @@ public class PIDCalculator extends Controller {
         kI = Math.max(kI, 0.0);
         kD = Math.max(kD, 0.0);
 
-        if(mAmplitude > 0) {
+        if( > 0 && mDeadTime < 0)
+            mDeadTime = mPeriodTimer.getTime();
+        if(mAmplitude > 0 && getTunerType() == PIDTunerType.ZIEGLER_NICHOLS) {
             double t = getT();
             double k = getK();
-
+            
             return new PIDController(kP * (k), kI * (k / t), kD * (k * t));
         } else {
             return new PIDController(-1, -1, -1);
@@ -218,7 +212,7 @@ public class PIDCalculator extends Controller {
     /**
      * @return calculated P controller based off of measurements
      */
-    public PIDController getPController() {
+   public PIDController getPController() {
         return getPIDController(0.5, -1, -1);
     }
 

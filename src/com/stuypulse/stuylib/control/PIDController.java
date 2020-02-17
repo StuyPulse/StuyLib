@@ -3,6 +3,7 @@ package com.stuypulse.stuylib.control;
 import com.stuypulse.stuylib.streams.filters.IStreamFilter;
 import com.stuypulse.stuylib.math.SLMath;
 
+//TODO: Add implementation instructions to javadoc
 /**
  * This PID controller is built by extending the Controller class. It has a
  * dynamic rate, so it can detect how much time has passed between each update.
@@ -27,7 +28,6 @@ public class PIDController extends Controller {
     private double mP;
     private double mI;
     private double mD;
-    private TunerType tuner;
 
     // The Integral of the errors and filter for the I Component
     private double mIntegral;
@@ -37,31 +37,26 @@ public class PIDController extends Controller {
      * @param p     The Proportional Multiplier
      * @param i     The Integral Multiplier
      * @param d     The Derivative Multiplier
-     * @param tuner The Type of PID Control See TunerType Enum for more
      */
-    public PIDController(double p, double i, double d, TunerType tuner) {
+    //TODO: Some methods now final b/c used in constructor. Can also keep methods non-final, and simply not use the methods in the constructor
+    public PIDController(double p, double i, double d) {
         setIntegratorFilter(null);
         setPID(p, i, d);
-        this.tuner = tuner;
         reset();
-    }
-
-    public PIDController(double p, double i, double d) {
-        this(p, i, d, TunerType.ZIEGLER_NICHOLS);
     }
 
     /**
      * Creates a blank PIDController that doesn't move
      */
     public PIDController() {
-        this(-1, -1, -1, TunerType.ZIEGLER_NICHOLS);
+        this(-1, -1, -1);
     }
 
     /**
      * Resets the integrator in the PIDController. This automatically gets
      * called if the gap between update() commands is too large
      */
-    public void reset() {
+    public final void reset() {
         mIntegral = 0;
     }
 
@@ -154,7 +149,7 @@ public class PIDController extends Controller {
      * @return reference to PIDController (so you can chain the commands
      *         together)
      */
-    public PIDController setPID(double p, double i, double d) {
+    public final PIDController setPID(double p, double i, double d) {
         return setP(p).setI(i).setD(d);
     }
 
@@ -168,7 +163,7 @@ public class PIDController extends Controller {
      * @return reference to PIDController (so you can chain the commands
      *         together)
      */
-    public PIDController setIntegratorFilter(IStreamFilter filter) {
+    public final PIDController setIntegratorFilter(IStreamFilter filter) {
         // Use default filter if given null
         mIFilter = (filter == null) ? ((x) -> x) : filter;
         return this;
