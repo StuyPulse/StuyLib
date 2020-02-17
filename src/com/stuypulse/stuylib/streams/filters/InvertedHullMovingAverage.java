@@ -6,13 +6,13 @@ import com.stuypulse.stuylib.exception.ConstructionError;
 /**
  * Implementation of Inverted Hull Moving Average.
  * 
- * Hull Moving Average is very jerky, and thus inverting produces an S-Curve
- * like thing.
+ * Hull Moving Average can overshoot, but when the order of the filters is
+ * switched around, it can create an interesting S-Curve.
  * 
  * @author Sam (sam.belliveau@gmail.com)
  */
 
-public class InvHullMovingAverage implements IStreamFilter {
+public class InvertedHullMovingAverage implements IStreamFilter {
 
     private IStreamFilter mFilterA;
     private IStreamFilter mFilterB;
@@ -23,7 +23,7 @@ public class InvHullMovingAverage implements IStreamFilter {
      * 
      * @param size size of moving average
      */
-    public InvHullMovingAverage(int size) throws ConstructionError {
+    public InvertedHullMovingAverage(int size) throws ConstructionError {
         if (size <= 0) {
             throw new ConstructionError("MovingAverage(int size)", "size must be greater than 0!");
         }
