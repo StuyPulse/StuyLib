@@ -17,8 +17,8 @@ import java.util.TimerTask;
 
 public class PollingIStream implements IStream {
 
-    private Timer mTimer;
-    private volatile double mResult;
+    private Thread mPoller;
+    private double mResult;
 
     /**
      * Creates a PollingIStream from an IStream and a time value
@@ -31,14 +31,32 @@ public class PollingIStream implements IStream {
             throw new ConstructionError("PollingIStream(IStream stream, long hz)", "hz must be greater than 0!");
         }
 
-        mTimer = new Timer();
-        mTimer.scheduleAtFixedRate(
-            new TimerTask() {
-                public void run() {
-                    mResult = stream.get();
+        long wait = (long)(1000.0 / hz);
+
+        mPoller = new Thread() {
+            public void run() {
+                while(!isInterrupted()) {
+                    long start = System.currentTimeMillis();
+                    set(stream.get());
+                    long end = System.currentTimeMillis();
+
+                    try {
+                        Thread.sleep(Math.max(0, wait - (end - start)));
+                    } catch (InterruptedException e) {
+                        break;
+                    }
                 }
-            }, 0, (long)(1000.0 / hz)
-        );
+            }
+        };
+    }
+
+    /**
+     * Thread safe read to the double mResult
+     * 
+     * @return mResult
+     */
+    private synchronized void set(double value) {
+        mResult = value;
     }
 
     /**
@@ -47,6 +65,10 @@ public class PollingIStream implements IStream {
      * @return mResult
      */
     public synchronized double get() {
+        if(!mPoller.isAlive()) {
+            mPoller.start();
+        }
+
         return mResult;
     }
 }
