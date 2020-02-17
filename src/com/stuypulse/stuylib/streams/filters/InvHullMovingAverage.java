@@ -4,17 +4,15 @@ import com.stuypulse.stuylib.streams.filters.IStreamFilter;
 import com.stuypulse.stuylib.exception.ConstructionError;
 
 /**
- * Implementation of Hull Moving Average.
+ * Implementation of Inverted Hull Moving Average.
  * 
- * Made for fast moving and smooth stock prices. Idk if it is good for robots or
- * not but its here.
- * 
- * It creates a perfect S-curve, it is really good at reducing jerk.
+ * Hull Moving Average is very jerky, and thus inverting produces an S-Curve
+ * like thing.
  * 
  * @author Sam (sam.belliveau@gmail.com)
  */
 
-public class HullMovingAverage implements IStreamFilter {
+public class InvHullMovingAverage implements IStreamFilter {
 
     private IStreamFilter mFilterA;
     private IStreamFilter mFilterB;
@@ -25,7 +23,7 @@ public class HullMovingAverage implements IStreamFilter {
      * 
      * @param size size of moving average
      */
-    public HullMovingAverage(int size) throws ConstructionError {
+    public InvHullMovingAverage(int size) throws ConstructionError {
         if (size <= 0) {
             throw new ConstructionError("MovingAverage(int size)", "size must be greater than 0!");
         }
