@@ -1,297 +1,329 @@
 package com.stuypulse.stuylib.chart;
 
+import java.awt.CardLayout;
+import java.awt.Container;
+import java.awt.Dimension;
 import java.awt.event.KeyAdapter;
 import java.awt.event.KeyEvent;
 import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
+import java.util.Arrays;
 
 import javax.swing.JFrame;
-
-import com.stuypulse.stuylib.exception.ConstructionError;
+import javax.swing.JPanel;
 
 import org.knowm.xchart.XChartPanel;
 import org.knowm.xchart.XYChart;
 
-import java.lang.Math;
-
 public class QuickWrapper extends KeyAdapter {
 
     /**
-     * TODO:
-     * Test through using 
-     * Make NChart.java which can handle mulitple lines (multiple series)
+     * TODO: Test through using Make NChart.java which can handle mulitple lines
+     * (multiple series)
      * 
-     * Think about way to make a constant stream, but it  def seems more practical to update a List<Double> that is constantly passed in
-     * ^^^ consider how threading certain information would effect this
+     * should there be remove method how should mulitiple of the same chart be
+     * handled, does it matter??? is everything done practically
+     * 
+     * optomize updates (and some other functions) for XYChart (most are done for
+     * Chart, and not XYChart all specific repaint methods
+     * decide which functions should return a reference to the class (QuickWrapper -> return this;)
      */
 
-    // consider how putting the same thing into varargs will work with .indexOf() and .remove() functions
-    // should be fine because if you update it, it will refer to the same object
+    private List<Chart> charts;
+    private List<XChartPanel<XYChart>> chartPanels; // store chart panels for convenience in repainting
+    private JFrame frame;
 
-    // i have concerns about duplicates and multiple JFrames
-    // just needs use testing for now
+    private final CardLayout cl;
+    private final Container frameContent;
 
-    public static final int FRAME_OFFSET = 0;
-    public static final int MAX_CHARTS = 10;
+    // CONSTRUCTORS
 
-    private static XYChart[] chartToXy(Chart... newCharts) {
-        XYChart[] g2r = new XYChart[newCharts.length];
-        for (int i = 0; i < newCharts.length;i++) {
-            g2r[i] = newCharts[i].get();
-        }
-        return g2r;
-    }
-
-    private Map<Integer,Integer> bindings; // index of jframe, key event
-    private List<XYChart> charts;
-    private List<JFrame> frames;
-
+    /**
+     * Initialize lists, frame, and cardlayout.
+     * Doesn't require any charts.
+     */
     public QuickWrapper() {
-        charts = new ArrayList<XYChart>();
-        frames = new ArrayList<JFrame>();
-        bindings = new HashMap<Integer,Integer>();
+        charts = new ArrayList<Chart>();
+        frame = new JFrame("QuickWrapper Frame");
+        cl = new CardLayout();
+        chartPanels = new ArrayList<XChartPanel<XYChart>>();
+        frameContent = frame.getContentPane();
+        frameContent.setLayout(cl);
+
+        frameContent.setPreferredSize(new Dimension(800, 800));
+
+        frame.addKeyListener(this);
+        frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+
+        frame.setResizable(false);
+        frame.pack();
+        frame.setVisible(true);
+
     }
 
-    public QuickWrapper(XYChart... newCharts) throws ConstructionError {
+    /**
+     * Creates a quick wrapper with some charts.
+     * 
+     * @param newCharts An array of charts
+     */
+    public QuickWrapper(Chart... newCharts) {
         this();
-        if (newCharts.length < 1 || newCharts.length > MAX_CHARTS) {
-            throw new ConstructionError("QuickWrapper(XYChart... charts)", "Must contain between 1 and " + MAX_CHARTS + " charts.");
-        }
         add(newCharts);
-
         show(0);
     }
 
-    public QuickWrapper(Chart... newCharts) throws ConstructionError {
-        // separate constructor so add(Chart...) is called, which will set bindings
-        this();
-        if (newCharts.length < 1 || newCharts.length > MAX_CHARTS) {
-            throw new ConstructionError("QuickWrapper(XYChart... charts)", "Must contain between 1 and " + MAX_CHARTS + " charts.");
-        }
-        add(newCharts);
+    // GETTERS
 
-        show(0);
-    }
-
-    private JFrame getFrame(String title) {
-        for (int i = 0;i < frames.size();i++) {
-            if (frames.get(i).getTitle().equals(title)) {
-                return frames.get(i);
+    /**
+     * Returns a panel with the given name. Returns null
+     * if not found
+     * 
+     * @param title Name of the component
+     * @return Return the given JPanel if exists
+     */
+    private JPanel getPanel(String title) {
+        for (int i = 0;i < frameContent.getComponentCount(); i++) {
+            if (frameContent.getComponent(i).getName().equals(title)) {
+                return (JPanel) frameContent.getComponent(i);
             }
         }
         return null;
     }
 
-    private JFrame getFrame(int index) {
-        if (index > frames.size() - 1 || index < 0) return null;
-        return frames.get(index);
+    /**
+     * Returns a panel with the given index. Returns null
+     * if not inbounds.
+     * 
+     * @param index index of the componenet
+     * @return Return the given JPanel in bound
+     */
+    private JPanel getPanel(int index) {
+        if (index > frameContent.getComponents().length - 1 || index < 0)
+            return null;
+        return (JPanel) frameContent.getComponent(index);
     }
 
-    private XYChart getChart(String title) {
-        for (int i = 0;i < charts.size();i++) {
-            if (charts.get(i).getTitle().equals(title)) {
+    /**
+     * Returns a Chart with the given title. Returns null
+     * if not found.
+     * 
+     * @param title title of the chart
+     * @return Return the given Chart if exists
+     */
+    private Chart getChart(String title) {
+        for (int i = 0; i < charts.size(); i++) {
+            if (charts.get(i).get().getTitle().equals(title)) {
                 return charts.get(i);
             }
         }
         return null;
     }
 
-    private XYChart getChart(int index) {
-        if (index > charts.size() - 1 || index < 0) return null;
+    /**
+     * Returns a Chart with the given index. Returns null
+     * if out of bounds.
+     * 
+     * @param index index of the chart
+     * @return Return the given Chart if in bound
+     */
+    private Chart getChart(int index) {
+        if (index > charts.size() - 1 || index < 0) {
+            return null;
+        }
         return charts.get(index);
     }
 
+    /**
+     * Returns true if the chart is found
+     * 
+     * @param chart the chart to search for
+     */
+    private boolean containsChart(Chart chart) {
+        return charts.indexOf(chart) >= 0;
+    }
+
+    /**
+     * Returns true if the panel is found
+     * 
+     * @param chart the chart to search for
+     */
+    private boolean containsPanel(JPanel panel) {
+        return Arrays.asList(frameContent.getComponents()).indexOf(panel) >= 0;
+    }
+    
+    // SHOW/HIDE PANELS
+
+    /**
+     * Display a panel based on an index
+     */
     public void show(int index) {
-        if (getFrame(index) != null) {
-            getFrame(index).setVisible(true);
+        if (getPanel(index) != null) {
+            getPanel(index).setVisible(true);
         }
     }
 
+    /**
+     * Display a panel based on an title
+     */
     public void show(String title) {
-       if (getFrame(title) != null) {
-           getFrame(title).setVisible(true);
-       }
+        if (getPanel(title) != null) {
+            getPanel(title).setVisible(true);
+        }
     }
 
-
+    /**
+     * Display all panels
+     */
     public void showAll() {
-        for (JFrame frame : frames) {
+        for (JPanel frame : (JPanel[]) frameContent.getComponents()) {
             frame.setVisible(true);
         }
     }
 
+    /**
+     * Hide a panel based on an index
+     */
     public void hide(int index) {
-        if (getFrame(index) != null) {
-            getFrame(index).setVisible(false);
+        if (getPanel(index) != null) {
+            getPanel(index).setVisible(false);
         }
     }
 
+    /**
+     * Hide a panel based on a title
+     */
     public void hide(String title) {
-        if (getFrame(title) != null) {
-            getFrame(title).setVisible(false);
+        if (getPanel(title) != null) {
+            getPanel(title).setVisible(false);
         }
     }
 
+    /**
+     * Hide all panels
+     */
     public void hideAll() {
-        for (JFrame frame : frames) {
-            frame.setVisible(false);
+        for (JPanel frame : (JPanel[]) frameContent.getComponents()) {
+            frame.setVisible(true);
         }
     }
 
-    public QuickWrapper add(XYChart... newCharts) {
-        for (XYChart newChart : newCharts) {
-            charts.add(newChart);
-        }
+    // ADD CHART
 
-        for (XYChart newChart : newCharts) { 
-            JFrame newFrame = new JFrame(newChart.getTitle());
+    // should this be threaded or something to create all the panels 
 
-            javax.swing.SwingUtilities.invokeLater(() -> {
-                  newFrame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-                  XChartPanel<XYChart> panel = new XChartPanel<XYChart>(newChart);
-
-                  newFrame.add(panel);
-                  newFrame.addKeyListener(this);
-                  newFrame.setResizable(false);
-
-                  newFrame.setLocation(newFrame.getX() + FRAME_OFFSET , newFrame.getY() + FRAME_OFFSET);
-                  newFrame.pack();
-            });
-
-            frames.add(newFrame);
-        }
-
-        return this;
-    }
-
+    /**
+     * Add charts and create Chart panels.
+     * 
+     * @param newCharts charts to add and create respective panels
+     */
     public QuickWrapper add(Chart... newCharts) {
-        add(chartToXy(newCharts));
-
         for (Chart newChart : newCharts) {
-            if (newChart.getBinding() != -1) {
-                setBinding(newChart, newChart.getBinding());
-            }
+            charts.add(newChart);
+
+            XChartPanel<XYChart> panel = new XChartPanel<XYChart>(newChart.get());
+            panel.setName(newChart.get().getTitle());
+
+            chartPanels.add(panel);
+            frameContent.add(panel, newChart.get().getTitle());
         }
-
         return this;
     }
-
-    public QuickWrapper remove(JFrame... rFrames) {
-        for (JFrame rFrame : rFrames) {
-            rFrame.setVisible(false);
-            charts.remove(frames.indexOf(rFrame));
-            frames.remove(rFrame);
-        }
-
-        return this;
-    }
-
-    public String toString() {
-        return frames.size() + "\n" + charts.size();
-    }
-
-    public QuickWrapper setBinding(int index, int binding) {
-        bindings.put(index, binding);
-        return this;
-    }
-
-    public QuickWrapper setBinding(Chart chart, int binding) { 
-        return setBinding(charts.indexOf(chart.get()), binding);
-    }
-
-    public QuickWrapper update(int index, double[] newXData, double[] newYData ) {
-        getChart(index).updateXYSeries(charts.get(index).getTitle(), newXData, newYData, null);
-        return this;
-    }
-
-    public QuickWrapper update(String title, double[] newXData, double[] newYData ) {
-        getChart(title).updateXYSeries(title, newXData, newYData, null);
-        return this;
-    }
-
-    public QuickWrapper update(int index, List<Double> newXData, List<Double> newYData ) {
-        getChart(index).updateXYSeries(charts.get(index).getTitle(), newXData, newYData, null);
-        return this;
-    }
-
-    public QuickWrapper update(String title, List<Double> newXData, List<Double> newYData) {
-        getChart(title).updateXYSeries(title, newXData, newYData, null);
+     
+    // UPDATE DATA VALUE
+    
+    /**
+     * Uses a chart's x and y data lists to update them and add a value to them.
+     * Then update the xy series
+     * 
+     * @param chart chart to update and retrieve values from
+     * @param x new x value to append
+     * @param y new y value to append
+     * @return reference to QuickWrapper
+     */
+    public QuickWrapper update(Chart chart, double x, double y) {
+        chart.update(x,y);
+        chart.get().updateXYSeries(chart.get().getTitle(), chart.getXData(), chart.getYData(), null);
         return this;
     }
     
+    /*
+    public QuickWrapper update(int index, double x, double y) {
+    
+    }
+    public QuickWrapper update(String title, double x, double y) {
+    
+    }
+    */
+
+    // REPAINT
+
+    public QuickWrapper repaint(Chart chart) {
+        if (containsChart(chart)) {
+            return repaint(chart.get().getTitle());
+        }
+        return this;
+    }
+    public QuickWrapper repaint(int index) {
+        if (getPanel(index) != null) {
+            getPanel(index).revalidate();
+            getPanel(index).repaint();
+        }
+        return this;
+    }
+
+    public QuickWrapper repaint(String title) {
+        if (getPanel(title) != null) {
+            getPanel(title).revalidate();
+            getPanel(title).repaint();
+        }
+        return this;
+    }
+
+    public QuickWrapper repaintAll() {
+        for (XChartPanel<XYChart> chartPanel : chartPanels) {
+            chartPanel.revalidate();
+            chartPanel.repaint();
+        }
+        return this;
+    }
+
+
+    // TEST toString function
+    public String toString() {
+        return frameContent.getComponents().length + "\n" + charts.size();
+    }
+
+    // KEY BINDINGS
     @Override
     public void keyPressed(KeyEvent e) {
 
         int keyCode = e.getKeyCode();
         if (keyCode == KeyEvent.VK_ESCAPE) {
-            remove((JFrame) e.getSource());
-            if (frames.size() == 0 || charts.size() == 0) {
-                System.exit(1);
-            }
+            System.exit(1);
         }
 
-        for (Map.Entry<Integer,Integer> entry : bindings.entrySet()) {
-            if (entry.getValue() == keyCode) {
-                hideAll();
-                show(entry.getKey());
-            }
+        if (keyCode == KeyEvent.VK_RIGHT) {
+            cl.next(frameContent);
+        } else if (keyCode == KeyEvent.VK_LEFT) {
+            cl.previous(frameContent);
         }
-
-        // TESTING PURPOSES this if can be deleted
-        if (keyCode == KeyEvent.VK_SPACE) spacePressed = true;
-
-    }
-
-    // TESTING PURPOSES spacePressed can be deleted
-    private boolean spacePressed;
-
-    // TESTING PURPOSES getSpacePressed can be deleted
-    private synchronized boolean getSpacePressed() {
-        return spacePressed;
-    }
-
-    // TESTING PURPOES keyReleased can be deleted
-    @Override
-    public void keyReleased(KeyEvent e) {
-        int keyCode = e.getKeyCode();
-        if (keyCode == KeyEvent.VK_SPACE) spacePressed = false;
     }
 
     public static void main(String[] args) throws InterruptedException {
         final String x = "x";
         final String y = "y";
-
-        //XYChart nativeChart = QuickChart.getChart(title, x, y,"default value", new double[] {0.0}, new double[] {0.0});
         
-        Chart chart = new Chart("Chart 1",x,y,KeyEvent.VK_1);
-        Chart chart1 = new Chart("Chart 2",x,y,KeyEvent.VK_2);
-        Chart chart2 = new Chart("Chart 3",x,y,KeyEvent.VK_3);
+        Chart chart = new Chart("Chart 1", x, y);
 
-        QuickWrapper qw = new QuickWrapper(chart,chart1,chart2);
+        QuickWrapper qw = new QuickWrapper(chart);
 
-        List<Double> xData = new ArrayList<Double>();
-        List<Double> yData = new ArrayList<Double>();
-        List<Double> xData1 = new ArrayList<Double>();
-        List<Double> yData1 = new ArrayList<Double>();
-        List<Double> xData2 = new ArrayList<Double>();
-        List<Double> yData2 = new ArrayList<Double>();
-        
-        for (double i = 0;i < Math.PI * 10;i+= Math.PI/100) {
-            xData.add(i);
-            yData.add(Math.sin(i));
-            xData1.add(i);
-            yData1.add(Math.cos(i));
-            xData2.add(i);
-            yData2.add(i * Math.random() * Math.PI);
-        
-            qw.update("Chart 1", xData, yData);
-            qw.update("Chart 2", xData1, yData1);
-            qw.update("Chart 3", xData2, yData2);
+        for (int i = 0; i < 300;i++) { 
+
+            qw.update(chart, i, Math.random() * 100);
+
+            qw.repaintAll();
+            Thread.sleep(10);
         }
-
     }
-
 
 }
