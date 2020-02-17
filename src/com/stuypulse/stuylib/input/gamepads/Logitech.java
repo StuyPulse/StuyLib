@@ -45,8 +45,8 @@ public class Logitech extends WPIGamepad {
         public boolean getRawRightBumper()  { return getRawButton(6); }
 
         // Triggers //
-        public double getRawLeftTriggerAxis()   { return getRawButton(7) ? 0.0 : 1.0; }
-        public double getRawRightTriggerAxis()  { return getRawButton(8) ? 0.0 : 1.0; }
+        public double getRawLeftTriggerAxis()   { return getRawButton(7) ? 1.0 : 0.0; }
+        public double getRawRightTriggerAxis()  { return getRawButton(8) ? 1.0 : 0.0; }
 
         // Face Buttons //
         public boolean getRawLeftButton()   { return getRawButton(1); }
