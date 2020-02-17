@@ -27,7 +27,7 @@
     catch(err) {
     }
 //-->
-var data = {"i0":6,"i1":10,"i2":10,"i3":10,"i4":10,"i5":10,"i6":10,"i7":10,"i8":10,"i9":10};
+var data = {"i0":6,"i1":10,"i2":10,"i3":10,"i4":10,"i5":10,"i6":10,"i7":10,"i8":10,"i9":10,"i10":10,"i11":10,"i12":10};
 var tabs = {65535:["t0","All Methods"],2:["t2","Instance Methods"],4:["t3","Abstract Methods"],8:["t4","Concrete Methods"]};
 var altColor = "altColor";
 var rowColor = "rowColor";
@@ -235,6 +235,21 @@ extends java.lang.Object</pre>
 </td>
 </tr>
 <tr id="i6" class="altColor">
+<td class="colFirst"><code>boolean</code></td>
+<th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#isDone(double)">isDone</a></span>&#8203;(double&nbsp;maxError)</code></th>
+<td class="colLast">
+<div class="block">Get whether or not the Controller has arrived at the target.</div>
+</td>
+</tr>
+<tr id="i7" class="rowColor">
+<td class="colFirst"><code>boolean</code></td>
+<th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#isDone(double,double)">isDone</a></span>&#8203;(double&nbsp;maxError,
+      double&nbsp;maxVelocity)</code></th>
+<td class="colLast">
+<div class="block">Get whether or not the Controller has arrived at the target.</div>
+</td>
+</tr>
+<tr id="i8" class="altColor">
 <td class="colFirst"><code><a href="Controller.html" title="class in com.stuypulse.stuylib.control">Controller</a></code></td>
 <th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#setErrorFilter(com.stuypulse.stuylib.streams.filters.IStreamFilter)">setErrorFilter</a></span>&#8203;(<a href="../streams/filters/IStreamFilter.html" title="interface in com.stuypulse.stuylib.streams.filters">IStreamFilter</a>&nbsp;filter)</code></th>
 <td class="colLast">
@@ -242,7 +257,7 @@ extends java.lang.Object</pre>
  given to the controller.</div>
 </td>
 </tr>
-<tr id="i7" class="rowColor">
+<tr id="i9" class="rowColor">
 <td class="colFirst"><code><a href="Controller.html" title="class in com.stuypulse.stuylib.control">Controller</a></code></td>
 <th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#setOutputFilter(com.stuypulse.stuylib.streams.filters.IStreamFilter)">setOutputFilter</a></span>&#8203;(<a href="../streams/filters/IStreamFilter.html" title="interface in com.stuypulse.stuylib.streams.filters">IStreamFilter</a>&nbsp;filter)</code></th>
 <td class="colLast">
@@ -250,7 +265,14 @@ extends java.lang.Object</pre>
  controller.</div>
 </td>
 </tr>
-<tr id="i8" class="altColor">
+<tr id="i10" class="altColor">
+<td class="colFirst"><code><a href="Controller.html" title="class in com.stuypulse.stuylib.control">Controller</a></code></td>
+<th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#setVelocityFilter(com.stuypulse.stuylib.streams.filters.IStreamFilter)">setVelocityFilter</a></span>&#8203;(<a href="../streams/filters/IStreamFilter.html" title="interface in com.stuypulse.stuylib.streams.filters">IStreamFilter</a>&nbsp;filter)</code></th>
+<td class="colLast">
+<div class="block">Lets you specify a filter that will be applied to the velocity measurements.</div>
+</td>
+</tr>
+<tr id="i11" class="rowColor">
 <td class="colFirst"><code>double</code></td>
 <th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#update(double)">update</a></span>&#8203;(double&nbsp;error)</code></th>
 <td class="colLast">
@@ -258,7 +280,7 @@ extends java.lang.Object</pre>
  reach</div>
 </td>
 </tr>
-<tr id="i9" class="rowColor">
+<tr id="i12" class="altColor">
 <td class="colFirst"><code>double</code></td>
 <th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#update(double,double)">update</a></span>&#8203;(double&nbsp;measurement,
       double&nbsp;setpoint)</code></th>
@@ -335,6 +357,27 @@ extends java.lang.Object</pre>
 <dl>
 <dt><span class="paramLabel">Parameters:</span></dt>
 <dd><code>filter</code> - filter to be applied to error measurements</dd>
+<dt><span class="returnLabel">Returns:</span></dt>
+<dd>reference to the controller (so you can chain the commands together)</dd>
+</dl>
+</li>
+</ul>
+<a id="setVelocityFilter(com.stuypulse.stuylib.streams.filters.IStreamFilter)">
+<!--   -->
+</a>
+<ul class="blockList">
+<li class="blockList">
+<h4>setVelocityFilter</h4>
+<pre class="methodSignature">public final&nbsp;<a href="Controller.html" title="class in com.stuypulse.stuylib.control">Controller</a>&nbsp;setVelocityFilter&#8203;(<a href="../streams/filters/IStreamFilter.html" title="interface in com.stuypulse.stuylib.streams.filters">IStreamFilter</a>&nbsp;filter)</pre>
+<div class="block">Lets you specify a filter that will be applied to the velocity measurements.
+ 
+ This can be used to smooth out the otherwise noisy velocity values.
+ 
+ This can negatively affect things like the D in PID if set too high and it is
+ recommended that you just filter the error instead.</div>
+<dl>
+<dt><span class="paramLabel">Parameters:</span></dt>
+<dd><code>filter</code> - filter to be applied to velocity measurements</dd>
 <dt><span class="returnLabel">Returns:</span></dt>
 <dd>reference to the controller (so you can chain the commands together)</dd>
 </dl>
@@ -442,6 +485,41 @@ extends java.lang.Object</pre>
 <dl>
 <dt><span class="returnLabel">Returns:</span></dt>
 <dd>the rate of the controller during the last .update() command</dd>
+</dl>
+</li>
+</ul>
+<a id="isDone(double)">
+<!--   -->
+</a>
+<ul class="blockList">
+<li class="blockList">
+<h4>isDone</h4>
+<pre class="methodSignature">public&nbsp;boolean&nbsp;isDone&#8203;(double&nbsp;maxError)</pre>
+<div class="block">Get whether or not the Controller has arrived at the target.</div>
+<dl>
+<dt><span class="paramLabel">Parameters:</span></dt>
+<dd><code>maxError</code> - the maximum amount of error allowed</dd>
+<dt><span class="returnLabel">Returns:</span></dt>
+<dd>if the controller has arrived at the target</dd>
+</dl>
+</li>
+</ul>
+<a id="isDone(double,double)">
+<!--   -->
+</a>
+<ul class="blockList">
+<li class="blockList">
+<h4>isDone</h4>
+<pre class="methodSignature">public&nbsp;boolean&nbsp;isDone&#8203;(double&nbsp;maxError,
+                      double&nbsp;maxVelocity)</pre>
+<div class="block">Get whether or not the Controller has arrived at the target.</div>
+<dl>
+<dt><span class="paramLabel">Parameters:</span></dt>
+<dd><code>maxError</code> - the maximum amount of error allowed</dd>
+<dd><code>maxVelocity</code> - the maximum amount of change in error over a second
+                    allowed</dd>
+<dt><span class="returnLabel">Returns:</span></dt>
+<dd>if the controller has arrived at the target</dd>
 </dl>
 </li>
 </ul>
