@@ -25,7 +25,7 @@ public class InvertedHullMovingAverage implements IStreamFilter {
      */
     public InvertedHullMovingAverage(int size) throws ConstructionError {
         if (size <= 0) {
-            throw new ConstructionError("MovingAverage(int size)", "size must be greater than 0!");
+            throw new ConstructionError("InvertedHullMovingAverage(int size)", "size must be greater than 0!");
         }
 
         mFilterA = new WeightedMovingAverage(size);
