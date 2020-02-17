@@ -3,9 +3,6 @@ package com.stuypulse.stuylib.streams;
 import com.stuypulse.stuylib.streams.IStream;
 import com.stuypulse.stuylib.exception.ConstructionError;
 
-import java.util.Timer;
-import java.util.TimerTask;
-
 /**
  * Takes an IStream and an IStreamFilter and makes a PollingIStream
  * 
