@@ -23,7 +23,7 @@ public class WeightedMovingAverage implements IStreamFilter {
      */
     public WeightedMovingAverage(int size) throws ConstructionError {
         if (size <= 0) {
-            throw new ConstructionError("MovingAverage(int size)", "size must be greater than 0!");
+            throw new ConstructionError("WeightedMovingAverage(int size)", "size must be greater than 0!");
         }
 
         mSize = size;
