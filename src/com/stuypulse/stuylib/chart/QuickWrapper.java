@@ -12,6 +12,12 @@ import java.util.Arrays;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 
+import com.stuypulse.stuylib.streams.FilteredIStream;
+import com.stuypulse.stuylib.streams.filters.HullMovingAverage;
+import com.stuypulse.stuylib.streams.filters.IStreamFilter;
+import com.stuypulse.stuylib.streams.filters.InvertedHullMovingAverage;
+import com.stuypulse.stuylib.streams.filters.RollingAverage;
+
 import org.knowm.xchart.XChartPanel;
 import org.knowm.xchart.XYChart;
 
@@ -69,7 +75,6 @@ public class QuickWrapper extends KeyAdapter {
     public QuickWrapper(Chart... newCharts) {
         this();
         add(newCharts);
-        show(0);
     }
 
     // GETTERS
@@ -151,65 +156,7 @@ public class QuickWrapper extends KeyAdapter {
         return Arrays.asList(frameContent.getComponents()).indexOf(panel) >= 0;
     }
     
-    // SHOW/HIDE PANELS
-
-    /**
-     * Display a panel based on an index
-     */
-    public void show(int index) {
-        if (getPanel(index) != null) {
-            getPanel(index).setVisible(true);
-        }
-    }
-
-    /**
-     * Display a panel based on an title
-     */
-    public void show(String title) {
-        if (getPanel(title) != null) {
-            getPanel(title).setVisible(true);
-        }
-    }
-
-    /**
-     * Display all panels
-     */
-    public void showAll() {
-        for (JPanel frame : (JPanel[]) frameContent.getComponents()) {
-            frame.setVisible(true);
-        }
-    }
-
-    /**
-     * Hide a panel based on an index
-     */
-    public void hide(int index) {
-        if (getPanel(index) != null) {
-            getPanel(index).setVisible(false);
-        }
-    }
-
-    /**
-     * Hide a panel based on a title
-     */
-    public void hide(String title) {
-        if (getPanel(title) != null) {
-            getPanel(title).setVisible(false);
-        }
-    }
-
-    /**
-     * Hide all panels
-     */
-    public void hideAll() {
-        for (JPanel frame : (JPanel[]) frameContent.getComponents()) {
-            frame.setVisible(true);
-        }
-    }
-
     // ADD CHART
-
-    // should this be threaded or something to create all the panels 
 
     /**
      * Add charts and create Chart panels.
@@ -228,58 +175,10 @@ public class QuickWrapper extends KeyAdapter {
         }
         return this;
     }
-     
-    // UPDATE DATA VALUE
-    
-    /**
-     * Uses a chart's x and y data lists to update them and add a value to them.
-     * Then update the xy series
-     * 
-     * @param chart chart to update and retrieve values from
-     * @param x new x value to append
-     * @param y new y value to append
-     * @return reference to QuickWrapper
-     */
-    public QuickWrapper update(Chart chart, double x, double y) {
-        chart.update(x,y);
-        chart.get().updateXYSeries(chart.get().getTitle(), chart.getXData(), chart.getYData(), null);
-        return this;
-    }
-    
-    /*
-    public QuickWrapper update(int index, double x, double y) {
-    
-    }
-    public QuickWrapper update(String title, double x, double y) {
-    
-    }
-    */
 
     // REPAINT
 
-    public QuickWrapper repaint(Chart chart) {
-        if (containsChart(chart)) {
-            return repaint(chart.get().getTitle());
-        }
-        return this;
-    }
-    public QuickWrapper repaint(int index) {
-        if (getPanel(index) != null) {
-            getPanel(index).revalidate();
-            getPanel(index).repaint();
-        }
-        return this;
-    }
-
-    public QuickWrapper repaint(String title) {
-        if (getPanel(title) != null) {
-            getPanel(title).revalidate();
-            getPanel(title).repaint();
-        }
-        return this;
-    }
-
-    public QuickWrapper repaintAll() {
+    public QuickWrapper repaint() {
         for (XChartPanel<XYChart> chartPanel : chartPanels) {
             chartPanel.revalidate();
             chartPanel.repaint();
@@ -313,17 +212,32 @@ public class QuickWrapper extends KeyAdapter {
         final String x = "x";
         final String y = "y";
         
+        IStreamFilter invertedHullMovingAverage = new InvertedHullMovingAverage(50);
+        IStreamFilter rollingAverage = new RollingAverage(24.0);
+
         Chart chart = new Chart("Chart 1", x, y);
+        Chart bruh = new Chart("Chart 2", x, y);
 
-        QuickWrapper qw = new QuickWrapper(chart);
+        Chart chart2 = new Chart("Chart 1", x, y);
+        Chart bruh2 = new Chart("Chart 2", x, y);
 
-        for (int i = 0; i < 300;i++) { 
+        QuickWrapper ih = new QuickWrapper(chart,bruh);
+        QuickWrapper ra = new QuickWrapper(chart2,bruh2);
 
-            qw.update(chart, i, Math.random() * 100);
+        for (int i = 1; i < 1000;i++) {
+            double rNum = Math.random() * 100;
+            chart.update(invertedHullMovingAverage.get(rNum));
+            bruh.update(rNum);
 
-            qw.repaintAll();
-            Thread.sleep(10);
+            chart2.update(rollingAverage.get(rNum));
+            bruh2.update(rNum);
+
+
+            ih.repaint();
+            ra.repaint();
+            Thread.sleep(100); // see it update real time
         }
+
     }
 
 }
