@@ -1,69 +1,71 @@
 package com.stuypulse.stuylib.util.chart;
 
-import java.util.LinkedList;
+import java.util.List;
+import java.util.concurrent.CopyOnWriteArrayList;
 
 import org.knowm.xchart.QuickChart;
 import org.knowm.xchart.XYChart;
 
+/**
+ * @author Myles Pasetsky (selym3) 
+ * @author Sam Belliveau (sexy gamer)
+ */
 public class Chart {
 
     /**
      * TODO:
-     * add functionality to reset adn replace xData and yData with custom lists
-     * reset xData and yData
      * creat NChart with N-number of series
      */
 
     private XYChart instance;
-    private LinkedList<Double> xData;
-    private LinkedList<Double> yData;
+    private List<Double> xData;
+    private List<Double> yData;
+    private int maxSize;
 
     protected XYChart get() {
         return instance;
     }
 
-    protected void update(double y) {
-        update(xData.getLast() + 1,y);
+    public void update(double y) {
+        update(xData.get(xData.size() - 1) + 1,y);
     }
 
-    protected void update(double x, double y) {
+    public void update(double x, double y) {
         xData.add(x);
         yData.add(y);
+        
+        if(get() != null) {
+            get().updateXYSeries(get().getTitle(), xData, yData, null);
+        }
 
-        get().updateXYSeries(get().getTitle(), getXData(), getYData(), null);
+        if(maxSize > 0) { // If a maxSize is set
+            while(xData.size() > maxSize) {
+                xData.remove(0);
+            }
+
+            while(yData.size() > maxSize) {
+                yData.remove(0);
+            }
+        }
     }
 
-    protected LinkedList<Double> getXData() {
-        return xData;
+    public void reset() {
+        xData.clear();
+        yData.clear();
+        update(0.0, 0.0);
     }
 
-    protected LinkedList<Double> getYData() {
-        return yData;
+    public Chart setMaxSize(int maxSize) {
+        this.maxSize = maxSize;
+        return this;
     }
-
-    protected void setXData(LinkedList<Double> newData) {
-        xData = newData;
-    }
-
-    protected void setYData(LinkedList<Double> newData) {
-        yData = newData;
-    }
-
-    protected void setData(LinkedList<Double> xData,LinkedList<Double> yData) {
-        setXData(xData);
-        setYData(yData);
-    }
-
-    protected void reset() {
-        xData = new LinkedList<Double>();
-        yData = new LinkedList<Double>();
-        xData.add(0.0);
-        yData.add(0.0);
-    }
-
+    
     public Chart(String title, String x, String y) {
+        xData = new CopyOnWriteArrayList<Double>();
+        yData = new CopyOnWriteArrayList<Double>();
+        maxSize = -1;
         reset();
-        instance = QuickChart.getChart(title,x,y, title, xData, yData);
+        instance = QuickChart.getChart(title, x, y, title, xData, yData);
     }
 
 }
