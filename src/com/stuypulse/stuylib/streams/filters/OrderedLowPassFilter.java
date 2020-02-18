@@ -38,7 +38,7 @@ public class OrderedLowPassFilter implements IStreamFilter {
 
         IStreamFilter[] filters = new IStreamFilter[order];
         for(int i = 0; i < filters.length; ++i) {
-            filters[i] = new LowPassFilter(rc / order);
+            filters[i] = new LowPassFilter(rc / Math.sqrt(order));
         }
 
         mFilter = new IStreamFilterGroup(filters);
