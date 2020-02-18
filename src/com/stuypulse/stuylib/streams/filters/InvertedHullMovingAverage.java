@@ -4,16 +4,15 @@ import com.stuypulse.stuylib.streams.filters.IStreamFilter;
 import com.stuypulse.stuylib.exception.ConstructionError;
 
 /**
- * Implementation of Hull Moving Average.
+ * Implementation of Inverted Hull Moving Average.
  * 
- * Hull Moving Average can smooth out inputs, but has a tendency to overshoot.
- * It is really good if lag is unacceptable, but not if overshooting based on
- * quick changes is bad.
+ * Hull Moving Average can overshoot, but when the order of the filters is
+ * switched around, it can create an interesting S-Curve.
  * 
  * @author Sam (sam.belliveau@gmail.com)
  */
 
-public class HullMovingAverage implements IStreamFilter {
+public class InvertedHullMovingAverage implements IStreamFilter {
 
     private IStreamFilter mFilterA;
     private IStreamFilter mFilterB;
@@ -24,9 +23,9 @@ public class HullMovingAverage implements IStreamFilter {
      * 
      * @param size size of moving average
      */
-    public HullMovingAverage(int size) throws ConstructionError {
+    public InvertedHullMovingAverage(int size) throws ConstructionError {
         if (size <= 0) {
-            throw new ConstructionError("HullMovingAverage(int size)", "size must be greater than 0!");
+            throw new ConstructionError("InvertedHullMovingAverage(int size)", "size must be greater than 0!");
         }
 
         mFilterA = new WeightedMovingAverage(size);
@@ -35,6 +34,6 @@ public class HullMovingAverage implements IStreamFilter {
     }
 
     public double get(double next) {
-        return mFilterC.get(mFilterB.get(next) * 2 - mFilterA.get(next));
+        return mFilterC.get(mFilterA.get(next) * 2 - mFilterB.get(next));
     }
 }

@@ -28,13 +28,6 @@ public class OrderedLowPassFilter implements IStreamFilter {
      */
     public OrderedLowPassFilter(double rc, int order) throws ConstructionError {
 
-        IStreamFilter[] filters = new IStreamFilter[order];
-        for(int i = 0; i < filters.length; ++i) {
-            filters[i] = new LowPassFilter(rc / order);
-        }
-
-        mFilter = new IStreamFilterGroup(filters);
-
         if (rc < 0.0) {
             throw new ConstructionError("OrderedLowPassFilter(double rc, int order)", "rc must be greater than 0.0!");
         }
@@ -42,6 +35,13 @@ public class OrderedLowPassFilter implements IStreamFilter {
         if (order < 1) {
             throw new ConstructionError("OrderedLowPassFilter(double rc, int order)", "order must be greater than 0!");
         }
+
+        IStreamFilter[] filters = new IStreamFilter[order];
+        for(int i = 0; i < filters.length; ++i) {
+            filters[i] = new LowPassFilter(rc / order);
+        }
+
+        mFilter = new IStreamFilterGroup(filters);
     }
 
     public double get(double next) {

@@ -140,10 +140,9 @@ extends java.lang.Object
 implements <a href="IStreamFilter.html" title="interface in com.stuypulse.stuylib.streams.filters">IStreamFilter</a></pre>
 <div class="block">Implementation of Hull Moving Average.
  
- Made for fast moving and smooth stock prices. Idk if it is good for robots or
- not but its here.
- 
- It creates a perfect S-curve, it is really good at reducing jerk.</div>
+ Hull Moving Average can smooth out inputs, but has a tendency to overshoot.
+ It is really good if lag is unacceptable, but not if overshooting based on
+ quick changes is bad.</div>
 </li>
 </ul>
 </div>
