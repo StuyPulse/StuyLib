@@ -202,6 +202,35 @@ public class Limelight {
         return mVerticalSideLengthEntry.getDouble(0);
     }
 
+    private static final NetworkTableEntry mCornerEntry = mTable.getEntry("tcornxy");
+
+    /**
+     * 
+     * @return Array of Vertices, in the form (x0,y0,x1,y1, ... xN,yN). coordinates
+     *         are in pixels, relative to top left corner of limelight feed
+     */
+    public static double[] getCoords() {
+        return mCornerEntry.getDoubleArray(new double[0]);
+    }
+
+    /**
+     * 
+     * @return Formatted 2D array of coordinates, consisting of an array of X values
+     *         and an array of Y values.
+     */
+    public static double[][] getVertices() {
+        double[][] data = new double[2][];
+        double[] rawData = getCoords();
+        int numCoords = rawData.length / 2;
+        data[0] = new double[numCoords];
+        data[1] = new double[numCoords];
+        for (int i = 0; i < rawData.length - 1; i += 2) {
+            data[0][i / 2] = rawData[i];
+            data[1][i / 2] = rawData[i + 1];
+        }
+        return data;
+    }
+
     /* Target Corner */
     private static final NetworkTableEntry mTCornX = mTable.getEntry("tcornx");
 
