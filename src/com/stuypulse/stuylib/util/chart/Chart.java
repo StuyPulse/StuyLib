@@ -1,4 +1,4 @@
-package com.stuypulse.stuylib.chart;
+package com.stuypulse.stuylib.util.chart;
 
 import java.util.LinkedList;
 

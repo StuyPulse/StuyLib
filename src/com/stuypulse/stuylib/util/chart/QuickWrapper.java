@@ -1,4 +1,4 @@
-package com.stuypulse.stuylib.chart;
+package com.stuypulse.stuylib.util.chart;
 
 import java.awt.CardLayout;
 import java.awt.Container;
@@ -12,8 +12,6 @@ import java.util.Arrays;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 
-import com.stuypulse.stuylib.streams.FilteredIStream;
-import com.stuypulse.stuylib.streams.filters.HullMovingAverage;
 import com.stuypulse.stuylib.streams.filters.IStreamFilter;
 import com.stuypulse.stuylib.streams.filters.InvertedHullMovingAverage;
 import com.stuypulse.stuylib.streams.filters.RollingAverage;
