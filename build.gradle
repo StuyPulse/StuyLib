@@ -59,6 +59,10 @@ javadoc {
   destinationDir = file('docs/')
 }
 
+build {
+   dependsOn javadoc
+}
+
 jar {
    from sourceSets.main.allSource
 }
