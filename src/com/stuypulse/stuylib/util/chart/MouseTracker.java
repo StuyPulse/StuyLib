@@ -6,8 +6,8 @@ import java.awt.event.*;
 import java.awt.*;
 
 /**
- * @author Myles Pasetsky (selym3) 
- * @author Sam Belliveau (sexy gamer)
+ * @author Myles Pasetsky (@selym3) 
+ * @author Sam Belliveau (@Sam-Belliveau)
  */
 public class MouseTracker implements MouseMotionListener {    
     private final Container panel;
