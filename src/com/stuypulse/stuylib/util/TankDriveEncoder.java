@@ -6,7 +6,7 @@ import edu.wpi.first.wpilibj.Encoder;
  * The tank drive encoder manages the left and right encoder for the drivetrain.
  * It does math to get the distance the entire robot has moved, and it can also
  * detect if an encoder has disconnected, taking that into consideration.
- * 
+ *
  * @author Sam (sam.belliveau@gmail.com)
  */
 public class TankDriveEncoder {
@@ -64,21 +64,21 @@ public class TankDriveEncoder {
         double left = mLeftEncoder.get();
         double right = mRightEncoder.get();
 
-        if (!mLeftEncoder.getStopped()) {
+        if(!mLeftEncoder.getStopped()) {
             mLeftDistance += left;
             mLeftEncoder.reset();
         }
 
-        if (!mRightEncoder.getStopped()) {
+        if(!mRightEncoder.getStopped()) {
             mRightDistance += right;
             mRightEncoder.reset();
         }
 
-        if (mRightEncoder.getStopped() && mLeftEncoder.getStopped()) {
+        if(mRightEncoder.getStopped() && mLeftEncoder.getStopped()) {
             mTotalDistance += 0;
-        } else if (mLeftEncoder.getStopped()) {
+        } else if(mLeftEncoder.getStopped()) {
             mTotalDistance += right;
-        } else if (mRightEncoder.getStopped()) {
+        } else if(mRightEncoder.getStopped()) {
             mTotalDistance += left;
         } else {
             mTotalDistance += (left + right) / 2.0;

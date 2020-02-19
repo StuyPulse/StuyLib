@@ -1,7 +1,5 @@
 package com.stuypulse.stuylib.streams;
 
-import com.stuypulse.stuylib.streams.IStream;
-
 import java.io.IOException;
 import java.util.Iterator;
 
@@ -10,18 +8,19 @@ import com.stuypulse.stuylib.file.csv.*;
 /**
  * Class Writer allows you to read input from an IStream into a CSV file Class
  * Reader is an IStream that reads from CSV file
- * 
+ *
  * They extend from IStream, so they also work with the existing IStream classes
- * 
+ *
  * @author Sam (sam.belliveau@gmail.com)
  */
 public class CSVIStream {
 
     /**
-     * This CSVIStream writer let an IStream pass through while recording the values
-     * of the IStream into a CSV file.
+     * This CSVIStream writer let an IStream pass through while recording the
+     * values of the IStream into a CSV file.
      */
     public static class Writer implements IStream {
+
         /**
          * The IStream that will be read from into the CSV file
          */
@@ -32,12 +31,13 @@ public class CSVIStream {
         private int mFlushCount;
 
         /**
-         * Makes a new IStream that, while getting values, will record them in a CSV
-         * file
-         * 
+         * Makes a new IStream that, while getting values, will record them in a
+         * CSV file
+         *
          * @param filepath  path of the CSV file to write to
          * @param stream    IStream to read in from
-         * @param flushRate how many times .get should be called before it flushes
+         * @param flushRate how many times .get should be called before it
+         *                  flushes
          */
         public Writer(String filepath, IStream stream, int flushRate) {
             mStream = stream;
@@ -45,18 +45,18 @@ public class CSVIStream {
             mFlushCount = 0;
             try {
                 mCSVFile = new CSVWriter(filepath);
-            } catch (IOException e) {
+            } catch(IOException e) {
                 e.printStackTrace();
                 mCSVFile = null;
             }
         }
 
         /**
-         * Makes a new IStream that, while getting values, will record them in a CSV
-         * file
-         * 
-         * @param filepath  path of the CSV file to write to
-         * @param stream    IStream to read in from
+         * Makes a new IStream that, while getting values, will record them in a
+         * CSV file
+         *
+         * @param filepath path of the CSV file to write to
+         * @param stream   IStream to read in from
          */
         public Writer(String filepath, IStream stream) {
             this(filepath, stream, 100);
@@ -64,21 +64,21 @@ public class CSVIStream {
 
         /**
          * Gets the next value from the IStream and records it in a CSV file
-         * 
+         *
          * @return next value in the IStream
          */
         public double get() {
             double result = mStream.get();
             try {
-                if (mCSVFile != null) {
+                if(mCSVFile != null) {
                     mCSVFile.write(result);
 
-                    if (++mFlushCount > mFlushRate) {
+                    if(++mFlushCount > mFlushRate) {
                         mFlushCount = 0;
                         mCSVFile.flush();
                     }
                 }
-            } catch (IOException e) {
+            } catch(IOException e) {
                 e.printStackTrace();
             }
             return result;
@@ -91,6 +91,7 @@ public class CSVIStream {
      * IStream
      */
     public static class Reader implements IStream {
+
         /**
          * Iterator over the elements of the CSV file
          */
@@ -98,13 +99,13 @@ public class CSVIStream {
 
         /**
          * Makes a new IStream sourcing from a CSV file
-         * 
+         *
          * @param filepath path of the CSV file to read from
          */
         public Reader(String filepath) {
             try {
                 mCSVData = new CSVReader(filepath).iterator();
-            } catch (IOException e) {
+            } catch(IOException e) {
                 e.printStackTrace();
                 mCSVData = null;
             }
@@ -112,11 +113,11 @@ public class CSVIStream {
 
         /**
          * Get the next value from the CSV file
-         * 
+         *
          * @return next value of the CSV file
          */
         public double get() {
-            if (mCSVData == null)
+            if(mCSVData == null)
                 return 0.0;
             return (mCSVData.hasNext()) ? mCSVData.next().toDouble() : 0.0;
         }

@@ -11,10 +11,10 @@ import edu.wpi.first.networktables.NetworkTableInstance;
 /**
  * The SLNetworkTable is a very fast way to easily interface with a network
  * table.
- * 
+ *
  * If a function you want is not implemented, use getTable(), getRawEntry(), or
  * getInstance() to call the function yourself
- * 
+ *
  * @author Sam (sam.belliveau@gmail.com)
  */
 
@@ -27,7 +27,7 @@ public class SLNetworkTable {
     /**
      * Opens network table on local device. IE a robot opens a network table for
      * other devices to connect to
-     * 
+     *
      * @param table network table name
      * @return Configured Network Table Wrapper
      */
@@ -36,9 +36,9 @@ public class SLNetworkTable {
     }
 
     /**
-     * Opens network table that is connected to a robot. IE a program connecting to
-     * a robot.
-     * 
+     * Opens network table that is connected to a robot. IE a program connecting
+     * to a robot.
+     *
      * @param team  team number
      * @param table network table name
      * @return Configured Network Table Wrapper
@@ -51,20 +51,22 @@ public class SLNetworkTable {
 
     /**
      * Opens network table with special instance.
-     * 
+     *
      * @param instance NetworkTableInstance
      * @param table    network table name
      * @return Configured Network Table Wrapper
      */
-    public static SLNetworkTable open(NetworkTableInstance instance, String table) {
+    public static SLNetworkTable open(NetworkTableInstance instance,
+            String table) {
         return new SLNetworkTable(instance, table);
     }
 
     /*********************/
     /***** VARIABLES *****/
     /*********************/
-    
-    private NetworkTableInstance mInstance; // Instance contains IP/Related information
+
+    private NetworkTableInstance mInstance; // Instance contains IP/Related
+                                            // information
     private NetworkTable mTable; // Current Data Table
     private String mTableName = ""; // Name of Data Table
 
@@ -73,9 +75,9 @@ public class SLNetworkTable {
     /************************/
 
     /**
-     * Creates a Network Table Wrapper opened on table "tableName", and with the a
-     * special NetworkTableInstance (ie. if you are making a client)
-     * 
+     * Creates a Network Table Wrapper opened on table "tableName", and with the
+     * a special NetworkTableInstance (ie. if you are making a client)
+     *
      * @param tableName network table name
      * @param instance  custom network table instance
      */
@@ -91,7 +93,7 @@ public class SLNetworkTable {
 
     /**
      * Gets current network table instance
-     * 
+     *
      * @return current network table instance
      */
     public NetworkTableInstance getInstance() {
@@ -100,7 +102,7 @@ public class SLNetworkTable {
 
     /**
      * Gets current network table
-     * 
+     *
      * @return current network table
      */
     public NetworkTable getTable() {
@@ -109,7 +111,7 @@ public class SLNetworkTable {
 
     /**
      * Gets current network table name
-     * 
+     *
      * @return current network table name
      */
     public String getTableName() {
@@ -122,7 +124,7 @@ public class SLNetworkTable {
 
     /**
      * Checks if network table is connected
-     * 
+     *
      * @return if network table is connected
      */
     public boolean isConnected() {
@@ -131,7 +133,7 @@ public class SLNetworkTable {
 
     /**
      * Gets a set of all key names in network table
-     * 
+     *
      * @return set of key names in network table
      */
     public Set<String> getKeys() {
@@ -140,7 +142,7 @@ public class SLNetworkTable {
 
     /**
      * Get a NetworkTableEntry for a key
-     * 
+     *
      * @param key key name
      * @return NetworkTableEntry for key
      */
@@ -150,7 +152,7 @@ public class SLNetworkTable {
 
     /**
      * Checks if key is a valid entry
-     * 
+     *
      * @param key key name
      * @return if key is a valid entry
      */
@@ -160,7 +162,7 @@ public class SLNetworkTable {
 
     /**
      * Checks to see if network table contains key
-     * 
+     *
      * @param key key name
      * @return if network table contains key
      */
@@ -179,7 +181,7 @@ public class SLNetworkTable {
 
     /**
      * Get boolean from network table
-     * 
+     *
      * @param key key name
      * @return value
      */
@@ -194,7 +196,7 @@ public class SLNetworkTable {
 
     /**
      * Get Double from network table
-     * 
+     *
      * @param key key name
      * @return value
      */
@@ -209,7 +211,7 @@ public class SLNetworkTable {
 
     /**
      * Get Number from network table
-     * 
+     *
      * @param key key name
      * @return value
      */
@@ -224,7 +226,7 @@ public class SLNetworkTable {
 
     /**
      * Get String from network table
-     * 
+     *
      * @param key key name
      * @return value
      */
@@ -238,7 +240,7 @@ public class SLNetworkTable {
 
     /**
      * Set boolean in network table
-     * 
+     *
      * @param key   key name
      * @param value desired value
      * @return returns false if entry exists with other type
@@ -249,7 +251,7 @@ public class SLNetworkTable {
 
     /**
      * Set double in network table
-     * 
+     *
      * @param key   key name
      * @param value desired value
      * @return returns false if entry exists with other type
@@ -260,7 +262,7 @@ public class SLNetworkTable {
 
     /**
      * Set Number in network table
-     * 
+     *
      * @param key   key name
      * @param value desired value
      * @return returns false if entry exists with other type
@@ -271,7 +273,7 @@ public class SLNetworkTable {
 
     /**
      * Set String in network table
-     * 
+     *
      * @param key   key name
      * @param value desired value
      * @return returns false if entry exists with other type

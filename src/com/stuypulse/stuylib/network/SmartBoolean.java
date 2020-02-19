@@ -6,7 +6,7 @@ import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
  * SmartBoolean works as a wrapper for values on SmartDashboard. The idea for
  * this class was to make getting values on SmartDashboard easier by making them
  * variables that you know were initialized.
- * 
+ *
  * @author Sam (sam.belliveau@gmail.com)
  */
 public class SmartBoolean {
@@ -22,9 +22,10 @@ public class SmartBoolean {
     private boolean mDefaultValue;
 
     /**
-     * Creates a SmartBoolean with the element name and a default value. The value on
-     * SmartDashboard will be reset to the default value on initialization.
-     * 
+     * Creates a SmartBoolean with the element name and a default value. The
+     * value on SmartDashboard will be reset to the default value on
+     * initialization.
+     *
      * @param id    the name of the boolean on SmartDashboard
      * @param value the default / initialization value for the value
      */
@@ -36,7 +37,7 @@ public class SmartBoolean {
 
     /**
      * Creates a SmartBoolean for an already existing value.
-     * 
+     *
      * @param id the name of the boolean on SmartDashboard
      */
     public SmartBoolean(String id) {
@@ -47,7 +48,7 @@ public class SmartBoolean {
 
     /**
      * Gets the value of the boolean from SmartDashboard
-     * 
+     *
      * @return the value of the boolean from SmartDashboard
      */
     public boolean get() {
@@ -56,7 +57,7 @@ public class SmartBoolean {
 
     /**
      * Gets the default value of the boolean
-     * 
+     *
      * @return the default value of the boolean
      */
     public boolean getDefault() {
@@ -65,7 +66,7 @@ public class SmartBoolean {
 
     /**
      * Sets the value of the boolean on SmartDashboard
-     * 
+     *
      * @param value what the value on SmartDashboard will be set to
      */
     public void set(boolean value) {
@@ -74,7 +75,7 @@ public class SmartBoolean {
 
     /**
      * Sets the default value of the boolean
-     * 
+     *
      * @param value what the default value of the boolean will be set to
      */
     public void setDefault(boolean value) {

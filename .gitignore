@@ -12,3 +12,8 @@ build/
 !src/
 !pictures/
 !vendordeps/
+
+.DS_Store
+
+.idea/
+StuyLib.iml

@@ -1,7 +1,5 @@
 package com.stuypulse.stuylib.input.keyboard.computer;
 
-import com.stuypulse.stuylib.input.keyboard.computer.NetKeyListener;
-
 import java.awt.Color;
 import java.awt.GridBagLayout;
 
@@ -14,7 +12,7 @@ import javax.swing.JPanel;
 /**
  * This is a simple class that opens a Java AWT window, which has a KeyListener
  * that uploads keyboard information to a network table
- * 
+ *
  * @author Sam (sam.belliveau@gmail.com)
  */
 
@@ -38,19 +36,21 @@ public class NetKeyWindow extends JFrame {
         int team;
         do {
             try {
-                String teamNum = JOptionPane.showInputDialog("Enter Team Number:");
+                String teamNum = JOptionPane
+                        .showInputDialog("Enter Team Number:");
                 team = Integer.parseInt(teamNum);
-            } catch (Exception e) {
+            } catch(Exception e) {
                 team = -1;
             }
-        } while (team < 0);
+        } while(team < 0);
 
         // Get keyboard port from user
         int port = 0;
         try {
-            String keyboardPort = JOptionPane.showInputDialog("Enter Virtual Keyboard Port (Default=0):");
+            String keyboardPort = JOptionPane.showInputDialog(
+                    "Enter Virtual Keyboard Port (Default=0):");
             port = Integer.parseInt(keyboardPort);
-        } catch (Exception e) {
+        } catch(Exception e) {
             port = 0;
         }
 
@@ -59,10 +59,12 @@ public class NetKeyWindow extends JFrame {
         addKeyListener(mListener);
 
         // Set Title
-        setTitle("Network Keyboard Input [Team: " + team + ", Port: " + port + "]");
+        setTitle("Network Keyboard Input [Team: " + team + ", Port: " + port
+                + "]");
 
         // Message
-        JLabel message = new JLabel("Sending Keyboard Input to [Team: " + team + ", Port: " + port + "]");
+        JLabel message = new JLabel("Sending Keyboard Input to [Team: " + team
+                + ", Port: " + port + "]");
         message.setBorder(new LineBorder(Color.BLACK, 4));
 
         // Message Panel

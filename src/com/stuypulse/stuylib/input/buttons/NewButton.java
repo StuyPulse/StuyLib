@@ -1,12 +1,10 @@
 package com.stuypulse.stuylib.input.buttons;
 
-import com.stuypulse.stuylib.input.buttons.BooleanProvider;
 import edu.wpi.first.wpilibj2.command.button.Button;
 
 /**
- * This class will let us use the new button by 
- * providing a lambda for it to use
- * 
+ * This class will let us use the new button by providing a lambda for it to use
+ *
  * @author Sam (sam.belliveau@gmail.com)
  */
 
@@ -19,7 +17,7 @@ public class NewButton extends Button {
 
     /**
      * Initializes NewButton with a lambda that will be used when calling .get()
-     * 
+     *
      * @param lambda lambda that provides the boolean the button will use
      */
     public NewButton(BooleanProvider lambda) {
@@ -33,9 +31,9 @@ public class NewButton extends Button {
         this(() -> false);
     }
 
-	/**
+    /**
      * Override get function to make it work like a button
-     * 
+     *
      * @return boolean that the lambda returns
      */
     @Override
