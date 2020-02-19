@@ -1,6 +1,7 @@
 plugins {
    id "java"
    id "edu.wpi.first.GradleRIO" version "2020.2.2"
+   id "com.diffplug.gradle.spotless" version "3.27.1"
 }
 
 group = 'com.stuypulse'
@@ -44,8 +45,22 @@ dependencies {
    simulation wpi.deps.sim.gui(wpi.platforms.desktop, false)
 }
 
+spotless {
+    java {
+        trimTrailingWhitespace()
+        removeUnusedImports()
+        endWithNewline()
+        indentWithSpaces()
+        eclipse().configFile 'StuyPulseFormatter.xml'
+    }
+}
+
 javadoc {
   destinationDir = file('docs/')
+}
+
+build {
+   dependsOn javadoc
 }
 
 jar {
