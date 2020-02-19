@@ -14,5 +14,5 @@ public interface IStreamFilter {
      * @param next next input value
      * @return next modified value
      */
-    double get(double next);
+    public double get(double next);
 }
