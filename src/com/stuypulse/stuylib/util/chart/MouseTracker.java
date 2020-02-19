@@ -14,7 +14,7 @@ public class MouseTracker implements MouseMotionListener {
     private double x, y;
 
     // think component will work (swing object tree)
-    public MouseTracker(Container  panel) {
+    public MouseTracker(Container panel) {
         this.panel = panel;
         this.x = 0;
         this.y = 0;       
@@ -22,7 +22,7 @@ public class MouseTracker implements MouseMotionListener {
 
     @Override
     public void mouseDragged(MouseEvent e) {
-        System.out.println("Dragging");
+        
     }
 
     @Override
