@@ -6,7 +6,7 @@ import com.stuypulse.stuylib.input.buttons.ButtonWrapper;
 
 /**
  * This class takes data from a Network Keyboard and puts it into a gamepad
- * 
+ *
  * @author Sam (sam.belliveau@gmail.com)
  */
 
@@ -19,7 +19,7 @@ public class NetKeyGamepad extends Gamepad {
 
     /**
      * Opens Network Keyboard Gamepad
-     * 
+     *
      * @param port virtual port
      */
     public NetKeyGamepad(int port) {
@@ -28,7 +28,7 @@ public class NetKeyGamepad extends Gamepad {
 
     /**
      * Get key name as WPI Button
-     * 
+     *
      * @param key key name
      * @return WPI Button
      */
@@ -38,7 +38,7 @@ public class NetKeyGamepad extends Gamepad {
 
     /**
      * Get boolean for if key is pressed
-     * 
+     *
      * @param key key name
      * @return if key is pressed
      */

@@ -4,9 +4,9 @@ package com.stuypulse.stuylib.file.csv;
  * Stores the data for each element in a custom class. This is to prevent the
  * need to parse doubles over and over again, when we can just store it as a
  * double.
- * 
+ *
  * Call .toString() or .toDouble() to get data
- * 
+ *
  * @author Sam (sam.belliveau@gmail.com)
  */
 
@@ -23,7 +23,7 @@ public class CSVElement {
 
     /**
      * Initialize with string
-     * 
+     *
      * @param value desired value
      */
     public CSVElement(String value) {
@@ -32,7 +32,7 @@ public class CSVElement {
 
     /**
      * Set internal value
-     * 
+     *
      * @param value desired value
      * @return if value was a number
      */
@@ -41,7 +41,7 @@ public class CSVElement {
         try {
             mNumberValue = Double.parseDouble(mStringValue);
             mIsNumber = true;
-        } catch (NumberFormatException e) {
+        } catch(NumberFormatException e) {
             mNumberValue = Double.NaN;
             mIsNumber = false;
         }
@@ -51,7 +51,7 @@ public class CSVElement {
 
     /**
      * Value of element as a string
-     * 
+     *
      * @return value as a string
      */
     public String toString() {
@@ -60,7 +60,7 @@ public class CSVElement {
 
     /**
      * Value of element as a number
-     * 
+     *
      * @return value as a number
      */
     public Number toNumber() throws NumberFormatException {
@@ -69,11 +69,11 @@ public class CSVElement {
 
     /**
      * Value of element as a double
-     * 
+     *
      * @return value as a double
      */
     public double toDouble() throws NumberFormatException {
-        if (isDouble()) {
+        if(isDouble()) {
             return mNumberValue;
         } else {
             String message = "";
@@ -86,7 +86,7 @@ public class CSVElement {
 
     /**
      * Returns if the element is a string
-     * 
+     *
      * @return if the element is a string
      */
     public boolean isString() {
@@ -95,7 +95,7 @@ public class CSVElement {
 
     /**
      * Returns if the element is a number
-     * 
+     *
      * @return if the element is a number
      */
     public boolean isNumber() {
@@ -104,7 +104,7 @@ public class CSVElement {
 
     /**
      * Returns if the element is a double
-     * 
+     *
      * @return if the element is a double
      */
     public boolean isDouble() {

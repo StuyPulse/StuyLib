@@ -1,6 +1,5 @@
 package com.stuypulse.stuylib.streams;
 
-import com.stuypulse.stuylib.streams.IStream;
 import com.stuypulse.stuylib.exception.ConstructionError;
 
 /**
@@ -30,8 +29,10 @@ public class BufferedIStream implements IStream {
      * @param size    size of buffer
      */
     public BufferedIStream(IStream istream, int size) throws ConstructionError {
-        if (size <= 0) {
-            throw new ConstructionError("BufferedIStream(IStream istream, int size)", "size must be greater than 0!");
+        if(size <= 0) {
+            throw new ConstructionError(
+                    "BufferedIStream(IStream istream, int size)",
+                    "size must be greater than 0!");
         }
 
         mBuffer = new double[size];
@@ -63,7 +64,7 @@ public class BufferedIStream implements IStream {
      * @return value from the istream
      */
     public double get(int delta) {
-        for (int i = mBuffer.length - 1; i > 0; --i) {
+        for(int i = mBuffer.length - 1; i > 0; --i) {
             mBuffer[i] = mBuffer[i - 1];
         }
 

@@ -4,7 +4,7 @@ import com.stuypulse.stuylib.exception.ConstructionError;
 
 /**
  * Simple coordinate class that defines many helpful functions like
- * 
+ *
  * @author Sam (sam.belliveau@gmail.com)
  */
 
@@ -23,21 +23,22 @@ public class Vector2D {
 
     /**
      * Initialize Vector2D using an array of 2 doubles
-     * 
+     *
      * @param in an array of 2 numbers
      */
     public Vector2D(double[] in) throws ConstructionError {
         if(in.length != 2) {
-            throw new ConstructionError("Vector2D(double[] in)",  "array in must be of size 2!");
+            throw new ConstructionError("Vector2D(double[] in)",
+                    "array in must be of size 2!");
         }
-        
+
         this.x = in[0];
         this.y = in[1];
     }
 
     /**
      * Initialize Vector2D using 2 doubles
-     * 
+     *
      * @param x first number, x
      * @param y second number, y
      */
@@ -48,7 +49,7 @@ public class Vector2D {
 
     /**
      * Get x, y coordinates as an array
-     * 
+     *
      * @return array of doubles
      */
     public double[] getArray() {
@@ -57,7 +58,7 @@ public class Vector2D {
 
     /**
      * See if two Vector2D's equal each other
-     * 
+     *
      * @param other other Vector2D
      * @return result
      */
@@ -67,7 +68,7 @@ public class Vector2D {
 
     /**
      * Distance between 2 Vector2Ds
-     * 
+     *
      * @param other other Vector2D
      * @return result
      */
@@ -81,7 +82,7 @@ public class Vector2D {
 
     /**
      * Distance from 0, 0
-     * 
+     *
      * @return result
      */
     public double distance() {
@@ -90,7 +91,7 @@ public class Vector2D {
 
     /**
      * Rotate Vector2D around point
-     * 
+     *
      * @param angdeg (degrees) amount to rotate around
      * @param origin point to rotate around
      * @return result of rotation
@@ -100,7 +101,8 @@ public class Vector2D {
         final double sin = Math.sin(radians);
         final double cos = Math.cos(radians);
 
-        final Vector2D point = this.sub(origin); // center the point around origin
+        final Vector2D point = this.sub(origin); // center the point around
+                                                 // origin
         Vector2D out = new Vector2D(); // make output variable
 
         out.x = point.x * cos - point.y * sin; // Rotate coords
@@ -112,7 +114,7 @@ public class Vector2D {
 
     /**
      * Rotate Vector2D around origin
-     * 
+     *
      * @param angdeg (degrees) amount to rotate around
      * @return result of rotation
      */
@@ -122,7 +124,7 @@ public class Vector2D {
 
     /**
      * Add two Vector2Ds
-     * 
+     *
      * @param other the other Vector2D
      * @return result of calculation
      */
@@ -132,7 +134,7 @@ public class Vector2D {
 
     /**
      * Sub two Vector2Ds
-     * 
+     *
      * @param other the other Vector2D
      * @return result of calculation
      */
@@ -142,7 +144,7 @@ public class Vector2D {
 
     /**
      * Convert to a string
-     * 
+     *
      * @return string value
      */
     public String toString() {
