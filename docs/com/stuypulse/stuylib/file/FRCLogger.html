@@ -158,9 +158,9 @@ extends java.lang.Object</pre>
 <td class="colFirst"><code>static interface&nbsp;</code></td>
 <th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="FRCLogger.Loggable.html" title="interface in com.stuypulse.stuylib.file">FRCLogger.Loggable</a></span></code></th>
 <td class="colLast">
-<div class="block">The Loggable interface should be implemented by a class that can 
- return a useful piece of data that can be called on demand to be written
- into the log.</div>
+<div class="block">The Loggable interface should be implemented by a class that can return a
+ useful piece of data that can be called on demand to be written into the
+ log.</div>
 </td>
 </tr>
 </table>
@@ -223,8 +223,8 @@ extends java.lang.Object</pre>
 <td class="colFirst"><code>void</code></td>
 <th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#logAllRegisteredLoggables()">logAllRegisteredLoggables</a></span>()</code></th>
 <td class="colLast">
-<div class="block">Iterates through all the registered Loggables and logs them with level and data,
- if logThisIteration() is true.</div>
+<div class="block">Iterates through all the registered Loggables and logs them with level
+ and data, if logThisIteration() is true.</div>
 </td>
 </tr>
 <tr id="i3" class="rowColor">
@@ -255,9 +255,8 @@ extends java.lang.Object</pre>
 <td class="colFirst"><code>void</code></td>
 <th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#registerLoggable(com.stuypulse.stuylib.file.FRCLogger.Loggable)">registerLoggable</a></span>&#8203;(<a href="FRCLogger.Loggable.html" title="interface in com.stuypulse.stuylib.file">FRCLogger.Loggable</a>&nbsp;loggable)</code></th>
 <td class="colLast">
-<div class="block">Registers a new Loggable that upon call will put the next
- getLogData() at level getLogLevel() to the log if it will
- logThisIteration().</div>
+<div class="block">Registers a new Loggable that upon call will put the next getLogData() at
+ level getLogLevel() to the log if it will logThisIteration().</div>
 </td>
 </tr>
 <tr id="i7" class="rowColor">
@@ -338,9 +337,8 @@ extends java.lang.Object</pre>
 <li class="blockList">
 <h4>registerLoggable</h4>
 <pre class="methodSignature">public&nbsp;void&nbsp;registerLoggable&#8203;(<a href="FRCLogger.Loggable.html" title="interface in com.stuypulse.stuylib.file">FRCLogger.Loggable</a>&nbsp;loggable)</pre>
-<div class="block">Registers a new Loggable that upon call will put the next
- getLogData() at level getLogLevel() to the log if it will
- logThisIteration().</div>
+<div class="block">Registers a new Loggable that upon call will put the next getLogData() at
+ level getLogLevel() to the log if it will logThisIteration().</div>
 <dl>
 <dt><span class="paramLabel">Parameters:</span></dt>
 <dd><code>loggable</code> - Class implementing Loggable</dd>
@@ -378,8 +376,8 @@ extends java.lang.Object</pre>
 <li class="blockList">
 <h4>logAllRegisteredLoggables</h4>
 <pre class="methodSignature">public&nbsp;void&nbsp;logAllRegisteredLoggables()</pre>
-<div class="block">Iterates through all the registered Loggables and logs them with level and data,
- if logThisIteration() is true.</div>
+<div class="block">Iterates through all the registered Loggables and logs them with level
+ and data, if logThisIteration() is true.</div>
 </li>
 </ul>
 <a id="logManualLoggable(com.stuypulse.stuylib.file.FRCLogger.Loggable)">
@@ -409,6 +407,8 @@ extends java.lang.Object</pre>
                         java.lang.String&nbsp;toLog)</pre>
 <div class="block">Adds a new log entry to the log.</div>
 <dl>
+<dt><span class="paramLabel">Type Parameters:</span></dt>
+<dd><code>T</code> - Denotes object type being logged</dd>
 <dt><span class="paramLabel">Parameters:</span></dt>
 <dd><code>level</code> - Level of severity of the log entry.</dd>
 <dd><code>obj</code> - Object that is the source of the log entry.</dd>
@@ -426,8 +426,10 @@ extends java.lang.Object</pre>
 <h4>logError</h4>
 <pre class="methodSignature">public&nbsp;&lt;T&gt;&nbsp;void&nbsp;logError&#8203;(T&nbsp;obj,
                          java.lang.Exception&nbsp;e)</pre>
-<div class="block">Log an error.  Should be used in conjunction with try/catch.</div>
+<div class="block">Log an error. Should be used in conjunction with try/catch.</div>
 <dl>
+<dt><span class="paramLabel">Type Parameters:</span></dt>
+<dd><code>T</code> - Denotes the type of object that is throwing the exception</dd>
 <dt><span class="paramLabel">Parameters:</span></dt>
 <dd><code>obj</code> - Object that is the source of the error.</dd>
 <dd><code>e</code> - Exception, usually from try/catch</dd>

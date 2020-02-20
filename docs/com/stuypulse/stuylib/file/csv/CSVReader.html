@@ -140,7 +140,7 @@ extends java.lang.Object
 implements java.lang.Iterable&lt;<a href="CSVElement.html" title="class in com.stuypulse.stuylib.file.csv">CSVElement</a>&gt;</pre>
 <div class="block">Read CSV Files with a bunch of epic features. After file is opened you can
  read the data like it was an array.
- 
+
  Each of the elements is stored as a custom type called Element. Which
  prevents the need to constantly parse the data over and over again if it is a
  number.</div>
@@ -338,7 +338,7 @@ implements java.lang.Iterable&lt;<a href="CSVElement.html" title="class in com.s
 <dd><code>file</code> - file path</dd>
 <dd><code>type</code> - CSV type</dd>
 <dt><span class="throwsLabel">Throws:</span></dt>
-<dd><code>java.io.IOException</code></dd>
+<dd><code>java.io.IOException</code> - File given not found</dd>
 </dl>
 </li>
 </ul>
@@ -355,7 +355,7 @@ implements java.lang.Iterable&lt;<a href="CSVElement.html" title="class in com.s
 <dt><span class="paramLabel">Parameters:</span></dt>
 <dd><code>file</code> - file path</dd>
 <dt><span class="throwsLabel">Throws:</span></dt>
-<dd><code>java.io.IOException</code></dd>
+<dd><code>java.io.IOException</code> - File not found</dd>
 </dl>
 </li>
 </ul>
@@ -382,7 +382,7 @@ implements java.lang.Iterable&lt;<a href="CSVElement.html" title="class in com.s
 <dt><span class="paramLabel">Parameters:</span></dt>
 <dd><code>file</code> - file path</dd>
 <dt><span class="throwsLabel">Throws:</span></dt>
-<dd><code>java.io.IOException</code></dd>
+<dd><code>java.io.IOException</code> - File not found</dd>
 </dl>
 </li>
 </ul>
@@ -404,10 +404,12 @@ implements java.lang.Iterable&lt;<a href="CSVElement.html" title="class in com.s
 <h4>read</h4>
 <pre class="methodSignature">public&nbsp;void&nbsp;read()
           throws java.io.IOException</pre>
-<div class="block">Read data from opened file. You can call multiple times if file is updated</div>
+<div class="block">Read data from opened file. You can call multiple times if file is
+ updated</div>
 <dl>
 <dt><span class="throwsLabel">Throws:</span></dt>
-<dd><code>java.io.IOException</code></dd>
+<dd><code>java.io.IOException</code> - Usually means that the file isn't found, though can
+                     also signal that the file was empty</dd>
 </dl>
 </li>
 </ul>
@@ -482,8 +484,8 @@ implements java.lang.Iterable&lt;<a href="CSVElement.html" title="class in com.s
 <dt><span class="returnLabel">Returns:</span></dt>
 <dd>element as custom CSVElement type</dd>
 <dt><span class="throwsLabel">Throws:</span></dt>
-<dd><code>java.lang.IndexOutOfBoundsException</code> - if the index is higher than the amount of
-                                   elements</dd>
+<dd><code>java.lang.IndexOutOfBoundsException</code> - if the index is higher than the amount
+                                   of elements</dd>
 </dl>
 </li>
 </ul>
@@ -502,8 +504,8 @@ implements java.lang.Iterable&lt;<a href="CSVElement.html" title="class in com.s
 <dt><span class="returnLabel">Returns:</span></dt>
 <dd>string of the element</dd>
 <dt><span class="throwsLabel">Throws:</span></dt>
-<dd><code>java.lang.IndexOutOfBoundsException</code> - if the index is higher than the amount of
-                                   elements</dd>
+<dd><code>java.lang.IndexOutOfBoundsException</code> - if the index is higher than the amount
+                                   of elements</dd>
 </dl>
 </li>
 </ul>
@@ -522,8 +524,8 @@ implements java.lang.Iterable&lt;<a href="CSVElement.html" title="class in com.s
 <dt><span class="returnLabel">Returns:</span></dt>
 <dd>double representation of the element</dd>
 <dt><span class="throwsLabel">Throws:</span></dt>
-<dd><code>java.lang.IndexOutOfBoundsException</code> - if the index is higher than the amount of
-                                   elements</dd>
+<dd><code>java.lang.IndexOutOfBoundsException</code> - if the index is higher than the amount
+                                   of elements</dd>
 </dl>
 </li>
 </ul>
@@ -542,8 +544,8 @@ implements java.lang.Iterable&lt;<a href="CSVElement.html" title="class in com.s
 <dt><span class="returnLabel">Returns:</span></dt>
 <dd>number representation of the element</dd>
 <dt><span class="throwsLabel">Throws:</span></dt>
-<dd><code>java.lang.IndexOutOfBoundsException</code> - if the index is higher than the amount of
-                                   elements</dd>
+<dd><code>java.lang.IndexOutOfBoundsException</code> - if the index is higher than the amount
+                                   of elements</dd>
 </dl>
 </li>
 </ul>
@@ -562,8 +564,8 @@ implements java.lang.Iterable&lt;<a href="CSVElement.html" title="class in com.s
 <dt><span class="returnLabel">Returns:</span></dt>
 <dd>if element is of type double</dd>
 <dt><span class="throwsLabel">Throws:</span></dt>
-<dd><code>java.lang.IndexOutOfBoundsException</code> - if the index is higher than the amount of
-                                   elements</dd>
+<dd><code>java.lang.IndexOutOfBoundsException</code> - if the index is higher than the amount
+                                   of elements</dd>
 </dl>
 </li>
 </ul>

@@ -27,7 +27,7 @@
     catch(err) {
     }
 //-->
-var data = {"i0":10,"i1":10,"i2":10,"i3":10,"i4":10,"i5":10,"i6":10,"i7":10,"i8":10,"i9":10};
+var data = {"i0":10,"i1":10,"i2":10,"i3":10,"i4":10,"i5":10,"i6":10,"i7":10,"i8":10,"i9":10,"i10":10,"i11":10};
 var tabs = {65535:["t0","All Methods"],2:["t2","Instance Methods"],8:["t4","Concrete Methods"]};
 var altColor = "altColor";
 var rowColor = "rowColor";
@@ -126,7 +126,7 @@ $('.navPadding').css('padding-top', $('.fixedNav').css("height"));
 <li><a href="Controller.html" title="class in com.stuypulse.stuylib.control">com.stuypulse.stuylib.control.Controller</a></li>
 <li>
 <ul class="inheritance">
-<li>com.stuypulse.stuylib.control.PIDCalculator</li>
+<li>com.stuypulse.stuylib.control.PIDBangBangCalculator</li>
 </ul>
 </li>
 </ul>
@@ -187,8 +187,8 @@ extends <a href="Controller.html" title="class in com.stuypulse.stuylib.control"
 <td class="colFirst"><code>protected double</code></td>
 <th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#calculate(double)">calculate</a></span>&#8203;(double&nbsp;error)</code></th>
 <td class="colLast">
-<div class="block">Calculate the value that the controller wants to move at while calculating
- the values for the PIDController</div>
+<div class="block">Calculate the value that the controller wants to move at while
+ calculating the values for the PIDController</div>
 </td>
 </tr>
 <tr id="i1" class="rowColor">
@@ -223,7 +223,10 @@ extends <a href="Controller.html" title="class in com.stuypulse.stuylib.control"
 <th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#getPIDController(double,double,double)">getPIDController</a></span>&#8203;(double&nbsp;kP,
                 double&nbsp;kI,
                 double&nbsp;kD)</code></th>
-<td class="colLast">&nbsp;</td>
+<td class="colLast">
+<div class="block">This method is used to return corrected PID values Use setTunerType() to
+ change the tuner type.</div>
+</td>
 </tr>
 <tr id="i7" class="rowColor">
 <td class="colFirst"><code>double</code></td>
@@ -233,11 +236,25 @@ extends <a href="Controller.html" title="class in com.stuypulse.stuylib.control"
 </td>
 </tr>
 <tr id="i8" class="altColor">
+<td class="colFirst"><code><a href="PIDTunerType.html" title="enum in com.stuypulse.stuylib.control">PIDTunerType</a></code></td>
+<th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#getTunerType()">getTunerType</a></span>()</code></th>
+<td class="colLast">
+<div class="block">Gets the current tuning method in use</div>
+</td>
+</tr>
+<tr id="i9" class="rowColor">
 <td class="colFirst"><code><a href="PIDCalculator.html" title="class in com.stuypulse.stuylib.control">PIDCalculator</a></code></td>
 <th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#setControlSpeed(double)">setControlSpeed</a></span>&#8203;(double&nbsp;speed)</code></th>
 <td class="colLast">&nbsp;</td>
 </tr>
-<tr id="i9" class="rowColor">
+<tr id="i10" class="altColor">
+<td class="colFirst"><code><a href="PIDCalculator.html" title="class in com.stuypulse.stuylib.control">PIDCalculator</a></code></td>
+<th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#setTunerType(com.stuypulse.stuylib.control.PIDTunerType)">setTunerType</a></span>&#8203;(<a href="PIDTunerType.html" title="enum in com.stuypulse.stuylib.control">PIDTunerType</a>&nbsp;tuner)</code></th>
+<td class="colLast">
+<div class="block">Set the type of PID tuning to calculate</div>
+</td>
+</tr>
+<tr id="i11" class="rowColor">
 <td class="colFirst"><code>java.lang.String</code></td>
 <th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#toString()">toString</a></span>()</code></th>
 <td class="colLast">&nbsp;</td>
@@ -248,7 +265,7 @@ extends <a href="Controller.html" title="class in com.stuypulse.stuylib.control"
 <!--   -->
 </a>
 <h3>Methods inherited from class&nbsp;com.stuypulse.stuylib.control.<a href="Controller.html" title="class in com.stuypulse.stuylib.control">Controller</a></h3>
-<code><a href="Controller.html#getError()">getError</a>, <a href="Controller.html#getOutput()">getOutput</a>, <a href="Controller.html#getRate()">getRate</a>, <a href="Controller.html#getRawVelocity()">getRawVelocity</a>, <a href="Controller.html#getVelocity()">getVelocity</a>, <a href="Controller.html#setErrorFilter(com.stuypulse.stuylib.streams.filters.IStreamFilter)">setErrorFilter</a>, <a href="Controller.html#setOutputFilter(com.stuypulse.stuylib.streams.filters.IStreamFilter)">setOutputFilter</a>, <a href="Controller.html#update(double)">update</a>, <a href="Controller.html#update(double,double)">update</a></code></li>
+<code><a href="Controller.html#getError()">getError</a>, <a href="Controller.html#getOutput()">getOutput</a>, <a href="Controller.html#getRate()">getRate</a>, <a href="Controller.html#getRawVelocity()">getRawVelocity</a>, <a href="Controller.html#getVelocity()">getVelocity</a>, <a href="Controller.html#isDone(double)">isDone</a>, <a href="Controller.html#isDone(double,double)">isDone</a>, <a href="Controller.html#setErrorFilter(com.stuypulse.stuylib.streams.filters.IStreamFilter)">setErrorFilter</a>, <a href="Controller.html#setOutputFilter(com.stuypulse.stuylib.streams.filters.IStreamFilter)">setOutputFilter</a>, <a href="Controller.html#setVelocityFilter(com.stuypulse.stuylib.streams.filters.IStreamFilter)">setVelocityFilter</a>, <a href="Controller.html#update(double)">update</a>, <a href="Controller.html#update(double,double)">update</a></code></li>
 </ul>
 <ul class="blockList">
 <li class="blockList"><a id="methods.inherited.from.class.java.lang.Object">
@@ -318,8 +335,8 @@ extends <a href="Controller.html" title="class in com.stuypulse.stuylib.control"
 <li class="blockList">
 <h4>calculate</h4>
 <pre class="methodSignature">protected&nbsp;double&nbsp;calculate&#8203;(double&nbsp;error)</pre>
-<div class="block">Calculate the value that the controller wants to move at while calculating
- the values for the PIDController</div>
+<div class="block">Calculate the value that the controller wants to move at while
+ calculating the values for the PIDController</div>
 <dl>
 <dt><span class="overrideSpecifyLabel">Specified by:</span></dt>
 <dd><code><a href="Controller.html#calculate(double)">calculate</a></code>&nbsp;in class&nbsp;<code><a href="Controller.html" title="class in com.stuypulse.stuylib.control">Controller</a></code></dd>
@@ -358,6 +375,36 @@ extends <a href="Controller.html" title="class in com.stuypulse.stuylib.control"
 </dl>
 </li>
 </ul>
+<a id="setTunerType(com.stuypulse.stuylib.control.PIDTunerType)">
+<!--   -->
+</a>
+<ul class="blockList">
+<li class="blockList">
+<h4>setTunerType</h4>
+<pre class="methodSignature">public&nbsp;<a href="PIDCalculator.html" title="class in com.stuypulse.stuylib.control">PIDCalculator</a>&nbsp;setTunerType&#8203;(<a href="PIDTunerType.html" title="enum in com.stuypulse.stuylib.control">PIDTunerType</a>&nbsp;tuner)</pre>
+<div class="block">Set the type of PID tuning to calculate</div>
+<dl>
+<dt><span class="paramLabel">Parameters:</span></dt>
+<dd><code>tuner</code> - This is what you want to set the tuning method to</dd>
+<dt><span class="returnLabel">Returns:</span></dt>
+<dd>Uses Builder notation, so returns instance of itself</dd>
+</dl>
+</li>
+</ul>
+<a id="getTunerType()">
+<!--   -->
+</a>
+<ul class="blockList">
+<li class="blockList">
+<h4>getTunerType</h4>
+<pre class="methodSignature">public&nbsp;<a href="PIDTunerType.html" title="enum in com.stuypulse.stuylib.control">PIDTunerType</a>&nbsp;getTunerType()</pre>
+<div class="block">Gets the current tuning method in use</div>
+<dl>
+<dt><span class="returnLabel">Returns:</span></dt>
+<dd>Gets the PID tuner being used</dd>
+</dl>
+</li>
+</ul>
 <a id="getPIDController(double,double,double)">
 <!--   -->
 </a>
@@ -367,11 +414,13 @@ extends <a href="Controller.html" title="class in com.stuypulse.stuylib.control"
 <pre class="methodSignature">public&nbsp;<a href="PIDController.html" title="class in com.stuypulse.stuylib.control">PIDController</a>&nbsp;getPIDController&#8203;(double&nbsp;kP,
                                       double&nbsp;kI,
                                       double&nbsp;kD)</pre>
+<div class="block">This method is used to return corrected PID values Use setTunerType() to
+ change the tuner type. Default is Ziegler Nichols</div>
 <dl>
 <dt><span class="paramLabel">Parameters:</span></dt>
 <dd><code>kP</code> - p multiplier when calculating values</dd>
-<dd><code>kI</code> - p multiplier when calculating values</dd>
-<dd><code>kD</code> - p multiplier when calculating values</dd>
+<dd><code>kI</code> - i multiplier when calculating values</dd>
+<dd><code>kD</code> - d multiplier when calculating values</dd>
 <dt><span class="returnLabel">Returns:</span></dt>
 <dd>calculated PID controller based off of measurements</dd>
 </dl>

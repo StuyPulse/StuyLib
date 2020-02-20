@@ -33,6 +33,7 @@ public class CSVReader implements Iterable<CSVElement> {
      *
      * @param file file path
      * @param type CSV type
+     * @throws IOException File given not found
      */
     public CSVReader(String file, CSVType type) throws IOException {
         setCSVType(type);
@@ -43,6 +44,7 @@ public class CSVReader implements Iterable<CSVElement> {
      * Open CSVReader with file
      *
      * @param file file path
+     * @throws IOException File not found
      */
     public CSVReader(String file) throws IOException {
         this(file, CSVType.DEFAULT);
@@ -52,6 +54,7 @@ public class CSVReader implements Iterable<CSVElement> {
      * Open file
      *
      * @param file file path
+     * @throws IOException File not found
      */
     public void open(String file) throws IOException {
         mCSVFilePath = file;
@@ -77,6 +80,9 @@ public class CSVReader implements Iterable<CSVElement> {
     /**
      * Read data from opened file. You can call multiple times if file is
      * updated
+     *
+     * @throws IOException Usually means that the file isn't found, though can
+     *                     also signal that the file was empty
      */
     public void read() throws IOException {
         clearData();

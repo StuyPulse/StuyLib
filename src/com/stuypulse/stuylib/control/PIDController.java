@@ -34,11 +34,12 @@ public class PIDController extends Controller {
     private IStreamFilter mIFilter;
 
     /**
-     * @param p     The Proportional Multiplier
-     * @param i     The Integral Multiplier
-     * @param d     The Derivative Multiplier
+     * @param p The Proportional Multiplier
+     * @param i The Integral Multiplier
+     * @param d The Derivative Multiplier
      */
-    //TODO: Some methods now final b/c used in constructor. Can also keep methods non-final, and simply not use the methods in the constructor
+    // TODO: Some methods now final b/c used in constructor. Can also keep
+    // methods non-final, and simply not use the methods in the constructor
     public PIDController(double p, double i, double d) {
         setIntegratorFilter(null);
         setPID(p, i, d);

@@ -8,14 +8,12 @@ import com.stuypulse.stuylib.util.StopWatch;
 import com.stuypulse.stuylib.math.SLMath;
 
 /**
- * This is a Bang-Bang controller that while controlling the robot, will be able
- * to calculate the values for the PID controller. It does this by taking the
- * results of oscillations, then creating a PIDController withe the correct
- * values once the oscillations have been measured.
+ * This is a similar calculator to bang bang that instead uses step change, wherein it calculates how long it will take
+ * for the motor to reach a certain value and uses that in order
  *
- * @author Sam (sam.belliveau@gmail.com)
+ * @author Winston (panda501wp@gmail.com)
  */
-public class PIDCalculator extends Controller {
+public class PIDStepChangeCalculator extends Controller {
 
     // Maximum amount of time between update commands before the calculator
     // resets
@@ -24,7 +22,7 @@ public class PIDCalculator extends Controller {
 
     // The minimum period length that will be accepted as a valid period
     private static final double kMinPeriodTime = 0.2;
-    
+
     // The filter easuring the period and amplitude
     private static IStreamFilter getMeasurementFilter() {
         // This is a mix between accuracy and speed of updating.
@@ -52,15 +50,15 @@ public class PIDCalculator extends Controller {
 
     // Whether or not the system will measure the oscillation
     private boolean mRunning;
-    
+
     private PIDTunerType mTuner;
-    
+
     private double mDeadTime;
 
     /**
      * @param speed motor output for bang bang controller
      */
-    public PIDCalculator(double speed) {
+    public PIDStepChangeCalculator(double target, double speed) {
         mControlSpeed = speed;
 
         mPeriod = 0;
@@ -71,7 +69,7 @@ public class PIDCalculator extends Controller {
 
         mPeriodTimer = new StopWatch();
         mLocalMax = 0;
-        
+
         mDeadTime = -1;
 
         mRunning = false;
@@ -81,7 +79,7 @@ public class PIDCalculator extends Controller {
      * @param speed sets speed for motor output of controller
      * @return the calculated result from the PIDController
      */
-    public PIDCalculator setControlSpeed(double speed) {
+    public PIDStepChangeCalculator setControlSpeed(double speed) {
         mControlSpeed = speed;
         return this;
     }
@@ -126,46 +124,29 @@ public class PIDCalculator extends Controller {
     }
 
     /**
-     * Adjusted Amplitude of Oscillations
-     *
-     * @return Get calculated K value for PID value equation
-     */
-    public double getK() {
-        return (4.0 * mControlSpeed) / (Math.PI * mAmplitude);
-    }
-
-    /**
-     * Period of Oscillations
-     *
-     * @return Get calculated T value for PID value equation
-     */
-    public double getT() {
-        return mPeriod;
-    }
-    
-    /**
      * Set the type of PID tuning to calculate
-     * 
+     *
+     * @param tuner This is what you want to set the tuning method to
      * @return Uses Builder notation, so returns instance of itself
-    */
-    public PIDCalculator setTunerType(PIDTunerType tuner) {
+     */
+    public PIDStepChangeCalculator setTunerType(PIDTunerType tuner) {
         this.mTuner = tuner;
         return this;
     }
-    
+
     /**
-     * Gets the 
-     * @return 
+     * Gets the current tuning method in use
+     *
+     * @return Gets the PID tuner being used
      */
     public PIDTunerType getTunerType() {
         return mTuner;
     }
 
-    //TODO: Fix Javadoc b/c Winston wrote it, and he's dumb
     /**
-     * This method is used to return corrected PID values
-     * Use setTunerType() to change the tuner type. Default is Ziegler Nichols
-     * 
+     * This method is used to return corrected PID values Use setTunerType() to
+     * change the tuner type. Default is Ziegler Nichols
+     *
      * @param kP p multiplier when calculating values
      * @param kI i multiplier when calculating values
      * @param kD d multiplier when calculating values
@@ -176,12 +157,12 @@ public class PIDCalculator extends Controller {
         kI = Math.max(kI, 0.0);
         kD = Math.max(kD, 0.0);
 
-        if( > 0 && mDeadTime < 0)
+        if(mAmplitude > 0 && mDeadTime < 0)
             mDeadTime = mPeriodTimer.getTime();
         if(mAmplitude > 0 && getTunerType() == PIDTunerType.ZIEGLER_NICHOLS) {
             double t = getT();
             double k = getK();
-            
+
             return new PIDController(kP * (k), kI * (k / t), kD * (k * t));
         } else {
             return new PIDController(-1, -1, -1);
@@ -212,7 +193,7 @@ public class PIDCalculator extends Controller {
     /**
      * @return calculated P controller based off of measurements
      */
-   public PIDController getPController() {
+    public PIDController getPController() {
         return getPIDController(0.5, -1, -1);
     }
 

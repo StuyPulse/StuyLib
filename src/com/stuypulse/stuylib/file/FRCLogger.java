@@ -141,6 +141,7 @@ public class FRCLogger {
     /**
      * Adds a new log entry to the log.
      *
+     * @param <T>   Denotes object type being logged
      * @param level Level of severity of the log entry.
      * @param obj   Object that is the source of the log entry.
      * @param toLog Log entry message.
@@ -153,6 +154,7 @@ public class FRCLogger {
     /**
      * Log an error. Should be used in conjunction with try/catch.
      *
+     * @param <T> Denotes the type of object that is throwing the exception
      * @param obj Object that is the source of the error.
      * @param e   Exception, usually from try/catch
      */
