@@ -126,20 +126,21 @@ public class Gamepad {
     /*** BUTTONS BASED OFF OF IMPLEMENTED FUNCTIONS ***/
     /**************************************************/
 
+    private static double getAngle(double x, double y) {
+        if(x == 0 && y == 0) {
+            return 0;
+        } else {
+            return Math.toDegrees(Math.atan2(y, x));
+        }
+    }
+
     // Left Stick //
     public final double getLeftMag() {
         return Math.hypot(getLeftX(), getLeftY());
     }
 
     public final double getLeftAngle() {
-        double x = getLeftX();
-        double y = getLeftY();
-
-        if(x == 0 && y == 0) {
-            return 0;
-        } else {
-            return Math.toDegrees(Math.atan2(y, x));
-        }
+        return getAngle(getLeftX(), getLeftY());
     }
 
     // Right Stick //
@@ -148,14 +149,7 @@ public class Gamepad {
     }
 
     public final double getRightAngle() {
-        double x = getRightX();
-        double y = getRightY();
-
-        if(x == 0 && y == 0) {
-            return 0;
-        } else {
-            return Math.toDegrees(Math.atan2(y, x));
-        }
+        return getAngle(getRightX(), getRightY());
     }
 
     // D-Pad //
@@ -165,21 +159,6 @@ public class Gamepad {
 
     public final double getDPadY() {
         return (getRawDPadUp() ? 1.0 : 0.0) - (getRawDPadDown() ? 1.0 : 0.0);
-    }
-
-    public final double getDPadMag() {
-        return Math.hypot(getDPadX(), getDPadY());
-    }
-
-    public final double getDPadAngle() {
-        double x = getDPadX();
-        double y = getDPadY();
-
-        if(x == 0 && y == 0) {
-            return 0;
-        } else {
-            return Math.toDegrees(Math.atan2(y, x));
-        }
     }
 
     public final ButtonWrapper getDPadUp() {
