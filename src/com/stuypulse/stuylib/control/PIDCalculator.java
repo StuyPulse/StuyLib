@@ -29,8 +29,7 @@ public class PIDCalculator extends Controller {
     private static IStreamFilter getMeasurementFilter() {
         // This is a mix between accuracy and speed of updating.
         // Takes about 6 periods to get accurate results
-        return new IStreamFilterGroup(new MovingAverage(6),
-                new RollingAverage(2));
+        return new IStreamFilterGroup(new MovingAverage(12));
     }
 
     // The speed that the bang bang controller will run at
