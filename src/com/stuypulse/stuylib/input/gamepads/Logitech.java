@@ -84,16 +84,16 @@ public class Logitech extends WPIGamepad {
             return getRawButton(1);
         }
 
+        public boolean getRawBottomButton() {
+            return getRawButton(2);
+        }
+
         public boolean getRawRightButton() {
             return getRawButton(3);
         }
 
         public boolean getRawTopButton() {
             return getRawButton(4);
-        }
-
-        public boolean getRawBottomButton() {
-            return getRawButton(2);
         }
 
         // Start / Select / Option //
@@ -171,16 +171,16 @@ public class Logitech extends WPIGamepad {
             return getRawButton(3);
         }
 
+        public boolean getRawBottomButton() {
+            return getRawButton(1);
+        }
+
         public boolean getRawRightButton() {
             return getRawButton(2);
         }
 
         public boolean getRawTopButton() {
             return getRawButton(4);
-        }
-
-        public boolean getRawBottomButton() {
-            return getRawButton(1);
         }
 
         // Start / Select / Option //
