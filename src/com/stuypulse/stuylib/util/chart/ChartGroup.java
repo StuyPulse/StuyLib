@@ -1,33 +1,51 @@
 package com.stuypulse.stuylib.util.chart;
 
-import java.awt.Container;
-import java.util.ArrayList;
+import java.awt.CardLayout;
+import java.awt.event.KeyEvent;
 import java.util.LinkedList;
 import java.util.List;
 
-import java.awt.*;
-import java.awt.event.*;
-
-import com.stuypulse.stuylib.math.SLMath;
-import com.stuypulse.stuylib.streams.filters.OrderedLowPassFilter;
-
 /**
+ * Group of charts.
+ * 
  * @author Myles Pasetsky (@selym3)
  */
 public class ChartGroup extends Chart {
 
     private static final long serialVersionUID = 1L;
 
-    public static final int OFFSET = 69;
-
+    /**
+     * Stores charts.
+     */
     private List<Chart> charts;
 
+    /**
+     * Swing layout for organizing charts.
+     */
     private final CardLayout cardLayout;
+
+    /**
+     * Tracks the current chart the card layout is on.
+     */
     private int currentCardIndex;
 
+    /**
+     * Built-in utility for using left arrow key to 
+     * scroll through charts.
+     */
     private final KeyTracker.BindingFunction leftFunction;
+
+    /**
+     * Built-in utility for using right arrow key to 
+     * scroll through charts.
+     */
     private final KeyTracker.BindingFunction rightFunction;
 
+    /**
+     * Constructor to take in charts.
+     * 
+     * @param charts Charts to group.
+     */
     public ChartGroup(Chart... charts) {
         super();
         this.charts = new LinkedList<Chart>();
@@ -39,31 +57,41 @@ public class ChartGroup extends Chart {
         leftFunction = () -> {
             cardLayout.previous(getContentPane());
             updateCurrentCardIndex(false);
+            this.charts.get(currentCardIndex).requestFocus();
         };
 
         rightFunction = () -> {
             cardLayout.next(getContentPane());
             updateCurrentCardIndex(true);
+            this.charts.get(currentCardIndex).requestFocus();
         };
 
         addKeyBinding(KeyEvent.VK_LEFT, leftFunction);
         addKeyBinding(KeyEvent.VK_RIGHT, rightFunction);
 
         getContentPane().setLayout(cardLayout);
-        
+
         add(charts);
 
         display();
     }
 
+    /**
+     * Update card index based on direction of scrolling.
+     */
     private int updateCurrentCardIndex(boolean direction) {
         currentCardIndex += direction ? 1 : charts.size() - 1;
-        currentCardIndex = currentCardIndex%charts.size();
+        currentCardIndex = currentCardIndex % charts.size();
         return currentCardIndex;
     }
 
+    /**
+     * Add addition charts to the chart group.
+     * 
+     * @param charts Charts to add
+     */
     public ChartGroup add(Chart... charts) {
-        for (int i = 0;i < charts.length;i++) {
+        for (int i = 0; i < charts.length; i++) {
             this.charts.add(charts[i]);
             charts[i].undisplay();
             getContentPane().add(charts[i].getContentPane());
@@ -71,6 +99,9 @@ public class ChartGroup extends Chart {
         return this;
     }
 
+    /**
+     * Update each chart's data.
+     */
     @Override
     public void update(double x, double y) {
         for (Chart chart : charts) {
@@ -78,6 +109,9 @@ public class ChartGroup extends Chart {
         }
     }
 
+    /**
+     * Update each chart's data.
+     */
     @Override
     public void update(double y) {
         for (Chart chart : charts) {
@@ -85,6 +119,9 @@ public class ChartGroup extends Chart {
         }
     }
 
+    /**
+     * Reset each chart's data.
+     */
     @Override
     public void reset(double x, double y) {
         for (Chart chart : charts) {
@@ -92,6 +129,9 @@ public class ChartGroup extends Chart {
         }
     }
 
+    /**
+     * Reset each chart's data.
+     */
     @Override
     public void reset() {
         System.out.println("THIS IS CALLED");
@@ -100,6 +140,9 @@ public class ChartGroup extends Chart {
         }
     }
 
+    /**
+     * Set each chart's max size.
+     */
     @Override
     public Chart setMaxSize(int max) {
         for (Chart chart : charts) {
@@ -108,6 +151,9 @@ public class ChartGroup extends Chart {
         return this;
     }
 
+    /**
+     * Set x bounds of each chart.
+     */
     @Override
     public Chart setXBounds(Double min, Double max) {
         for (Chart chart : charts) {
@@ -116,6 +162,9 @@ public class ChartGroup extends Chart {
         return this;
     }
 
+    /**
+     * Set y bounds of each chart.
+     */
     @Override
     public Chart setYBounds(Double min, Double max) {
         for (Chart chart : charts) {
@@ -124,6 +173,9 @@ public class ChartGroup extends Chart {
         return this;
     }
 
+    /**
+     * Reset each chart's x boundaries.
+     */
     @Override
     public Chart resetXBounds() {
         for (Chart chart : charts) {
@@ -132,6 +184,9 @@ public class ChartGroup extends Chart {
         return this;
     }
 
+    /**
+     * Reset each chart's y data.
+     */
     @Override
     public Chart resetYBounds() {
         for (Chart chart : charts) {
@@ -140,67 +195,52 @@ public class ChartGroup extends Chart {
         return this;
     }
 
+    /**
+     * Redraw the current selected chart.
+     */
     @Override
     public void redraw() {
-       charts.get(currentCardIndex).redraw();
+        charts.get(currentCardIndex).redraw();
     }
 
+    /**
+     * Gets the mouse x from the current selected chart.
+     */
     @Override
     public double getMouseX() {
         return charts.get(currentCardIndex).getMouseX();
     }
 
+    /**
+     * Gets the mouse y from the current selected chart.
+     */
     @Override
     public double getMouseY() {
         return charts.get(currentCardIndex).getMouseY();
     }
 
+    /**
+     * Gets the max size from the current selected chart.
+     */
     @Override
     public int getMaxSize() {
         return charts.get(currentCardIndex).getMaxSize();
     }
 
+    /**
+     * Get the x bounds from the current selected chart.
+     */
     @Override
     public Double[] getXBounds() {
         return charts.get(currentCardIndex).getXBounds();
     }
 
+    /**
+     * Get the y bounds from the current selected chart.
+     */
     @Override
     public Double[] getYBounds() {
         return charts.get(currentCardIndex).getYBounds();
     }
 
-    @Override
-    public String toString() {
-        return Integer.toString(charts.size());
-    }
-
-    public static void main(String[] args) throws InterruptedException {
-
-        /**
-         * get the content pane of the Chart if its in a chartgroup and add it to the single chart frame
-         * ChartGroup should be a JFrame
-         * add hide/show methods
-         * 
-         */
-
-        Chart control = new Chart("Control", "X", "Y");
-        Chart speed = new FilteredChart("Speed", "X", "Y", new OrderedLowPassFilter(0.5, 1));
-        Chart angle = new FilteredChart("Angle", "X", "Y", new OrderedLowPassFilter(0.1, 1));
-
-        Chart group = new ChartGroup(control, speed, angle).setYBounds(0.0,1.2).setMaxSize(400);
-
-        double rNum = 0.0;
-
-        while (true) {
-            rNum = SLMath.limit(((group.getMouseY() - 0.04)/0.9),0,1);
-            
-            group.update(rNum);
-
-            group.redraw();
-
-            Thread.sleep(20);
-
-        }
-    }
 }

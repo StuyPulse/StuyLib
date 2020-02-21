@@ -1,8 +1,6 @@
 package com.stuypulse.stuylib.util.chart;
 
-import com.stuypulse.stuylib.math.SLMath;
 import com.stuypulse.stuylib.streams.filters.IStreamFilter;
-import com.stuypulse.stuylib.streams.filters.RollingAverage;
 
 /**
  * A single session chart with a stream filter.
@@ -25,14 +23,17 @@ public class FilteredChart extends Chart {
         this.filter = filter;
     }
 
+    /**
+     * Chart with a filter.
+     * 
+     * @param IStreamFilter IStreamFilter to apply to all incoming y-values 
+     */
     public FilteredChart(String title, IStreamFilter filter) { 
         this(title,"x","y",filter);
     }
 
     /**
-     * Update function used by FilteredChart to apply the filter. Must be used
-     * because it autoincrements the x-value, as to not mess with time-dependent
-     * filters.
+     * Update Y value with the chart's filter.
      * 
      * @param y Y value to be filtered
      */
@@ -40,20 +41,5 @@ public class FilteredChart extends Chart {
     public void update(double y) {
         update(getXData().get(getXData().size() - 1) + 1,filter.get(y));
     }
-
-    public static void main(String[] args) throws InterruptedException {
-        Chart chart = new FilteredChart("Title", new RollingAverage(24)).setMaxSize(694).setYBounds(0.0, 1.0).display();
-
-        double y = 0;
-        while (true) {
-            y = SLMath.limit((chart.getMouseY() - 0.05) / 0.9, 0, 1);
-
-            chart.update(y);
-
-            chart.repaint();
-
-            Thread.sleep(50);
-        }
-    }
-
+       
 }

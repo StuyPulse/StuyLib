@@ -8,10 +8,16 @@ import java.util.Map;
 import java.util.Set;
 
 /**
+ * Key tracker for swing components with key
+ * bindings.
+ * 
  * @author Myles Pasetsky (selym3)
  */
 public class KeyTracker extends KeyAdapter {
 
+    /**
+     * Interface for basic key bindings.
+     */
     public interface BindingFunction {
         void function();
     }
@@ -19,15 +25,31 @@ public class KeyTracker extends KeyAdapter {
     private Set<Integer> values;
     private Map<Integer, BindingFunction> bindings;
 
+    /**
+     * Initialize set of key presses and
+     * key bindings.
+     */
     public KeyTracker() {
         values = new HashSet<Integer>();
         bindings = new HashMap<Integer, BindingFunction>();
     }
 
+    /**
+     * Get the value of a key press.
+     * 
+     * @param binding key code
+     * @return if a key is pressed
+     */
     public boolean getKey(int binding) {
         return values.contains(binding);
     }
 
+    /**
+     * Add a basic binding to a key code
+     * 
+     * @param keyCode key code 
+     * @param bindingFunction Binding function
+     */
     public KeyTracker addBinding(int keyCode, BindingFunction bindingFunction) {
         bindings.put(keyCode, bindingFunction);
         return this;
@@ -40,10 +62,8 @@ public class KeyTracker extends KeyAdapter {
             System.exit(1);
         }
 
-        for (Map.Entry<Integer, BindingFunction> entry : bindings.entrySet()) {
-            if (entry.getKey() == keyCode) {
-                entry.getValue().function();
-            }
+        if(bindings.containsKey(keyCode)) {
+            bindings.get(keyCode).function();
         }
 
         values.add(keyCode);
