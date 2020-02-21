@@ -1,36 +1,50 @@
 package com.stuypulse.stuylib.input.gamepads;
 
-import com.stuypulse.stuylib.input.WPIGamepad;
+import com.stuypulse.stuylib.input.Gamepad;
+
+import edu.wpi.first.wpilibj.XboxController;
+import edu.wpi.first.wpilibj.GenericHID.Hand;
 
 /**
- * Implementation of the PS4 for the Gamepad Class
+ * A wrapper for the XboxController class to work with the gamepad interface.
  *
  * @author Sam (sam.belliveau@gmail.com)
  */
 
-public class PS4 extends WPIGamepad {
+public class Xbox extends Gamepad {
+
+    private XboxController mJoystick;
 
     // Constructor //
-    public PS4(int port) {
-        super(port);
+    public Xbox(XboxController joystick) {
+        mJoystick = joystick;
+    }
+
+    public Xbox(int port) {
+        this(new XboxController(port));
+    }
+
+    // Get the underlying XboxClass
+    public XboxController getJoystick() {
+        return mJoystick;
     }
 
     // Left Stick //
     public double getLeftX() {
-        return getRawAxis(0);
+        return getJoystick().getX(Hand.kLeft);
     }
 
     public double getLeftY() {
-        return -getRawAxis(1);
+        return getJoystick().getY(Hand.kLeft);
     }
 
     // Right Stick //
     public double getRightX() {
-        return getRawAxis(2);
+        return getJoystick().getX(Hand.kRight);
     }
 
     public double getRightY() {
-        return -getRawAxis(5);
+        return getJoystick().getY(Hand.kRight);
     }
 
     // D-Pad //
@@ -52,58 +66,58 @@ public class PS4 extends WPIGamepad {
 
     // Bumpers //
     public boolean getRawLeftBumper() {
-        return getRawButton(5);
+        return getJoystick().getBumper(Hand.kLeft);
     }
 
     public boolean getRawRightBumper() {
-        return getRawButton(6);
+        return getJoystick().getBumper(Hand.kRight);
     }
 
     // Triggers //
     public double getRawLeftTriggerAxis() {
-        return (getRawAxis(3) + 1.0) / 2.0;
+        return getJoystick().getTriggerAxis(Hand.kLeft);
     }
 
     public double getRawRightTriggerAxis() {
-        return (getRawAxis(4) + 1.0) / 2.0;
+        return getJoystick().getTriggerAxis(Hand.kLeft);
     }
 
     // Face Buttons //
     public boolean getRawLeftButton() {
-        return getRawButton(1);
+        return getJoystick().getXButton();
     }
 
     public boolean getRawBottomButton() {
-        return getRawButton(2);
+        return getJoystick().getAButton();
     }
 
     public boolean getRawRightButton() {
-        return getRawButton(3);
+        return getJoystick().getBButton();
     }
 
     public boolean getRawTopButton() {
-        return getRawButton(4);
+        return getJoystick().getYButton();
     }
 
     // Start / Select / Option //
     public boolean getRawSelectButton() {
-        return getRawButton(9);
+        return getJoystick().getStartButton();
     }
 
     public boolean getRawStartButton() {
-        return getRawButton(10);
+        return getJoystick().getStartButton();
     }
 
     public boolean getRawOptionButton() {
-        return getRawButton(10);
+        return getJoystick().getStartButton();
     }
 
     // Analog Stick Buttons //
     public boolean getRawLeftAnalogButton() {
-        return getRawButton(11);
+        return getJoystick().getStickButton(Hand.kLeft);
     }
 
     public boolean getRawRightAnalogButton() {
-        return getRawButton(12);
+        return getJoystick().getStickButton(Hand.kRight);
     }
 }

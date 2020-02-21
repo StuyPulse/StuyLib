@@ -61,8 +61,8 @@ public class TankDriveEncoder {
      * Record values from the drivetrain
      */
     private void update() {
-        double left = mLeftEncoder.get();
-        double right = mRightEncoder.get();
+        double left = mLeftEncoder.getDistance();
+        double right = mRightEncoder.getDistance();
 
         if(!mLeftEncoder.getStopped()) {
             mLeftDistance += left;
