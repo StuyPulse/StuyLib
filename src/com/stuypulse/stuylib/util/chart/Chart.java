@@ -5,8 +5,6 @@ import java.util.concurrent.CopyOnWriteArrayList;
 
 import javax.swing.*;
 
-import com.stuypulse.stuylib.math.SLMath;
-
 import java.awt.*;
 
 import org.knowm.xchart.*;
