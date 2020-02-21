@@ -8,9 +8,8 @@ import java.util.Map;
 import java.util.Set;
 
 /**
- * Key tracker for swing components with key
- * bindings.
- * 
+ * Key tracker for swing components with key bindings.
+ *
  * @author Myles Pasetsky (selym3)
  */
 public class KeyTracker extends KeyAdapter {
@@ -19,6 +18,7 @@ public class KeyTracker extends KeyAdapter {
      * Interface for basic key bindings.
      */
     public interface BindingFunction {
+
         void function();
     }
 
@@ -26,8 +26,7 @@ public class KeyTracker extends KeyAdapter {
     private Map<Integer, BindingFunction> bindings;
 
     /**
-     * Initialize set of key presses and
-     * key bindings.
+     * Initialize set of key presses and key bindings.
      */
     public KeyTracker() {
         values = new HashSet<Integer>();
@@ -36,7 +35,7 @@ public class KeyTracker extends KeyAdapter {
 
     /**
      * Get the value of a key press.
-     * 
+     *
      * @param binding key code
      * @return if a key is pressed
      */
@@ -46,8 +45,8 @@ public class KeyTracker extends KeyAdapter {
 
     /**
      * Add a basic binding to a key code
-     * 
-     * @param keyCode key code 
+     *
+     * @param keyCode         key code
      * @param bindingFunction Binding function
      */
     public KeyTracker addBinding(int keyCode, BindingFunction bindingFunction) {
@@ -58,7 +57,7 @@ public class KeyTracker extends KeyAdapter {
     @Override
     public void keyPressed(KeyEvent e) {
         int keyCode = e.getKeyCode();
-        if (keyCode == KeyEvent.VK_ESCAPE) {
+        if(keyCode == KeyEvent.VK_ESCAPE) {
             System.exit(1);
         }
 

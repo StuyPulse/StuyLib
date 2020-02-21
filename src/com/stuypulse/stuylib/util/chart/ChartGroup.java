@@ -7,7 +7,7 @@ import java.util.List;
 
 /**
  * Group of charts.
- * 
+ *
  * @author Myles Pasetsky (@selym3)
  */
 public class ChartGroup extends Chart {
@@ -30,20 +30,18 @@ public class ChartGroup extends Chart {
     private int currentCardIndex;
 
     /**
-     * Built-in utility for using left arrow key to 
-     * scroll through charts.
+     * Built-in utility for using left arrow key to scroll through charts.
      */
     private final KeyTracker.BindingFunction leftFunction;
 
     /**
-     * Built-in utility for using right arrow key to 
-     * scroll through charts.
+     * Built-in utility for using right arrow key to scroll through charts.
      */
     private final KeyTracker.BindingFunction rightFunction;
 
     /**
      * Constructor to take in charts.
-     * 
+     *
      * @param charts Charts to group.
      */
     public ChartGroup(Chart... charts) {
@@ -87,11 +85,11 @@ public class ChartGroup extends Chart {
 
     /**
      * Add addition charts to the chart group.
-     * 
+     *
      * @param charts Charts to add
      */
     public ChartGroup add(Chart... charts) {
-        for (int i = 0; i < charts.length; i++) {
+        for(int i = 0; i < charts.length; i++) {
             this.charts.add(charts[i]);
             charts[i].undisplay();
             getContentPane().add(charts[i].getContentPane());
@@ -104,7 +102,7 @@ public class ChartGroup extends Chart {
      */
     @Override
     public void update(double x, double y) {
-        for (Chart chart : charts) {
+        for(Chart chart : charts) {
             chart.update(x, y);
         }
     }
@@ -114,7 +112,7 @@ public class ChartGroup extends Chart {
      */
     @Override
     public void update(double y) {
-        for (Chart chart : charts) {
+        for(Chart chart : charts) {
             chart.update(y);
         }
     }
@@ -124,7 +122,7 @@ public class ChartGroup extends Chart {
      */
     @Override
     public void reset(double x, double y) {
-        for (Chart chart : charts) {
+        for(Chart chart : charts) {
             chart.reset(x, y);
         }
     }
@@ -135,7 +133,7 @@ public class ChartGroup extends Chart {
     @Override
     public void reset() {
         System.out.println("THIS IS CALLED");
-        for (Chart chart : charts) {
+        for(Chart chart : charts) {
             chart.reset();
         }
     }
@@ -145,7 +143,7 @@ public class ChartGroup extends Chart {
      */
     @Override
     public Chart setMaxSize(int max) {
-        for (Chart chart : charts) {
+        for(Chart chart : charts) {
             chart.setMaxSize(max);
         }
         return this;
@@ -156,7 +154,7 @@ public class ChartGroup extends Chart {
      */
     @Override
     public Chart setXBounds(Double min, Double max) {
-        for (Chart chart : charts) {
+        for(Chart chart : charts) {
             chart.setXBounds(min, max);
         }
         return this;
@@ -167,7 +165,7 @@ public class ChartGroup extends Chart {
      */
     @Override
     public Chart setYBounds(Double min, Double max) {
-        for (Chart chart : charts) {
+        for(Chart chart : charts) {
             chart.setYBounds(min, max);
         }
         return this;
@@ -178,7 +176,7 @@ public class ChartGroup extends Chart {
      */
     @Override
     public Chart resetXBounds() {
-        for (Chart chart : charts) {
+        for(Chart chart : charts) {
             chart.resetXBounds();
         }
         return this;
@@ -189,7 +187,7 @@ public class ChartGroup extends Chart {
      */
     @Override
     public Chart resetYBounds() {
-        for (Chart chart : charts) {
+        for(Chart chart : charts) {
             chart.resetYBounds();
         }
         return this;

@@ -12,7 +12,7 @@ import org.knowm.xchart.style.markers.SeriesMarkers;
 
 /**
  * Basic single session chart for a chart group.
- * 
+ *
  * @author Myles Pasetsky (@selym3)
  */
 public class Chart extends JFrame {
@@ -36,33 +36,32 @@ public class Chart extends JFrame {
 
     /**
      * Stores the max number of ordered pairs
-     * 
+     *
      * Anything less than 0 turns off max size
      */
     private int maxDataSize;
 
     /**
-     * Stores the x boundaries of the chart in an array.
-     * Acts to scale the chart.
+     * Stores the x boundaries of the chart in an array. Acts to scale the
+     * chart.
      */
     private Double[] xBounds;
 
     /**
-     * Stores the y boundaries of the chart in an array.
-     * Acts to scale the chart.
+     * Stores the y boundaries of the chart in an array. Acts to scale the
+     * chart.
      */
-    private Double[] yBounds; 
+    private Double[] yBounds;
 
     /**
-     * Mouse tracker for getting mouse x and y as a
-     * percentage of the screen width and height.
+     * Mouse tracker for getting mouse x and y as a percentage of the screen
+     * width and height.
      */
     private final MouseTracker mouseTracker;
 
     /**
-     * Key tracker with built in escape function and
-     * adding key binding functionality. Gets key presses
-     * as booleans.
+     * Key tracker with built in escape function and adding key binding
+     * functionality. Gets key presses as booleans.
      */
     private final KeyTracker keyTracker;
 
@@ -95,11 +94,14 @@ public class Chart extends JFrame {
 
         maxDataSize = -1;
 
-        // reset(); when reset is called in the constructor for chart group it breaks
+        // reset(); when reset is called in the constructor for chart group it
+        // breaks
         // because
-        // it's list of charts is defined afterwards. Should be careful w/ calling
+        // it's list of charts is defined afterwards. Should be careful w/
+        // calling
         // methods in
-        // the constructor. Replace with setting to 0, like how xBounds & yBounds are
+        // the constructor. Replace with setting to 0, like how xBounds &
+        // yBounds are
         // set to null
         // by default.
         xData.add(0.0);
@@ -116,8 +118,8 @@ public class Chart extends JFrame {
     }
 
     /**
-     * Conveience chart with default 
-     * x and y axes.
+     * Conveience chart with default x and y axes.
+     *
      * @param title Title of the chart
      */
     public Chart(String title) {
@@ -126,15 +128,16 @@ public class Chart extends JFrame {
 
     /**
      * Full constructor for creating a chart.
-     * 
+     *
      * @param title Title of the chart
-     * @param x x-axis name
-     * @param y y-axis name
+     * @param x     x-axis name
+     * @param y     y-axis name
      */
     public Chart(String title, String x, String y) {
         this();
 
-        instance = new XYChartBuilder().title(title).xAxisTitle(x).yAxisTitle(y).build();
+        instance = new XYChartBuilder().title(title).xAxisTitle(x).yAxisTitle(y)
+                .build();
         instance.addSeries(title, xData, yData);
         instance.getSeriesMap().get(title).setMarker(SeriesMarkers.NONE);
 
@@ -153,7 +156,7 @@ public class Chart extends JFrame {
 
     /**
      * Get x data.
-     * 
+     *
      * @return x data list
      */
     public List<Double> getXData() {
@@ -162,7 +165,7 @@ public class Chart extends JFrame {
 
     /**
      * Get y data.
-     * 
+     *
      * @return y data list
      */
     public List<Double> getYData() {
@@ -172,7 +175,8 @@ public class Chart extends JFrame {
     /**
      * Add key binding to chart's key tracker
      */
-    public Chart addKeyBinding(int keyCode, KeyTracker.BindingFunction bindingFunction) {
+    public Chart addKeyBinding(int keyCode,
+            KeyTracker.BindingFunction bindingFunction) {
         keyTracker.addBinding(keyCode, bindingFunction);
         return this;
     }
@@ -215,22 +219,22 @@ public class Chart extends JFrame {
         xData.add(x);
         yData.add(y);
 
-        if (get() != null) {
+        if(get() != null) {
             get().updateXYSeries(get().getTitle(), xData, yData, null);
         }
 
         // REMOVE DATA (IF OVER MAX LIMIT) //
-        if (getMaxSize() > 0) {
-            while (xData.size() > getMaxSize()) {
+        if(getMaxSize() > 0) {
+            while(xData.size() > getMaxSize()) {
                 xData.remove(0);
             }
 
-            while (yData.size() > getMaxSize()) {
+            while(yData.size() > getMaxSize()) {
                 yData.remove(0);
             }
         }
     }
-    
+
     /**
      * Add y-data and increment x by 1.
      */
@@ -239,8 +243,7 @@ public class Chart extends JFrame {
     }
 
     /**
-     * Clears x and y data.
-     * Reset x-data and y-data to a default value.
+     * Clears x and y data. Reset x-data and y-data to a default value.
      */
     public void reset(double x, double y) {
         // CLEAR DATA (AND SET FIRST POINT) //
@@ -250,8 +253,7 @@ public class Chart extends JFrame {
     }
 
     /**
-     * Clears x and y data, and sets x and y
-     * to a default 0,0.
+     * Clears x and y data, and sets x and y to a default 0,0.
      */
     public void reset() {
         // CLEAR DATA AND SET TO ORIGIN//
@@ -282,7 +284,7 @@ public class Chart extends JFrame {
 
     /**
      * Set x boundaries of the chart.
-     * 
+     *
      * @param min minimum x value
      * @param max maximum x value
      */
@@ -312,7 +314,7 @@ public class Chart extends JFrame {
 
     /**
      * Set y boundaries of the chart.
-     * 
+     *
      * @param min minimum y value
      * @param max maximum y value
      */
@@ -334,8 +336,7 @@ public class Chart extends JFrame {
     }
 
     /**
-     * Revalidate and repaint panel.
-     * Necessary for real-time graphing.
+     * Revalidate and repaint panel. Necessary for real-time graphing.
      */
     public void redraw() {
         chartPanel.revalidate();
@@ -343,24 +344,21 @@ public class Chart extends JFrame {
     }
 
     /**
-     * Gets the mouse position as
-     * a percentage of the height
+     * Gets the mouse position as a percentage of the height
      */
     public double getMouseY() {
         return mouseTracker.getMouseY();
     }
 
     /**
-     * Gets the mouse position as
-     * a percentage of the width
+     * Gets the mouse position as a percentage of the width
      */
     public double getMouseX() {
         return mouseTracker.getMouseX();
     }
 
     /**
-     * Gets the boolean value of
-     * a key
+     * Gets the boolean value of a key
      */
     public boolean getKey(int e) {
         return keyTracker.getKey(e);
@@ -371,10 +369,10 @@ public class Chart extends JFrame {
         String xVals = "X: ";
         String yVals = "Y: ";
 
-        for (double x : xData) {
+        for(double x : xData) {
             xVals += x + ", ";
         }
-        for (double y : yData) {
+        for(double y : yData) {
             yVals += y + ", ";
         }
 
