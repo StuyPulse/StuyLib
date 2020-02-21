@@ -22,7 +22,14 @@ public class KeyTracker extends KeyAdapter {
         void function();
     }
 
+    /**
+     * Set of key codes that will contain keys currently pressed.
+     */
     private Set<Integer> values;
+
+    /**
+     * Binding functions mapped to key codes.
+     */
     private Map<Integer, BindingFunction> bindings;
 
     /**
@@ -48,6 +55,7 @@ public class KeyTracker extends KeyAdapter {
      *
      * @param keyCode         key code
      * @param bindingFunction Binding function
+     * @return Reference to key tracker
      */
     public KeyTracker addBinding(int keyCode, BindingFunction bindingFunction) {
         bindings.put(keyCode, bindingFunction);

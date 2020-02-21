@@ -173,7 +173,11 @@ public class Chart extends JFrame {
     }
 
     /**
-     * Add key binding to chart's key tracker
+     * Add key binding to chart's key tracker.
+     *
+     * @param keyCode         key code
+     * @param bindingFunction custom binding function
+     * @return Reference to chart
      */
     public Chart addKeyBinding(int keyCode,
             KeyTracker.BindingFunction bindingFunction) {
@@ -183,6 +187,8 @@ public class Chart extends JFrame {
 
     /**
      * Show the chart.
+     *
+     * @return Reference to chart
      */
     public Chart display() {
         setVisible(true);
@@ -191,6 +197,8 @@ public class Chart extends JFrame {
 
     /**
      * Hide the chart.
+     *
+     * @return Reference to chart
      */
     public Chart undisplay() {
         setVisible(false);
@@ -199,6 +207,8 @@ public class Chart extends JFrame {
 
     /**
      * Get the XYChart instance.
+     *
+     * @return XYChart
      */
     protected XYChart get() {
         return instance;
@@ -206,6 +216,8 @@ public class Chart extends JFrame {
 
     /**
      * Return chart title. Title is also session name.
+     *
+     * @return text containing title
      */
     public String getChartTitle() {
         return get().getTitle();
@@ -213,6 +225,9 @@ public class Chart extends JFrame {
 
     /**
      * Add a new ordered pair to the x-data and y-data.
+     *
+     * @param x new x
+     * @param y new y
      */
     public void update(double x, double y) {
         // ADD DATA //
@@ -237,6 +252,8 @@ public class Chart extends JFrame {
 
     /**
      * Add y-data and increment x by 1.
+     *
+     * @param y new y value
      */
     public void update(double y) {
         update(xData.get(xData.size() - 1) + 1, y);
@@ -244,6 +261,9 @@ public class Chart extends JFrame {
 
     /**
      * Clears x and y data. Reset x-data and y-data to a default value.
+     *
+     * @param x default x value
+     * @param y default y value
      */
     public void reset(double x, double y) {
         // CLEAR DATA (AND SET FIRST POINT) //
@@ -262,6 +282,8 @@ public class Chart extends JFrame {
 
     /**
      * Return the maximum number of (x,y) entries
+     *
+     * @return max size
      */
     public int getMaxSize() {
         return maxDataSize;
@@ -269,6 +291,9 @@ public class Chart extends JFrame {
 
     /**
      * Set the maximum number of (x,y) entries
+     *
+     * @param max max size
+     * @return Reference to chart
      */
     public Chart setMaxSize(int max) {
         maxDataSize = max;
@@ -277,6 +302,8 @@ public class Chart extends JFrame {
 
     /**
      * Return x bounds of the chart as an array.
+     *
+     * @return double containing x boundaries
      */
     public Double[] getXBounds() {
         return xBounds;
@@ -287,6 +314,7 @@ public class Chart extends JFrame {
      *
      * @param min minimum x value
      * @param max maximum x value
+     * @return Reference to chart
      */
     public Chart setXBounds(Double min, Double max) {
         instance.getStyler().setXAxisMin(min);
@@ -300,6 +328,8 @@ public class Chart extends JFrame {
 
     /**
      * Remove x boundaries of the graph.
+     *
+     * @return Reference to chart
      */
     public Chart resetXBounds() {
         return setXBounds(null, null);
@@ -307,6 +337,8 @@ public class Chart extends JFrame {
 
     /**
      * Return y bounds as an array.
+     *
+     * @return Reference to chart
      */
     public Double[] getYBounds() {
         return yBounds;
@@ -317,6 +349,7 @@ public class Chart extends JFrame {
      *
      * @param min minimum y value
      * @param max maximum y value
+     * @return Reference to chart
      */
     public Chart setYBounds(Double min, Double max) {
         instance.getStyler().setYAxisMin(min);
@@ -330,6 +363,8 @@ public class Chart extends JFrame {
 
     /**
      * Remove y boundaries of the chart.
+     *
+     * @return Reference to chart
      */
     public Chart resetYBounds() {
         return setYBounds(null, null);
@@ -345,6 +380,8 @@ public class Chart extends JFrame {
 
     /**
      * Gets the mouse position as a percentage of the height
+     *
+     * @return y position
      */
     public double getMouseY() {
         return mouseTracker.getMouseY();
@@ -352,6 +389,8 @@ public class Chart extends JFrame {
 
     /**
      * Gets the mouse position as a percentage of the width
+     *
+     * @return x position
      */
     public double getMouseX() {
         return mouseTracker.getMouseX();
@@ -359,6 +398,9 @@ public class Chart extends JFrame {
 
     /**
      * Gets the boolean value of a key
+     *
+     * @param e key code
+     * @return boolean value of the key
      */
     public boolean getKey(int e) {
         return keyTracker.getKey(e);

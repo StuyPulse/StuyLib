@@ -13,7 +13,14 @@ import java.awt.*;
  */
 public class MouseTracker implements MouseMotionListener {
 
+    /**
+     * Panel for size reference
+     */
     private final Container panel;
+
+    /**
+     * x and y of the mouse as a percentage of the panel's dimensions.
+     */
     private double x, y;
 
     /**

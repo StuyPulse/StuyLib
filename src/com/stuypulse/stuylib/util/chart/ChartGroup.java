@@ -76,6 +76,8 @@ public class ChartGroup extends Chart {
 
     /**
      * Update card index based on direction of scrolling.
+     *
+     * @return new current card index
      */
     private int updateCurrentCardIndex(boolean direction) {
         currentCardIndex += direction ? 1 : charts.size() - 1;
@@ -87,8 +89,9 @@ public class ChartGroup extends Chart {
      * Add addition charts to the chart group.
      *
      * @param charts Charts to add
+     * @return reference to chart group
      */
-    public ChartGroup add(Chart... charts) {
+    public Chart add(Chart... charts) {
         for(int i = 0; i < charts.length; i++) {
             this.charts.add(charts[i]);
             charts[i].undisplay();
@@ -99,6 +102,9 @@ public class ChartGroup extends Chart {
 
     /**
      * Update each chart's data.
+     *
+     * @param x new x for each chart
+     * @param y new y for each chart
      */
     @Override
     public void update(double x, double y) {
@@ -108,7 +114,9 @@ public class ChartGroup extends Chart {
     }
 
     /**
-     * Update each chart's data.
+     * Update each chart's data. Increment x by 1.
+     *
+     * @param y new y for each chart
      */
     @Override
     public void update(double y) {
@@ -119,6 +127,9 @@ public class ChartGroup extends Chart {
 
     /**
      * Reset each chart's data.
+     *
+     * @param x default x for each chart
+     * @param y default y for each chart
      */
     @Override
     public void reset(double x, double y) {
@@ -140,6 +151,8 @@ public class ChartGroup extends Chart {
 
     /**
      * Set each chart's max size.
+     *
+     * @return Reference to chart
      */
     @Override
     public Chart setMaxSize(int max) {
@@ -151,6 +164,8 @@ public class ChartGroup extends Chart {
 
     /**
      * Set x bounds of each chart.
+     *
+     * @return Reference to chart
      */
     @Override
     public Chart setXBounds(Double min, Double max) {
@@ -162,6 +177,8 @@ public class ChartGroup extends Chart {
 
     /**
      * Set y bounds of each chart.
+     *
+     * @return Reference to chart
      */
     @Override
     public Chart setYBounds(Double min, Double max) {
@@ -173,6 +190,8 @@ public class ChartGroup extends Chart {
 
     /**
      * Reset each chart's x boundaries.
+     *
+     * @return Reference to chart
      */
     @Override
     public Chart resetXBounds() {
@@ -184,6 +203,8 @@ public class ChartGroup extends Chart {
 
     /**
      * Reset each chart's y data.
+     *
+     * @return Reference to chart
      */
     @Override
     public Chart resetYBounds() {
@@ -203,6 +224,8 @@ public class ChartGroup extends Chart {
 
     /**
      * Gets the mouse x from the current selected chart.
+     *
+     * @return x position
      */
     @Override
     public double getMouseX() {
@@ -211,6 +234,8 @@ public class ChartGroup extends Chart {
 
     /**
      * Gets the mouse y from the current selected chart.
+     *
+     * @return y position
      */
     @Override
     public double getMouseY() {
@@ -219,6 +244,8 @@ public class ChartGroup extends Chart {
 
     /**
      * Gets the max size from the current selected chart.
+     *
+     * @return max size
      */
     @Override
     public int getMaxSize() {
@@ -227,6 +254,8 @@ public class ChartGroup extends Chart {
 
     /**
      * Get the x bounds from the current selected chart.
+     *
+     * @return x boundaries as an array
      */
     @Override
     public Double[] getXBounds() {
@@ -235,6 +264,8 @@ public class ChartGroup extends Chart {
 
     /**
      * Get the y bounds from the current selected chart.
+     *
+     * @return y boundaries as an array
      */
     @Override
     public Double[] getYBounds() {
