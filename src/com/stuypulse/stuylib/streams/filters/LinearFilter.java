@@ -2,7 +2,6 @@ package com.stuypulse.stuylib.streams.filters;
 
 import com.stuypulse.stuylib.exception.ConstructionError;
 
-import java.util.List;
 import java.util.Arrays;
 import java.util.Iterator;
 import java.util.LinkedList;
@@ -24,12 +23,12 @@ public class LinearFilter implements IStreamFilter {
 
     /**
      * Create a LinearFilter with a list of weights
-     * 
+     *
      * @param weights a list of weights to apply to the past values
      */
     public LinearFilter(double... weights) throws ConstructionError {
         mWeights = Arrays.copyOf(weights, weights.length);
-        
+
         mTotal = 0.0;
         for(double i : mWeights) {
             mTotal += i;
@@ -49,7 +48,6 @@ public class LinearFilter implements IStreamFilter {
             mBuffer.removeLast();
         }
 
-
         double total = 0.0;
         Iterator<Double> value = mBuffer.iterator();
 
@@ -62,6 +60,7 @@ public class LinearFilter implements IStreamFilter {
 
     /**
      * Get a moving average with a certain size
+     *
      * @param size size of moving average
      * @return the moving average
      */
@@ -72,6 +71,7 @@ public class LinearFilter implements IStreamFilter {
 
     /**
      * Get a weighted moving average with a certain size
+     *
      * @param size size of weighted moving average
      * @return the weighted moving average
      */
@@ -81,9 +81,15 @@ public class LinearFilter implements IStreamFilter {
     }
 
     /**
-     * 
+     * Trapezoidal Moving Average is used to get a perfect S Curve.
+     *
+     * @param size      the size of the trapezoidal moving average
+     * @param climbSize the amount of weights that increase at the beginning
+     *                  (should be half of size at most)
+     * @return the TrapezoidalMovingAverage
      */
-    public static IStreamFilter getTrapezoidalMovingAverage(int size, int climbSize) {
+    public static IStreamFilter getTrapezoidalMovingAverage(int size,
+            int climbSize) {
         double[] weights = new double[size];
 
         for(int i = 0; i < size; ++i) {

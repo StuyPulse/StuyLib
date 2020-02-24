@@ -13,6 +13,7 @@ public class StopWatch {
 
     // Engine interface used to get the current time
     public interface TimeEngine {
+
         // Get the raw time as a long
         public long getRawTime();
 
@@ -64,9 +65,11 @@ public class StopWatch {
     }
 
     /**
-     * This engine is used to get the current time with the system function System.nanoTime()
+     * This engine is used to get the current time with the system function
+     * System.nanoTime()
      */
     public static final TimeEngine kNanoEngine = new TimeEngine() {
+
         public long getRawTime() {
             return System.nanoTime();
         }
@@ -77,11 +80,13 @@ public class StopWatch {
     };
 
     /**
-     * This engine is used to get the current time with the system function System.currentTimeMillis()
-     * 
+     * This engine is used to get the current time with the system function
+     * System.currentTimeMillis()
+     *
      * This may have a lower resolution, but it is stable. It is no
      */
     public static final TimeEngine kMillisEngine = new TimeEngine() {
+
         public long getRawTime() {
             return System.currentTimeMillis();
         }
