@@ -3,7 +3,6 @@ package com.stuypulse.stuylib.control;
 import com.stuypulse.stuylib.streams.filters.IStreamFilter;
 import com.stuypulse.stuylib.streams.filters.IStreamFilterGroup;
 import com.stuypulse.stuylib.streams.filters.MovingAverage;
-import com.stuypulse.stuylib.streams.filters.RollingAverage;
 import com.stuypulse.stuylib.util.StopWatch;
 import com.stuypulse.stuylib.math.SLMath;
 
@@ -18,8 +17,7 @@ import com.stuypulse.stuylib.math.SLMath;
 public class PIDCalculator extends Controller {
 
     // Maximum amount of time between update commands before the calculator
-    // resets
-    // its measurements
+    // resets its measurements
     private static final double kMaxTimeBeforeReset = 0.3;
 
     // The minimum period length that will be accepted as a valid period
@@ -29,8 +27,7 @@ public class PIDCalculator extends Controller {
     private static IStreamFilter getMeasurementFilter() {
         // This is a mix between accuracy and speed of updating.
         // Takes about 6 periods to get accurate results
-        return new IStreamFilterGroup(new MovingAverage(6),
-                new RollingAverage(2));
+        return new IStreamFilterGroup(new MovingAverage(12));
     }
 
     // The speed that the bang bang controller will run at
