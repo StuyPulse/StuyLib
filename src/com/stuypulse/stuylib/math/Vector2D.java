@@ -3,18 +3,27 @@ package com.stuypulse.stuylib.math;
 import com.stuypulse.stuylib.exception.ConstructionError;
 
 /**
- * Simple coordinate class that defines many helpful functions like
+ * A Vector2D class that stores x and y position data. It is made to work with
+ * the StuyLib Angle class and be easy to use. It is a standard Vector2D class
+ * with all of the functions that you would expect.
  *
  * @author Sam (sam.belliveau@gmail.com)
  */
 
-public class Vector2D {
+public final class Vector2D implements Cloneable {
 
+    /**
+     * The x position of the Vector2D
+     */
     public double x;
+
+    /**
+     * The y position of the Vector2D
+     */
     public double y;
 
     /**
-     * Make a Vector2D at 0, 0
+     * Make a new Vector2D at point 0, 0
      */
     public Vector2D() {
         this.x = 0;
@@ -22,9 +31,9 @@ public class Vector2D {
     }
 
     /**
-     * Initialize Vector2D using an array of 2 doubles
+     * Make a Vector2D with an array of two numbers (x, y)
      *
-     * @param in an array of 2 numbers
+     * @param in array of 2 numbers
      */
     public Vector2D(double[] in) throws ConstructionError {
         if(in.length != 2) {
@@ -37,7 +46,7 @@ public class Vector2D {
     }
 
     /**
-     * Initialize Vector2D using 2 doubles
+     * Make a Vector2D with two numbers
      *
      * @param x first number, x
      * @param y second number, y
@@ -48,104 +57,152 @@ public class Vector2D {
     }
 
     /**
+     * Clone a Vector2D
+     *
+     * @param other other Vector2D to copy
+     */
+    public Vector2D(Vector2D other) {
+        this.x = other.x;
+        this.y = other.y;
+    }
+
+    /**
      * Get x, y coordinates as an array
      *
-     * @return array of doubles
+     * @return array of x and y
      */
     public double[] getArray() {
         return new double[] { x, y };
     }
 
     /**
-     * See if two Vector2D's equal each other
+     * Check if two Vector2D's equal each other
      *
      * @param other other Vector2D
-     * @return result
+     * @return if the two Vector2Ds are equal
      */
     public boolean equals(Vector2D other) {
         return this.x == other.x && this.y == other.y;
     }
 
     /**
-     * Distance between 2 Vector2Ds
+     * Get the distance between two Vector2Ds
      *
      * @param other other Vector2D
-     * @return result
+     * @return the distance between the two Vector2Ds
      */
     public double distance(Vector2D other) {
-        double xDis = x - other.x;
-        double yDis = y - other.y;
-        xDis *= xDis;
-        yDis *= yDis;
-        return Math.sqrt(xDis + yDis);
+        return Math.hypot(other.x - this.x, other.y - this.y);
     }
 
     /**
-     * Distance from 0, 0
+     * Get the distance from 0, 0
      *
-     * @return result
+     * @return distance from 0, 0
      */
     public double distance() {
-        return distance(new Vector2D(0, 0));
+        return Math.hypot(this.x, this.y);
     }
 
     /**
      * Rotate Vector2D around point
      *
-     * @param angdeg (degrees) amount to rotate around
+     * @param angle  amount to rotate
      * @param origin point to rotate around
      * @return result of rotation
      */
-    public Vector2D rotate(double angdeg, Vector2D origin) {
-        final double radians = Math.toRadians(angdeg);
-        final double sin = Math.sin(radians);
-        final double cos = Math.cos(radians);
+    public Vector2D rotate(Angle angle, Vector2D origin) {
+        final Vector2D point = this.sub(origin);
+        Vector2D out = new Vector2D();
 
-        final Vector2D point = this.sub(origin); // center the point around
-                                                 // origin
-        Vector2D out = new Vector2D(); // make output variable
+        out.x = point.x * angle.cos() - point.y * angle.sin();
+        out.y = point.y * angle.cos() + point.x * angle.sin();
 
-        out.x = point.x * cos - point.y * sin; // Rotate coords
-        out.y = point.y * cos + point.x * sin;
-
-        // reposition point
         return out.add(origin);
     }
 
     /**
      * Rotate Vector2D around origin
      *
-     * @param angdeg (degrees) amount to rotate around
+     * @param angle amount to rotate
      * @return result of rotation
      */
-    public Vector2D rotate(double angdeg) {
-        return rotate(angdeg, new Vector2D(0, 0));
+    public Vector2D rotate(Angle angle) {
+        return rotate(angle, new Vector2D(0, 0));
     }
 
     /**
      * Add two Vector2Ds
      *
      * @param other the other Vector2D
-     * @return result of calculation
+     * @return sum of the two Vector2Ds
      */
     public Vector2D add(Vector2D other) {
         return new Vector2D(this.x + other.x, this.y + other.y);
     }
 
     /**
-     * Sub two Vector2Ds
+     * Subtract two Vector2Ds
      *
      * @param other the other Vector2D
-     * @return result of calculation
+     * @return difference between the two Vector2Ds
      */
     public Vector2D sub(Vector2D other) {
         return new Vector2D(this.x - other.x, this.y - other.y);
     }
 
     /**
-     * Convert to a string
+     * Multiply the x and y of the Vector2D by a certain amount
      *
-     * @return string value
+     * @param multiplier amount to multiply the Vector2D by
+     * @return the multiplied Vector2D
+     */
+    public Vector2D mul(double multiplier) {
+        return new Vector2D(this.x * multiplier, this.y * multiplier);
+    }
+
+    /**
+     * Divide the x and y of the Vector2D by a certain amount
+     *
+     * @param divisor amount to divide the Vector2D by
+     * @return the divided Vector2D
+     */
+    public Vector2D div(double divisor) {
+        return new Vector2D(this.x / divisor, this.y / divisor);
+    }
+
+    /**
+     * Calculate the vector dot product of the two vectors
+     *
+     * @param other the other Vector2D
+     * @return the result of the dot product
+     */
+    public double dot(Vector2D other) {
+        return(this.x * other.x + this.y * other.y);
+    }
+
+    /**
+     * Normalize the Vector2D so that the point lands on the unit circle
+     *
+     * @return the normalized Vector2D
+     */
+    public Vector2D normalize() {
+        return this.div(this.distance());
+    }
+
+    /**
+     * Get the angle of the Vector2D around 0
+     *
+     * @return the angle of the Vector2D around 0
+     */
+    public Angle angle() {
+        return Angle.radians(Math.atan2(this.y, this.x));
+    }
+
+    /**
+     * Format the angle into a string
+     *
+     * @return formatted string value
      */
     public String toString() {
         return "(" + x + ", " + y + ")";
