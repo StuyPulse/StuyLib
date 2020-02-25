@@ -142,7 +142,7 @@ public final class Angle {
      * @return the first angle subtracted from the other
      */
     public Angle sub(Angle other) {
-        return radians(this.toRadians() + other.toRadians());
+        return radians(this.toRadians() - other.toRadians());
     }
 
     /**
