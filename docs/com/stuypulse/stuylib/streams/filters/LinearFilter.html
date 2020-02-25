@@ -201,8 +201,7 @@ implements <a href="IStreamFilter.html" title="interface in com.stuypulse.stuyli
 </tr>
 <tr id="i2" class="altColor">
 <td class="colFirst"><code>static <a href="IStreamFilter.html" title="interface in com.stuypulse.stuylib.streams.filters">IStreamFilter</a></code></td>
-<th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#getTrapezoidalMovingAverage(int,int)">getTrapezoidalMovingAverage</a></span>&#8203;(int&nbsp;size,
-                           int&nbsp;climbSize)</code></th>
+<th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#getTrapezoidalMovingAverage(int)">getTrapezoidalMovingAverage</a></span>&#8203;(int&nbsp;size)</code></th>
 <td class="colLast">
 <div class="block">Trapezoidal Moving Average is used to get a perfect S Curve.</div>
 </td>
@@ -316,20 +315,17 @@ implements <a href="IStreamFilter.html" title="interface in com.stuypulse.stuyli
 </dl>
 </li>
 </ul>
-<a id="getTrapezoidalMovingAverage(int,int)">
+<a id="getTrapezoidalMovingAverage(int)">
 <!--   -->
 </a>
 <ul class="blockListLast">
 <li class="blockList">
 <h4>getTrapezoidalMovingAverage</h4>
-<pre class="methodSignature">public static&nbsp;<a href="IStreamFilter.html" title="interface in com.stuypulse.stuylib.streams.filters">IStreamFilter</a>&nbsp;getTrapezoidalMovingAverage&#8203;(int&nbsp;size,
-                                                        int&nbsp;climbSize)</pre>
+<pre class="methodSignature">public static&nbsp;<a href="IStreamFilter.html" title="interface in com.stuypulse.stuylib.streams.filters">IStreamFilter</a>&nbsp;getTrapezoidalMovingAverage&#8203;(int&nbsp;size)</pre>
 <div class="block">Trapezoidal Moving Average is used to get a perfect S Curve.</div>
 <dl>
 <dt><span class="paramLabel">Parameters:</span></dt>
 <dd><code>size</code> - the size of the trapezoidal moving average</dd>
-<dd><code>climbSize</code> - the amount of weights that increase at the beginning
-                  (should be half of size at most)</dd>
 <dt><span class="returnLabel">Returns:</span></dt>
 <dd>the TrapezoidalMovingAverage</dd>
 </dl>

@@ -83,22 +83,17 @@ public class LinearFilter implements IStreamFilter {
     /**
      * Trapezoidal Moving Average is used to get a perfect S Curve.
      *
-     * @param size      the size of the trapezoidal moving average
-     * @param climbSize the amount of weights that increase at the beginning
-     *                  (should be half of size at most)
+     * @param size the size of the trapezoidal moving average
      * @return the TrapezoidalMovingAverage
      */
-    public static IStreamFilter getTrapezoidalMovingAverage(int size,
-            int climbSize) {
+    public static IStreamFilter getTrapezoidalMovingAverage(int size) {
         double[] weights = new double[size];
 
         for(int i = 0; i < size; ++i) {
-            if(i < climbSize) {
+            if(i < size / 2) {
                 weights[i] = i + 1;
-            } else if(i > size - climbSize) {
-                weights[i] = size - i;
             } else {
-                weights[i] = climbSize + 1;
+                weights[i] = size - i;
             }
         }
 
