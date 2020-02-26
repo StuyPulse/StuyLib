@@ -36,15 +36,6 @@ public class ThreadedCommand implements Command {
             mBaseCommand = command;
         }
 
-        /**
-         * Makes a CommandRunner with a default rate of 50hz
-         *
-         * @param command command to run on thread
-         */
-        public CommandRunner(SynchronizedCommand command) {
-            this(command, 0.02);
-        }
-
         @Override
         public void run() {
             do {
@@ -55,10 +46,11 @@ public class ThreadedCommand implements Command {
                 } catch(InterruptedException e) {
                     return;
                 }
-            } while(mBaseCommand.isFinished() && this.isInterrupted());
+            } while(mBaseCommand.isFinished() && !Thread.interrupted());
         }
     }
 
+    private double mRate;
     private SynchronizedCommand mBaseCommand;
     private CommandRunner mCommandRunner;
 
@@ -70,7 +62,7 @@ public class ThreadedCommand implements Command {
      */
     public ThreadedCommand(Command command, double rate) {
         mBaseCommand = new SynchronizedCommand(command);
-        mCommandRunner = new CommandRunner(mBaseCommand, rate);
+        mRate = rate;
     }
 
     /**
@@ -79,19 +71,32 @@ public class ThreadedCommand implements Command {
      * @param command command to be run on the thread
      */
     public ThreadedCommand(Command command) {
-        mBaseCommand = new SynchronizedCommand(command);
-        mCommandRunner = new CommandRunner(mBaseCommand);
+        this(command, 0.02);
+    }
+
+    private void startCommandRunner() {
+        if(mCommandRunner != null) {
+            mCommandRunner.interrupt();
+        }
+
+        mCommandRunner = new CommandRunner(mBaseCommand, mRate);
+        mCommandRunner.start();
     }
 
     @Override
     public synchronized void initialize() {
         mBaseCommand.initialize();
-        mCommandRunner.start();
     }
 
     @Override
     public synchronized void execute() {
-        //
+        if(mCommandRunner == null) {
+            startCommandRunner();
+        } else {
+            if(mCommandRunner.isInterrupted()) {
+                startCommandRunner();
+            }
+        }
     }
 
     @Override
@@ -124,5 +129,4 @@ public class ThreadedCommand implements Command {
     public synchronized String getName() {
         return "Synchronized" + mBaseCommand.getName();
     }
-
 }
