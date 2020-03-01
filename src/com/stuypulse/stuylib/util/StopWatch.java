@@ -1,11 +1,11 @@
 package com.stuypulse.stuylib.util;
 
 /**
- * This StopWatch class helps classes who want their functions to be time
- * independent do that by giving them an easy way to get intervals of time.
+ * This StopWatch class helps classes who want their functions to be time independent do that by
+ * giving them an easy way to get intervals of time.
  *
- * This is better than just doing it in the class because it stores the time as
- * a long to keep accuracy, but converts it into a double for convenience.
+ * This is better than just doing it in the class because it stores the time as a long to keep
+ * accuracy, but converts it into a double for convenience.
  *
  * @author Sam (sam.belliveau@gmail.com)
  */
@@ -40,11 +40,10 @@ public class StopWatch {
     }
 
     /**
-     * Resets the stop watch to the current time and returns time since last
-     * reset.
+     * Resets the stop watch to the current time and returns time since last reset.
      *
-     * @return the time since the last reset was called in seconds. The result
-     *         is always a non 0 positive number.
+     * @return the time since the last reset was called in seconds. The result is always a non 0
+     *         positive number.
      */
     public double reset() {
         long time = mEngine.getRawTime();
@@ -56,8 +55,8 @@ public class StopWatch {
     /**
      * Gets the time since the stop watch was reset
      *
-     * @return the time since the last reset was called in seconds. The result
-     *         is always a non 0 positive number.
+     * @return the time since the last reset was called in seconds. The result is always a non 0
+     *         positive number.
      */
     public double getTime() {
         long delta = Math.max(1, mEngine.getRawTime() - mLastTime);
@@ -65,8 +64,7 @@ public class StopWatch {
     }
 
     /**
-     * This engine is used to get the current time with the system function
-     * System.nanoTime()
+     * This engine is used to get the current time with the system function System.nanoTime()
      */
     public static final TimeEngine kNanoEngine = new TimeEngine() {
 
@@ -80,8 +78,7 @@ public class StopWatch {
     };
 
     /**
-     * This engine is used to get the current time with the system function
-     * System.currentTimeMillis()
+     * This engine is used to get the current time with the system function System.currentTimeMillis()
      *
      * This may have a lower resolution, but it is stable. It is no
      */

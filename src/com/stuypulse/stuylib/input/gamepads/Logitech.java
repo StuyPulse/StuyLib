@@ -33,8 +33,7 @@ public class Logitech extends WPIGamepad {
     }
 
     /**
-     * There is a switch on the back of the controller this is for when the
-     * switch is in the D position
+     * There is a switch on the back of the controller this is for when the switch is in the D position
      */
     public static class DMode extends Logitech {
 
@@ -120,8 +119,7 @@ public class Logitech extends WPIGamepad {
     }
 
     /**
-     * There is a switch on the back of the controller this is for when the
-     * switch is in the X position
+     * There is a switch on the back of the controller this is for when the switch is in the X position
      */
     public static class XMode extends Logitech {
 

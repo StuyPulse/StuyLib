@@ -1,12 +1,9 @@
 package com.stuypulse.stuylib.streams;
 
-import com.stuypulse.stuylib.exception.ConstructionError;
-
 /**
  * Takes an IStream and an IStreamFilter and makes a PollingIStream
  *
- * A PollingIStream calls .get() every x milliseconds instead of when the user
- * calls get
+ * A PollingIStream calls .get() every x milliseconds instead of when the user calls get
  *
  * @author Sam (sam.belliveau@gmail.com)
  */
@@ -24,9 +21,7 @@ public class PollingIStream implements IStream {
      */
     public PollingIStream(IStream stream, double hz) {
         if(hz <= 0) {
-            throw new ConstructionError(
-                    "PollingIStream(IStream stream, long hz)",
-                    "hz must be greater than 0!");
+            throw new IllegalArgumentException("hz must be greater than 0");
         }
 
         long wait = (long) (1000.0 / hz);

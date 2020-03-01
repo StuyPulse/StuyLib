@@ -1,11 +1,9 @@
 package com.stuypulse.stuylib.math;
 
-import com.stuypulse.stuylib.exception.ConstructionError;
-
 /**
- * A Vector2D class that stores x and y position data. It is made to work with
- * the StuyLib Angle class and be easy to use. It is a standard Vector2D class
- * with all of the functions that you would expect.
+ * A Vector2D class that stores x and y position data. It is made to work with the StuyLib Angle
+ * class and be easy to use. It is a standard Vector2D class with all of the functions that you
+ * would expect.
  *
  * @author Sam (sam.belliveau@gmail.com)
  */
@@ -31,29 +29,17 @@ public final class Vector2D implements Cloneable {
     }
 
     /**
-     * Make a Vector2D with an array of two numbers (x, y)
-     *
-     * @param in array of 2 numbers
-     */
-    public Vector2D(double[] in) throws ConstructionError {
-        if(in.length != 2) {
-            throw new ConstructionError("Vector2D(double[] in)",
-                    "array in must be of size 2!");
-        }
-
-        this.x = in[0];
-        this.y = in[1];
-    }
-
-    /**
      * Make a Vector2D with two numbers
      *
-     * @param x first number, x
-     * @param y second number, y
+     * @param points two variables for \
      */
-    public Vector2D(double x, double y) {
-        this.x = x;
-        this.y = y;
+    public Vector2D(double... axis) {
+        if(axis.length != 2) {
+            throw new IllegalArgumentException("axis must be of size 2");
+        }
+
+        this.x = axis[0];
+        this.y = axis[1];
     }
 
     /**
@@ -113,12 +99,11 @@ public final class Vector2D implements Cloneable {
      */
     public Vector2D rotate(Angle angle, Vector2D origin) {
         final Vector2D point = this.sub(origin);
-        Vector2D out = new Vector2D();
+        final Vector2D out = new Vector2D(
+                point.x * angle.cos() - point.y * angle.sin(),
+                point.y * angle.cos() + point.x * angle.sin());
 
-        out.x = point.x * angle.cos() - point.y * angle.sin();
-        out.y = point.y * angle.cos() + point.x * angle.sin();
-
-        return out.add(origin);
+        return origin.add(out);
     }
 
     /**

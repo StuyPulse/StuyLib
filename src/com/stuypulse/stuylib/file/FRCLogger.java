@@ -16,15 +16,14 @@ import java.util.logging.Logger;
 public class FRCLogger {
 
     /**
-     * The Loggable interface should be implemented by a class that can return a
-     * useful piece of data that can be called on demand to be written into the
-     * log.
+     * The Loggable interface should be implemented by a class that can return a useful piece of data
+     * that can be called on demand to be written into the log.
      */
     public interface Loggable {
 
         /**
-         * Implement this method with something that reports if any data from
-         * the class should be fed to the logger this iteration.
+         * Implement this method with something that reports if any data from the class should be fed to the
+         * logger this iteration.
          *
          * @return if any data from the class will be fed to the logger.
          */
@@ -33,8 +32,8 @@ public class FRCLogger {
         }
 
         /**
-         * Implement this method with something that reports the level of
-         * severity the data should be logged at.
+         * Implement this method with something that reports the level of severity the data should be logged
+         * at.
          *
          * @return the level of the data that will be fed.
          */
@@ -43,8 +42,8 @@ public class FRCLogger {
         }
 
         /**
-         * Implement this method with something that reports the message or data
-         * that should be fed into the logger as a string.
+         * Implement this method with something that reports the message or data that should be fed into the
+         * logger as a string.
          *
          * @return the data to be fed into the logger.
          */
@@ -89,8 +88,8 @@ public class FRCLogger {
     }
 
     /**
-     * Registers a new Loggable that upon call will put the next getLogData() at
-     * level getLogLevel() to the log if it will logThisIteration().
+     * Registers a new Loggable that upon call will put the next getLogData() at level getLogLevel() to
+     * the log if it will logThisIteration().
      *
      * @param loggable Class implementing Loggable
      */
@@ -115,8 +114,8 @@ public class FRCLogger {
     }
 
     /**
-     * Iterates through all the registered Loggables and logs them with level
-     * and data, if logThisIteration() is true.
+     * Iterates through all the registered Loggables and logs them with level and data, if
+     * logThisIteration() is true.
      */
     public void logAllRegisteredLoggables() {
 

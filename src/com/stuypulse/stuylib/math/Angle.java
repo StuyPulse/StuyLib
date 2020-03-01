@@ -1,14 +1,16 @@
 package com.stuypulse.stuylib.math;
 
 /**
- * This angle class is made to remove the ambiguity of units when passing or
- * returning angles. It stores it in radians, but returns it in any unit
- * depending on what the user requests. All of the functions and math normalize
- * the angle to help issues.
+ * This angle class is made to remove the ambiguity of units when passing or returning angles. It
+ * stores it in radians, but returns it in any unit depending on what the user requests. All of the
+ * functions and math normalize the angle to help issues.
  *
  * @author Sam (sam.belliveau@gmail.com)
  */
 public final class Angle {
+
+    private static final double kPi = Math.PI;
+    private static final double kTwoPi = 2.0 * kPi;
 
     /**
      * Normalize an angle in radians around a specified center
@@ -17,19 +19,8 @@ public final class Angle {
      * @param center  the center of the normalized range +/- pi
      * @return the normalized angle
      */
-    public static double normalizeRadians(double radians, double center) {
-        return radians - 2.0 * Math.PI
-                * Math.floor((radians + Math.PI - center) / (Math.PI * 2.0));
-    }
-
-    /**
-     * Normalize an angle in radians around 0.0
-     *
-     * @param radians the angle to be normalized
-     * @return the normalized angle
-     */
-    public static double normalizeRadians(double radians) {
-        return normalizeRadians(radians, 0.0);
+    private static double normalizeRadians(double radians, double center) {
+        return radians - kTwoPi * Math.floor((radians + kPi - center) / kTwoPi);
     }
 
     /**
@@ -39,18 +30,8 @@ public final class Angle {
      * @param center  the center of the normalized range +/- 180
      * @return the normalized angle
      */
-    public static double normalizeDegrees(double degrees, double center) {
+    private static double normalizeDegrees(double degrees, double center) {
         return degrees - 360.0 * Math.floor((degrees + 180.0 - center) / 360.0);
-    }
-
-    /**
-     * Normalize an angle in degrees around 0.0
-     *
-     * @param degrees the angle to be normalized
-     * @return the normalized angle
-     */
-    public static double normalizeDegrees(double degrees) {
-        return normalizeDegrees(degrees, 0.0);
     }
 
     /**
@@ -76,7 +57,7 @@ public final class Angle {
     /**
      * The value of the angle stored in radians
      */
-    private double mRadians;
+    private final double mRadians;
 
     /**
      * Create a new angle with radians as the unit
@@ -84,7 +65,7 @@ public final class Angle {
      * @param radians the value of the new angle
      */
     private Angle(double radians) {
-        mRadians = normalizeRadians(radians);
+        mRadians = normalizeRadians(radians, 0.0);
     }
 
     /**
@@ -103,7 +84,7 @@ public final class Angle {
      * @return the angle normalized around the center in radians
      */
     public double toRadians(double center) {
-        return normalizeRadians(mRadians, center);
+        return normalizeRadians(this.toRadians(), center);
     }
 
     /**
@@ -112,7 +93,7 @@ public final class Angle {
      * @return the value of the angle in degrees centered around 0.0
      */
     public double toDegrees() {
-        return Math.toDegrees(mRadians);
+        return Math.toDegrees(this.toRadians());
     }
 
     /**
@@ -122,7 +103,7 @@ public final class Angle {
      * @return the angle normalized around the center in degrees
      */
     public double toDegrees(double center) {
-        return normalizeDegrees(Math.toDegrees(mRadians), center);
+        return normalizeDegrees(this.toDegrees(), center);
     }
 
     /**

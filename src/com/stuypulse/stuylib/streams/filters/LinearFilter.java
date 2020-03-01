@@ -1,7 +1,5 @@
 package com.stuypulse.stuylib.streams.filters;
 
-import com.stuypulse.stuylib.exception.ConstructionError;
-
 import java.util.Arrays;
 import java.util.Iterator;
 import java.util.LinkedList;
@@ -9,8 +7,8 @@ import java.util.LinkedList;
 /**
  * Simple implementation of an Simple Moving Average
  *
- * This is not time dependant, so the values will change if you change the rate
- * that you call this filter, the filter will not adapt for that.
+ * This is not time dependant, so the values will change if you change the rate that you call this
+ * filter, the filter will not adapt for that.
  *
  * @author Sam (sam.belliveau@gmail.com)
  */
@@ -26,12 +24,20 @@ public class LinearFilter implements IStreamFilter {
      *
      * @param weights a list of weights to apply to the past values
      */
-    public LinearFilter(double... weights) throws ConstructionError {
+    public LinearFilter(double... weights) {
         mWeights = Arrays.copyOf(weights, weights.length);
 
         mTotal = 0.0;
         for(double i : mWeights) {
             mTotal += i;
+        }
+
+        if(mTotal == 0.0) {
+            throw new IllegalArgumentException(
+                    "the sum of weights cannot be 0.0");
+        } else if(mTotal < 0.0) {
+            System.err.println(
+                    "weights for linear filter sum to negative number!");
         }
 
         mBuffer = new LinkedList<Double>();
@@ -84,9 +90,10 @@ public class LinearFilter implements IStreamFilter {
      * Trapezoidal Moving Average is used to get a perfect S Curve.
      *
      * @param size the size of the trapezoidal moving average
+     * @param cap  the maximum weight for the past values (less than half the size)
      * @return the TrapezoidalMovingAverage
      */
-    public static IStreamFilter getTrapezoidalMovingAverage(int size) {
+    public static IStreamFilter getTrapezoidalMovingAverage(int size, int cap) {
         double[] weights = new double[size];
 
         for(int i = 0; i < size; ++i) {
@@ -95,8 +102,22 @@ public class LinearFilter implements IStreamFilter {
             } else {
                 weights[i] = size - i;
             }
+
+            if(cap > 0) {
+                weights[i] = Math.min(weights[i], cap);
+            }
         }
 
         return new LinearFilter(weights);
+    }
+
+    /**
+     * Trapezoidal Moving Average is used to get a perfect S Curve.
+     *
+     * @param size the size of the trapezoidal moving average
+     * @return the TrapezoidalMovingAverage
+     */
+    public static IStreamFilter getTrapezoidalMovingAverage(int size) {
+        return getTrapezoidalMovingAverage(size, -1);
     }
 }

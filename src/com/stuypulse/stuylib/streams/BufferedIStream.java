@@ -1,10 +1,7 @@
 package com.stuypulse.stuylib.streams;
 
-import com.stuypulse.stuylib.exception.ConstructionError;
-
 /**
- * This class allows you to use an input stream while recording the last N
- * values from the stream
+ * This class allows you to use an input stream while recording the last N values from the stream
  *
  * It extends from IStream, so it also works with the existing IStream classes
  *
@@ -28,11 +25,9 @@ public class BufferedIStream implements IStream {
      * @param istream istream that will be buffered
      * @param size    size of buffer
      */
-    public BufferedIStream(IStream istream, int size) throws ConstructionError {
+    public BufferedIStream(IStream istream, int size) {
         if(size <= 0) {
-            throw new ConstructionError(
-                    "BufferedIStream(IStream istream, int size)",
-                    "size must be greater than 0!");
+            throw new IllegalArgumentException("size must be greater than 0");
         }
 
         mBuffer = new double[size];

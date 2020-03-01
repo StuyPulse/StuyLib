@@ -6,17 +6,15 @@ import edu.wpi.first.wpilibj2.command.Command;
 import edu.wpi.first.wpilibj2.command.Subsystem;
 
 /**
- * A ThreadedCommand is a command that helps run commands at higher rates than
- * 50hz. It is interfaced with like a normal command, but handles the threading
- * in the background.
+ * A ThreadedCommand is a command that helps run commands at higher rates than 50hz. It is
+ * interfaced with like a normal command, but handles the threading in the background.
  *
  * @author Sam (sam.belliveau@gmail.com)
  */
 public class ThreadedCommand implements Command {
 
     /**
-     * Command Runner is a thread that runs a command until its finished or
-     * interrupted.
+     * Command Runner is a thread that runs a command until its finished or interrupted.
      *
      * This does not handle initialize or end, that is for threaded command
      */

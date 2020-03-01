@@ -6,9 +6,8 @@ import edu.wpi.first.wpilibj2.command.Command;
 import edu.wpi.first.wpilibj2.command.Subsystem;
 
 /**
- * A synchronized command takes in a command and synchronizes all of the
- * methods. This can be used when a command is being passed around threads to
- * prevent data races.
+ * A synchronized command takes in a command and synchronizes all of the methods. This can be used
+ * when a command is being passed around threads to prevent data races.
  *
  */
 public class SynchronizedCommand implements Command {
