@@ -27,7 +27,7 @@
     catch(err) {
     }
 //-->
-var data = {"i0":10,"i1":10,"i2":9,"i3":10,"i4":9,"i5":9,"i6":9,"i7":9,"i8":9,"i9":10,"i10":10,"i11":10,"i12":10,"i13":10,"i14":10,"i15":10};
+var data = {"i0":10,"i1":10,"i2":9,"i3":10,"i4":9,"i5":10,"i6":10,"i7":10,"i8":10,"i9":10,"i10":10,"i11":10};
 var tabs = {65535:["t0","All Methods"],1:["t1","Static Methods"],2:["t2","Instance Methods"],8:["t4","Concrete Methods"]};
 var altColor = "altColor";
 var rowColor = "rowColor";
@@ -133,10 +133,9 @@ $('.navPadding').css('padding-top', $('.fixedNav').css("height"));
 <hr>
 <pre>public final class <span class="typeNameLabel">Angle</span>
 extends java.lang.Object</pre>
-<div class="block">This angle class is made to remove the ambiguity of units when passing or
- returning angles. It stores it in radians, but returns it in any unit
- depending on what the user requests. All of the functions and math normalize
- the angle to help issues.</div>
+<div class="block">This angle class is made to remove the ambiguity of units when passing or returning angles. It
+ stores it in radians, but returns it in any unit depending on what the user requests. All of the
+ functions and math normalize the angle to help issues.</div>
 </li>
 </ul>
 </div>
@@ -186,85 +185,55 @@ extends java.lang.Object</pre>
 </td>
 </tr>
 <tr id="i4" class="altColor">
-<td class="colFirst"><code>static double</code></td>
-<th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#normalizeDegrees(double)">normalizeDegrees</a></span>&#8203;(double&nbsp;degrees)</code></th>
-<td class="colLast">
-<div class="block">Normalize an angle in degrees around 0.0</div>
-</td>
-</tr>
-<tr id="i5" class="rowColor">
-<td class="colFirst"><code>static double</code></td>
-<th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#normalizeDegrees(double,double)">normalizeDegrees</a></span>&#8203;(double&nbsp;degrees,
-                double&nbsp;center)</code></th>
-<td class="colLast">
-<div class="block">Normalize an angle in degrees around a specified center</div>
-</td>
-</tr>
-<tr id="i6" class="altColor">
-<td class="colFirst"><code>static double</code></td>
-<th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#normalizeRadians(double)">normalizeRadians</a></span>&#8203;(double&nbsp;radians)</code></th>
-<td class="colLast">
-<div class="block">Normalize an angle in radians around 0.0</div>
-</td>
-</tr>
-<tr id="i7" class="rowColor">
-<td class="colFirst"><code>static double</code></td>
-<th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#normalizeRadians(double,double)">normalizeRadians</a></span>&#8203;(double&nbsp;radians,
-                double&nbsp;center)</code></th>
-<td class="colLast">
-<div class="block">Normalize an angle in radians around a specified center</div>
-</td>
-</tr>
-<tr id="i8" class="altColor">
 <td class="colFirst"><code>static <a href="Angle.html" title="class in com.stuypulse.stuylib.math">Angle</a></code></td>
 <th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#radians(double)">radians</a></span>&#8203;(double&nbsp;radians)</code></th>
 <td class="colLast">
 <div class="block">Construct a new Angle class with a double in radians</div>
 </td>
 </tr>
-<tr id="i9" class="rowColor">
+<tr id="i5" class="rowColor">
 <td class="colFirst"><code>double</code></td>
 <th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#sin()">sin</a></span>()</code></th>
 <td class="colLast">
 <div class="block">Get the sin of the angle</div>
 </td>
 </tr>
-<tr id="i10" class="altColor">
+<tr id="i6" class="altColor">
 <td class="colFirst"><code><a href="Angle.html" title="class in com.stuypulse.stuylib.math">Angle</a></code></td>
 <th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#sub(com.stuypulse.stuylib.math.Angle)">sub</a></span>&#8203;(<a href="Angle.html" title="class in com.stuypulse.stuylib.math">Angle</a>&nbsp;other)</code></th>
 <td class="colLast">
 <div class="block">Subtract two angles from each other</div>
 </td>
 </tr>
-<tr id="i11" class="rowColor">
+<tr id="i7" class="rowColor">
 <td class="colFirst"><code>double</code></td>
 <th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#tan()">tan</a></span>()</code></th>
 <td class="colLast">
 <div class="block">Get the tan of the angle</div>
 </td>
 </tr>
-<tr id="i12" class="altColor">
+<tr id="i8" class="altColor">
 <td class="colFirst"><code>double</code></td>
 <th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#toDegrees()">toDegrees</a></span>()</code></th>
 <td class="colLast">
 <div class="block">Get the value of the angle in degrees centered around 0.0</div>
 </td>
 </tr>
-<tr id="i13" class="rowColor">
+<tr id="i9" class="rowColor">
 <td class="colFirst"><code>double</code></td>
 <th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#toDegrees(double)">toDegrees</a></span>&#8203;(double&nbsp;center)</code></th>
 <td class="colLast">
 <div class="block">Get the angle normalized around a custom angle in degrees</div>
 </td>
 </tr>
-<tr id="i14" class="altColor">
+<tr id="i10" class="altColor">
 <td class="colFirst"><code>double</code></td>
 <th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#toRadians()">toRadians</a></span>()</code></th>
 <td class="colLast">
 <div class="block">Get the value of the angle in radians centered around 0.0</div>
 </td>
 </tr>
-<tr id="i15" class="rowColor">
+<tr id="i11" class="rowColor">
 <td class="colFirst"><code>double</code></td>
 <th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#toRadians(double)">toRadians</a></span>&#8203;(double&nbsp;center)</code></th>
 <td class="colLast">
@@ -295,74 +264,6 @@ extends java.lang.Object</pre>
 <!--   -->
 </a>
 <h3>Method Detail</h3>
-<a id="normalizeRadians(double,double)">
-<!--   -->
-</a>
-<ul class="blockList">
-<li class="blockList">
-<h4>normalizeRadians</h4>
-<pre class="methodSignature">public static&nbsp;double&nbsp;normalizeRadians&#8203;(double&nbsp;radians,
-                                      double&nbsp;center)</pre>
-<div class="block">Normalize an angle in radians around a specified center</div>
-<dl>
-<dt><span class="paramLabel">Parameters:</span></dt>
-<dd><code>radians</code> - the angle to be normalized</dd>
-<dd><code>center</code> - the center of the normalized range +/- pi</dd>
-<dt><span class="returnLabel">Returns:</span></dt>
-<dd>the normalized angle</dd>
-</dl>
-</li>
-</ul>
-<a id="normalizeRadians(double)">
-<!--   -->
-</a>
-<ul class="blockList">
-<li class="blockList">
-<h4>normalizeRadians</h4>
-<pre class="methodSignature">public static&nbsp;double&nbsp;normalizeRadians&#8203;(double&nbsp;radians)</pre>
-<div class="block">Normalize an angle in radians around 0.0</div>
-<dl>
-<dt><span class="paramLabel">Parameters:</span></dt>
-<dd><code>radians</code> - the angle to be normalized</dd>
-<dt><span class="returnLabel">Returns:</span></dt>
-<dd>the normalized angle</dd>
-</dl>
-</li>
-</ul>
-<a id="normalizeDegrees(double,double)">
-<!--   -->
-</a>
-<ul class="blockList">
-<li class="blockList">
-<h4>normalizeDegrees</h4>
-<pre class="methodSignature">public static&nbsp;double&nbsp;normalizeDegrees&#8203;(double&nbsp;degrees,
-                                      double&nbsp;center)</pre>
-<div class="block">Normalize an angle in degrees around a specified center</div>
-<dl>
-<dt><span class="paramLabel">Parameters:</span></dt>
-<dd><code>degrees</code> - the angle to be normalized</dd>
-<dd><code>center</code> - the center of the normalized range +/- 180</dd>
-<dt><span class="returnLabel">Returns:</span></dt>
-<dd>the normalized angle</dd>
-</dl>
-</li>
-</ul>
-<a id="normalizeDegrees(double)">
-<!--   -->
-</a>
-<ul class="blockList">
-<li class="blockList">
-<h4>normalizeDegrees</h4>
-<pre class="methodSignature">public static&nbsp;double&nbsp;normalizeDegrees&#8203;(double&nbsp;degrees)</pre>
-<div class="block">Normalize an angle in degrees around 0.0</div>
-<dl>
-<dt><span class="paramLabel">Parameters:</span></dt>
-<dd><code>degrees</code> - the angle to be normalized</dd>
-<dt><span class="returnLabel">Returns:</span></dt>
-<dd>the normalized angle</dd>
-</dl>
-</li>
-</ul>
 <a id="radians(double)">
 <!--   -->
 </a>

@@ -138,14 +138,12 @@ $('.navPadding').css('padding-top', $('.fixedNav').css("height"));
 <hr>
 <pre>public class <span class="typeNameLabel">PIDController</span>
 extends <a href="Controller.html" title="class in com.stuypulse.stuylib.control">Controller</a></pre>
-<div class="block">This PID controller is built by extending the Controller class. It has a
- dynamic rate, so it can detect how much time has passed between each update.
- It is made to be easy to use and simple to understand while still being
- accurate.
+<div class="block">This PID controller is built by extending the Controller class. It has a dynamic rate, so it can
+ detect how much time has passed between each update. It is made to be easy to use and simple to
+ understand while still being accurate.
 
- This PID controller resets the integral every time the error crosses 0 to
- prevent integral windup / lag. This means that it may not be suitable for
- setups involving rate instead of position</div>
+ This PID controller resets the integral every time the error crosses 0 to prevent integral windup
+ / lag. This means that it may not be suitable for setups involving rate instead of position</div>
 </li>
 </ul>
 </div>
@@ -238,8 +236,7 @@ extends <a href="Controller.html" title="class in com.stuypulse.stuylib.control"
 <td class="colFirst"><code><a href="PIDController.html" title="class in com.stuypulse.stuylib.control">PIDController</a></code></td>
 <th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#setIntegratorFilter(com.stuypulse.stuylib.streams.filters.IStreamFilter)">setIntegratorFilter</a></span>&#8203;(<a href="../streams/filters/IStreamFilter.html" title="interface in com.stuypulse.stuylib.streams.filters">IStreamFilter</a>&nbsp;filter)</code></th>
 <td class="colLast">
-<div class="block">It is common for a limit filter to be put on the I component to prevent
- Integral Windup.</div>
+<div class="block">It is common for a limit filter to be put on the I component to prevent Integral Windup.</div>
 </td>
 </tr>
 <tr id="i8" class="altColor">
@@ -334,8 +331,8 @@ extends <a href="Controller.html" title="class in com.stuypulse.stuylib.control"
 <li class="blockList">
 <h4>reset</h4>
 <pre class="methodSignature">public&nbsp;void&nbsp;reset()</pre>
-<div class="block">Resets the integrator in the PIDController. This automatically gets
- called if the gap between update() commands is too large</div>
+<div class="block">Resets the integrator in the PIDController. This automatically gets called if the gap between
+ update() commands is too large</div>
 </li>
 </ul>
 <a id="calculate(double)">
@@ -406,8 +403,7 @@ extends <a href="Controller.html" title="class in com.stuypulse.stuylib.control"
 <dt><span class="paramLabel">Parameters:</span></dt>
 <dd><code>p</code> - new p value used by the PID controller.</dd>
 <dt><span class="returnLabel">Returns:</span></dt>
-<dd>reference to PIDController (so you can chain the commands
-         together)</dd>
+<dd>reference to PIDController (so you can chain the commands together)</dd>
 </dl>
 </li>
 </ul>
@@ -422,8 +418,7 @@ extends <a href="Controller.html" title="class in com.stuypulse.stuylib.control"
 <dt><span class="paramLabel">Parameters:</span></dt>
 <dd><code>i</code> - new i value used by the PID controller.</dd>
 <dt><span class="returnLabel">Returns:</span></dt>
-<dd>reference to PIDController (so you can chain the commands
-         together)</dd>
+<dd>reference to PIDController (so you can chain the commands together)</dd>
 </dl>
 </li>
 </ul>
@@ -438,8 +433,7 @@ extends <a href="Controller.html" title="class in com.stuypulse.stuylib.control"
 <dt><span class="paramLabel">Parameters:</span></dt>
 <dd><code>d</code> - new d value used by the PID controller.</dd>
 <dt><span class="returnLabel">Returns:</span></dt>
-<dd>reference to PIDController (so you can chain the commands
-         together)</dd>
+<dd>reference to PIDController (so you can chain the commands together)</dd>
 </dl>
 </li>
 </ul>
@@ -458,8 +452,7 @@ extends <a href="Controller.html" title="class in com.stuypulse.stuylib.control"
 <dd><code>i</code> - new i value used by the PID controller.</dd>
 <dd><code>d</code> - new d value used by the PID controller.</dd>
 <dt><span class="returnLabel">Returns:</span></dt>
-<dd>reference to PIDController (so you can chain the commands
-         together)</dd>
+<dd>reference to PIDController (so you can chain the commands together)</dd>
 </dl>
 </li>
 </ul>
@@ -470,16 +463,15 @@ extends <a href="Controller.html" title="class in com.stuypulse.stuylib.control"
 <li class="blockList">
 <h4>setIntegratorFilter</h4>
 <pre class="methodSignature">public&nbsp;<a href="PIDController.html" title="class in com.stuypulse.stuylib.control">PIDController</a>&nbsp;setIntegratorFilter&#8203;(<a href="../streams/filters/IStreamFilter.html" title="interface in com.stuypulse.stuylib.streams.filters">IStreamFilter</a>&nbsp;filter)</pre>
-<div class="block">It is common for a limit filter to be put on the I component to prevent
- Integral Windup. You can use SLMath.limit(x) to do this.
+<div class="block">It is common for a limit filter to be put on the I component to prevent Integral Windup. You can
+ use SLMath.limit(x) to do this.
 
  Passing null will disable the filter</div>
 <dl>
 <dt><span class="paramLabel">Parameters:</span></dt>
 <dd><code>filter</code> - filter put on the I component of the PID Controller</dd>
 <dt><span class="returnLabel">Returns:</span></dt>
-<dd>reference to PIDController (so you can chain the commands
-         together)</dd>
+<dd>reference to PIDController (so you can chain the commands together)</dd>
 </dl>
 </li>
 </ul>

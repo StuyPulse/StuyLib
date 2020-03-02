@@ -31,7 +31,7 @@ public final class Vector2D implements Cloneable {
     /**
      * Make a Vector2D with two numbers
      *
-     * @param points two variables for \
+     * @param axis an array or varargs for x and y
      */
     public Vector2D(double... axis) {
         if(axis.length != 2) {

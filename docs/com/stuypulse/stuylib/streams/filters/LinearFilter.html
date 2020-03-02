@@ -27,7 +27,7 @@
     catch(err) {
     }
 //-->
-var data = {"i0":10,"i1":9,"i2":9,"i3":9};
+var data = {"i0":10,"i1":9,"i2":9,"i3":9,"i4":9};
 var tabs = {65535:["t0","All Methods"],1:["t1","Static Methods"],2:["t2","Instance Methods"],8:["t4","Concrete Methods"]};
 var altColor = "altColor";
 var rowColor = "rowColor";
@@ -140,8 +140,8 @@ extends java.lang.Object
 implements <a href="IStreamFilter.html" title="interface in com.stuypulse.stuylib.streams.filters">IStreamFilter</a></pre>
 <div class="block">Simple implementation of an Simple Moving Average
 
- This is not time dependant, so the values will change if you change the rate
- that you call this filter, the filter will not adapt for that.</div>
+ This is not time dependant, so the values will change if you change the rate that you call this
+ filter, the filter will not adapt for that.</div>
 </li>
 </ul>
 </div>
@@ -208,6 +208,14 @@ implements <a href="IStreamFilter.html" title="interface in com.stuypulse.stuyli
 </tr>
 <tr id="i3" class="rowColor">
 <td class="colFirst"><code>static <a href="IStreamFilter.html" title="interface in com.stuypulse.stuylib.streams.filters">IStreamFilter</a></code></td>
+<th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#getTrapezoidalMovingAverage(int,int)">getTrapezoidalMovingAverage</a></span>&#8203;(int&nbsp;size,
+                           int&nbsp;cap)</code></th>
+<td class="colLast">
+<div class="block">Trapezoidal Moving Average is used to get a perfect S Curve.</div>
+</td>
+</tr>
+<tr id="i4" class="altColor">
+<td class="colFirst"><code>static <a href="IStreamFilter.html" title="interface in com.stuypulse.stuylib.streams.filters">IStreamFilter</a></code></td>
 <th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#getWeightedMovingAverage(int)">getWeightedMovingAverage</a></span>&#8203;(int&nbsp;size)</code></th>
 <td class="colLast">
 <div class="block">Get a weighted moving average with a certain size</div>
@@ -243,14 +251,11 @@ implements <a href="IStreamFilter.html" title="interface in com.stuypulse.stuyli
 <ul class="blockListLast">
 <li class="blockList">
 <h4>LinearFilter</h4>
-<pre>public&nbsp;LinearFilter&#8203;(double...&nbsp;weights)
-             throws <a href="../../exception/ConstructionError.html" title="class in com.stuypulse.stuylib.exception">ConstructionError</a></pre>
+<pre>public&nbsp;LinearFilter&#8203;(double...&nbsp;weights)</pre>
 <div class="block">Create a LinearFilter with a list of weights</div>
 <dl>
 <dt><span class="paramLabel">Parameters:</span></dt>
 <dd><code>weights</code> - a list of weights to apply to the past values</dd>
-<dt><span class="throwsLabel">Throws:</span></dt>
-<dd><code><a href="../../exception/ConstructionError.html" title="class in com.stuypulse.stuylib.exception">ConstructionError</a></code></dd>
 </dl>
 </li>
 </ul>
@@ -312,6 +317,24 @@ implements <a href="IStreamFilter.html" title="interface in com.stuypulse.stuyli
 <dd><code>size</code> - size of weighted moving average</dd>
 <dt><span class="returnLabel">Returns:</span></dt>
 <dd>the weighted moving average</dd>
+</dl>
+</li>
+</ul>
+<a id="getTrapezoidalMovingAverage(int,int)">
+<!--   -->
+</a>
+<ul class="blockList">
+<li class="blockList">
+<h4>getTrapezoidalMovingAverage</h4>
+<pre class="methodSignature">public static&nbsp;<a href="IStreamFilter.html" title="interface in com.stuypulse.stuylib.streams.filters">IStreamFilter</a>&nbsp;getTrapezoidalMovingAverage&#8203;(int&nbsp;size,
+                                                        int&nbsp;cap)</pre>
+<div class="block">Trapezoidal Moving Average is used to get a perfect S Curve.</div>
+<dl>
+<dt><span class="paramLabel">Parameters:</span></dt>
+<dd><code>size</code> - the size of the trapezoidal moving average</dd>
+<dd><code>cap</code> - the maximum weight for the past values (less than half the size)</dd>
+<dt><span class="returnLabel">Returns:</span></dt>
+<dd>the TrapezoidalMovingAverage</dd>
 </dl>
 </li>
 </ul>

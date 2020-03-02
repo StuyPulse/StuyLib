@@ -138,9 +138,9 @@ $('.navPadding').css('padding-top', $('.fixedNav').css("height"));
 <pre>public final class <span class="typeNameLabel">Vector2D</span>
 extends java.lang.Object
 implements java.lang.Cloneable</pre>
-<div class="block">A Vector2D class that stores x and y position data. It is made to work with
- the StuyLib Angle class and be easy to use. It is a standard Vector2D class
- with all of the functions that you would expect.</div>
+<div class="block">A Vector2D class that stores x and y position data. It is made to work with the StuyLib Angle
+ class and be easy to use. It is a standard Vector2D class with all of the functions that you
+ would expect.</div>
 </li>
 </ul>
 </div>
@@ -199,19 +199,12 @@ implements java.lang.Cloneable</pre>
 </td>
 </tr>
 <tr class="rowColor">
-<th class="colConstructorName" scope="row"><code><span class="memberNameLink"><a href="#%3Cinit%3E(double%5B%5D)">Vector2D</a></span>&#8203;(double[]&nbsp;in)</code></th>
-<td class="colLast">
-<div class="block">Make a Vector2D with an array of two numbers (x, y)</div>
-</td>
-</tr>
-<tr class="altColor">
-<th class="colConstructorName" scope="row"><code><span class="memberNameLink"><a href="#%3Cinit%3E(double,double)">Vector2D</a></span>&#8203;(double&nbsp;x,
-        double&nbsp;y)</code></th>
+<th class="colConstructorName" scope="row"><code><span class="memberNameLink"><a href="#%3Cinit%3E(double...)">Vector2D</a></span>&#8203;(double...&nbsp;axis)</code></th>
 <td class="colLast">
 <div class="block">Make a Vector2D with two numbers</div>
 </td>
 </tr>
-<tr class="rowColor">
+<tr class="altColor">
 <th class="colConstructorName" scope="row"><code><span class="memberNameLink"><a href="#%3Cinit%3E(com.stuypulse.stuylib.math.Vector2D)">Vector2D</a></span>&#8203;(<a href="Vector2D.html" title="class in com.stuypulse.stuylib.math">Vector2D</a>&nbsp;other)</code></th>
 <td class="colLast">
 <div class="block">Clone a Vector2D</div>
@@ -398,36 +391,17 @@ implements java.lang.Cloneable</pre>
 <div class="block">Make a new Vector2D at point 0, 0</div>
 </li>
 </ul>
-<a id="&lt;init&gt;(double[])">
+<a id="&lt;init&gt;(double...)">
 <!--   -->
 </a>
 <ul class="blockList">
 <li class="blockList">
 <h4>Vector2D</h4>
-<pre>public&nbsp;Vector2D&#8203;(double[]&nbsp;in)
-         throws <a href="../exception/ConstructionError.html" title="class in com.stuypulse.stuylib.exception">ConstructionError</a></pre>
-<div class="block">Make a Vector2D with an array of two numbers (x, y)</div>
-<dl>
-<dt><span class="paramLabel">Parameters:</span></dt>
-<dd><code>in</code> - array of 2 numbers</dd>
-<dt><span class="throwsLabel">Throws:</span></dt>
-<dd><code><a href="../exception/ConstructionError.html" title="class in com.stuypulse.stuylib.exception">ConstructionError</a></code></dd>
-</dl>
-</li>
-</ul>
-<a id="&lt;init&gt;(double,double)">
-<!--   -->
-</a>
-<ul class="blockList">
-<li class="blockList">
-<h4>Vector2D</h4>
-<pre>public&nbsp;Vector2D&#8203;(double&nbsp;x,
-                double&nbsp;y)</pre>
+<pre>public&nbsp;Vector2D&#8203;(double...&nbsp;axis)</pre>
 <div class="block">Make a Vector2D with two numbers</div>
 <dl>
 <dt><span class="paramLabel">Parameters:</span></dt>
-<dd><code>x</code> - first number, x</dd>
-<dd><code>y</code> - second number, y</dd>
+<dd><code>axis</code> - an array or varargs for x and y</dd>
 </dl>
 </li>
 </ul>

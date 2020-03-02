@@ -1,6 +1,5 @@
 com.stuypulse.stuylib.commands
 com.stuypulse.stuylib.control
-com.stuypulse.stuylib.exception
 com.stuypulse.stuylib.file
 com.stuypulse.stuylib.file.csv
 com.stuypulse.stuylib.input
