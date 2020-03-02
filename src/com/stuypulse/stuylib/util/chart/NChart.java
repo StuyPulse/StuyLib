@@ -34,12 +34,14 @@ public class NChart extends Chart {
 
     public Chart add(Chart... charts) {
         String chartTitles = instance.getTitle();
-        for (Chart chart : charts) {
+        for(Chart chart : charts) {
             chartTitles += chart.getChartTitle() + ", ";
             this.charts.add(chart);
             chart.undisplay();
-            instance.addSeries(chart.getChartTitle(), chart.getXData(), chart.getYData());
-            instance.getSeriesMap().get(chart.getChartTitle()).setMarker(SeriesMarkers.NONE);
+            instance.addSeries(chart.getChartTitle(), chart.getXData(),
+                    chart.getYData());
+            instance.getSeriesMap().get(chart.getChartTitle())
+                    .setMarker(SeriesMarkers.NONE);
         }
         instance.setTitle(chartTitles);
         return this;
@@ -47,17 +49,19 @@ public class NChart extends Chart {
 
     @Override
     public void update(double x, double y) {
-        for (Chart chart : charts) {
+        for(Chart chart : charts) {
             chart.update(x, y);
-            instance.updateXYSeries(chart.getChartTitle(), chart.getXData(), chart.getYData(), null);
+            instance.updateXYSeries(chart.getChartTitle(), chart.getXData(),
+                    chart.getYData(), null);
         }
     }
 
     @Override
     public void update(double y) {
-        for (Chart chart : charts) {
+        for(Chart chart : charts) {
             chart.update(y);
-            instance.updateXYSeries(chart.getChartTitle(), chart.getXData(), chart.getYData(), null);
+            instance.updateXYSeries(chart.getChartTitle(), chart.getXData(),
+                    chart.getYData(), null);
         }
     }
 

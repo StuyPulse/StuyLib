@@ -42,26 +42,23 @@ public class Chart extends JFrame {
     private int maxDataSize;
 
     /**
-     * Stores the x boundaries of the chart in an array. Acts to scale the
-     * chart.
+     * Stores the x boundaries of the chart in an array. Acts to scale the chart.
      */
     private Double[] xBounds;
 
     /**
-     * Stores the y boundaries of the chart in an array. Acts to scale the
-     * chart.
+     * Stores the y boundaries of the chart in an array. Acts to scale the chart.
      */
     private Double[] yBounds;
 
     /**
-     * Mouse tracker for getting mouse x and y as a percentage of the screen
-     * width and height.
+     * Mouse tracker for getting mouse x and y as a percentage of the screen width and height.
      */
     protected final MouseTracker mouseTracker;
 
     /**
-     * Key tracker with built in escape function and adding key binding
-     * functionality. Gets key presses as booleans.
+     * Key tracker with built in escape function and adding key binding functionality. Gets key presses
+     * as booleans.
      */
     protected final KeyTracker keyTracker;
 
