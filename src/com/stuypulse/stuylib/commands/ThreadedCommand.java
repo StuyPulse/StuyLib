@@ -44,7 +44,7 @@ public class ThreadedCommand implements Command {
                 } catch(InterruptedException e) {
                     return;
                 }
-            } while(mBaseCommand.isFinished() && !Thread.interrupted());
+            } while(!mBaseCommand.isFinished() && !Thread.interrupted());
         }
     }
 
