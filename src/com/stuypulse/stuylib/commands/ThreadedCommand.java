@@ -128,6 +128,6 @@ public class ThreadedCommand implements Command {
 
     @Override
     public synchronized String getName() {
-        return "Synchronized" + mBaseCommand.getName();
+        return "Threaded" + mBaseCommand.getName();
     }
 }
