@@ -103,14 +103,23 @@ $('.navPadding').css('padding-top', $('.fixedNav').css("height"));
 <pre>public class <span class="typeNameLabel">CSVReader</span>
 extends java.lang.Object
 implements java.lang.Iterable&lt;<a href="CSVElement.html" title="class in com.stuypulse.stuylib.file.csv">CSVElement</a>&gt;</pre>
-<div class="block">Read CSV Files with a bunch of epic features. After file is opened you can
- read the data like it was an array.
+<div class="block">Read CSV Files with a bunch of epic features. After file is opened you can read the data like it
+ was an array.
 
+<<<<<<< HEAD
  Each of the elements is stored as a custom type called Element. Which
  prevents the need to constantly parse the data over and over again if it is a
  number.</div>
 </section>
 <section class="summary">
+=======
+ Each of the elements is stored as a custom type called Element. Which prevents the need to
+ constantly parse the data over and over again if it is a number.</div>
+</li>
+</ul>
+</div>
+<div class="summary">
+>>>>>>> cee2d99de4addd2fc4793c4f899a30e81eba93c5
 <ul class="blockList">
 <!-- ======== CONSTRUCTOR SUMMARY ======== -->
 <li class="blockList">
@@ -351,12 +360,19 @@ implements java.lang.Iterable&lt;<a href="CSVElement.html" title="class in com.s
 </section>
 </li>
 <li class="blockList">
+<<<<<<< HEAD
 <section class="detail">
 <h3><a id="read()">read</a></h3>
 <div class="memberSignature"><span class="modifiers">public</span>&nbsp;<span class="returnType">void</span>&nbsp;<span class="memberName">read</span>()
           throws <span class="exceptions">java.io.IOException</span></div>
 <div class="block">Read data from opened file. You can call multiple times if file is
  updated</div>
+=======
+<h4>read</h4>
+<pre class="methodSignature">public&nbsp;void&nbsp;read()
+          throws java.io.IOException</pre>
+<div class="block">Read data from opened file. You can call multiple times if file is updated</div>
+>>>>>>> cee2d99de4addd2fc4793c4f899a30e81eba93c5
 <dl>
 <dt><span class="throwsLabel">Throws:</span></dt>
 <dd><code>java.io.IOException</code></dd>
@@ -419,8 +435,7 @@ implements java.lang.Iterable&lt;<a href="CSVElement.html" title="class in com.s
 <dt><span class="returnLabel">Returns:</span></dt>
 <dd>element as custom CSVElement type</dd>
 <dt><span class="throwsLabel">Throws:</span></dt>
-<dd><code>java.lang.IndexOutOfBoundsException</code> - if the index is higher than the amount
-                                   of elements</dd>
+<dd><code>java.lang.IndexOutOfBoundsException</code> - if the index is higher than the amount of elements</dd>
 </dl>
 </section>
 </li>
@@ -436,8 +451,7 @@ implements java.lang.Iterable&lt;<a href="CSVElement.html" title="class in com.s
 <dt><span class="returnLabel">Returns:</span></dt>
 <dd>string of the element</dd>
 <dt><span class="throwsLabel">Throws:</span></dt>
-<dd><code>java.lang.IndexOutOfBoundsException</code> - if the index is higher than the amount
-                                   of elements</dd>
+<dd><code>java.lang.IndexOutOfBoundsException</code> - if the index is higher than the amount of elements</dd>
 </dl>
 </section>
 </li>
@@ -453,8 +467,7 @@ implements java.lang.Iterable&lt;<a href="CSVElement.html" title="class in com.s
 <dt><span class="returnLabel">Returns:</span></dt>
 <dd>double representation of the element</dd>
 <dt><span class="throwsLabel">Throws:</span></dt>
-<dd><code>java.lang.IndexOutOfBoundsException</code> - if the index is higher than the amount
-                                   of elements</dd>
+<dd><code>java.lang.IndexOutOfBoundsException</code> - if the index is higher than the amount of elements</dd>
 </dl>
 </section>
 </li>
@@ -470,8 +483,7 @@ implements java.lang.Iterable&lt;<a href="CSVElement.html" title="class in com.s
 <dt><span class="returnLabel">Returns:</span></dt>
 <dd>number representation of the element</dd>
 <dt><span class="throwsLabel">Throws:</span></dt>
-<dd><code>java.lang.IndexOutOfBoundsException</code> - if the index is higher than the amount
-                                   of elements</dd>
+<dd><code>java.lang.IndexOutOfBoundsException</code> - if the index is higher than the amount of elements</dd>
 </dl>
 </section>
 </li>
@@ -487,8 +499,7 @@ implements java.lang.Iterable&lt;<a href="CSVElement.html" title="class in com.s
 <dt><span class="returnLabel">Returns:</span></dt>
 <dd>if element is of type double</dd>
 <dt><span class="throwsLabel">Throws:</span></dt>
-<dd><code>java.lang.IndexOutOfBoundsException</code> - if the index is higher than the amount
-                                   of elements</dd>
+<dd><code>java.lang.IndexOutOfBoundsException</code> - if the index is higher than the amount of elements</dd>
 </dl>
 </section>
 </li>

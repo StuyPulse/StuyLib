@@ -18,8 +18,22 @@
 <script type="text/javascript" src="../../../../script-dir/jquery-3.4.1.js"></script>
 <script type="text/javascript" src="../../../../script-dir/jquery-ui.js"></script>
 </head>
+<<<<<<< HEAD
 <body class="class-declaration">
 <script type="text/javascript">var data = {"i0":10,"i1":10,"i2":10,"i3":10,"i4":10,"i5":10,"i6":10,"i7":10,"i8":10};
+=======
+<body>
+<script type="text/javascript"><!--
+    try {
+        if (location.href.indexOf('is-external=true') == -1) {
+            parent.document.title="Vector2D (StuyLib 1.0.0 API)";
+        }
+    }
+    catch(err) {
+    }
+//-->
+var data = {"i0":10,"i1":10,"i2":10,"i3":10,"i4":10,"i5":10,"i6":10,"i7":10,"i8":10,"i9":10,"i10":10,"i11":10,"i12":10,"i13":10};
+>>>>>>> cee2d99de4addd2fc4793c4f899a30e81eba93c5
 var tabs = {65535:["t0","All Methods"],2:["t2","Instance Methods"],8:["t4","Concrete Methods"]};
 var altColor = "altColor";
 var rowColor = "rowColor";
@@ -91,6 +105,7 @@ $('.navPadding').css('padding-top', $('.fixedNav').css("height"));
 <h1 title="Class Vector2D" class="title">Class Vector2D</h1>
 </div>
 <div class="contentContainer">
+<<<<<<< HEAD
 <div class="inheritance" title="Inheritance Tree">java.lang.Object
 <div class="inheritance">com.stuypulse.stuylib.math.Vector2D</div>
 </div>
@@ -101,6 +116,34 @@ extends java.lang.Object</pre>
 <div class="block">Simple coordinate class that defines many helpful functions like</div>
 </section>
 <section class="summary">
+=======
+<ul class="inheritance">
+<li>java.lang.Object</li>
+<li>
+<ul class="inheritance">
+<li>com.stuypulse.stuylib.math.Vector2D</li>
+</ul>
+</li>
+</ul>
+<div class="description">
+<ul class="blockList">
+<li class="blockList">
+<dl>
+<dt>All Implemented Interfaces:</dt>
+<dd><code>java.lang.Cloneable</code></dd>
+</dl>
+<hr>
+<pre>public final class <span class="typeNameLabel">Vector2D</span>
+extends java.lang.Object
+implements java.lang.Cloneable</pre>
+<div class="block">A Vector2D class that stores x and y position data. It is made to work with the StuyLib Angle
+ class and be easy to use. It is a standard Vector2D class with all of the functions that you
+ would expect.</div>
+</li>
+</ul>
+</div>
+<div class="summary">
+>>>>>>> cee2d99de4addd2fc4793c4f899a30e81eba93c5
 <ul class="blockList">
 <!-- =========== FIELD SUMMARY =========== -->
 <li class="blockList">
@@ -122,12 +165,16 @@ extends java.lang.Object</pre>
 <tr class="altColor">
 <td class="colFirst"><code>double</code></td>
 <th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#x">x</a></span></code></th>
-<td class="colLast">&nbsp;</td>
+<td class="colLast">
+<div class="block">The x position of the Vector2D</div>
+</td>
 </tr>
 <tr class="rowColor">
 <td class="colFirst"><code>double</code></td>
 <th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#y">y</a></span></code></th>
-<td class="colLast">&nbsp;</td>
+<td class="colLast">
+<div class="block">The y position of the Vector2D</div>
+</td>
 </tr>
 </tbody>
 </table>
@@ -153,20 +200,24 @@ extends java.lang.Object</pre>
 <tr class="altColor">
 <th class="colConstructorName" scope="row"><code><span class="memberNameLink"><a href="#%3Cinit%3E()">Vector2D</a></span>()</code></th>
 <td class="colLast">
-<div class="block">Make a Vector2D at 0, 0</div>
+<div class="block">Make a new Vector2D at point 0, 0</div>
 </td>
 </tr>
 <tr class="rowColor">
-<th class="colConstructorName" scope="row"><code><span class="memberNameLink"><a href="#%3Cinit%3E(double%5B%5D)">Vector2D</a></span>&#8203;(double[]&nbsp;in)</code></th>
+<th class="colConstructorName" scope="row"><code><span class="memberNameLink"><a href="#%3Cinit%3E(double...)">Vector2D</a></span>&#8203;(double...&nbsp;axis)</code></th>
 <td class="colLast">
-<div class="block">Initialize Vector2D using an array of 2 doubles</div>
+<div class="block">Make a Vector2D with two numbers</div>
 </td>
 </tr>
 <tr class="altColor">
+<<<<<<< HEAD
 <th class="colConstructorName" scope="row"><code><span class="memberNameLink"><a href="#%3Cinit%3E(double,double)">Vector2D</a></span>&#8203;(double&nbsp;x,
 double&nbsp;y)</code></th>
+=======
+<th class="colConstructorName" scope="row"><code><span class="memberNameLink"><a href="#%3Cinit%3E(com.stuypulse.stuylib.math.Vector2D)">Vector2D</a></span>&#8203;(<a href="Vector2D.html" title="class in com.stuypulse.stuylib.math">Vector2D</a>&nbsp;other)</code></th>
+>>>>>>> cee2d99de4addd2fc4793c4f899a30e81eba93c5
 <td class="colLast">
-<div class="block">Initialize Vector2D using 2 doubles</div>
+<div class="block">Clone a Vector2D</div>
 </td>
 </tr>
 </tbody>
@@ -199,61 +250,131 @@ double&nbsp;y)</code></th>
 <div class="block">Add two Vector2Ds</div>
 </td>
 </tr>
+<<<<<<< HEAD
 <tr class="rowColor" id="i1">
+=======
+<tr id="i1" class="rowColor">
+<td class="colFirst"><code><a href="Angle.html" title="class in com.stuypulse.stuylib.math">Angle</a></code></td>
+<th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#angle()">angle</a></span>()</code></th>
+<td class="colLast">
+<div class="block">Get the angle of the Vector2D around 0</div>
+</td>
+</tr>
+<tr id="i2" class="altColor">
+>>>>>>> cee2d99de4addd2fc4793c4f899a30e81eba93c5
 <td class="colFirst"><code>double</code></td>
 <th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#distance()">distance</a></span>()</code></th>
 <td class="colLast">
-<div class="block">Distance from 0, 0</div>
+<div class="block">Get the distance from 0, 0</div>
 </td>
 </tr>
+<<<<<<< HEAD
 <tr class="altColor" id="i2">
+=======
+<tr id="i3" class="rowColor">
+>>>>>>> cee2d99de4addd2fc4793c4f899a30e81eba93c5
 <td class="colFirst"><code>double</code></td>
 <th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#distance(com.stuypulse.stuylib.math.Vector2D)">distance</a></span>&#8203;(<a href="Vector2D.html" title="class in com.stuypulse.stuylib.math">Vector2D</a>&nbsp;other)</code></th>
 <td class="colLast">
-<div class="block">Distance between 2 Vector2Ds</div>
+<div class="block">Get the distance between two Vector2Ds</div>
 </td>
 </tr>
+<<<<<<< HEAD
 <tr class="rowColor" id="i3">
+=======
+<tr id="i4" class="altColor">
+<td class="colFirst"><code><a href="Vector2D.html" title="class in com.stuypulse.stuylib.math">Vector2D</a></code></td>
+<th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#div(double)">div</a></span>&#8203;(double&nbsp;divisor)</code></th>
+<td class="colLast">
+<div class="block">Divide the x and y of the Vector2D by a certain amount</div>
+</td>
+</tr>
+<tr id="i5" class="rowColor">
+<td class="colFirst"><code>double</code></td>
+<th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#dot(com.stuypulse.stuylib.math.Vector2D)">dot</a></span>&#8203;(<a href="Vector2D.html" title="class in com.stuypulse.stuylib.math">Vector2D</a>&nbsp;other)</code></th>
+<td class="colLast">
+<div class="block">Calculate the vector dot product of the two vectors</div>
+</td>
+</tr>
+<tr id="i6" class="altColor">
+>>>>>>> cee2d99de4addd2fc4793c4f899a30e81eba93c5
 <td class="colFirst"><code>boolean</code></td>
 <th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#equals(com.stuypulse.stuylib.math.Vector2D)">equals</a></span>&#8203;(<a href="Vector2D.html" title="class in com.stuypulse.stuylib.math">Vector2D</a>&nbsp;other)</code></th>
 <td class="colLast">
-<div class="block">See if two Vector2D's equal each other</div>
+<div class="block">Check if two Vector2D's equal each other</div>
 </td>
 </tr>
+<<<<<<< HEAD
 <tr class="altColor" id="i4">
+=======
+<tr id="i7" class="rowColor">
+>>>>>>> cee2d99de4addd2fc4793c4f899a30e81eba93c5
 <td class="colFirst"><code>double[]</code></td>
 <th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#getArray()">getArray</a></span>()</code></th>
 <td class="colLast">
 <div class="block">Get x, y coordinates as an array</div>
 </td>
 </tr>
+<<<<<<< HEAD
 <tr class="rowColor" id="i5">
+=======
+<tr id="i8" class="altColor">
 <td class="colFirst"><code><a href="Vector2D.html" title="class in com.stuypulse.stuylib.math">Vector2D</a></code></td>
-<th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#rotate(double)">rotate</a></span>&#8203;(double&nbsp;angdeg)</code></th>
+<th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#mul(double)">mul</a></span>&#8203;(double&nbsp;multiplier)</code></th>
+<td class="colLast">
+<div class="block">Multiply the x and y of the Vector2D by a certain amount</div>
+</td>
+</tr>
+<tr id="i9" class="rowColor">
+<td class="colFirst"><code><a href="Vector2D.html" title="class in com.stuypulse.stuylib.math">Vector2D</a></code></td>
+<th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#normalize()">normalize</a></span>()</code></th>
+<td class="colLast">
+<div class="block">Normalize the Vector2D so that the point lands on the unit circle</div>
+</td>
+</tr>
+<tr id="i10" class="altColor">
+>>>>>>> cee2d99de4addd2fc4793c4f899a30e81eba93c5
+<td class="colFirst"><code><a href="Vector2D.html" title="class in com.stuypulse.stuylib.math">Vector2D</a></code></td>
+<th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#rotate(com.stuypulse.stuylib.math.Angle)">rotate</a></span>&#8203;(<a href="Angle.html" title="class in com.stuypulse.stuylib.math">Angle</a>&nbsp;angle)</code></th>
 <td class="colLast">
 <div class="block">Rotate Vector2D around origin</div>
 </td>
 </tr>
+<<<<<<< HEAD
 <tr class="altColor" id="i6">
 <td class="colFirst"><code><a href="Vector2D.html" title="class in com.stuypulse.stuylib.math">Vector2D</a></code></td>
 <th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#rotate(double,com.stuypulse.stuylib.math.Vector2D)">rotate</a></span>&#8203;(double&nbsp;angdeg,
 <a href="Vector2D.html" title="class in com.stuypulse.stuylib.math">Vector2D</a>&nbsp;origin)</code></th>
+=======
+<tr id="i11" class="rowColor">
+<td class="colFirst"><code><a href="Vector2D.html" title="class in com.stuypulse.stuylib.math">Vector2D</a></code></td>
+<th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#rotate(com.stuypulse.stuylib.math.Angle,com.stuypulse.stuylib.math.Vector2D)">rotate</a></span>&#8203;(<a href="Angle.html" title="class in com.stuypulse.stuylib.math">Angle</a>&nbsp;angle,
+      <a href="Vector2D.html" title="class in com.stuypulse.stuylib.math">Vector2D</a>&nbsp;origin)</code></th>
+>>>>>>> cee2d99de4addd2fc4793c4f899a30e81eba93c5
 <td class="colLast">
 <div class="block">Rotate Vector2D around point</div>
 </td>
 </tr>
+<<<<<<< HEAD
 <tr class="rowColor" id="i7">
+=======
+<tr id="i12" class="altColor">
+>>>>>>> cee2d99de4addd2fc4793c4f899a30e81eba93c5
 <td class="colFirst"><code><a href="Vector2D.html" title="class in com.stuypulse.stuylib.math">Vector2D</a></code></td>
 <th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#sub(com.stuypulse.stuylib.math.Vector2D)">sub</a></span>&#8203;(<a href="Vector2D.html" title="class in com.stuypulse.stuylib.math">Vector2D</a>&nbsp;other)</code></th>
 <td class="colLast">
-<div class="block">Sub two Vector2Ds</div>
+<div class="block">Subtract two Vector2Ds</div>
 </td>
 </tr>
+<<<<<<< HEAD
 <tr class="altColor" id="i8">
+=======
+<tr id="i13" class="rowColor">
+>>>>>>> cee2d99de4addd2fc4793c4f899a30e81eba93c5
 <td class="colFirst"><code>java.lang.String</code></td>
 <th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#toString()">toString</a></span>()</code></th>
 <td class="colLast">
-<div class="block">Convert to a string</div>
+<div class="block">Format the angle into a string</div>
 </td>
 </tr>
 </tbody>
@@ -279,16 +400,30 @@ double&nbsp;y)</code></th>
 <h2>Field Details</h2>
 <ul class="blockList">
 <li class="blockList">
+<<<<<<< HEAD
 <section class="detail">
 <h3><a id="x">x</a></h3>
 <div class="memberSignature"><span class="modifiers">public</span>&nbsp;<span class="returnType">double</span>&nbsp;<span class="memberName">x</span></div>
 </section>
+=======
+<h4>x</h4>
+<pre>public&nbsp;double x</pre>
+<div class="block">The x position of the Vector2D</div>
+>>>>>>> cee2d99de4addd2fc4793c4f899a30e81eba93c5
 </li>
 <li class="blockList">
+<<<<<<< HEAD
 <section class="detail">
 <h3><a id="y">y</a></h3>
 <div class="memberSignature"><span class="modifiers">public</span>&nbsp;<span class="returnType">double</span>&nbsp;<span class="memberName">y</span></div>
 </section>
+=======
+<h4>y</h4>
+<pre>public&nbsp;double y</pre>
+<div class="block">The y position of the Vector2D</div>
+</li>
+</ul>
+>>>>>>> cee2d99de4addd2fc4793c4f899a30e81eba93c5
 </li>
 </ul>
 </section>
@@ -301,6 +436,7 @@ double&nbsp;y)</code></th>
 <h2>Constructor Details</h2>
 <ul class="blockList">
 <li class="blockList">
+<<<<<<< HEAD
 <section class="detail">
 <h3><a id="&lt;init&gt;()">Vector2D</a></h3>
 <div class="memberSignature"><span class="modifiers">public</span>&nbsp;<span class="memberName">Vector2D</span>()</div>
@@ -313,24 +449,48 @@ double&nbsp;y)</code></th>
 <div class="memberSignature"><span class="modifiers">public</span>&nbsp;<span class="memberName">Vector2D</span>&#8203;(<span class="arguments">double[]&nbsp;in)</span>
          throws <span class="exceptions"><a href="../exception/ConstructionError.html" title="class in com.stuypulse.stuylib.exception">ConstructionError</a></span></div>
 <div class="block">Initialize Vector2D using an array of 2 doubles</div>
+=======
+<h4>Vector2D</h4>
+<pre>public&nbsp;Vector2D()</pre>
+<div class="block">Make a new Vector2D at point 0, 0</div>
+</li>
+</ul>
+<a id="&lt;init&gt;(double...)">
+<!--   -->
+</a>
+<ul class="blockList">
+<li class="blockList">
+<h4>Vector2D</h4>
+<pre>public&nbsp;Vector2D&#8203;(double...&nbsp;axis)</pre>
+<div class="block">Make a Vector2D with two numbers</div>
+>>>>>>> cee2d99de4addd2fc4793c4f899a30e81eba93c5
 <dl>
 <dt><span class="paramLabel">Parameters:</span></dt>
-<dd><code>in</code> - an array of 2 numbers</dd>
-<dt><span class="throwsLabel">Throws:</span></dt>
-<dd><code><a href="../exception/ConstructionError.html" title="class in com.stuypulse.stuylib.exception">ConstructionError</a></code></dd>
+<dd><code>axis</code> - an array or varargs for x and y</dd>
 </dl>
 </section>
 </li>
+<<<<<<< HEAD
 <li class="blockList">
 <section class="detail">
 <h3><a id="&lt;init&gt;(double,double)">Vector2D</a></h3>
 <div class="memberSignature"><span class="modifiers">public</span>&nbsp;<span class="memberName">Vector2D</span>&#8203;(<span class="arguments">double&nbsp;x,
 double&nbsp;y)</span></div>
 <div class="block">Initialize Vector2D using 2 doubles</div>
+=======
+</ul>
+<a id="&lt;init&gt;(com.stuypulse.stuylib.math.Vector2D)">
+<!--   -->
+</a>
+<ul class="blockListLast">
+<li class="blockList">
+<h4>Vector2D</h4>
+<pre>public&nbsp;Vector2D&#8203;(<a href="Vector2D.html" title="class in com.stuypulse.stuylib.math">Vector2D</a>&nbsp;other)</pre>
+<div class="block">Clone a Vector2D</div>
+>>>>>>> cee2d99de4addd2fc4793c4f899a30e81eba93c5
 <dl>
 <dt><span class="paramLabel">Parameters:</span></dt>
-<dd><code>x</code> - first number, x</dd>
-<dd><code>y</code> - second number, y</dd>
+<dd><code>other</code> - other Vector2D to copy</dd>
 </dl>
 </section>
 </li>
@@ -351,70 +511,111 @@ double&nbsp;y)</span></div>
 <div class="block">Get x, y coordinates as an array</div>
 <dl>
 <dt><span class="returnLabel">Returns:</span></dt>
-<dd>array of doubles</dd>
+<dd>array of x and y</dd>
 </dl>
 </section>
 </li>
 <li class="blockList">
+<<<<<<< HEAD
 <section class="detail">
 <h3><a id="equals(com.stuypulse.stuylib.math.Vector2D)">equals</a></h3>
 <div class="memberSignature"><span class="modifiers">public</span>&nbsp;<span class="returnType">boolean</span>&nbsp;<span class="memberName">equals</span>&#8203;(<span class="arguments"><a href="Vector2D.html" title="class in com.stuypulse.stuylib.math">Vector2D</a>&nbsp;other)</span></div>
 <div class="block">See if two Vector2D's equal each other</div>
+=======
+<h4>equals</h4>
+<pre class="methodSignature">public&nbsp;boolean&nbsp;equals&#8203;(<a href="Vector2D.html" title="class in com.stuypulse.stuylib.math">Vector2D</a>&nbsp;other)</pre>
+<div class="block">Check if two Vector2D's equal each other</div>
+>>>>>>> cee2d99de4addd2fc4793c4f899a30e81eba93c5
 <dl>
 <dt><span class="paramLabel">Parameters:</span></dt>
 <dd><code>other</code> - other Vector2D</dd>
 <dt><span class="returnLabel">Returns:</span></dt>
-<dd>result</dd>
+<dd>if the two Vector2Ds are equal</dd>
 </dl>
 </section>
 </li>
 <li class="blockList">
+<<<<<<< HEAD
 <section class="detail">
 <h3><a id="distance(com.stuypulse.stuylib.math.Vector2D)">distance</a></h3>
 <div class="memberSignature"><span class="modifiers">public</span>&nbsp;<span class="returnType">double</span>&nbsp;<span class="memberName">distance</span>&#8203;(<span class="arguments"><a href="Vector2D.html" title="class in com.stuypulse.stuylib.math">Vector2D</a>&nbsp;other)</span></div>
 <div class="block">Distance between 2 Vector2Ds</div>
+=======
+<h4>distance</h4>
+<pre class="methodSignature">public&nbsp;double&nbsp;distance&#8203;(<a href="Vector2D.html" title="class in com.stuypulse.stuylib.math">Vector2D</a>&nbsp;other)</pre>
+<div class="block">Get the distance between two Vector2Ds</div>
+>>>>>>> cee2d99de4addd2fc4793c4f899a30e81eba93c5
 <dl>
 <dt><span class="paramLabel">Parameters:</span></dt>
 <dd><code>other</code> - other Vector2D</dd>
 <dt><span class="returnLabel">Returns:</span></dt>
-<dd>result</dd>
+<dd>the distance between the two Vector2Ds</dd>
 </dl>
 </section>
 </li>
 <li class="blockList">
+<<<<<<< HEAD
 <section class="detail">
 <h3><a id="distance()">distance</a></h3>
 <div class="memberSignature"><span class="modifiers">public</span>&nbsp;<span class="returnType">double</span>&nbsp;<span class="memberName">distance</span>()</div>
 <div class="block">Distance from 0, 0</div>
+=======
+<h4>distance</h4>
+<pre class="methodSignature">public&nbsp;double&nbsp;distance()</pre>
+<div class="block">Get the distance from 0, 0</div>
+>>>>>>> cee2d99de4addd2fc4793c4f899a30e81eba93c5
 <dl>
 <dt><span class="returnLabel">Returns:</span></dt>
-<dd>result</dd>
+<dd>distance from 0, 0</dd>
 </dl>
 </section>
 </li>
+<<<<<<< HEAD
 <li class="blockList">
 <section class="detail">
 <h3><a id="rotate(double,com.stuypulse.stuylib.math.Vector2D)">rotate</a></h3>
 <div class="memberSignature"><span class="modifiers">public</span>&nbsp;<span class="returnType"><a href="Vector2D.html" title="class in com.stuypulse.stuylib.math">Vector2D</a></span>&nbsp;<span class="memberName">rotate</span>&#8203;(<span class="arguments">double&nbsp;angdeg,
 <a href="Vector2D.html" title="class in com.stuypulse.stuylib.math">Vector2D</a>&nbsp;origin)</span></div>
+=======
+</ul>
+<a id="rotate(com.stuypulse.stuylib.math.Angle,com.stuypulse.stuylib.math.Vector2D)">
+<!--   -->
+</a>
+<ul class="blockList">
+<li class="blockList">
+<h4>rotate</h4>
+<pre class="methodSignature">public&nbsp;<a href="Vector2D.html" title="class in com.stuypulse.stuylib.math">Vector2D</a>&nbsp;rotate&#8203;(<a href="Angle.html" title="class in com.stuypulse.stuylib.math">Angle</a>&nbsp;angle,
+                       <a href="Vector2D.html" title="class in com.stuypulse.stuylib.math">Vector2D</a>&nbsp;origin)</pre>
+>>>>>>> cee2d99de4addd2fc4793c4f899a30e81eba93c5
 <div class="block">Rotate Vector2D around point</div>
 <dl>
 <dt><span class="paramLabel">Parameters:</span></dt>
-<dd><code>angdeg</code> - (degrees) amount to rotate around</dd>
+<dd><code>angle</code> - amount to rotate</dd>
 <dd><code>origin</code> - point to rotate around</dd>
 <dt><span class="returnLabel">Returns:</span></dt>
 <dd>result of rotation</dd>
 </dl>
 </section>
 </li>
+<<<<<<< HEAD
 <li class="blockList">
 <section class="detail">
 <h3><a id="rotate(double)">rotate</a></h3>
 <div class="memberSignature"><span class="modifiers">public</span>&nbsp;<span class="returnType"><a href="Vector2D.html" title="class in com.stuypulse.stuylib.math">Vector2D</a></span>&nbsp;<span class="memberName">rotate</span>&#8203;(<span class="arguments">double&nbsp;angdeg)</span></div>
+=======
+</ul>
+<a id="rotate(com.stuypulse.stuylib.math.Angle)">
+<!--   -->
+</a>
+<ul class="blockList">
+<li class="blockList">
+<h4>rotate</h4>
+<pre class="methodSignature">public&nbsp;<a href="Vector2D.html" title="class in com.stuypulse.stuylib.math">Vector2D</a>&nbsp;rotate&#8203;(<a href="Angle.html" title="class in com.stuypulse.stuylib.math">Angle</a>&nbsp;angle)</pre>
+>>>>>>> cee2d99de4addd2fc4793c4f899a30e81eba93c5
 <div class="block">Rotate Vector2D around origin</div>
 <dl>
 <dt><span class="paramLabel">Parameters:</span></dt>
-<dd><code>angdeg</code> - (degrees) amount to rotate around</dd>
+<dd><code>angle</code> - amount to rotate</dd>
 <dt><span class="returnLabel">Returns:</span></dt>
 <dd>result of rotation</dd>
 </dl>
@@ -429,33 +630,121 @@ double&nbsp;y)</span></div>
 <dt><span class="paramLabel">Parameters:</span></dt>
 <dd><code>other</code> - the other Vector2D</dd>
 <dt><span class="returnLabel">Returns:</span></dt>
-<dd>result of calculation</dd>
+<dd>sum of the two Vector2Ds</dd>
 </dl>
 </section>
 </li>
 <li class="blockList">
+<<<<<<< HEAD
 <section class="detail">
 <h3><a id="sub(com.stuypulse.stuylib.math.Vector2D)">sub</a></h3>
 <div class="memberSignature"><span class="modifiers">public</span>&nbsp;<span class="returnType"><a href="Vector2D.html" title="class in com.stuypulse.stuylib.math">Vector2D</a></span>&nbsp;<span class="memberName">sub</span>&#8203;(<span class="arguments"><a href="Vector2D.html" title="class in com.stuypulse.stuylib.math">Vector2D</a>&nbsp;other)</span></div>
 <div class="block">Sub two Vector2Ds</div>
+=======
+<h4>sub</h4>
+<pre class="methodSignature">public&nbsp;<a href="Vector2D.html" title="class in com.stuypulse.stuylib.math">Vector2D</a>&nbsp;sub&#8203;(<a href="Vector2D.html" title="class in com.stuypulse.stuylib.math">Vector2D</a>&nbsp;other)</pre>
+<div class="block">Subtract two Vector2Ds</div>
 <dl>
 <dt><span class="paramLabel">Parameters:</span></dt>
 <dd><code>other</code> - the other Vector2D</dd>
 <dt><span class="returnLabel">Returns:</span></dt>
-<dd>result of calculation</dd>
+<dd>difference between the two Vector2Ds</dd>
+</dl>
+</li>
+</ul>
+<a id="mul(double)">
+<!--   -->
+</a>
+<ul class="blockList">
+<li class="blockList">
+<h4>mul</h4>
+<pre class="methodSignature">public&nbsp;<a href="Vector2D.html" title="class in com.stuypulse.stuylib.math">Vector2D</a>&nbsp;mul&#8203;(double&nbsp;multiplier)</pre>
+<div class="block">Multiply the x and y of the Vector2D by a certain amount</div>
+<dl>
+<dt><span class="paramLabel">Parameters:</span></dt>
+<dd><code>multiplier</code> - amount to multiply the Vector2D by</dd>
+<dt><span class="returnLabel">Returns:</span></dt>
+<dd>the multiplied Vector2D</dd>
+</dl>
+</li>
+</ul>
+<a id="div(double)">
+<!--   -->
+</a>
+<ul class="blockList">
+<li class="blockList">
+<h4>div</h4>
+<pre class="methodSignature">public&nbsp;<a href="Vector2D.html" title="class in com.stuypulse.stuylib.math">Vector2D</a>&nbsp;div&#8203;(double&nbsp;divisor)</pre>
+<div class="block">Divide the x and y of the Vector2D by a certain amount</div>
+<dl>
+<dt><span class="paramLabel">Parameters:</span></dt>
+<dd><code>divisor</code> - amount to divide the Vector2D by</dd>
+<dt><span class="returnLabel">Returns:</span></dt>
+<dd>the divided Vector2D</dd>
+</dl>
+</li>
+</ul>
+<a id="dot(com.stuypulse.stuylib.math.Vector2D)">
+<!--   -->
+</a>
+<ul class="blockList">
+<li class="blockList">
+<h4>dot</h4>
+<pre class="methodSignature">public&nbsp;double&nbsp;dot&#8203;(<a href="Vector2D.html" title="class in com.stuypulse.stuylib.math">Vector2D</a>&nbsp;other)</pre>
+<div class="block">Calculate the vector dot product of the two vectors</div>
+>>>>>>> cee2d99de4addd2fc4793c4f899a30e81eba93c5
+<dl>
+<dt><span class="paramLabel">Parameters:</span></dt>
+<dd><code>other</code> - the other Vector2D</dd>
+<dt><span class="returnLabel">Returns:</span></dt>
+<dd>the result of the dot product</dd>
+</dl>
+</li>
+</ul>
+<a id="normalize()">
+<!--   -->
+</a>
+<ul class="blockList">
+<li class="blockList">
+<h4>normalize</h4>
+<pre class="methodSignature">public&nbsp;<a href="Vector2D.html" title="class in com.stuypulse.stuylib.math">Vector2D</a>&nbsp;normalize()</pre>
+<div class="block">Normalize the Vector2D so that the point lands on the unit circle</div>
+<dl>
+<dt><span class="returnLabel">Returns:</span></dt>
+<dd>the normalized Vector2D</dd>
+</dl>
+</li>
+</ul>
+<a id="angle()">
+<!--   -->
+</a>
+<ul class="blockList">
+<li class="blockList">
+<h4>angle</h4>
+<pre class="methodSignature">public&nbsp;<a href="Angle.html" title="class in com.stuypulse.stuylib.math">Angle</a>&nbsp;angle()</pre>
+<div class="block">Get the angle of the Vector2D around 0</div>
+<dl>
+<dt><span class="returnLabel">Returns:</span></dt>
+<dd>the angle of the Vector2D around 0</dd>
 </dl>
 </section>
 </li>
 <li class="blockList">
+<<<<<<< HEAD
 <section class="detail">
 <h3><a id="toString()">toString</a></h3>
 <div class="memberSignature"><span class="modifiers">public</span>&nbsp;<span class="returnType">java.lang.String</span>&nbsp;<span class="memberName">toString</span>()</div>
 <div class="block">Convert to a string</div>
+=======
+<h4>toString</h4>
+<pre class="methodSignature">public&nbsp;java.lang.String&nbsp;toString()</pre>
+<div class="block">Format the angle into a string</div>
+>>>>>>> cee2d99de4addd2fc4793c4f899a30e81eba93c5
 <dl>
 <dt><span class="overrideSpecifyLabel">Overrides:</span></dt>
 <dd><code>toString</code>&nbsp;in class&nbsp;<code>java.lang.Object</code></dd>
 <dt><span class="returnLabel">Returns:</span></dt>
-<dd>string value</dd>
+<dd>formatted string value</dd>
 </dl>
 </section>
 </li>

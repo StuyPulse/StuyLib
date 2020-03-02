@@ -123,9 +123,8 @@ extends java.lang.Object</pre>
 <td class="colFirst"><code>static interface&nbsp;</code></td>
 <th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="FRCLogger.Loggable.html" title="interface in com.stuypulse.stuylib.file">FRCLogger.Loggable</a></span></code></th>
 <td class="colLast">
-<div class="block">The Loggable interface should be implemented by a class that can return a
- useful piece of data that can be called on demand to be written into the
- log.</div>
+<div class="block">The Loggable interface should be implemented by a class that can return a useful piece of data
+ that can be called on demand to be written into the log.</div>
 </td>
 </tr>
 </tbody>
@@ -197,8 +196,8 @@ java.lang.String&nbsp;name)</code></th>
 <td class="colFirst"><code>void</code></td>
 <th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#logAllRegisteredLoggables()">logAllRegisteredLoggables</a></span>()</code></th>
 <td class="colLast">
-<div class="block">Iterates through all the registered Loggables and logs them with level
- and data, if logThisIteration() is true.</div>
+<div class="block">Iterates through all the registered Loggables and logs them with level and data, if
+ logThisIteration() is true.</div>
 </td>
 </tr>
 <tr class="rowColor" id="i3">
@@ -229,8 +228,8 @@ java.lang.String&nbsp;toLog)</code></th>
 <td class="colFirst"><code>void</code></td>
 <th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#registerLoggable(com.stuypulse.stuylib.file.FRCLogger.Loggable)">registerLoggable</a></span>&#8203;(<a href="FRCLogger.Loggable.html" title="interface in com.stuypulse.stuylib.file">FRCLogger.Loggable</a>&nbsp;loggable)</code></th>
 <td class="colLast">
-<div class="block">Registers a new Loggable that upon call will put the next getLogData() at
- level getLogLevel() to the log if it will logThisIteration().</div>
+<div class="block">Registers a new Loggable that upon call will put the next getLogData() at level getLogLevel() to
+ the log if it will logThisIteration().</div>
 </td>
 </tr>
 <tr class="rowColor" id="i7">
@@ -297,11 +296,18 @@ java.lang.String&nbsp;name)</span></div>
 </section>
 </li>
 <li class="blockList">
+<<<<<<< HEAD
 <section class="detail">
 <h3><a id="registerLoggable(com.stuypulse.stuylib.file.FRCLogger.Loggable)">registerLoggable</a></h3>
 <div class="memberSignature"><span class="modifiers">public</span>&nbsp;<span class="returnType">void</span>&nbsp;<span class="memberName">registerLoggable</span>&#8203;(<span class="arguments"><a href="FRCLogger.Loggable.html" title="interface in com.stuypulse.stuylib.file">FRCLogger.Loggable</a>&nbsp;loggable)</span></div>
 <div class="block">Registers a new Loggable that upon call will put the next getLogData() at
  level getLogLevel() to the log if it will logThisIteration().</div>
+=======
+<h4>registerLoggable</h4>
+<pre class="methodSignature">public&nbsp;void&nbsp;registerLoggable&#8203;(<a href="FRCLogger.Loggable.html" title="interface in com.stuypulse.stuylib.file">FRCLogger.Loggable</a>&nbsp;loggable)</pre>
+<div class="block">Registers a new Loggable that upon call will put the next getLogData() at level getLogLevel() to
+ the log if it will logThisIteration().</div>
+>>>>>>> cee2d99de4addd2fc4793c4f899a30e81eba93c5
 <dl>
 <dt><span class="paramLabel">Parameters:</span></dt>
 <dd><code>loggable</code> - Class implementing Loggable</dd>
@@ -327,12 +333,19 @@ java.lang.String&nbsp;name)</span></div>
 </section>
 </li>
 <li class="blockList">
+<<<<<<< HEAD
 <section class="detail">
 <h3><a id="logAllRegisteredLoggables()">logAllRegisteredLoggables</a></h3>
 <div class="memberSignature"><span class="modifiers">public</span>&nbsp;<span class="returnType">void</span>&nbsp;<span class="memberName">logAllRegisteredLoggables</span>()</div>
 <div class="block">Iterates through all the registered Loggables and logs them with level
  and data, if logThisIteration() is true.</div>
 </section>
+=======
+<h4>logAllRegisteredLoggables</h4>
+<pre class="methodSignature">public&nbsp;void&nbsp;logAllRegisteredLoggables()</pre>
+<div class="block">Iterates through all the registered Loggables and logs them with level and data, if
+ logThisIteration() is true.</div>
+>>>>>>> cee2d99de4addd2fc4793c4f899a30e81eba93c5
 </li>
 <li class="blockList">
 <section class="detail">

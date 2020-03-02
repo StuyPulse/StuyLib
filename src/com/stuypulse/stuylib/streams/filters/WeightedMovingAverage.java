@@ -1,7 +1,5 @@
 package com.stuypulse.stuylib.streams.filters;
 
-import com.stuypulse.stuylib.exception.ConstructionError;
-
 /**
  * Implementation of Weighted Moving Average.
  *
@@ -20,10 +18,9 @@ public class WeightedMovingAverage implements IStreamFilter {
     /**
      * @param size size of weighted moving average
      */
-    public WeightedMovingAverage(int size) throws ConstructionError {
+    public WeightedMovingAverage(int size) {
         if(size <= 0) {
-            throw new ConstructionError("WeightedMovingAverage(int size)",
-                    "size must be greater than 0!");
+            throw new IllegalArgumentException("size must be greater than 0!");
         }
 
         mSize = size;

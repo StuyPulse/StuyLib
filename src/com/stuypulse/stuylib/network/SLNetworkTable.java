@@ -9,11 +9,10 @@ import edu.wpi.first.networktables.NetworkTableEntry;
 import edu.wpi.first.networktables.NetworkTableInstance;
 
 /**
- * The SLNetworkTable is a very fast way to easily interface with a network
- * table.
+ * The SLNetworkTable is a very fast way to easily interface with a network table.
  *
- * If a function you want is not implemented, use getTable(), getRawEntry(), or
- * getInstance() to call the function yourself
+ * If a function you want is not implemented, use getTable(), getRawEntry(), or getInstance() to
+ * call the function yourself
  *
  * @author Sam (sam.belliveau@gmail.com)
  */
@@ -25,8 +24,8 @@ public class SLNetworkTable {
     /*********************/
 
     /**
-     * Opens network table on local device. IE a robot opens a network table for
-     * other devices to connect to
+     * Opens network table on local device. IE a robot opens a network table for other devices to
+     * connect to
      *
      * @param table network table name
      * @return Configured Network Table Wrapper
@@ -36,8 +35,7 @@ public class SLNetworkTable {
     }
 
     /**
-     * Opens network table that is connected to a robot. IE a program connecting
-     * to a robot.
+     * Opens network table that is connected to a robot. IE a program connecting to a robot.
      *
      * @param team  team number
      * @param table network table name
@@ -75,8 +73,8 @@ public class SLNetworkTable {
     /************************/
 
     /**
-     * Creates a Network Table Wrapper opened on table "tableName", and with the
-     * a special NetworkTableInstance (ie. if you are making a client)
+     * Creates a Network Table Wrapper opened on table "tableName", and with the a special
+     * NetworkTableInstance (ie. if you are making a client)
      *
      * @param tableName network table name
      * @param instance  custom network table instance

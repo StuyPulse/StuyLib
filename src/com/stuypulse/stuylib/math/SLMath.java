@@ -1,9 +1,9 @@
 package com.stuypulse.stuylib.math;
 
 /**
- * SLMath (StuyLib Math) is a class containing many algorithms that are useful
- * for developing robot code. Algorithms include limit, deadband, raising to
- * powers while keeping the sign, and some other new algorithms we came up with.
+ * SLMath (StuyLib Math) is a class containing many algorithms that are useful for developing robot
+ * code. Algorithms include limit, deadband, raising to powers while keeping the sign, and some
+ * other new algorithms we came up with.
  *
  * @author Sam (sam.belliveau@gmail.com)
  */
@@ -56,8 +56,7 @@ public final class SLMath {
     /**************************/
 
     /**
-     * Dead bands x value with window being the dead band. all values for this
-     * are [-1.0...1.0]
+     * Dead bands x value with window being the dead band. all values for this are [-1.0...1.0]
      *
      * @param x      value
      * @param window deadband window
@@ -78,8 +77,7 @@ public final class SLMath {
     /*****************************************/
 
     /**
-     * [WARNING! THIS WILL KEEP THE SIGN OF THE INPUT NUMBER] Square number and
-     * keep sign
+     * [WARNING! THIS WILL KEEP THE SIGN OF THE INPUT NUMBER] Square number and keep sign
      *
      * @param x input
      * @return square input
@@ -99,8 +97,7 @@ public final class SLMath {
     }
 
     /**
-     * spow (signless pow), raises a number to a power without affecting the
-     * sign of the number
+     * spow (signless pow), raises a number to a power without affecting the sign of the number
      *
      * @param x     input
      * @param power power to raise x to
@@ -149,9 +146,9 @@ public final class SLMath {
     /*****************/
 
     /**
-     * fpow (fast pow), is a pow function that takes in an integer for the
-     * exponent. This allows it to be much faster on repeated calls due to the
-     * fact that it does not need to deal with fractional exponents.
+     * fpow (fast pow), is a pow function that takes in an integer for the exponent. This allows it to
+     * be much faster on repeated calls due to the fact that it does not need to deal with fractional
+     * exponents.
      *
      * @param base base of the power
      * @param exp  integer exponent of power

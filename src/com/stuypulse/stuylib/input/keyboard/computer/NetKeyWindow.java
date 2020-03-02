@@ -10,8 +10,8 @@ import javax.swing.JFrame;
 import javax.swing.JPanel;
 
 /**
- * This is a simple class that opens a Java AWT window, which has a KeyListener
- * that uploads keyboard information to a network table
+ * This is a simple class that opens a Java AWT window, which has a KeyListener that uploads
+ * keyboard information to a network table
  *
  * @author Sam (sam.belliveau@gmail.com)
  */

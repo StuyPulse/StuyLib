@@ -100,10 +100,19 @@ $('.navPadding').css('padding-top', $('.fixedNav').css("height"));
 extends <a href="OnDerivative.html" title="class in com.stuypulse.stuylib.streams.filters">OnDerivative</a></pre>
 <div class="block">Simple implementation of an Exponential Moving Average
 
+<<<<<<< HEAD
  This is not time dependant, so the values will change if you change the rate
  that you call this filter, the filter will not adapt for that.</div>
 </section>
 <section class="summary">
+=======
+ This is not time dependant, so the values will change if you change the rate that you call this
+ filter, the filter will not adapt for that.</div>
+</li>
+</ul>
+</div>
+<div class="summary">
+>>>>>>> cee2d99de4addd2fc4793c4f899a30e81eba93c5
 <ul class="blockList">
 <!-- ======== CONSTRUCTOR SUMMARY ======== -->
 <li class="blockList">
@@ -124,8 +133,8 @@ extends <a href="OnDerivative.html" title="class in com.stuypulse.stuylib.stream
 <tr class="altColor">
 <th class="colConstructorName" scope="row"><code><span class="memberNameLink"><a href="#%3Cinit%3E(double)">RollingAverage</a></span>&#8203;(double&nbsp;weight)</code></th>
 <td class="colLast">
-<div class="block">Make an Exponential Moving Average If exp = 1, it will instantly update
- The weight must be greater than or equal to 1.</div>
+<div class="block">Make an Exponential Moving Average If exp = 1, it will instantly update The weight must be
+ greater than or equal to 1.</div>
 </td>
 </tr>
 </tbody>
@@ -163,6 +172,7 @@ extends <a href="OnDerivative.html" title="class in com.stuypulse.stuylib.stream
 <h2>Constructor Details</h2>
 <ul class="blockList">
 <li class="blockList">
+<<<<<<< HEAD
 <section class="detail">
 <h3><a id="&lt;init&gt;(double)">RollingAverage</a></h3>
 <div class="memberSignature"><span class="modifiers">public</span>&nbsp;<span class="memberName">RollingAverage</span>&#8203;(<span class="arguments">double&nbsp;weight)</span>
@@ -170,11 +180,15 @@ extends <a href="OnDerivative.html" title="class in com.stuypulse.stuylib.stream
 <div class="block">Make an Exponential Moving Average If exp = 1, it will instantly update
  The weight must be greater than or equal to 1. The higher the weight, the
  longer it takes to change value</div>
+=======
+<h4>RollingAverage</h4>
+<pre>public&nbsp;RollingAverage&#8203;(double&nbsp;weight)</pre>
+<div class="block">Make an Exponential Moving Average If exp = 1, it will instantly update The weight must be
+ greater than or equal to 1. The higher the weight, the longer it takes to change value</div>
+>>>>>>> cee2d99de4addd2fc4793c4f899a30e81eba93c5
 <dl>
 <dt><span class="paramLabel">Parameters:</span></dt>
 <dd><code>weight</code> - weight (greater than or equal to 1)</dd>
-<dt><span class="throwsLabel">Throws:</span></dt>
-<dd><code><a href="../../exception/ConstructionError.html" title="class in com.stuypulse.stuylib.exception">ConstructionError</a></code></dd>
 </dl>
 </section>
 </li>

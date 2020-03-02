@@ -100,16 +100,24 @@ $('.navPadding').css('padding-top', $('.fixedNav').css("height"));
 <hr>
 <pre>public class <span class="typeNameLabel">PIDController</span>
 extends <a href="Controller.html" title="class in com.stuypulse.stuylib.control">Controller</a></pre>
-<div class="block">This PID controller is built by extending the Controller class. It has a
- dynamic rate, so it can detect how much time has passed between each update.
- It is made to be easy to use and simple to understand while still being
- accurate.
+<div class="block">This PID controller is built by extending the Controller class. It has a dynamic rate, so it can
+ detect how much time has passed between each update. It is made to be easy to use and simple to
+ understand while still being accurate.
 
+<<<<<<< HEAD
  This PID controller resets the integral every time the error crosses 0 to
  prevent integral windup / lag. This means that it may not be suitable for
  setups involving rate instead of position</div>
 </section>
 <section class="summary">
+=======
+ This PID controller resets the integral every time the error crosses 0 to prevent integral windup
+ / lag. This means that it may not be suitable for setups involving rate instead of position</div>
+</li>
+</ul>
+</div>
+<div class="summary">
+>>>>>>> cee2d99de4addd2fc4793c4f899a30e81eba93c5
 <ul class="blockList">
 <!-- ======== CONSTRUCTOR SUMMARY ======== -->
 <li class="blockList">
@@ -205,8 +213,7 @@ double&nbsp;d)</code></th>
 <td class="colFirst"><code><a href="PIDController.html" title="class in com.stuypulse.stuylib.control">PIDController</a></code></td>
 <th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#setIntegratorFilter(com.stuypulse.stuylib.streams.filters.IStreamFilter)">setIntegratorFilter</a></span>&#8203;(<a href="../streams/filters/IStreamFilter.html" title="interface in com.stuypulse.stuylib.streams.filters">IStreamFilter</a>&nbsp;filter)</code></th>
 <td class="colLast">
-<div class="block">It is common for a limit filter to be put on the I component to prevent
- Integral Windup.</div>
+<div class="block">It is common for a limit filter to be put on the I component to prevent Integral Windup.</div>
 </td>
 </tr>
 <tr class="altColor" id="i8">
@@ -285,12 +292,19 @@ double&nbsp;d)</span></div>
 <h2>Method Details</h2>
 <ul class="blockList">
 <li class="blockList">
+<<<<<<< HEAD
 <section class="detail">
 <h3><a id="reset()">reset</a></h3>
 <div class="memberSignature"><span class="modifiers">public</span>&nbsp;<span class="returnType">void</span>&nbsp;<span class="memberName">reset</span>()</div>
 <div class="block">Resets the integrator in the PIDController. This automatically gets
  called if the gap between update() commands is too large</div>
 </section>
+=======
+<h4>reset</h4>
+<pre class="methodSignature">public&nbsp;void&nbsp;reset()</pre>
+<div class="block">Resets the integrator in the PIDController. This automatically gets called if the gap between
+ update() commands is too large</div>
+>>>>>>> cee2d99de4addd2fc4793c4f899a30e81eba93c5
 </li>
 <li class="blockList">
 <section class="detail">
@@ -345,8 +359,7 @@ double&nbsp;d)</span></div>
 <dt><span class="paramLabel">Parameters:</span></dt>
 <dd><code>p</code> - new p value used by the PID controller.</dd>
 <dt><span class="returnLabel">Returns:</span></dt>
-<dd>reference to PIDController (so you can chain the commands
-         together)</dd>
+<dd>reference to PIDController (so you can chain the commands together)</dd>
 </dl>
 </section>
 </li>
@@ -358,8 +371,7 @@ double&nbsp;d)</span></div>
 <dt><span class="paramLabel">Parameters:</span></dt>
 <dd><code>i</code> - new i value used by the PID controller.</dd>
 <dt><span class="returnLabel">Returns:</span></dt>
-<dd>reference to PIDController (so you can chain the commands
-         together)</dd>
+<dd>reference to PIDController (so you can chain the commands together)</dd>
 </dl>
 </section>
 </li>
@@ -371,8 +383,7 @@ double&nbsp;d)</span></div>
 <dt><span class="paramLabel">Parameters:</span></dt>
 <dd><code>d</code> - new d value used by the PID controller.</dd>
 <dt><span class="returnLabel">Returns:</span></dt>
-<dd>reference to PIDController (so you can chain the commands
-         together)</dd>
+<dd>reference to PIDController (so you can chain the commands together)</dd>
 </dl>
 </section>
 </li>
@@ -388,25 +399,30 @@ double&nbsp;d)</span></div>
 <dd><code>i</code> - new i value used by the PID controller.</dd>
 <dd><code>d</code> - new d value used by the PID controller.</dd>
 <dt><span class="returnLabel">Returns:</span></dt>
-<dd>reference to PIDController (so you can chain the commands
-         together)</dd>
+<dd>reference to PIDController (so you can chain the commands together)</dd>
 </dl>
 </section>
 </li>
 <li class="blockList">
+<<<<<<< HEAD
 <section class="detail">
 <h3><a id="setIntegratorFilter(com.stuypulse.stuylib.streams.filters.IStreamFilter)">setIntegratorFilter</a></h3>
 <div class="memberSignature"><span class="modifiers">public</span>&nbsp;<span class="returnType"><a href="PIDController.html" title="class in com.stuypulse.stuylib.control">PIDController</a></span>&nbsp;<span class="memberName">setIntegratorFilter</span>&#8203;(<span class="arguments"><a href="../streams/filters/IStreamFilter.html" title="interface in com.stuypulse.stuylib.streams.filters">IStreamFilter</a>&nbsp;filter)</span></div>
 <div class="block">It is common for a limit filter to be put on the I component to prevent
  Integral Windup. You can use SLMath.limit(x) to do this.
+=======
+<h4>setIntegratorFilter</h4>
+<pre class="methodSignature">public&nbsp;<a href="PIDController.html" title="class in com.stuypulse.stuylib.control">PIDController</a>&nbsp;setIntegratorFilter&#8203;(<a href="../streams/filters/IStreamFilter.html" title="interface in com.stuypulse.stuylib.streams.filters">IStreamFilter</a>&nbsp;filter)</pre>
+<div class="block">It is common for a limit filter to be put on the I component to prevent Integral Windup. You can
+ use SLMath.limit(x) to do this.
+>>>>>>> cee2d99de4addd2fc4793c4f899a30e81eba93c5
 
  Passing null will disable the filter</div>
 <dl>
 <dt><span class="paramLabel">Parameters:</span></dt>
 <dd><code>filter</code> - filter put on the I component of the PID Controller</dd>
 <dt><span class="returnLabel">Returns:</span></dt>
-<dd>reference to PIDController (so you can chain the commands
-         together)</dd>
+<dd>reference to PIDController (so you can chain the commands together)</dd>
 </dl>
 </section>
 </li>

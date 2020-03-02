@@ -103,60 +103,43 @@ $('.navPadding').css('padding-top', $('.fixedNav').css("height"));
 </thead>
 <tbody>
 <tr class="altColor">
+<th class="colFirst" scope="row"><a href="HighPassFilter.html" title="class in com.stuypulse.stuylib.streams.filters">HighPassFilter</a></th>
+<td class="colLast">
+<div class="block">Implementation for HighPassFilter for IStreams</div>
+</td>
+</tr>
+<tr class="rowColor">
 <th class="colFirst" scope="row"><a href="HullMovingAverage.html" title="class in com.stuypulse.stuylib.streams.filters">HullMovingAverage</a></th>
 <td class="colLast">
 <div class="block">Implementation of Hull Moving Average.</div>
 </td>
 </tr>
-<tr class="rowColor">
-<th class="colFirst" scope="row"><a href="InvertedHullMovingAverage.html" title="class in com.stuypulse.stuylib.streams.filters">InvertedHullMovingAverage</a></th>
-<td class="colLast">
-<div class="block">Implementation of Inverted Hull Moving Average.</div>
-</td>
-</tr>
 <tr class="altColor">
 <th class="colFirst" scope="row"><a href="IStreamFilterGroup.html" title="class in com.stuypulse.stuylib.streams.filters">IStreamFilterGroup</a></th>
 <td class="colLast">
-<div class="block">A simple class that lets you combine multiple stream filters into one stream
- filter</div>
+<div class="block">A simple class that lets you combine multiple stream filters into one stream filter</div>
 </td>
 </tr>
 <tr class="rowColor">
 <th class="colFirst" scope="row"><a href="LowPassFilter.html" title="class in com.stuypulse.stuylib.streams.filters">LowPassFilter</a></th>
-<td class="colLast">&nbsp;</td>
+<td class="colLast">
+<div class="block">Implementation for LowPassFilter for IStreams</div>
+</td>
 </tr>
 <tr class="altColor">
 <th class="colFirst" scope="row"><a href="MovingAverage.html" title="class in com.stuypulse.stuylib.streams.filters">MovingAverage</a></th>
 <td class="colLast">
 <div class="block">Simple implementation of an Simple Moving Average
 
- This is not time dependant, so the values will change if you change the rate
- that you call this filter, the filter will not adapt for that.</div>
+ This is not time dependant, so the values will change if you change the rate that you call this
+ filter, the filter will not adapt for that.</div>
 </td>
 </tr>
 <tr class="rowColor">
 <th class="colFirst" scope="row"><a href="OnDerivative.html" title="class in com.stuypulse.stuylib.streams.filters">OnDerivative</a></th>
 <td class="colLast">
-<div class="block">This class lets you take a simple filter like "x * 0.5" and apply it to the
- derivative of the IStream.</div>
-</td>
-</tr>
-<tr class="altColor">
-<th class="colFirst" scope="row"><a href="OrderedLowPassFilter.html" title="class in com.stuypulse.stuylib.streams.filters">OrderedLowPassFilter</a></th>
-<td class="colLast">
-<div class="block">Simple implementation of an Exponential Moving Average
-
- This is not time dependant, so the values will change if you change the rate
- that you call this filter, the filter will not adapt for that.</div>
-</td>
-</tr>
-<tr class="rowColor">
-<th class="colFirst" scope="row"><a href="OrderedRollingAverage.html" title="class in com.stuypulse.stuylib.streams.filters">OrderedRollingAverage</a></th>
-<td class="colLast">
-<div class="block">Simple implementation of an Exponential Moving Average
-
- This is not time dependant, so the values will change if you change the rate
- that you call this filter, the filter will not adapt for that.</div>
+<div class="block">This class lets you take a simple filter like "x * 0.5" and apply it to the derivative of the
+ IStream.</div>
 </td>
 </tr>
 <tr class="altColor">
@@ -164,11 +147,10 @@ $('.navPadding').css('padding-top', $('.fixedNav').css("height"));
 <td class="colLast">
 <div class="block">This class lets you rate limit a stream of inputs
 
- That means that the value can not change more than a specified amount in one
- update
+ That means that the value can not change more than a specified amount in one update
 
- This is not time dependant, so the values will change if you change the rate
- that you call this filter, the filter will not adapt for that.</div>
+ This is not time dependant, so the values will change if you change the rate that you call this
+ filter, the filter will not adapt for that.</div>
 </td>
 </tr>
 <tr class="rowColor">
@@ -176,8 +158,21 @@ $('.navPadding').css('padding-top', $('.fixedNav').css("height"));
 <td class="colLast">
 <div class="block">Simple implementation of an Exponential Moving Average
 
- This is not time dependant, so the values will change if you change the rate
- that you call this filter, the filter will not adapt for that.</div>
+ This is not time dependant, so the values will change if you change the rate that you call this
+ filter, the filter will not adapt for that.</div>
+</td>
+</tr>
+<tr class="altColor">
+<th class="colFirst" scope="row"><a href="SCurve.html" title="class in com.stuypulse.stuylib.streams.filters">SCurve</a></th>
+<td class="colLast">
+<div class="block">A filter that takes in real time inputs and profiles it into an S Curve.</div>
+</td>
+</tr>
+<tr class="rowColor">
+<th class="colFirst" scope="row"><a href="TimedMovingAverage.html" title="class in com.stuypulse.stuylib.streams.filters">TimedMovingAverage</a></th>
+<td class="colLast">
+<div class="block">A Simple Moving Average where instead of averaging the past x values, you average all the values
+ given in the last x seconds.</div>
 </td>
 </tr>
 <tr class="altColor">
@@ -185,8 +180,8 @@ $('.navPadding').css('padding-top', $('.fixedNav').css("height"));
 <td class="colLast">
 <div class="block">This class lets you rate limit a stream of inputs
 
- Instead of being based on the rate that update is called, the value you give
- it is based on how much it should be able to change in one second.</div>
+ Instead of being based on the rate that update is called, the value you give it is based on how
+ much it should be able to change in one second.</div>
 </td>
 </tr>
 <tr class="rowColor">

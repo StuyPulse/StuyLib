@@ -17,8 +17,7 @@ public class NetKeyboard {
     private interface Constants {
 
         /**
-         * Gets name of network table for Network Keyboard and its virtual port
-         * number
+         * Gets name of network table for Network Keyboard and its virtual port number
          *
          * @param port virtual port number
          * @return network table name

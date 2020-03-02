@@ -102,16 +102,24 @@ $('.navPadding').css('padding-top', $('.fixedNav').css("height"));
 <hr>
 <pre>public abstract class <span class="typeNameLabel">Controller</span>
 extends java.lang.Object</pre>
-<div class="block">The controller class is an abstract class that is used to create different
- controllers. All a class will need to do is implement calculate(double
- error), and then the user would use the update() functions, which work as a
- sort of wrapper for the controllers. No matter what controller is used, these
- functions will always work.
+<div class="block">The controller class is an abstract class that is used to create different controllers. All a
+ class will need to do is implement calculate(double error), and then the user would use the
+ update() functions, which work as a sort of wrapper for the controllers. No matter what
+ controller is used, these functions will always work.
 
+<<<<<<< HEAD
  These functions in the controller are useful for an error based system, and
  are automatically managed, making implementations of PID easy.</div>
 </section>
 <section class="summary">
+=======
+ These functions in the controller are useful for an error based system, and are automatically
+ managed, making implementations of PID easy.</div>
+</li>
+</ul>
+</div>
+<div class="summary">
+>>>>>>> cee2d99de4addd2fc4793c4f899a30e81eba93c5
 <ul class="blockList">
 <!-- ======== CONSTRUCTOR SUMMARY ======== -->
 <li class="blockList">
@@ -192,16 +200,15 @@ extends java.lang.Object</pre>
 <td class="colFirst"><code>double</code></td>
 <th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#getRawVelocity()">getRawVelocity</a></span>()</code></th>
 <td class="colLast">
-<div class="block">Gets the velocity, which is represented as the change in error since the
- last time that .update() was called</div>
+<div class="block">Gets the velocity, which is represented as the change in error since the last time that .update()
+ was called</div>
 </td>
 </tr>
 <tr class="rowColor" id="i5">
 <td class="colFirst"><code>double</code></td>
 <th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#getVelocity()">getVelocity</a></span>()</code></th>
 <td class="colLast">
-<div class="block">Gets the velocity from the last time that .update() was called adjusted
- to velocity per second</div>
+<div class="block">Gets the velocity from the last time that .update() was called adjusted to velocity per second</div>
 </td>
 </tr>
 <tr class="altColor" id="i6">
@@ -223,32 +230,29 @@ double&nbsp;maxVelocity)</code></th>
 <td class="colFirst"><code><a href="Controller.html" title="class in com.stuypulse.stuylib.control">Controller</a></code></td>
 <th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#setErrorFilter(com.stuypulse.stuylib.streams.filters.IStreamFilter)">setErrorFilter</a></span>&#8203;(<a href="../streams/filters/IStreamFilter.html" title="interface in com.stuypulse.stuylib.streams.filters">IStreamFilter</a>&nbsp;filter)</code></th>
 <td class="colLast">
-<div class="block">Lets you specify a filter that will be applied to all measurements that
- are given to the controller.</div>
+<div class="block">Lets you specify a filter that will be applied to all measurements that are given to the
+ controller.</div>
 </td>
 </tr>
 <tr class="rowColor" id="i9">
 <td class="colFirst"><code><a href="Controller.html" title="class in com.stuypulse.stuylib.control">Controller</a></code></td>
 <th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#setOutputFilter(com.stuypulse.stuylib.streams.filters.IStreamFilter)">setOutputFilter</a></span>&#8203;(<a href="../streams/filters/IStreamFilter.html" title="interface in com.stuypulse.stuylib.streams.filters">IStreamFilter</a>&nbsp;filter)</code></th>
 <td class="colLast">
-<div class="block">Lets you specify a filter that will be applied to all of the outputs of
- the controller.</div>
+<div class="block">Lets you specify a filter that will be applied to all of the outputs of the controller.</div>
 </td>
 </tr>
 <tr class="altColor" id="i10">
 <td class="colFirst"><code><a href="Controller.html" title="class in com.stuypulse.stuylib.control">Controller</a></code></td>
 <th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#setVelocityFilter(com.stuypulse.stuylib.streams.filters.IStreamFilter)">setVelocityFilter</a></span>&#8203;(<a href="../streams/filters/IStreamFilter.html" title="interface in com.stuypulse.stuylib.streams.filters">IStreamFilter</a>&nbsp;filter)</code></th>
 <td class="colLast">
-<div class="block">Lets you specify a filter that will be applied to the velocity
- measurements.</div>
+<div class="block">Lets you specify a filter that will be applied to the velocity measurements.</div>
 </td>
 </tr>
 <tr class="rowColor" id="i11">
 <td class="colFirst"><code>double</code></td>
 <th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#update(double)">update</a></span>&#8203;(double&nbsp;error)</code></th>
 <td class="colLast">
-<div class="block">Update the controller with the error from the destination that you want
- to reach</div>
+<div class="block">Update the controller with the error from the destination that you want to reach</div>
 </td>
 </tr>
 <tr class="altColor" id="i12">
@@ -256,8 +260,8 @@ double&nbsp;maxVelocity)</code></th>
 <th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#update(double,double)">update</a></span>&#8203;(double&nbsp;measurement,
 double&nbsp;setpoint)</code></th>
 <td class="colLast">
-<div class="block">Update the controller with the measurement that was just made and the set
- point you would like it to approach
+<div class="block">Update the controller with the measurement that was just made and the set point you would like it
+ to approach
 
  This function just subtracts the two at this moment.</div>
 </td>
@@ -302,73 +306,88 @@ double&nbsp;setpoint)</code></th>
 <h2>Method Details</h2>
 <ul class="blockList">
 <li class="blockList">
+<<<<<<< HEAD
 <section class="detail">
 <h3><a id="setErrorFilter(com.stuypulse.stuylib.streams.filters.IStreamFilter)">setErrorFilter</a></h3>
 <div class="memberSignature"><span class="modifiers">public final</span>&nbsp;<span class="returnType"><a href="Controller.html" title="class in com.stuypulse.stuylib.control">Controller</a></span>&nbsp;<span class="memberName">setErrorFilter</span>&#8203;(<span class="arguments"><a href="../streams/filters/IStreamFilter.html" title="interface in com.stuypulse.stuylib.streams.filters">IStreamFilter</a>&nbsp;filter)</span></div>
 <div class="block">Lets you specify a filter that will be applied to all measurements that
  are given to the controller.
+=======
+<h4>setErrorFilter</h4>
+<pre class="methodSignature">public final&nbsp;<a href="Controller.html" title="class in com.stuypulse.stuylib.control">Controller</a>&nbsp;setErrorFilter&#8203;(<a href="../streams/filters/IStreamFilter.html" title="interface in com.stuypulse.stuylib.streams.filters">IStreamFilter</a>&nbsp;filter)</pre>
+<div class="block">Lets you specify a filter that will be applied to all measurements that are given to the
+ controller.
+>>>>>>> cee2d99de4addd2fc4793c4f899a30e81eba93c5
 
- A highly recommended option is the LowPassFilter due to its ability to
- remove noise, and its ability to not lag behind when there has been a gap
- in calls. This will slightly degrade the performance of the controller,
- but it may be necessary sometimes in order to get consistent results.
+ A highly recommended option is the LowPassFilter due to its ability to remove noise, and its
+ ability to not lag behind when there has been a gap in calls. This will slightly degrade the
+ performance of the controller, but it may be necessary sometimes in order to get consistent
+ results.
 
- This will change the way the controller interacts with the robot and may
- require more tuning to be done.
+ This will change the way the controller interacts with the robot and may require more tuning to
+ be done.
 
  Passing in null will disable the filter.</div>
 <dl>
 <dt><span class="paramLabel">Parameters:</span></dt>
 <dd><code>filter</code> - filter to be applied to error measurements</dd>
 <dt><span class="returnLabel">Returns:</span></dt>
-<dd>reference to the controller (so you can chain the commands
-         together)</dd>
+<dd>reference to the controller (so you can chain the commands together)</dd>
 </dl>
 </section>
 </li>
 <li class="blockList">
+<<<<<<< HEAD
 <section class="detail">
 <h3><a id="setVelocityFilter(com.stuypulse.stuylib.streams.filters.IStreamFilter)">setVelocityFilter</a></h3>
 <div class="memberSignature"><span class="modifiers">public final</span>&nbsp;<span class="returnType"><a href="Controller.html" title="class in com.stuypulse.stuylib.control">Controller</a></span>&nbsp;<span class="memberName">setVelocityFilter</span>&#8203;(<span class="arguments"><a href="../streams/filters/IStreamFilter.html" title="interface in com.stuypulse.stuylib.streams.filters">IStreamFilter</a>&nbsp;filter)</span></div>
 <div class="block">Lets you specify a filter that will be applied to the velocity
  measurements.
+=======
+<h4>setVelocityFilter</h4>
+<pre class="methodSignature">public final&nbsp;<a href="Controller.html" title="class in com.stuypulse.stuylib.control">Controller</a>&nbsp;setVelocityFilter&#8203;(<a href="../streams/filters/IStreamFilter.html" title="interface in com.stuypulse.stuylib.streams.filters">IStreamFilter</a>&nbsp;filter)</pre>
+<div class="block">Lets you specify a filter that will be applied to the velocity measurements.
+>>>>>>> cee2d99de4addd2fc4793c4f899a30e81eba93c5
 
  This can be used to smooth out the otherwise noisy velocity values.
 
- This can negatively affect things like the D in PID if set too high and
- it is recommended that you just filter the error instead.</div>
+ This can negatively affect things like the D in PID if set too high and it is recommended that
+ you just filter the error instead.</div>
 <dl>
 <dt><span class="paramLabel">Parameters:</span></dt>
 <dd><code>filter</code> - filter to be applied to velocity measurements</dd>
 <dt><span class="returnLabel">Returns:</span></dt>
-<dd>reference to the controller (so you can chain the commands
-         together)</dd>
+<dd>reference to the controller (so you can chain the commands together)</dd>
 </dl>
 </section>
 </li>
 <li class="blockList">
+<<<<<<< HEAD
 <section class="detail">
 <h3><a id="setOutputFilter(com.stuypulse.stuylib.streams.filters.IStreamFilter)">setOutputFilter</a></h3>
 <div class="memberSignature"><span class="modifiers">public final</span>&nbsp;<span class="returnType"><a href="Controller.html" title="class in com.stuypulse.stuylib.control">Controller</a></span>&nbsp;<span class="memberName">setOutputFilter</span>&#8203;(<span class="arguments"><a href="../streams/filters/IStreamFilter.html" title="interface in com.stuypulse.stuylib.streams.filters">IStreamFilter</a>&nbsp;filter)</span></div>
 <div class="block">Lets you specify a filter that will be applied to all of the outputs of
  the controller.
+=======
+<h4>setOutputFilter</h4>
+<pre class="methodSignature">public final&nbsp;<a href="Controller.html" title="class in com.stuypulse.stuylib.control">Controller</a>&nbsp;setOutputFilter&#8203;(<a href="../streams/filters/IStreamFilter.html" title="interface in com.stuypulse.stuylib.streams.filters">IStreamFilter</a>&nbsp;filter)</pre>
+<div class="block">Lets you specify a filter that will be applied to all of the outputs of the controller.
+>>>>>>> cee2d99de4addd2fc4793c4f899a30e81eba93c5
 
- If the robot has a tendency to jerk, or motions of the robot are too
- violent, a filter like the LowPassFilter can reduce jerk while still
- letting the robot get to max speed. This will slightly degrade the
- performance of the controller, but it may be necessary sometimes in order
- to get consistent results.
+ If the robot has a tendency to jerk, or motions of the robot are too violent, a filter like the
+ LowPassFilter can reduce jerk while still letting the robot get to max speed. This will slightly
+ degrade the performance of the controller, but it may be necessary sometimes in order to get
+ consistent results.
 
- This will change the way the controller interacts with the robot and may
- require more tuning to be done.
+ This will change the way the controller interacts with the robot and may require more tuning to
+ be done.
 
  Passing in null will disable the filter.</div>
 <dl>
 <dt><span class="paramLabel">Parameters:</span></dt>
 <dd><code>filter</code> - filter to be applied to the outputs of the controller</dd>
 <dt><span class="returnLabel">Returns:</span></dt>
-<dd>reference to the controller (so you can chain the commands
-         together)</dd>
+<dd>reference to the controller (so you can chain the commands together)</dd>
 </dl>
 </section>
 </li>
@@ -384,11 +403,18 @@ double&nbsp;setpoint)</code></th>
 </section>
 </li>
 <li class="blockList">
+<<<<<<< HEAD
 <section class="detail">
 <h3><a id="getRawVelocity()">getRawVelocity</a></h3>
 <div class="memberSignature"><span class="modifiers">public final</span>&nbsp;<span class="returnType">double</span>&nbsp;<span class="memberName">getRawVelocity</span>()</div>
 <div class="block">Gets the velocity, which is represented as the change in error since the
  last time that .update() was called</div>
+=======
+<h4>getRawVelocity</h4>
+<pre class="methodSignature">public final&nbsp;double&nbsp;getRawVelocity()</pre>
+<div class="block">Gets the velocity, which is represented as the change in error since the last time that .update()
+ was called</div>
+>>>>>>> cee2d99de4addd2fc4793c4f899a30e81eba93c5
 <dl>
 <dt><span class="returnLabel">Returns:</span></dt>
 <dd>velocity from the last time that .update() was called</dd>
@@ -396,11 +422,17 @@ double&nbsp;setpoint)</code></th>
 </section>
 </li>
 <li class="blockList">
+<<<<<<< HEAD
 <section class="detail">
 <h3><a id="getVelocity()">getVelocity</a></h3>
 <div class="memberSignature"><span class="modifiers">public final</span>&nbsp;<span class="returnType">double</span>&nbsp;<span class="memberName">getVelocity</span>()</div>
 <div class="block">Gets the velocity from the last time that .update() was called adjusted
  to velocity per second</div>
+=======
+<h4>getVelocity</h4>
+<pre class="methodSignature">public final&nbsp;double&nbsp;getVelocity()</pre>
+<div class="block">Gets the velocity from the last time that .update() was called adjusted to velocity per second</div>
+>>>>>>> cee2d99de4addd2fc4793c4f899a30e81eba93c5
 <dl>
 <dt><span class="returnLabel">Returns:</span></dt>
 <dd>velocity from the last time that .update() was called</dd>
@@ -419,6 +451,7 @@ double&nbsp;setpoint)</code></th>
 </section>
 </li>
 <li class="blockList">
+<<<<<<< HEAD
 <section class="detail">
 <h3><a id="getRate()">getRate</a></h3>
 <div class="memberSignature"><span class="modifiers">public</span>&nbsp;<span class="returnType">double</span>&nbsp;<span class="memberName">getRate</span>()</div>
@@ -426,9 +459,15 @@ double&nbsp;setpoint)</code></th>
  will only return the interval between the last .update() command and the
  one before it. Thus, the rate may be slightly inconsistent if the update
  command is not called regularly.
+=======
+<h4>getRate</h4>
+<pre class="methodSignature">public&nbsp;double&nbsp;getRate()</pre>
+<div class="block">Gets the rate of the controller during the last .update() command. This will only return the
+ interval between the last .update() command and the one before it. Thus, the rate may be slightly
+ inconsistent if the update command is not called regularly.
+>>>>>>> cee2d99de4addd2fc4793c4f899a30e81eba93c5
 
- This function may be overridden if a special controller needs a custom
- rate.</div>
+ This function may be overridden if a special controller needs a custom rate.</div>
 <dl>
 <dt><span class="returnLabel">Returns:</span></dt>
 <dd>the rate of the controller during the last .update() command</dd>
@@ -457,20 +496,27 @@ double&nbsp;maxVelocity)</span></div>
 <dl>
 <dt><span class="paramLabel">Parameters:</span></dt>
 <dd><code>maxError</code> - the maximum amount of error allowed</dd>
-<dd><code>maxVelocity</code> - the maximum amount of change in error over a second
-                    allowed</dd>
+<dd><code>maxVelocity</code> - the maximum amount of change in error over a second allowed</dd>
 <dt><span class="returnLabel">Returns:</span></dt>
 <dd>if the controller has arrived at the target</dd>
 </dl>
 </section>
 </li>
 <li class="blockList">
+<<<<<<< HEAD
 <section class="detail">
 <h3><a id="update(double,double)">update</a></h3>
 <div class="memberSignature"><span class="modifiers">public final</span>&nbsp;<span class="returnType">double</span>&nbsp;<span class="memberName">update</span>&#8203;(<span class="arguments">double&nbsp;measurement,
 double&nbsp;setpoint)</span></div>
 <div class="block">Update the controller with the measurement that was just made and the set
  point you would like it to approach
+=======
+<h4>update</h4>
+<pre class="methodSignature">public final&nbsp;double&nbsp;update&#8203;(double&nbsp;measurement,
+                           double&nbsp;setpoint)</pre>
+<div class="block">Update the controller with the measurement that was just made and the set point you would like it
+ to approach
+>>>>>>> cee2d99de4addd2fc4793c4f899a30e81eba93c5
 
  This function just subtracts the two at this moment.</div>
 <dl>
@@ -483,11 +529,17 @@ double&nbsp;setpoint)</span></div>
 </section>
 </li>
 <li class="blockList">
+<<<<<<< HEAD
 <section class="detail">
 <h3><a id="update(double)">update</a></h3>
 <div class="memberSignature"><span class="modifiers">public final</span>&nbsp;<span class="returnType">double</span>&nbsp;<span class="memberName">update</span>&#8203;(<span class="arguments">double&nbsp;error)</span></div>
 <div class="block">Update the controller with the error from the destination that you want
  to reach</div>
+=======
+<h4>update</h4>
+<pre class="methodSignature">public final&nbsp;double&nbsp;update&#8203;(double&nbsp;error)</pre>
+<div class="block">Update the controller with the error from the destination that you want to reach</div>
+>>>>>>> cee2d99de4addd2fc4793c4f899a30e81eba93c5
 <dl>
 <dt><span class="paramLabel">Parameters:</span></dt>
 <dd><code>error</code> - the amount of error from the destination</dd>

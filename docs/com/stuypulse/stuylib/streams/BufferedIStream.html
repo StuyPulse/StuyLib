@@ -103,8 +103,7 @@ $('.navPadding').css('padding-top', $('.fixedNav').css("height"));
 <pre>public class <span class="typeNameLabel">BufferedIStream</span>
 extends java.lang.Object
 implements <a href="IStream.html" title="interface in com.stuypulse.stuylib.streams">IStream</a></pre>
-<div class="block">This class allows you to use an input stream while recording the last N
- values from the stream
+<div class="block">This class allows you to use an input stream while recording the last N values from the stream
 
  It extends from IStream, so it also works with the existing IStream classes</div>
 </section>
@@ -263,18 +262,22 @@ int&nbsp;size)</code></th>
 <h2>Constructor Details</h2>
 <ul class="blockList">
 <li class="blockList">
+<<<<<<< HEAD
 <section class="detail">
 <h3><a id="&lt;init&gt;(com.stuypulse.stuylib.streams.IStream,int)">BufferedIStream</a></h3>
 <div class="memberSignature"><span class="modifiers">public</span>&nbsp;<span class="memberName">BufferedIStream</span>&#8203;(<span class="arguments"><a href="IStream.html" title="interface in com.stuypulse.stuylib.streams">IStream</a>&nbsp;istream,
 int&nbsp;size)</span>
                 throws <span class="exceptions"><a href="../exception/ConstructionError.html" title="class in com.stuypulse.stuylib.exception">ConstructionError</a></span></div>
+=======
+<h4>BufferedIStream</h4>
+<pre>public&nbsp;BufferedIStream&#8203;(<a href="IStream.html" title="interface in com.stuypulse.stuylib.streams">IStream</a>&nbsp;istream,
+                       int&nbsp;size)</pre>
+>>>>>>> cee2d99de4addd2fc4793c4f899a30e81eba93c5
 <div class="block">Creates a buffered istream with an istream and a custom buffer size</div>
 <dl>
 <dt><span class="paramLabel">Parameters:</span></dt>
 <dd><code>istream</code> - istream that will be buffered</dd>
 <dd><code>size</code> - size of buffer</dd>
-<dt><span class="throwsLabel">Throws:</span></dt>
-<dd><code><a href="../exception/ConstructionError.html" title="class in com.stuypulse.stuylib.exception">ConstructionError</a></code></dd>
 </dl>
 </section>
 </li>
