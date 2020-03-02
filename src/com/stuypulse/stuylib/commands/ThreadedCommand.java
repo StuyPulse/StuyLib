@@ -6,7 +6,7 @@ import edu.wpi.first.wpilibj2.command.Command;
 import edu.wpi.first.wpilibj2.command.Subsystem;
 
 /**
- * A ThreadedCommand is a command that helps run commands at higher rates than 50hz. It is
+ * A ThreadedCommand is a command that helps run commands at higher periods than 50hz. It is
  * interfaced with like a normal command, but handles the threading in the background.
  *
  * @author Sam (sam.belliveau@gmail.com)
@@ -20,51 +20,59 @@ public class ThreadedCommand implements Command {
      */
     private static class CommandRunner extends Thread {
 
-        private double mRate;
+        private long mPeriod;
         private SynchronizedCommand mBaseCommand;
 
         /**
-         * Makes a CommandRunner with custom rate
+         * Makes a CommandRunner with custom period
          *
          * @param command command to run on thread
-         * @param rate    time in between executes
+         * @param period  time in between executes
          */
-        public CommandRunner(SynchronizedCommand command, double rate) {
-            mRate = rate;
+        public CommandRunner(SynchronizedCommand command, double period) {
+            mPeriod = (long) (period * 1000.0);
             mBaseCommand = command;
         }
 
         @Override
         public void run() {
-            do {
-                mBaseCommand.execute();
+            try {
+                do {
+                    mBaseCommand.execute();
 
-                try {
-                    Thread.sleep((long) (mRate * 1000.0));
-                } catch(InterruptedException e) {
-                    return;
-                }
-            } while(!mBaseCommand.isFinished() && !Thread.interrupted());
+                    try {
+                        Thread.sleep(mPeriod);
+                    } catch(InterruptedException e) {
+                        return;
+                    }
+                } while(!mBaseCommand.isFinished() && !Thread.interrupted());
+            } finally {
+                mBaseCommand = null;
+            }
         }
     }
 
-    private double mRate;
+    private double mPeriod;
     private SynchronizedCommand mBaseCommand;
     private CommandRunner mCommandRunner;
 
     /**
-     * Make a Threaded Command with a custom rate
+     * Make a Threaded Command with a custom period
      *
      * @param command command to be run on the thread
-     * @param rate    the time in between executes
+     * @param period  the time in between executes
      */
-    public ThreadedCommand(Command command, double rate) {
+    public ThreadedCommand(Command command, double period) {
+        if(period <= 0) {
+            throw new IllegalArgumentException("period must be greater than 0");
+        }
+
         mBaseCommand = new SynchronizedCommand(command);
-        mRate = rate;
+        mPeriod = period;
     }
 
     /**
-     * Make a Threaded Command with a default rate of 50hz
+     * Make a Threaded Command with a default period of 50hz
      *
      * @param command command to be run on the thread
      */
@@ -76,11 +84,12 @@ public class ThreadedCommand implements Command {
      * Start thread and interrupt the old one if it is running
      */
     private void startCommandRunner() {
-        if(mCommandRunner != null && !mCommandRunner.isInterrupted()) {
+        if(mCommandRunner != null && mCommandRunner.isAlive()) {
             mCommandRunner.interrupt();
         }
 
-        mCommandRunner = new CommandRunner(mBaseCommand, mRate);
+        mCommandRunner = new CommandRunner(mBaseCommand, mPeriod);
+        mCommandRunner.setName("CommandRunner-" + mBaseCommand.getName());
         mCommandRunner.start();
     }
 
@@ -94,7 +103,7 @@ public class ThreadedCommand implements Command {
         if(mCommandRunner == null) {
             startCommandRunner();
         } else {
-            if(mCommandRunner.isInterrupted()) {
+            if(!mCommandRunner.isAlive()) {
                 startCommandRunner();
             }
         }

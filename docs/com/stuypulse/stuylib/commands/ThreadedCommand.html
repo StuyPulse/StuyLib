@@ -138,7 +138,7 @@ $('.navPadding').css('padding-top', $('.fixedNav').css("height"));
 <pre>public class <span class="typeNameLabel">ThreadedCommand</span>
 extends java.lang.Object
 implements edu.wpi.first.wpilibj2.command.Command</pre>
-<div class="block">A ThreadedCommand is a command that helps run commands at higher rates than 50hz. It is
+<div class="block">A ThreadedCommand is a command that helps run commands at higher periods than 50hz. It is
  interfaced with like a normal command, but handles the threading in the background.</div>
 </li>
 </ul>
@@ -162,14 +162,14 @@ implements edu.wpi.first.wpilibj2.command.Command</pre>
 <tr class="altColor">
 <th class="colConstructorName" scope="row"><code><span class="memberNameLink"><a href="#%3Cinit%3E(edu.wpi.first.wpilibj2.command.Command)">ThreadedCommand</a></span>&#8203;(edu.wpi.first.wpilibj2.command.Command&nbsp;command)</code></th>
 <td class="colLast">
-<div class="block">Make a Threaded Command with a default rate of 50hz</div>
+<div class="block">Make a Threaded Command with a default period of 50hz</div>
 </td>
 </tr>
 <tr class="rowColor">
 <th class="colConstructorName" scope="row"><code><span class="memberNameLink"><a href="#%3Cinit%3E(edu.wpi.first.wpilibj2.command.Command,double)">ThreadedCommand</a></span>&#8203;(edu.wpi.first.wpilibj2.command.Command&nbsp;command,
-               double&nbsp;rate)</code></th>
+               double&nbsp;period)</code></th>
 <td class="colLast">
-<div class="block">Make a Threaded Command with a custom rate</div>
+<div class="block">Make a Threaded Command with a custom period</div>
 </td>
 </tr>
 </table>
@@ -268,12 +268,12 @@ implements edu.wpi.first.wpilibj2.command.Command</pre>
 <li class="blockList">
 <h4>ThreadedCommand</h4>
 <pre>public&nbsp;ThreadedCommand&#8203;(edu.wpi.first.wpilibj2.command.Command&nbsp;command,
-                       double&nbsp;rate)</pre>
-<div class="block">Make a Threaded Command with a custom rate</div>
+                       double&nbsp;period)</pre>
+<div class="block">Make a Threaded Command with a custom period</div>
 <dl>
 <dt><span class="paramLabel">Parameters:</span></dt>
 <dd><code>command</code> - command to be run on the thread</dd>
-<dd><code>rate</code> - the time in between executes</dd>
+<dd><code>period</code> - the time in between executes</dd>
 </dl>
 </li>
 </ul>
@@ -284,7 +284,7 @@ implements edu.wpi.first.wpilibj2.command.Command</pre>
 <li class="blockList">
 <h4>ThreadedCommand</h4>
 <pre>public&nbsp;ThreadedCommand&#8203;(edu.wpi.first.wpilibj2.command.Command&nbsp;command)</pre>
-<div class="block">Make a Threaded Command with a default rate of 50hz</div>
+<div class="block">Make a Threaded Command with a default period of 50hz</div>
 <dl>
 <dt><span class="paramLabel">Parameters:</span></dt>
 <dd><code>command</code> - command to be run on the thread</dd>
