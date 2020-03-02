@@ -4,9 +4,12 @@
 
 # What is StuyLib?
 
-Every year, our team among many others is tasked with creating a useful, yet daunting util folder. This folder must contain important files like `Gamepad.java`, but because it must be reinvented every year. It is often filled with unpolished, messy code. Stuylib is here to change that!
+StuyLib is an FRC library / toolkit which includes many different utilities for programming. It includes things like a Gamepad Library, a Limelight Library, a Digitial Filter / Streams Library, and many other utilities relating to math and programming.
 
-It did get a little bit bigger more advanced than just a util folder, but not everything is necessary.
+# Awards
+
+- IStreams / IStreamFilters: 
+	- [Innovation in Control Award sponsored by Rockwell Automation](https://www.thebluealliance.com/event/2020scmb#awards)
 
 # How do I use StuyLib?
 
@@ -36,7 +39,7 @@ Step 1. Add the JitPack repository to your build file
 The version tag can be seen at the top of the readme. An example would be:
 ```
 	dependencies {
-	    compile 'com.github.StuyPulse:StuyLib:2020.1.8.1'
+	    compile 'com.github.StuyPulse:StuyLib:2020.1.9.0'
 	}
 ```
 
@@ -59,11 +62,14 @@ At the top of each class, give a brief description of the class, along with an a
 
 Current Lead Repository Maintainer
 
- - [Sam Belliveau](https://github.com/Sam-Belliveau)
+ - [Sam Belliveau (2022)](https://github.com/Sam-Belliveau)
 
+Future Lead Repository Maintainer (if he's a good boi)
 
-Current Programmers
+ - [Myles Pasetsky (2023)](selym3)
 
- - [Ivan Wei](https://github.com/iwei20)
- - [Winston Peng](https://github.com/CreativePenguin)
- - [Kevin Cai](https://github.com/Kevin16777126)
+Notable Contributors
+
+ - [Ivan Wei (2022)](https://github.com/iwei20)
+ - [Winston Peng (2020)](https://github.com/CreativePenguin)
+ - [Kevin Cai (2020)](https://github.com/Kevin16777126)
