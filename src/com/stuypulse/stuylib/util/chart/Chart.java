@@ -22,7 +22,7 @@ public class Chart extends JFrame {
     /**
      * The instance of the XYChart
      */
-    private XYChart instance;
+    protected XYChart instance;
 
     /**
      * CopyOnWriteArrayList for tracking x data
@@ -57,18 +57,18 @@ public class Chart extends JFrame {
      * Mouse tracker for getting mouse x and y as a percentage of the screen
      * width and height.
      */
-    private final MouseTracker mouseTracker;
+    protected final MouseTracker mouseTracker;
 
     /**
      * Key tracker with built in escape function and adding key binding
      * functionality. Gets key presses as booleans.
      */
-    private final KeyTracker keyTracker;
+    protected final KeyTracker keyTracker;
 
     /**
      * Swing panel to store the chart.
      */
-    private XChartPanel<XYChart> chartPanel;
+    protected XChartPanel<XYChart> chartPanel;
 
     /**
      * Default constructor that creates an empty frame.
@@ -142,7 +142,7 @@ public class Chart extends JFrame {
         instance.getSeriesMap().get(title).setMarker(SeriesMarkers.NONE);
 
         // CHART PANEL //
-        chartPanel = new XChartPanel<XYChart>(get());
+        chartPanel = new XChartPanel<XYChart>(instance);
 
         // CHART PANEL SPECIFICATIONS //
         chartPanel.setName(getChartTitle());
@@ -206,21 +206,12 @@ public class Chart extends JFrame {
     }
 
     /**
-     * Get the XYChart instance.
-     *
-     * @return XYChart
-     */
-    protected XYChart get() {
-        return instance;
-    }
-
-    /**
      * Return chart title. Title is also session name.
      *
      * @return text containing title
      */
     public String getChartTitle() {
-        return get().getTitle();
+        return instance.getTitle();
     }
 
     /**
@@ -234,8 +225,8 @@ public class Chart extends JFrame {
         xData.add(x);
         yData.add(y);
 
-        if(get() != null) {
-            get().updateXYSeries(get().getTitle(), xData, yData, null);
+        if(instance != null) {
+            instance.updateXYSeries(instance.getTitle(), xData, yData, null);
         }
 
         // REMOVE DATA (IF OVER MAX LIMIT) //
@@ -316,7 +307,18 @@ public class Chart extends JFrame {
      * @param max maximum x value
      * @return Reference to chart
      */
-    public Chart setXBounds(Double min, Double max) {
+    public Chart setXBounds(double min, double max) {
+        return setXBounds(min, max);
+    }
+
+    /**
+     * Set x boundaries of the chart.
+     *
+     * @param min minimum x value
+     * @param max maximum x value
+     * @return Reference to chart
+     */
+    private Chart setXBounds(Double min, Double max) {
         instance.getStyler().setXAxisMin(min);
         instance.getStyler().setXAxisMax(max);
 
@@ -351,7 +353,24 @@ public class Chart extends JFrame {
      * @param max maximum y value
      * @return Reference to chart
      */
-    public Chart setYBounds(Double min, Double max) {
+    public Chart setYBounds(double min, double max) {
+        instance.getStyler().setYAxisMin(min);
+        instance.getStyler().setYAxisMax(max);
+
+        yBounds[0] = min;
+        yBounds[1] = max;
+
+        return this;
+    }
+
+    /**
+     * Set y boundaries of the chart.
+     *
+     * @param min minimum y value
+     * @param max maximum y value
+     * @return Reference to chart
+     */
+    private Chart setYBounds(Double min, Double max) {
         instance.getStyler().setYAxisMin(min);
         instance.getStyler().setYAxisMax(max);
 
