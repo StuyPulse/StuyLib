@@ -76,7 +76,7 @@ public class ThreadedCommand implements Command {
      * Start thread and interrupt the old one if it is running
      */
     private void startCommandRunner() {
-        if(mCommandRunner != null) {
+        if(mCommandRunner != null && !mCommandRunner.isInterrupted()) {
             mCommandRunner.interrupt();
         }
 
