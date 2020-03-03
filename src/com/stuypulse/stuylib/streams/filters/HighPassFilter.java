@@ -32,7 +32,7 @@ public class HighPassFilter implements IStreamFilter {
 
     public double get(double next) {
         double dt = mTimer.reset();
-        double a = dt / (mRC + dt);
+        double a = mRC / (mRC + dt);
         mLastValue = a * (mLastValue + next - mLastInput);
         mLastInput = next;
         return mLastValue;

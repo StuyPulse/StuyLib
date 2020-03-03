@@ -31,6 +31,7 @@ public class TimedRateLimit implements IStreamFilter {
         }
 
         mTimer = new StopWatch();
+        mRateLimit = rateLimit;
         mLastValue = 0;
     }
 
