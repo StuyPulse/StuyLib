@@ -308,7 +308,7 @@ public class Chart extends JFrame {
      * @return Reference to chart
      */
     public Chart setXBounds(double min, double max) {
-        return setXBounds(min, max);
+        return setXBounds((Double) min, (Double) max);
     }
 
     /**
@@ -354,13 +354,7 @@ public class Chart extends JFrame {
      * @return Reference to chart
      */
     public Chart setYBounds(double min, double max) {
-        instance.getStyler().setYAxisMin(min);
-        instance.getStyler().setYAxisMax(max);
-
-        yBounds[0] = min;
-        yBounds[1] = max;
-
-        return this;
+        return setYBounds((Double) min, (Double) max);
     }
 
     /**
