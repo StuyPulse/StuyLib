@@ -26,12 +26,9 @@ public class Limelight {
             .getEntry("TIMING_TEST_ENTRY");
     private static boolean mTimingTestEntryValue = false;
 
-    public static final long MAX_UPDATE_TIME = 250_000; // Micro Seconds = 0.25
-                                                        // Seconds
-    public static final long MIN_WARNING_TIME = 500_000; // Micro Seconds = 0.5
-                                                         // Seconds
-    public static final long MAX_WARNING_TIME = 2_500_000; // Micro Seconds =
-                                                           // 2.5 Seconds
+    public static final long MAX_UPDATE_TIME = 250_000;
+    public static final long MIN_WARNING_TIME = 500_000;
+    public static final long MAX_WARNING_TIME = 2_500_000;
 
     public static final boolean IS_CONNECTED_REQUIRED = true;
 
@@ -91,11 +88,9 @@ public class Limelight {
     private static final NetworkTableEntry mXAngleEntry = mTable.getEntry("tx");
 
     /**
-     * Get The Horizontal Offset From Crosshair To Target (-27 degrees to 27
-     * degrees)
+     * Get The Horizontal Offset From Crosshair To Target (-27 degrees to 27 degrees)
      *
-     * @return Horizontal Offset From Crosshair To Target (-27 degrees to 27
-     *         degrees)
+     * @return Horizontal Offset From Crosshair To Target (-27 degrees to 27 degrees)
      */
     public static double getTargetXAngle() {
         return mXAngleEntry.getDouble(0);
@@ -107,11 +102,9 @@ public class Limelight {
     private static final NetworkTableEntry mYAngleEntry = mTable.getEntry("ty");
 
     /**
-     * Get The Vertical Offset From Crosshair To Target (-20.5 degrees to 20.5
-     * degrees)
+     * Get The Vertical Offset From Crosshair To Target (-20.5 degrees to 20.5 degrees)
      *
-     * @return Vertical Offset From Crosshair To Target (-20.5 degrees to 20.5
-     *         degrees)
+     * @return Vertical Offset From Crosshair To Target (-20.5 degrees to 20.5 degrees)
      */
     public static double getTargetYAngle() {
         return mYAngleEntry.getDouble(0);
@@ -173,8 +166,7 @@ public class Limelight {
             .getEntry("tshort");
 
     /**
-     * Get the sidelength of shortest side of the fitted bounding box (0 - 320
-     * pixels)
+     * Get the sidelength of shortest side of the fitted bounding box (0 - 320 pixels)
      *
      * @return Shortest side length of target in pixels
      */
@@ -186,8 +178,7 @@ public class Limelight {
             .getEntry("tlong");
 
     /**
-     * Get the sidelength of longest side of the fitted bounding box (0 - 320
-     * pixels)
+     * Get the sidelength of longest side of the fitted bounding box (0 - 320 pixels)
      *
      * @return Longest side length of the target in pixels
      */
@@ -224,9 +215,8 @@ public class Limelight {
 
     /**
      *
-     * @return Array of Vertices, in the form (x0,y0,x1,y1, ... xN,yN).
-     *         coordinates are in pixels, relative to top left corner of
-     *         limelight feed
+     * @return Array of Vertices, in the form (x0,y0,x1,y1, ... xN,yN). coordinates are in pixels,
+     *         relative to top left corner of limelight feed
      */
     public static double[] getCoords() {
         return mCornerEntry.getDoubleArray(new double[0]);
@@ -234,8 +224,8 @@ public class Limelight {
 
     /**
      *
-     * @return Formatted 2D array of coordinates, consisting of an array of X
-     *         values and an array of Y values.
+     * @return Formatted 2D array of coordinates, consisting of an array of X values and an array of Y
+     *         values.
      */
     public static double[][] getVertices() {
         double[][] data = new double[2][];
@@ -313,8 +303,7 @@ public class Limelight {
 
     /**
      * @param target Target to read Area from
-     * @return Percent of the screen the corresponding target takes up on a
-     *         scale of 0 to 1
+     * @return Percent of the screen the corresponding target takes up on a scale of 0 to 1
      */
     public static double getRawTargetArea(int target) {
         // Lime light returns a double from 0 - 100

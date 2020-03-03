@@ -1,8 +1,7 @@
 package com.stuypulse.stuylib.streams.filters;
 
 /**
- * A simple class that lets you combine multiple stream filters into one stream
- * filter
+ * A simple class that lets you combine multiple stream filters into one stream filter
  *
  * @author Sam (sam.belliveau@gmail.com)
  */

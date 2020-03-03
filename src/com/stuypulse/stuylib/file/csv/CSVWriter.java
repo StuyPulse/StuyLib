@@ -6,8 +6,8 @@ import java.io.IOException;
 import java.io.Flushable;
 
 /**
- * CSVWriter class that allows you to write to a file in the format of a CSV. It
- * automatically adds commas and calls toString on objects.
+ * CSVWriter class that allows you to write to a file in the format of a CSV. It automatically adds
+ * commas and calls toString on objects.
  *
  * Every function will throw an IOException if it arises.
  *

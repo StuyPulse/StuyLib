@@ -5,23 +5,23 @@ import com.stuypulse.stuylib.input.buttons.ButtonWrapper;
 import edu.wpi.first.wpilibj.Joystick;
 
 /**
- * WPI Gamepad extends Gamepad and adds functions that makes interacting with
- * the underlying Joystick class easy. The WPI joystick class is kept in a
- * separate class to make it easy to update if WPI updates.
+ * WPI Gamepad extends Gamepad and adds functions that makes interacting with the underlying
+ * Joystick class easy. The WPI joystick class is kept in a separate class to make it easy to update
+ * if WPI updates.
  *
- * If you would like to get a button id that is not defined, or an axis id that
- * is not defined, use getRawButton(int id) or getRawAxis(int id). If you want
- * it to return a button for an unimplemented button, type getButton(int id).
+ * If you would like to get a button id that is not defined, or an axis id that is not defined, use
+ * getRawButton(int id) or getRawAxis(int id). If you want it to return a button for an
+ * unimplemented button, type getButton(int id).
  *
- * To initialize this class, pass in a Joystick or an int set to the port
- * number. This will be the Joystick that the Gamepad class will interact with.
+ * To initialize this class, pass in a Joystick or an int set to the port number. This will be the
+ * Joystick that the Gamepad class will interact with.
  *
- * If you do not initialize with a Joystick, everything will still work except
- * for - getRawButton(int id) - getButton(int id) - getRawAxis(int id) which
- * will return either false or 0.0
+ * If you do not initialize with a Joystick, everything will still work except for -
+ * getRawButton(int id) - getButton(int id) - getRawAxis(int id) which will return either false or
+ * 0.0
  *
- * The difference between the implementations of the Gamepad class is how it
- * interacts with the underlying Joystick class.
+ * The difference between the implementations of the Gamepad class is how it interacts with the
+ * underlying Joystick class.
  *
  * @author Sam (sam.belliveau@gmail.com)
  */

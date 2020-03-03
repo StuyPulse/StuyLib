@@ -3,9 +3,9 @@ package com.stuypulse.stuylib.util;
 import edu.wpi.first.wpilibj.Encoder;
 
 /**
- * The tank drive encoder manages the left and right encoder for the drivetrain.
- * It does math to get the distance the entire robot has moved, and it can also
- * detect if an encoder has disconnected, taking that into consideration.
+ * The tank drive encoder manages the left and right encoder for the drivetrain. It does math to get
+ * the distance the entire robot has moved, and it can also detect if an encoder has disconnected,
+ * taking that into consideration.
  *
  * @author Sam (sam.belliveau@gmail.com)
  */

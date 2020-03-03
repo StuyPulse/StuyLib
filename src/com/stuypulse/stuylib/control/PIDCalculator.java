@@ -7,10 +7,9 @@ import com.stuypulse.stuylib.util.StopWatch;
 import com.stuypulse.stuylib.math.SLMath;
 
 /**
- * This is a Bang-Bang controller that while controlling the robot, will be able
- * to calculate the values for the PID controller. It does this by taking the
- * results of oscillations, then creating a PIDController withe the correct
- * values once the oscillations have been measured.
+ * This is a Bang-Bang controller that while controlling the robot, will be able to calculate the
+ * values for the PID controller. It does this by taking the results of oscillations, then creating
+ * a PIDController withe the correct values once the oscillations have been measured.
  *
  * @author Sam (sam.belliveau@gmail.com)
  */
@@ -18,10 +17,10 @@ public class PIDCalculator extends Controller {
 
     // Maximum amount of time between update commands before the calculator
     // resets its measurements
-    private static final double kMaxTimeBeforeReset = 0.3;
+    private static final double kMaxTimeBeforeReset = 0.5;
 
     // The minimum period length that will be accepted as a valid period
-    private static final double kMinPeriodTime = 0.2;
+    private static final double kMinPeriodTime = 0.1;
 
     // The filter easuring the period and amplitude
     private static IStreamFilter getMeasurementFilter() {
@@ -78,8 +77,8 @@ public class PIDCalculator extends Controller {
     }
 
     /**
-     * Calculate the value that the controller wants to move at while
-     * calculating the values for the PIDController
+     * Calculate the value that the controller wants to move at while calculating the values for the
+     * PIDController
      *
      * @param error the error that the controller will use
      * @return the calculated result from the controller

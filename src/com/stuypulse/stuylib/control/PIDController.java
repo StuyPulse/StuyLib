@@ -4,24 +4,21 @@ import com.stuypulse.stuylib.streams.filters.IStreamFilter;
 import com.stuypulse.stuylib.math.SLMath;
 
 /**
- * This PID controller is built by extending the Controller class. It has a
- * dynamic rate, so it can detect how much time has passed between each update.
- * It is made to be easy to use and simple to understand while still being
- * accurate.
+ * This PID controller is built by extending the Controller class. It has a dynamic rate, so it can
+ * detect how much time has passed between each update. It is made to be easy to use and simple to
+ * understand while still being accurate.
  *
- * This PID controller resets the integral every time the error crosses 0 to
- * prevent integral windup / lag. This means that it may not be suitable for
- * setups involving rate instead of position
+ * This PID controller resets the integral every time the error crosses 0 to prevent integral windup
+ * / lag. This means that it may not be suitable for setups involving rate instead of position
  *
  * @author Sam (sam.belliveau@gmail.com)
  */
 public class PIDController extends Controller {
 
     /**
-     * Amount of time in between .update() calls that is aloud before the
-     * controller resets the system
+     * Amount of time in between .update() calls that is aloud before the controller resets the system
      */
-    private static final double kMaxTimeBeforeReset = 0.3; // s
+    private static final double kMaxTimeBeforeReset = 0.5;
 
     // Constants used by the PID controller
     private double mP;
@@ -51,8 +48,8 @@ public class PIDController extends Controller {
     }
 
     /**
-     * Resets the integrator in the PIDController. This automatically gets
-     * called if the gap between update() commands is too large
+     * Resets the integrator in the PIDController. This automatically gets called if the gap between
+     * update() commands is too large
      */
     public void reset() {
         mIntegral = 0;
@@ -112,8 +109,7 @@ public class PIDController extends Controller {
 
     /**
      * @param p new p value used by the PID controller.
-     * @return reference to PIDController (so you can chain the commands
-     *         together)
+     * @return reference to PIDController (so you can chain the commands together)
      */
     public PIDController setP(double p) {
         mP = Math.max(p, 0);
@@ -122,8 +118,7 @@ public class PIDController extends Controller {
 
     /**
      * @param i new i value used by the PID controller.
-     * @return reference to PIDController (so you can chain the commands
-     *         together)
+     * @return reference to PIDController (so you can chain the commands together)
      */
     public PIDController setI(double i) {
         mI = Math.max(i, 0);
@@ -132,8 +127,7 @@ public class PIDController extends Controller {
 
     /**
      * @param d new d value used by the PID controller.
-     * @return reference to PIDController (so you can chain the commands
-     *         together)
+     * @return reference to PIDController (so you can chain the commands together)
      */
     public PIDController setD(double d) {
         mD = Math.max(d, 0);
@@ -144,22 +138,20 @@ public class PIDController extends Controller {
      * @param p new p value used by the PID controller.
      * @param i new i value used by the PID controller.
      * @param d new d value used by the PID controller.
-     * @return reference to PIDController (so you can chain the commands
-     *         together)
+     * @return reference to PIDController (so you can chain the commands together)
      */
     public PIDController setPID(double p, double i, double d) {
         return setP(p).setI(i).setD(d);
     }
 
     /**
-     * It is common for a limit filter to be put on the I component to prevent
-     * Integral Windup. You can use SLMath.limit(x) to do this.
+     * It is common for a limit filter to be put on the I component to prevent Integral Windup. You can
+     * use SLMath.limit(x) to do this.
      *
      * Passing null will disable the filter
      *
      * @param filter filter put on the I component of the PID Controller
-     * @return reference to PIDController (so you can chain the commands
-     *         together)
+     * @return reference to PIDController (so you can chain the commands together)
      */
     public PIDController setIntegratorFilter(IStreamFilter filter) {
         // Use default filter if given null

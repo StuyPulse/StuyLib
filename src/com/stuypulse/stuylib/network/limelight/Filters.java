@@ -3,8 +3,8 @@ package com.stuypulse.stuylib.network.limelight;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 
 /**
- * Do bluebox filtering here until limelight updates their code. Just call
- * hasValidTarget() to filter out errors
+ * Do bluebox filtering here until limelight updates their code. Just call hasValidTarget() to
+ * filter out errors
  *
  * @author Kevin (k1029384756c@gmail.com)
  */
@@ -75,8 +75,7 @@ class Filters {
     }
 
     /**
-     * The blue aspect ratio is the ratio of the width to height of the rotated
-     * rectangle.
+     * The blue aspect ratio is the ratio of the width to height of the rotated rectangle.
      *
      * @param minRatio Min ratio for the blue aspect ratio
      * @param maxRatio Max ratio for the blue aspect ratio

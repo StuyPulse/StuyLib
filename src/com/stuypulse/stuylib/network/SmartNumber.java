@@ -3,9 +3,8 @@ package com.stuypulse.stuylib.network;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 
 /**
- * SmartNumber works as a wrapper for values on SmartDashboard. The idea for
- * this class was to make getting values on SmartDashboard easier by making them
- * variables that you know were initialized.
+ * SmartNumber works as a wrapper for values on SmartDashboard. The idea for this class was to make
+ * getting values on SmartDashboard easier by making them variables that you know were initialized.
  *
  * @author Sam (sam.belliveau@gmail.com)
  */
@@ -24,9 +23,8 @@ public class SmartNumber extends Number {
     private double mDefaultValue;
 
     /**
-     * Creates a SmartNumber with the element name and a default value. The
-     * value on SmartDashboard will be reset to the default value on
-     * initialization.
+     * Creates a SmartNumber with the element name and a default value. The value on SmartDashboard will
+     * be reset to the default value on initialization.
      *
      * @param id    the name of the number on SmartDashboard
      * @param value the default / initialization value for the value

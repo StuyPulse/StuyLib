@@ -7,12 +7,11 @@ import java.util.Vector;
 import java.util.Iterator;
 
 /**
- * Read CSV Files with a bunch of epic features. After file is opened you can
- * read the data like it was an array.
+ * Read CSV Files with a bunch of epic features. After file is opened you can read the data like it
+ * was an array.
  *
- * Each of the elements is stored as a custom type called Element. Which
- * prevents the need to constantly parse the data over and over again if it is a
- * number.
+ * Each of the elements is stored as a custom type called Element. Which prevents the need to
+ * constantly parse the data over and over again if it is a number.
  *
  * @author Sam (sam.belliveau@gmail.com)
  */
@@ -75,8 +74,7 @@ public class CSVReader implements Iterable<CSVElement> {
     }
 
     /**
-     * Read data from opened file. You can call multiple times if file is
-     * updated
+     * Read data from opened file. You can call multiple times if file is updated
      */
     public void read() throws IOException {
         clearData();
@@ -138,8 +136,7 @@ public class CSVReader implements Iterable<CSVElement> {
      *
      * @param index element position
      * @return element as custom CSVElement type
-     * @throws IndexOutOfBoundsException if the index is higher than the amount
-     *                                   of elements
+     * @throws IndexOutOfBoundsException if the index is higher than the amount of elements
      */
     public CSVElement get(int index) throws IndexOutOfBoundsException {
         if(index < size()) {
@@ -154,8 +151,7 @@ public class CSVReader implements Iterable<CSVElement> {
      *
      * @param index element position
      * @return string of the element
-     * @throws IndexOutOfBoundsException if the index is higher than the amount
-     *                                   of elements
+     * @throws IndexOutOfBoundsException if the index is higher than the amount of elements
      */
     public String getString(int index) throws IndexOutOfBoundsException {
         return get(index).toString();
@@ -166,8 +162,7 @@ public class CSVReader implements Iterable<CSVElement> {
      *
      * @param index element position
      * @return double representation of the element
-     * @throws IndexOutOfBoundsException if the index is higher than the amount
-     *                                   of elements
+     * @throws IndexOutOfBoundsException if the index is higher than the amount of elements
      */
     public double getDouble(int index) throws IndexOutOfBoundsException {
         return get(index).toDouble();
@@ -178,8 +173,7 @@ public class CSVReader implements Iterable<CSVElement> {
      *
      * @param index element position
      * @return number representation of the element
-     * @throws IndexOutOfBoundsException if the index is higher than the amount
-     *                                   of elements
+     * @throws IndexOutOfBoundsException if the index is higher than the amount of elements
      */
     public Number getNumber(int index) throws IndexOutOfBoundsException {
         return get(index).toNumber();
@@ -190,8 +184,7 @@ public class CSVReader implements Iterable<CSVElement> {
      *
      * @param index element position
      * @return if element is of type double
-     * @throws IndexOutOfBoundsException if the index is higher than the amount
-     *                                   of elements
+     * @throws IndexOutOfBoundsException if the index is higher than the amount of elements
      */
     public boolean isNumber(int index) throws IndexOutOfBoundsException {
         return get(index).isNumber();

@@ -3,9 +3,8 @@ package com.stuypulse.stuylib.network;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 
 /**
- * SmartString works as a wrapper for values on SmartDashboard. The idea for
- * this class was to make getting values on SmartDashboard easier by making them
- * variables that you know were initialized.
+ * SmartString works as a wrapper for values on SmartDashboard. The idea for this class was to make
+ * getting values on SmartDashboard easier by making them variables that you know were initialized.
  *
  * @author Sam (sam.belliveau@gmail.com)
  */
@@ -22,9 +21,8 @@ public class SmartString {
     private String mDefaultValue;
 
     /**
-     * Creates a SmartString with the element name and a default value. The
-     * value on SmartDashboard will be reset to the default value on
-     * initialization.
+     * Creates a SmartString with the element name and a default value. The value on SmartDashboard will
+     * be reset to the default value on initialization.
      *
      * @param id    the name of the String on SmartDashboard
      * @param value the default / initialization value for the value

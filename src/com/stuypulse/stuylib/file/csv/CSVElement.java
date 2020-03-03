@@ -1,9 +1,8 @@
 package com.stuypulse.stuylib.file.csv;
 
 /**
- * Stores the data for each element in a custom class. This is to prevent the
- * need to parse doubles over and over again, when we can just store it as a
- * double.
+ * Stores the data for each element in a custom class. This is to prevent the need to parse doubles
+ * over and over again, when we can just store it as a double.
  *
  * Call .toString() or .toDouble() to get data
  *
