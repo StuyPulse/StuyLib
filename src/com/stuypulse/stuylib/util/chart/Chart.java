@@ -82,7 +82,7 @@ public class Chart extends JFrame {
 
         xData = new CopyOnWriteArrayList<Double>();
         yData = new CopyOnWriteArrayList<Double>();
-
+        
         keyTracker = new KeyTracker();
         mouseTracker = new MouseTracker(this);
 
