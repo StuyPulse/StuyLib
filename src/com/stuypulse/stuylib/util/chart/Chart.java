@@ -11,7 +11,7 @@ import org.knowm.xchart.*;
 import org.knowm.xchart.style.markers.SeriesMarkers;
 
 /**
- * Basic single session chart for a chart group.
+ * Basic single series chart for a chart group.
  *
  * @author Myles Pasetsky (@selym3)
  */
@@ -39,7 +39,7 @@ public class Chart extends JFrame {
      *
      * Anything less than 0 turns off max size
      */
-    private int maxDataSize;
+    protected int maxDataSize;
 
     /**
      * Stores the x boundaries of the chart in an array. Acts to scale the chart.
@@ -82,7 +82,7 @@ public class Chart extends JFrame {
 
         xData = new CopyOnWriteArrayList<Double>();
         yData = new CopyOnWriteArrayList<Double>();
-        
+
         keyTracker = new KeyTracker();
         mouseTracker = new MouseTracker(this);
 

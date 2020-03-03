@@ -50,4 +50,15 @@ public class FilteredChart extends Chart {
         update(getXData().get(getXData().size() - 1) + 1, filter.get(y));
     }
 
+    /**
+     * Update Y value with the chart's filter. Y is filtered in order, set X accordingly
+     *
+     * @param x X value
+     * @param y Y value to be filtered
+     */
+    @Override
+    public void update(double x, double y) {
+        super.update(x, filter.get(y));
+    }
+
 }
