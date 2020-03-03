@@ -24,7 +24,7 @@ public class TimedMovingAverage implements IStreamFilter {
         public final double time;
 
         public Value(double value, double time) {
-            this.value = value;
+            this.value = value * time;
             this.time = time;
         }
     }
