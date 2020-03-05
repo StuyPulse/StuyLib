@@ -66,7 +66,7 @@ Current Lead Repository Maintainer
 
 Future Lead Repository Maintainer (if he's a good boi)
 
- - [Myles Pasetsky (2023)](selym3)
+ - [Myles Pasetsky (2023)](https://github.com/selym3)
 
 Notable Contributors
 
