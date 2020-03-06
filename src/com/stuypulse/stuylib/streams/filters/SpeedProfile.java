@@ -3,10 +3,9 @@ package com.stuypulse.stuylib.streams.filters;
 import com.stuypulse.stuylib.math.SLMath;
 
 /**
- * A filter that takes inputs and limits the amount of jerk and acceleration
- * that can happen in one step. Because some of the calculations need to make
- * estimates about the future, this is not based on time. The rate at which you
- * call this filter will affect the changes you observe.
+ * A filter that takes inputs and limits the amount of jerk and acceleration that can happen in one
+ * step. Because some of the calculations need to make estimates about the future, this is not based
+ * on time. The rate at which you call this filter will affect the changes you observe.
  *
  * @author Sam (sam.belliveau@gmail.com)
  */
@@ -23,18 +22,18 @@ public class SpeedProfile implements IStreamFilter {
 
     /**
      * Create speed profile with custom accel and jerk limits
-     * 
+     *
      * @param accelLimit maximum amount of acceleration in one step
      * @param jerkLimit  maximum amount of jerk in one step
      */
     public SpeedProfile(double accelLimit, double jerkLimit) {
         // Jerk cannot be <= 0
-        if (jerkLimit <= 0) {
+        if(jerkLimit <= 0) {
             throw new IllegalArgumentException("jerkLimit must be above 0");
         }
 
         // Negative accelLimit means no accel limit
-        if (accelLimit <= 0) {
+        if(accelLimit <= 0) {
             accelLimit = Double.MAX_VALUE;
         }
 
@@ -48,7 +47,7 @@ public class SpeedProfile implements IStreamFilter {
 
     /**
      * Create SpeedProfile with a custom jerk limit
-     * 
+     *
      * @param jerkLimit most amount of jerk allowed in one step
      */
     public SpeedProfile(double jerkLimit) {
@@ -57,7 +56,8 @@ public class SpeedProfile implements IStreamFilter {
 
     public double get(double next) {
         // Current position accounting for reduced jerk
-        double projected = mSpeed + mAccel * Math.abs(mAccel / mJerkLimit) / 2.0;
+        double projected = mSpeed
+                + mAccel * Math.abs(mAccel / mJerkLimit) / 2.0;
 
         // How much the acceleration needs to change
         double targetAccel = next - projected;

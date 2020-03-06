@@ -490,7 +490,7 @@ $('.navPadding').css('padding-top', $('.fixedNav').css("height"));
 <dd>&nbsp;</dd>
 <dt><span class="memberNameLink"><a href="com/stuypulse/stuylib/streams/filters/OnDerivative.html#get(double)">get(double)</a></span> - Method in class com.stuypulse.stuylib.streams.filters.<a href="com/stuypulse/stuylib/streams/filters/OnDerivative.html" title="class in com.stuypulse.stuylib.streams.filters">OnDerivative</a></dt>
 <dd>&nbsp;</dd>
-<dt><span class="memberNameLink"><a href="com/stuypulse/stuylib/streams/filters/SCurve.html#get(double)">get(double)</a></span> - Method in class com.stuypulse.stuylib.streams.filters.<a href="com/stuypulse/stuylib/streams/filters/SCurve.html" title="class in com.stuypulse.stuylib.streams.filters">SCurve</a></dt>
+<dt><span class="memberNameLink"><a href="com/stuypulse/stuylib/streams/filters/SpeedProfile.html#get(double)">get(double)</a></span> - Method in class com.stuypulse.stuylib.streams.filters.<a href="com/stuypulse/stuylib/streams/filters/SpeedProfile.html" title="class in com.stuypulse.stuylib.streams.filters">SpeedProfile</a></dt>
 <dd>&nbsp;</dd>
 <dt><span class="memberNameLink"><a href="com/stuypulse/stuylib/streams/filters/TimedMovingAverage.html#get(double)">get(double)</a></span> - Method in class com.stuypulse.stuylib.streams.filters.<a href="com/stuypulse/stuylib/streams/filters/TimedMovingAverage.html" title="class in com.stuypulse.stuylib.streams.filters">TimedMovingAverage</a></dt>
 <dd>&nbsp;</dd>
@@ -1624,18 +1624,6 @@ $('.navPadding').css('padding-top', $('.fixedNav').css("height"));
 </a>
 <h2 class="title">S</h2>
 <dl>
-<dt><a href="com/stuypulse/stuylib/streams/filters/SCurve.html" title="class in com.stuypulse.stuylib.streams.filters"><span class="typeNameLink">SCurve</span></a> - Class in <a href="com/stuypulse/stuylib/streams/filters/package-summary.html">com.stuypulse.stuylib.streams.filters</a></dt>
-<dd>
-<div class="block">A filter that takes in real time inputs and profiles it into an S Curve.</div>
-</dd>
-<dt><span class="memberNameLink"><a href="com/stuypulse/stuylib/streams/filters/SCurve.html#%3Cinit%3E(double)">SCurve(double)</a></span> - Constructor for class com.stuypulse.stuylib.streams.filters.<a href="com/stuypulse/stuylib/streams/filters/SCurve.html" title="class in com.stuypulse.stuylib.streams.filters">SCurve</a></dt>
-<dd>
-<div class="block">Create an SCurve with accel and jerk settings</div>
-</dd>
-<dt><span class="memberNameLink"><a href="com/stuypulse/stuylib/streams/filters/SCurve.html#%3Cinit%3E(double,double)">SCurve(double, double)</a></span> - Constructor for class com.stuypulse.stuylib.streams.filters.<a href="com/stuypulse/stuylib/streams/filters/SCurve.html" title="class in com.stuypulse.stuylib.streams.filters">SCurve</a></dt>
-<dd>
-<div class="block">Create an SCurve with accel and jerk settings</div>
-</dd>
 <dt><span class="memberNameLink"><a href="com/stuypulse/stuylib/network/SmartBoolean.html#set(boolean)">set(boolean)</a></span> - Method in class com.stuypulse.stuylib.network.<a href="com/stuypulse/stuylib/network/SmartBoolean.html" title="class in com.stuypulse.stuylib.network">SmartBoolean</a></dt>
 <dd>
 <div class="block">Sets the value of the boolean on SmartDashboard</div>
@@ -1801,6 +1789,19 @@ $('.navPadding').css('padding-top', $('.fixedNav').css("height"));
 <dt><span class="memberNameLink"><a href="com/stuypulse/stuylib/network/limelight/Solve3DResult.html#%3Cinit%3E(double,double,double,double,double,double)">Solve3DResult(double, double, double, double, double, double)</a></span> - Constructor for class com.stuypulse.stuylib.network.limelight.<a href="com/stuypulse/stuylib/network/limelight/Solve3DResult.html" title="class in com.stuypulse.stuylib.network.limelight">Solve3DResult</a></dt>
 <dd>
 <div class="block">Initialize each part of the Solve3DResult</div>
+</dd>
+<dt><a href="com/stuypulse/stuylib/streams/filters/SpeedProfile.html" title="class in com.stuypulse.stuylib.streams.filters"><span class="typeNameLink">SpeedProfile</span></a> - Class in <a href="com/stuypulse/stuylib/streams/filters/package-summary.html">com.stuypulse.stuylib.streams.filters</a></dt>
+<dd>
+<div class="block">A filter that takes inputs and limits the amount of jerk and acceleration that can happen in one
+ step.</div>
+</dd>
+<dt><span class="memberNameLink"><a href="com/stuypulse/stuylib/streams/filters/SpeedProfile.html#%3Cinit%3E(double)">SpeedProfile(double)</a></span> - Constructor for class com.stuypulse.stuylib.streams.filters.<a href="com/stuypulse/stuylib/streams/filters/SpeedProfile.html" title="class in com.stuypulse.stuylib.streams.filters">SpeedProfile</a></dt>
+<dd>
+<div class="block">Create SpeedProfile with a custom jerk limit</div>
+</dd>
+<dt><span class="memberNameLink"><a href="com/stuypulse/stuylib/streams/filters/SpeedProfile.html#%3Cinit%3E(double,double)">SpeedProfile(double, double)</a></span> - Constructor for class com.stuypulse.stuylib.streams.filters.<a href="com/stuypulse/stuylib/streams/filters/SpeedProfile.html" title="class in com.stuypulse.stuylib.streams.filters">SpeedProfile</a></dt>
+<dd>
+<div class="block">Create speed profile with custom accel and jerk limits</div>
 </dd>
 <dt><span class="memberNameLink"><a href="com/stuypulse/stuylib/math/SLMath.html#spow(double,double)">spow(double, double)</a></span> - Static method in class com.stuypulse.stuylib.math.<a href="com/stuypulse/stuylib/math/SLMath.html" title="class in com.stuypulse.stuylib.math">SLMath</a></dt>
 <dd>
