@@ -111,7 +111,11 @@ public class PIDCalculator extends Controller {
         mLocalMax = Math.max(Math.abs(mLocalMax), Math.abs(error));
 
         // Return bang bang control
-        return Math.signum(error) * mControlSpeed;
+        if(error < 0) {
+            return -mControlSpeed;
+        } else {
+            return mControlSpeed;
+        }
     }
 
     /**
