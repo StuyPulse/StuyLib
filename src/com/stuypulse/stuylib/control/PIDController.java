@@ -1,22 +1,25 @@
 package com.stuypulse.stuylib.control;
 
-import com.stuypulse.stuylib.streams.filters.IStreamFilter;
+import com.stuypulse.stuylib.streams.filters.IFilter;
 import com.stuypulse.stuylib.math.SLMath;
 
 /**
- * This PID controller is built by extending the Controller class. It has a dynamic rate, so it can
- * detect how much time has passed between each update. It is made to be easy to use and simple to
- * understand while still being accurate.
+ * This PID controller is built by extending the Controller class. It has a
+ * dynamic rate, so it can detect how much time has passed between each update.
+ * It is made to be easy to use and simple to understand while still being
+ * accurate.
  *
- * This PID controller resets the integral every time the error crosses 0 to prevent integral windup
- * / lag. This means that it may not be suitable for setups involving rate instead of position
+ * This PID controller resets the integral every time the error crosses 0 to
+ * prevent integral windup / lag. This means that it may not be suitable for
+ * setups involving rate instead of position
  *
  * @author Sam (sam.belliveau@gmail.com)
  */
 public class PIDController extends Controller {
 
     /**
-     * Amount of time in between .update() calls that is aloud before the controller resets the system
+     * Amount of time in between .update() calls that is aloud before the controller
+     * resets the system
      */
     private static final double kMaxTimeBeforeReset = 0.5;
 
@@ -27,7 +30,7 @@ public class PIDController extends Controller {
 
     // The Integral of the errors and filter for the I Component
     private double mIntegral;
-    private IStreamFilter mIFilter;
+    private IFilter mIFilter;
 
     /**
      * @param p The Proportional Multiplier
@@ -48,8 +51,8 @@ public class PIDController extends Controller {
     }
 
     /**
-     * Resets the integrator in the PIDController. This automatically gets called if the gap between
-     * update() commands is too large
+     * Resets the integrator in the PIDController. This automatically gets called if
+     * the gap between update() commands is too large
      */
     public void reset() {
         mIntegral = 0;
@@ -75,7 +78,7 @@ public class PIDController extends Controller {
         double d_out = getVelocity() * mD;
 
         // Check if time passed exceeds reset limit
-        if(getRate() < kMaxTimeBeforeReset) {
+        if (getRate() < kMaxTimeBeforeReset) {
             // Return the calculated result
             return p_out + i_out + d_out;
         } else {
@@ -145,15 +148,15 @@ public class PIDController extends Controller {
     }
 
     /**
-     * It is common for a limit filter to be put on the I component to prevent Integral Windup. You can
-     * use SLMath.limit(x) to do this.
+     * It is common for a limit filter to be put on the I component to prevent
+     * Integral Windup. You can use SLMath.limit(x) to do this.
      *
      * Passing null will disable the filter
      *
      * @param filter filter put on the I component of the PID Controller
      * @return reference to PIDController (so you can chain the commands together)
      */
-    public PIDController setIntegratorFilter(IStreamFilter filter) {
+    public PIDController setIntegratorFilter(IFilter filter) {
         // Use default filter if given null
         mIFilter = (filter == null) ? ((x) -> x) : filter;
         return this;
@@ -163,8 +166,7 @@ public class PIDController extends Controller {
      * @return information about this PIDController
      */
     public String toString() {
-        return "(P: " + SLMath.round(getP(), 4) + ", I: "
-                + SLMath.round(getI(), 4) + ", D: " + SLMath.round(getD(), 4)
+        return "(P: " + SLMath.round(getP(), 4) + ", I: " + SLMath.round(getI(), 4) + ", D: " + SLMath.round(getD(), 4)
                 + ")";
     }
 }

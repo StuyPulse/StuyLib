@@ -8,7 +8,7 @@ package com.stuypulse.stuylib.streams.filters;
  * @author Sam (sam.belliveau@gmail.com)
  */
 
-public class WeightedMovingAverage implements IStreamFilter {
+public class WeightedMovingAverage implements IFilter {
 
     private int mSize;
     private double mTotal;
@@ -19,7 +19,7 @@ public class WeightedMovingAverage implements IStreamFilter {
      * @param size size of weighted moving average
      */
     public WeightedMovingAverage(int size) {
-        if(size <= 0) {
+        if (size <= 0) {
             throw new IllegalArgumentException("size must be greater than 0!");
         }
 

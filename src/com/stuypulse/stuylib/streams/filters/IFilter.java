@@ -6,7 +6,7 @@ package com.stuypulse.stuylib.streams.filters;
  * @author Sam (sam.belliveau@gmail.com)
  */
 
-public interface IStreamFilter {
+public interface IFilter {
 
     /**
      * Get next value in Filter based on the next value given

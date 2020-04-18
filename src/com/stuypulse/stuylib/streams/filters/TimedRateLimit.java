@@ -6,13 +6,13 @@ import com.stuypulse.stuylib.util.StopWatch;
 /**
  * This class lets you rate limit a stream of inputs
  *
- * Instead of being based on the rate that update is called, the value you give it is based on how
- * much it should be able to change in one second.
+ * Instead of being based on the rate that update is called, the value you give
+ * it is based on how much it should be able to change in one second.
  *
  * @author Sam (sam.belliveau@gmail.com)
  */
 
-public class TimedRateLimit implements IStreamFilter {
+public class TimedRateLimit implements IFilter {
 
     // Used to get the time since the last get call
     private StopWatch mTimer;
@@ -22,12 +22,12 @@ public class TimedRateLimit implements IStreamFilter {
     private double mRateLimit;
 
     /**
-     * @param rateLimit The amount that the value should be able to change in one second.
+     * @param rateLimit The amount that the value should be able to change in one
+     *                  second.
      */
     public TimedRateLimit(double rateLimit) {
-        if(rateLimit <= 0) {
-            throw new IllegalArgumentException(
-                    "rateLimit must be a positive number");
+        if (rateLimit <= 0) {
+            throw new IllegalArgumentException("rateLimit must be a positive number");
         }
 
         mTimer = new StopWatch();
@@ -36,7 +36,6 @@ public class TimedRateLimit implements IStreamFilter {
     }
 
     public double get(double next) {
-        return mLastValue += SLMath.limit(next - mLastValue,
-                mRateLimit * mTimer.reset());
+        return mLastValue += SLMath.limit(next - mLastValue, mRateLimit * mTimer.reset());
     }
 }

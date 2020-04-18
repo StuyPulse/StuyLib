@@ -8,7 +8,7 @@ import com.stuypulse.stuylib.util.StopWatch;
  * @author Sam (sam.belliveau@gmail.com)
  */
 
-public class HighPassFilter implements IStreamFilter {
+public class HighPassFilter implements IFilter {
 
     private StopWatch mTimer;
 
@@ -20,7 +20,7 @@ public class HighPassFilter implements IStreamFilter {
      * @param rc time constant for high pass filter
      */
     public HighPassFilter(double rc) {
-        if(rc < 0) {
+        if (rc < 0) {
             throw new IllegalArgumentException("rc must be a positive number");
         }
 

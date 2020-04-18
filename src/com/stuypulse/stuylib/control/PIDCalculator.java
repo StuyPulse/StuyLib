@@ -1,15 +1,16 @@
 package com.stuypulse.stuylib.control;
 
-import com.stuypulse.stuylib.streams.filters.IStreamFilter;
-import com.stuypulse.stuylib.streams.filters.IStreamFilterGroup;
+import com.stuypulse.stuylib.streams.filters.IFilter;
+import com.stuypulse.stuylib.streams.filters.IFilterGroup;
 import com.stuypulse.stuylib.streams.filters.MovingAverage;
 import com.stuypulse.stuylib.util.StopWatch;
 import com.stuypulse.stuylib.math.SLMath;
 
 /**
- * This is a Bang-Bang controller that while controlling the robot, will be able to calculate the
- * values for the PID controller. It does this by taking the results of oscillations, then creating
- * a PIDController withe the correct values once the oscillations have been measured.
+ * This is a Bang-Bang controller that while controlling the robot, will be able
+ * to calculate the values for the PID controller. It does this by taking the
+ * results of oscillations, then creating a PIDController withe the correct
+ * values once the oscillations have been measured.
  *
  * @author Sam (sam.belliveau@gmail.com)
  */
@@ -23,10 +24,10 @@ public class PIDCalculator extends Controller {
     private static final double kMinPeriodTime = 0.1;
 
     // The filter easuring the period and amplitude
-    private static IStreamFilter getMeasurementFilter() {
+    private static IFilter getMeasurementFilter() {
         // This is a mix between accuracy and speed of updating.
         // Takes about 6 periods to get accurate results
-        return new IStreamFilterGroup(new MovingAverage(12));
+        return new IFilterGroup(new MovingAverage(12));
     }
 
     // The speed that the bang bang controller will run at
@@ -37,8 +38,8 @@ public class PIDCalculator extends Controller {
     private double mAmplitude;
 
     // The filters used to average the period and amplitudes
-    private IStreamFilter mPeriodFilter;
-    private IStreamFilter mAmplitudeFilter;
+    private IFilter mPeriodFilter;
+    private IFilter mAmplitudeFilter;
 
     // Timer that keeps track of the length of a period
     private StopWatch mPeriodTimer;
@@ -77,27 +78,27 @@ public class PIDCalculator extends Controller {
     }
 
     /**
-     * Calculate the value that the controller wants to move at while calculating the values for the
-     * PIDController
+     * Calculate the value that the controller wants to move at while calculating
+     * the values for the PIDController
      *
      * @param error the error that the controller will use
      * @return the calculated result from the controller
      */
     protected double calculate(double error) {
         // If there is a gap in updates, then disable until next period
-        if(getRate() > kMaxTimeBeforeReset) {
+        if (getRate() > kMaxTimeBeforeReset) {
             mRunning = false;
         }
 
         // Check if we crossed 0, ie, time for next update
         double sign = Math.signum(error);
-        if((error * sign) < (getRawVelocity() * sign)) {
+        if ((error * sign) < (getRawVelocity() * sign)) {
             // Get period and amplitude
             double period = mPeriodTimer.reset() * 2.0;
             double amplitude = mLocalMax;
 
             // If we are running and period is valid, record it
-            if(mRunning && kMinPeriodTime < period) {
+            if (mRunning && kMinPeriodTime < period) {
                 mPeriod = mPeriodFilter.get(period);
                 mAmplitude = mAmplitudeFilter.get(amplitude);
             }
@@ -111,7 +112,7 @@ public class PIDCalculator extends Controller {
         mLocalMax = Math.max(Math.abs(mLocalMax), Math.abs(error));
 
         // Return bang bang control
-        if(error < 0) {
+        if (error < 0) {
             return -mControlSpeed;
         } else {
             return mControlSpeed;
@@ -147,7 +148,7 @@ public class PIDCalculator extends Controller {
         kI = Math.max(kI, 0.0);
         kD = Math.max(kD, 0.0);
 
-        if(mAmplitude > 0) {
+        if (mAmplitude > 0) {
             double t = getT();
             double k = getK();
 
@@ -189,8 +190,7 @@ public class PIDCalculator extends Controller {
      * @return information about this PIDController
      */
     public String toString() {
-        return "(K: " + SLMath.round(getK(), 4) + ", T: "
-                + SLMath.round(getT(), 4) + ") "
+        return "(K: " + SLMath.round(getK(), 4) + ", T: " + SLMath.round(getT(), 4) + ") "
                 + getPIDController().toString();
     }
 }

@@ -1,7 +1,7 @@
 package com.stuypulse.stuylib.streams;
 
-import com.stuypulse.stuylib.streams.filters.IStreamFilter;
-import com.stuypulse.stuylib.streams.filters.IStreamFilterGroup;
+import com.stuypulse.stuylib.streams.filters.IFilter;
+import com.stuypulse.stuylib.streams.filters.IFilterGroup;
 
 /**
  * Takes a Stream and a StreamFilter and makes a FilteredStream
@@ -14,7 +14,7 @@ import com.stuypulse.stuylib.streams.filters.IStreamFilterGroup;
 public class FilteredIStream implements IStream {
 
     private IStream mStream; // Stream used
-    private IStreamFilter mStreamFilter; // StreamFilter used
+    private IFilter mStreamFilter; // StreamFilter used
 
     /**
      * Makes filtered stream from stream and stream filter
@@ -22,9 +22,9 @@ public class FilteredIStream implements IStream {
      * @param stream input stream
      * @param filter stream filter
      */
-    public FilteredIStream(IStream stream, IStreamFilter... filter) {
+    public FilteredIStream(IStream stream, IFilter... filter) {
         mStream = stream;
-        mStreamFilter = new IStreamFilterGroup(filter);
+        mStreamFilter = new IFilterGroup(filter);
     }
 
     /**
