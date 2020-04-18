@@ -172,13 +172,12 @@ public class Chart extends JFrame {
     /**
      * Add key binding to chart's key tracker.
      *
-     * @param keyCode         key code
-     * @param bindingFunction custom binding function
+     * @param key      key code
+     * @param function custom binding function
      * @return Reference to chart
      */
-    public Chart addKeyBinding(int keyCode,
-            KeyTracker.BindingFunction bindingFunction) {
-        keyTracker.addBinding(keyCode, bindingFunction);
+    public Chart addBind(String key, KeyTracker.KeyFunction function) {
+        keyTracker.addBind(key, function);
         return this;
     }
 
@@ -409,11 +408,11 @@ public class Chart extends JFrame {
     /**
      * Gets the boolean value of a key
      *
-     * @param e key code
+     * @param key key to check
      * @return boolean value of the key
      */
-    public boolean getKey(int e) {
-        return keyTracker.getKey(e);
+    public boolean getKey(String key) {
+        return keyTracker.getKey(key);
     }
 
     @Override

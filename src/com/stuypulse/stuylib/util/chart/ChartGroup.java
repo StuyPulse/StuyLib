@@ -1,7 +1,6 @@
 package com.stuypulse.stuylib.util.chart;
 
 import java.awt.CardLayout;
-import java.awt.event.KeyEvent;
 import java.util.LinkedList;
 import java.util.List;
 
@@ -32,12 +31,12 @@ public class ChartGroup extends Chart {
     /**
      * Built-in utility for using left arrow key to scroll through charts.
      */
-    private final KeyTracker.BindingFunction leftFunction;
+    private final KeyTracker.KeyFunction leftFunction;
 
     /**
      * Built-in utility for using right arrow key to scroll through charts.
      */
-    private final KeyTracker.BindingFunction rightFunction;
+    private final KeyTracker.KeyFunction rightFunction;
 
     /**
      * Constructor to take in charts.
@@ -64,8 +63,8 @@ public class ChartGroup extends Chart {
             this.charts.get(currentCardIndex).requestFocus();
         };
 
-        addKeyBinding(KeyEvent.VK_LEFT, leftFunction);
-        addKeyBinding(KeyEvent.VK_RIGHT, rightFunction);
+        addBind("left", leftFunction);
+        addBind("right", rightFunction);
 
         getContentPane().setLayout(cardLayout);
 

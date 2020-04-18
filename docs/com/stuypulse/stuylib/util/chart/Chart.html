@@ -306,8 +306,8 @@ java.lang.String&nbsp;y)</code></th>
 <tbody>
 <tr class="altColor" id="i0">
 <td class="colFirst"><code><a href="Chart.html" title="class in com.stuypulse.stuylib.util.chart">Chart</a></code></td>
-<th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#addKeyBinding(int,com.stuypulse.stuylib.util.chart.KeyTracker.BindingFunction)">addKeyBinding</a></span>&#8203;(int&nbsp;keyCode,
-<a href="KeyTracker.BindingFunction.html" title="interface in com.stuypulse.stuylib.util.chart">KeyTracker.BindingFunction</a>&nbsp;bindingFunction)</code></th>
+<th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#addBind(java.lang.String,com.stuypulse.stuylib.util.chart.KeyTracker.KeyFunction)">addBind</a></span>&#8203;(java.lang.String&nbsp;key,
+<a href="KeyTracker.KeyFunction.html" title="interface in com.stuypulse.stuylib.util.chart">KeyTracker.KeyFunction</a>&nbsp;function)</code></th>
 <td class="colLast">
 <div class="block">Add key binding to chart's key tracker.</div>
 </td>
@@ -328,7 +328,7 @@ java.lang.String&nbsp;y)</code></th>
 </tr>
 <tr class="rowColor" id="i3">
 <td class="colFirst"><code>boolean</code></td>
-<th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#getKey(int)">getKey</a></span>&#8203;(int&nbsp;e)</code></th>
+<th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#getKey(java.lang.String)">getKey</a></span>&#8203;(java.lang.String&nbsp;key)</code></th>
 <td class="colLast">
 <div class="block">Gets the boolean value of a key</div>
 </td>
@@ -635,14 +635,14 @@ java.lang.String&nbsp;y)</span></div>
 </li>
 <li class="blockList">
 <section class="detail">
-<h3><a id="addKeyBinding(int,com.stuypulse.stuylib.util.chart.KeyTracker.BindingFunction)">addKeyBinding</a></h3>
-<div class="memberSignature"><span class="modifiers">public</span>&nbsp;<span class="returnType"><a href="Chart.html" title="class in com.stuypulse.stuylib.util.chart">Chart</a></span>&nbsp;<span class="memberName">addKeyBinding</span>&#8203;(<span class="arguments">int&nbsp;keyCode,
-<a href="KeyTracker.BindingFunction.html" title="interface in com.stuypulse.stuylib.util.chart">KeyTracker.BindingFunction</a>&nbsp;bindingFunction)</span></div>
+<h3><a id="addBind(java.lang.String,com.stuypulse.stuylib.util.chart.KeyTracker.KeyFunction)">addBind</a></h3>
+<div class="memberSignature"><span class="modifiers">public</span>&nbsp;<span class="returnType"><a href="Chart.html" title="class in com.stuypulse.stuylib.util.chart">Chart</a></span>&nbsp;<span class="memberName">addBind</span>&#8203;(<span class="arguments">java.lang.String&nbsp;key,
+<a href="KeyTracker.KeyFunction.html" title="interface in com.stuypulse.stuylib.util.chart">KeyTracker.KeyFunction</a>&nbsp;function)</span></div>
 <div class="block">Add key binding to chart's key tracker.</div>
 <dl>
 <dt><span class="paramLabel">Parameters:</span></dt>
-<dd><code>keyCode</code> - key code</dd>
-<dd><code>bindingFunction</code> - custom binding function</dd>
+<dd><code>key</code> - key code</dd>
+<dd><code>function</code> - custom binding function</dd>
 <dt><span class="returnLabel">Returns:</span></dt>
 <dd>Reference to chart</dd>
 </dl>
@@ -854,12 +854,12 @@ double&nbsp;max)</span></div>
 </li>
 <li class="blockList">
 <section class="detail">
-<h3><a id="getKey(int)">getKey</a></h3>
-<div class="memberSignature"><span class="modifiers">public</span>&nbsp;<span class="returnType">boolean</span>&nbsp;<span class="memberName">getKey</span>&#8203;(<span class="arguments">int&nbsp;e)</span></div>
+<h3><a id="getKey(java.lang.String)">getKey</a></h3>
+<div class="memberSignature"><span class="modifiers">public</span>&nbsp;<span class="returnType">boolean</span>&nbsp;<span class="memberName">getKey</span>&#8203;(<span class="arguments">java.lang.String&nbsp;key)</span></div>
 <div class="block">Gets the boolean value of a key</div>
 <dl>
 <dt><span class="paramLabel">Parameters:</span></dt>
-<dd><code>e</code> - key code</dd>
+<dd><code>key</code> - key to check</dd>
 <dt><span class="returnLabel">Returns:</span></dt>
 <dd>boolean value of the key</dd>
 </dl>

@@ -17,69 +17,89 @@ public class KeyTracker extends KeyAdapter {
     /**
      * Interface for basic key bindings.
      */
-    public interface BindingFunction {
+    public interface KeyFunction {
 
-        void function();
+        void execute();
     }
 
     /**
      * Set of key codes that will contain keys currently pressed.
      */
-    private Set<Integer> values;
+    private Set<String> values;
 
     /**
      * Binding functions mapped to key codes.
      */
-    private Map<Integer, BindingFunction> bindings;
+    private Map<String, KeyFunction> bindings;
 
     /**
      * Initialize set of key presses and key bindings.
      */
     public KeyTracker() {
-        values = new HashSet<Integer>();
-        bindings = new HashMap<Integer, BindingFunction>();
+        values = new HashSet<String>();
+        bindings = new HashMap<String, KeyFunction>();
+    }
+
+    /**
+     *
+     * @param e Key Event from KeyPress
+     * @return
+     */
+    private static String getKeyName(KeyEvent e) {
+        return sanatizeKeyName(KeyEvent.getKeyText(e.getKeyCode()));
+    }
+
+    /**
+     *
+     * @param name input key name
+     * @return the sanatized key name
+     */
+    private static String sanatizeKeyName(String name) {
+        return name.strip().toUpperCase();
     }
 
     /**
      * Get the value of a key press.
      *
-     * @param binding key code
+     * @param key name of the key to check
      * @return if a key is pressed
      */
-    public boolean getKey(int binding) {
-        return values.contains(binding);
+    public boolean getKey(String key) {
+        return values.contains(sanatizeKeyName(key));
     }
 
     /**
      * Add a basic binding to a key code
      *
-     * @param keyCode         key code
-     * @param bindingFunction Binding function
+     * @param key      key to bind to
+     * @param function function that gets run when key is pressed
      * @return Reference to key tracker
      */
-    public KeyTracker addBinding(int keyCode, BindingFunction bindingFunction) {
-        bindings.put(keyCode, bindingFunction);
+    public KeyTracker addBind(String key, KeyFunction function) {
+        bindings.put(key, function);
         return this;
     }
 
     @Override
     public void keyPressed(KeyEvent e) {
-        int keyCode = e.getKeyCode();
-        if(keyCode == KeyEvent.VK_ESCAPE) {
+
+        // Close window when the x button is pressed
+        if(e.getKeyCode() == KeyEvent.VK_ESCAPE) {
             System.exit(1);
         }
 
-        if(bindings.containsKey(keyCode)) {
-            bindings.get(keyCode).function();
+        final String keyName = getKeyName(e);
+
+        if(bindings.containsKey(keyName)) {
+            bindings.get(keyName).execute();
         }
 
-        values.add(keyCode);
+        values.add(keyName);
     }
 
     @Override
     public void keyReleased(KeyEvent e) {
-        int keyCode = e.getKeyCode();
-        values.remove(keyCode);
+        values.remove(getKeyName(e));
     }
 
 }

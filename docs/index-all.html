@@ -88,13 +88,13 @@ $('.navPadding').css('padding-top', $('.fixedNav').css("height"));
 <dd>
 <div class="block">Adds charts.</div>
 </dd>
-<dt><span class="memberNameLink"><a href="com/stuypulse/stuylib/util/chart/KeyTracker.html#addBinding(int,com.stuypulse.stuylib.util.chart.KeyTracker.BindingFunction)">addBinding(int, KeyTracker.BindingFunction)</a></span> - Method in class com.stuypulse.stuylib.util.chart.<a href="com/stuypulse/stuylib/util/chart/KeyTracker.html" title="class in com.stuypulse.stuylib.util.chart">KeyTracker</a></dt>
-<dd>
-<div class="block">Add a basic binding to a key code</div>
-</dd>
-<dt><span class="memberNameLink"><a href="com/stuypulse/stuylib/util/chart/Chart.html#addKeyBinding(int,com.stuypulse.stuylib.util.chart.KeyTracker.BindingFunction)">addKeyBinding(int, KeyTracker.BindingFunction)</a></span> - Method in class com.stuypulse.stuylib.util.chart.<a href="com/stuypulse/stuylib/util/chart/Chart.html" title="class in com.stuypulse.stuylib.util.chart">Chart</a></dt>
+<dt><span class="memberNameLink"><a href="com/stuypulse/stuylib/util/chart/Chart.html#addBind(java.lang.String,com.stuypulse.stuylib.util.chart.KeyTracker.KeyFunction)">addBind(String, KeyTracker.KeyFunction)</a></span> - Method in class com.stuypulse.stuylib.util.chart.<a href="com/stuypulse/stuylib/util/chart/Chart.html" title="class in com.stuypulse.stuylib.util.chart">Chart</a></dt>
 <dd>
 <div class="block">Add key binding to chart's key tracker.</div>
+</dd>
+<dt><span class="memberNameLink"><a href="com/stuypulse/stuylib/util/chart/KeyTracker.html#addBind(java.lang.String,com.stuypulse.stuylib.util.chart.KeyTracker.KeyFunction)">addBind(String, KeyTracker.KeyFunction)</a></span> - Method in class com.stuypulse.stuylib.util.chart.<a href="com/stuypulse/stuylib/util/chart/KeyTracker.html" title="class in com.stuypulse.stuylib.util.chart">KeyTracker</a></dt>
+<dd>
+<div class="block">Add a basic binding to a key code</div>
 </dd>
 <dt><span class="memberNameLink"><a href="com/stuypulse/stuylib/math/Vector2D.html#angle()">angle()</a></span> - Method in class com.stuypulse.stuylib.math.<a href="com/stuypulse/stuylib/math/Vector2D.html" title="class in com.stuypulse.stuylib.math">Vector2D</a></dt>
 <dd>
@@ -396,6 +396,8 @@ $('.navPadding').css('padding-top', $('.fixedNav').css("height"));
 <dd>&nbsp;</dd>
 <dt><span class="memberNameLink"><a href="com/stuypulse/stuylib/commands/ThreadedCommand.html#execute()">execute()</a></span> - Method in class com.stuypulse.stuylib.commands.<a href="com/stuypulse/stuylib/commands/ThreadedCommand.html" title="class in com.stuypulse.stuylib.commands">ThreadedCommand</a></dt>
 <dd>&nbsp;</dd>
+<dt><span class="memberNameLink"><a href="com/stuypulse/stuylib/util/chart/KeyTracker.KeyFunction.html#execute()">execute()</a></span> - Method in interface com.stuypulse.stuylib.util.chart.<a href="com/stuypulse/stuylib/util/chart/KeyTracker.KeyFunction.html" title="interface in com.stuypulse.stuylib.util.chart">KeyTracker.KeyFunction</a></dt>
+<dd>&nbsp;</dd>
 </dl>
 <a id="I:F">
 <!--   -->
@@ -455,8 +457,6 @@ $('.navPadding').css('padding-top', $('.fixedNav').css("height"));
 <div class="block">The Loggable interface should be implemented by a class that can return a useful piece of data
  that can be called on demand to be written into the log.</div>
 </dd>
-<dt><span class="memberNameLink"><a href="com/stuypulse/stuylib/util/chart/KeyTracker.BindingFunction.html#function()">function()</a></span> - Method in interface com.stuypulse.stuylib.util.chart.<a href="com/stuypulse/stuylib/util/chart/KeyTracker.BindingFunction.html" title="interface in com.stuypulse.stuylib.util.chart">KeyTracker.BindingFunction</a></dt>
-<dd>&nbsp;</dd>
 </dl>
 <a id="I:G">
 <!--   -->
@@ -653,14 +653,6 @@ $('.navPadding').css('padding-top', $('.fixedNav').css("height"));
 <dd>
 <div class="block">Adjusted Amplitude of Oscillations</div>
 </dd>
-<dt><span class="memberNameLink"><a href="com/stuypulse/stuylib/util/chart/Chart.html#getKey(int)">getKey(int)</a></span> - Method in class com.stuypulse.stuylib.util.chart.<a href="com/stuypulse/stuylib/util/chart/Chart.html" title="class in com.stuypulse.stuylib.util.chart">Chart</a></dt>
-<dd>
-<div class="block">Gets the boolean value of a key</div>
-</dd>
-<dt><span class="memberNameLink"><a href="com/stuypulse/stuylib/util/chart/KeyTracker.html#getKey(int)">getKey(int)</a></span> - Method in class com.stuypulse.stuylib.util.chart.<a href="com/stuypulse/stuylib/util/chart/KeyTracker.html" title="class in com.stuypulse.stuylib.util.chart">KeyTracker</a></dt>
-<dd>
-<div class="block">Get the value of a key press.</div>
-</dd>
 <dt><span class="memberNameLink"><a href="com/stuypulse/stuylib/input/gamepads/NetKeyGamepad.html#getKey(java.lang.String)">getKey(String)</a></span> - Method in class com.stuypulse.stuylib.input.gamepads.<a href="com/stuypulse/stuylib/input/gamepads/NetKeyGamepad.html" title="class in com.stuypulse.stuylib.input.gamepads">NetKeyGamepad</a></dt>
 <dd>
 <div class="block">Get key name as WPI Button</div>
@@ -668,6 +660,14 @@ $('.navPadding').css('padding-top', $('.fixedNav').css("height"));
 <dt><span class="memberNameLink"><a href="com/stuypulse/stuylib/input/keyboard/NetKeyboard.html#getKey(java.lang.String)">getKey(String)</a></span> - Method in class com.stuypulse.stuylib.input.keyboard.<a href="com/stuypulse/stuylib/input/keyboard/NetKeyboard.html" title="class in com.stuypulse.stuylib.input.keyboard">NetKeyboard</a></dt>
 <dd>
 <div class="block">Gets if key is pressed</div>
+</dd>
+<dt><span class="memberNameLink"><a href="com/stuypulse/stuylib/util/chart/Chart.html#getKey(java.lang.String)">getKey(String)</a></span> - Method in class com.stuypulse.stuylib.util.chart.<a href="com/stuypulse/stuylib/util/chart/Chart.html" title="class in com.stuypulse.stuylib.util.chart">Chart</a></dt>
+<dd>
+<div class="block">Gets the boolean value of a key</div>
+</dd>
+<dt><span class="memberNameLink"><a href="com/stuypulse/stuylib/util/chart/KeyTracker.html#getKey(java.lang.String)">getKey(String)</a></span> - Method in class com.stuypulse.stuylib.util.chart.<a href="com/stuypulse/stuylib/util/chart/KeyTracker.html" title="class in com.stuypulse.stuylib.util.chart">KeyTracker</a></dt>
+<dd>
+<div class="block">Get the value of a key press.</div>
 </dd>
 <dt><span class="memberNameLink"><a href="com/stuypulse/stuylib/network/SLNetworkTable.html#getKeys()">getKeys()</a></span> - Method in class com.stuypulse.stuylib.network.<a href="com/stuypulse/stuylib/network/SLNetworkTable.html" title="class in com.stuypulse.stuylib.network">SLNetworkTable</a></dt>
 <dd>
@@ -1350,7 +1350,7 @@ $('.navPadding').css('padding-top', $('.fixedNav').css("height"));
 <dd>
 <div class="block">Initialize set of key presses and key bindings.</div>
 </dd>
-<dt><a href="com/stuypulse/stuylib/util/chart/KeyTracker.BindingFunction.html" title="interface in com.stuypulse.stuylib.util.chart"><span class="typeNameLink">KeyTracker.BindingFunction</span></a> - Interface in <a href="com/stuypulse/stuylib/util/chart/package-summary.html">com.stuypulse.stuylib.util.chart</a></dt>
+<dt><a href="com/stuypulse/stuylib/util/chart/KeyTracker.KeyFunction.html" title="interface in com.stuypulse.stuylib.util.chart"><span class="typeNameLink">KeyTracker.KeyFunction</span></a> - Interface in <a href="com/stuypulse/stuylib/util/chart/package-summary.html">com.stuypulse.stuylib.util.chart</a></dt>
 <dd>
 <div class="block">Interface for basic key bindings.</div>
 </dd>
