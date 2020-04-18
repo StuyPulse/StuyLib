@@ -97,13 +97,13 @@ $('.navPadding').css('padding-top', $('.fixedNav').css("height"));
 <section class="description">
 <dl>
 <dt>All Implemented Interfaces:</dt>
-<dd><code><a href="IStreamFilter.html" title="interface in com.stuypulse.stuylib.streams.filters">IStreamFilter</a></code></dd>
+<dd><code><a href="IFilter.html" title="interface in com.stuypulse.stuylib.streams.filters">IFilter</a></code></dd>
 </dl>
 <hr>
 <pre>public class <span class="typeNameLabel">LowPassFilter</span>
 extends java.lang.Object
-implements <a href="IStreamFilter.html" title="interface in com.stuypulse.stuylib.streams.filters">IStreamFilter</a></pre>
-<div class="block">Implementation for LowPassFilter for IStreams</div>
+implements <a href="IFilter.html" title="interface in com.stuypulse.stuylib.streams.filters">IFilter</a></pre>
+<div class="block">Implementation for LowPassFilter for IFilter</div>
 </section>
 <section class="summary">
 <ul class="blockList">
@@ -204,15 +204,15 @@ implements <a href="IStreamFilter.html" title="interface in com.stuypulse.stuyli
 <section class="detail">
 <h3><a id="get(double)">get</a></h3>
 <div class="memberSignature"><span class="modifiers">public</span>&nbsp;<span class="returnType">double</span>&nbsp;<span class="memberName">get</span>&#8203;(<span class="arguments">double&nbsp;next)</span></div>
-<div class="block"><span class="descfrmTypeLabel">Description copied from interface:&nbsp;<code><a href="IStreamFilter.html#get(double)">IStreamFilter</a></code></span></div>
+<div class="block"><span class="descfrmTypeLabel">Description copied from interface:&nbsp;<code><a href="IFilter.html#get(double)">IFilter</a></code></span></div>
 <div class="block">Get next value in Filter based on the next value given</div>
 <dl>
 <dt><span class="overrideSpecifyLabel">Specified by:</span></dt>
-<dd><code><a href="IStreamFilter.html#get(double)">get</a></code>&nbsp;in interface&nbsp;<code><a href="IStreamFilter.html" title="interface in com.stuypulse.stuylib.streams.filters">IStreamFilter</a></code></dd>
+<dd><code><a href="IFilter.html#get(double)">get</a></code>&nbsp;in interface&nbsp;<code><a href="IFilter.html" title="interface in com.stuypulse.stuylib.streams.filters">IFilter</a></code></dd>
 <dt><span class="paramLabel">Parameters:</span></dt>
-<dd><code>next</code> - next input value</dd>
+<dd><code>next</code> - next input value in the stream</dd>
 <dt><span class="returnLabel">Returns:</span></dt>
-<dd>next modified value</dd>
+<dd>the output value of the filter</dd>
 </dl>
 </section>
 </li>

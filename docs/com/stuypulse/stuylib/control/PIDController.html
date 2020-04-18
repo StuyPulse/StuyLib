@@ -201,7 +201,7 @@ double&nbsp;d)</code></th>
 </tr>
 <tr class="rowColor" id="i7">
 <td class="colFirst"><code><a href="PIDController.html" title="class in com.stuypulse.stuylib.control">PIDController</a></code></td>
-<th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#setIntegratorFilter(com.stuypulse.stuylib.streams.filters.IStreamFilter)">setIntegratorFilter</a></span>&#8203;(<a href="../streams/filters/IStreamFilter.html" title="interface in com.stuypulse.stuylib.streams.filters">IStreamFilter</a>&nbsp;filter)</code></th>
+<th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#setIntegratorFilter(com.stuypulse.stuylib.streams.filters.IFilter)">setIntegratorFilter</a></span>&#8203;(<a href="../streams/filters/IFilter.html" title="interface in com.stuypulse.stuylib.streams.filters">IFilter</a>&nbsp;filter)</code></th>
 <td class="colLast">
 <div class="block">It is common for a limit filter to be put on the I component to prevent Integral Windup.</div>
 </td>
@@ -231,7 +231,7 @@ double&nbsp;d)</code></th>
 <h3>Methods inherited from class&nbsp;com.stuypulse.stuylib.control.<a href="Controller.html" title="class in com.stuypulse.stuylib.control">Controller</a></h3>
 <a id="methods.inherited.from.class.com.stuypulse.stuylib.control.Controller">
 <!--   -->
-</a><code><a href="Controller.html#getError()">getError</a>, <a href="Controller.html#getOutput()">getOutput</a>, <a href="Controller.html#getRate()">getRate</a>, <a href="Controller.html#getRawVelocity()">getRawVelocity</a>, <a href="Controller.html#getVelocity()">getVelocity</a>, <a href="Controller.html#isDone(double)">isDone</a>, <a href="Controller.html#isDone(double,double)">isDone</a>, <a href="Controller.html#setErrorFilter(com.stuypulse.stuylib.streams.filters.IStreamFilter)">setErrorFilter</a>, <a href="Controller.html#setOutputFilter(com.stuypulse.stuylib.streams.filters.IStreamFilter)">setOutputFilter</a>, <a href="Controller.html#setVelocityFilter(com.stuypulse.stuylib.streams.filters.IStreamFilter)">setVelocityFilter</a>, <a href="Controller.html#update(double)">update</a>, <a href="Controller.html#update(double,double)">update</a></code></div>
+</a><code><a href="Controller.html#getError()">getError</a>, <a href="Controller.html#getOutput()">getOutput</a>, <a href="Controller.html#getRate()">getRate</a>, <a href="Controller.html#getRawVelocity()">getRawVelocity</a>, <a href="Controller.html#getVelocity()">getVelocity</a>, <a href="Controller.html#isDone(double)">isDone</a>, <a href="Controller.html#isDone(double,double)">isDone</a>, <a href="Controller.html#setErrorFilter(com.stuypulse.stuylib.streams.filters.IFilter)">setErrorFilter</a>, <a href="Controller.html#setOutputFilter(com.stuypulse.stuylib.streams.filters.IFilter)">setOutputFilter</a>, <a href="Controller.html#setVelocityFilter(com.stuypulse.stuylib.streams.filters.IFilter)">setVelocityFilter</a>, <a href="Controller.html#update(double)">update</a>, <a href="Controller.html#update(double,double)">update</a></code></div>
 <div class="inheritedList">
 <h3>Methods inherited from class&nbsp;java.lang.Object</h3>
 <a id="methods.inherited.from.class.java.lang.Object">
@@ -388,8 +388,8 @@ double&nbsp;d)</span></div>
 </li>
 <li class="blockList">
 <section class="detail">
-<h3><a id="setIntegratorFilter(com.stuypulse.stuylib.streams.filters.IStreamFilter)">setIntegratorFilter</a></h3>
-<div class="memberSignature"><span class="modifiers">public</span>&nbsp;<span class="returnType"><a href="PIDController.html" title="class in com.stuypulse.stuylib.control">PIDController</a></span>&nbsp;<span class="memberName">setIntegratorFilter</span>&#8203;(<span class="arguments"><a href="../streams/filters/IStreamFilter.html" title="interface in com.stuypulse.stuylib.streams.filters">IStreamFilter</a>&nbsp;filter)</span></div>
+<h3><a id="setIntegratorFilter(com.stuypulse.stuylib.streams.filters.IFilter)">setIntegratorFilter</a></h3>
+<div class="memberSignature"><span class="modifiers">public</span>&nbsp;<span class="returnType"><a href="PIDController.html" title="class in com.stuypulse.stuylib.control">PIDController</a></span>&nbsp;<span class="memberName">setIntegratorFilter</span>&#8203;(<span class="arguments"><a href="../streams/filters/IFilter.html" title="interface in com.stuypulse.stuylib.streams.filters">IFilter</a>&nbsp;filter)</span></div>
 <div class="block">It is common for a limit filter to be put on the I component to prevent Integral Windup. You can
  use SLMath.limit(x) to do this.
 

@@ -8,7 +8,7 @@ package com.stuypulse.stuylib.streams.filters;
  * @author Sam (sam.belliveau@gmail.com)
  */
 
-public class WeightedMovingAverage implements IStreamFilter {
+public class WeightedMovingAverage implements IFilter {
 
     private int mSize;
     private double mTotal;

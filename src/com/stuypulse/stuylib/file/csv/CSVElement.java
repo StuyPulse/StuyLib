@@ -12,13 +12,13 @@ package com.stuypulse.stuylib.file.csv;
 public class CSVElement {
 
     // If value is a number
-    boolean mIsNumber;
+    final boolean mIsNumber;
 
     // Value as Double
-    double mNumberValue;
+    final double mNumberValue;
 
     // Value as String
-    String mStringValue;
+    final String mStringValue;
 
     /**
      * Initialize with string
@@ -26,26 +26,24 @@ public class CSVElement {
      * @param value desired value
      */
     public CSVElement(String value) {
-        setValue(value);
-    }
-
-    /**
-     * Set internal value
-     *
-     * @param value desired value
-     * @return if value was a number
-     */
-    public boolean setValue(String value) {
+        // CSVs Sometimes don't trim their values
         mStringValue = value.trim();
+
+        // Have to do this operation without final variables
+        boolean isNumber;
+        double number;
+
         try {
-            mNumberValue = Double.parseDouble(mStringValue);
-            mIsNumber = true;
+            number = Double.parseDouble(mStringValue);
+            isNumber = true;
         } catch(NumberFormatException e) {
-            mNumberValue = Double.NaN;
-            mIsNumber = false;
+            number = Double.NaN;
+            isNumber = false;
         }
 
-        return mIsNumber;
+        // Assign values
+        mNumberValue = number;
+        mIsNumber = isNumber;
     }
 
     /**

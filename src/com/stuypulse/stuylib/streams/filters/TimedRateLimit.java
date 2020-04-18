@@ -12,7 +12,7 @@ import com.stuypulse.stuylib.util.StopWatch;
  * @author Sam (sam.belliveau@gmail.com)
  */
 
-public class TimedRateLimit implements IStreamFilter {
+public class TimedRateLimit implements IFilter {
 
     // Used to get the time since the last get call
     private StopWatch mTimer;

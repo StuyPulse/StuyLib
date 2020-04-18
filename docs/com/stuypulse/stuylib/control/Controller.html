@@ -219,7 +219,7 @@ double&nbsp;maxVelocity)</code></th>
 </tr>
 <tr class="altColor" id="i8">
 <td class="colFirst"><code><a href="Controller.html" title="class in com.stuypulse.stuylib.control">Controller</a></code></td>
-<th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#setErrorFilter(com.stuypulse.stuylib.streams.filters.IStreamFilter)">setErrorFilter</a></span>&#8203;(<a href="../streams/filters/IStreamFilter.html" title="interface in com.stuypulse.stuylib.streams.filters">IStreamFilter</a>&nbsp;filter)</code></th>
+<th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#setErrorFilter(com.stuypulse.stuylib.streams.filters.IFilter)">setErrorFilter</a></span>&#8203;(<a href="../streams/filters/IFilter.html" title="interface in com.stuypulse.stuylib.streams.filters">IFilter</a>&nbsp;filter)</code></th>
 <td class="colLast">
 <div class="block">Lets you specify a filter that will be applied to all measurements that are given to the
  controller.</div>
@@ -227,14 +227,14 @@ double&nbsp;maxVelocity)</code></th>
 </tr>
 <tr class="rowColor" id="i9">
 <td class="colFirst"><code><a href="Controller.html" title="class in com.stuypulse.stuylib.control">Controller</a></code></td>
-<th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#setOutputFilter(com.stuypulse.stuylib.streams.filters.IStreamFilter)">setOutputFilter</a></span>&#8203;(<a href="../streams/filters/IStreamFilter.html" title="interface in com.stuypulse.stuylib.streams.filters">IStreamFilter</a>&nbsp;filter)</code></th>
+<th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#setOutputFilter(com.stuypulse.stuylib.streams.filters.IFilter)">setOutputFilter</a></span>&#8203;(<a href="../streams/filters/IFilter.html" title="interface in com.stuypulse.stuylib.streams.filters">IFilter</a>&nbsp;filter)</code></th>
 <td class="colLast">
 <div class="block">Lets you specify a filter that will be applied to all of the outputs of the controller.</div>
 </td>
 </tr>
 <tr class="altColor" id="i10">
 <td class="colFirst"><code><a href="Controller.html" title="class in com.stuypulse.stuylib.control">Controller</a></code></td>
-<th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#setVelocityFilter(com.stuypulse.stuylib.streams.filters.IStreamFilter)">setVelocityFilter</a></span>&#8203;(<a href="../streams/filters/IStreamFilter.html" title="interface in com.stuypulse.stuylib.streams.filters">IStreamFilter</a>&nbsp;filter)</code></th>
+<th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#setVelocityFilter(com.stuypulse.stuylib.streams.filters.IFilter)">setVelocityFilter</a></span>&#8203;(<a href="../streams/filters/IFilter.html" title="interface in com.stuypulse.stuylib.streams.filters">IFilter</a>&nbsp;filter)</code></th>
 <td class="colLast">
 <div class="block">Lets you specify a filter that will be applied to the velocity measurements.</div>
 </td>
@@ -298,8 +298,8 @@ double&nbsp;setpoint)</code></th>
 <ul class="blockList">
 <li class="blockList">
 <section class="detail">
-<h3><a id="setErrorFilter(com.stuypulse.stuylib.streams.filters.IStreamFilter)">setErrorFilter</a></h3>
-<div class="memberSignature"><span class="modifiers">public final</span>&nbsp;<span class="returnType"><a href="Controller.html" title="class in com.stuypulse.stuylib.control">Controller</a></span>&nbsp;<span class="memberName">setErrorFilter</span>&#8203;(<span class="arguments"><a href="../streams/filters/IStreamFilter.html" title="interface in com.stuypulse.stuylib.streams.filters">IStreamFilter</a>&nbsp;filter)</span></div>
+<h3><a id="setErrorFilter(com.stuypulse.stuylib.streams.filters.IFilter)">setErrorFilter</a></h3>
+<div class="memberSignature"><span class="modifiers">public final</span>&nbsp;<span class="returnType"><a href="Controller.html" title="class in com.stuypulse.stuylib.control">Controller</a></span>&nbsp;<span class="memberName">setErrorFilter</span>&#8203;(<span class="arguments"><a href="../streams/filters/IFilter.html" title="interface in com.stuypulse.stuylib.streams.filters">IFilter</a>&nbsp;filter)</span></div>
 <div class="block">Lets you specify a filter that will be applied to all measurements that are given to the
  controller.
 
@@ -322,8 +322,8 @@ double&nbsp;setpoint)</code></th>
 </li>
 <li class="blockList">
 <section class="detail">
-<h3><a id="setVelocityFilter(com.stuypulse.stuylib.streams.filters.IStreamFilter)">setVelocityFilter</a></h3>
-<div class="memberSignature"><span class="modifiers">public final</span>&nbsp;<span class="returnType"><a href="Controller.html" title="class in com.stuypulse.stuylib.control">Controller</a></span>&nbsp;<span class="memberName">setVelocityFilter</span>&#8203;(<span class="arguments"><a href="../streams/filters/IStreamFilter.html" title="interface in com.stuypulse.stuylib.streams.filters">IStreamFilter</a>&nbsp;filter)</span></div>
+<h3><a id="setVelocityFilter(com.stuypulse.stuylib.streams.filters.IFilter)">setVelocityFilter</a></h3>
+<div class="memberSignature"><span class="modifiers">public final</span>&nbsp;<span class="returnType"><a href="Controller.html" title="class in com.stuypulse.stuylib.control">Controller</a></span>&nbsp;<span class="memberName">setVelocityFilter</span>&#8203;(<span class="arguments"><a href="../streams/filters/IFilter.html" title="interface in com.stuypulse.stuylib.streams.filters">IFilter</a>&nbsp;filter)</span></div>
 <div class="block">Lets you specify a filter that will be applied to the velocity measurements.
 
  This can be used to smooth out the otherwise noisy velocity values.
@@ -340,8 +340,8 @@ double&nbsp;setpoint)</code></th>
 </li>
 <li class="blockList">
 <section class="detail">
-<h3><a id="setOutputFilter(com.stuypulse.stuylib.streams.filters.IStreamFilter)">setOutputFilter</a></h3>
-<div class="memberSignature"><span class="modifiers">public final</span>&nbsp;<span class="returnType"><a href="Controller.html" title="class in com.stuypulse.stuylib.control">Controller</a></span>&nbsp;<span class="memberName">setOutputFilter</span>&#8203;(<span class="arguments"><a href="../streams/filters/IStreamFilter.html" title="interface in com.stuypulse.stuylib.streams.filters">IStreamFilter</a>&nbsp;filter)</span></div>
+<h3><a id="setOutputFilter(com.stuypulse.stuylib.streams.filters.IFilter)">setOutputFilter</a></h3>
+<div class="memberSignature"><span class="modifiers">public final</span>&nbsp;<span class="returnType"><a href="Controller.html" title="class in com.stuypulse.stuylib.control">Controller</a></span>&nbsp;<span class="memberName">setOutputFilter</span>&#8203;(<span class="arguments"><a href="../streams/filters/IFilter.html" title="interface in com.stuypulse.stuylib.streams.filters">IFilter</a>&nbsp;filter)</span></div>
 <div class="block">Lets you specify a filter that will be applied to all of the outputs of the controller.
 
  If the robot has a tendency to jerk, or motions of the robot are too violent, a filter like the

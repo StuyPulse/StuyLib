@@ -9,11 +9,11 @@ package com.stuypulse.stuylib.streams.filters;
  * @author Sam (sam.belliveau@gmail.com)
  */
 
-public class HullMovingAverage implements IStreamFilter {
+public class HullMovingAverage implements IFilter {
 
-    private IStreamFilter mFilterA;
-    private IStreamFilter mFilterB;
-    private IStreamFilter mFilterC;
+    private IFilter mFilterA;
+    private IFilter mFilterB;
+    private IFilter mFilterC;
 
     /**
      * Make Simple Moving Average with Max Array Size

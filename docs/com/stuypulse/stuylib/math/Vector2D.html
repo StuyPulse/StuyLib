@@ -19,7 +19,7 @@
 <script type="text/javascript" src="../../../../script-dir/jquery-ui.js"></script>
 </head>
 <body class="class-declaration">
-<script type="text/javascript">var data = {"i0":10,"i1":10,"i2":10,"i3":10,"i4":10,"i5":10,"i6":10,"i7":10,"i8":10,"i9":10,"i10":10,"i11":10,"i12":10,"i13":10};
+<script type="text/javascript">var data = {"i0":10,"i1":10,"i2":10,"i3":10,"i4":10,"i5":10,"i6":10,"i7":10,"i8":10,"i9":10,"i10":10,"i11":10,"i12":10,"i13":10,"i14":10};
 var tabs = {65535:["t0","All Methods"],2:["t2","Instance Methods"],8:["t4","Concrete Methods"]};
 var altColor = "altColor";
 var rowColor = "rowColor";
@@ -95,14 +95,9 @@ $('.navPadding').css('padding-top', $('.fixedNav').css("height"));
 <div class="inheritance">com.stuypulse.stuylib.math.Vector2D</div>
 </div>
 <section class="description">
-<dl>
-<dt>All Implemented Interfaces:</dt>
-<dd><code>java.lang.Cloneable</code></dd>
-</dl>
 <hr>
 <pre>public final class <span class="typeNameLabel">Vector2D</span>
-extends java.lang.Object
-implements java.lang.Cloneable</pre>
+extends java.lang.Object</pre>
 <div class="block">A Vector2D class that stores x and y position data. It is made to work with the StuyLib Angle
  class and be easy to use. It is a standard Vector2D class with all of the functions that you
  would expect.</div>
@@ -162,21 +157,16 @@ implements java.lang.Cloneable</pre>
 </thead>
 <tbody>
 <tr class="altColor">
-<th class="colConstructorName" scope="row"><code><span class="memberNameLink"><a href="#%3Cinit%3E()">Vector2D</a></span>()</code></th>
+<th class="colConstructorName" scope="row"><code><span class="memberNameLink"><a href="#%3Cinit%3E(double...)">Vector2D</a></span>&#8203;(double...&nbsp;axis)</code></th>
 <td class="colLast">
-<div class="block">Make a new Vector2D at point 0, 0</div>
+<div class="block">Make a Vector2D with an array of 2 numbers</div>
 </td>
 </tr>
 <tr class="rowColor">
-<th class="colConstructorName" scope="row"><code><span class="memberNameLink"><a href="#%3Cinit%3E(double...)">Vector2D</a></span>&#8203;(double...&nbsp;axis)</code></th>
+<th class="colConstructorName" scope="row"><code><span class="memberNameLink"><a href="#%3Cinit%3E(double,double)">Vector2D</a></span>&#8203;(double&nbsp;x,
+double&nbsp;y)</code></th>
 <td class="colLast">
 <div class="block">Make a Vector2D with two numbers</div>
-</td>
-</tr>
-<tr class="altColor">
-<th class="colConstructorName" scope="row"><code><span class="memberNameLink"><a href="#%3Cinit%3E(com.stuypulse.stuylib.math.Vector2D)">Vector2D</a></span>&#8203;(<a href="Vector2D.html" title="class in com.stuypulse.stuylib.math">Vector2D</a>&nbsp;other)</code></th>
-<td class="colLast">
-<div class="block">Clone a Vector2D</div>
 </td>
 </tr>
 </tbody>
@@ -259,27 +249,34 @@ implements java.lang.Cloneable</pre>
 </td>
 </tr>
 <tr class="altColor" id="i8">
+<td class="colFirst"><code>double</code></td>
+<th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#magnitude()">magnitude</a></span>()</code></th>
+<td class="colLast">
+<div class="block">Get the magnitude of the vector (same as distance from 0, 0)</div>
+</td>
+</tr>
+<tr class="rowColor" id="i9">
 <td class="colFirst"><code><a href="Vector2D.html" title="class in com.stuypulse.stuylib.math">Vector2D</a></code></td>
 <th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#mul(double)">mul</a></span>&#8203;(double&nbsp;multiplier)</code></th>
 <td class="colLast">
 <div class="block">Multiply the x and y of the Vector2D by a certain amount</div>
 </td>
 </tr>
-<tr class="rowColor" id="i9">
+<tr class="altColor" id="i10">
 <td class="colFirst"><code><a href="Vector2D.html" title="class in com.stuypulse.stuylib.math">Vector2D</a></code></td>
 <th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#normalize()">normalize</a></span>()</code></th>
 <td class="colLast">
 <div class="block">Normalize the Vector2D so that the point lands on the unit circle</div>
 </td>
 </tr>
-<tr class="altColor" id="i10">
+<tr class="rowColor" id="i11">
 <td class="colFirst"><code><a href="Vector2D.html" title="class in com.stuypulse.stuylib.math">Vector2D</a></code></td>
 <th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#rotate(com.stuypulse.stuylib.math.Angle)">rotate</a></span>&#8203;(<a href="Angle.html" title="class in com.stuypulse.stuylib.math">Angle</a>&nbsp;angle)</code></th>
 <td class="colLast">
 <div class="block">Rotate Vector2D around origin</div>
 </td>
 </tr>
-<tr class="rowColor" id="i11">
+<tr class="altColor" id="i12">
 <td class="colFirst"><code><a href="Vector2D.html" title="class in com.stuypulse.stuylib.math">Vector2D</a></code></td>
 <th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#rotate(com.stuypulse.stuylib.math.Angle,com.stuypulse.stuylib.math.Vector2D)">rotate</a></span>&#8203;(<a href="Angle.html" title="class in com.stuypulse.stuylib.math">Angle</a>&nbsp;angle,
 <a href="Vector2D.html" title="class in com.stuypulse.stuylib.math">Vector2D</a>&nbsp;origin)</code></th>
@@ -287,14 +284,14 @@ implements java.lang.Cloneable</pre>
 <div class="block">Rotate Vector2D around point</div>
 </td>
 </tr>
-<tr class="altColor" id="i12">
+<tr class="rowColor" id="i13">
 <td class="colFirst"><code><a href="Vector2D.html" title="class in com.stuypulse.stuylib.math">Vector2D</a></code></td>
 <th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#sub(com.stuypulse.stuylib.math.Vector2D)">sub</a></span>&#8203;(<a href="Vector2D.html" title="class in com.stuypulse.stuylib.math">Vector2D</a>&nbsp;other)</code></th>
 <td class="colLast">
 <div class="block">Subtract two Vector2Ds</div>
 </td>
 </tr>
-<tr class="rowColor" id="i13">
+<tr class="altColor" id="i14">
 <td class="colFirst"><code>java.lang.String</code></td>
 <th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#toString()">toString</a></span>()</code></th>
 <td class="colLast">
@@ -326,14 +323,14 @@ implements java.lang.Cloneable</pre>
 <li class="blockList">
 <section class="detail">
 <h3><a id="x">x</a></h3>
-<div class="memberSignature"><span class="modifiers">public</span>&nbsp;<span class="returnType">double</span>&nbsp;<span class="memberName">x</span></div>
+<div class="memberSignature"><span class="modifiers">public final</span>&nbsp;<span class="returnType">double</span>&nbsp;<span class="memberName">x</span></div>
 <div class="block">The x position of the Vector2D</div>
 </section>
 </li>
 <li class="blockList">
 <section class="detail">
 <h3><a id="y">y</a></h3>
-<div class="memberSignature"><span class="modifiers">public</span>&nbsp;<span class="returnType">double</span>&nbsp;<span class="memberName">y</span></div>
+<div class="memberSignature"><span class="modifiers">public final</span>&nbsp;<span class="returnType">double</span>&nbsp;<span class="memberName">y</span></div>
 <div class="block">The y position of the Vector2D</div>
 </section>
 </li>
@@ -349,30 +346,25 @@ implements java.lang.Cloneable</pre>
 <ul class="blockList">
 <li class="blockList">
 <section class="detail">
-<h3><a id="&lt;init&gt;()">Vector2D</a></h3>
-<div class="memberSignature"><span class="modifiers">public</span>&nbsp;<span class="memberName">Vector2D</span>()</div>
-<div class="block">Make a new Vector2D at point 0, 0</div>
+<h3><a id="&lt;init&gt;(double,double)">Vector2D</a></h3>
+<div class="memberSignature"><span class="modifiers">public</span>&nbsp;<span class="memberName">Vector2D</span>&#8203;(<span class="arguments">double&nbsp;x,
+double&nbsp;y)</span></div>
+<div class="block">Make a Vector2D with two numbers</div>
+<dl>
+<dt><span class="paramLabel">Parameters:</span></dt>
+<dd><code>x</code> - the x axis of the vector</dd>
+<dd><code>y</code> - the y axis of the vector</dd>
+</dl>
 </section>
 </li>
 <li class="blockList">
 <section class="detail">
 <h3><a id="&lt;init&gt;(double...)">Vector2D</a></h3>
 <div class="memberSignature"><span class="modifiers">public</span>&nbsp;<span class="memberName">Vector2D</span>&#8203;(<span class="arguments">double...&nbsp;axis)</span></div>
-<div class="block">Make a Vector2D with two numbers</div>
+<div class="block">Make a Vector2D with an array of 2 numbers</div>
 <dl>
 <dt><span class="paramLabel">Parameters:</span></dt>
 <dd><code>axis</code> - an array or varargs for x and y</dd>
-</dl>
-</section>
-</li>
-<li class="blockList">
-<section class="detail">
-<h3><a id="&lt;init&gt;(com.stuypulse.stuylib.math.Vector2D)">Vector2D</a></h3>
-<div class="memberSignature"><span class="modifiers">public</span>&nbsp;<span class="memberName">Vector2D</span>&#8203;(<span class="arguments"><a href="Vector2D.html" title="class in com.stuypulse.stuylib.math">Vector2D</a>&nbsp;other)</span></div>
-<div class="block">Clone a Vector2D</div>
-<dl>
-<dt><span class="paramLabel">Parameters:</span></dt>
-<dd><code>other</code> - other Vector2D to copy</dd>
 </dl>
 </section>
 </li>
@@ -431,6 +423,28 @@ implements java.lang.Cloneable</pre>
 <dl>
 <dt><span class="returnLabel">Returns:</span></dt>
 <dd>distance from 0, 0</dd>
+</dl>
+</section>
+</li>
+<li class="blockList">
+<section class="detail">
+<h3><a id="magnitude()">magnitude</a></h3>
+<div class="memberSignature"><span class="modifiers">public</span>&nbsp;<span class="returnType">double</span>&nbsp;<span class="memberName">magnitude</span>()</div>
+<div class="block">Get the magnitude of the vector (same as distance from 0, 0)</div>
+<dl>
+<dt><span class="returnLabel">Returns:</span></dt>
+<dd>magnitude of the vector</dd>
+</dl>
+</section>
+</li>
+<li class="blockList">
+<section class="detail">
+<h3><a id="angle()">angle</a></h3>
+<div class="memberSignature"><span class="modifiers">public</span>&nbsp;<span class="returnType"><a href="Angle.html" title="class in com.stuypulse.stuylib.math">Angle</a></span>&nbsp;<span class="memberName">angle</span>()</div>
+<div class="block">Get the angle of the Vector2D around 0</div>
+<dl>
+<dt><span class="returnLabel">Returns:</span></dt>
+<dd>the angle of the Vector2D around 0</dd>
 </dl>
 </section>
 </li>
@@ -535,17 +549,6 @@ implements java.lang.Cloneable</pre>
 <dl>
 <dt><span class="returnLabel">Returns:</span></dt>
 <dd>the normalized Vector2D</dd>
-</dl>
-</section>
-</li>
-<li class="blockList">
-<section class="detail">
-<h3><a id="angle()">angle</a></h3>
-<div class="memberSignature"><span class="modifiers">public</span>&nbsp;<span class="returnType"><a href="Angle.html" title="class in com.stuypulse.stuylib.math">Angle</a></span>&nbsp;<span class="memberName">angle</span>()</div>
-<div class="block">Get the angle of the Vector2D around 0</div>
-<dl>
-<dt><span class="returnLabel">Returns:</span></dt>
-<dd>the angle of the Vector2D around 0</dd>
 </dl>
 </section>
 </li>

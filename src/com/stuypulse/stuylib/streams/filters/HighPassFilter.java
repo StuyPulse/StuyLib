@@ -8,7 +8,7 @@ import com.stuypulse.stuylib.util.StopWatch;
  * @author Sam (sam.belliveau@gmail.com)
  */
 
-public class HighPassFilter implements IStreamFilter {
+public class HighPassFilter implements IFilter {
 
     private StopWatch mTimer;
 

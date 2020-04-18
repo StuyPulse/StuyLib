@@ -13,7 +13,7 @@ import java.util.LinkedList;
  * @author Sam (sam.belliveau@gmail.com)
  */
 
-public class TimedMovingAverage implements IStreamFilter {
+public class TimedMovingAverage implements IFilter {
 
     /**
      * Class used to store value and time

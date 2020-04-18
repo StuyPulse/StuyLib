@@ -8,11 +8,11 @@ package com.stuypulse.stuylib.streams.filters;
  * @author William (he thought it was cool)
  */
 
-public class OnDerivative implements IStreamFilter {
+public class OnDerivative implements IFilter {
 
     private boolean mCorrectSign;
     private double mLastValue;
-    private IStreamFilter mFilter;
+    private IFilter mFilter;
 
     /**
      * This will take the filter and make it apply to the derivative of stream givin too it
@@ -21,7 +21,7 @@ public class OnDerivative implements IStreamFilter {
      * @param correctSign correct the derivative so that it doesn't matter if its positive or negative.
      *                    (false by default)
      */
-    public OnDerivative(IStreamFilter filter, boolean correctSign) {
+    public OnDerivative(IFilter filter, boolean correctSign) {
         mLastValue = 0;
         mFilter = filter;
         mCorrectSign = correctSign;
@@ -32,7 +32,7 @@ public class OnDerivative implements IStreamFilter {
      *
      * @param filter filter that gets applied to the derivative of the stream
      */
-    public OnDerivative(IStreamFilter filter) {
+    public OnDerivative(IFilter filter) {
         this(filter, false);
     }
 

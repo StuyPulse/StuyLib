@@ -3,17 +3,17 @@ package com.stuypulse.stuylib.streams.filters;
 import com.stuypulse.stuylib.util.StopWatch;
 
 /**
- * Implementation for LowPassFilter for IStreams
+ * Implementation for LowPassFilter for IFilter
  *
  * @author Sam (sam.belliveau@gmail.com)
  */
 
-public class LowPassFilter implements IStreamFilter {
+public class LowPassFilter implements IFilter {
 
-    private StopWatch mTimer;
+    private final StopWatch mTimer;
 
+    private final double mRC;
     private double mLastValue;
-    private double mRC;
 
     /**
      * @param rc Time Constant. The time constant is the amount of time in seconds that it takes to get

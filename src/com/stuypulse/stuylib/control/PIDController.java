@@ -1,6 +1,6 @@
 package com.stuypulse.stuylib.control;
 
-import com.stuypulse.stuylib.streams.filters.IStreamFilter;
+import com.stuypulse.stuylib.streams.filters.IFilter;
 import com.stuypulse.stuylib.math.SLMath;
 
 /**
@@ -27,7 +27,7 @@ public class PIDController extends Controller {
 
     // The Integral of the errors and filter for the I Component
     private double mIntegral;
-    private IStreamFilter mIFilter;
+    private IFilter mIFilter;
 
     /**
      * @param p The Proportional Multiplier
@@ -153,7 +153,7 @@ public class PIDController extends Controller {
      * @param filter filter put on the I component of the PID Controller
      * @return reference to PIDController (so you can chain the commands together)
      */
-    public PIDController setIntegratorFilter(IStreamFilter filter) {
+    public PIDController setIntegratorFilter(IFilter filter) {
         // Use default filter if given null
         mIFilter = (filter == null) ? ((x) -> x) : filter;
         return this;

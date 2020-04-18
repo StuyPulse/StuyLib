@@ -1,5 +1,6 @@
 package com.stuypulse.stuylib.file.csv;
 
+import java.io.Closeable;
 import java.io.FileWriter;
 import java.io.IOException;
 
@@ -14,13 +15,13 @@ import java.io.Flushable;
  * @author Sam (sam.belliveau@gmail.com)
  */
 
-public class CSVWriter implements Flushable, AutoCloseable {
+public class CSVWriter implements Flushable, Closeable {
 
     // FileWriter that has CSV File open
-    FileWriter mCSVFile;
+    final FileWriter mCSVFile;
 
     // Stores Delimiter
-    CSVType mCSVType;
+    final CSVType mCSVType;
 
     /**
      * Open CSV File with file name file and csv type
@@ -59,14 +60,6 @@ public class CSVWriter implements Flushable, AutoCloseable {
     }
 
     /**
-     * Set CSV type
-     *
-     * @param type CSV Type
-     */
-    public void setCSVType(CSVType type) {
-    }
-
-    /**
      * Write String to CSV file
      *
      * @param data string
@@ -74,7 +67,8 @@ public class CSVWriter implements Flushable, AutoCloseable {
      */
     public void write(String data) throws IOException {
         if(data.contains(mCSVType.getDelimiter())) {
-            throw new IOException("Data being written to CSV contains comma!");
+            throw new IOException(
+                    "Data being written to CSV contains Delimiter!");
         } else {
             mCSVFile.append(data);
             mCSVFile.append(mCSVType.getDelimiter());

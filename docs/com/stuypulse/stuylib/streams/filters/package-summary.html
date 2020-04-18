@@ -82,9 +82,9 @@ $('.navPadding').css('padding-top', $('.fixedNav').css("height"));
 </thead>
 <tbody>
 <tr class="altColor">
-<th class="colFirst" scope="row"><a href="IStreamFilter.html" title="interface in com.stuypulse.stuylib.streams.filters">IStreamFilter</a></th>
+<th class="colFirst" scope="row"><a href="IFilter.html" title="interface in com.stuypulse.stuylib.streams.filters">IFilter</a></th>
 <td class="colLast">
-<div class="block">This lets us make sub-classes that change can modify values in this way</div>
+<div class="block">This is the Filter interface class that gives a definition for how to implement a filter.</div>
 </td>
 </tr>
 </tbody>
@@ -115,15 +115,15 @@ $('.navPadding').css('padding-top', $('.fixedNav').css("height"));
 </td>
 </tr>
 <tr class="altColor">
-<th class="colFirst" scope="row"><a href="IStreamFilterGroup.html" title="class in com.stuypulse.stuylib.streams.filters">IStreamFilterGroup</a></th>
+<th class="colFirst" scope="row"><a href="IFilterGroup.html" title="class in com.stuypulse.stuylib.streams.filters">IFilterGroup</a></th>
 <td class="colLast">
-<div class="block">A simple class that lets you combine multiple stream filters into one stream filter</div>
+<div class="block">A class that lets you combine multiple stream filters into one stream filter</div>
 </td>
 </tr>
 <tr class="rowColor">
 <th class="colFirst" scope="row"><a href="LowPassFilter.html" title="class in com.stuypulse.stuylib.streams.filters">LowPassFilter</a></th>
 <td class="colLast">
-<div class="block">Implementation for LowPassFilter for IStreams</div>
+<div class="block">Implementation for LowPassFilter for IFilter</div>
 </td>
 </tr>
 <tr class="altColor">
@@ -163,9 +163,10 @@ $('.navPadding').css('padding-top', $('.fixedNav').css("height"));
 </td>
 </tr>
 <tr class="altColor">
-<th class="colFirst" scope="row"><a href="SCurve.html" title="class in com.stuypulse.stuylib.streams.filters">SCurve</a></th>
+<th class="colFirst" scope="row"><a href="SpeedProfile.html" title="class in com.stuypulse.stuylib.streams.filters">SpeedProfile</a></th>
 <td class="colLast">
-<div class="block">A filter that takes in real time inputs and profiles it into an S Curve.</div>
+<div class="block">A filter that takes inputs and limits the amount of jerk and acceleration that can happen in one
+ step.</div>
 </td>
 </tr>
 <tr class="rowColor">

@@ -10,6 +10,10 @@ package com.stuypulse.stuylib.math;
 
 public final class SLMath {
 
+    // Prevent the class from being extended at all
+    private SLMath() {
+    }
+
     /**************/
     /*** LIMITS ***/
     /**************/

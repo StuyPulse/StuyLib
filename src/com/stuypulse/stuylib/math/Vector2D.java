@@ -8,28 +8,31 @@ package com.stuypulse.stuylib.math;
  * @author Sam (sam.belliveau@gmail.com)
  */
 
-public final class Vector2D implements Cloneable {
+public final class Vector2D {
 
     /**
      * The x position of the Vector2D
      */
-    public double x;
+    public final double x;
 
     /**
      * The y position of the Vector2D
      */
-    public double y;
-
-    /**
-     * Make a new Vector2D at point 0, 0
-     */
-    public Vector2D() {
-        this.x = 0;
-        this.y = 0;
-    }
+    public final double y;
 
     /**
      * Make a Vector2D with two numbers
+     *
+     * @param x the x axis of the vector
+     * @param y the y axis of the vector
+     */
+    public Vector2D(double x, double y) {
+        this.x = x;
+        this.y = y;
+    }
+
+    /**
+     * Make a Vector2D with an array of 2 numbers
      *
      * @param axis an array or varargs for x and y
      */
@@ -40,16 +43,6 @@ public final class Vector2D implements Cloneable {
 
         this.x = axis[0];
         this.y = axis[1];
-    }
-
-    /**
-     * Clone a Vector2D
-     *
-     * @param other other Vector2D to copy
-     */
-    public Vector2D(Vector2D other) {
-        this.x = other.x;
-        this.y = other.y;
     }
 
     /**
@@ -88,6 +81,24 @@ public final class Vector2D implements Cloneable {
      */
     public double distance() {
         return Math.hypot(this.x, this.y);
+    }
+
+    /**
+     * Get the magnitude of the vector (same as distance from 0, 0)
+     *
+     * @return magnitude of the vector
+     */
+    public double magnitude() {
+        return this.distance();
+    }
+
+    /**
+     * Get the angle of the Vector2D around 0
+     *
+     * @return the angle of the Vector2D around 0
+     */
+    public Angle angle() {
+        return Angle.radians(Math.atan2(this.y, this.x));
     }
 
     /**
@@ -163,7 +174,7 @@ public final class Vector2D implements Cloneable {
      * @return the result of the dot product
      */
     public double dot(Vector2D other) {
-        return(this.x * other.x + this.y * other.y);
+        return this.x * other.x + this.y * other.y;
     }
 
     /**
@@ -173,15 +184,6 @@ public final class Vector2D implements Cloneable {
      */
     public Vector2D normalize() {
         return this.div(this.distance());
-    }
-
-    /**
-     * Get the angle of the Vector2D around 0
-     *
-     * @return the angle of the Vector2D around 0
-     */
-    public Angle angle() {
-        return Angle.radians(Math.atan2(this.y, this.x));
     }
 
     /**

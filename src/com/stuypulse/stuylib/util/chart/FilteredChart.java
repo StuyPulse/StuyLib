@@ -1,6 +1,6 @@
 package com.stuypulse.stuylib.util.chart;
 
-import com.stuypulse.stuylib.streams.filters.IStreamFilter;
+import com.stuypulse.stuylib.streams.filters.IFilter;
 
 /**
  * A single session chart with a stream filter.
@@ -14,7 +14,7 @@ public class FilteredChart extends Chart {
     /**
      * Filter for this FilteredChart
      */
-    private final IStreamFilter filter;
+    private final IFilter filter;
 
     /**
      * Chart with a filter.
@@ -24,8 +24,7 @@ public class FilteredChart extends Chart {
      * @param y      y-axis title
      * @param filter IStreamFilter to apply to all incoming y-values
      */
-    public FilteredChart(String title, String x, String y,
-            IStreamFilter filter) {
+    public FilteredChart(String title, String x, String y, IFilter filter) {
         super(title, x, y);
         this.filter = filter;
     }
@@ -36,7 +35,7 @@ public class FilteredChart extends Chart {
      * @param title  Chart title
      * @param filter IStreamFilter to apply to all incoming y-values
      */
-    public FilteredChart(String title, IStreamFilter filter) {
+    public FilteredChart(String title, IFilter filter) {
         this(title, "x", "y", filter);
     }
 

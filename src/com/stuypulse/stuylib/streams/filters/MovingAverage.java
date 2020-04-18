@@ -12,7 +12,7 @@ import java.util.LinkedList;
  * @author Sam (sam.belliveau@gmail.com)
  */
 
-public class MovingAverage implements IStreamFilter {
+public class MovingAverage implements IFilter {
 
     private int mSize;
     private double mTotal;

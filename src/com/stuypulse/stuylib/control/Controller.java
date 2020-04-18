@@ -1,6 +1,6 @@
 package com.stuypulse.stuylib.control;
 
-import com.stuypulse.stuylib.streams.filters.IStreamFilter;
+import com.stuypulse.stuylib.streams.filters.IFilter;
 import com.stuypulse.stuylib.util.StopWatch;
 
 /**
@@ -23,22 +23,22 @@ public abstract class Controller {
      * @param filter filter you want sanitized
      * @return sanitized filter
      */
-    private static final IStreamFilter sanitize(IStreamFilter filter) {
+    private static final IFilter sanitize(IFilter filter) {
         return (filter == null) ? (x -> x) : filter;
     }
 
     // Error and Error Filters
     private double mError;
-    private IStreamFilter mErrorFilter;
+    private IFilter mErrorFilter;
 
     // Velocity, Raw Velocity and Velocity Filter
     private double mVelocity;
-    private IStreamFilter mVelocityFilter;
+    private IFilter mVelocityFilter;
     private double mRawVelocity;
 
     // Output and Output Filters
     private double mOutput;
-    private IStreamFilter mOutputFilter;
+    private IFilter mOutputFilter;
 
     // Rate and Rate Timer
     private double mRate;
@@ -79,7 +79,7 @@ public abstract class Controller {
      * @param filter filter to be applied to error measurements
      * @return reference to the controller (so you can chain the commands together)
      */
-    public final Controller setErrorFilter(IStreamFilter filter) {
+    public final Controller setErrorFilter(IFilter filter) {
         mErrorFilter = sanitize(filter);
         return this;
     }
@@ -95,7 +95,7 @@ public abstract class Controller {
      * @param filter filter to be applied to velocity measurements
      * @return reference to the controller (so you can chain the commands together)
      */
-    public final Controller setVelocityFilter(IStreamFilter filter) {
+    public final Controller setVelocityFilter(IFilter filter) {
         mVelocityFilter = sanitize(filter);
         return this;
     }
@@ -116,7 +116,7 @@ public abstract class Controller {
      * @param filter filter to be applied to the outputs of the controller
      * @return reference to the controller (so you can chain the commands together)
      */
-    public final Controller setOutputFilter(IStreamFilter filter) {
+    public final Controller setOutputFilter(IFilter filter) {
         mOutputFilter = sanitize(filter);
         return this;
     }

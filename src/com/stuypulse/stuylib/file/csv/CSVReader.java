@@ -19,13 +19,13 @@ import java.util.Iterator;
 public class CSVReader implements Iterable<CSVElement> {
 
     // File Path
-    private String mCSVFilePath;
+    private final String mCSVFilePath;
 
     // Data of CSV Reader
-    private Vector<CSVElement> mCSVData;
+    private final Vector<CSVElement> mCSVData;
 
     // Stores Delimiter
-    private CSVType mCSVType;
+    private final CSVType mCSVType;
 
     /**
      * Open CSVReader with file and CSV type
@@ -34,50 +34,9 @@ public class CSVReader implements Iterable<CSVElement> {
      * @param type CSV type
      */
     public CSVReader(String file, CSVType type) throws IOException {
-        setCSVType(type);
-        open(file);
-    }
-
-    /**
-     * Open CSVReader with file
-     *
-     * @param file file path
-     */
-    public CSVReader(String file) throws IOException {
-        this(file, CSVType.DEFAULT);
-    }
-
-    /**
-     * Open file
-     *
-     * @param file file path
-     */
-    public void open(String file) throws IOException {
-        mCSVFilePath = file;
-        read();
-    }
-
-    /**
-     * Set CSV type
-     *
-     * @param type CSV Type
-     */
-    private void setCSVType(CSVType type) {
         mCSVType = type;
-    }
-
-    /**
-     * Clears data from object. Recommended to call read() after this
-     */
-    public void clearData() {
+        mCSVFilePath = file;
         mCSVData = new Vector<CSVElement>();
-    }
-
-    /**
-     * Read data from opened file. You can call multiple times if file is updated
-     */
-    public void read() throws IOException {
-        clearData();
 
         Scanner csvfile = new Scanner(new File(mCSVFilePath));
         csvfile.useDelimiter(mCSVType.getDelimiter());
@@ -87,6 +46,15 @@ public class CSVReader implements Iterable<CSVElement> {
         }
 
         csvfile.close();
+    }
+
+    /**
+     * Open CSVReader with file
+     *
+     * @param file file path
+     */
+    public CSVReader(String file) throws IOException {
+        this(file, CSVType.DEFAULT);
     }
 
     /**
@@ -113,13 +81,7 @@ public class CSVReader implements Iterable<CSVElement> {
      * @return String array
      */
     public CSVElement[] getCSVData() {
-        CSVElement[] data = new CSVElement[mCSVData.size()];
-
-        for(int i = 0; i < mCSVData.size(); ++i) {
-            data[i] = mCSVData.get(i);
-        }
-
-        return data;
+        return (CSVElement[]) mCSVData.toArray();
     }
 
     /**

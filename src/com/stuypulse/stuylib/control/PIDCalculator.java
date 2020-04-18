@@ -1,7 +1,7 @@
 package com.stuypulse.stuylib.control;
 
-import com.stuypulse.stuylib.streams.filters.IStreamFilter;
-import com.stuypulse.stuylib.streams.filters.IStreamFilterGroup;
+import com.stuypulse.stuylib.streams.filters.IFilter;
+import com.stuypulse.stuylib.streams.filters.IFilterGroup;
 import com.stuypulse.stuylib.streams.filters.MovingAverage;
 import com.stuypulse.stuylib.util.StopWatch;
 import com.stuypulse.stuylib.math.SLMath;
@@ -23,10 +23,10 @@ public class PIDCalculator extends Controller {
     private static final double kMinPeriodTime = 0.1;
 
     // The filter easuring the period and amplitude
-    private static IStreamFilter getMeasurementFilter() {
+    private static IFilter getMeasurementFilter() {
         // This is a mix between accuracy and speed of updating.
         // Takes about 6 periods to get accurate results
-        return new IStreamFilterGroup(new MovingAverage(12));
+        return new IFilterGroup(new MovingAverage(12));
     }
 
     // The speed that the bang bang controller will run at
@@ -37,8 +37,8 @@ public class PIDCalculator extends Controller {
     private double mAmplitude;
 
     // The filters used to average the period and amplitudes
-    private IStreamFilter mPeriodFilter;
-    private IStreamFilter mAmplitudeFilter;
+    private IFilter mPeriodFilter;
+    private IFilter mAmplitudeFilter;
 
     // Timer that keeps track of the length of a period
     private StopWatch mPeriodTimer;
@@ -111,7 +111,11 @@ public class PIDCalculator extends Controller {
         mLocalMax = Math.max(Math.abs(mLocalMax), Math.abs(error));
 
         // Return bang bang control
-        return Math.signum(error) * mControlSpeed;
+        if(error < 0) {
+            return -mControlSpeed;
+        } else {
+            return mControlSpeed;
+        }
     }
 
     /**

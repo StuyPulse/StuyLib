@@ -19,7 +19,7 @@
 <script type="text/javascript" src="../../../../../script-dir/jquery-ui.js"></script>
 </head>
 <body class="class-declaration">
-<script type="text/javascript">var data = {"i0":10,"i1":10,"i2":10,"i3":10,"i4":10,"i5":10,"i6":10};
+<script type="text/javascript">var data = {"i0":10,"i1":10,"i2":10,"i3":10,"i4":10,"i5":10};
 var tabs = {65535:["t0","All Methods"],2:["t2","Instance Methods"],8:["t4","Concrete Methods"]};
 var altColor = "altColor";
 var rowColor = "rowColor";
@@ -97,12 +97,12 @@ $('.navPadding').css('padding-top', $('.fixedNav').css("height"));
 <section class="description">
 <dl>
 <dt>All Implemented Interfaces:</dt>
-<dd><code>java.io.Flushable</code>, <code>java.lang.AutoCloseable</code></dd>
+<dd><code>java.io.Closeable</code>, <code>java.io.Flushable</code>, <code>java.lang.AutoCloseable</code></dd>
 </dl>
 <hr>
 <pre>public class <span class="typeNameLabel">CSVWriter</span>
 extends java.lang.Object
-implements java.io.Flushable, java.lang.AutoCloseable</pre>
+implements java.io.Flushable, java.io.Closeable</pre>
 <div class="block">CSVWriter class that allows you to write to a file in the format of a CSV. It automatically adds
  commas and calls toString on objects.
 
@@ -178,33 +178,26 @@ implements java.io.Flushable, java.lang.AutoCloseable</pre>
 </tr>
 <tr class="altColor" id="i2">
 <td class="colFirst"><code>void</code></td>
-<th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#setCSVType(com.stuypulse.stuylib.file.csv.CSVType)">setCSVType</a></span>&#8203;(<a href="CSVType.html" title="enum in com.stuypulse.stuylib.file.csv">CSVType</a>&nbsp;type)</code></th>
-<td class="colLast">
-<div class="block">Set CSV type</div>
-</td>
-</tr>
-<tr class="rowColor" id="i3">
-<td class="colFirst"><code>void</code></td>
 <th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#write(double)">write</a></span>&#8203;(double&nbsp;data)</code></th>
 <td class="colLast">
 <div class="block">Write double to CSV file</div>
 </td>
 </tr>
-<tr class="altColor" id="i4">
+<tr class="rowColor" id="i3">
 <td class="colFirst"><code>void</code></td>
 <th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#write(long)">write</a></span>&#8203;(long&nbsp;data)</code></th>
 <td class="colLast">
 <div class="block">Write long to CSV file</div>
 </td>
 </tr>
-<tr class="rowColor" id="i5">
+<tr class="altColor" id="i4">
 <td class="colFirst"><code>void</code></td>
 <th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#write(java.lang.Object)">write</a></span>&#8203;(java.lang.Object&nbsp;data)</code></th>
 <td class="colLast">
 <div class="block">Write object to CSV file</div>
 </td>
 </tr>
-<tr class="altColor" id="i6">
+<tr class="rowColor" id="i5">
 <td class="colFirst"><code>void</code></td>
 <th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#write(java.lang.String)">write</a></span>&#8203;(java.lang.String&nbsp;data)</code></th>
 <td class="colLast">
@@ -282,6 +275,8 @@ implements java.io.Flushable, java.lang.AutoCloseable</pre>
 <dl>
 <dt><span class="overrideSpecifyLabel">Specified by:</span></dt>
 <dd><code>close</code>&nbsp;in interface&nbsp;<code>java.lang.AutoCloseable</code></dd>
+<dt><span class="overrideSpecifyLabel">Specified by:</span></dt>
+<dd><code>close</code>&nbsp;in interface&nbsp;<code>java.io.Closeable</code></dd>
 <dt><span class="throwsLabel">Throws:</span></dt>
 <dd><code>java.io.IOException</code></dd>
 </dl>
@@ -298,17 +293,6 @@ implements java.io.Flushable, java.lang.AutoCloseable</pre>
 <dd><code>flush</code>&nbsp;in interface&nbsp;<code>java.io.Flushable</code></dd>
 <dt><span class="throwsLabel">Throws:</span></dt>
 <dd><code>java.io.IOException</code></dd>
-</dl>
-</section>
-</li>
-<li class="blockList">
-<section class="detail">
-<h3><a id="setCSVType(com.stuypulse.stuylib.file.csv.CSVType)">setCSVType</a></h3>
-<div class="memberSignature"><span class="modifiers">public</span>&nbsp;<span class="returnType">void</span>&nbsp;<span class="memberName">setCSVType</span>&#8203;(<span class="arguments"><a href="CSVType.html" title="enum in com.stuypulse.stuylib.file.csv">CSVType</a>&nbsp;type)</span></div>
-<div class="block">Set CSV type</div>
-<dl>
-<dt><span class="paramLabel">Parameters:</span></dt>
-<dd><code>type</code> - CSV Type</dd>
 </dl>
 </section>
 </li>
