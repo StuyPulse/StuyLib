@@ -1,8 +1,7 @@
 package com.stuypulse.stuylib.streams.filters;
 
 /**
- * A simple class that lets you combine multiple stream filters into one stream
- * filter
+ * A class that lets you combine multiple stream filters into one stream filter
  *
  * @author Sam (sam.belliveau@gmail.com)
  */
@@ -10,12 +9,12 @@ package com.stuypulse.stuylib.streams.filters;
 public class IFilterGroup implements IFilter {
 
     // Array of all the filters
-    private IFilter[] mFilters;
+    private final IFilter[] mFilters;
 
     /**
-     * Make FilterGroup out of an array of stream filters
+     * Make IFilterGroup out of an array of Filters
      *
-     * @param filters va_list of filters to be combined
+     * @param filters list of filters to combine
      */
     public IFilterGroup(IFilter... filters) {
         mFilters = filters;
@@ -23,7 +22,7 @@ public class IFilterGroup implements IFilter {
 
     public double get(double next) {
         // Put next through each of the filters
-        for (IFilter filter : mFilters) {
+        for(IFilter filter : mFilters) {
             next = filter.get(next);
         }
 

@@ -6,8 +6,8 @@ import java.util.LinkedList;
 /**
  * Simple implementation of an Simple Moving Average
  *
- * This is not time dependant, so the values will change if you change the rate
- * that you call this filter, the filter will not adapt for that.
+ * This is not time dependant, so the values will change if you change the rate that you call this
+ * filter, the filter will not adapt for that.
  *
  * @author Sam (sam.belliveau@gmail.com)
  */
@@ -24,7 +24,7 @@ public class MovingAverage implements IFilter {
      * @param size size of moving average
      */
     public MovingAverage(int size) {
-        if (size <= 0) {
+        if(size <= 0) {
             throw new IllegalArgumentException("size must be > 0");
         }
 
@@ -32,7 +32,7 @@ public class MovingAverage implements IFilter {
         mValues = new LinkedList<>();
         mTotal = 0.0;
 
-        while (mValues.size() < mSize) {
+        while(mValues.size() < mSize) {
             mValues.add(0.0);
         }
     }

@@ -60,11 +60,11 @@ public class PS4 extends WPIGamepad {
     }
 
     // Triggers //
-    public double getRawLeftTriggerAxis() {
+    public double getLeftTrigger() {
         return (getRawAxis(3) + 1.0) / 2.0;
     }
 
-    public double getRawRightTriggerAxis() {
+    public double getRightTrigger() {
         return (getRawAxis(4) + 1.0) / 2.0;
     }
 

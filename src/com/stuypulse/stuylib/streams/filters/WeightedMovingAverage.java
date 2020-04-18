@@ -19,7 +19,7 @@ public class WeightedMovingAverage implements IFilter {
      * @param size size of weighted moving average
      */
     public WeightedMovingAverage(int size) {
-        if (size <= 0) {
+        if(size <= 0) {
             throw new IllegalArgumentException("size must be greater than 0!");
         }
 

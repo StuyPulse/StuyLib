@@ -20,7 +20,7 @@ public class HighPassFilter implements IFilter {
      * @param rc time constant for high pass filter
      */
     public HighPassFilter(double rc) {
-        if (rc < 0) {
+        if(rc < 0) {
             throw new IllegalArgumentException("rc must be a positive number");
         }
 

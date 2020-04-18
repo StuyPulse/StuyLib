@@ -8,14 +8,24 @@ package com.stuypulse.stuylib.file.csv;
 
 public enum CSVType {
 
-    DEFAULT(","), EXCEL(","), MYSQL("\t"), TCSV(",\t");
+    COMMA(","), TAB("\t"), COMMA_TAB(",\t"), SEMI_COLON(";"), PIPE("|"),
+    CARRET("^"),
+
+    DEFAULT(CSVType.COMMA),
+
+    EXCEL(CSVType.COMMA), MYSQL(CSVType.TAB), TCSV(CSVType.COMMA_TAB);
 
     // Stores Separator for CSV
-    private String mDelimiter;
+    private final String mDelimiter;
 
     // Constructor that sets the Delimiter
     private CSVType(String delimiter) {
         mDelimiter = delimiter;
+    }
+
+    // Constructor that sets the Delimiter
+    private CSVType(CSVType other) {
+        this(other.getDelimiter());
     }
 
     // Gets the delimiter from the enum

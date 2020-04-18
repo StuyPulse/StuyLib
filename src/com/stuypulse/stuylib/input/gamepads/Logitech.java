@@ -70,11 +70,11 @@ public class Logitech extends WPIGamepad {
         }
 
         // Triggers //
-        public double getRawLeftTriggerAxis() {
+        public double getLeftTrigger() {
             return getRawButton(7) ? 1.0 : 0.0;
         }
 
-        public double getRawRightTriggerAxis() {
+        public double getRightTrigger() {
             return getRawButton(8) ? 1.0 : 0.0;
         }
 
@@ -156,11 +156,11 @@ public class Logitech extends WPIGamepad {
         }
 
         // Triggers //
-        public double getRawLeftTriggerAxis() {
+        public double getLeftTrigger() {
             return getRawAxis(2);
         }
 
-        public double getRawRightTriggerAxis() {
+        public double getRightTrigger() {
             return getRawAxis(3);
         }
 

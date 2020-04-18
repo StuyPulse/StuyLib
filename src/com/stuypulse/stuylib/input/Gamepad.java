@@ -1,6 +1,7 @@
 package com.stuypulse.stuylib.input;
 
 import com.stuypulse.stuylib.input.buttons.ButtonWrapper;
+import com.stuypulse.stuylib.math.Vector2D;
 
 /**
  * An class for using gamepads with different interfaces. You can implement this class in another
@@ -69,11 +70,11 @@ public class Gamepad {
     }
 
     // Triggers //
-    public double getRawLeftTriggerAxis() {
+    public double getLeftTrigger() {
         return 0.0;
     }
 
-    public double getRawRightTriggerAxis() {
+    public double getRightTrigger() {
         return 0.0;
     }
 
@@ -125,30 +126,14 @@ public class Gamepad {
     /*** BUTTONS BASED OFF OF IMPLEMENTED FUNCTIONS ***/
     /**************************************************/
 
-    private static double getAngle(double x, double y) {
-        if(x == 0 && y == 0) {
-            return 0;
-        } else {
-            return Math.toDegrees(Math.atan2(y, x));
-        }
-    }
-
     // Left Stick //
-    public final double getLeftMag() {
-        return Math.hypot(getLeftX(), getLeftY());
-    }
-
-    public final double getLeftAngle() {
-        return getAngle(getLeftX(), getLeftY());
+    public final Vector2D getLeftStick() {
+        return new Vector2D(this.getLeftX(), this.getLeftY());
     }
 
     // Right Stick //
-    public final double getRightMag() {
-        return Math.hypot(getRightX(), getRightY());
-    }
-
-    public final double getRightAngle() {
-        return getAngle(getRightX(), getRightY());
+    public final Vector2D getRightStick() {
+        return new Vector2D(this.getRightX(), this.getRightY());
     }
 
     // D-Pad //
@@ -158,6 +143,10 @@ public class Gamepad {
 
     public final double getDPadY() {
         return (getRawDPadUp() ? 1.0 : 0.0) - (getRawDPadDown() ? 1.0 : 0.0);
+    }
+
+    public final Vector2D getDPad() {
+        return new Vector2D(this.getDPadX(), this.getDPadY());
     }
 
     public final ButtonWrapper getDPadUp() {
@@ -188,20 +177,20 @@ public class Gamepad {
     // Triggers //
     protected static final double TRIGGER_AXIS_THRESHOLD = 3.0 / 16.0;
 
-    public final boolean getRawLeftTrigger() {
-        return getRawLeftTriggerAxis() > TRIGGER_AXIS_THRESHOLD;
+    public final boolean getLeftTriggerPressed() {
+        return getLeftTrigger() > TRIGGER_AXIS_THRESHOLD;
     }
 
-    public final ButtonWrapper getLeftTrigger() {
-        return new ButtonWrapper(() -> this.getRawLeftTrigger());
+    public final ButtonWrapper getLeftTriggerButton() {
+        return new ButtonWrapper(() -> this.getLeftTriggerPressed());
     }
 
-    public final boolean getRawRightTrigger() {
-        return getRawRightTriggerAxis() > TRIGGER_AXIS_THRESHOLD;
+    public final boolean getRightTriggerPressed() {
+        return getRightTrigger() > TRIGGER_AXIS_THRESHOLD;
     }
 
-    public final ButtonWrapper getRightTrigger() {
-        return new ButtonWrapper(() -> this.getRawRightTrigger());
+    public final ButtonWrapper getRightTriggerButton() {
+        return new ButtonWrapper(() -> this.getRightTriggerPressed());
     }
 
     // Face Buttons //

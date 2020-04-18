@@ -74,11 +74,11 @@ public class Xbox extends Gamepad {
     }
 
     // Triggers //
-    public double getRawLeftTriggerAxis() {
+    public double getLeftTrigger() {
         return getJoystick().getTriggerAxis(Hand.kLeft);
     }
 
-    public double getRawRightTriggerAxis() {
+    public double getRightTrigger() {
         return getJoystick().getTriggerAxis(Hand.kLeft);
     }
 
