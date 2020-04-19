@@ -41,16 +41,14 @@ public class KeyTracker extends KeyAdapter {
     }
 
     /**
-     *
      * @param e Key Event from KeyPress
-     * @return
+     * @return sanitized key name
      */
     private static String getKeyName(KeyEvent e) {
         return sanatizeKeyName(KeyEvent.getKeyText(e.getKeyCode()));
     }
 
     /**
-     *
      * @param name input key name
      * @return the sanatized key name
      */

@@ -1,27 +1,19 @@
 package com.stuypulse.stuylib.util.chart;
 
-import java.awt.event.MouseEvent;
-
-import java.awt.event.*;
 import java.awt.*;
 
 /**
- * Tracks the mouse on a container
+ * Tracks the mouse on a container without the need for a listener.
  *
- * @author Myles Pasetsky (@selym3)
  * @author Sam Belliveau (@Sam-Belliveau)
+ * @author Myles Pasetsky (@selym3)
  */
-public class MouseTracker implements MouseMotionListener {
+public class MouseTracker {
 
     /**
      * Panel for size reference
      */
     private final Container panel;
-
-    /**
-     * x and y of the mouse as a percentage of the panel's dimensions.
-     */
-    private double x, y;
 
     /**
      * Initialize panel and x and y
@@ -30,18 +22,6 @@ public class MouseTracker implements MouseMotionListener {
      */
     public MouseTracker(Container panel) {
         this.panel = panel;
-        this.x = 0;
-        this.y = 0;
-    }
-
-    @Override
-    public void mouseDragged(MouseEvent e) {
-    }
-
-    @Override
-    public void mouseMoved(MouseEvent e) {
-        x = ((double) e.getX()) / ((double) panel.getWidth());
-        y = ((double) e.getY()) / ((double) panel.getHeight());
     }
 
     /**
@@ -50,6 +30,9 @@ public class MouseTracker implements MouseMotionListener {
      * @return mouse x position as a percentage of the screen width
      */
     public double getMouseX() {
+        double x = MouseInfo.getPointerInfo().getLocation().x;
+        x -= panel.getLocationOnScreen().x;
+        x /= panel.getWidth();
         return x;
     }
 
@@ -59,6 +42,9 @@ public class MouseTracker implements MouseMotionListener {
      * @return mouse y position as a percentage of the screen height
      */
     public double getMouseY() {
+        double y = MouseInfo.getPointerInfo().getLocation().y;
+        y -= panel.getLocationOnScreen().y;
+        y /= panel.getHeight();
         return 1.0 - y;
     }
 }
