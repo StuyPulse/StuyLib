@@ -13,3 +13,4 @@ com.stuypulse.stuylib.network.limelight
 com.stuypulse.stuylib.streams
 com.stuypulse.stuylib.streams.filters
 com.stuypulse.stuylib.util
+com.stuypulse.stuylib.util.chart

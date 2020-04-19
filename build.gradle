@@ -38,6 +38,8 @@ dependencies {
    nativeZip wpi.deps.vendor.jni(wpi.platforms.roborio)
    nativeDesktopZip wpi.deps.vendor.jni(wpi.platforms.desktop)
 
+   compile group: 'org.knowm.xchart', name: 'xchart', version: '3.2.2'
+
    testImplementation 'junit:junit:4.12'
 
    // Enable simulation gui support. Must check the box in vscode to enable support
