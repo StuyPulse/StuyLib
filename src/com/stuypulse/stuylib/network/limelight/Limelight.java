@@ -3,6 +3,7 @@
 
 package com.stuypulse.stuylib.network.limelight;
 
+import com.stuypulse.stuylib.math.Vector2D;
 import edu.wpi.first.networktables.NetworkTable;
 import edu.wpi.first.networktables.NetworkTableEntry;
 import edu.wpi.first.networktables.NetworkTableInstance;
@@ -210,36 +211,6 @@ public class Limelight {
         return mVerticalSideLengthEntry.getDouble(0);
     }
 
-    private static final NetworkTableEntry mCornerEntry = mTable
-            .getEntry("tcornxy");
-
-    /**
-     *
-     * @return Array of Vertices, in the form (x0,y0,x1,y1, ... xN,yN). coordinates are in pixels,
-     *         relative to top left corner of limelight feed
-     */
-    public static double[] getCoords() {
-        return mCornerEntry.getDoubleArray(new double[0]);
-    }
-
-    /**
-     *
-     * @return Formatted 2D array of coordinates, consisting of an array of X values and an array of Y
-     *         values.
-     */
-    public static double[][] getVertices() {
-        double[][] data = new double[2][];
-        double[] rawData = getCoords();
-        int numCoords = rawData.length / 2;
-        data[0] = new double[numCoords];
-        data[1] = new double[numCoords];
-        for(int i = 0; i < rawData.length - 1; i += 2) {
-            data[0][i / 2] = rawData[i];
-            data[1][i / 2] = rawData[i + 1];
-        }
-        return data;
-    }
-
     /* Target Corner */
     private static final NetworkTableEntry mTCornX = mTable.getEntry("tcornx");
 
@@ -258,7 +229,7 @@ public class Limelight {
      * @return The x axis of a corner on the target
      */
     public static double getTargetCornerX(int corner) {
-        return mTCornX.getDoubleArray(new double[] {})[corner];
+        return getTargetCornerX()[corner];
     }
 
     private static final NetworkTableEntry mTCornY = mTable.getEntry("tcorny");
@@ -278,7 +249,26 @@ public class Limelight {
      * @return The x axis of a corner on the target
      */
     public static double getTargetCornerY(int corner) {
-        return mTCornY.getDoubleArray(new double[] {})[corner];
+        return getTargetCornerY()[corner];
+    }
+
+    private static final NetworkTableEntry mCornerEntry = mTable
+            .getEntry("tcornxy");
+
+    /**
+     *
+     * @return Formatted 2D array of coordinates, consisting of an array of X * values and an array of Y
+     *         values.
+     */
+    public static Vector2D[] getTargetCorner() {
+        double[] rawData = mCornerEntry.getDoubleArray(new double[0]);
+        Vector2D[] data = new Vector2D[rawData.length / 2];
+
+        for(int i = 0; i < data.length; ++i) {
+            data[i] = new Vector2D(rawData[2 * i + 0], rawData[2 * i + 1]);
+        }
+
+        return data;
     }
 
     /* Advanced Usage with Raw Contours (Not sent by default) */
@@ -350,6 +340,7 @@ public class Limelight {
 
     /* Custom Grip Values */
     // Return data given by custom GRIP pipeline
+
     /**
      * @param element Name of double provided by GRIP Pipeline
      * @return Double provided by GRIP Pipeline

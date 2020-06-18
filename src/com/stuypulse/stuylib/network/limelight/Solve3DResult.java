@@ -1,5 +1,7 @@
 package com.stuypulse.stuylib.network.limelight;
 
+import com.stuypulse.stuylib.math.Angle;
+
 /**
  * Class that is used to return solve 3D results from the limelight
  *
@@ -14,9 +16,9 @@ public class Solve3DResult {
     private double mZ;
 
     // Rotation Data
-    private double mPitch;
-    private double mYaw;
-    private double mRoll;
+    private Angle mPitch;
+    private Angle mYaw;
+    private Angle mRoll;
 
     /**
      * Initialize each part of the Solve3DResult
@@ -34,9 +36,9 @@ public class Solve3DResult {
         mY = y;
         mZ = z;
 
-        mPitch = pitch;
-        mYaw = yaw;
-        mRoll = roll;
+        mPitch = Angle.degrees(pitch);
+        mYaw = Angle.degrees(yaw);
+        mRoll = Angle.degrees(roll);
     }
 
     /**
@@ -80,7 +82,7 @@ public class Solve3DResult {
      *
      * @return pitch
      */
-    public double getPitch() {
+    public Angle getPitch() {
         return mPitch;
     }
 
@@ -89,7 +91,7 @@ public class Solve3DResult {
      *
      * @return yaw
      */
-    public double getYaw() {
+    public Angle getYaw() {
         return mYaw;
     }
 
@@ -98,7 +100,7 @@ public class Solve3DResult {
      *
      * @return roll
      */
-    public double getRoll() {
+    public Angle getRoll() {
         return mRoll;
     }
 }

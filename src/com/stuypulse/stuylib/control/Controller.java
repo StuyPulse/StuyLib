@@ -238,4 +238,11 @@ public abstract class Controller {
      * @return controller output.
      */
     protected abstract double calculate(double error);
+
+    /**
+     * Default to string funciton
+     */
+    public String toString() {
+        return "(error: " + this.getError() + ")";
+    }
 }

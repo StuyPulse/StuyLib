@@ -30,9 +30,9 @@ loadScripts(document, 'script');</script>
 <noscript>
 <div>JavaScript is disabled on your browser.</div>
 </noscript>
-<header role="banner">
+<div class="flexBox">
+<header role="banner" class="flexHeader">
 <nav role="navigation">
-<div class="fixedNav">
 <!-- ========= START OF TOP NAVBAR ======= -->
 <div class="topNav"><a id="navbar.top">
 <!--   -->
@@ -72,20 +72,15 @@ loadScripts(document, 'script');</script>
 <input type="reset" id="reset" value="reset" disabled="disabled">
 </div>
 </div>
-<a id="skip.navbar.top">
-<!--   -->
-</a>
 <!-- ========= END OF TOP NAVBAR ========= -->
-</div>
-<div class="navPadding">&nbsp;</div>
-<script type="text/javascript"><!--
-$('.navPadding').css('padding-top', $('.fixedNav').css("height"));
-//-->
-</script>
+<div class="skipNav"><a id="skip.navbar.top">
+<!--   -->
+</a></div>
 </nav>
 </header>
-<!-- ======== START OF CLASS DATA ======== -->
+<div class="flexContent">
 <main role="main">
+<!-- ======== START OF CLASS DATA ======== -->
 <div class="header">
 <div class="subTitle"><span class="packageLabelInType">Package</span>&nbsp;<a href="package-summary.html">com.stuypulse.stuylib.network.limelight</a></div>
 <h1 title="Class Solve3DResult" class="title">Class Solve3DResult</h1>
@@ -159,14 +154,14 @@ double&nbsp;roll)</code></th>
 </thead>
 <tbody>
 <tr class="altColor" id="i0">
-<td class="colFirst"><code>double</code></td>
+<td class="colFirst"><code><a href="../../math/Angle.html" title="class in com.stuypulse.stuylib.math">Angle</a></code></td>
 <th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#getPitch()">getPitch</a></span>()</code></th>
 <td class="colLast">
 <div class="block">Get pitch from Solve3D Result</div>
 </td>
 </tr>
 <tr class="rowColor" id="i1">
-<td class="colFirst"><code>double</code></td>
+<td class="colFirst"><code><a href="../../math/Angle.html" title="class in com.stuypulse.stuylib.math">Angle</a></code></td>
 <th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#getRoll()">getRoll</a></span>()</code></th>
 <td class="colLast">
 <div class="block">Get roll from Solve3D Result</div>
@@ -187,7 +182,7 @@ double&nbsp;roll)</code></th>
 </td>
 </tr>
 <tr class="altColor" id="i4">
-<td class="colFirst"><code>double</code></td>
+<td class="colFirst"><code><a href="../../math/Angle.html" title="class in com.stuypulse.stuylib.math">Angle</a></code></td>
 <th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#getYaw()">getYaw</a></span>()</code></th>
 <td class="colLast">
 <div class="block">Get yaw from Solve3D Result</div>
@@ -300,7 +295,7 @@ double&nbsp;roll)</span></div>
 <li class="blockList">
 <section class="detail">
 <h3><a id="getPitch()">getPitch</a></h3>
-<div class="memberSignature"><span class="modifiers">public</span>&nbsp;<span class="returnType">double</span>&nbsp;<span class="memberName">getPitch</span>()</div>
+<div class="memberSignature"><span class="modifiers">public</span>&nbsp;<span class="returnType"><a href="../../math/Angle.html" title="class in com.stuypulse.stuylib.math">Angle</a></span>&nbsp;<span class="memberName">getPitch</span>()</div>
 <div class="block">Get pitch from Solve3D Result</div>
 <dl>
 <dt><span class="returnLabel">Returns:</span></dt>
@@ -311,7 +306,7 @@ double&nbsp;roll)</span></div>
 <li class="blockList">
 <section class="detail">
 <h3><a id="getYaw()">getYaw</a></h3>
-<div class="memberSignature"><span class="modifiers">public</span>&nbsp;<span class="returnType">double</span>&nbsp;<span class="memberName">getYaw</span>()</div>
+<div class="memberSignature"><span class="modifiers">public</span>&nbsp;<span class="returnType"><a href="../../math/Angle.html" title="class in com.stuypulse.stuylib.math">Angle</a></span>&nbsp;<span class="memberName">getYaw</span>()</div>
 <div class="block">Get yaw from Solve3D Result</div>
 <dl>
 <dt><span class="returnLabel">Returns:</span></dt>
@@ -322,7 +317,7 @@ double&nbsp;roll)</span></div>
 <li class="blockList">
 <section class="detail">
 <h3><a id="getRoll()">getRoll</a></h3>
-<div class="memberSignature"><span class="modifiers">public</span>&nbsp;<span class="returnType">double</span>&nbsp;<span class="memberName">getRoll</span>()</div>
+<div class="memberSignature"><span class="modifiers">public</span>&nbsp;<span class="returnType"><a href="../../math/Angle.html" title="class in com.stuypulse.stuylib.math">Angle</a></span>&nbsp;<span class="memberName">getRoll</span>()</div>
 <div class="block">Get roll from Solve3D Result</div>
 <dl>
 <dt><span class="returnLabel">Returns:</span></dt>
@@ -336,8 +331,8 @@ double&nbsp;roll)</span></div>
 </ul>
 </section>
 </div>
-</main>
 <!-- ========= END OF CLASS DATA ========= -->
+</main>
 <footer role="contentinfo">
 <nav role="navigation">
 <!-- ======= START OF BOTTOM NAVBAR ====== -->
@@ -381,5 +376,7 @@ double&nbsp;roll)</span></div>
 <!-- ======== END OF BOTTOM NAVBAR ======= -->
 </nav>
 </footer>
+</div>
+</div>
 </body>
 </html>
