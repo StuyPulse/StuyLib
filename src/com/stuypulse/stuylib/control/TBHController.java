@@ -1,8 +1,15 @@
 package com.stuypulse.stuylib.control;
 
 /**
- * This is a take back half controller that is specifically made to tune shooter wheels. It is made
- * to be easy to tune, as it only has one gain parameter.
+ * The take back half algorithm is one made specifically to help with controlling shooters. The way
+ * it works is it increases speed until it goes over the target, at which point it "takes back
+ * half", ie. cuts the speed in half. Then it increases speed again, when it hits the target speed,
+ * it takes back half again.
+ *
+ * This way it is able to hit the target speed with accuracy.
+ *
+ * The gain value is how fast or slow it should increase speed. Tuning is required but its not as
+ * tedious as with PID.
  *
  * @author Sam (sam.belliveau@gmail.com)
  */

@@ -138,8 +138,15 @@ $('.navPadding').css('padding-top', $('.fixedNav').css("height"));
 <hr>
 <pre>public class <span class="typeNameLabel">TBHController</span>
 extends <a href="Controller.html" title="class in com.stuypulse.stuylib.control">Controller</a></pre>
-<div class="block">This is a take back half controller that is specifically made to tune shooter wheels. It is made
- to be easy to tune, as it only has one gain parameter.</div>
+<div class="block">The take back half algorithm is one made specifically to help with controlling shooters. The way
+ it works is it increases speed until it goes over the target, at which point it "takes back
+ half", ie. cuts the speed in half. Then it increases speed again, when it hits the target speed,
+ it takes back half again.
+
+ This way it is able to hit the target speed with accuracy.
+
+ The gain value is how fast or slow it should increase speed. Tuning is required but its not as
+ tedious as with PID.</div>
 </li>
 </ul>
 </div>
