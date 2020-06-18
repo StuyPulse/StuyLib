@@ -15,7 +15,6 @@ package com.stuypulse.stuylib.control;
  */
 public class TBHController extends Controller {
 
-    // Constants used by the PID controller
     private double mGain;
     private double mTBH;
     private double mPreviousError;
