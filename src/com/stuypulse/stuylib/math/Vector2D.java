@@ -148,6 +148,26 @@ public final class Vector2D {
     }
 
     /**
+     * Multiply two Vector2Ds
+     *
+     * @param other the other Vector2D
+     * @return product of the two Vector2Ds
+     */
+    public Vector2D mul(Vector2D other) {
+        return new Vector2D(this.x * other.x, this.y * other.y);
+    }
+
+    /**
+     * Divide two Vector2Ds
+     *
+     * @param other the other Vector2D
+     * @return division of the two Vector2Ds
+     */
+    public Vector2D div(Vector2D other) {
+        return new Vector2D(this.x / other.x, this.y / other.y);
+    }
+
+    /**
      * Multiply the x and y of the Vector2D by a certain amount
      *
      * @param multiplier amount to multiply the Vector2D by
