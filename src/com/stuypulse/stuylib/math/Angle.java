@@ -158,7 +158,7 @@ public final class Angle {
      *
      * @return the point of the angle on the unit circle
      */
-    public Vector2D getVector() {
+    public Vector2D vector() {
         return new Vector2D(this.cos(), this.sin());
     }
 }
