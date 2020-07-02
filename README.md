@@ -1,6 +1,6 @@
-![](https://github.com/StuyPulse/StuyLib/raw/master/pictures/StuyLib%20Banner.png)
+![(Stuylib Logo)](https://github.com/StuyPulse/StuyLib/raw/master/pictures/StuyLib%20Banner.png)
 
-[![](https://jitpack.io/v/StuyPulse/StuyLib.svg)](https://jitpack.io/#StuyPulse/StuyLib)
+[![Jitpack Website](https://jitpack.io/v/StuyPulse/StuyLib.svg)](https://jitpack.io/#StuyPulse/StuyLib)
 
 # What is StuyLib?
 
