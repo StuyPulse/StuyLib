@@ -1,3 +1,3 @@
-# StuyLib Limelight Library
+# StuyLib Filters Library
 
 WIP...
