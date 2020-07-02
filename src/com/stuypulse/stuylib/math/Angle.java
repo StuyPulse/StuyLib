@@ -9,6 +9,23 @@ package com.stuypulse.stuylib.math;
  */
 public final class Angle {
 
+    /******************************************************/
+    /*** CONSTANT ANGLE VALUES, SET AT BENCHMARK VALUES ***/
+    /******************************************************/
+
+    public static final Angle kArcMinute = Angle.fromArcMinutes(1.0);
+    public static final Angle kArcSecond = Angle.fromArcSeconds(1.0);
+    public static final Angle kRadiant = Angle.fromRadians(1.0);
+    public static final Angle kDegree = Angle.fromDegrees(1.0);
+
+    public static final Angle kZero = Angle.fromRadians(0.0);
+    public static final Angle k90deg = Angle.fromDegrees(90.0);
+    public static final Angle k180deg = Angle.fromDegrees(180.0);
+
+    /********************************/
+    /*** PRIVATE HELPER FUNCTIONS ***/
+    /********************************/
+
     private static final double kPi = Math.PI;
     private static final double kTwoPi = 2.0 * kPi;
 
@@ -34,6 +51,10 @@ public final class Angle {
         return degrees - 360.0 * Math.floor((degrees + 180.0 - center) / 360.0);
     }
 
+    /*************************/
+    /*** FACTORY FUNCTIONS ***/
+    /*************************/
+
     /**
      * Construct a new Angle class with a double in radians
      *
@@ -51,8 +72,32 @@ public final class Angle {
      * @return an angle class with the specified angle
      */
     public static Angle fromDegrees(double degrees) {
-        return new Angle(Math.toRadians(degrees));
+        return fromRadians(Math.toRadians(degrees));
     }
+
+    /**
+     * Construct a new Angle class with a double in arcminute
+     *
+     * @param arcminutes the angle for the new angle class in arcminutes
+     * @return an angle class with the specified angle
+     */
+    public static Angle fromArcMinutes(double arcminutes) {
+        return fromDegrees(arcminutes / 60.0);
+    }
+
+    /**
+     * Construct a new Angle class with a double in arcseconds
+     *
+     * @param arcseconds the angle for the new angle class in arcseconds
+     * @return an angle class with the specified angle
+     */
+    public static Angle fromArcSeconds(double arcseconds) {
+        return fromArcMinutes(arcseconds / 60.0);
+    }
+
+    /****************************/
+    /*** CLASS IMPLEMENTATION ***/
+    /****************************/
 
     /**
      * The value of the angle stored in radians
