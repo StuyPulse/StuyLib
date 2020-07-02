@@ -17,6 +17,14 @@ StuyLib is an FRC library / toolkit which includes many different utilities for 
 
 [Instructions from JitPack.io](https://jitpack.io/#StuyPulse/StuyLib)
 
+Step 0. This is done by default for robot projects, but if your doing a local project you must remember to include this at the top
+```
+plugins {
+    id "java"
+    id "edu.wpi.first.GradleRIO" version "2020.2.2"
+}
+```
+
 Step 1. Add the JitPack repository to your build file
 
  - Add it in your root build.gradle at the end of repositories:
