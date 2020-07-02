@@ -79,10 +79,6 @@ loadScripts(document, 'script');</script>
 <dd>
 <div class="block">Add a basic binding to a key code</div>
 </dd>
-<dt><span class="memberNameLink"><a href="com/stuypulse/stuylib/math/Vector2D.html#angle()">angle()</a></span> - Method in class com.stuypulse.stuylib.math.<a href="com/stuypulse/stuylib/math/Vector2D.html" title="class in com.stuypulse.stuylib.math">Vector2D</a></dt>
-<dd>
-<div class="block">Get the angle of the Vector2D around 0</div>
-</dd>
 <dt><a href="com/stuypulse/stuylib/math/Angle.html" title="class in com.stuypulse.stuylib.math"><span class="typeNameLink">Angle</span></a> - Class in <a href="com/stuypulse/stuylib/math/package-summary.html">com.stuypulse.stuylib.math</a></dt>
 <dd>
 <div class="block">This angle class is made to remove the ambiguity of units when passing or returning angles.</div>
@@ -95,7 +91,7 @@ loadScripts(document, 'script');</script>
 <dl>
 <dt><a href="com/stuypulse/stuylib/control/BangBangController.html" title="class in com.stuypulse.stuylib.control"><span class="typeNameLink">BangBangController</span></a> - Class in <a href="com/stuypulse/stuylib/control/package-summary.html">com.stuypulse.stuylib.control</a></dt>
 <dd>
-<div class="block">A simple implementation of a BangBangController for @see com.stuypulse.stuylib.control.Controller
+<div class="block">A simple implementation of a BangBangController for the Stuylib Controller
 
  When the error is positive, it returns a fixed positive value.</div>
 </dd>
@@ -324,10 +320,6 @@ loadScripts(document, 'script');</script>
 <dd>
 <div class="block">String returned if no entry is found</div>
 </dd>
-<dt><span class="memberNameLink"><a href="com/stuypulse/stuylib/math/Angle.html#degrees(double)">degrees(double)</a></span> - Static method in class com.stuypulse.stuylib.math.<a href="com/stuypulse/stuylib/math/Angle.html" title="class in com.stuypulse.stuylib.math">Angle</a></dt>
-<dd>
-<div class="block">Construct a new Angle class with a double in degrees</div>
-</dd>
 <dt><span class="memberNameLink"><a href="com/stuypulse/stuylib/math/Vector2D.html#distance()">distance()</a></span> - Method in class com.stuypulse.stuylib.math.<a href="com/stuypulse/stuylib/math/Vector2D.html" title="class in com.stuypulse.stuylib.math">Vector2D</a></dt>
 <dd>
 <div class="block">Get the distance from 0, 0</div>
@@ -437,6 +429,14 @@ loadScripts(document, 'script');</script>
 <div class="block">The Loggable interface should be implemented by a class that can return a useful piece of data
  that can be called on demand to be written into the log.</div>
 </dd>
+<dt><span class="memberNameLink"><a href="com/stuypulse/stuylib/math/Angle.html#fromDegrees(double)">fromDegrees(double)</a></span> - Static method in class com.stuypulse.stuylib.math.<a href="com/stuypulse/stuylib/math/Angle.html" title="class in com.stuypulse.stuylib.math">Angle</a></dt>
+<dd>
+<div class="block">Construct a new Angle class with a double in degrees</div>
+</dd>
+<dt><span class="memberNameLink"><a href="com/stuypulse/stuylib/math/Angle.html#fromRadians(double)">fromRadians(double)</a></span> - Static method in class com.stuypulse.stuylib.math.<a href="com/stuypulse/stuylib/math/Angle.html" title="class in com.stuypulse.stuylib.math">Angle</a></dt>
+<dd>
+<div class="block">Construct a new Angle class with a double in radians</div>
+</dd>
 </dl>
 <a id="I:G">
 <!--   -->
@@ -526,6 +526,10 @@ loadScripts(document, 'script');</script>
 <dt><span class="memberNameLink"><a href="com/stuypulse/stuylib/streams/BufferedIStream.html#get(int)">get(int)</a></span> - Method in class com.stuypulse.stuylib.streams.<a href="com/stuypulse/stuylib/streams/BufferedIStream.html" title="class in com.stuypulse.stuylib.streams">BufferedIStream</a></dt>
 <dd>
 <div class="block">Get value from istream and add value to buffer</div>
+</dd>
+<dt><span class="memberNameLink"><a href="com/stuypulse/stuylib/math/Vector2D.html#getAngle()">getAngle()</a></span> - Method in class com.stuypulse.stuylib.math.<a href="com/stuypulse/stuylib/math/Vector2D.html" title="class in com.stuypulse.stuylib.math">Vector2D</a></dt>
+<dd>
+<div class="block">Get the angle of the Vector2D around 0</div>
 </dd>
 <dt><span class="memberNameLink"><a href="com/stuypulse/stuylib/math/Vector2D.html#getArray()">getArray()</a></span> - Method in class com.stuypulse.stuylib.math.<a href="com/stuypulse/stuylib/math/Vector2D.html" title="class in com.stuypulse.stuylib.math">Vector2D</a></dt>
 <dd>
@@ -1102,6 +1106,10 @@ loadScripts(document, 'script');</script>
 <dd>
 <div class="block">Get a value from the buffer of graph data</div>
 </dd>
+<dt><span class="memberNameLink"><a href="com/stuypulse/stuylib/math/Angle.html#getVector()">getVector()</a></span> - Method in class com.stuypulse.stuylib.math.<a href="com/stuypulse/stuylib/math/Angle.html" title="class in com.stuypulse.stuylib.math">Angle</a></dt>
+<dd>
+<div class="block">Get the point of the angle on the unit circle</div>
+</dd>
 <dt><span class="memberNameLink"><a href="com/stuypulse/stuylib/control/Controller.html#getVelocity()">getVelocity()</a></span> - Method in class com.stuypulse.stuylib.control.<a href="com/stuypulse/stuylib/control/Controller.html" title="class in com.stuypulse.stuylib.control">Controller</a></dt>
 <dd>
 <div class="block">Gets the velocity from the last time that .update() was called adjusted to velocity per second</div>
@@ -1254,8 +1262,9 @@ loadScripts(document, 'script');</script>
 </dd>
 <dt><a href="com/stuypulse/stuylib/streams/IStream.html" title="interface in com.stuypulse.stuylib.streams"><span class="typeNameLink">IStream</span></a> - Interface in <a href="com/stuypulse/stuylib/streams/package-summary.html">com.stuypulse.stuylib.streams</a></dt>
 <dd>
-<div class="block">A stream of doubles that is accessed with the @see com.stuypulse.stuylib.streams.IStream.get()
- function</div>
+<div class="block">A stream of doubles that is accessed with the .get() function
+
+ Can be created with lambdas to represent a stream of inputs.</div>
 </dd>
 <dt><span class="memberNameLink"><a href="com/stuypulse/stuylib/file/csv/CSVReader.html#iterator()">iterator()</a></span> - Method in class com.stuypulse.stuylib.file.csv.<a href="com/stuypulse/stuylib/file/csv/CSVReader.html" title="class in com.stuypulse.stuylib.file.csv">CSVReader</a></dt>
 <dd>
@@ -1636,10 +1645,6 @@ loadScripts(document, 'script');</script>
 </a>
 <h2 class="title">R</h2>
 <dl>
-<dt><span class="memberNameLink"><a href="com/stuypulse/stuylib/math/Angle.html#radians(double)">radians(double)</a></span> - Static method in class com.stuypulse.stuylib.math.<a href="com/stuypulse/stuylib/math/Angle.html" title="class in com.stuypulse.stuylib.math">Angle</a></dt>
-<dd>
-<div class="block">Construct a new Angle class with a double in radians</div>
-</dd>
 <dt><a href="com/stuypulse/stuylib/streams/filters/RateLimit.html" title="class in com.stuypulse.stuylib.streams.filters"><span class="typeNameLink">RateLimit</span></a> - Class in <a href="com/stuypulse/stuylib/streams/filters/package-summary.html">com.stuypulse.stuylib.streams.filters</a></dt>
 <dd>
 <div class="block">This class lets you rate limit a stream of inputs
@@ -2038,6 +2043,10 @@ loadScripts(document, 'script');</script>
 <dd>
 <div class="block">CSV File as string.</div>
 </dd>
+<dt><span class="memberNameLink"><a href="com/stuypulse/stuylib/math/Angle.html#toString()">toString()</a></span> - Method in class com.stuypulse.stuylib.math.<a href="com/stuypulse/stuylib/math/Angle.html" title="class in com.stuypulse.stuylib.math">Angle</a></dt>
+<dd>
+<div class="block">Represents the Angle as a String</div>
+</dd>
 <dt><span class="memberNameLink"><a href="com/stuypulse/stuylib/math/Vector2D.html#toString()">toString()</a></span> - Method in class com.stuypulse.stuylib.math.<a href="com/stuypulse/stuylib/math/Vector2D.html" title="class in com.stuypulse.stuylib.math">Vector2D</a></dt>
 <dd>
 <div class="block">Format the angle into a string</div>
@@ -2140,10 +2149,6 @@ the order they are declared.</div>
 <dd>
 <div class="block">Returns an array containing the constants of this enum type, in
 the order they are declared.</div>
-</dd>
-<dt><span class="memberNameLink"><a href="com/stuypulse/stuylib/math/Angle.html#vector()">vector()</a></span> - Method in class com.stuypulse.stuylib.math.<a href="com/stuypulse/stuylib/math/Angle.html" title="class in com.stuypulse.stuylib.math">Angle</a></dt>
-<dd>
-<div class="block">Get the point of the angle on the unit circle</div>
 </dd>
 <dt><a href="com/stuypulse/stuylib/math/Vector2D.html" title="class in com.stuypulse.stuylib.math"><span class="typeNameLink">Vector2D</span></a> - Class in <a href="com/stuypulse/stuylib/math/package-summary.html">com.stuypulse.stuylib.math</a></dt>
 <dd>

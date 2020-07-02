@@ -1,7 +1,7 @@
 package com.stuypulse.stuylib.control;
 
 /**
- * A simple implementation of a BangBangController for @see com.stuypulse.stuylib.control.Controller
+ * A simple implementation of a BangBangController for the Stuylib Controller
  *
  * When the error is positive, it returns a fixed positive value.
  *

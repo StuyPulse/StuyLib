@@ -19,7 +19,7 @@
 <script type="text/javascript" src="../../../../script-dir/jquery-ui.js"></script>
 </head>
 <body class="class-declaration">
-<script type="text/javascript">var data = {"i0":10,"i1":10,"i2":9,"i3":9,"i4":10,"i5":10,"i6":10,"i7":10,"i8":10,"i9":10,"i10":10,"i11":10};
+<script type="text/javascript">var data = {"i0":10,"i1":10,"i2":9,"i3":9,"i4":10,"i5":10,"i6":10,"i7":10,"i8":10,"i9":10,"i10":10,"i11":10,"i12":10};
 var tabs = {65535:["t0","All Methods"],1:["t1","Static Methods"],2:["t2","Instance Methods"],8:["t4","Concrete Methods"]};
 var altColor = "altColor";
 var rowColor = "rowColor";
@@ -133,72 +133,79 @@ extends java.lang.Object</pre>
 </tr>
 <tr class="altColor" id="i2">
 <td class="colFirst"><code>static <a href="Angle.html" title="class in com.stuypulse.stuylib.math">Angle</a></code></td>
-<th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#degrees(double)">degrees</a></span>&#8203;(double&nbsp;degrees)</code></th>
+<th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#fromDegrees(double)">fromDegrees</a></span>&#8203;(double&nbsp;degrees)</code></th>
 <td class="colLast">
 <div class="block">Construct a new Angle class with a double in degrees</div>
 </td>
 </tr>
 <tr class="rowColor" id="i3">
 <td class="colFirst"><code>static <a href="Angle.html" title="class in com.stuypulse.stuylib.math">Angle</a></code></td>
-<th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#radians(double)">radians</a></span>&#8203;(double&nbsp;radians)</code></th>
+<th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#fromRadians(double)">fromRadians</a></span>&#8203;(double&nbsp;radians)</code></th>
 <td class="colLast">
 <div class="block">Construct a new Angle class with a double in radians</div>
 </td>
 </tr>
 <tr class="altColor" id="i4">
+<td class="colFirst"><code><a href="Vector2D.html" title="class in com.stuypulse.stuylib.math">Vector2D</a></code></td>
+<th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#getVector()">getVector</a></span>()</code></th>
+<td class="colLast">
+<div class="block">Get the point of the angle on the unit circle</div>
+</td>
+</tr>
+<tr class="rowColor" id="i5">
 <td class="colFirst"><code>double</code></td>
 <th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#sin()">sin</a></span>()</code></th>
 <td class="colLast">
 <div class="block">Get the sin of the angle</div>
 </td>
 </tr>
-<tr class="rowColor" id="i5">
+<tr class="altColor" id="i6">
 <td class="colFirst"><code><a href="Angle.html" title="class in com.stuypulse.stuylib.math">Angle</a></code></td>
 <th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#sub(com.stuypulse.stuylib.math.Angle)">sub</a></span>&#8203;(<a href="Angle.html" title="class in com.stuypulse.stuylib.math">Angle</a>&nbsp;other)</code></th>
 <td class="colLast">
 <div class="block">Subtract two angles from each other</div>
 </td>
 </tr>
-<tr class="altColor" id="i6">
+<tr class="rowColor" id="i7">
 <td class="colFirst"><code>double</code></td>
 <th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#tan()">tan</a></span>()</code></th>
 <td class="colLast">
 <div class="block">Get the tan of the angle</div>
 </td>
 </tr>
-<tr class="rowColor" id="i7">
+<tr class="altColor" id="i8">
 <td class="colFirst"><code>double</code></td>
 <th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#toDegrees()">toDegrees</a></span>()</code></th>
 <td class="colLast">
 <div class="block">Get the value of the angle in degrees centered around 0.0</div>
 </td>
 </tr>
-<tr class="altColor" id="i8">
+<tr class="rowColor" id="i9">
 <td class="colFirst"><code>double</code></td>
 <th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#toDegrees(double)">toDegrees</a></span>&#8203;(double&nbsp;center)</code></th>
 <td class="colLast">
 <div class="block">Get the angle normalized around a custom angle in degrees</div>
 </td>
 </tr>
-<tr class="rowColor" id="i9">
+<tr class="altColor" id="i10">
 <td class="colFirst"><code>double</code></td>
 <th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#toRadians()">toRadians</a></span>()</code></th>
 <td class="colLast">
 <div class="block">Get the value of the angle in radians centered around 0.0</div>
 </td>
 </tr>
-<tr class="altColor" id="i10">
+<tr class="rowColor" id="i11">
 <td class="colFirst"><code>double</code></td>
 <th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#toRadians(double)">toRadians</a></span>&#8203;(double&nbsp;center)</code></th>
 <td class="colLast">
 <div class="block">Get the angle normalized around a custom angle in radians</div>
 </td>
 </tr>
-<tr class="rowColor" id="i11">
-<td class="colFirst"><code><a href="Vector2D.html" title="class in com.stuypulse.stuylib.math">Vector2D</a></code></td>
-<th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#vector()">vector</a></span>()</code></th>
+<tr class="altColor" id="i12">
+<td class="colFirst"><code>java.lang.String</code></td>
+<th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#toString()">toString</a></span>()</code></th>
 <td class="colLast">
-<div class="block">Get the point of the angle on the unit circle</div>
+<div class="block">Represents the Angle as a String</div>
 </td>
 </tr>
 </tbody>
@@ -209,7 +216,7 @@ extends java.lang.Object</pre>
 <h3>Methods inherited from class&nbsp;java.lang.Object</h3>
 <a id="methods.inherited.from.class.java.lang.Object">
 <!--   -->
-</a><code>clone, equals, finalize, getClass, hashCode, notify, notifyAll, toString, wait, wait, wait</code></div>
+</a><code>clone, equals, finalize, getClass, hashCode, notify, notifyAll, wait, wait, wait</code></div>
 </section>
 </li>
 </ul>
@@ -225,8 +232,8 @@ extends java.lang.Object</pre>
 <ul class="blockList">
 <li class="blockList">
 <section class="detail">
-<h3><a id="radians(double)">radians</a></h3>
-<div class="memberSignature"><span class="modifiers">public static</span>&nbsp;<span class="returnType"><a href="Angle.html" title="class in com.stuypulse.stuylib.math">Angle</a></span>&nbsp;<span class="memberName">radians</span>&#8203;(<span class="arguments">double&nbsp;radians)</span></div>
+<h3><a id="fromRadians(double)">fromRadians</a></h3>
+<div class="memberSignature"><span class="modifiers">public static</span>&nbsp;<span class="returnType"><a href="Angle.html" title="class in com.stuypulse.stuylib.math">Angle</a></span>&nbsp;<span class="memberName">fromRadians</span>&#8203;(<span class="arguments">double&nbsp;radians)</span></div>
 <div class="block">Construct a new Angle class with a double in radians</div>
 <dl>
 <dt><span class="paramLabel">Parameters:</span></dt>
@@ -238,8 +245,8 @@ extends java.lang.Object</pre>
 </li>
 <li class="blockList">
 <section class="detail">
-<h3><a id="degrees(double)">degrees</a></h3>
-<div class="memberSignature"><span class="modifiers">public static</span>&nbsp;<span class="returnType"><a href="Angle.html" title="class in com.stuypulse.stuylib.math">Angle</a></span>&nbsp;<span class="memberName">degrees</span>&#8203;(<span class="arguments">double&nbsp;degrees)</span></div>
+<h3><a id="fromDegrees(double)">fromDegrees</a></h3>
+<div class="memberSignature"><span class="modifiers">public static</span>&nbsp;<span class="returnType"><a href="Angle.html" title="class in com.stuypulse.stuylib.math">Angle</a></span>&nbsp;<span class="memberName">fromDegrees</span>&#8203;(<span class="arguments">double&nbsp;degrees)</span></div>
 <div class="block">Construct a new Angle class with a double in degrees</div>
 <dl>
 <dt><span class="paramLabel">Parameters:</span></dt>
@@ -358,12 +365,25 @@ extends java.lang.Object</pre>
 </li>
 <li class="blockList">
 <section class="detail">
-<h3><a id="vector()">vector</a></h3>
-<div class="memberSignature"><span class="modifiers">public</span>&nbsp;<span class="returnType"><a href="Vector2D.html" title="class in com.stuypulse.stuylib.math">Vector2D</a></span>&nbsp;<span class="memberName">vector</span>()</div>
+<h3><a id="getVector()">getVector</a></h3>
+<div class="memberSignature"><span class="modifiers">public</span>&nbsp;<span class="returnType"><a href="Vector2D.html" title="class in com.stuypulse.stuylib.math">Vector2D</a></span>&nbsp;<span class="memberName">getVector</span>()</div>
 <div class="block">Get the point of the angle on the unit circle</div>
 <dl>
 <dt><span class="returnLabel">Returns:</span></dt>
 <dd>the point of the angle on the unit circle</dd>
+</dl>
+</section>
+</li>
+<li class="blockList">
+<section class="detail">
+<h3><a id="toString()">toString</a></h3>
+<div class="memberSignature"><span class="modifiers">public</span>&nbsp;<span class="returnType">java.lang.String</span>&nbsp;<span class="memberName">toString</span>()</div>
+<div class="block">Represents the Angle as a String</div>
+<dl>
+<dt><span class="overrideSpecifyLabel">Overrides:</span></dt>
+<dd><code>toString</code>&nbsp;in class&nbsp;<code>java.lang.Object</code></dd>
+<dt><span class="returnLabel">Returns:</span></dt>
+<dd>the string representation of the angle</dd>
 </dl>
 </section>
 </li>

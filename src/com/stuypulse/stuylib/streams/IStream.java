@@ -3,8 +3,11 @@ package com.stuypulse.stuylib.streams;
 import com.stuypulse.stuylib.streams.filters.IFilter;
 
 /**
- * A stream of doubles that is accessed with the @see com.stuypulse.stuylib.streams.IStream.get()
- * function
+ * A stream of doubles that is accessed with the .get() function
+ *
+ * Can be created with lambdas to represent a stream of inputs.
+ *
+ * It can be filitered with the available filtering options.
  *
  * @author Sam (sam.belliveau@gmail.com)
  */

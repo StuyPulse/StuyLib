@@ -36,9 +36,9 @@ public class Solve3DResult {
         mY = y;
         mZ = z;
 
-        mPitch = Angle.degrees(pitch);
-        mYaw = Angle.degrees(yaw);
-        mRoll = Angle.degrees(roll);
+        mPitch = Angle.fromDegrees(pitch);
+        mYaw = Angle.fromDegrees(yaw);
+        mRoll = Angle.fromDegrees(roll);
     }
 
     /**

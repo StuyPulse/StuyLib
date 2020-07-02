@@ -40,7 +40,7 @@ public final class Angle {
      * @param radians the angle for the new angle class in radians
      * @return an angle class with the specified angle
      */
-    public static Angle radians(double radians) {
+    public static Angle fromRadians(double radians) {
         return new Angle(radians);
     }
 
@@ -50,7 +50,7 @@ public final class Angle {
      * @param degrees the angle for the new angle class in degrees
      * @return an angle class with the specified angle
      */
-    public static Angle degrees(double degrees) {
+    public static Angle fromDegrees(double degrees) {
         return new Angle(Math.toRadians(degrees));
     }
 
@@ -113,7 +113,7 @@ public final class Angle {
      * @return the sum of the two angles
      */
     public Angle add(Angle other) {
-        return radians(this.toRadians() + other.toRadians());
+        return fromRadians(this.toRadians() + other.toRadians());
     }
 
     /**
@@ -123,7 +123,7 @@ public final class Angle {
      * @return the first angle subtracted from the other
      */
     public Angle sub(Angle other) {
-        return radians(this.toRadians() - other.toRadians());
+        return fromRadians(this.toRadians() - other.toRadians());
     }
 
     /**
@@ -158,7 +158,16 @@ public final class Angle {
      *
      * @return the point of the angle on the unit circle
      */
-    public Vector2D vector() {
+    public Vector2D getVector() {
         return new Vector2D(this.cos(), this.sin());
+    }
+
+    /**
+     * Represents the Angle as a String
+     *
+     * @return the string representation of the angle
+     */
+    public String toString() {
+        return "(" + this.toRadians() + "pi, " + this.toDegrees() + "deg)";
     }
 }

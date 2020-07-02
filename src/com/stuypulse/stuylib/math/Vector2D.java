@@ -97,8 +97,8 @@ public final class Vector2D {
      *
      * @return the angle of the Vector2D around 0
      */
-    public Angle angle() {
-        return Angle.radians(Math.atan2(this.y, this.x));
+    public Angle getAngle() {
+        return Angle.fromRadians(Math.atan2(this.y, this.x));
     }
 
     /**
