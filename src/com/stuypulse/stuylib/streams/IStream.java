@@ -3,7 +3,8 @@ package com.stuypulse.stuylib.streams;
 import com.stuypulse.stuylib.streams.filters.IFilter;
 
 /**
- * A stream of doubles that is accessed with the @see com.stuypulse.stuylib.streams.IStream.get() function
+ * A stream of doubles that is accessed with the @see com.stuypulse.stuylib.streams.IStream.get()
+ * function
  *
  * @author Sam (sam.belliveau@gmail.com)
  */
