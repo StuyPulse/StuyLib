@@ -59,7 +59,7 @@ public class TBHController extends Controller {
      */
     @Override
     protected double calculate(double error) {
-        mOutput += mGain * error;
+        mOutput += mGain * error * this.getRate();
         if((error < 0) != (mPreviousError < 0)) {
             mOutput += mTBH;
             mOutput *= 0.5;
