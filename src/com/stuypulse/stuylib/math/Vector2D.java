@@ -10,10 +10,10 @@ package com.stuypulse.stuylib.math;
 
 public final class Vector2D {
 
-    public static final Vector2D kOrigin = new Vector2D(0,0);
-    public static final Vector2D kIHat = new Vector2D(1,0);
-    public static final Vector2D kJHat = new Vector2D(0,1);
-    
+    public static final Vector2D kOrigin = new Vector2D(0, 0);
+    public static final Vector2D kIHat = new Vector2D(1, 0);
+    public static final Vector2D kJHat = new Vector2D(0, 1);
+
     /**
      * The x position of the Vector2D
      */

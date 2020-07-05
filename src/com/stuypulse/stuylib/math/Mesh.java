@@ -1,8 +1,8 @@
 package com.stuypulse.stuylib.math;
 
 /**
- * A class to represent a group of Vector2D points. 
- * 
+ * A class to represent a group of Vector2D points.
+ *
  * @author Myles Pasetsky (selym3)
  */
 public final class Mesh {
@@ -13,19 +13,20 @@ public final class Mesh {
     private final Vector2D[] mPoints;
 
     /**
-     * Vector2D representing the center of the mesh because all transformations are centroid-oriented. 
+     * Vector2D representing the center of the mesh because all transformations are centroid-oriented.
      */
     private Vector2D mCentroid;
 
     /**
      * Create a mesh from points.
-     * 
+     *
      * @param points array of points
      */
     public Mesh(Vector2D... points) {
 
-        if (points.length < 1) {
-            throw new IllegalArgumentException("A mesh must have at least 1 point");
+        if(points.length < 1) {
+            throw new IllegalArgumentException(
+                    "A mesh must have at least 1 point");
         }
 
         mCentroid = null;
@@ -36,7 +37,7 @@ public final class Mesh {
 
     /**
      * Utility function with same purpose as the constructor.
-     * 
+     *
      * @param points array points
      * @return new mesh
      */
@@ -46,15 +47,15 @@ public final class Mesh {
 
     /**
      * Get the center of the mesh
-     * 
+     *
      * @return mesh centroid
      */
     public Vector2D getCentroid() {
-        if (mCentroid == null) {
+        if(mCentroid == null) {
             int n = mPoints.length;
             double sumX = 0;
             double sumY = 0;
-            for (int i = 0; i < n;++i) {
+            for(int i = 0; i < n; ++i) {
                 sumX += getVector(i).x;
                 sumY += getVector(i).y;
             }
@@ -66,7 +67,7 @@ public final class Mesh {
 
     /**
      * Retrieves a single vector for the mesh
-     * 
+     *
      * @param index index
      * @return Vector2D
      */
@@ -76,7 +77,7 @@ public final class Mesh {
 
     /**
      * Gets the number of points in the mesh
-     * 
+     *
      * @return size
      */
     public int size() {
@@ -85,7 +86,7 @@ public final class Mesh {
 
     /**
      * Returns the internal array of points
-     * 
+     *
      * @return points
      */
     public Vector2D[] getPoints() {
@@ -94,7 +95,7 @@ public final class Mesh {
 
     /**
      * Scales the mesh.
-     * 
+     *
      * @param scale vector to multiply each point by
      * @return scaled mesh
      */
@@ -104,17 +105,18 @@ public final class Mesh {
 
         Vector2D translation = Vector2D.kOrigin.sub(getCentroid());
 
-        for (int i = 0;i < n;++i) {
-            points[i] = getVector(i).add(translation).mul(scale).sub(translation);
+        for(int i = 0; i < n; ++i) {
+            points[i] = getVector(i).add(translation).mul(scale)
+                    .sub(translation);
         }
 
         return new Mesh(points);
     }
-    
+
     /**
      * Scales the mesh.
-     * 
-     * @param scale double to multiply each point by 
+     *
+     * @param scale double to multiply each point by
      * @return scaled mesh
      */
     public Mesh scale(double scale) {
@@ -123,7 +125,7 @@ public final class Mesh {
 
     /**
      * Rotate the mesh.
-     * 
+     *
      * @param angle angle to rotate the mesh by
      * @return rotated mesh
      */
@@ -133,8 +135,9 @@ public final class Mesh {
 
         Vector2D translation = Vector2D.kOrigin.sub(getCentroid());
 
-        for (int i = 0;i < n;++i) {
-            points[i] = getVector(i).add(translation).rotate(angle).sub(translation);
+        for(int i = 0; i < n; ++i) {
+            points[i] = getVector(i).add(translation).rotate(angle)
+                    .sub(translation);
         }
 
         return new Mesh(points);
@@ -142,7 +145,7 @@ public final class Mesh {
 
     /**
      * Translate the mesh.
-     * 
+     *
      * @param translation translation each point will undergo
      * @return the translated mesh
      */
@@ -152,7 +155,7 @@ public final class Mesh {
 
         mCentroid = getCentroid().add(translation);
 
-        for (int i = 0;i < n;++i) {
+        for(int i = 0; i < n; ++i) {
             points[i] = getVector(i).add(translation);
         }
 
@@ -163,14 +166,14 @@ public final class Mesh {
     public String toString() {
         StringBuilder out = new StringBuilder("Mesh = [");
 
-        for (int i = 0; i < size()-1;++i) {
+        for(int i = 0; i < size() - 1; ++i) {
             out.append(getVector(i));
             out.append(", ");
         }
 
-        out.append(getVector(size()-1));
+        out.append(getVector(size() - 1));
         out.append(" ]");
-        
+
         return out.toString();
     }
 
