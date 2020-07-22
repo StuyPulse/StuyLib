@@ -1,6 +1,6 @@
-![](https://github.com/StuyPulse/StuyLib/raw/master/pictures/StuyLib%20Banner.png)
+![(Stuylib Logo)](https://github.com/StuyPulse/StuyLib/raw/master/pictures/StuyLib%20Banner.png)
 
-[![](https://jitpack.io/v/StuyPulse/StuyLib.svg)](https://jitpack.io/#StuyPulse/StuyLib)
+[![Jitpack Website](https://jitpack.io/v/StuyPulse/StuyLib.svg)](https://jitpack.io/#StuyPulse/StuyLib)
 
 # What is StuyLib?
 
@@ -46,7 +46,7 @@ Step 1. Add the JitPack repository to your build file
 The version tag can be seen at the top of the readme. An example would be:
 ```
 	dependencies {
-	    compile 'com.github.StuyPulse:StuyLib:2020.2.1'
+	    compile 'com.github.StuyPulse:StuyLib:2020.2.1.1'
 	}
 ```
 
