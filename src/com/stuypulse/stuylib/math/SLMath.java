@@ -198,6 +198,11 @@ public final class SLMath {
      * @return rounded number
      */
     public static double round(double n, int sigfigs) {
+        // The value 0 returns nan if not accounted for
+        if(n == 0.0) {
+            return 0.0;
+        }
+
         // Digit place that number starts at
         int digits = (int) Math.floor(Math.log10(Math.abs(n)));
 
