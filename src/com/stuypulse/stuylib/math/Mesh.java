@@ -41,7 +41,7 @@ public final class Mesh {
      * @param points array points
      * @return new mesh
      */
-    public final static Mesh from(Vector2D... points) {
+    public final static Mesh of(Vector2D... points) {
         return new Mesh(points);
     }
 
@@ -99,15 +99,25 @@ public final class Mesh {
      * @param scale vector to multiply each point by
      * @return scaled mesh
      */
-    public Mesh scale(Vector2D scale) {
+    public Mesh mul(Vector2D scale) {
+        return mul(scale.x, scale.y);
+    }
+
+    /**
+     * Scales the mesh.
+     *
+     * @param sx scalar x
+     * @param sy scalar y
+     * @return scaled mesh
+     */
+    public Mesh mul(double sx, double sy) {
         int n = size();
         Vector2D[] points = new Vector2D[n];
 
-        Vector2D translation = Vector2D.kOrigin.sub(getCentroid());
+        Vector2D scale = new Vector2D(sx, sy);
 
         for(int i = 0; i < n; ++i) {
-            points[i] = getVector(i).add(translation).mul(scale)
-                    .sub(translation);
+            points[i] = getVector(i).mul(scale);
         }
 
         return new Mesh(points);
@@ -119,8 +129,39 @@ public final class Mesh {
      * @param scale double to multiply each point by
      * @return scaled mesh
      */
-    public Mesh scale(double scale) {
-        return scale(new Vector2D(scale, scale));
+    public Mesh mul(double scale) {
+        return mul(scale, scale);
+    }
+
+    /**
+     * Scale the mesh inversely.
+     * 
+     * @param isx inverse scale x
+     * @param isy inverse scale y
+     * @return scaled mesh
+     */
+    public Mesh div(double isx, double isy) {
+        return mul(1.0/isx, 1.0/isy);
+    }
+
+    /**
+     * Scale the mesh inversely.
+     * 
+     * @param is inverse scale x and y
+     * @return scaled mesh
+     */
+    public Mesh div(double is) {
+        return div(is, is);
+    }
+
+    /**
+     * Scale the mesh inversely
+     * 
+     * @param invScale vector representing inverse scale x and y
+     * @return
+     */
+    public Mesh div(Vector2D invScale) {
+        return div(invScale.x, invScale.y);
     }
 
     /**
@@ -133,11 +174,26 @@ public final class Mesh {
         int n = size();
         Vector2D[] points = new Vector2D[n];
 
-        Vector2D translation = Vector2D.kOrigin.sub(getCentroid());
+        for(int i = 0; i < n; ++i) {
+            points[i] = getVector(i).rotate(angle);
+        }
+
+        return new Mesh(points);
+    }
+    
+    /**
+     * Rotate the mesh around an origin .
+     *
+     * @param angle angle to rotate the mesh by
+     * @param origin origin of the rotation
+     * @return rotated mesh
+     */
+    public Mesh rotate(Angle angle, Vector2D origin) {
+        int n = size();
+        Vector2D[] points = new Vector2D[n];
 
         for(int i = 0; i < n; ++i) {
-            points[i] = getVector(i).add(translation).rotate(angle)
-                    .sub(translation);
+            points[i] = getVector(i).rotate(angle, origin);
         }
 
         return new Mesh(points);
@@ -149,11 +205,64 @@ public final class Mesh {
      * @param translation translation each point will undergo
      * @return the translated mesh
      */
-    public Mesh translate(Vector2D translation) {
+    public Mesh add(Vector2D translation) {
+        return add(translation.x, translation.y);
+    }
+
+    /**
+     * Translate the mesh negatively.
+     * 
+     * @param ntx translation x
+     * @param nty translation y
+     * @return translated mesh
+     */
+    public Mesh sub(double ntx, double nty) {
+        return add(-ntx, -nty);
+    }
+
+    /**
+     * Translate the mesh negatively.
+     * 
+     * @param nt translation x and y
+     * @return translated mesh
+     */
+    public Mesh sub(double nt) {
+        return sub(nt, nt);
+    }
+
+    /**
+     * Translate the mesh.
+     *
+     * @param t translation x and y
+     * @return the translated mesh
+     */
+    public Mesh add(double t) {
+        return add(t,t);
+    }
+
+    /**
+     * Translate the mesh negatively.
+     * 
+     * @param ntx translation x
+     * @param nty translation y
+     * @return translated mesh
+     */
+    public Mesh sub(Vector2D nTranslation) {
+        return sub(nTranslation.x, nTranslation.y);
+    }
+
+    /**
+    * Translate the mesh.
+    *
+    * @param tx translation x
+    * @param ty translation y
+    * @return the translated mesh
+    */
+    public Mesh add(double tx, double ty) {
         int n = size();
         Vector2D[] points = new Vector2D[n];
 
-        mCentroid = getCentroid().add(translation);
+        Vector2D translation = new Vector2D(tx,ty);
 
         for(int i = 0; i < n; ++i) {
             points[i] = getVector(i).add(translation);
@@ -165,13 +274,14 @@ public final class Mesh {
     @Override
     public String toString() {
         StringBuilder out = new StringBuilder("Mesh = [");
+        int n = size()-1;
 
-        for(int i = 0; i < size() - 1; ++i) {
+        for(int i = 0; i < n; ++i) {
             out.append(getVector(i));
             out.append(", ");
         }
 
-        out.append(getVector(size() - 1));
+        out.append(getVector(n));
         out.append(" ]");
 
         return out.toString();
