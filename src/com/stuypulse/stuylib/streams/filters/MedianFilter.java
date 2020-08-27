@@ -9,7 +9,7 @@ import java.util.List;
  *
  * @author Sam (sam.belliveau@gmail.com)
  */
-public class MedianFilter {
+public class MedianFilter implements IFilter {
     
     // Store target size and buffer of values
     private final int mSize;
@@ -36,14 +36,17 @@ public class MedianFilter {
     // TODO: FIX THIS PLS
     private double getMedian() {
         int size = mBuffer.size();
-        List<Double> copy = List.copyOf(mBuffer);
-        Collections.sort(copy);
+        if(size > 0) {
+            List<Double> copy = new LinkedList<>(mBuffer);
+            Collections.sort(copy);
 
-        if((size & 0x1) == 0) {
-            return ((copy.get(size / 2) + copy.get(size / 2 + 1))) / 2.0;
+            if((size % 2) == 0) {
+                return ((copy.get(size / 2 - 1) + copy.get(size / 2))) / 2.0;
+            } else {
+                return copy.get(size / 2);
+            }
         } else {
-            return copy.get(size / 2);
+            return 0.0;
         }
     }
-
 }
