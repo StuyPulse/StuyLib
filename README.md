@@ -1,4 +1,4 @@
-![(Stuylib Logo)](https://github.com/StuyPulse/StuyLib/raw/master/pictures/StuyLib%20Banner.png)
+![(Stuylib Logo)](https://github.com/StuyPulse/StuyLib/raw/main/pictures/StuyLib%20Banner.png)
 
 [![Jitpack Website](https://jitpack.io/v/StuyPulse/StuyLib.svg)](https://jitpack.io/#StuyPulse/StuyLib)
 
