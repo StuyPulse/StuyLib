@@ -10,7 +10,7 @@ import java.util.List;
  * @author Sam (sam.belliveau@gmail.com)
  */
 public class MedianFilter implements IFilter {
-    
+
     // Store target size and buffer of values
     private final int mSize;
     private final List<Double> mBuffer;

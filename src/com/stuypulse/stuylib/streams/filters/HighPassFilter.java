@@ -3,7 +3,7 @@ package com.stuypulse.stuylib.streams.filters;
 import com.stuypulse.stuylib.util.StopWatch;
 
 /**
- * Implementation for HighPassFilter for IStreams
+ * Implementation for of a real time IIR HighPassFilter
  *
  * @author Sam (sam.belliveau@gmail.com)
  */

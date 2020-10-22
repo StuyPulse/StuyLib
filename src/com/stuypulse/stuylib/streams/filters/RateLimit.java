@@ -13,7 +13,11 @@ import com.stuypulse.stuylib.math.SLMath;
  * @author Sam (sam.belliveau@gmail.com)
  */
 
-public class RateLimit extends OnDerivative {
+public class RateLimit extends IFilterGroup {
+
+    // Used to limit the change from the last value
+    private double mLastValue;
+    private double mRateLimit;
 
     /**
      * Makes a new rate limiter with specified rate limit
@@ -21,11 +25,16 @@ public class RateLimit extends OnDerivative {
      * @param rateLimit desired rate limit
      */
     public RateLimit(double rateLimit) {
-        super((x) -> SLMath.limit(x, rateLimit));
-
         if(rateLimit < 0.0) {
             throw new IllegalArgumentException(
                     "rateLimit must be a positive number");
         }
+
+        mLastValue = 0;
+        mRateLimit = 0;
+    }
+
+    public double get(double next) {
+        return mLastValue += SLMath.limit(next, mRateLimit);
     }
 }

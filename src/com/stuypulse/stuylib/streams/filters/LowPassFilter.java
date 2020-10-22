@@ -3,15 +3,17 @@ package com.stuypulse.stuylib.streams.filters;
 import com.stuypulse.stuylib.util.StopWatch;
 
 /**
- * Implementation for LowPassFilter for IFilter
+ * Implementation of a real time IIR LowPassFilter
  *
  * @author Sam (sam.belliveau@gmail.com)
  */
 
 public class LowPassFilter implements IFilter {
 
+    // Used to calculate time in between calls
     private final StopWatch mTimer;
 
+    // Used to calculate next value based on previous value and time
     private final double mRC;
     private double mLastValue;
 
@@ -30,8 +32,14 @@ public class LowPassFilter implements IFilter {
     }
 
     public double get(double next) {
+        // Get time since last .get() call
         double dt = mTimer.reset();
+
+        // Get a constant, which is determined based on dt and the mRC constant
         double a = dt / (mRC + dt);
+
+        // Based on the value of a (which is determined by dt), the next value
+        // could either change a lot, or not by much. (smaller dt = smaller change)
         return mLastValue += a * (next - mLastValue);
     }
 }

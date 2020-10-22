@@ -1,9 +1,14 @@
 package com.stuypulse.stuylib.streams.filters;
 
 /**
- * Implementation of Weighted Moving Average.
+ * Implementation of Weighted Moving Average. In a Weighted moving average, each value in the
+ * average buffer is weighted linearly based on their position in the buffer. The most recent item
+ * is weighted the most, and the last item is weighted the least.
  *
- * Very heavily optimized, may not be readable, but it is really fast.
+ * This implementation is very fast, however, it is also very hard to explain. It does however
+ * correctly calculate a weighted moving average.
+ *
+ * This implementation is O(1) unlike many other implementations of this algorithm.
  *
  * @author Sam (sam.belliveau@gmail.com)
  */

@@ -9,7 +9,11 @@ package com.stuypulse.stuylib.streams.filters;
  * @author Sam (sam.belliveau@gmail.com)
  */
 
-public class RollingAverage extends OnDerivative {
+public class ExpMovingAverage implements IFilter {
+
+    // Used to limit the change from the last value
+    private double mLastValue;
+    private double mWeight;
 
     /**
      * Make an Exponential Moving Average If exp = 1, it will instantly update The weight must be
@@ -17,11 +21,16 @@ public class RollingAverage extends OnDerivative {
      *
      * @param weight weight (greater than or equal to 1)
      */
-    public RollingAverage(double weight) {
-        super((x) -> x / weight);
-
+    public ExpMovingAverage(double weight) {
         if(weight <= 1.0) {
             throw new IllegalArgumentException("weight must be > 1");
         }
+
+        mLastValue = 0;
+        mWeight = weight;
+    }
+
+    public double get(double next) {
+        return mLastValue += (next - mLastValue) / mWeight;
     }
 }

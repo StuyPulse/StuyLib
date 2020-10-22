@@ -17,7 +17,7 @@ public class TimedRateLimit implements IFilter {
     // Used to get the time since the last get call
     private StopWatch mTimer;
 
-    // Used to take the difference and
+    // Used to limit the change from the last value
     private double mLastValue;
     private double mRateLimit;
 

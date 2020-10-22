@@ -7,6 +7,8 @@ import com.stuypulse.stuylib.math.SLMath;
  * step. Because some of the calculations need to make estimates about the future, this is not based
  * on time. The rate at which you call this filter will affect the changes you observe.
  *
+ * TODO: make this time independent. (it's not an important feature so its not really a priority.)
+ *
  * @author Sam (sam.belliveau@gmail.com)
  */
 
@@ -23,8 +25,8 @@ public class SpeedProfile implements IFilter {
     /**
      * Create speed profile with custom accel and jerk limits
      *
-     * @param accelLimit maximum amount of acceleration in one step
-     * @param jerkLimit  maximum amount of jerk in one step
+     * @param accelLimit maximum amount of acceleration in one second
+     * @param jerkLimit  maximum amount of jerk in one second
      */
     public SpeedProfile(double accelLimit, double jerkLimit) {
         // Jerk cannot be <= 0

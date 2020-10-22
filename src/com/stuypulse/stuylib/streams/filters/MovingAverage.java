@@ -4,10 +4,12 @@ import java.util.Queue;
 import java.util.LinkedList;
 
 /**
- * Simple implementation of an Simple Moving Average
+ * An implementation of an Simple Moving Average
  *
  * This is not time dependant, so the values will change if you change the rate that you call this
  * filter, the filter will not adapt for that.
+ *
+ * This implementation is O(1) unlike many other implementations of this algorithm.
  *
  * @author Sam (sam.belliveau@gmail.com)
  */
