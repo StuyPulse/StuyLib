@@ -71,7 +71,7 @@ Current Lead Repository Maintainer
 
  - [Sam Belliveau (2022)](https://github.com/Sam-Belliveau)
 
-Future Lead Repository Maintainer (if he's a good boi)
+Future Lead Repository Maintainer
 
  - [Myles Pasetsky (2023)](https://github.com/selym3)
 
