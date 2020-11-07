@@ -8,7 +8,7 @@ import java.util.Collections;
 
 /**
  * A median filter implementation using an ordered window and a value queue.
- *  
+ *
  * @author Myles Pasetsky (selym3)
  */
 public class MedianFilter implements IFilter {
@@ -24,20 +24,20 @@ public class MedianFilter implements IFilter {
     private Queue<Double> mBuffer;
 
     /**
-     * This list is acts as an ordered window. All operations to this
-     * list maintain its ascending order.
+     * This list is acts as an ordered window. All operations to this list maintain its ascending order.
      */
     private List<Double> mOrdered;
 
     /**
      * Creates a median filter with a fixed size window.
-     * 
+     *
      * @param size window size
      */
     public MedianFilter(int size) {
-        if (size < 1) 
-            throw new IllegalArgumentException("Window size for MedianFilter must be greater than 0");
-        
+        if(size < 1)
+            throw new IllegalArgumentException(
+                    "Window size for MedianFilter must be greater than 0");
+
         mSize = size;
 
         mBuffer = new LinkedList<>();
@@ -46,32 +46,32 @@ public class MedianFilter implements IFilter {
     }
 
     /**
-     * Uses the binary search algorithm to find the index to
-     * insert next so that the ordered window stays ordered.
-     * 
+     * Uses the binary search algorithm to find the index to insert next so that the ordered window
+     * stays ordered.
+     *
      * @param next the new input
      * @return the index to insert at
      */
     private int getSortedIndex(double next) {
         int idx = Collections.binarySearch(mOrdered, next);
 
-        if (idx < 0)
-            idx = -1 * (idx + 1); 
+        if(idx < 0)
+            idx = -1 * (idx + 1);
 
         return idx;
     }
 
     @Override
     public double get(double next) {
-        // maintain the sorted list 
+        // maintain the sorted list
         int idx = getSortedIndex(next);
         mOrdered.add(idx, next);
 
         int orderedSize = mOrdered.size();
-        
+
         // if the ordered list is greater than the window size
-        // remove the first element in the buffer from the window 
-        if (orderedSize > mSize) {
+        // remove the first element in the buffer from the window
+        if(orderedSize > mSize) {
             mOrdered.remove(mBuffer.remove());
             --orderedSize;
         }
@@ -80,14 +80,14 @@ public class MedianFilter implements IFilter {
         // because mSize > 0, there will always be
         // a value in the buffer ready to remove
         mBuffer.add(next);
-        
+
         // get the median from the ordered window
-        double mid = mOrdered.get(orderedSize/2);
-        if ((orderedSize%2)==1)
+        double mid = mOrdered.get(orderedSize / 2);
+        if((orderedSize % 2) == 1)
             return mid;
         else
-            return (mOrdered.get(orderedSize/2 - 1) + mid) / 2.0;
-        
+            return (mOrdered.get(orderedSize / 2 - 1) + mid) / 2.0;
+
     }
-    
+
 }
