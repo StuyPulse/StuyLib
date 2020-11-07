@@ -27,7 +27,7 @@
     catch(err) {
     }
 //-->
-var data = {"i0":9,"i1":10,"i2":10,"i3":10,"i4":10,"i5":10,"i6":10,"i7":10,"i8":10,"i9":10};
+var data = {"i0":10,"i1":10,"i2":10,"i3":10,"i4":10,"i5":10,"i6":10,"i7":10,"i8":10,"i9":9,"i10":10,"i11":10,"i12":10,"i13":10,"i14":10,"i15":10};
 var tabs = {65535:["t0","All Methods"],1:["t1","Static Methods"],2:["t2","Instance Methods"],8:["t4","Concrete Methods"]};
 var altColor = "altColor";
 var rowColor = "rowColor";
@@ -178,72 +178,115 @@ extends java.lang.Object</pre>
 <th class="colLast" scope="col">Description</th>
 </tr>
 <tr id="i0" class="altColor">
-<td class="colFirst"><code>static <a href="Mesh.html" title="class in com.stuypulse.stuylib.math">Mesh</a></code></td>
-<th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#from(com.stuypulse.stuylib.math.Vector2D...)">from</a></span>&#8203;(<a href="Vector2D.html" title="class in com.stuypulse.stuylib.math">Vector2D</a>...&nbsp;points)</code></th>
+<td class="colFirst"><code><a href="Mesh.html" title="class in com.stuypulse.stuylib.math">Mesh</a></code></td>
+<th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#add(double)">add</a></span>&#8203;(double&nbsp;t)</code></th>
 <td class="colLast">
-<div class="block">Utility function with same purpose as the constructor.</div>
+<div class="block">Translate the mesh.</div>
 </td>
 </tr>
 <tr id="i1" class="rowColor">
+<td class="colFirst"><code><a href="Mesh.html" title="class in com.stuypulse.stuylib.math">Mesh</a></code></td>
+<th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#add(com.stuypulse.stuylib.math.Vector2D)">add</a></span>&#8203;(<a href="Vector2D.html" title="class in com.stuypulse.stuylib.math">Vector2D</a>&nbsp;translation)</code></th>
+<td class="colLast">
+<div class="block">Translate the mesh.</div>
+</td>
+</tr>
+<tr id="i2" class="altColor">
+<td class="colFirst"><code><a href="Mesh.html" title="class in com.stuypulse.stuylib.math">Mesh</a></code></td>
+<th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#div(double)">div</a></span>&#8203;(double&nbsp;divisor)</code></th>
+<td class="colLast">
+<div class="block">Scale the mesh by dividing.</div>
+</td>
+</tr>
+<tr id="i3" class="rowColor">
+<td class="colFirst"><code><a href="Mesh.html" title="class in com.stuypulse.stuylib.math">Mesh</a></code></td>
+<th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#div(com.stuypulse.stuylib.math.Vector2D)">div</a></span>&#8203;(<a href="Vector2D.html" title="class in com.stuypulse.stuylib.math">Vector2D</a>&nbsp;divisor)</code></th>
+<td class="colLast">
+<div class="block">Scale the mesh by dividing.</div>
+</td>
+</tr>
+<tr id="i4" class="altColor">
 <td class="colFirst"><code><a href="Vector2D.html" title="class in com.stuypulse.stuylib.math">Vector2D</a></code></td>
 <th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#getCentroid()">getCentroid</a></span>()</code></th>
 <td class="colLast">
 <div class="block">Get the center of the mesh</div>
 </td>
 </tr>
-<tr id="i2" class="altColor">
+<tr id="i5" class="rowColor">
 <td class="colFirst"><code><a href="Vector2D.html" title="class in com.stuypulse.stuylib.math">Vector2D</a>[]</code></td>
 <th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#getPoints()">getPoints</a></span>()</code></th>
 <td class="colLast">
 <div class="block">Returns the internal array of points</div>
 </td>
 </tr>
-<tr id="i3" class="rowColor">
+<tr id="i6" class="altColor">
 <td class="colFirst"><code><a href="Vector2D.html" title="class in com.stuypulse.stuylib.math">Vector2D</a></code></td>
 <th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#getVector(int)">getVector</a></span>&#8203;(int&nbsp;index)</code></th>
 <td class="colLast">
 <div class="block">Retrieves a single vector for the mesh</div>
 </td>
 </tr>
-<tr id="i4" class="altColor">
+<tr id="i7" class="rowColor">
+<td class="colFirst"><code><a href="Mesh.html" title="class in com.stuypulse.stuylib.math">Mesh</a></code></td>
+<th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#mul(double)">mul</a></span>&#8203;(double&nbsp;scale)</code></th>
+<td class="colLast">
+<div class="block">Scales the mesh.</div>
+</td>
+</tr>
+<tr id="i8" class="altColor">
+<td class="colFirst"><code><a href="Mesh.html" title="class in com.stuypulse.stuylib.math">Mesh</a></code></td>
+<th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#mul(com.stuypulse.stuylib.math.Vector2D)">mul</a></span>&#8203;(<a href="Vector2D.html" title="class in com.stuypulse.stuylib.math">Vector2D</a>&nbsp;scalar)</code></th>
+<td class="colLast">
+<div class="block">Scales the mesh.</div>
+</td>
+</tr>
+<tr id="i9" class="rowColor">
+<td class="colFirst"><code>static <a href="Mesh.html" title="class in com.stuypulse.stuylib.math">Mesh</a></code></td>
+<th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#of(com.stuypulse.stuylib.math.Vector2D...)">of</a></span>&#8203;(<a href="Vector2D.html" title="class in com.stuypulse.stuylib.math">Vector2D</a>...&nbsp;points)</code></th>
+<td class="colLast">
+<div class="block">Utility function with same purpose as the constructor.</div>
+</td>
+</tr>
+<tr id="i10" class="altColor">
 <td class="colFirst"><code><a href="Mesh.html" title="class in com.stuypulse.stuylib.math">Mesh</a></code></td>
 <th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#rotate(com.stuypulse.stuylib.math.Angle)">rotate</a></span>&#8203;(<a href="Angle.html" title="class in com.stuypulse.stuylib.math">Angle</a>&nbsp;angle)</code></th>
 <td class="colLast">
 <div class="block">Rotate the mesh.</div>
 </td>
 </tr>
-<tr id="i5" class="rowColor">
+<tr id="i11" class="rowColor">
 <td class="colFirst"><code><a href="Mesh.html" title="class in com.stuypulse.stuylib.math">Mesh</a></code></td>
-<th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#scale(double)">scale</a></span>&#8203;(double&nbsp;scale)</code></th>
+<th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#rotate(com.stuypulse.stuylib.math.Angle,com.stuypulse.stuylib.math.Vector2D)">rotate</a></span>&#8203;(<a href="Angle.html" title="class in com.stuypulse.stuylib.math">Angle</a>&nbsp;angle,
+      <a href="Vector2D.html" title="class in com.stuypulse.stuylib.math">Vector2D</a>&nbsp;origin)</code></th>
 <td class="colLast">
-<div class="block">Scales the mesh.</div>
+<div class="block">Rotate the mesh around another point (not the origin).</div>
 </td>
 </tr>
-<tr id="i6" class="altColor">
-<td class="colFirst"><code><a href="Mesh.html" title="class in com.stuypulse.stuylib.math">Mesh</a></code></td>
-<th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#scale(com.stuypulse.stuylib.math.Vector2D)">scale</a></span>&#8203;(<a href="Vector2D.html" title="class in com.stuypulse.stuylib.math">Vector2D</a>&nbsp;scale)</code></th>
-<td class="colLast">
-<div class="block">Scales the mesh.</div>
-</td>
-</tr>
-<tr id="i7" class="rowColor">
+<tr id="i12" class="altColor">
 <td class="colFirst"><code>int</code></td>
 <th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#size()">size</a></span>()</code></th>
 <td class="colLast">
 <div class="block">Gets the number of points in the mesh</div>
 </td>
 </tr>
-<tr id="i8" class="altColor">
+<tr id="i13" class="rowColor">
+<td class="colFirst"><code><a href="Mesh.html" title="class in com.stuypulse.stuylib.math">Mesh</a></code></td>
+<th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#sub(double)">sub</a></span>&#8203;(double&nbsp;t)</code></th>
+<td class="colLast">
+<div class="block">Translate the mesh by subtracting.</div>
+</td>
+</tr>
+<tr id="i14" class="altColor">
+<td class="colFirst"><code><a href="Mesh.html" title="class in com.stuypulse.stuylib.math">Mesh</a></code></td>
+<th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#sub(com.stuypulse.stuylib.math.Vector2D)">sub</a></span>&#8203;(<a href="Vector2D.html" title="class in com.stuypulse.stuylib.math">Vector2D</a>&nbsp;translation)</code></th>
+<td class="colLast">
+<div class="block">Translate the mesh by subtracting.</div>
+</td>
+</tr>
+<tr id="i15" class="rowColor">
 <td class="colFirst"><code>java.lang.String</code></td>
 <th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#toString()">toString</a></span>()</code></th>
 <td class="colLast">&nbsp;</td>
-</tr>
-<tr id="i9" class="rowColor">
-<td class="colFirst"><code><a href="Mesh.html" title="class in com.stuypulse.stuylib.math">Mesh</a></code></td>
-<th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#translate(com.stuypulse.stuylib.math.Vector2D)">translate</a></span>&#8203;(<a href="Vector2D.html" title="class in com.stuypulse.stuylib.math">Vector2D</a>&nbsp;translation)</code></th>
-<td class="colLast">
-<div class="block">Translate the mesh.</div>
-</td>
 </tr>
 </table>
 <ul class="blockList">
@@ -293,13 +336,13 @@ extends java.lang.Object</pre>
 <!--   -->
 </a>
 <h3>Method Detail</h3>
-<a id="from(com.stuypulse.stuylib.math.Vector2D...)">
+<a id="of(com.stuypulse.stuylib.math.Vector2D...)">
 <!--   -->
 </a>
 <ul class="blockList">
 <li class="blockList">
-<h4>from</h4>
-<pre class="methodSignature">public static final&nbsp;<a href="Mesh.html" title="class in com.stuypulse.stuylib.math">Mesh</a>&nbsp;from&#8203;(<a href="Vector2D.html" title="class in com.stuypulse.stuylib.math">Vector2D</a>...&nbsp;points)</pre>
+<h4>of</h4>
+<pre class="methodSignature">public static final&nbsp;<a href="Mesh.html" title="class in com.stuypulse.stuylib.math">Mesh</a>&nbsp;of&#8203;(<a href="Vector2D.html" title="class in com.stuypulse.stuylib.math">Vector2D</a>...&nbsp;points)</pre>
 <div class="block">Utility function with same purpose as the constructor.</div>
 <dl>
 <dt><span class="paramLabel">Parameters:</span></dt>
@@ -367,35 +410,67 @@ extends java.lang.Object</pre>
 </dl>
 </li>
 </ul>
-<a id="scale(com.stuypulse.stuylib.math.Vector2D)">
+<a id="mul(com.stuypulse.stuylib.math.Vector2D)">
 <!--   -->
 </a>
 <ul class="blockList">
 <li class="blockList">
-<h4>scale</h4>
-<pre class="methodSignature">public&nbsp;<a href="Mesh.html" title="class in com.stuypulse.stuylib.math">Mesh</a>&nbsp;scale&#8203;(<a href="Vector2D.html" title="class in com.stuypulse.stuylib.math">Vector2D</a>&nbsp;scale)</pre>
+<h4>mul</h4>
+<pre class="methodSignature">public&nbsp;<a href="Mesh.html" title="class in com.stuypulse.stuylib.math">Mesh</a>&nbsp;mul&#8203;(<a href="Vector2D.html" title="class in com.stuypulse.stuylib.math">Vector2D</a>&nbsp;scalar)</pre>
 <div class="block">Scales the mesh.</div>
 <dl>
 <dt><span class="paramLabel">Parameters:</span></dt>
-<dd><code>scale</code> - vector to multiply each point by</dd>
+<dd><code>scalar</code> - scalar vector</dd>
 <dt><span class="returnLabel">Returns:</span></dt>
 <dd>scaled mesh</dd>
 </dl>
 </li>
 </ul>
-<a id="scale(double)">
+<a id="mul(double)">
 <!--   -->
 </a>
 <ul class="blockList">
 <li class="blockList">
-<h4>scale</h4>
-<pre class="methodSignature">public&nbsp;<a href="Mesh.html" title="class in com.stuypulse.stuylib.math">Mesh</a>&nbsp;scale&#8203;(double&nbsp;scale)</pre>
+<h4>mul</h4>
+<pre class="methodSignature">public&nbsp;<a href="Mesh.html" title="class in com.stuypulse.stuylib.math">Mesh</a>&nbsp;mul&#8203;(double&nbsp;scale)</pre>
 <div class="block">Scales the mesh.</div>
 <dl>
 <dt><span class="paramLabel">Parameters:</span></dt>
 <dd><code>scale</code> - double to multiply each point by</dd>
 <dt><span class="returnLabel">Returns:</span></dt>
 <dd>scaled mesh</dd>
+</dl>
+</li>
+</ul>
+<a id="div(double)">
+<!--   -->
+</a>
+<ul class="blockList">
+<li class="blockList">
+<h4>div</h4>
+<pre class="methodSignature">public&nbsp;<a href="Mesh.html" title="class in com.stuypulse.stuylib.math">Mesh</a>&nbsp;div&#8203;(double&nbsp;divisor)</pre>
+<div class="block">Scale the mesh by dividing.</div>
+<dl>
+<dt><span class="paramLabel">Parameters:</span></dt>
+<dd><code>divisor</code> - scalar to divide each point in the mesh by</dd>
+<dt><span class="returnLabel">Returns:</span></dt>
+<dd>scaled mesh</dd>
+</dl>
+</li>
+</ul>
+<a id="div(com.stuypulse.stuylib.math.Vector2D)">
+<!--   -->
+</a>
+<ul class="blockList">
+<li class="blockList">
+<h4>div</h4>
+<pre class="methodSignature">public&nbsp;<a href="Mesh.html" title="class in com.stuypulse.stuylib.math">Mesh</a>&nbsp;div&#8203;(<a href="Vector2D.html" title="class in com.stuypulse.stuylib.math">Vector2D</a>&nbsp;divisor)</pre>
+<div class="block">Scale the mesh by dividing.</div>
+<dl>
+<dt><span class="paramLabel">Parameters:</span></dt>
+<dd><code>divisor</code> - division vector</dd>
+<dt><span class="returnLabel">Returns:</span></dt>
+<dd>the scaled mesh</dd>
 </dl>
 </li>
 </ul>
@@ -415,13 +490,79 @@ extends java.lang.Object</pre>
 </dl>
 </li>
 </ul>
-<a id="translate(com.stuypulse.stuylib.math.Vector2D)">
+<a id="rotate(com.stuypulse.stuylib.math.Angle,com.stuypulse.stuylib.math.Vector2D)">
 <!--   -->
 </a>
 <ul class="blockList">
 <li class="blockList">
-<h4>translate</h4>
-<pre class="methodSignature">public&nbsp;<a href="Mesh.html" title="class in com.stuypulse.stuylib.math">Mesh</a>&nbsp;translate&#8203;(<a href="Vector2D.html" title="class in com.stuypulse.stuylib.math">Vector2D</a>&nbsp;translation)</pre>
+<h4>rotate</h4>
+<pre class="methodSignature">public&nbsp;<a href="Mesh.html" title="class in com.stuypulse.stuylib.math">Mesh</a>&nbsp;rotate&#8203;(<a href="Angle.html" title="class in com.stuypulse.stuylib.math">Angle</a>&nbsp;angle,
+                   <a href="Vector2D.html" title="class in com.stuypulse.stuylib.math">Vector2D</a>&nbsp;origin)</pre>
+<div class="block">Rotate the mesh around another point (not the origin).</div>
+<dl>
+<dt><span class="paramLabel">Parameters:</span></dt>
+<dd><code>angle</code> - angle to rotate the mesh by</dd>
+<dd><code>origin</code> - origin of the rotation</dd>
+<dt><span class="returnLabel">Returns:</span></dt>
+<dd>rotated mesh</dd>
+</dl>
+</li>
+</ul>
+<a id="sub(double)">
+<!--   -->
+</a>
+<ul class="blockList">
+<li class="blockList">
+<h4>sub</h4>
+<pre class="methodSignature">public&nbsp;<a href="Mesh.html" title="class in com.stuypulse.stuylib.math">Mesh</a>&nbsp;sub&#8203;(double&nbsp;t)</pre>
+<div class="block">Translate the mesh by subtracting.</div>
+<dl>
+<dt><span class="paramLabel">Parameters:</span></dt>
+<dd><code>t</code> - translation x and y</dd>
+<dt><span class="returnLabel">Returns:</span></dt>
+<dd>translated mesh</dd>
+</dl>
+</li>
+</ul>
+<a id="add(double)">
+<!--   -->
+</a>
+<ul class="blockList">
+<li class="blockList">
+<h4>add</h4>
+<pre class="methodSignature">public&nbsp;<a href="Mesh.html" title="class in com.stuypulse.stuylib.math">Mesh</a>&nbsp;add&#8203;(double&nbsp;t)</pre>
+<div class="block">Translate the mesh.</div>
+<dl>
+<dt><span class="paramLabel">Parameters:</span></dt>
+<dd><code>t</code> - translation x and y</dd>
+<dt><span class="returnLabel">Returns:</span></dt>
+<dd>the translated mesh</dd>
+</dl>
+</li>
+</ul>
+<a id="sub(com.stuypulse.stuylib.math.Vector2D)">
+<!--   -->
+</a>
+<ul class="blockList">
+<li class="blockList">
+<h4>sub</h4>
+<pre class="methodSignature">public&nbsp;<a href="Mesh.html" title="class in com.stuypulse.stuylib.math">Mesh</a>&nbsp;sub&#8203;(<a href="Vector2D.html" title="class in com.stuypulse.stuylib.math">Vector2D</a>&nbsp;translation)</pre>
+<div class="block">Translate the mesh by subtracting.</div>
+<dl>
+<dt><span class="paramLabel">Parameters:</span></dt>
+<dd><code>translation</code> - translation vector</dd>
+<dt><span class="returnLabel">Returns:</span></dt>
+<dd>translated mesh</dd>
+</dl>
+</li>
+</ul>
+<a id="add(com.stuypulse.stuylib.math.Vector2D)">
+<!--   -->
+</a>
+<ul class="blockList">
+<li class="blockList">
+<h4>add</h4>
+<pre class="methodSignature">public&nbsp;<a href="Mesh.html" title="class in com.stuypulse.stuylib.math">Mesh</a>&nbsp;add&#8203;(<a href="Vector2D.html" title="class in com.stuypulse.stuylib.math">Vector2D</a>&nbsp;translation)</pre>
 <div class="block">Translate the mesh.</div>
 <dl>
 <dt><span class="paramLabel">Parameters:</span></dt>
