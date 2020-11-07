@@ -1,52 +1,93 @@
 package com.stuypulse.stuylib.streams.filters;
 
-import java.util.Collections;
-import java.util.LinkedList;
+import java.util.Queue;
 import java.util.List;
+import java.util.LinkedList;
+import java.util.ArrayList;
+import java.util.Collections;
 
 /**
- * A filter that takes a buffer of X values and returns the median
- *
- * @author Sam (sam.belliveau@gmail.com)
+ * A median filter implementation using an ordered window and a value queue.
+ *  
+ * @author Myles Pasetsky (selym3)
  */
 public class MedianFilter implements IFilter {
 
-    // Store target size and buffer of values
+    /**
+     * The size of the input window to get the median of.
+     */
     private final int mSize;
-    private final List<Double> mBuffer;
 
-    // Initialize the buffer and size
+    /**
+     * This queue stores values in the order they are inputted.
+     */
+    private Queue<Double> mBuffer;
+
+    /**
+     * This list is acts as an ordered window. All operations to this
+     * list maintain its ascending order.
+     */
+    private List<Double> mOrdered;
+
+    /**
+     * Creates a median filter with a fixed size window.
+     * 
+     * @param size window size
+     */
     public MedianFilter(int size) {
+        if (size < 1) 
+            throw new IllegalArgumentException("Window size for MedianFilter must be greater than 0");
+        
         mSize = size;
-        mBuffer = new LinkedList<Double>();
+
+        mBuffer = new LinkedList<>();
+        mOrdered = new ArrayList<>();
+
     }
 
-    // Add the next value to the buffer and get the median
+    /**
+     * Uses the binary search algorithm to find the index to
+     * insert next so that the ordered window stays ordered.
+     * 
+     * @param next the new input
+     * @return the index to insert at
+     */
+    private int getSortedIndex(double next) {
+        int idx = Collections.binarySearch(mOrdered, next);
+
+        if (idx < 0)
+            idx = -1 * (idx + 1); 
+
+        return idx;
+    }
+
+    @Override
     public double get(double next) {
+        // maintain the sorted list 
+        int idx = getSortedIndex(next);
+        mOrdered.add(idx, next);
+
+        int orderedSize = mOrdered.size();
+        
+        // if the ordered list is greater than the window size
+        // remove the first element in the buffer from the window 
+        if (orderedSize > mSize) {
+            mOrdered.remove(mBuffer.remove());
+            --orderedSize;
+        }
+
+        // push the value to the back of the buffer
+        // because mSize > 0, there will always be
+        // a value in the buffer ready to remove
         mBuffer.add(next);
-
-        while(mSize < mBuffer.size()) {
-            mBuffer.remove(0);
-        }
-
-        return getMedian();
+        
+        // get the median from the ordered window
+        double mid = mOrdered.get(orderedSize/2);
+        if ((orderedSize%2)==1)
+            return mid;
+        else
+            return (mOrdered.get(orderedSize/2 - 1) + mid) / 2.0;
+        
     }
-
-    // Get the median (THIS IS A BAD WAY)
-    // TODO: FIX THIS PLS
-    private double getMedian() {
-        int size = mBuffer.size();
-        if(size > 0) {
-            List<Double> copy = new LinkedList<>(mBuffer);
-            Collections.sort(copy);
-
-            if((size % 2) == 0) {
-                return ((copy.get(size / 2 - 1) + copy.get(size / 2))) / 2.0;
-            } else {
-                return copy.get(size / 2);
-            }
-        } else {
-            return 0.0;
-        }
-    }
+    
 }
