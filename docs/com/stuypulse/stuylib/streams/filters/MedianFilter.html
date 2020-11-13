@@ -138,7 +138,7 @@ $('.navPadding').css('padding-top', $('.fixedNav').css("height"));
 <pre>public class <span class="typeNameLabel">MedianFilter</span>
 extends java.lang.Object
 implements <a href="IFilter.html" title="interface in com.stuypulse.stuylib.streams.filters">IFilter</a></pre>
-<div class="block">A filter that takes a buffer of X values and returns the median</div>
+<div class="block">A median filter implementation using an ordered window and a value queue.</div>
 </li>
 </ul>
 </div>
@@ -160,7 +160,9 @@ implements <a href="IFilter.html" title="interface in com.stuypulse.stuylib.stre
 </tr>
 <tr class="altColor">
 <th class="colConstructorName" scope="row"><code><span class="memberNameLink"><a href="#%3Cinit%3E(int)">MedianFilter</a></span>&#8203;(int&nbsp;size)</code></th>
-<td class="colLast">&nbsp;</td>
+<td class="colLast">
+<div class="block">Creates a median filter with a fixed size window.</div>
+</td>
 </tr>
 </table>
 </li>
@@ -218,6 +220,11 @@ implements <a href="IFilter.html" title="interface in com.stuypulse.stuylib.stre
 <li class="blockList">
 <h4>MedianFilter</h4>
 <pre>public&nbsp;MedianFilter&#8203;(int&nbsp;size)</pre>
+<div class="block">Creates a median filter with a fixed size window.</div>
+<dl>
+<dt><span class="paramLabel">Parameters:</span></dt>
+<dd><code>size</code> - window size</dd>
+</dl>
 </li>
 </ul>
 </li>
