@@ -16,8 +16,10 @@ else
     if test -f $BUILD_FILE; then 
         mkdir >/dev/null 2>&1
         cp $BUILD_FILE "./releases/StuyLib-$1.jar" >/dev/null 2>&1
+        echo ""
         echo "Succesfully Built StuyLib-$1.jar to ./release/"
     else
+        echo ""
         echo "Unable to Build Release Jar File. Please resolve the errors and try again."
     fi
 fi
