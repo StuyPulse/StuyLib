@@ -2,7 +2,7 @@
 
 [![Jitpack Website](https://jitpack.io/v/StuyPulse/StuyLib.svg)](https://jitpack.io/#StuyPulse/StuyLib)
 
-![Build StuyLib to Jar File](https://github.com/StuyPulse/StuyLib/workflows/Build%20StuyLib%20to%20Jar%20File/badge.svg)
+![Build StuyLib](https://github.com/StuyPulse/StuyLib/workflows/Build%20StuyLib%20to%20Jar%20File/badge.svg)
 
 # What is StuyLib?
 
