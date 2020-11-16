@@ -2,6 +2,8 @@
 
 [![Jitpack Website](https://jitpack.io/v/StuyPulse/StuyLib.svg)](https://jitpack.io/#StuyPulse/StuyLib)
 
+![Build StuyLib to Jar File](https://github.com/StuyPulse/StuyLib/workflows/Build%20StuyLib%20to%20Jar%20File/badge.svg)
+
 # What is StuyLib?
 
 StuyLib is an FRC library / toolkit which includes many different utilities for programming. It includes things like a Gamepad Library, a Limelight Library, a Digitial Filter / Streams Library, and many other utilities relating to math and programming.
