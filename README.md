@@ -18,17 +18,19 @@ StuyLib is an FRC library / toolkit which includes many different utilities for 
 [Instructions from JitPack.io](https://jitpack.io/#StuyPulse/StuyLib)
 
 Step 0. This is done by default for robot projects, but if your doing a local project you must remember to include this at the top
-```
+```python
 plugins {
     id "java"
+    
+    // You can use different versions of GradleRIO between your robot
+    // code and Stuylib as long as the updates don't break anything
     id "edu.wpi.first.GradleRIO" version "2020.2.2"
 }
 ```
 
-Step 1. Add the JitPack repository to your build file
+Step 1. Add the JitPack repository to your build.gradle
 
- - Add it in your root build.gradle at the end of repositories:
-```
+```python
 	allprojects {
 		repositories {
 			maven { url 'https://jitpack.io' }
@@ -36,17 +38,13 @@ Step 1. Add the JitPack repository to your build file
 	}
 ```
 
- - Step 2. Add the dependency
-```
+ - Step 2. Add the dependency to build.gradle
+ 
+ [![Jitpack Website](https://jitpack.io/v/StuyPulse/StuyLib.svg)](https://jitpack.io/#StuyPulse/StuyLib)
+```python
 	dependencies {
+	    // check tag above for most recent version
 	    compile 'com.github.StuyPulse:StuyLib:VERSION'
-	}
-```
-
-The version tag can be seen at the top of the readme. An example would be:
-```
-	dependencies {
-	    compile 'com.github.StuyPulse:StuyLib:2020.2.1.1'
 	}
 ```
 
