@@ -102,6 +102,15 @@ public final class Vector2D {
     }
 
     /**
+     * Get polar coordinates created from this vector
+     *
+     * @return polar coordinates created from this vector
+     */
+    public Polar2D getPolar() {
+        return new Polar2D(this);
+    }
+
+    /**
      * Rotate Vector2D around point
      *
      * @param angle  amount to rotate
