@@ -152,10 +152,10 @@ public final class SLMath {
     /*******************************/
 
     /**
-     * Given data points, calculates integral using the chosen formula.
-     * RECTANGLE: Uses the Riemann sum to approximate the integral. (https://en.wikipedia.org/wiki/Riemann_sum)
-     * TRAPEZOID: Uses the trapezoidal rule to approximate the integral. (https://en.wikipedia.org/wiki/Trapezoidal_rule)
-     * SIMPSON: Uses Composite Simpson's Rule for irregularly spaced data to approximate the integral. (https://en.wikipedia.org/wiki/Simpson%27s_rule)
+     * Given data points, calculates integral using the chosen formula.<br>
+     * RECTANGLE: Uses the Riemann sum to approximate the integral. (https://en.wikipedia.org/wiki/Riemann_sum)<br>
+     * TRAPEZOID: Uses the trapezoidal rule to approximate the integral. (https://en.wikipedia.org/wiki/Trapezoidal_rule)<br>
+     * SIMPSON: Uses Composite Simpson's Rule for irregularly spaced data to approximate the integral. (https://en.wikipedia.org/wiki/Simpson%27s_rule)<br>
      * 
      * Arrays x and y must be the same length, because they are data points.
      * The x-values must be in sorted order.
@@ -170,8 +170,7 @@ public final class SLMath {
         if(x.length != y.length) {
             throw new IllegalArgumentException("x and y-value arrays should be the same length");
         }
-        
-        // TODO: remove this precondition
+
         // Precondition: x-values should be sorted
         for(int i = 1; i < x.length; ++i) {
             if(x[i] < x[i - 1]) {
