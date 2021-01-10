@@ -1,5 +1,7 @@
 package com.stuypulse.stuylib.math;
 
+import java.util.function.BiConsumer;
+
 /**
  * SLMath (StuyLib Math) is a class containing many algorithms that are useful for developing robot
  * code. Algorithms include limit, deadband, raising to powers while keeping the sign, and some
@@ -143,6 +145,93 @@ public final class SLMath {
      */
     public static double circular(double x) {
         return circular(x, 2);
+    }
+
+    /*******************************/
+    /*** INTEGRAL APPROXIMATIONS ***/
+    /*******************************/
+
+    /**
+     * Given data points, calculates integral using the chosen method.
+     * RECTANGLE: Uses the riemann sum to approximate the integral. (https://en.wikipedia.org/wiki/Riemann_sum)
+     * TRAPEZOID: Uses the trapezoidal rule to approximate the integral. (https://en.wikipedia.org/wiki/Trapezoidal_rule)
+     * SIMPSON: Uses Composite Simpson's Rule for irregularly spaced data to approximate the integral. (https://en.wikipedia.org/wiki/Simpson%27s_rule)
+     * 
+     * @param x       the x-values of the data points
+     * @param y       the y-values of the data points
+     * @param formula the chosen formula to approximate the integral.
+     * @return approximation of the integral from given points
+     */
+    public double integrate(double[] x, double[] y, Formula formula) {
+        // Precondition: there always exists x[i], y[i]
+        if(x.length != y.length) {
+            throw new IllegalArgumentException("x and y-value arrays should be the same length");
+        }
+        
+        // TODO: remove this precondition
+        // Precondition: x-values should be sorted
+        for(int i = 1; i < x.length; ++i) {
+            if(x[i] < x[i - 1]) {
+                throw new IllegalArgumentException("x-values should be in sorted order");
+            }
+        }
+
+        switch(formula) {
+            case RECTANGLE:
+                double riemannsum = 0.0;
+                for(int i = 1; i < x.length; ++i) {
+                    riemannsum += y[i] * (x[i] - x[i - 1]);
+                }
+                return riemannsum;
+
+            case TRAPEZOID:
+                double trapezoidsum = 0.0;
+                for(int i = 1; i < x.length; ++i) {
+                    trapezoidsum += (y[i] + y[i - 1]) * (x[i] - x[i - 1]) / 2;
+                }
+                return trapezoidsum;
+
+            case SIMPSON:
+                double simpsonsum = 0.0;
+
+                // Create an array of interval widths
+                double[] widths = new double[x.length - 1];
+                for(int i = 0; i < x.length - 1; ++i) {
+                    widths[i] = x[i + 1] - x[i];
+                }
+
+                // Even case for intervals
+                int n = widths.length;
+                for(int i = 0; i < n / 2; i += 1) {
+                    double ai = (2 * Math.pow(widths[2 * i + 1], 3) - Math.pow(widths[2 * i], 3) + 3 * widths[2 * i] * Math.pow(widths[2 * i + 1], 2)) / 
+                                (6 * widths[2 * i + 1] * (widths[2 * i + 1] + widths[2 * i]));
+                    double bi = (Math.pow(widths[2 * i + 1], 3) + Math.pow(widths[2 * i], 3) + 3 * widths[2 * i + 1] * widths[2 * i] * (widths[2 * i + 1] + widths[2 * i])) /
+                                (6 * widths[2 * i + 1] * widths[2 * i]);
+                    double ci = (2 * Math.pow(widths[2 * i], 3) - Math.pow(widths[2 * i + 1], 3) + 3 * widths[2 * i + 1] * Math.pow(widths[2 * i], 2)) /
+                                (6 * widths[2 * i] * (widths[2 * i + 1] + widths[2 * i]));
+                    simpsonsum += ai * y[2 * i + 2] + bi * y[2 * i + 1] + ci * y[2 * i]; 
+                }
+
+                // Odd case for intervals added on end
+                if(n % 2 == 1) {
+                    double a = (2 * Math.pow(widths[n - 1], 2) + 3 * widths[n - 1] * widths[n - 2]) /
+                               (6 * (widths[n - 2] + widths[n - 1]));
+                    double b = (Math.pow(widths[n - 1], 2) + 3 * widths[n - 1] * widths[n - 2]) / 
+                               (6 * widths[n - 2]);
+                    double c = Math.pow(widths[n - 1], 3) /
+                               (6 * widths[n - 2] * (widths[n - 2] + widths[n - 1]));
+                    simpson += a * y[n] + b * y[n - 1] - c * y[n - 2];
+                }
+                return simpsonsum;
+            default:
+                throw new IllegalArgumentException("Invalid formula");
+        } 
+    }
+
+    private enum Formula {
+        RECTANGLE,
+        TRAPEZOID,
+        SIMPSON
     }
 
     /*****************/
