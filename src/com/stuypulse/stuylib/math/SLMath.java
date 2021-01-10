@@ -179,6 +179,18 @@ public final class SLMath {
         return formula.calculate(x, y);
     }
 
+    public static final Integral DEFAULT_INTEGRAL = new Integral.Simpson();
+    /**
+     * Calls integrate(double[] x, double[] y, Integral formula) with default formula Simpson.
+     * 
+     * @param x the x-values of the data points, where (x[i], y[i]) is a point
+     * @param y the y-values of the data points, where (x[i], y[i]) is a point
+     * @return approximation of th eintegral from the given points using the Simpson formula.
+     */
+    public static double integrate(double[] x, double[] y) {
+        return integrate(x, y, DEFAULT_INTEGRAL);
+    }
+
     /**
      * Integral is an interface used by integrate() to get the method used for numerical integration.  
      * It also contains several classes containing various formulas for integration.
