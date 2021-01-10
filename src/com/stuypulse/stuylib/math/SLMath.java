@@ -151,9 +151,6 @@ public final class SLMath {
 
     /**
      * Given data points, calculates integral using the chosen formula.<br>
-     * RECTANGLE: Uses the Riemann sum to approximate the integral. (https://en.wikipedia.org/wiki/Riemann_sum)<br>
-     * TRAPEZOID: Uses the trapezoidal rule to approximate the integral. (https://en.wikipedia.org/wiki/Trapezoidal_rule)<br>
-     * SIMPSON: Uses Composite Simpson's Rule for irregularly spaced data to approximate the integral. (https://en.wikipedia.org/wiki/Simpson%27s_rule)<br>
      * 
      * Arrays x and y must be the same length, because they contain data points.
      * The x-values must be in sorted order.
@@ -194,6 +191,10 @@ public final class SLMath {
     /**
      * Integral is an interface used by integrate() to get the method used for numerical integration.  
      * It also contains several classes containing various formulas for integration.
+     * 
+     * Riemann: Uses the Riemann sum to approximate the integral. (https://en.wikipedia.org/wiki/Riemann_sum)<br>
+     * Trapezoidal: Uses the trapezoidal rule to approximate the integral. (https://en.wikipedia.org/wiki/Trapezoidal_rule)<br>
+     * Simpson: Uses Composite Simpson's Rule for irregularly spaced data to approximate the integral. (https://en.wikipedia.org/wiki/Simpson%27s_rule)<br>
      */
     public interface Integral {
         /**
