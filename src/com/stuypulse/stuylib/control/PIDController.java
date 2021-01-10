@@ -39,6 +39,8 @@ public class PIDController extends Controller {
      * @param d The Derivative Multiplier
      */
     public PIDController(double p, double i, double d) {
+        hasPrevError = true;
+        prevError = 0.0;
         setIntegratorFilter(null);
         setPID(p, i, d);
         reset();
