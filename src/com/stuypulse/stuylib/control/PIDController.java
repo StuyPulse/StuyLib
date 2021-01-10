@@ -2,6 +2,7 @@ package com.stuypulse.stuylib.control;
 
 import com.stuypulse.stuylib.streams.filters.IFilter;
 import com.stuypulse.stuylib.math.SLMath;
+import com.stuypulse.stuylib.math.SLMath.Integral;
 
 /**
  * This PID controller is built by extending the Controller class. It has a dynamic rate, so it can
@@ -28,10 +29,11 @@ public class PIDController extends Controller {
     // The Integral of the errors and filter for the I Component
     private double mIntegral;
     private IFilter mIFilter;
+    private Integral mIntegralFormula;
 
     // The previous error, used for integration
-    private boolean hasPrevError;
-    private double prevError;
+    private boolean mHasPrevError;
+    private double mPrevError;
 
     /**
      * @param p The Proportional Multiplier
@@ -39,8 +41,9 @@ public class PIDController extends Controller {
      * @param d The Derivative Multiplier
      */
     public PIDController(double p, double i, double d) {
-        hasPrevError = false;
-        prevError = 0.0;
+        mHasPrevError = false;
+        mPrevError = 0.0;
+        mIntegralFormula = new Integral.Trapezoidal();
         setIntegratorFilter(null);
         setPID(p, i, d);
         reset();
@@ -73,11 +76,7 @@ public class PIDController extends Controller {
         double p_out = error * mP;
 
         // Calculate I Component
-        double[] xValues = new double[] {0.0, getRate()};
-        double[] yValues = new double[] {(hasPrevError ? error : prevError), error};
-        hasPrevError = true;
-        prevError = error;
-        mIntegral += SLMath.integrate(xValues, yValues, new SLMath.Integral.Riemann());
+        mIntegral += getIntegral(error);
         mIntegral = mIFilter.get(mIntegral);
         double i_out = mIntegral * mI;
 
@@ -115,6 +114,14 @@ public class PIDController extends Controller {
      */
     public double getD() {
         return mD;
+    }
+
+    private double getIntegral(double error) {
+        double[] xValues = new double[] {0.0, getRate()};
+        double[] yValues = new double[] {(mHasPrevError ? error : mPrevError), error};
+        mHasPrevError = true;
+        mPrevError = error;
+        return SLMath.integrate(xValues, yValues, mIntegralFormula);
     }
 
     /**
@@ -166,6 +173,17 @@ public class PIDController extends Controller {
     public PIDController setIntegratorFilter(IFilter filter) {
         // Use default filter if given null
         mIFilter = (filter == null) ? ((x) -> x) : filter;
+        return this;
+    }
+
+    /**
+     * Changes the method by which the I(Integral) term is calculated.
+     * 
+     * @param formula the new formula to use for calculation
+     * @return reference to PIDController (so you can chain the commands together)
+     */
+    public PIDController setIntegrationFormula(Integral formula) {
+        mIntegralFormula = formula;
         return this;
     }
 
