@@ -73,8 +73,8 @@ public class PIDController extends Controller {
         double p_out = error * mP;
 
         // Calculate I Component
-        double xValues = new double[] {0.0, getRate()};
-        double yValues = new double[] {(hasPrevError ? error : prevError), error};
+        double[] xValues = new double[] {0.0, getRate()};
+        double[] yValues = new double[] {(hasPrevError ? error : prevError), error};
         hasPrevError = true;
         prevError = error;
         mIntegral += SLMath.integrate(xValues, yValues, Formulas.TRAPEZOID);
