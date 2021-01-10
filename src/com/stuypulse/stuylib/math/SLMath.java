@@ -1,7 +1,5 @@
 package com.stuypulse.stuylib.math;
 
-import java.util.function.BiConsumer;
-
 /**
  * SLMath (StuyLib Math) is a class containing many algorithms that are useful for developing robot
  * code. Algorithms include limit, deadband, raising to powers while keeping the sign, and some
