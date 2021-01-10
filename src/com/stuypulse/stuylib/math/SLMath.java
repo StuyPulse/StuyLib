@@ -157,15 +157,15 @@ public final class SLMath {
      * TRAPEZOID: Uses the trapezoidal rule to approximate the integral. (https://en.wikipedia.org/wiki/Trapezoidal_rule)<br>
      * SIMPSON: Uses Composite Simpson's Rule for irregularly spaced data to approximate the integral. (https://en.wikipedia.org/wiki/Simpson%27s_rule)<br>
      * 
-     * Arrays x and y must be the same length, because they are data points.
+     * Arrays x and y must be the same length, because they contain data points.
      * The x-values must be in sorted order.
      * 
-     * @param x       the x-values of the data points
-     * @param y       the y-values of the data points
+     * @param x       the x-values of the data points, where (x[i], y[i]) is a point
+     * @param y       the y-values of the data points, where (x[i], y[i]) is a point
      * @param formula the chosen formula to approximate the integral.
      * @return approximation of the integral from given points
      */
-    public static double integrate(double[] x, double[] y, Formula formula) {
+    public static double integrate(double[] x, double[] y, Integral formula) {
         // Precondition: there always exists x[i], y[i]
         if(x.length != y.length) {
             throw new IllegalArgumentException("x and y-value arrays should be the same length");
@@ -178,22 +178,47 @@ public final class SLMath {
             }
         }
 
-        switch(formula) {
-            case RECTANGLE:
+        return formula.calculate(x, y);
+    }
+
+    /**
+     * Integral is an interface used by integrate() to get the method used for numerical integration.  
+     * It also contains several classes containing various formulas for integration.
+     */
+    public interface Integral {
+        /**
+         * Given data points, gives an approximation for the integral.
+         * Arrays x and y must be the same length, because they contain data points.
+         * The x-values must be in sorted order.
+         * 
+         * @param x the x-values of the data points, where (x[i], y[i]) is a point
+         * @param y the y-values of the data points, where (x[i], y[i]) is a point
+         * @return approximation of the integral from given points
+         */
+        public double calculate(double[] x, double[] y);
+
+        public class Riemann implements Integral {
+            public double calculate(double[] x, double[] y) {
                 double riemannsum = 0.0;
                 for(int i = 1; i < x.length; ++i) {
                     riemannsum += y[i] * (x[i] - x[i - 1]);
                 }
                 return riemannsum;
+            }
+        }
 
-            case TRAPEZOID:
+        public class Trapezoidal implements Integral {
+            public double calculate(double[] x, double[] y) {
                 double trapezoidsum = 0.0;
                 for(int i = 1; i < x.length; ++i) {
                     trapezoidsum += (y[i] + y[i - 1]) * (x[i] - x[i - 1]) / 2;
                 }
                 return trapezoidsum;
+            }
+        }
 
-            case SIMPSON:
+        public class Simpson implements Integral {
+            public double calculate(double[] x, double[] y) {
                 double simpsonsum = 0.0;
 
                 // Create an array of interval widths
@@ -222,18 +247,13 @@ public final class SLMath {
                                (6 * widths[n - 2]);
                     double c = Math.pow(widths[n - 1], 3) /
                                (6 * widths[n - 2] * (widths[n - 2] + widths[n - 1]));
-                    simpson += a * y[n] + b * y[n - 1] - c * y[n - 2];
+                    simpsonsum += a * y[n] + b * y[n - 1] - c * y[n - 2];
                 }
                 return simpsonsum;
-            default:
-                throw new IllegalArgumentException("Invalid formula");
-        } 
-    }
+            }
+        }
 
-    private enum Formula {
-        RECTANGLE,
-        TRAPEZOID,
-        SIMPSON
+
     }
 
     /*****************/

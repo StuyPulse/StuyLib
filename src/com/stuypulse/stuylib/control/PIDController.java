@@ -77,7 +77,7 @@ public class PIDController extends Controller {
         double[] yValues = new double[] {(hasPrevError ? error : prevError), error};
         hasPrevError = true;
         prevError = error;
-        mIntegral += SLMath.integrate(xValues, yValues, Formulas.TRAPEZOID);
+        mIntegral += SLMath.integrate(xValues, yValues, new SLMath.Integral.Riemann());
         mIntegral = mIFilter.get(mIntegral);
         double i_out = mIntegral * mI;
 
