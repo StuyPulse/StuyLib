@@ -162,7 +162,7 @@ public final class SLMath {
      * @param formula the chosen formula to approximate the integral.
      * @return approximation of the integral from given points
      */
-    public double integrate(double[] x, double[] y, Formula formula) {
+    public static double integrate(double[] x, double[] y, Formula formula) {
         // Precondition: there always exists x[i], y[i]
         if(x.length != y.length) {
             throw new IllegalArgumentException("x and y-value arrays should be the same length");
