@@ -152,10 +152,13 @@ public final class SLMath {
     /*******************************/
 
     /**
-     * Given data points, calculates integral using the chosen method.
-     * RECTANGLE: Uses the riemann sum to approximate the integral. (https://en.wikipedia.org/wiki/Riemann_sum)
+     * Given data points, calculates integral using the chosen formula.
+     * RECTANGLE: Uses the Riemann sum to approximate the integral. (https://en.wikipedia.org/wiki/Riemann_sum)
      * TRAPEZOID: Uses the trapezoidal rule to approximate the integral. (https://en.wikipedia.org/wiki/Trapezoidal_rule)
      * SIMPSON: Uses Composite Simpson's Rule for irregularly spaced data to approximate the integral. (https://en.wikipedia.org/wiki/Simpson%27s_rule)
+     * 
+     * Arrays x and y must be the same length, because they are data points.
+     * The x-values must be in sorted order.
      * 
      * @param x       the x-values of the data points
      * @param y       the y-values of the data points
