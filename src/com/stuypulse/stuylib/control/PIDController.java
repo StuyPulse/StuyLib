@@ -29,6 +29,10 @@ public class PIDController extends Controller {
     private double mIntegral;
     private IFilter mIFilter;
 
+    // The previous error, used for integration
+    private boolean hasPrevError;
+    private double prevError;
+
     /**
      * @param p The Proportional Multiplier
      * @param i The Integral Multiplier
@@ -67,7 +71,10 @@ public class PIDController extends Controller {
         double p_out = error * mP;
 
         // Calculate I Component
-        mIntegral += error * getRate();
+        double xValues = new double[] {0.0, getRate()};
+        double yValues = new double[] {(hasPrevError ? error : prevError), error};
+        hasPrevError = true;
+        mIntegral += SLMath.integrate(xValues, yValues, Formulas.TRAPEZOID);
         mIntegral = mIFilter.get(mIntegral);
         double i_out = mIntegral * mI;
 
