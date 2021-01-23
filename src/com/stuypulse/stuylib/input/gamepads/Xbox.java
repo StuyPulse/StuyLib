@@ -79,7 +79,7 @@ public class Xbox extends Gamepad {
     }
 
     public double getRightTrigger() {
-        return getJoystick().getTriggerAxis(Hand.kLeft);
+        return getJoystick().getTriggerAxis(Hand.kRight);
     }
 
     // Face Buttons //
