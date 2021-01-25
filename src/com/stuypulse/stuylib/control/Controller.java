@@ -203,8 +203,8 @@ public abstract class Controller {
      * @param setpoint    desired result
      * @return controller output
      */
-    public final double update(double measurement, double setpoint) {
-        return update(measurement - setpoint);
+    public final double update(double setpoint, double measurement) {
+        return update(setpoint - measurement);
     }
 
     /**
