@@ -199,8 +199,8 @@ public abstract class Controller {
      *
      * This function just subtracts the two at this moment.
      *
-     * @param measurement measurement of device just made
      * @param setpoint    desired result
+     * @param measurement measurement of device just made
      * @return controller output
      */
     public final double update(double setpoint, double measurement) {

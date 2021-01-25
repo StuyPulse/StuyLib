@@ -284,8 +284,8 @@ extends java.lang.Object</pre>
 </tr>
 <tr id="i13" class="rowColor">
 <td class="colFirst"><code>double</code></td>
-<th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#update(double,double)">update</a></span>&#8203;(double&nbsp;measurement,
-      double&nbsp;setpoint)</code></th>
+<th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#update(double,double)">update</a></span>&#8203;(double&nbsp;setpoint,
+      double&nbsp;measurement)</code></th>
 <td class="colLast">
 <div class="block">Update the controller with the measurement that was just made and the set point you would like it
  to approach
@@ -526,16 +526,16 @@ extends java.lang.Object</pre>
 <ul class="blockList">
 <li class="blockList">
 <h4>update</h4>
-<pre class="methodSignature">public final&nbsp;double&nbsp;update&#8203;(double&nbsp;measurement,
-                           double&nbsp;setpoint)</pre>
+<pre class="methodSignature">public final&nbsp;double&nbsp;update&#8203;(double&nbsp;setpoint,
+                           double&nbsp;measurement)</pre>
 <div class="block">Update the controller with the measurement that was just made and the set point you would like it
  to approach
 
  This function just subtracts the two at this moment.</div>
 <dl>
 <dt><span class="paramLabel">Parameters:</span></dt>
-<dd><code>measurement</code> - measurement of device just made</dd>
 <dd><code>setpoint</code> - desired result</dd>
+<dd><code>measurement</code> - measurement of device just made</dd>
 <dt><span class="returnLabel">Returns:</span></dt>
 <dd>controller output</dd>
 </dl>
