@@ -1,5 +1,8 @@
+
 plugins {
    id "java"
+
+   // Remember to update the NTCore versions below as well
    id "edu.wpi.first.GradleRIO" version "2021.2.1"
    id "com.diffplug.gradle.spotless" version "3.27.1"
 }
@@ -16,13 +19,6 @@ sourceSets {
          srcDir "src"
       }
    }
-
-   // If we ever write tests
-   // test {
-   //   java {
-   //      srcDir "test"
-   //   }
-   // }
 }
 
 configurations {
@@ -37,6 +33,13 @@ dependencies {
    implementation wpi.deps.vendor.java()
    nativeZip wpi.deps.vendor.jni(wpi.platforms.roborio)
    nativeDesktopZip wpi.deps.vendor.jni(wpi.platforms.desktop)
+
+   compile "edu.wpi.first.ntcore:ntcore-java:2021.2.1"
+   compile "edu.wpi.first.wpiutil:wpiutil-java:2021.2.1"
+   runtime "edu.wpi.first.ntcore:ntcore-jni:2021.2.1:windowsx86"
+   runtime "edu.wpi.first.ntcore:ntcore-jni:2021.2.1:windowsx86-64"
+   runtime "edu.wpi.first.ntcore:ntcore-jni:2021.2.1:linuxx86-64"
+   runtime "edu.wpi.first.ntcore:ntcore-jni:2021.2.1:osxx86-64"
 
    compile group: 'org.knowm.xchart', name: 'xchart', version: '3.2.2'
 
