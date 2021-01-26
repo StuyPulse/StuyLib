@@ -17,15 +17,15 @@ public class RateLimit extends IFilterGroup {
 
     // Used to limit the change from the last value
     private double mLastValue;
-    private double mRateLimit;
+    private Number mRateLimit;
 
     /**
      * Makes a new rate limiter with specified rate limit
      *
      * @param rateLimit desired rate limit
      */
-    public RateLimit(double rateLimit) {
-        if(rateLimit < 0.0) {
+    public RateLimit(Number rateLimit) {
+        if(rateLimit.doubleValue() < 0.0) {
             throw new IllegalArgumentException(
                     "rateLimit must be a positive number");
         }
@@ -35,6 +35,6 @@ public class RateLimit extends IFilterGroup {
     }
 
     public double get(double next) {
-        return mLastValue += SLMath.limit(next, mRateLimit);
+        return mLastValue += SLMath.limit(next, mRateLimit.doubleValue());
     }
 }

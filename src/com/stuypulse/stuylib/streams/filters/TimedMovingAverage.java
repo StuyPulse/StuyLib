@@ -31,7 +31,7 @@ public class TimedMovingAverage implements IFilter {
 
     // All information needed to calculate value
     private StopWatch mTimer;
-    private double mMaxTime;
+    private Number mMaxTime;
     private double mCurrentTime;
     private Queue<Value> mValues;
     private double mTotal;
@@ -41,8 +41,8 @@ public class TimedMovingAverage implements IFilter {
      *
      * @param time time span for which to average
      */
-    public TimedMovingAverage(double time) {
-        if(time <= 0) {
+    public TimedMovingAverage(Number time) {
+        if(time.doubleValue() <= 0) {
             throw new IllegalArgumentException("time must be > 0");
         }
 
@@ -67,7 +67,7 @@ public class TimedMovingAverage implements IFilter {
     }
 
     public double get(double next) {
-        while(mMaxTime < mCurrentTime) {
+        while(mMaxTime.doubleValue() < mCurrentTime) {
             remove();
         }
 

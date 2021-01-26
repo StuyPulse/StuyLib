@@ -19,13 +19,13 @@ public class TimedRateLimit implements IFilter {
 
     // Used to limit the change from the last value
     private double mLastValue;
-    private double mRateLimit;
+    private Number mRateLimit;
 
     /**
      * @param rateLimit The amount that the value should be able to change in one second.
      */
-    public TimedRateLimit(double rateLimit) {
-        if(rateLimit <= 0) {
+    public TimedRateLimit(Number rateLimit) {
+        if(rateLimit.doubleValue() <= 0) {
             throw new IllegalArgumentException(
                     "rateLimit must be a positive number");
         }
@@ -37,6 +37,6 @@ public class TimedRateLimit implements IFilter {
 
     public double get(double next) {
         return mLastValue += SLMath.limit(next - mLastValue,
-                mRateLimit * mTimer.reset());
+                mRateLimit.doubleValue() * mTimer.reset());
     }
 }

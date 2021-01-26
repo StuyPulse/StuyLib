@@ -21,9 +21,9 @@ public class PIDController extends Controller {
     private static final double kMaxTimeBeforeReset = 0.5;
 
     // Constants used by the PID controller
-    private double mP;
-    private double mI;
-    private double mD;
+    private Number mP;
+    private Number mI;
+    private Number mD;
 
     // The Integral of the errors and filter for the I Component
     private double mIntegral;
@@ -34,7 +34,7 @@ public class PIDController extends Controller {
      * @param i The Integral Multiplier
      * @param d The Derivative Multiplier
      */
-    public PIDController(double p, double i, double d) {
+    public PIDController(Number p, Number i, Number d) {
         setIntegratorFilter(null);
         setPID(p, i, d);
         reset();
@@ -64,15 +64,15 @@ public class PIDController extends Controller {
     @Override
     protected double calculate(double error) {
         // Calculate P Component
-        double p_out = error * mP;
+        double p_out = error * getP();
 
         // Calculate I Component
         mIntegral += error * getRate();
         mIntegral = mIFilter.get(mIntegral);
-        double i_out = mIntegral * mI;
+        double i_out = mIntegral * getI();
 
         // Calculate D Component
-        double d_out = getVelocity() * mD;
+        double d_out = getVelocity() * getD();
 
         // Check if time passed exceeds reset limit
         if(getRate() < kMaxTimeBeforeReset) {
@@ -90,29 +90,29 @@ public class PIDController extends Controller {
      * @return the P value being used by the PID controller.
      */
     public double getP() {
-        return mP;
+        return Math.max(mP.doubleValue(), 0.0);
     }
 
     /**
      * @return the P value being used by the PID controller.
      */
     public double getI() {
-        return mI;
+        return Math.max(mI.doubleValue(), 0.0);
     }
 
     /**
      * @return the P value being used by the PID controller.
      */
     public double getD() {
-        return mD;
+        return Math.max(mD.doubleValue(), 0.0);
     }
 
     /**
      * @param p new p value used by the PID controller.
      * @return reference to PIDController (so you can chain the commands together)
      */
-    public PIDController setP(double p) {
-        mP = Math.max(p, 0);
+    public PIDController setP(Number p) {
+        mP = p;
         return this;
     }
 
@@ -120,8 +120,8 @@ public class PIDController extends Controller {
      * @param i new i value used by the PID controller.
      * @return reference to PIDController (so you can chain the commands together)
      */
-    public PIDController setI(double i) {
-        mI = Math.max(i, 0);
+    public PIDController setI(Number i) {
+        mI = i;
         return this;
     }
 
@@ -129,8 +129,8 @@ public class PIDController extends Controller {
      * @param d new d value used by the PID controller.
      * @return reference to PIDController (so you can chain the commands together)
      */
-    public PIDController setD(double d) {
-        mD = Math.max(d, 0);
+    public PIDController setD(Number d) {
+        mD = d;
         return this;
     }
 
@@ -140,7 +140,7 @@ public class PIDController extends Controller {
      * @param d new d value used by the PID controller.
      * @return reference to PIDController (so you can chain the commands together)
      */
-    public PIDController setPID(double p, double i, double d) {
+    public PIDController setPID(Number p, Number i, Number d) {
         return setP(p).setI(i).setD(d);
     }
 
