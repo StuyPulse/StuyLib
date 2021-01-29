@@ -98,7 +98,7 @@ public final class Vector2D {
      * @return the angle of the Vector2D around 0
      */
     public Angle getAngle() {
-        return Angle.fromRadians(Math.atan2(this.y, this.x));
+        return Angle.fromVector(this);
     }
 
     /**
@@ -213,6 +213,15 @@ public final class Vector2D {
      */
     public Vector2D normalize() {
         return this.div(this.distance());
+    }
+
+    /**
+     * A vector with the negatives of the x and y components.
+     *
+     * @return the negative vector.
+     */
+    public Vector2D negative() {
+        return new Vector2D(-this.x, -this.y);
     }
 
     /**

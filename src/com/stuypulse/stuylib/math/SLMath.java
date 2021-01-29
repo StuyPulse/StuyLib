@@ -84,7 +84,7 @@ public final class SLMath {
      * [WARNING! THIS WILL KEEP THE SIGN OF THE INPUT NUMBER] Square number and keep sign
      *
      * @param x input
-     * @return square input
+     * @return squared input with the same sign and limited
      */
     public static double square(double x) {
         return limit(x * x * Math.signum(x));
@@ -109,40 +109,6 @@ public final class SLMath {
      */
     public static double spow(double x, double power) {
         return limit(Math.pow(Math.abs(x), power) * Math.signum(x));
-    }
-
-    /**************************/
-    /*** CIRCULAR ALGORITHM ***/
-    /**************************/
-
-    /**
-     * Use the shape of a circle with power p to scale the input
-     *
-     * @param x input
-     * @param p power (p greater than 1)
-     * @return circular return
-     */
-    public static double circular(double x, double p) {
-        double sign = Math.signum(x);
-        x = limit(Math.abs(x));
-
-        p = Math.max(1.0, p);
-
-        x = 1.0 - Math.pow(x, p);
-        x = 1.0 - Math.pow(x, 1.0 / p);
-        x *= sign;
-
-        return limit(x);
-    }
-
-    /**
-     * Use the shape of a circle to scale the input
-     *
-     * @param x input
-     * @return circular return
-     */
-    public static double circular(double x) {
-        return circular(x, 2);
     }
 
     /*****************/

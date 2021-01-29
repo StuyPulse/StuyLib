@@ -95,6 +95,43 @@ public final class Angle {
         return fromArcMinutes(arcseconds / 60.0);
     }
 
+    /**
+     * Contstruct a new Angle class from x and y positions.
+     *
+     * You can think of this as getting the angle from rise [y] over run [x].
+     *
+     * @param x the run of the vector
+     * @param y the rise of the vector
+     * @return the new angle class
+     */
+    public static Angle fromVector(double x, double y) {
+        return fromRadians(Math.atan2(y, x));
+    }
+
+    /**
+     * Construct a new Angle class from a vector.
+     *
+     * This is identicle to calling fromVector(x, y) but by passing in the vectors x and y values.
+     *
+     * @param vector the vector from which to get the angle from
+     * @return the angle of the vector
+     */
+    public static Angle fromVector(Vector2D vector) {
+        return fromVector(vector.x, vector.y);
+    }
+
+    /**
+     * Construct a new Angle from a slope.
+     *
+     * This will get you the angle of any slope in the form of rise / run.
+     *
+     * @param slope the slope to get the angle from
+     * @return the angle of the slope
+     */
+    public static Angle fromSlope(double slope) {
+        return fromRadians(Math.atan(slope));
+    }
+
     /****************************/
     /*** CLASS IMPLEMENTATION ***/
     /****************************/
@@ -169,6 +206,15 @@ public final class Angle {
      */
     public Angle sub(Angle other) {
         return fromRadians(this.toRadians() - other.toRadians());
+    }
+
+    /**
+     * Get an angle with a negative amount of radians
+     *
+     * @return an angle with a negative amount of radians
+     */
+    public Angle negative() {
+        return fromRadians(0.0 - this.toRadians());
     }
 
     /**
