@@ -10,6 +10,9 @@ package com.stuypulse.stuylib.math;
 
 public final class Vector2D {
 
+    // Configuration for toString() function
+    private static final int STRING_SIGFIGS = 5;
+
     /**
      * The x position of the Vector2D
      */
@@ -52,16 +55,6 @@ public final class Vector2D {
      */
     public double[] getArray() {
         return new double[] { x, y };
-    }
-
-    /**
-     * Check if two Vector2D's equal each other
-     *
-     * @param other other Vector2D
-     * @return if the two Vector2Ds are equal
-     */
-    public boolean equals(Vector2D other) {
-        return this.x == other.x && this.y == other.y;
     }
 
     /**
@@ -225,11 +218,36 @@ public final class Vector2D {
     }
 
     /**
-     * Format the angle into a string
+     * Compare Vector2D to another object
      *
-     * @return formatted string value
+     * @param other object to compare to
+     * @return both objects are Vector2Ds and they equal eachother
+     */
+    public boolean equals(Object other) {
+        if(this == other) {
+            return true;
+        }
+
+        if(other instanceof Vector2D) {
+            Vector2D o = (Vector2D) other;
+            return this.x == o.x && this.y == o.y;
+        }
+
+        return false;
+    }
+
+    /**
+     * Returns Vector2D class in the form of a string
+     *
+     * @return string value of Vector2D
      */
     public String toString() {
-        return "(" + x + ", " + y + ")";
+        StringBuilder out = new StringBuilder();
+        out.append("Vector2D(");
+        out.append(SLMath.round(x, STRING_SIGFIGS));
+        out.append(", ");
+        out.append(SLMath.round(y, STRING_SIGFIGS));
+        out.append(")");
+        return out.toString();
     }
 }
