@@ -1,5 +1,7 @@
 package com.stuypulse.stuylib.math;
 
+import edu.wpi.first.wpilibj.geometry.Rotation2d;
+
 /**
  * This angle class is made to remove the ambiguity of units when passing or returning angles. It
  * stores it in radians, but returns it in any unit depending on what the user requests. All of the
@@ -203,6 +205,18 @@ public final class Angle {
      */
     public double toDegrees(double center) {
         return normalizeDegrees(this.toDegrees(), center);
+    }
+
+    /**
+     * Return the StuyLib Angle class in the form of the WPILib Rotation2d.
+     *
+     * This function is here in order to make interoperability with WPILib easier so that manual
+     * conversion isn't needed as much.
+     *
+     * @return Rotation2d with the same value as this angle
+     */
+    public Rotation2d getRotation2d() {
+        return new Rotation2d(toRadians());
     }
 
     /**

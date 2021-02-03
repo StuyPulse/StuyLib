@@ -1,5 +1,7 @@
 package com.stuypulse.stuylib.math;
 
+import edu.wpi.first.wpilibj.geometry.Translation2d;
+
 /**
  * A Vector2D class that stores x and y position data. It is made to work with the StuyLib Angle
  * class and be easy to use. It is a standard Vector2D class with all of the functions that you
@@ -55,6 +57,18 @@ public final class Vector2D {
      */
     public double[] getArray() {
         return new double[] { x, y };
+    }
+
+    /**
+     * Return the StuyLib Vector2D class in the form as WPILib's Translation2d.
+     *
+     * This function is here in order to make interoperability with WPILib easier so that manual
+     * conversion isn't needed as much.
+     *
+     * @return Translation2d class with the same value as the Vector2d
+     */
+    public Translation2d getTranslation2d() {
+        return new Translation2d(x, y);
     }
 
     /**

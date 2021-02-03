@@ -26,6 +26,8 @@ public class StopWatch {
 
     /**
      * Creates timer and reset it to now.
+     *
+     * @param engine the method that is used to get the current time
      */
     public StopWatch(TimeEngine engine) {
         mEngine = engine;

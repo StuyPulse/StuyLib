@@ -29,6 +29,7 @@ public class TBHController extends Controller {
 
     /**
      * @param gain the gain in the take back half algorithm
+     * @return an instance of the TBHController
      */
     public TBHController setGain(Number gain) {
         mGain = gain;
