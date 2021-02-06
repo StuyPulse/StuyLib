@@ -77,7 +77,7 @@ public class Integral {
          * By default, this is true. You might want to turn this off if you wish to add multiple points
          * then recalculate.
          * 
-         * @param alwaysUpdate
+         * @param alwaysUpdate if the answer to the approximation should be updated every time a point is added 
          * @return this configuration
          */
         public Config setAlwaysUpdate(boolean alwaysUpdate) {
@@ -90,7 +90,7 @@ public class Integral {
          * By default, this is false.  You might want to turn this on if you are using Simpson and
          * do not care too much about the performance loss of complete calculation.
          * 
-         * @param alwaysRecalculate
+         * @param alwaysRecalculate if the answer to the approximation should be fully recalculated
          * @return this configuration
          */
         public Config setAlwaysRecalculate(boolean alwaysRecalculate) {
