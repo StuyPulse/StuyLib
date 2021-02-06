@@ -33,19 +33,14 @@ public class PIDController extends Controller {
     private Integral mIntegralCalculator;
     private double mPrevTime;
 
-    // The previous error, used for integration
-    private boolean mHasPrevError;
-    private double mPrevError;
-
     /**
      * @param p The Proportional Multiplier
      * @param i The Integral Multiplier
      * @param d The Derivative Multiplier
      */
     public PIDController(double p, double i, double d) {
-        mHasPrevError = false;
-        mPrevTime = 0.0;
         mIntegralCalculator = new Integral();
+        mPrevTime = 0.0;
         setIntegratorFilter(null);
         setPID(p, i, d);
         reset();
