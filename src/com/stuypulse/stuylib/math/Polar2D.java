@@ -8,9 +8,12 @@ package com.stuypulse.stuylib.math;
  */
 public class Polar2D {
 
+    // Configuration for toString() function
+    private static final int STRING_SIGFIGS = 5;
+
     // Internal Variables
-    private final double mMag;
-    private final Angle mAng;
+    public final double magnitude;
+    public final Angle angle;
 
     /**
      * Create a Polar2D with a magnitude and an angle
@@ -21,11 +24,11 @@ public class Polar2D {
     public Polar2D(double mag, Angle ang) {
         // Make sure the magnitude is always positive
         if(mag >= 0) {
-            mMag = mag;
-            mAng = ang;
+            magnitude = mag;
+            angle = ang;
         } else {
-            mMag = -mag;
-            mAng = ang.add(Angle.k180deg);
+            magnitude = -mag;
+            angle = ang.negative();
         }
     }
 
@@ -39,21 +42,21 @@ public class Polar2D {
     }
 
     /**
-     * Get the magnitude
+     * Get the magnitude of the Polar2D class
      *
-     * @return magnitude
+     * @return magnitude of the Polar2D class
      */
     public double magnitude() {
-        return mMag;
+        return magnitude;
     }
 
     /**
-     * Get the angle
+     * Get the angle of the Polar2D class
      *
-     * @return angle
+     * @return angle of the Polar2D class
      */
     public Angle getAngle() {
-        return mAng;
+        return angle;
     }
 
     /**
@@ -62,7 +65,7 @@ public class Polar2D {
      * @return Polar Coordinates as a Vector2D
      */
     public Vector2D getVector() {
-        return mAng.getVector().mul(mMag);
+        return angle.getVector().mul(magnitude);
     }
 
     /**
@@ -72,7 +75,7 @@ public class Polar2D {
      * @return result of multiplication
      */
     public Polar2D mul(double m) {
-        return new Polar2D(mMag * m, mAng);
+        return new Polar2D(magnitude * m, angle);
     }
 
     /**
@@ -82,7 +85,7 @@ public class Polar2D {
      * @return result of division
      */
     public Polar2D div(double d) {
-        return new Polar2D(mMag / d, mAng);
+        return new Polar2D(magnitude / d, angle);
     }
 
     /**
@@ -92,7 +95,16 @@ public class Polar2D {
      * @return result of rotation
      */
     public Polar2D rotate(Angle a) {
-        return new Polar2D(mMag, mAng.add(a));
+        return new Polar2D(magnitude, angle.add(a));
+    }
+
+    /**
+     * Return a Polar2D object with a negative magnitude
+     *
+     * @return Polar2D object with a negative magnitude
+     */
+    public Polar2D negative() {
+        return new Polar2D(-magnitude, angle);
     }
 
     /**
@@ -101,6 +113,18 @@ public class Polar2D {
      * @return normalized polar coordinates
      */
     public Polar2D normalize() {
-        return new Polar2D(1, mAng);
+        return new Polar2D(1, angle);
     }
+
+    @Override
+    public String toString() {
+        StringBuilder out = new StringBuilder();
+        out.append("Polar2D(");
+        out.append(SLMath.round(magnitude, STRING_SIGFIGS));
+        out.append(", ");
+        out.append(angle);
+        out.append(")");
+        return out.toString();
+    }
+
 }

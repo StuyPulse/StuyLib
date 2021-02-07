@@ -15,8 +15,8 @@ import com.stuypulse.stuylib.math.SLMath;
 public class SpeedProfile implements IFilter {
 
     // Limits for each of the derivatives
-    private double mAccelLimit;
-    private double mJerkLimit;
+    private Number mAccelLimit;
+    private Number mJerkLimit;
 
     // The last speed and acceleration
     private double mSpeed;
@@ -28,14 +28,14 @@ public class SpeedProfile implements IFilter {
      * @param accelLimit maximum amount of acceleration in one second
      * @param jerkLimit  maximum amount of jerk in one second
      */
-    public SpeedProfile(double accelLimit, double jerkLimit) {
+    public SpeedProfile(Number accelLimit, Number jerkLimit) {
         // Jerk cannot be <= 0
-        if(jerkLimit <= 0) {
+        if(jerkLimit.doubleValue() <= 0) {
             throw new IllegalArgumentException("jerkLimit must be above 0");
         }
 
         // Negative accelLimit means no accel limit
-        if(accelLimit <= 0) {
+        if(accelLimit.doubleValue() <= 0) {
             accelLimit = Double.MAX_VALUE;
         }
 
@@ -59,16 +59,16 @@ public class SpeedProfile implements IFilter {
     public double get(double next) {
         // Current position accounting for reduced jerk
         double projected = mSpeed
-                + mAccel * Math.abs(mAccel / mJerkLimit) / 2.0;
+                + mAccel * Math.abs(mAccel / mJerkLimit.doubleValue()) / 2.0;
 
         // How much the acceleration needs to change
         double targetAccel = next - projected;
 
         // Limit the acceleration change by jerk limit
-        mAccel += SLMath.limit(targetAccel - mAccel, mJerkLimit);
+        mAccel += SLMath.limit(targetAccel - mAccel, mJerkLimit.doubleValue());
 
         // Limit acceleration
-        mAccel = SLMath.limit(mAccel, mAccelLimit);
+        mAccel = SLMath.limit(mAccel, mAccelLimit.doubleValue());
 
         // Add acceleration to speed value
         return mSpeed += mAccel;

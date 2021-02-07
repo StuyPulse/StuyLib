@@ -14,13 +14,13 @@ public class HighPassFilter implements IFilter {
 
     private double mLastValue;
     private double mLastInput;
-    private double mRC;
+    private Number mRC;
 
     /**
      * @param rc time constant for high pass filter
      */
-    public HighPassFilter(double rc) {
-        if(rc < 0) {
+    public HighPassFilter(Number rc) {
+        if(rc.doubleValue() < 0) {
             throw new IllegalArgumentException("rc must be a positive number");
         }
 
@@ -32,7 +32,7 @@ public class HighPassFilter implements IFilter {
 
     public double get(double next) {
         double dt = mTimer.reset();
-        double a = mRC / (mRC + dt);
+        double a = mRC.doubleValue() / (mRC.doubleValue() + dt);
         mLastValue = a * (mLastValue + next - mLastInput);
         mLastInput = next;
         return mLastValue;

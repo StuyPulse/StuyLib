@@ -13,7 +13,8 @@
 <!--[if IE]>
 <script type="text/javascript" src="../../../../jquery/jszip-utils/dist/jszip-utils-ie.min.js"></script>
 <![endif]-->
-<script type="text/javascript" src="../../../../jquery/jquery-3.5.1.js"></script>
+<script type="text/javascript" src="../../../../jquery/jquery-3.3.1.js"></script>
+<script type="text/javascript" src="../../../../jquery/jquery-migrate-3.0.1.js"></script>
 <script type="text/javascript" src="../../../../jquery/jquery-ui.js"></script>
 </head>
 <body>
@@ -26,7 +27,7 @@
     catch(err) {
     }
 //-->
-var data = {"i0":10,"i1":10,"i2":10,"i3":10,"i4":10,"i5":10,"i6":10,"i7":10,"i8":10,"i9":10};
+var data = {"i0":10,"i1":10,"i2":10,"i3":10,"i4":10,"i5":10,"i6":10,"i7":10,"i8":10};
 var tabs = {65535:["t0","All Methods"],2:["t2","Instance Methods"],8:["t4","Concrete Methods"]};
 var altColor = "altColor";
 var rowColor = "rowColor";
@@ -160,7 +161,7 @@ extends <a href="Controller.html" title="class in com.stuypulse.stuylib.control"
 <th class="colLast" scope="col">Description</th>
 </tr>
 <tr class="altColor">
-<th class="colConstructorName" scope="row"><code><span class="memberNameLink"><a href="#%3Cinit%3E(double)">PIDCalculator</a></span>&#8203;(double&nbsp;speed)</code></th>
+<th class="colConstructorName" scope="row"><code><span class="memberNameLink"><a href="#%3Cinit%3E(java.lang.Number)">PIDCalculator</a></span>&#8203;(java.lang.Number&nbsp;speed)</code></th>
 <td class="colLast">&nbsp;</td>
 </tr>
 </table>
@@ -217,25 +218,18 @@ extends <a href="Controller.html" title="class in com.stuypulse.stuylib.control"
 <td class="colLast">&nbsp;</td>
 </tr>
 <tr id="i6" class="altColor">
-<td class="colFirst"><code><a href="PIDController.html" title="class in com.stuypulse.stuylib.control">PIDController</a></code></td>
-<th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#getPIDController(double,double,double)">getPIDController</a></span>&#8203;(double&nbsp;kP,
-                double&nbsp;kI,
-                double&nbsp;kD)</code></th>
-<td class="colLast">&nbsp;</td>
-</tr>
-<tr id="i7" class="rowColor">
 <td class="colFirst"><code>double</code></td>
 <th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#getT()">getT</a></span>()</code></th>
 <td class="colLast">
 <div class="block">Period of Oscillations</div>
 </td>
 </tr>
-<tr id="i8" class="altColor">
+<tr id="i7" class="rowColor">
 <td class="colFirst"><code><a href="PIDCalculator.html" title="class in com.stuypulse.stuylib.control">PIDCalculator</a></code></td>
-<th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#setControlSpeed(double)">setControlSpeed</a></span>&#8203;(double&nbsp;speed)</code></th>
+<th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#setControlSpeed(java.lang.Number)">setControlSpeed</a></span>&#8203;(java.lang.Number&nbsp;speed)</code></th>
 <td class="colLast">&nbsp;</td>
 </tr>
-<tr id="i9" class="rowColor">
+<tr id="i8" class="altColor">
 <td class="colFirst"><code>java.lang.String</code></td>
 <th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#toString()">toString</a></span>()</code></th>
 <td class="colLast">
@@ -273,13 +267,13 @@ extends <a href="Controller.html" title="class in com.stuypulse.stuylib.control"
 <!--   -->
 </a>
 <h3>Constructor Detail</h3>
-<a id="&lt;init&gt;(double)">
+<a id="&lt;init&gt;(java.lang.Number)">
 <!--   -->
 </a>
 <ul class="blockListLast">
 <li class="blockList">
 <h4>PIDCalculator</h4>
-<pre>public&nbsp;PIDCalculator&#8203;(double&nbsp;speed)</pre>
+<pre>public&nbsp;PIDCalculator&#8203;(java.lang.Number&nbsp;speed)</pre>
 <dl>
 <dt><span class="paramLabel">Parameters:</span></dt>
 <dd><code>speed</code> - motor output for bang bang controller</dd>
@@ -296,13 +290,13 @@ extends <a href="Controller.html" title="class in com.stuypulse.stuylib.control"
 <!--   -->
 </a>
 <h3>Method Detail</h3>
-<a id="setControlSpeed(double)">
+<a id="setControlSpeed(java.lang.Number)">
 <!--   -->
 </a>
 <ul class="blockList">
 <li class="blockList">
 <h4>setControlSpeed</h4>
-<pre class="methodSignature">public&nbsp;<a href="PIDCalculator.html" title="class in com.stuypulse.stuylib.control">PIDCalculator</a>&nbsp;setControlSpeed&#8203;(double&nbsp;speed)</pre>
+<pre class="methodSignature">public&nbsp;<a href="PIDCalculator.html" title="class in com.stuypulse.stuylib.control">PIDCalculator</a>&nbsp;setControlSpeed&#8203;(java.lang.Number&nbsp;speed)</pre>
 <dl>
 <dt><span class="paramLabel">Parameters:</span></dt>
 <dd><code>speed</code> - sets speed for motor output of controller</dd>
@@ -355,25 +349,6 @@ extends <a href="Controller.html" title="class in com.stuypulse.stuylib.control"
 <dl>
 <dt><span class="returnLabel">Returns:</span></dt>
 <dd>Get calculated T value for PID value equation</dd>
-</dl>
-</li>
-</ul>
-<a id="getPIDController(double,double,double)">
-<!--   -->
-</a>
-<ul class="blockList">
-<li class="blockList">
-<h4>getPIDController</h4>
-<pre class="methodSignature">public&nbsp;<a href="PIDController.html" title="class in com.stuypulse.stuylib.control">PIDController</a>&nbsp;getPIDController&#8203;(double&nbsp;kP,
-                                      double&nbsp;kI,
-                                      double&nbsp;kD)</pre>
-<dl>
-<dt><span class="paramLabel">Parameters:</span></dt>
-<dd><code>kP</code> - p multiplier when calculating values</dd>
-<dd><code>kI</code> - p multiplier when calculating values</dd>
-<dd><code>kD</code> - p multiplier when calculating values</dd>
-<dt><span class="returnLabel">Returns:</span></dt>
-<dd>calculated PID controller based off of measurements</dd>
 </dl>
 </li>
 </ul>

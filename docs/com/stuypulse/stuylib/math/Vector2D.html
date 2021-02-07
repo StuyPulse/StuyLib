@@ -13,7 +13,8 @@
 <!--[if IE]>
 <script type="text/javascript" src="../../../../jquery/jszip-utils/dist/jszip-utils-ie.min.js"></script>
 <![endif]-->
-<script type="text/javascript" src="../../../../jquery/jquery-3.5.1.js"></script>
+<script type="text/javascript" src="../../../../jquery/jquery-3.3.1.js"></script>
+<script type="text/javascript" src="../../../../jquery/jquery-migrate-3.0.1.js"></script>
 <script type="text/javascript" src="../../../../jquery/jquery-ui.js"></script>
 </head>
 <body>
@@ -26,7 +27,7 @@
     catch(err) {
     }
 //-->
-var data = {"i0":10,"i1":10,"i2":10,"i3":10,"i4":10,"i5":10,"i6":10,"i7":10,"i8":10,"i9":10,"i10":10,"i11":10,"i12":10,"i13":10,"i14":10,"i15":10,"i16":10,"i17":10};
+var data = {"i0":10,"i1":10,"i2":10,"i3":10,"i4":10,"i5":10,"i6":10,"i7":10,"i8":10,"i9":10,"i10":10,"i11":10,"i12":10,"i13":10,"i14":10,"i15":10,"i16":10,"i17":10,"i18":10,"i19":10};
 var tabs = {65535:["t0","All Methods"],2:["t2","Instance Methods"],8:["t4","Concrete Methods"]};
 var altColor = "altColor";
 var rowColor = "rowColor";
@@ -261,9 +262,9 @@ extends java.lang.Object</pre>
 </tr>
 <tr id="i6" class="altColor">
 <td class="colFirst"><code>boolean</code></td>
-<th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#equals(com.stuypulse.stuylib.math.Vector2D)">equals</a></span>&#8203;(<a href="Vector2D.html" title="class in com.stuypulse.stuylib.math">Vector2D</a>&nbsp;other)</code></th>
+<th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#equals(java.lang.Object)">equals</a></span>&#8203;(java.lang.Object&nbsp;other)</code></th>
 <td class="colLast">
-<div class="block">Check if two Vector2D's equal each other</div>
+<div class="block">Compare Vector2D to another object</div>
 </td>
 </tr>
 <tr id="i7" class="rowColor">
@@ -288,41 +289,55 @@ extends java.lang.Object</pre>
 </td>
 </tr>
 <tr id="i10" class="altColor">
+<td class="colFirst"><code>edu.wpi.first.wpilibj.geometry.Translation2d</code></td>
+<th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#getTranslation2d()">getTranslation2d</a></span>()</code></th>
+<td class="colLast">
+<div class="block">Return the StuyLib Vector2D class in the form as WPILib's Translation2d.</div>
+</td>
+</tr>
+<tr id="i11" class="rowColor">
 <td class="colFirst"><code>double</code></td>
 <th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#magnitude()">magnitude</a></span>()</code></th>
 <td class="colLast">
 <div class="block">Get the magnitude of the vector (same as distance from 0, 0)</div>
 </td>
 </tr>
-<tr id="i11" class="rowColor">
+<tr id="i12" class="altColor">
 <td class="colFirst"><code><a href="Vector2D.html" title="class in com.stuypulse.stuylib.math">Vector2D</a></code></td>
 <th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#mul(double)">mul</a></span>&#8203;(double&nbsp;multiplier)</code></th>
 <td class="colLast">
 <div class="block">Multiply the x and y of the Vector2D by a certain amount</div>
 </td>
 </tr>
-<tr id="i12" class="altColor">
+<tr id="i13" class="rowColor">
 <td class="colFirst"><code><a href="Vector2D.html" title="class in com.stuypulse.stuylib.math">Vector2D</a></code></td>
 <th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#mul(com.stuypulse.stuylib.math.Vector2D)">mul</a></span>&#8203;(<a href="Vector2D.html" title="class in com.stuypulse.stuylib.math">Vector2D</a>&nbsp;other)</code></th>
 <td class="colLast">
 <div class="block">Multiply two Vector2Ds</div>
 </td>
 </tr>
-<tr id="i13" class="rowColor">
+<tr id="i14" class="altColor">
+<td class="colFirst"><code><a href="Vector2D.html" title="class in com.stuypulse.stuylib.math">Vector2D</a></code></td>
+<th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#negative()">negative</a></span>()</code></th>
+<td class="colLast">
+<div class="block">A vector with the negatives of the x and y components.</div>
+</td>
+</tr>
+<tr id="i15" class="rowColor">
 <td class="colFirst"><code><a href="Vector2D.html" title="class in com.stuypulse.stuylib.math">Vector2D</a></code></td>
 <th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#normalize()">normalize</a></span>()</code></th>
 <td class="colLast">
 <div class="block">Normalize the Vector2D so that the point lands on the unit circle</div>
 </td>
 </tr>
-<tr id="i14" class="altColor">
+<tr id="i16" class="altColor">
 <td class="colFirst"><code><a href="Vector2D.html" title="class in com.stuypulse.stuylib.math">Vector2D</a></code></td>
 <th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#rotate(com.stuypulse.stuylib.math.Angle)">rotate</a></span>&#8203;(<a href="Angle.html" title="class in com.stuypulse.stuylib.math">Angle</a>&nbsp;angle)</code></th>
 <td class="colLast">
 <div class="block">Rotate Vector2D around origin</div>
 </td>
 </tr>
-<tr id="i15" class="rowColor">
+<tr id="i17" class="rowColor">
 <td class="colFirst"><code><a href="Vector2D.html" title="class in com.stuypulse.stuylib.math">Vector2D</a></code></td>
 <th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#rotate(com.stuypulse.stuylib.math.Angle,com.stuypulse.stuylib.math.Vector2D)">rotate</a></span>&#8203;(<a href="Angle.html" title="class in com.stuypulse.stuylib.math">Angle</a>&nbsp;angle,
       <a href="Vector2D.html" title="class in com.stuypulse.stuylib.math">Vector2D</a>&nbsp;origin)</code></th>
@@ -330,18 +345,18 @@ extends java.lang.Object</pre>
 <div class="block">Rotate Vector2D around point</div>
 </td>
 </tr>
-<tr id="i16" class="altColor">
+<tr id="i18" class="altColor">
 <td class="colFirst"><code><a href="Vector2D.html" title="class in com.stuypulse.stuylib.math">Vector2D</a></code></td>
 <th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#sub(com.stuypulse.stuylib.math.Vector2D)">sub</a></span>&#8203;(<a href="Vector2D.html" title="class in com.stuypulse.stuylib.math">Vector2D</a>&nbsp;other)</code></th>
 <td class="colLast">
 <div class="block">Subtract two Vector2Ds</div>
 </td>
 </tr>
-<tr id="i17" class="rowColor">
+<tr id="i19" class="rowColor">
 <td class="colFirst"><code>java.lang.String</code></td>
 <th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#toString()">toString</a></span>()</code></th>
 <td class="colLast">
-<div class="block">Format the angle into a string</div>
+<div class="block">Returns Vector2D class in the form of a string</div>
 </td>
 </tr>
 </table>
@@ -350,7 +365,7 @@ extends java.lang.Object</pre>
 <!--   -->
 </a>
 <h3>Methods inherited from class&nbsp;java.lang.Object</h3>
-<code>clone, equals, finalize, getClass, hashCode, notify, notifyAll, wait, wait, wait</code></li>
+<code>clone, finalize, getClass, hashCode, notify, notifyAll, wait, wait, wait</code></li>
 </ul>
 </li>
 </ul>
@@ -452,19 +467,20 @@ extends java.lang.Object</pre>
 </dl>
 </li>
 </ul>
-<a id="equals(com.stuypulse.stuylib.math.Vector2D)">
+<a id="getTranslation2d()">
 <!--   -->
 </a>
 <ul class="blockList">
 <li class="blockList">
-<h4>equals</h4>
-<pre class="methodSignature">public&nbsp;boolean&nbsp;equals&#8203;(<a href="Vector2D.html" title="class in com.stuypulse.stuylib.math">Vector2D</a>&nbsp;other)</pre>
-<div class="block">Check if two Vector2D's equal each other</div>
+<h4>getTranslation2d</h4>
+<pre class="methodSignature">public&nbsp;edu.wpi.first.wpilibj.geometry.Translation2d&nbsp;getTranslation2d()</pre>
+<div class="block">Return the StuyLib Vector2D class in the form as WPILib's Translation2d.
+
+ This function is here in order to make interoperability with WPILib easier so that manual
+ conversion isn't needed as much.</div>
 <dl>
-<dt><span class="paramLabel">Parameters:</span></dt>
-<dd><code>other</code> - other Vector2D</dd>
 <dt><span class="returnLabel">Returns:</span></dt>
-<dd>if the two Vector2Ds are equal</dd>
+<dd>Translation2d class with the same value as the Vector2d</dd>
 </dl>
 </li>
 </ul>
@@ -700,6 +716,38 @@ extends java.lang.Object</pre>
 </dl>
 </li>
 </ul>
+<a id="negative()">
+<!--   -->
+</a>
+<ul class="blockList">
+<li class="blockList">
+<h4>negative</h4>
+<pre class="methodSignature">public&nbsp;<a href="Vector2D.html" title="class in com.stuypulse.stuylib.math">Vector2D</a>&nbsp;negative()</pre>
+<div class="block">A vector with the negatives of the x and y components.</div>
+<dl>
+<dt><span class="returnLabel">Returns:</span></dt>
+<dd>the negative vector.</dd>
+</dl>
+</li>
+</ul>
+<a id="equals(java.lang.Object)">
+<!--   -->
+</a>
+<ul class="blockList">
+<li class="blockList">
+<h4>equals</h4>
+<pre class="methodSignature">public&nbsp;boolean&nbsp;equals&#8203;(java.lang.Object&nbsp;other)</pre>
+<div class="block">Compare Vector2D to another object</div>
+<dl>
+<dt><span class="overrideSpecifyLabel">Overrides:</span></dt>
+<dd><code>equals</code>&nbsp;in class&nbsp;<code>java.lang.Object</code></dd>
+<dt><span class="paramLabel">Parameters:</span></dt>
+<dd><code>other</code> - object to compare to</dd>
+<dt><span class="returnLabel">Returns:</span></dt>
+<dd>both objects are Vector2Ds and they equal eachother</dd>
+</dl>
+</li>
+</ul>
 <a id="toString()">
 <!--   -->
 </a>
@@ -707,12 +755,12 @@ extends java.lang.Object</pre>
 <li class="blockList">
 <h4>toString</h4>
 <pre class="methodSignature">public&nbsp;java.lang.String&nbsp;toString()</pre>
-<div class="block">Format the angle into a string</div>
+<div class="block">Returns Vector2D class in the form of a string</div>
 <dl>
 <dt><span class="overrideSpecifyLabel">Overrides:</span></dt>
 <dd><code>toString</code>&nbsp;in class&nbsp;<code>java.lang.Object</code></dd>
 <dt><span class="returnLabel">Returns:</span></dt>
-<dd>formatted string value</dd>
+<dd>string value of Vector2D</dd>
 </dl>
 </li>
 </ul>

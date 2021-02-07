@@ -1,5 +1,7 @@
 package com.stuypulse.stuylib.math;
 
+import edu.wpi.first.wpilibj.geometry.Translation2d;
+
 /**
  * A Vector2D class that stores x and y position data. It is made to work with the StuyLib Angle
  * class and be easy to use. It is a standard Vector2D class with all of the functions that you
@@ -9,6 +11,9 @@ package com.stuypulse.stuylib.math;
  */
 
 public final class Vector2D {
+
+    // Configuration for toString() function
+    private static final int STRING_SIGFIGS = 5;
 
     /**
      * The x position of the Vector2D
@@ -55,13 +60,15 @@ public final class Vector2D {
     }
 
     /**
-     * Check if two Vector2D's equal each other
+     * Return the StuyLib Vector2D class in the form as WPILib's Translation2d.
      *
-     * @param other other Vector2D
-     * @return if the two Vector2Ds are equal
+     * This function is here in order to make interoperability with WPILib easier so that manual
+     * conversion isn't needed as much.
+     *
+     * @return Translation2d class with the same value as the Vector2d
      */
-    public boolean equals(Vector2D other) {
-        return this.x == other.x && this.y == other.y;
+    public Translation2d getTranslation2d() {
+        return new Translation2d(x, y);
     }
 
     /**
@@ -98,7 +105,7 @@ public final class Vector2D {
      * @return the angle of the Vector2D around 0
      */
     public Angle getAngle() {
-        return Angle.fromRadians(Math.atan2(this.y, this.x));
+        return Angle.fromVector(this);
     }
 
     /**
@@ -216,11 +223,45 @@ public final class Vector2D {
     }
 
     /**
-     * Format the angle into a string
+     * A vector with the negatives of the x and y components.
      *
-     * @return formatted string value
+     * @return the negative vector.
+     */
+    public Vector2D negative() {
+        return new Vector2D(-this.x, -this.y);
+    }
+
+    /**
+     * Compare Vector2D to another object
+     *
+     * @param other object to compare to
+     * @return both objects are Vector2Ds and they equal eachother
+     */
+    public boolean equals(Object other) {
+        if(this == other) {
+            return true;
+        }
+
+        if(other instanceof Vector2D) {
+            Vector2D o = (Vector2D) other;
+            return this.x == o.x && this.y == o.y;
+        }
+
+        return false;
+    }
+
+    /**
+     * Returns Vector2D class in the form of a string
+     *
+     * @return string value of Vector2D
      */
     public String toString() {
-        return "(" + x + ", " + y + ")";
+        StringBuilder out = new StringBuilder();
+        out.append("Vector2D(");
+        out.append(SLMath.round(x, STRING_SIGFIGS));
+        out.append(", ");
+        out.append(SLMath.round(y, STRING_SIGFIGS));
+        out.append(")");
+        return out.toString();
     }
 }

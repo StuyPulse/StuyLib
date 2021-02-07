@@ -11,7 +11,7 @@ echo "+------------------------+"
 
 # Apply formatter
 #   - The build will not pass if the project is not formatted
-gradle spotlessApply
+./gradlew spotlessApply
 
 echo ""
 echo "+----------------------+"
@@ -20,7 +20,7 @@ echo "+----------------------+"
 
 # Build Javadocs
 #   - This is a nice thing to do when building
-gradle javadoc
+./gradlew javadoc
 
 echo ""
 echo "+----------------------+"
@@ -28,4 +28,4 @@ echo "| Building Jar File... |"
 echo "+----------------------+"
 
 # Build Jar
-gradle build
+./gradlew build

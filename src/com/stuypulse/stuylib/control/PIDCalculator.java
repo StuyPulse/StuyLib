@@ -30,7 +30,7 @@ public class PIDCalculator extends Controller {
     }
 
     // The speed that the bang bang controller will run at
-    private double mControlSpeed;
+    private Number mControlSpeed;
 
     // The results of the period and amplitude
     private double mPeriod;
@@ -52,7 +52,7 @@ public class PIDCalculator extends Controller {
     /**
      * @param speed motor output for bang bang controller
      */
-    public PIDCalculator(double speed) {
+    public PIDCalculator(Number speed) {
         mControlSpeed = speed;
 
         mPeriod = 0;
@@ -71,7 +71,7 @@ public class PIDCalculator extends Controller {
      * @param speed sets speed for motor output of controller
      * @return the calculated result from the PIDController
      */
-    public PIDCalculator setControlSpeed(double speed) {
+    public PIDCalculator setControlSpeed(Number speed) {
         mControlSpeed = speed;
         return this;
     }
@@ -112,9 +112,9 @@ public class PIDCalculator extends Controller {
 
         // Return bang bang control
         if(error < 0) {
-            return -mControlSpeed;
+            return -mControlSpeed.doubleValue();
         } else {
-            return mControlSpeed;
+            return mControlSpeed.doubleValue();
         }
     }
 
@@ -124,7 +124,7 @@ public class PIDCalculator extends Controller {
      * @return Get calculated K value for PID value equation
      */
     public double getK() {
-        return (4.0 * mControlSpeed) / (Math.PI * mAmplitude);
+        return (4.0 * mControlSpeed.doubleValue()) / (Math.PI * mAmplitude);
     }
 
     /**
@@ -142,7 +142,7 @@ public class PIDCalculator extends Controller {
      * @param kD p multiplier when calculating values
      * @return calculated PID controller based off of measurements
      */
-    public PIDController getPIDController(double kP, double kI, double kD) {
+    private PIDController getPIDController(double kP, double kI, double kD) {
         kP = Math.max(kP, 0.0);
         kI = Math.max(kI, 0.0);
         kD = Math.max(kD, 0.0);

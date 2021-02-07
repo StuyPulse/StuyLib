@@ -47,3 +47,6 @@ Depending on which type of data you are working with, some filters might be bett
 
 Also, combine filters using [IFilterGroup](https://github.com/StuyPulse/StuyLib/blob/main/src/com/stuypulse/stuylib/streams/filters/IFilterGroup.java), as filtering filtered values can often have interesting and desirable results. 
 
+## Why do filters take in `Numbers` instead of `double`?
+
+In order to help make filters more configurable, the configuation is done using the Number class. Why? Because [SmartNumber](https://github.com/StuyPulse/StuyLib/blob/main/src/com/stuypulse/stuylib/network/SmartNumber.java) extends `Number`, which makes it extremely easy to change values like the RC of a [LowPass Filter](https://github.com/StuyPulse/StuyLib/blob/main/src/com/stuypulse/stuylib/streams/filters/LowPassFilter.java) on the fly.

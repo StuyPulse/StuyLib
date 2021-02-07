@@ -15,7 +15,7 @@ package com.stuypulse.stuylib.control;
  */
 public class TBHController extends Controller {
 
-    private double mGain;
+    private Number mGain;
     private double mTBH;
     private double mPreviousError;
     private double mOutput;
@@ -23,14 +23,15 @@ public class TBHController extends Controller {
     /**
      * @param gain the gain in the take back half algorithm
      */
-    public TBHController(double gain) {
+    public TBHController(Number gain) {
         setGain(gain).reset();
     }
 
     /**
      * @param gain the gain in the take back half algorithm
+     * @return an instance of the TBHController
      */
-    public TBHController setGain(double gain) {
+    public TBHController setGain(Number gain) {
         mGain = gain;
         return this;
     }
@@ -39,7 +40,7 @@ public class TBHController extends Controller {
      * @return the gain in the take back half algorithm
      */
     public double getGain() {
-        return mGain;
+        return mGain.doubleValue();
     }
 
     /**
@@ -59,7 +60,7 @@ public class TBHController extends Controller {
      */
     @Override
     protected double calculate(double error) {
-        mOutput += mGain * error * this.getRate();
+        mOutput += getGain() * error * this.getRate();
         if((error < 0) != (mPreviousError < 0)) {
             mOutput += mTBH;
             mOutput *= 0.5;
