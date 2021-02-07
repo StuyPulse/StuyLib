@@ -73,7 +73,8 @@ public class PIDController extends Controller {
         double p_out = error * mP;
 
         // Calculate I Component
-        mIntegralCalculator.addPoint(new Vector2D(mPrevTime + getRate(), error));
+        mIntegralCalculator
+                .addPoint(new Vector2D(mPrevTime + getRate(), error));
         mIntegral = mIntegralCalculator.getAnswer();
         mIntegral = mIFilter.get(mIntegral);
         double i_out = mIntegral * mI;
