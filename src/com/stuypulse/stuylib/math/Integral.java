@@ -271,7 +271,7 @@ public class Integral {
             int mid = low + (high - low) / 2;
 
             if(point.x <= mDataPoints.get(mid).x
-                && (mid < 1 || point.x >= mDataPoints.get(mid - 1).x)) {
+                    && (mid < 1 || point.x >= mDataPoints.get(mid - 1).x)) {
                 ans = mid;
                 break;
             }
@@ -323,9 +323,8 @@ public class Integral {
      */
     private void calculateLast() {
         ArrayList<Vector2D> lastTwo = new ArrayList<Vector2D>();
-        for(int i = Math.max(0, mDataPoints.size() - 2); 
-            i < mDataPoints.size(); ++i) 
-        {
+        for(int i = Math.max(0, mDataPoints.size() - 2); i < mDataPoints
+                .size(); ++i) {
             lastTwo.add(mDataPoints.get(i));
         }
         answer += mConfig.getFormula().calculate(lastTwo);
