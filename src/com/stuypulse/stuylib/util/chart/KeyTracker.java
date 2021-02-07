@@ -2,9 +2,7 @@ package com.stuypulse.stuylib.util.chart;
 
 import java.awt.event.KeyAdapter;
 import java.awt.event.KeyEvent;
-import java.util.HashMap;
 import java.util.HashSet;
-import java.util.Map;
 import java.util.Set;
 
 /**
@@ -54,9 +52,9 @@ public final class KeyTracker extends KeyAdapter {
 
     @Override
     public void keyPressed(KeyEvent e) {
-        if (e.getKeyCode() == KeyEvent.VK_ESCAPE)
+        if(e.getKeyCode() == KeyEvent.VK_ESCAPE)
             System.exit(0);
-        
+
         values.add(getKeyName(e));
     }
 

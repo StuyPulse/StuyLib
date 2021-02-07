@@ -1,17 +1,15 @@
 package com.stuypulse.stuylib.input.gamepads;
 
-import java.io.IOException;
 import java.awt.Color;
 import javax.swing.JFrame;
 
 import com.stuypulse.stuylib.util.chart.KeyTracker;
 
 /**
- * This class opens a window to accept keyboard input that acts as a gamepad. It
- * is meant to be used with simulation code, in which the code is running on a
- * computer. It will not work if the robot code is being run on the robot (e.g.
- * RoboRIO)
- * 
+ * This class opens a window to accept keyboard input that acts as a gamepad. It is meant to be used
+ * with simulation code, in which the code is running on a computer. It will not work if the robot
+ * code is being run on the robot (e.g. RoboRIO)
+ *
  * @author Myles Pasetsky (selym3)
  */
 public class SimKeyGamepad extends KeyGamepad {
@@ -30,9 +28,8 @@ public class SimKeyGamepad extends KeyGamepad {
         inputArea.setSize(width, height);
         inputArea.setResizable(false);
         inputArea.setDefaultCloseOperation(
-            // JFrame.DISPOSE_ON_CLOSE
-            JFrame.EXIT_ON_CLOSE    
-        );
+                // JFrame.DISPOSE_ON_CLOSE
+                JFrame.EXIT_ON_CLOSE);
 
         keyboard = new KeyTracker();
         inputArea.addKeyListener(keyboard);
