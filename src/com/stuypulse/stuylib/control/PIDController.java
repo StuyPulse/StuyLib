@@ -59,6 +59,7 @@ public class PIDController extends Controller {
      */
     public void reset() {
         mIntegral = 0;
+        mIntegralCalculator.reset();
     }
 
     /**
