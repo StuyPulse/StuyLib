@@ -183,12 +183,16 @@ extends <a href="KeyGamepad.html" title="class in com.stuypulse.stuylib.input.ga
 </tr>
 <tr class="altColor">
 <th class="colConstructorName" scope="row"><code><span class="memberNameLink"><a href="#%3Cinit%3E()">SimKeyGamepad</a></span>()</code></th>
-<td class="colLast">&nbsp;</td>
+<td class="colLast">
+<div class="block">Creates a sim gamepad and opens an input area with the default width and height</div>
+</td>
 </tr>
 <tr class="rowColor">
 <th class="colConstructorName" scope="row"><code><span class="memberNameLink"><a href="#%3Cinit%3E(int,int)">SimKeyGamepad</a></span>&#8203;(int&nbsp;width,
              int&nbsp;height)</code></th>
-<td class="colLast">&nbsp;</td>
+<td class="colLast">
+<div class="block">Creates a sim gamepad and opens an input area with the given width and height</div>
+</td>
 </tr>
 </table>
 </li>
@@ -211,12 +215,16 @@ extends <a href="KeyGamepad.html" title="class in com.stuypulse.stuylib.input.ga
 <tr id="i0" class="altColor">
 <td class="colFirst"><code>protected boolean</code></td>
 <th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#getKey(java.lang.String)">getKey</a></span>&#8203;(java.lang.String&nbsp;name)</code></th>
-<td class="colLast">&nbsp;</td>
+<td class="colLast">
+<div class="block">Gets if a key is being held</div>
+</td>
 </tr>
 <tr id="i1" class="rowColor">
 <td class="colFirst"><code>void</code></td>
 <th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#setRumble(double)">setRumble</a></span>&#8203;(double&nbsp;intensity)</code></th>
-<td class="colLast">&nbsp;</td>
+<td class="colLast">
+<div class="block">Sets the color of the input area based on rumble</div>
+</td>
 </tr>
 </table>
 <ul class="blockList">
@@ -263,6 +271,7 @@ extends <a href="KeyGamepad.html" title="class in com.stuypulse.stuylib.input.ga
 <li class="blockList">
 <h4>SimKeyGamepad</h4>
 <pre>public&nbsp;SimKeyGamepad()</pre>
+<div class="block">Creates a sim gamepad and opens an input area with the default width and height</div>
 </li>
 </ul>
 <a id="&lt;init&gt;(int,int)">
@@ -273,6 +282,12 @@ extends <a href="KeyGamepad.html" title="class in com.stuypulse.stuylib.input.ga
 <h4>SimKeyGamepad</h4>
 <pre>public&nbsp;SimKeyGamepad&#8203;(int&nbsp;width,
                      int&nbsp;height)</pre>
+<div class="block">Creates a sim gamepad and opens an input area with the given width and height</div>
+<dl>
+<dt><span class="paramLabel">Parameters:</span></dt>
+<dd><code>width</code> - width of input area</dd>
+<dd><code>height</code> - height of input area</dd>
+</dl>
 </li>
 </ul>
 </li>
@@ -292,9 +307,12 @@ extends <a href="KeyGamepad.html" title="class in com.stuypulse.stuylib.input.ga
 <li class="blockList">
 <h4>getKey</h4>
 <pre class="methodSignature">protected&nbsp;boolean&nbsp;getKey&#8203;(java.lang.String&nbsp;name)</pre>
+<div class="block">Gets if a key is being held</div>
 <dl>
 <dt><span class="overrideSpecifyLabel">Overrides:</span></dt>
 <dd><code><a href="KeyGamepad.html#getKey(java.lang.String)">getKey</a></code>&nbsp;in class&nbsp;<code><a href="KeyGamepad.html" title="class in com.stuypulse.stuylib.input.gamepads">KeyGamepad</a></code></dd>
+<dt><span class="returnLabel">Returns:</span></dt>
+<dd>whether or not the key is being pressed</dd>
 </dl>
 </li>
 </ul>
@@ -305,9 +323,12 @@ extends <a href="KeyGamepad.html" title="class in com.stuypulse.stuylib.input.ga
 <li class="blockList">
 <h4>setRumble</h4>
 <pre class="methodSignature">public&nbsp;void&nbsp;setRumble&#8203;(double&nbsp;intensity)</pre>
+<div class="block">Sets the color of the input area based on rumble</div>
 <dl>
 <dt><span class="overrideSpecifyLabel">Overrides:</span></dt>
 <dd><code><a href="../Gamepad.html#setRumble(double)">setRumble</a></code>&nbsp;in class&nbsp;<code><a href="../Gamepad.html" title="class in com.stuypulse.stuylib.input">Gamepad</a></code></dd>
+<dt><span class="paramLabel">Parameters:</span></dt>
+<dd><code>intensity</code> - the magnitude of rumble for the controller</dd>
 </dl>
 </li>
 </ul>

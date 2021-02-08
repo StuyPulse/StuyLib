@@ -14,15 +14,34 @@ import com.stuypulse.stuylib.util.chart.KeyTracker;
  */
 public class SimKeyGamepad extends KeyGamepad {
 
-    private JFrame inputArea;
-    private KeyTracker keyboard;
-
+    /**
+     * Default size of an input area
+     */
     private static final int DEFAULT_WIDTH = 300, DEFAULT_HEIGHT = 300;
 
+    /**
+     * Opens up a screen in which keyboard input is accepted.
+     */
+    private JFrame inputArea;
+
+    /**
+     * This keytracker is added to the input area to allow us to read key inputs
+     */
+    private KeyTracker keyboard;
+
+    /**
+     * Creates a sim gamepad and opens an input area with the default width and height
+     */
     public SimKeyGamepad() {
         this(DEFAULT_WIDTH, DEFAULT_HEIGHT);
     }
 
+    /**
+     * Creates a sim gamepad and opens an input area with the given width and height
+     *
+     * @param width  width of input area
+     * @param height height of input area
+     */
     public SimKeyGamepad(int width, int height) {
         inputArea = new JFrame("Simulation Gamepad");
         inputArea.setSize(width, height);
@@ -38,11 +57,21 @@ public class SimKeyGamepad extends KeyGamepad {
         inputArea.setVisible(true);
     }
 
+    /**
+     * Gets if a key is being held
+     *
+     * @return whether or not the key is being pressed
+     */
+    @Override
     protected boolean getKey(String name) {
         return keyboard.hasKey(name);
     }
 
-    // Rumble //
+    /**
+     * Sets the color of the input area based on rumble
+     *
+     * @param intensity the magnitude of rumble for the controller
+     */
     public void setRumble(double intensity) {
         Color color = Color.getHSBColor(0.0f, (float) intensity, 1.0f);
         inputArea.getContentPane().setBackground(color);
