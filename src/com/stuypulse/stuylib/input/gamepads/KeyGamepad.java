@@ -54,7 +54,19 @@ import com.stuypulse.stuylib.input.Gamepad;
  */
 public class KeyGamepad extends Gamepad {
 
+    KeyConfig config;
+
     public KeyGamepad() {
+        this(new KeyConfig());
+    }
+
+    public KeyGamepad(KeyConfig config) {
+        this.config = config;
+    }
+    
+    public KeyGamepad setKeyConfig(KeyConfig config) {
+        this.config = config;
+        return this;
     }
 
     protected boolean getKey(String name) {
@@ -66,94 +78,93 @@ public class KeyGamepad extends Gamepad {
     }
 
     public double getLeftX() {
-        return(getDirection("d", "a"));
+        return(getDirection(config.get(0), config.get(1)));
     }
 
     public double getLeftY() {
-        return(getDirection("w", "s"));
+        return(getDirection(config.get(2), config.get(3)));
     }
 
     // Right Stick //
     public double getRightX() {
-        return(getDirection("l", "j"));
+        return(getDirection(config.get(4), config.get(5)));
     }
 
     public double getRightY() {
-        return(getDirection("i", "k"));
+        return(getDirection(config.get(6), config.get(7)));
     }
 
     // D-Pad //
     public boolean getRawDPadUp() {
-        return getKey("numpad-8") || getKey("up");
+        return getKey(config.get(8));
     }
 
     public boolean getRawDPadDown() {
-        return getKey("numpad-2") || getKey("down");
+        return getKey(config.get(9));
     }
 
     public boolean getRawDPadLeft() {
-        return getKey("numpad-4") || getKey("left");
+        return getKey(config.get(10));
     }
 
     public boolean getRawDPadRight() {
-        return getKey("numpad-6") || getKey("right");
+        return getKey(config.get(11));
     }
 
     // Bumpers //
     public boolean getRawLeftBumper() {
-        return getKey("e");
+        return getKey(config.get(12));
     }
 
     public boolean getRawRightBumper() {
-        return getKey("u");
+        return getKey(config.get(13));
     }
 
     // Triggers //
     public double getLeftTrigger() {
-        return(getKey("q") ? 1 : 0);
+        return(getKey(config.get(14)) ? 1 : 0);
     }
 
     public double getRightTrigger() {
-        return(getKey("o") ? 1 : 0);
+        return(getKey(config.get(15)) ? 1 : 0);
     }
 
     // Face Buttons //
     public boolean getRawLeftButton() {
-        return getKey("z");
+        return getKey(config.get(16));
     }
 
     public boolean getRawRightButton() {
-        return getKey("x");
+        return getKey(config.get(17));
     }
 
     public boolean getRawTopButton() {
-        return getKey("c");
+        return getKey(config.get(18));
     }
 
     public boolean getRawBottomButton() {
-        return getKey("v");
+        return getKey(config.get(19));
     }
 
     // Start / Select / Option //
     public boolean getRawSelectButton() {
-        return getKey("r");
+        return getKey(config.get(20));
     }
 
     public boolean getRawStartButton() {
-        return getKey("t");
+        return getKey(config.get(21));
     }
 
     public boolean getRawOptionButton() {
-        return getKey("y");
+        return getKey(config.get(22));
     }
 
     // Analog Stick Buttons //
     public boolean getRawLeftAnalogButton() {
-        return getKey("f");
+        return getKey(config.get(23));
     }
 
     public boolean getRawRightAnalogButton() {
-        return getKey("h");
+        return getKey(config.get(24));
     }
-
 }
