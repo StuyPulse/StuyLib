@@ -150,28 +150,28 @@ public class Gamepad {
     }
 
     public final ButtonWrapper getDPadUp() {
-        return new ButtonWrapper(() -> this.getRawDPadUp());
+        return new ButtonWrapper(this::getRawDPadUp);
     }
 
     public final ButtonWrapper getDPadDown() {
-        return new ButtonWrapper(() -> this.getRawDPadDown());
+        return new ButtonWrapper(this::getRawDPadDown);
     }
 
     public final ButtonWrapper getDPadLeft() {
-        return new ButtonWrapper(() -> this.getRawDPadLeft());
+        return new ButtonWrapper(this::getRawDPadLeft);
     }
 
     public final ButtonWrapper getDPadRight() {
-        return new ButtonWrapper(() -> this.getRawDPadRight());
+        return new ButtonWrapper(this::getRawDPadRight);
     }
 
     // Bumpers //
     public final ButtonWrapper getLeftBumper() {
-        return new ButtonWrapper(() -> this.getRawLeftBumper());
+        return new ButtonWrapper(this::getRawLeftBumper);
     }
 
     public final ButtonWrapper getRightBumper() {
-        return new ButtonWrapper(() -> this.getRawRightBumper());
+        return new ButtonWrapper(this::getRawRightBumper);
     }
 
     // Triggers //
@@ -182,7 +182,7 @@ public class Gamepad {
     }
 
     public final ButtonWrapper getLeftTriggerButton() {
-        return new ButtonWrapper(() -> this.getLeftTriggerPressed());
+        return new ButtonWrapper(this::getLeftTriggerPressed);
     }
 
     public final boolean getRightTriggerPressed() {
@@ -190,45 +190,45 @@ public class Gamepad {
     }
 
     public final ButtonWrapper getRightTriggerButton() {
-        return new ButtonWrapper(() -> this.getRightTriggerPressed());
+        return new ButtonWrapper(this::getRightTriggerPressed);
     }
 
     // Face Buttons //
     public final ButtonWrapper getLeftButton() {
-        return new ButtonWrapper(() -> this.getRawLeftButton());
+        return new ButtonWrapper(this::getRawLeftButton);
     }
 
     public final ButtonWrapper getRightButton() {
-        return new ButtonWrapper(() -> this.getRawRightButton());
+        return new ButtonWrapper(this::getRawRightButton);
     }
 
     public final ButtonWrapper getTopButton() {
-        return new ButtonWrapper(() -> this.getRawTopButton());
+        return new ButtonWrapper(this::getRawTopButton);
     }
 
     public final ButtonWrapper getBottomButton() {
-        return new ButtonWrapper(() -> this.getRawBottomButton());
+        return new ButtonWrapper(this::getRawBottomButton);
     }
 
     // Select / Start / Option //
     public final ButtonWrapper getSelectButton() {
-        return new ButtonWrapper(() -> this.getRawSelectButton());
+        return new ButtonWrapper(this::getRawSelectButton);
     }
 
     public final ButtonWrapper getStartButton() {
-        return new ButtonWrapper(() -> this.getRawStartButton());
+        return new ButtonWrapper(this::getRawStartButton);
     }
 
     public final ButtonWrapper getOptionButton() {
-        return new ButtonWrapper(() -> this.getRawOptionButton());
+        return new ButtonWrapper(this::getRawOptionButton);
     }
 
     // Analog Stick Buttons //
     public final ButtonWrapper getLeftAnalogButton() {
-        return new ButtonWrapper(() -> this.getRawLeftAnalogButton());
+        return new ButtonWrapper(this::getRawLeftAnalogButton);
     }
 
     public final ButtonWrapper getRightAnalogButton() {
-        return new ButtonWrapper(() -> this.getRawRightAnalogButton());
+        return new ButtonWrapper(this::getRawRightAnalogButton);
     }
 }
