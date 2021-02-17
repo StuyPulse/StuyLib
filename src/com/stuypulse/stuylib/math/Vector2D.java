@@ -125,12 +125,7 @@ public final class Vector2D {
      * @return result of rotation
      */
     public Vector2D rotate(Angle angle, Vector2D origin) {
-        final Vector2D point = this.sub(origin);
-        final Vector2D out = new Vector2D(
-                point.x * angle.cos() - point.y * angle.sin(),
-                point.y * angle.cos() + point.x * angle.sin());
-
-        return origin.add(out);
+        return this.sub(origin).rotate(angle).add(origin);
     }
 
     /**
@@ -140,7 +135,9 @@ public final class Vector2D {
      * @return result of rotation
      */
     public Vector2D rotate(Angle angle) {
-        return rotate(angle, new Vector2D(0, 0));
+        return new Vector2D(
+            this.x * angle.cos() - this.y * angle.sin(),
+            this.y * angle.cos() + this.x * angle.sin());
     }
 
     /**
