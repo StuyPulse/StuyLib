@@ -1,13 +1,18 @@
+// Copyright (c) 2021 StuyPulse Inc. All rights reserved.
+// This work is licensed under the terms of the MIT license
+// found in the root directory of this project.
+
+
 package com.stuypulse.stuylib.streams.filters;
 
 /**
  * This is the Filter interface class that gives a definition for how to implement a filter.
  *
- * All that a filter does is take in the next double in a series and gives you the filtered value.
+ * <p>All that a filter does is take in the next double in a series and gives you the filtered
+ * value.
  *
  * @author Sam (sam.belliveau@gmail.com)
  */
-
 public interface IFilter {
 
     /**

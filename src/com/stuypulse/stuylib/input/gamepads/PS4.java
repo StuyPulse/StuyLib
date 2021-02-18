@@ -1,3 +1,8 @@
+// Copyright (c) 2021 StuyPulse Inc. All rights reserved.
+// This work is licensed under the terms of the MIT license
+// found in the root directory of this project.
+
+
 package com.stuypulse.stuylib.input.gamepads;
 
 import com.stuypulse.stuylib.input.WPIGamepad;
@@ -7,7 +12,6 @@ import com.stuypulse.stuylib.input.WPIGamepad;
  *
  * @author Sam (sam.belliveau@gmail.com)
  */
-
 public class PS4 extends WPIGamepad {
 
     // Constructor //

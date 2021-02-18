@@ -1,13 +1,12 @@
 buildscript {
    ext.WPI_VER = "2021.2.2"
-
 }
 
 plugins {
    id "java"
 
    id "edu.wpi.first.GradleRIO" version "${WPI_VER}"
-   id "com.diffplug.gradle.spotless" version "3.27.1"
+   id "com.diffplug.spotless" version "5.10.2"
 }
 
 group = 'com.stuypulse'
@@ -54,13 +53,17 @@ dependencies {
 }
 
 spotless {
-    java {
-        trimTrailingWhitespace()
-        removeUnusedImports()
-        endWithNewline()
-        indentWithSpaces()
-        eclipse().configFile 'StuyPulseFormatter.xml'
-    }
+   java {
+      googleJavaFormat().aosp()
+
+      trimTrailingWhitespace()
+      endWithNewline()
+
+      importOrder('com.stuypulse.stuylib', 'com.stuypulse', 'edu.wpi')
+      removeUnusedImports()
+
+      licenseHeaderFile './LICENSE_SHORTENED'
+   }
 }
 
 javadoc {

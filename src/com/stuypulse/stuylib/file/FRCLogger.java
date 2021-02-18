@@ -1,29 +1,33 @@
+// Copyright (c) 2021 StuyPulse Inc. All rights reserved.
+// This work is licensed under the terms of the MIT license
+// found in the root directory of this project.
+
+
 package com.stuypulse.stuylib.file;
 
-import java.util.logging.SimpleFormatter;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.logging.FileHandler;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import java.util.logging.SimpleFormatter;
 
 /**
  * A class that will let you log any class that implements loggable.
  *
  * @author Ivan (ivanw8288@gmail.com)
  */
-
 public class FRCLogger {
 
     /**
-     * The Loggable interface should be implemented by a class that can return a useful piece of data
-     * that can be called on demand to be written into the log.
+     * The Loggable interface should be implemented by a class that can return a useful piece of
+     * data that can be called on demand to be written into the log.
      */
     public interface Loggable {
 
         /**
-         * Implement this method with something that reports if any data from the class should be fed to the
-         * logger this iteration.
+         * Implement this method with something that reports if any data from the class should be
+         * fed to the logger this iteration.
          *
          * @return if any data from the class will be fed to the logger.
          */
@@ -32,8 +36,8 @@ public class FRCLogger {
         }
 
         /**
-         * Implement this method with something that reports the level of severity the data should be logged
-         * at.
+         * Implement this method with something that reports the level of severity the data should
+         * be logged at.
          *
          * @return the level of the data that will be fed.
          */
@@ -42,13 +46,12 @@ public class FRCLogger {
         }
 
         /**
-         * Implement this method with something that reports the message or data that should be fed into the
-         * logger as a string.
+         * Implement this method with something that reports the message or data that should be fed
+         * into the logger as a string.
          *
          * @return the data to be fed into the logger.
          */
         public String getLogData();
-
     }
 
     private Logger mLogger;
@@ -67,7 +70,7 @@ public class FRCLogger {
 
         try {
             mFileHandler = new FileHandler(path + "/Logs/" + name + ".log");
-        } catch(IOException e) {
+        } catch (IOException e) {
             logError(this, e);
             e.printStackTrace();
         }
@@ -88,8 +91,8 @@ public class FRCLogger {
     }
 
     /**
-     * Registers a new Loggable that upon call will put the next getLogData() at level getLogLevel() to
-     * the log if it will logThisIteration().
+     * Registers a new Loggable that upon call will put the next getLogData() at level getLogLevel()
+     * to the log if it will logThisIteration().
      *
      * @param loggable Class implementing Loggable
      */
@@ -106,9 +109,7 @@ public class FRCLogger {
         loggables.remove(loggable);
     }
 
-    /**
-     * Clears the registered Loggables.
-     */
+    /** Clears the registered Loggables. */
     public void clearLoggables() {
         loggables.clear();
     }
@@ -119,12 +120,11 @@ public class FRCLogger {
      */
     public void logAllRegisteredLoggables() {
 
-        for(Loggable loggable : loggables) {
-            if(loggable.logThisIteration()) {
+        for (Loggable loggable : loggables) {
+            if (loggable.logThisIteration()) {
                 logManualLoggable(loggable);
             }
         }
-
     }
 
     /**
@@ -133,7 +133,8 @@ public class FRCLogger {
      * @param loggable Loggable object to log.
      */
     public void logManualLoggable(Loggable loggable) {
-        mLogger.log(loggable.getLogLevel(),
+        mLogger.log(
+                loggable.getLogLevel(),
                 loggable.getClass().getName() + ":\n" + loggable.getLogData());
     }
 
@@ -141,23 +142,21 @@ public class FRCLogger {
      * Adds a new log entry to the log.
      *
      * @param level Level of severity of the log entry.
-     * @param obj   Object that is the source of the log entry.
+     * @param obj Object that is the source of the log entry.
      * @param toLog Log entry message.
      */
     public <T> void logMisc(Level level, T obj, String toLog) {
-        mLogger.log(level, obj.getClass().getName().toUpperCase() + ":\n",
-                toLog);
+        mLogger.log(level, obj.getClass().getName().toUpperCase() + ":\n", toLog);
     }
 
     /**
      * Log an error. Should be used in conjunction with try/catch.
      *
      * @param obj Object that is the source of the error.
-     * @param e   Exception, usually from try/catch
+     * @param e Exception, usually from try/catch
      */
     public <T> void logError(T obj, Exception e) {
-        mLogger.severe("Exception thrown from "
-                + obj.getClass().getName().toUpperCase() + ":\n" + e);
+        mLogger.severe(
+                "Exception thrown from " + obj.getClass().getName().toUpperCase() + ":\n" + e);
     }
-
 }

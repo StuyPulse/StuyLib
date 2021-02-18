@@ -1,9 +1,12 @@
+// Copyright (c) 2021 StuyPulse Inc. All rights reserved.
+// This work is licensed under the terms of the MIT license
+// found in the root directory of this project.
+
+
 package com.stuypulse.stuylib.util.chart;
 
-import javax.swing.*;
-
 import java.awt.*;
-
+import javax.swing.*;
 import org.knowm.xchart.*;
 
 /**
@@ -14,34 +17,22 @@ import org.knowm.xchart.*;
  */
 public class JGraph {
 
-    /**
-     * Graphical data.
-     */
+    /** Graphical data. */
     private final GraphData[] graphs;
 
-    /**
-     * GUI frame.
-     */
+    /** GUI frame. */
     private JFrame frame;
 
-    /**
-     * XChart internals.
-     */
+    /** XChart internals. */
     private XYChart instance;
 
-    /**
-     * XChart internals.
-     */
+    /** XChart internals. */
     private XChartPanel<XYChart> chartPanel;
 
-    /**
-     * Mouse tracker internals.
-     */
+    /** Mouse tracker internals. */
     private final MouseTracker mouseTracker;
 
-    /**
-     * Mouse tracker internals.
-     */
+    /** Mouse tracker internals. */
     private final KeyTracker keyTracker;
 
     /**
@@ -59,13 +50,17 @@ public class JGraph {
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 
         // CREATE XYCHART //
-        instance = new XYChartBuilder().title(this.graphs[0].getName())
-                .xAxisTitle("x").yAxisTitle("y").build();
+        instance =
+                new XYChartBuilder()
+                        .title(this.graphs[0].getName())
+                        .xAxisTitle("x")
+                        .yAxisTitle("y")
+                        .build();
 
         double min = Double.MAX_VALUE;
         double max = Double.MIN_VALUE;
 
-        for(GraphData i : this.graphs) {
+        for (GraphData i : this.graphs) {
             min = Math.min(min, i.getMinValue());
             max = Math.max(max, i.getMaxValue());
         }
@@ -111,11 +106,11 @@ public class JGraph {
     /**
      * Update the graphs without sending any new value
      *
-     * This is useful because it lets you send the update function directly instead of through the
-     * JGraph.
+     * <p>This is useful because it lets you send the update function directly instead of through
+     * the JGraph.
      */
     public void update() {
-        for(GraphData i : graphs) {
+        for (GraphData i : graphs) {
             i.updateXYChart(instance);
         }
 
@@ -129,7 +124,7 @@ public class JGraph {
      * @param val the value to send to all the charts
      */
     public void update(double val) {
-        for(GraphData i : graphs) {
+        for (GraphData i : graphs) {
             i.update(val);
             i.updateXYChart(instance);
         }
@@ -137,5 +132,4 @@ public class JGraph {
         chartPanel.revalidate();
         chartPanel.repaint();
     }
-
 }

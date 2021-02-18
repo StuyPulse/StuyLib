@@ -1,3 +1,8 @@
+// Copyright (c) 2021 StuyPulse Inc. All rights reserved.
+// This work is licensed under the terms of the MIT license
+// found in the root directory of this project.
+
+
 package com.stuypulse.stuylib.math;
 
 /**
@@ -23,7 +28,7 @@ public class Polar2D {
      */
     public Polar2D(double mag, Angle ang) {
         // Make sure the magnitude is always positive
-        if(mag >= 0) {
+        if (mag >= 0) {
             magnitude = mag;
             angle = ang;
         } else {
@@ -126,5 +131,4 @@ public class Polar2D {
         out.append(")");
         return out.toString();
     }
-
 }

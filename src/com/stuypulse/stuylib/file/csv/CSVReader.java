@@ -1,21 +1,25 @@
+// Copyright (c) 2021 StuyPulse Inc. All rights reserved.
+// This work is licensed under the terms of the MIT license
+// found in the root directory of this project.
+
+
 package com.stuypulse.stuylib.file.csv;
 
 import java.io.File;
 import java.io.IOException;
+import java.util.Iterator;
 import java.util.Scanner;
 import java.util.Vector;
-import java.util.Iterator;
 
 /**
  * Read CSV Files with a bunch of epic features. After file is opened you can read the data like it
  * was an array.
  *
- * Each of the elements is stored as a custom type called Element. Which prevents the need to
+ * <p>Each of the elements is stored as a custom type called Element. Which prevents the need to
  * constantly parse the data over and over again if it is a number.
  *
  * @author Sam (sam.belliveau@gmail.com)
  */
-
 public class CSVReader implements Iterable<CSVElement> {
 
     // File Path
@@ -41,7 +45,7 @@ public class CSVReader implements Iterable<CSVElement> {
         Scanner csvfile = new Scanner(new File(mCSVFilePath));
         csvfile.useDelimiter(mCSVType.getDelimiter());
 
-        while(csvfile.hasNext()) {
+        while (csvfile.hasNext()) {
             mCSVData.add(new CSVElement(csvfile.next()));
         }
 
@@ -101,7 +105,7 @@ public class CSVReader implements Iterable<CSVElement> {
      * @throws IndexOutOfBoundsException if the index is higher than the amount of elements
      */
     public CSVElement get(int index) throws IndexOutOfBoundsException {
-        if(index < size()) {
+        if (index < size()) {
             return mCSVData.get(index);
         } else {
             throw new IndexOutOfBoundsException();
@@ -160,7 +164,7 @@ public class CSVReader implements Iterable<CSVElement> {
     public String toString() {
         StringBuilder csv = new StringBuilder();
 
-        for(int i = 0; i < mCSVData.size(); ++i) {
+        for (int i = 0; i < mCSVData.size(); ++i) {
             csv.append(get(i).toNumber());
             csv.append(mCSVType.getDelimiter());
         }

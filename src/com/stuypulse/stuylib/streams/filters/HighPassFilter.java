@@ -1,3 +1,8 @@
+// Copyright (c) 2021 StuyPulse Inc. All rights reserved.
+// This work is licensed under the terms of the MIT license
+// found in the root directory of this project.
+
+
 package com.stuypulse.stuylib.streams.filters;
 
 import com.stuypulse.stuylib.util.StopWatch;
@@ -7,7 +12,6 @@ import com.stuypulse.stuylib.util.StopWatch;
  *
  * @author Sam (sam.belliveau@gmail.com)
  */
-
 public class HighPassFilter implements IFilter {
 
     private StopWatch mTimer;
@@ -16,11 +20,9 @@ public class HighPassFilter implements IFilter {
     private double mLastInput;
     private Number mRC;
 
-    /**
-     * @param rc time constant for high pass filter
-     */
+    /** @param rc time constant for high pass filter */
     public HighPassFilter(Number rc) {
-        if(rc.doubleValue() < 0) {
+        if (rc.doubleValue() < 0) {
             throw new IllegalArgumentException("rc must be a positive number");
         }
 

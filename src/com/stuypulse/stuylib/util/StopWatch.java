@@ -1,10 +1,15 @@
+// Copyright (c) 2021 StuyPulse Inc. All rights reserved.
+// This work is licensed under the terms of the MIT license
+// found in the root directory of this project.
+
+
 package com.stuypulse.stuylib.util;
 
 /**
  * This StopWatch class helps classes who want their functions to be time independent do that by
  * giving them an easy way to get intervals of time.
  *
- * This is better than just doing it in the class because it stores the time as a long to keep
+ * <p>This is better than just doing it in the class because it stores the time as a long to keep
  * accuracy, but converts it into a double for convenience.
  *
  * @author Sam (sam.belliveau@gmail.com)
@@ -34,9 +39,7 @@ public class StopWatch {
         mLastTime = mEngine.getRawTime();
     }
 
-    /**
-     * Creates timer and reset it to now.
-     */
+    /** Creates timer and reset it to now. */
     public StopWatch() {
         this(kNanoEngine);
     }
@@ -45,7 +48,7 @@ public class StopWatch {
      * Resets the stop watch to the current time and returns time since last reset.
      *
      * @return the time since the last reset was called in seconds. The result is always a non 0
-     *         positive number.
+     *     positive number.
      */
     public double reset() {
         long time = mEngine.getRawTime();
@@ -58,40 +61,41 @@ public class StopWatch {
      * Gets the time since the stop watch was reset
      *
      * @return the time since the last reset was called in seconds. The result is always a non 0
-     *         positive number.
+     *     positive number.
      */
     public double getTime() {
         long delta = Math.max(1, mEngine.getRawTime() - mLastTime);
         return mEngine.toSeconds(delta);
     }
 
+    /** This engine is used to get the current time with the system function System.nanoTime() */
+    public static final TimeEngine kNanoEngine =
+            new TimeEngine() {
+
+                public long getRawTime() {
+                    return System.nanoTime();
+                }
+
+                public double toSeconds(long raw) {
+                    return raw / 1_000_000_000.0;
+                }
+            };
+
     /**
-     * This engine is used to get the current time with the system function System.nanoTime()
-     */
-    public static final TimeEngine kNanoEngine = new TimeEngine() {
-
-        public long getRawTime() {
-            return System.nanoTime();
-        }
-
-        public double toSeconds(long raw) {
-            return raw / 1_000_000_000.0;
-        }
-    };
-
-    /**
-     * This engine is used to get the current time with the system function System.currentTimeMillis()
+     * This engine is used to get the current time with the system function
+     * System.currentTimeMillis()
      *
-     * This may have a lower resolution, but it is stable. It is no
+     * <p>This may have a lower resolution, but it is stable. It is no
      */
-    public static final TimeEngine kMillisEngine = new TimeEngine() {
+    public static final TimeEngine kMillisEngine =
+            new TimeEngine() {
 
-        public long getRawTime() {
-            return System.currentTimeMillis();
-        }
+                public long getRawTime() {
+                    return System.currentTimeMillis();
+                }
 
-        public double toSeconds(long raw) {
-            return raw / 1_000.0;
-        }
-    };
+                public double toSeconds(long raw) {
+                    return raw / 1_000.0;
+                }
+            };
 }

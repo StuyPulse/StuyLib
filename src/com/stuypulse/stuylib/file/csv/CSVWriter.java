@@ -1,20 +1,23 @@
+// Copyright (c) 2021 StuyPulse Inc. All rights reserved.
+// This work is licensed under the terms of the MIT license
+// found in the root directory of this project.
+
+
 package com.stuypulse.stuylib.file.csv;
 
 import java.io.Closeable;
 import java.io.FileWriter;
-import java.io.IOException;
-
 import java.io.Flushable;
+import java.io.IOException;
 
 /**
  * CSVWriter class that allows you to write to a file in the format of a CSV. It automatically adds
  * commas and calls toString on objects.
  *
- * Every function will throw an IOException if it arises.
+ * <p>Every function will throw an IOException if it arises.
  *
  * @author Sam (sam.belliveau@gmail.com)
  */
-
 public class CSVWriter implements Flushable, Closeable {
 
     // FileWriter that has CSV File open
@@ -45,16 +48,12 @@ public class CSVWriter implements Flushable, Closeable {
         this(file, CSVType.DEFAULT);
     }
 
-    /**
-     * Closes CSV File
-     */
+    /** Closes CSV File */
     public void close() throws IOException {
         mCSVFile.close();
     }
 
-    /**
-     * Flushes CSV File
-     */
+    /** Flushes CSV File */
     public void flush() throws IOException {
         mCSVFile.flush();
     }
@@ -66,9 +65,8 @@ public class CSVWriter implements Flushable, Closeable {
      * @throws IOException error writing to file
      */
     public void write(String data) throws IOException {
-        if(data.contains(mCSVType.getDelimiter())) {
-            throw new IOException(
-                    "Data being written to CSV contains Delimiter!");
+        if (data.contains(mCSVType.getDelimiter())) {
+            throw new IOException("Data being written to CSV contains Delimiter!");
         } else {
             mCSVFile.append(data);
             mCSVFile.append(mCSVType.getDelimiter());

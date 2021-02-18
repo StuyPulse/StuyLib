@@ -1,3 +1,8 @@
+// Copyright (c) 2021 StuyPulse Inc. All rights reserved.
+// This work is licensed under the terms of the MIT license
+// found in the root directory of this project.
+
+
 package com.stuypulse.stuylib.math;
 
 import edu.wpi.first.wpilibj.geometry.Translation2d;
@@ -9,20 +14,15 @@ import edu.wpi.first.wpilibj.geometry.Translation2d;
  *
  * @author Sam (sam.belliveau@gmail.com)
  */
-
 public final class Vector2D {
 
     // Configuration for toString() function
     private static final int STRING_SIGFIGS = 5;
 
-    /**
-     * The x position of the Vector2D
-     */
+    /** The x position of the Vector2D */
     public final double x;
 
-    /**
-     * The y position of the Vector2D
-     */
+    /** The y position of the Vector2D */
     public final double y;
 
     /**
@@ -42,7 +42,7 @@ public final class Vector2D {
      * @param axis an array or varargs for x and y
      */
     public Vector2D(double... axis) {
-        if(axis.length != 2) {
+        if (axis.length != 2) {
             throw new IllegalArgumentException("axis must be of size 2");
         }
 
@@ -56,13 +56,13 @@ public final class Vector2D {
      * @return array of x and y
      */
     public double[] getArray() {
-        return new double[] { x, y };
+        return new double[] {x, y};
     }
 
     /**
      * Return the StuyLib Vector2D class in the form as WPILib's Translation2d.
      *
-     * This function is here in order to make interoperability with WPILib easier so that manual
+     * <p>This function is here in order to make interoperability with WPILib easier so that manual
      * conversion isn't needed as much.
      *
      * @return Translation2d class with the same value as the Vector2d
@@ -120,7 +120,7 @@ public final class Vector2D {
     /**
      * Rotate Vector2D around point
      *
-     * @param angle  amount to rotate
+     * @param angle amount to rotate
      * @param origin point to rotate around
      * @return result of rotation
      */
@@ -136,8 +136,8 @@ public final class Vector2D {
      */
     public Vector2D rotate(Angle angle) {
         return new Vector2D(
-            this.x * angle.cos() - this.y * angle.sin(),
-            this.y * angle.cos() + this.x * angle.sin());
+                this.x * angle.cos() - this.y * angle.sin(),
+                this.y * angle.cos() + this.x * angle.sin());
     }
 
     /**
@@ -235,11 +235,11 @@ public final class Vector2D {
      * @return both objects are Vector2Ds and they equal eachother
      */
     public boolean equals(Object other) {
-        if(this == other) {
+        if (this == other) {
             return true;
         }
 
-        if(other instanceof Vector2D) {
+        if (other instanceof Vector2D) {
             Vector2D o = (Vector2D) other;
             return this.x == o.x && this.y == o.y;
         }

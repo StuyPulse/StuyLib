@@ -1,22 +1,29 @@
+// Copyright (c) 2021 StuyPulse Inc. All rights reserved.
+// This work is licensed under the terms of the MIT license
+// found in the root directory of this project.
+
+
 package com.stuypulse.stuylib.control;
 
-import com.stuypulse.stuylib.streams.filters.IFilter;
 import com.stuypulse.stuylib.math.SLMath;
+import com.stuypulse.stuylib.streams.filters.IFilter;
 
 /**
  * This PID controller is built by extending the Controller class. It has a dynamic rate, so it can
  * detect how much time has passed between each update. It is made to be easy to use and simple to
  * understand while still being accurate.
  *
- * This PID controller resets the integral every time the error crosses 0 to prevent integral windup
- * / lag. This means that it may not be suitable for setups involving rate instead of position
+ * <p>This PID controller resets the integral every time the error crosses 0 to prevent integral
+ * windup / lag. This means that it may not be suitable for setups involving rate instead of
+ * position
  *
  * @author Sam (sam.belliveau@gmail.com)
  */
 public class PIDController extends Controller {
 
     /**
-     * Amount of time in between .update() calls that is aloud before the controller resets the system
+     * Amount of time in between .update() calls that is aloud before the controller resets the
+     * system
      */
     private static final double kMaxTimeBeforeReset = 0.5;
 
@@ -40,9 +47,7 @@ public class PIDController extends Controller {
         reset();
     }
 
-    /**
-     * Creates a blank PIDController that doesn't move
-     */
+    /** Creates a blank PIDController that doesn't move */
     public PIDController() {
         this(-1, -1, -1);
     }
@@ -75,7 +80,7 @@ public class PIDController extends Controller {
         double d_out = getVelocity() * getD();
 
         // Check if time passed exceeds reset limit
-        if(getRate() < kMaxTimeBeforeReset) {
+        if (getRate() < kMaxTimeBeforeReset) {
             // Return the calculated result
             return p_out + i_out + d_out;
         } else {
@@ -86,23 +91,17 @@ public class PIDController extends Controller {
         }
     }
 
-    /**
-     * @return the P value being used by the PID controller.
-     */
+    /** @return the P value being used by the PID controller. */
     public double getP() {
         return Math.max(mP.doubleValue(), 0.0);
     }
 
-    /**
-     * @return the P value being used by the PID controller.
-     */
+    /** @return the P value being used by the PID controller. */
     public double getI() {
         return Math.max(mI.doubleValue(), 0.0);
     }
 
-    /**
-     * @return the P value being used by the PID controller.
-     */
+    /** @return the P value being used by the PID controller. */
     public double getD() {
         return Math.max(mD.doubleValue(), 0.0);
     }
@@ -145,10 +144,10 @@ public class PIDController extends Controller {
     }
 
     /**
-     * It is common for a limit filter to be put on the I component to prevent Integral Windup. You can
-     * use SLMath.limit(x) to do this.
+     * It is common for a limit filter to be put on the I component to prevent Integral Windup. You
+     * can use SLMath.limit(x) to do this.
      *
-     * Passing null will disable the filter
+     * <p>Passing null will disable the filter
      *
      * @param filter filter put on the I component of the PID Controller
      * @return reference to PIDController (so you can chain the commands together)
@@ -159,12 +158,14 @@ public class PIDController extends Controller {
         return this;
     }
 
-    /**
-     * @return information about this PIDController
-     */
+    /** @return information about this PIDController */
     public String toString() {
-        return "(P: " + SLMath.round(getP(), 4) + ", I: "
-                + SLMath.round(getI(), 4) + ", D: " + SLMath.round(getD(), 4)
+        return "(P: "
+                + SLMath.round(getP(), 4)
+                + ", I: "
+                + SLMath.round(getI(), 4)
+                + ", D: "
+                + SLMath.round(getD(), 4)
                 + ")";
     }
 }

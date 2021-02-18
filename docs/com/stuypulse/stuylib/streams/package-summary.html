@@ -13,7 +13,8 @@
 <!--[if IE]>
 <script type="text/javascript" src="../../../../jquery/jszip-utils/dist/jszip-utils-ie.min.js"></script>
 <![endif]-->
-<script type="text/javascript" src="../../../../jquery/jquery-3.5.1.js"></script>
+<script type="text/javascript" src="../../../../jquery/jquery-3.3.1.js"></script>
+<script type="text/javascript" src="../../../../jquery/jquery-migrate-3.0.1.js"></script>
 <script type="text/javascript" src="../../../../jquery/jquery-ui.js"></script>
 </head>
 <body>
@@ -107,9 +108,7 @@ $('.navPadding').css('padding-top', $('.fixedNav').css("height"));
 <tr class="altColor">
 <th class="colFirst" scope="row"><a href="IStream.html" title="interface in com.stuypulse.stuylib.streams">IStream</a></th>
 <td class="colLast">
-<div class="block">A stream of doubles that is accessed with the .get() function
-
- Can be created with lambdas to represent a stream of inputs.</div>
+<div class="block">A stream of doubles that is accessed with the .get() function</div>
 </td>
 </tr>
 </tbody>
@@ -126,18 +125,14 @@ $('.navPadding').css('padding-top', $('.fixedNav').css("height"));
 <tr class="altColor">
 <th class="colFirst" scope="row"><a href="BufferedIStream.html" title="class in com.stuypulse.stuylib.streams">BufferedIStream</a></th>
 <td class="colLast">
-<div class="block">This class allows you to use an input stream while recording the last N values from the stream
-
- It extends from IStream, so it also works with the existing IStream classes</div>
+<div class="block">This class allows you to use an input stream while recording the last N values from the stream</div>
 </td>
 </tr>
 <tr class="rowColor">
 <th class="colFirst" scope="row"><a href="CSVIStream.html" title="class in com.stuypulse.stuylib.streams">CSVIStream</a></th>
 <td class="colLast">
 <div class="block">Class Writer allows you to read input from an IStream into a CSV file Class Reader is an IStream
- that reads from CSV file
-
- They extend from IStream, so they also work with the existing IStream classes</div>
+ that reads from CSV file</div>
 </td>
 </tr>
 <tr class="altColor">
@@ -149,24 +144,20 @@ $('.navPadding').css('padding-top', $('.fixedNav').css("height"));
 <tr class="rowColor">
 <th class="colFirst" scope="row"><a href="CSVIStream.Writer.html" title="class in com.stuypulse.stuylib.streams">CSVIStream.Writer</a></th>
 <td class="colLast">
-<div class="block">This CSVIStream writer let an IStream pass through while recording the values of the IStream into
- a CSV file.</div>
+<div class="block">This CSVIStream writer let an IStream pass through while recording the values of the IStream
+ into a CSV file.</div>
 </td>
 </tr>
 <tr class="altColor">
 <th class="colFirst" scope="row"><a href="FilteredIStream.html" title="class in com.stuypulse.stuylib.streams">FilteredIStream</a></th>
 <td class="colLast">
-<div class="block">Takes a Stream and a StreamFilter and makes a FilteredStream
-
- This could be used to automatically filter controller inputs</div>
+<div class="block">Takes a Stream and a StreamFilter and makes a FilteredStream</div>
 </td>
 </tr>
 <tr class="rowColor">
 <th class="colFirst" scope="row"><a href="PollingIStream.html" title="class in com.stuypulse.stuylib.streams">PollingIStream</a></th>
 <td class="colLast">
-<div class="block">Takes an IStream and an IStreamFilter and makes a PollingIStream
-
- A PollingIStream calls .get() every x milliseconds instead of when the user calls get</div>
+<div class="block">Takes an IStream and an IStreamFilter and makes a PollingIStream</div>
 </td>
 </tr>
 </tbody>

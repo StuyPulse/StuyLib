@@ -1,52 +1,23 @@
-/**
- * Test script for a gamepad. See what your gamepad does.
- *
- * public static void main(String... args) throws Exception {
-        Gamepad gamepad = new Gamepad();
+// Copyright (c) 2021 StuyPulse Inc. All rights reserved.
+// This work is licensed under the terms of the MIT license
+// found in the root directory of this project.
 
-        while (true) {
-            System.out.println(gamepad.getLeftStick());
-            System.out.println(gamepad.getLeftTrigger());
-            System.out.println(gamepad.getRawLeftBumper());
 
-            System.out.println(gamepad.getRightStick());
-            System.out.println(gamepad.getRightTrigger());
-            System.out.println(gamepad.getRawRightBumper());
-
-            System.out.println(gamepad.getRawDPadLeft());
-            System.out.println(gamepad.getRawDPadRight());
-            System.out.println(gamepad.getRawDPadUp());
-            System.out.println(gamepad.getRawDPadDown());
-
-            System.out.println(gamepad.getRawLeftButton());
-            System.out.println(gamepad.getRawRightButton());
-            System.out.println(gamepad.getRawTopButton());
-            System.out.println(gamepad.getRawBottomButton());
-
-            System.out.println(gamepad.getRawSelectButton());
-            System.out.println(gamepad.getRawStartButton());
-            System.out.println(gamepad.getRawOptionButton());
-
-            Thread.sleep(100);
-        }
-    }
- */
 package com.stuypulse.stuylib.input.gamepads;
 
 import com.stuypulse.stuylib.input.Gamepad;
 
 /**
- * <p>
  * This is a base class for a gamepad controlled via keyboard. This class controls the keymappings.
  * <i>All a child controller needs to do is provide a way to check if any keyboard button is
  * pressed.</i>
- * </p>
  *
  * <ul>
- * <li><b>NOTE:</b> all input types are handled except rumble</li>
- * <li><b>NOTE:</b> it is suggested to use this with filtered because your values will always be -1,
- * 0, 1. Filtering is not included for simplicity</li>
+ *   <li><b>NOTE:</b> all input types are handled except rumble
+ *   <li><b>NOTE:</b> it is suggested to use this with filtered because your values will always be
+ *       -1, 0, 1. Filtering is not included for simplicity
  * </ul>
+ *
  * <br>
  *
  * @see IFilter
@@ -54,8 +25,7 @@ import com.stuypulse.stuylib.input.Gamepad;
  */
 public class KeyGamepad extends Gamepad {
 
-    public KeyGamepad() {
-    }
+    public KeyGamepad() {}
 
     protected boolean getKey(String name) {
         return false;
@@ -66,20 +36,20 @@ public class KeyGamepad extends Gamepad {
     }
 
     public double getLeftX() {
-        return(getDirection("d", "a"));
+        return (getDirection("d", "a"));
     }
 
     public double getLeftY() {
-        return(getDirection("w", "s"));
+        return (getDirection("w", "s"));
     }
 
     // Right Stick //
     public double getRightX() {
-        return(getDirection("l", "j"));
+        return (getDirection("l", "j"));
     }
 
     public double getRightY() {
-        return(getDirection("i", "k"));
+        return (getDirection("i", "k"));
     }
 
     // D-Pad //
@@ -110,11 +80,11 @@ public class KeyGamepad extends Gamepad {
 
     // Triggers //
     public double getLeftTrigger() {
-        return(getKey("q") ? 1 : 0);
+        return (getKey("q") ? 1 : 0);
     }
 
     public double getRightTrigger() {
-        return(getKey("o") ? 1 : 0);
+        return (getKey("o") ? 1 : 0);
     }
 
     // Face Buttons //
@@ -155,5 +125,4 @@ public class KeyGamepad extends Gamepad {
     public boolean getRawRightAnalogButton() {
         return getKey("h");
     }
-
 }

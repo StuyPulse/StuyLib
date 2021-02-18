@@ -1,3 +1,8 @@
+// Copyright (c) 2021 StuyPulse Inc. All rights reserved.
+// This work is licensed under the terms of the MIT license
+// found in the root directory of this project.
+
+
 package com.stuypulse.stuylib.input.buttons;
 
 import edu.wpi.first.wpilibj.buttons.Button;
@@ -7,12 +12,9 @@ import edu.wpi.first.wpilibj.buttons.Button;
  *
  * @author Sam (sam.belliveau@gmail.com)
  */
-
 public class OldButton extends Button {
 
-    /**
-     * what stores the functions that the button would call when get is called
-     */
+    /** what stores the functions that the button would call when get is called */
     private BooleanProvider mButton;
 
     /**
@@ -24,9 +26,7 @@ public class OldButton extends Button {
         this.mButton = lambda;
     }
 
-    /**
-     * Initializes OldButton with a lambda that always returns false
-     */
+    /** Initializes OldButton with a lambda that always returns false */
     public OldButton() {
         this(() -> false);
     }

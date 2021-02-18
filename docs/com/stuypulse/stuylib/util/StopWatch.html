@@ -13,7 +13,8 @@
 <!--[if IE]>
 <script type="text/javascript" src="../../../../jquery/jszip-utils/dist/jszip-utils-ie.min.js"></script>
 <![endif]-->
-<script type="text/javascript" src="../../../../jquery/jquery-3.5.1.js"></script>
+<script type="text/javascript" src="../../../../jquery/jquery-3.3.1.js"></script>
+<script type="text/javascript" src="../../../../jquery/jquery-migrate-3.0.1.js"></script>
 <script type="text/javascript" src="../../../../jquery/jquery-ui.js"></script>
 </head>
 <body>
@@ -135,7 +136,7 @@ extends java.lang.Object</pre>
 <div class="block">This StopWatch class helps classes who want their functions to be time independent do that by
  giving them an easy way to get intervals of time.
 
- This is better than just doing it in the class because it stores the time as a long to keep
+ <p>This is better than just doing it in the class because it stores the time as a long to keep
  accuracy, but converts it into a double for convenience.</div>
 </li>
 </ul>
@@ -184,9 +185,8 @@ extends java.lang.Object</pre>
 <td class="colFirst"><code>static <a href="StopWatch.TimeEngine.html" title="interface in com.stuypulse.stuylib.util">StopWatch.TimeEngine</a></code></td>
 <th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#kMillisEngine">kMillisEngine</a></span></code></th>
 <td class="colLast">
-<div class="block">This engine is used to get the current time with the system function System.currentTimeMillis()
-
- This may have a lower resolution, but it is stable.</div>
+<div class="block">This engine is used to get the current time with the system function
+ System.currentTimeMillis()</div>
 </td>
 </tr>
 <tr class="rowColor">
@@ -298,9 +298,10 @@ extends java.lang.Object</pre>
 <li class="blockList">
 <h4>kMillisEngine</h4>
 <pre>public static final&nbsp;<a href="StopWatch.TimeEngine.html" title="interface in com.stuypulse.stuylib.util">StopWatch.TimeEngine</a> kMillisEngine</pre>
-<div class="block">This engine is used to get the current time with the system function System.currentTimeMillis()
+<div class="block">This engine is used to get the current time with the system function
+ System.currentTimeMillis()
 
- This may have a lower resolution, but it is stable. It is no</div>
+ <p>This may have a lower resolution, but it is stable. It is no</div>
 </li>
 </ul>
 </li>
@@ -358,7 +359,7 @@ extends java.lang.Object</pre>
 <dl>
 <dt><span class="returnLabel">Returns:</span></dt>
 <dd>the time since the last reset was called in seconds. The result is always a non 0
-         positive number.</dd>
+     positive number.</dd>
 </dl>
 </li>
 </ul>
@@ -373,7 +374,7 @@ extends java.lang.Object</pre>
 <dl>
 <dt><span class="returnLabel">Returns:</span></dt>
 <dd>the time since the last reset was called in seconds. The result is always a non 0
-         positive number.</dd>
+     positive number.</dd>
 </dl>
 </li>
 </ul>

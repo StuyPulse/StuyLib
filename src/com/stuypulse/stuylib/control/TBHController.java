@@ -1,3 +1,8 @@
+// Copyright (c) 2021 StuyPulse Inc. All rights reserved.
+// This work is licensed under the terms of the MIT license
+// found in the root directory of this project.
+
+
 package com.stuypulse.stuylib.control;
 
 /**
@@ -6,9 +11,9 @@ package com.stuypulse.stuylib.control;
  * half", ie. cuts the speed in half. Then it increases speed again, when it hits the target speed,
  * it takes back half again.
  *
- * This way it is able to hit the target speed with accuracy.
+ * <p>This way it is able to hit the target speed with accuracy.
  *
- * The gain value is how fast or slow it should increase speed. Tuning is required but its not as
+ * <p>The gain value is how fast or slow it should increase speed. Tuning is required but its not as
  * tedious as with PID.
  *
  * @author Sam (sam.belliveau@gmail.com)
@@ -20,9 +25,7 @@ public class TBHController extends Controller {
     private double mPreviousError;
     private double mOutput;
 
-    /**
-     * @param gain the gain in the take back half algorithm
-     */
+    /** @param gain the gain in the take back half algorithm */
     public TBHController(Number gain) {
         setGain(gain).reset();
     }
@@ -36,16 +39,12 @@ public class TBHController extends Controller {
         return this;
     }
 
-    /**
-     * @return the gain in the take back half algorithm
-     */
+    /** @return the gain in the take back half algorithm */
     public double getGain() {
         return mGain.doubleValue();
     }
 
-    /**
-     * Resets the state of the take back half alorithm
-     */
+    /** Resets the state of the take back half alorithm */
     public void reset() {
         mTBH = 0;
         mPreviousError = 0;
@@ -61,7 +60,7 @@ public class TBHController extends Controller {
     @Override
     protected double calculate(double error) {
         mOutput += getGain() * error * this.getRate();
-        if((error < 0) != (mPreviousError < 0)) {
+        if ((error < 0) != (mPreviousError < 0)) {
             mOutput += mTBH;
             mOutput *= 0.5;
 

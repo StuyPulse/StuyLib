@@ -13,7 +13,8 @@
 <!--[if IE]>
 <script type="text/javascript" src="../../../../jquery/jszip-utils/dist/jszip-utils-ie.min.js"></script>
 <![endif]-->
-<script type="text/javascript" src="../../../../jquery/jquery-3.5.1.js"></script>
+<script type="text/javascript" src="../../../../jquery/jquery-3.3.1.js"></script>
+<script type="text/javascript" src="../../../../jquery/jquery-migrate-3.0.1.js"></script>
 <script type="text/javascript" src="../../../../jquery/jquery-ui.js"></script>
 </head>
 <body>
@@ -127,8 +128,8 @@ $('.navPadding').css('padding-top', $('.fixedNav').css("height"));
 </dl>
 <hr>
 <pre>public static interface <span class="typeNameLabel">FRCLogger.Loggable</span></pre>
-<div class="block">The Loggable interface should be implemented by a class that can return a useful piece of data
- that can be called on demand to be written into the log.</div>
+<div class="block">The Loggable interface should be implemented by a class that can return a useful piece of
+ data that can be called on demand to be written into the log.</div>
 </li>
 </ul>
 </div>
@@ -153,24 +154,24 @@ $('.navPadding').css('padding-top', $('.fixedNav').css("height"));
 <td class="colFirst"><code>java.lang.String</code></td>
 <th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#getLogData()">getLogData</a></span>()</code></th>
 <td class="colLast">
-<div class="block">Implement this method with something that reports the message or data that should be fed into the
- logger as a string.</div>
+<div class="block">Implement this method with something that reports the message or data that should be fed
+ into the logger as a string.</div>
 </td>
 </tr>
 <tr id="i1" class="rowColor">
 <td class="colFirst"><code>default java.util.logging.Level</code></td>
 <th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#getLogLevel()">getLogLevel</a></span>()</code></th>
 <td class="colLast">
-<div class="block">Implement this method with something that reports the level of severity the data should be logged
- at.</div>
+<div class="block">Implement this method with something that reports the level of severity the data should
+ be logged at.</div>
 </td>
 </tr>
 <tr id="i2" class="altColor">
 <td class="colFirst"><code>default boolean</code></td>
 <th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#logThisIteration()">logThisIteration</a></span>()</code></th>
 <td class="colLast">
-<div class="block">Implement this method with something that reports if any data from the class should be fed to the
- logger this iteration.</div>
+<div class="block">Implement this method with something that reports if any data from the class should be
+ fed to the logger this iteration.</div>
 </td>
 </tr>
 </table>
@@ -197,8 +198,8 @@ $('.navPadding').css('padding-top', $('.fixedNav').css("height"));
 <li class="blockList">
 <h4>logThisIteration</h4>
 <pre class="methodSignature">default&nbsp;boolean&nbsp;logThisIteration()</pre>
-<div class="block">Implement this method with something that reports if any data from the class should be fed to the
- logger this iteration.</div>
+<div class="block">Implement this method with something that reports if any data from the class should be
+ fed to the logger this iteration.</div>
 <dl>
 <dt><span class="returnLabel">Returns:</span></dt>
 <dd>if any data from the class will be fed to the logger.</dd>
@@ -212,8 +213,8 @@ $('.navPadding').css('padding-top', $('.fixedNav').css("height"));
 <li class="blockList">
 <h4>getLogLevel</h4>
 <pre class="methodSignature">default&nbsp;java.util.logging.Level&nbsp;getLogLevel()</pre>
-<div class="block">Implement this method with something that reports the level of severity the data should be logged
- at.</div>
+<div class="block">Implement this method with something that reports the level of severity the data should
+ be logged at.</div>
 <dl>
 <dt><span class="returnLabel">Returns:</span></dt>
 <dd>the level of the data that will be fed.</dd>
@@ -227,8 +228,8 @@ $('.navPadding').css('padding-top', $('.fixedNav').css("height"));
 <li class="blockList">
 <h4>getLogData</h4>
 <pre class="methodSignature">java.lang.String&nbsp;getLogData()</pre>
-<div class="block">Implement this method with something that reports the message or data that should be fed into the
- logger as a string.</div>
+<div class="block">Implement this method with something that reports the message or data that should be fed
+ into the logger as a string.</div>
 <dl>
 <dt><span class="returnLabel">Returns:</span></dt>
 <dd>the data to be fed into the logger.</dd>

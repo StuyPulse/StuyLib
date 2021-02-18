@@ -13,7 +13,8 @@
 <!--[if IE]>
 <script type="text/javascript" src="jquery/jszip-utils/dist/jszip-utils-ie.min.js"></script>
 <![endif]-->
-<script type="text/javascript" src="jquery/jquery-3.5.1.js"></script>
+<script type="text/javascript" src="jquery/jquery-3.3.1.js"></script>
+<script type="text/javascript" src="jquery/jquery-migrate-3.0.1.js"></script>
 <script type="text/javascript" src="jquery/jquery-ui.js"></script>
 </head>
 <body>
@@ -118,14 +119,12 @@ $('.navPadding').css('padding-top', $('.fixedNav').css("height"));
 <dl>
 <dt><a href="com/stuypulse/stuylib/control/BangBangController.html" title="class in com.stuypulse.stuylib.control"><span class="typeNameLink">BangBangController</span></a> - Class in <a href="com/stuypulse/stuylib/control/package-summary.html">com.stuypulse.stuylib.control</a></dt>
 <dd>
-<div class="block">A simple implementation of a BangBangController for the Stuylib Controller
-
- When the error is positive, it returns a fixed positive value.</div>
+<div class="block">A simple implementation of a BangBangController for the Stuylib Controller</div>
 </dd>
 <dt><span class="memberNameLink"><a href="com/stuypulse/stuylib/control/BangBangController.html#%3Cinit%3E()">BangBangController()</a></span> - Constructor for class com.stuypulse.stuylib.control.<a href="com/stuypulse/stuylib/control/BangBangController.html" title="class in com.stuypulse.stuylib.control">BangBangController</a></dt>
 <dd>
-<div class="block">Create a BangBangController that returns 1.0 when error is positive and -1.0 when the error is
- negative</div>
+<div class="block">Create a BangBangController that returns 1.0 when error is positive and -1.0 when the error
+ is negative</div>
 </dd>
 <dt><span class="memberNameLink"><a href="com/stuypulse/stuylib/control/BangBangController.html#%3Cinit%3E(double)">BangBangController(double)</a></span> - Constructor for class com.stuypulse.stuylib.control.<a href="com/stuypulse/stuylib/control/BangBangController.html" title="class in com.stuypulse.stuylib.control">BangBangController</a></dt>
 <dd>
@@ -141,9 +140,7 @@ $('.navPadding').css('padding-top', $('.fixedNav').css("height"));
 </dd>
 <dt><a href="com/stuypulse/stuylib/streams/BufferedIStream.html" title="class in com.stuypulse.stuylib.streams"><span class="typeNameLink">BufferedIStream</span></a> - Class in <a href="com/stuypulse/stuylib/streams/package-summary.html">com.stuypulse.stuylib.streams</a></dt>
 <dd>
-<div class="block">This class allows you to use an input stream while recording the last N values from the stream
-
- It extends from IStream, so it also works with the existing IStream classes</div>
+<div class="block">This class allows you to use an input stream while recording the last N values from the stream</div>
 </dd>
 <dt><span class="memberNameLink"><a href="com/stuypulse/stuylib/streams/BufferedIStream.html#%3Cinit%3E(com.stuypulse.stuylib.streams.IStream)">BufferedIStream(IStream)</a></span> - Constructor for class com.stuypulse.stuylib.streams.<a href="com/stuypulse/stuylib/streams/BufferedIStream.html" title="class in com.stuypulse.stuylib.streams">BufferedIStream</a></dt>
 <dd>
@@ -262,9 +259,7 @@ $('.navPadding').css('padding-top', $('.fixedNav').css("height"));
 <dt><a href="com/stuypulse/stuylib/streams/CSVIStream.html" title="class in com.stuypulse.stuylib.streams"><span class="typeNameLink">CSVIStream</span></a> - Class in <a href="com/stuypulse/stuylib/streams/package-summary.html">com.stuypulse.stuylib.streams</a></dt>
 <dd>
 <div class="block">Class Writer allows you to read input from an IStream into a CSV file Class Reader is an IStream
- that reads from CSV file
-
- They extend from IStream, so they also work with the existing IStream classes</div>
+ that reads from CSV file</div>
 </dd>
 <dt><span class="memberNameLink"><a href="com/stuypulse/stuylib/streams/CSVIStream.html#%3Cinit%3E()">CSVIStream()</a></span> - Constructor for class com.stuypulse.stuylib.streams.<a href="com/stuypulse/stuylib/streams/CSVIStream.html" title="class in com.stuypulse.stuylib.streams">CSVIStream</a></dt>
 <dd>&nbsp;</dd>
@@ -274,8 +269,8 @@ $('.navPadding').css('padding-top', $('.fixedNav').css("height"));
 </dd>
 <dt><a href="com/stuypulse/stuylib/streams/CSVIStream.Writer.html" title="class in com.stuypulse.stuylib.streams"><span class="typeNameLink">CSVIStream.Writer</span></a> - Class in <a href="com/stuypulse/stuylib/streams/package-summary.html">com.stuypulse.stuylib.streams</a></dt>
 <dd>
-<div class="block">This CSVIStream writer let an IStream pass through while recording the values of the IStream into
- a CSV file.</div>
+<div class="block">This CSVIStream writer let an IStream pass through while recording the values of the IStream
+ into a CSV file.</div>
 </dd>
 <dt><a href="com/stuypulse/stuylib/file/csv/CSVReader.html" title="class in com.stuypulse.stuylib.file.csv"><span class="typeNameLink">CSVReader</span></a> - Class in <a href="com/stuypulse/stuylib/file/csv/package-summary.html">com.stuypulse.stuylib.file.csv</a></dt>
 <dd>
@@ -391,10 +386,7 @@ $('.navPadding').css('padding-top', $('.fixedNav').css("height"));
 <dd>&nbsp;</dd>
 <dt><a href="com/stuypulse/stuylib/streams/filters/ExpMovingAverage.html" title="class in com.stuypulse.stuylib.streams.filters"><span class="typeNameLink">ExpMovingAverage</span></a> - Class in <a href="com/stuypulse/stuylib/streams/filters/package-summary.html">com.stuypulse.stuylib.streams.filters</a></dt>
 <dd>
-<div class="block">Simple implementation of an Exponential Moving Average
-
- This is not time dependant, so the values will change if you change the rate that you call this
- filter, the filter will not adapt for that.</div>
+<div class="block">Simple implementation of an Exponential Moving Average</div>
 </dd>
 <dt><span class="memberNameLink"><a href="com/stuypulse/stuylib/streams/filters/ExpMovingAverage.html#%3Cinit%3E(java.lang.Number)">ExpMovingAverage(Number)</a></span> - Constructor for class com.stuypulse.stuylib.streams.filters.<a href="com/stuypulse/stuylib/streams/filters/ExpMovingAverage.html" title="class in com.stuypulse.stuylib.streams.filters">ExpMovingAverage</a></dt>
 <dd>
@@ -421,9 +413,7 @@ $('.navPadding').css('padding-top', $('.fixedNav').css("height"));
 </dd>
 <dt><a href="com/stuypulse/stuylib/streams/FilteredIStream.html" title="class in com.stuypulse.stuylib.streams"><span class="typeNameLink">FilteredIStream</span></a> - Class in <a href="com/stuypulse/stuylib/streams/package-summary.html">com.stuypulse.stuylib.streams</a></dt>
 <dd>
-<div class="block">Takes a Stream and a StreamFilter and makes a FilteredStream
-
- This could be used to automatically filter controller inputs</div>
+<div class="block">Takes a Stream and a StreamFilter and makes a FilteredStream</div>
 </dd>
 <dt><span class="memberNameLink"><a href="com/stuypulse/stuylib/streams/FilteredIStream.html#%3Cinit%3E(com.stuypulse.stuylib.streams.IStream,com.stuypulse.stuylib.streams.filters.IFilter...)">FilteredIStream(IStream, IFilter...)</a></span> - Constructor for class com.stuypulse.stuylib.streams.<a href="com/stuypulse/stuylib/streams/FilteredIStream.html" title="class in com.stuypulse.stuylib.streams">FilteredIStream</a></dt>
 <dd>
@@ -457,8 +447,8 @@ $('.navPadding').css('padding-top', $('.fixedNav').css("height"));
 </dd>
 <dt><a href="com/stuypulse/stuylib/file/FRCLogger.Loggable.html" title="interface in com.stuypulse.stuylib.file"><span class="typeNameLink">FRCLogger.Loggable</span></a> - Interface in <a href="com/stuypulse/stuylib/file/package-summary.html">com.stuypulse.stuylib.file</a></dt>
 <dd>
-<div class="block">The Loggable interface should be implemented by a class that can return a useful piece of data
- that can be called on demand to be written into the log.</div>
+<div class="block">The Loggable interface should be implemented by a class that can return a useful piece of
+ data that can be called on demand to be written into the log.</div>
 </dd>
 <dt><span class="memberNameLink"><a href="com/stuypulse/stuylib/math/Angle.html#fromArcMinutes(double)">fromArcMinutes(double)</a></span> - Static method in class com.stuypulse.stuylib.math.<a href="com/stuypulse/stuylib/math/Angle.html" title="class in com.stuypulse.stuylib.math">Angle</a></dt>
 <dd>
@@ -768,8 +758,8 @@ $('.navPadding').css('padding-top', $('.fixedNav').css("height"));
 <dd>&nbsp;</dd>
 <dt><span class="memberNameLink"><a href="com/stuypulse/stuylib/file/FRCLogger.Loggable.html#getLogData()">getLogData()</a></span> - Method in interface com.stuypulse.stuylib.file.<a href="com/stuypulse/stuylib/file/FRCLogger.Loggable.html" title="interface in com.stuypulse.stuylib.file">FRCLogger.Loggable</a></dt>
 <dd>
-<div class="block">Implement this method with something that reports the message or data that should be fed into the
- logger as a string.</div>
+<div class="block">Implement this method with something that reports the message or data that should be fed
+ into the logger as a string.</div>
 </dd>
 <dt><span class="memberNameLink"><a href="com/stuypulse/stuylib/file/FRCLogger.html#getLoggables()">getLoggables()</a></span> - Method in class com.stuypulse.stuylib.file.<a href="com/stuypulse/stuylib/file/FRCLogger.html" title="class in com.stuypulse.stuylib.file">FRCLogger</a></dt>
 <dd>
@@ -777,8 +767,8 @@ $('.navPadding').css('padding-top', $('.fixedNav').css("height"));
 </dd>
 <dt><span class="memberNameLink"><a href="com/stuypulse/stuylib/file/FRCLogger.Loggable.html#getLogLevel()">getLogLevel()</a></span> - Method in interface com.stuypulse.stuylib.file.<a href="com/stuypulse/stuylib/file/FRCLogger.Loggable.html" title="interface in com.stuypulse.stuylib.file">FRCLogger.Loggable</a></dt>
 <dd>
-<div class="block">Implement this method with something that reports the level of severity the data should be logged
- at.</div>
+<div class="block">Implement this method with something that reports the level of severity the data should
+ be logged at.</div>
 </dd>
 <dt><span class="memberNameLink"><a href="com/stuypulse/stuylib/network/limelight/Limelight.html#getLongestSidelength()">getLongestSidelength()</a></span> - Static method in class com.stuypulse.stuylib.network.limelight.<a href="com/stuypulse/stuylib/network/limelight/Limelight.html" title="class in com.stuypulse.stuylib.network.limelight">Limelight</a></dt>
 <dd>
@@ -1040,8 +1030,8 @@ $('.navPadding').css('padding-top', $('.fixedNav').css("height"));
 <dd>&nbsp;</dd>
 <dt><span class="memberNameLink"><a href="com/stuypulse/stuylib/control/Controller.html#getRawVelocity()">getRawVelocity()</a></span> - Method in class com.stuypulse.stuylib.control.<a href="com/stuypulse/stuylib/control/Controller.html" title="class in com.stuypulse.stuylib.control">Controller</a></dt>
 <dd>
-<div class="block">Gets the velocity, which is represented as the change in error since the last time that .update()
- was called</div>
+<div class="block">Gets the velocity, which is represented as the change in error since the last time that
+ .update() was called</div>
 </dd>
 <dt><span class="memberNameLink"><a href="com/stuypulse/stuylib/input/Gamepad.html#getRightAnalogButton()">getRightAnalogButton()</a></span> - Method in class com.stuypulse.stuylib.input.<a href="com/stuypulse/stuylib/input/Gamepad.html" title="class in com.stuypulse.stuylib.input">Gamepad</a></dt>
 <dd>&nbsp;</dd>
@@ -1189,7 +1179,8 @@ $('.navPadding').css('padding-top', $('.fixedNav').css("height"));
 </dd>
 <dt><span class="memberNameLink"><a href="com/stuypulse/stuylib/control/Controller.html#getVelocity()">getVelocity()</a></span> - Method in class com.stuypulse.stuylib.control.<a href="com/stuypulse/stuylib/control/Controller.html" title="class in com.stuypulse.stuylib.control">Controller</a></dt>
 <dd>
-<div class="block">Gets the velocity from the last time that .update() was called adjusted to velocity per second</div>
+<div class="block">Gets the velocity from the last time that .update() was called adjusted to velocity per
+ second</div>
 </dd>
 <dt><span class="memberNameLink"><a href="com/stuypulse/stuylib/network/limelight/Limelight.html#getVerticalSidelength()">getVerticalSidelength()</a></span> - Static method in class com.stuypulse.stuylib.network.limelight.<a href="com/stuypulse/stuylib/network/limelight/Limelight.html" title="class in com.stuypulse.stuylib.network.limelight">Limelight</a></dt>
 <dd>
@@ -1323,9 +1314,7 @@ $('.navPadding').css('padding-top', $('.fixedNav').css("height"));
 </dd>
 <dt><a href="com/stuypulse/stuylib/streams/IStream.html" title="interface in com.stuypulse.stuylib.streams"><span class="typeNameLink">IStream</span></a> - Interface in <a href="com/stuypulse/stuylib/streams/package-summary.html">com.stuypulse.stuylib.streams</a></dt>
 <dd>
-<div class="block">A stream of doubles that is accessed with the .get() function
-
- Can be created with lambdas to represent a stream of inputs.</div>
+<div class="block">A stream of doubles that is accessed with the .get() function</div>
 </dd>
 <dt><span class="memberNameLink"><a href="com/stuypulse/stuylib/file/csv/CSVReader.html#iterator()">iterator()</a></span> - Method in class com.stuypulse.stuylib.file.csv.<a href="com/stuypulse/stuylib/file/csv/CSVReader.html" title="class in com.stuypulse.stuylib.file.csv">CSVReader</a></dt>
 <dd>
@@ -1393,8 +1382,7 @@ $('.navPadding').css('padding-top', $('.fixedNav').css("height"));
 <dd>&nbsp;</dd>
 <dt><a href="com/stuypulse/stuylib/input/gamepads/KeyGamepad.html" title="class in com.stuypulse.stuylib.input.gamepads"><span class="typeNameLink">KeyGamepad</span></a> - Class in <a href="com/stuypulse/stuylib/input/gamepads/package-summary.html">com.stuypulse.stuylib.input.gamepads</a></dt>
 <dd>
-<div class="block">
- This is a base class for a gamepad controlled via keyboard.</div>
+<div class="block">This is a base class for a gamepad controlled via keyboard.</div>
 </dd>
 <dt><span class="memberNameLink"><a href="com/stuypulse/stuylib/input/gamepads/KeyGamepad.html#%3Cinit%3E()">KeyGamepad()</a></span> - Constructor for class com.stuypulse.stuylib.input.gamepads.<a href="com/stuypulse/stuylib/input/gamepads/KeyGamepad.html" title="class in com.stuypulse.stuylib.input.gamepads">KeyGamepad</a></dt>
 <dd>&nbsp;</dd>
@@ -1420,9 +1408,8 @@ $('.navPadding').css('padding-top', $('.fixedNav').css("height"));
 </dd>
 <dt><span class="memberNameLink"><a href="com/stuypulse/stuylib/util/StopWatch.html#kMillisEngine">kMillisEngine</a></span> - Static variable in class com.stuypulse.stuylib.util.<a href="com/stuypulse/stuylib/util/StopWatch.html" title="class in com.stuypulse.stuylib.util">StopWatch</a></dt>
 <dd>
-<div class="block">This engine is used to get the current time with the system function System.currentTimeMillis()
-
- This may have a lower resolution, but it is stable.</div>
+<div class="block">This engine is used to get the current time with the system function
+ System.currentTimeMillis()</div>
 </dd>
 <dt><span class="memberNameLink"><a href="com/stuypulse/stuylib/util/StopWatch.html#kNanoEngine">kNanoEngine</a></span> - Static variable in class com.stuypulse.stuylib.util.<a href="com/stuypulse/stuylib/util/StopWatch.html" title="class in com.stuypulse.stuylib.util">StopWatch</a></dt>
 <dd>
@@ -1489,11 +1476,13 @@ $('.navPadding').css('padding-top', $('.fixedNav').css("height"));
 <dd>&nbsp;</dd>
 <dt><a href="com/stuypulse/stuylib/input/gamepads/Logitech.DMode.html" title="class in com.stuypulse.stuylib.input.gamepads"><span class="typeNameLink">Logitech.DMode</span></a> - Class in <a href="com/stuypulse/stuylib/input/gamepads/package-summary.html">com.stuypulse.stuylib.input.gamepads</a></dt>
 <dd>
-<div class="block">There is a switch on the back of the controller this is for when the switch is in the D position</div>
+<div class="block">There is a switch on the back of the controller this is for when the switch is in the D
+ position</div>
 </dd>
 <dt><a href="com/stuypulse/stuylib/input/gamepads/Logitech.XMode.html" title="class in com.stuypulse.stuylib.input.gamepads"><span class="typeNameLink">Logitech.XMode</span></a> - Class in <a href="com/stuypulse/stuylib/input/gamepads/package-summary.html">com.stuypulse.stuylib.input.gamepads</a></dt>
 <dd>
-<div class="block">There is a switch on the back of the controller this is for when the switch is in the X position</div>
+<div class="block">There is a switch on the back of the controller this is for when the switch is in the X
+ position</div>
 </dd>
 <dt><span class="memberNameLink"><a href="com/stuypulse/stuylib/file/FRCLogger.html#logManualLoggable(com.stuypulse.stuylib.file.FRCLogger.Loggable)">logManualLoggable(FRCLogger.Loggable)</a></span> - Method in class com.stuypulse.stuylib.file.<a href="com/stuypulse/stuylib/file/FRCLogger.html" title="class in com.stuypulse.stuylib.file">FRCLogger</a></dt>
 <dd>
@@ -1505,8 +1494,8 @@ $('.navPadding').css('padding-top', $('.fixedNav').css("height"));
 </dd>
 <dt><span class="memberNameLink"><a href="com/stuypulse/stuylib/file/FRCLogger.Loggable.html#logThisIteration()">logThisIteration()</a></span> - Method in interface com.stuypulse.stuylib.file.<a href="com/stuypulse/stuylib/file/FRCLogger.Loggable.html" title="interface in com.stuypulse.stuylib.file">FRCLogger.Loggable</a></dt>
 <dd>
-<div class="block">Implement this method with something that reports if any data from the class should be fed to the
- logger this iteration.</div>
+<div class="block">Implement this method with something that reports if any data from the class should be
+ fed to the logger this iteration.</div>
 </dd>
 <dt><span class="memberNameLink"><a href="com/stuypulse/stuylib/network/SmartNumber.html#longValue()">longValue()</a></span> - Method in class com.stuypulse.stuylib.network.<a href="com/stuypulse/stuylib/network/SmartNumber.html" title="class in com.stuypulse.stuylib.network">SmartNumber</a></dt>
 <dd>
@@ -1578,10 +1567,7 @@ $('.navPadding').css('padding-top', $('.fixedNav').css("height"));
 </dd>
 <dt><a href="com/stuypulse/stuylib/streams/filters/MovingAverage.html" title="class in com.stuypulse.stuylib.streams.filters"><span class="typeNameLink">MovingAverage</span></a> - Class in <a href="com/stuypulse/stuylib/streams/filters/package-summary.html">com.stuypulse.stuylib.streams.filters</a></dt>
 <dd>
-<div class="block">An implementation of an Simple Moving Average
-
- This is not time dependant, so the values will change if you change the rate that you call this
- filter, the filter will not adapt for that.</div>
+<div class="block">An implementation of an Simple Moving Average</div>
 </dd>
 <dt><span class="memberNameLink"><a href="com/stuypulse/stuylib/streams/filters/MovingAverage.html#%3Cinit%3E(int)">MovingAverage(int)</a></span> - Constructor for class com.stuypulse.stuylib.streams.filters.<a href="com/stuypulse/stuylib/streams/filters/MovingAverage.html" title="class in com.stuypulse.stuylib.streams.filters">MovingAverage</a></dt>
 <dd>
@@ -1625,9 +1611,7 @@ $('.navPadding').css('padding-top', $('.fixedNav').css("height"));
 </dd>
 <dt><a href="com/stuypulse/stuylib/input/keyboard/NetKeyboard.html" title="class in com.stuypulse.stuylib.input.keyboard"><span class="typeNameLink">NetKeyboard</span></a> - Class in <a href="com/stuypulse/stuylib/input/keyboard/package-summary.html">com.stuypulse.stuylib.input.keyboard</a></dt>
 <dd>
-<div class="block">This class lets you send and receive keyboard information over network tables
-
- Every other class will interact with the network keyboards through this class</div>
+<div class="block">This class lets you send and receive keyboard information over network tables</div>
 </dd>
 <dt><span class="memberNameLink"><a href="com/stuypulse/stuylib/input/keyboard/NetKeyboard.html#%3Cinit%3E(int)">NetKeyboard(int)</a></span> - Constructor for class com.stuypulse.stuylib.input.keyboard.<a href="com/stuypulse/stuylib/input/keyboard/NetKeyboard.html" title="class in com.stuypulse.stuylib.input.keyboard">NetKeyboard</a></dt>
 <dd>
@@ -1648,11 +1632,7 @@ $('.navPadding').css('padding-top', $('.fixedNav').css("height"));
 <dt><a href="com/stuypulse/stuylib/input/keyboard/computer/NetKeyListener.html" title="class in com.stuypulse.stuylib.input.keyboard.computer"><span class="typeNameLink">NetKeyListener</span></a> - Class in <a href="com/stuypulse/stuylib/input/keyboard/computer/package-summary.html">com.stuypulse.stuylib.input.keyboard.computer</a></dt>
 <dd>
 <div class="block">A KeyListener that uploads all of the key strokes to a network table where they can then be
- received and put into the robot
-
- This would not be used on the robot, but should be used on the users computer
-
- Make an AWT window to use this listener</div>
+ received and put into the robot</div>
 </dd>
 <dt><span class="memberNameLink"><a href="com/stuypulse/stuylib/input/keyboard/computer/NetKeyListener.html#%3Cinit%3E(int,int)">NetKeyListener(int, int)</a></span> - Constructor for class com.stuypulse.stuylib.input.keyboard.computer.<a href="com/stuypulse/stuylib/input/keyboard/computer/NetKeyListener.html" title="class in com.stuypulse.stuylib.input.keyboard.computer">NetKeyListener</a></dt>
 <dd>
@@ -1766,9 +1746,7 @@ $('.navPadding').css('padding-top', $('.fixedNav').css("height"));
 </dd>
 <dt><a href="com/stuypulse/stuylib/streams/PollingIStream.html" title="class in com.stuypulse.stuylib.streams"><span class="typeNameLink">PollingIStream</span></a> - Class in <a href="com/stuypulse/stuylib/streams/package-summary.html">com.stuypulse.stuylib.streams</a></dt>
 <dd>
-<div class="block">Takes an IStream and an IStreamFilter and makes a PollingIStream
-
- A PollingIStream calls .get() every x milliseconds instead of when the user calls get</div>
+<div class="block">Takes an IStream and an IStreamFilter and makes a PollingIStream</div>
 </dd>
 <dt><span class="memberNameLink"><a href="com/stuypulse/stuylib/streams/PollingIStream.html#%3Cinit%3E(com.stuypulse.stuylib.streams.IStream,double)">PollingIStream(IStream, double)</a></span> - Constructor for class com.stuypulse.stuylib.streams.<a href="com/stuypulse/stuylib/streams/PollingIStream.html" title="class in com.stuypulse.stuylib.streams">PollingIStream</a></dt>
 <dd>
@@ -1788,12 +1766,7 @@ $('.navPadding').css('padding-top', $('.fixedNav').css("height"));
 <dl>
 <dt><a href="com/stuypulse/stuylib/streams/filters/RateLimit.html" title="class in com.stuypulse.stuylib.streams.filters"><span class="typeNameLink">RateLimit</span></a> - Class in <a href="com/stuypulse/stuylib/streams/filters/package-summary.html">com.stuypulse.stuylib.streams.filters</a></dt>
 <dd>
-<div class="block">This class lets you rate limit a stream of inputs
-
- That means that the value can not change more than a specified amount in one update
-
- This is not time dependant, so the values will change if you change the rate that you call this
- filter, the filter will not adapt for that.</div>
+<div class="block">This class lets you rate limit a stream of inputs</div>
 </dd>
 <dt><span class="memberNameLink"><a href="com/stuypulse/stuylib/streams/filters/RateLimit.html#%3Cinit%3E(java.lang.Number)">RateLimit(Number)</a></span> - Constructor for class com.stuypulse.stuylib.streams.filters.<a href="com/stuypulse/stuylib/streams/filters/RateLimit.html" title="class in com.stuypulse.stuylib.streams.filters">RateLimit</a></dt>
 <dd>
@@ -1805,8 +1778,8 @@ $('.navPadding').css('padding-top', $('.fixedNav').css("height"));
 </dd>
 <dt><span class="memberNameLink"><a href="com/stuypulse/stuylib/file/FRCLogger.html#registerLoggable(com.stuypulse.stuylib.file.FRCLogger.Loggable)">registerLoggable(FRCLogger.Loggable)</a></span> - Method in class com.stuypulse.stuylib.file.<a href="com/stuypulse/stuylib/file/FRCLogger.html" title="class in com.stuypulse.stuylib.file">FRCLogger</a></dt>
 <dd>
-<div class="block">Registers a new Loggable that upon call will put the next getLogData() at level getLogLevel() to
- the log if it will logThisIteration().</div>
+<div class="block">Registers a new Loggable that upon call will put the next getLogData() at level getLogLevel()
+ to the log if it will logThisIteration().</div>
 </dd>
 <dt><span class="memberNameLink"><a href="com/stuypulse/stuylib/control/PIDController.html#reset()">reset()</a></span> - Method in class com.stuypulse.stuylib.control.<a href="com/stuypulse/stuylib/control/PIDController.html" title="class in com.stuypulse.stuylib.control">PIDController</a></dt>
 <dd>
@@ -2109,10 +2082,7 @@ $('.navPadding').css('padding-top', $('.fixedNav').css("height"));
 </dd>
 <dt><a href="com/stuypulse/stuylib/streams/filters/TimedRateLimit.html" title="class in com.stuypulse.stuylib.streams.filters"><span class="typeNameLink">TimedRateLimit</span></a> - Class in <a href="com/stuypulse/stuylib/streams/filters/package-summary.html">com.stuypulse.stuylib.streams.filters</a></dt>
 <dd>
-<div class="block">This class lets you rate limit a stream of inputs
-
- Instead of being based on the rate that update is called, the value you give it is based on how
- much it should be able to change in one second.</div>
+<div class="block">This class lets you rate limit a stream of inputs</div>
 </dd>
 <dt><span class="memberNameLink"><a href="com/stuypulse/stuylib/streams/filters/TimedRateLimit.html#%3Cinit%3E(java.lang.Number)">TimedRateLimit(Number)</a></span> - Constructor for class com.stuypulse.stuylib.streams.filters.<a href="com/stuypulse/stuylib/streams/filters/TimedRateLimit.html" title="class in com.stuypulse.stuylib.streams.filters">TimedRateLimit</a></dt>
 <dd>&nbsp;</dd>
@@ -2184,10 +2154,7 @@ $('.navPadding').css('padding-top', $('.fixedNav').css("height"));
 </dd>
 <dt><span class="memberNameLink"><a href="com/stuypulse/stuylib/util/chart/JGraph.html#update()">update()</a></span> - Method in class com.stuypulse.stuylib.util.chart.<a href="com/stuypulse/stuylib/util/chart/JGraph.html" title="class in com.stuypulse.stuylib.util.chart">JGraph</a></dt>
 <dd>
-<div class="block">Update the graphs without sending any new value
-
- This is useful because it lets you send the update function directly instead of through the
- JGraph.</div>
+<div class="block">Update the graphs without sending any new value</div>
 </dd>
 <dt><span class="memberNameLink"><a href="com/stuypulse/stuylib/control/Controller.html#update(double)">update(double)</a></span> - Method in class com.stuypulse.stuylib.control.<a href="com/stuypulse/stuylib/control/Controller.html" title="class in com.stuypulse.stuylib.control">Controller</a></dt>
 <dd>
@@ -2207,10 +2174,8 @@ $('.navPadding').css('padding-top', $('.fixedNav').css("height"));
 </dd>
 <dt><span class="memberNameLink"><a href="com/stuypulse/stuylib/control/Controller.html#update(double,double)">update(double, double)</a></span> - Method in class com.stuypulse.stuylib.control.<a href="com/stuypulse/stuylib/control/Controller.html" title="class in com.stuypulse.stuylib.control">Controller</a></dt>
 <dd>
-<div class="block">Update the controller with the measurement that was just made and the set point you would like it
- to approach
-
- This function just subtracts the two at this moment.</div>
+<div class="block">Update the controller with the measurement that was just made and the set point you would
+ like it to approach</div>
 </dd>
 <dt><span class="memberNameLink"><a href="com/stuypulse/stuylib/util/chart/GraphData.html#updateXYChart(org.knowm.xchart.XYChart)">updateXYChart(XYChart)</a></span> - Method in class com.stuypulse.stuylib.util.chart.<a href="com/stuypulse/stuylib/util/chart/GraphData.html" title="class in com.stuypulse.stuylib.util.chart">GraphData</a></dt>
 <dd>

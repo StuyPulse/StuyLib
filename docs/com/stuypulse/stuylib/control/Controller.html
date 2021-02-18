@@ -13,7 +13,8 @@
 <!--[if IE]>
 <script type="text/javascript" src="../../../../jquery/jszip-utils/dist/jszip-utils-ie.min.js"></script>
 <![endif]-->
-<script type="text/javascript" src="../../../../jquery/jquery-3.5.1.js"></script>
+<script type="text/javascript" src="../../../../jquery/jquery-3.3.1.js"></script>
+<script type="text/javascript" src="../../../../jquery/jquery-migrate-3.0.1.js"></script>
 <script type="text/javascript" src="../../../../jquery/jquery-ui.js"></script>
 </head>
 <body>
@@ -141,7 +142,7 @@ extends java.lang.Object</pre>
  update() functions, which work as a sort of wrapper for the controllers. No matter what
  controller is used, these functions will always work.
 
- These functions in the controller are useful for an error based system, and are automatically
+ <p>These functions in the controller are useful for an error based system, and are automatically
  managed, making implementations of PID easy.</div>
 </li>
 </ul>
@@ -220,15 +221,16 @@ extends java.lang.Object</pre>
 <td class="colFirst"><code>double</code></td>
 <th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#getRawVelocity()">getRawVelocity</a></span>()</code></th>
 <td class="colLast">
-<div class="block">Gets the velocity, which is represented as the change in error since the last time that .update()
- was called</div>
+<div class="block">Gets the velocity, which is represented as the change in error since the last time that
+ .update() was called</div>
 </td>
 </tr>
 <tr id="i5" class="rowColor">
 <td class="colFirst"><code>double</code></td>
 <th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#getVelocity()">getVelocity</a></span>()</code></th>
 <td class="colLast">
-<div class="block">Gets the velocity from the last time that .update() was called adjusted to velocity per second</div>
+<div class="block">Gets the velocity from the last time that .update() was called adjusted to velocity per
+ second</div>
 </td>
 </tr>
 <tr id="i6" class="altColor">
@@ -287,10 +289,8 @@ extends java.lang.Object</pre>
 <th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#update(double,double)">update</a></span>&#8203;(double&nbsp;setpoint,
       double&nbsp;measurement)</code></th>
 <td class="colLast">
-<div class="block">Update the controller with the measurement that was just made and the set point you would like it
- to approach
-
- This function just subtracts the two at this moment.</div>
+<div class="block">Update the controller with the measurement that was just made and the set point you would
+ like it to approach</div>
 </td>
 </tr>
 </table>
@@ -347,15 +347,15 @@ extends java.lang.Object</pre>
 <div class="block">Lets you specify a filter that will be applied to all measurements that are given to the
  controller.
 
- A highly recommended option is the LowPassFilter due to its ability to remove noise, and its
- ability to not lag behind when there has been a gap in calls. This will slightly degrade the
- performance of the controller, but it may be necessary sometimes in order to get consistent
- results.
+ <p>A highly recommended option is the LowPassFilter due to its ability to remove noise, and
+ its ability to not lag behind when there has been a gap in calls. This will slightly degrade
+ the performance of the controller, but it may be necessary sometimes in order to get
+ consistent results.
 
- This will change the way the controller interacts with the robot and may require more tuning to
- be done.
+ <p>This will change the way the controller interacts with the robot and may require more
+ tuning to be done.
 
- Passing in null will disable the filter.</div>
+ <p>Passing in null will disable the filter.</div>
 <dl>
 <dt><span class="paramLabel">Parameters:</span></dt>
 <dd><code>filter</code> - filter to be applied to error measurements</dd>
@@ -373,10 +373,10 @@ extends java.lang.Object</pre>
 <pre class="methodSignature">public final&nbsp;<a href="Controller.html" title="class in com.stuypulse.stuylib.control">Controller</a>&nbsp;setVelocityFilter&#8203;(<a href="../streams/filters/IFilter.html" title="interface in com.stuypulse.stuylib.streams.filters">IFilter</a>&nbsp;filter)</pre>
 <div class="block">Lets you specify a filter that will be applied to the velocity measurements.
 
- This can be used to smooth out the otherwise noisy velocity values.
+ <p>This can be used to smooth out the otherwise noisy velocity values.
 
- This can negatively affect things like the D in PID if set too high and it is recommended that
- you just filter the error instead.</div>
+ <p>This can negatively affect things like the D in PID if set too high and it is recommended
+ that you just filter the error instead.</div>
 <dl>
 <dt><span class="paramLabel">Parameters:</span></dt>
 <dd><code>filter</code> - filter to be applied to velocity measurements</dd>
@@ -394,15 +394,15 @@ extends java.lang.Object</pre>
 <pre class="methodSignature">public final&nbsp;<a href="Controller.html" title="class in com.stuypulse.stuylib.control">Controller</a>&nbsp;setOutputFilter&#8203;(<a href="../streams/filters/IFilter.html" title="interface in com.stuypulse.stuylib.streams.filters">IFilter</a>&nbsp;filter)</pre>
 <div class="block">Lets you specify a filter that will be applied to all of the outputs of the controller.
 
- If the robot has a tendency to jerk, or motions of the robot are too violent, a filter like the
- LowPassFilter can reduce jerk while still letting the robot get to max speed. This will slightly
- degrade the performance of the controller, but it may be necessary sometimes in order to get
- consistent results.
+ <p>If the robot has a tendency to jerk, or motions of the robot are too violent, a filter
+ like the LowPassFilter can reduce jerk while still letting the robot get to max speed. This
+ will slightly degrade the performance of the controller, but it may be necessary sometimes in
+ order to get consistent results.
 
- This will change the way the controller interacts with the robot and may require more tuning to
- be done.
+ <p>This will change the way the controller interacts with the robot and may require more
+ tuning to be done.
 
- Passing in null will disable the filter.</div>
+ <p>Passing in null will disable the filter.</div>
 <dl>
 <dt><span class="paramLabel">Parameters:</span></dt>
 <dd><code>filter</code> - filter to be applied to the outputs of the controller</dd>
@@ -432,8 +432,8 @@ extends java.lang.Object</pre>
 <li class="blockList">
 <h4>getRawVelocity</h4>
 <pre class="methodSignature">public final&nbsp;double&nbsp;getRawVelocity()</pre>
-<div class="block">Gets the velocity, which is represented as the change in error since the last time that .update()
- was called</div>
+<div class="block">Gets the velocity, which is represented as the change in error since the last time that
+ .update() was called</div>
 <dl>
 <dt><span class="returnLabel">Returns:</span></dt>
 <dd>velocity from the last time that .update() was called</dd>
@@ -447,7 +447,8 @@ extends java.lang.Object</pre>
 <li class="blockList">
 <h4>getVelocity</h4>
 <pre class="methodSignature">public final&nbsp;double&nbsp;getVelocity()</pre>
-<div class="block">Gets the velocity from the last time that .update() was called adjusted to velocity per second</div>
+<div class="block">Gets the velocity from the last time that .update() was called adjusted to velocity per
+ second</div>
 <dl>
 <dt><span class="returnLabel">Returns:</span></dt>
 <dd>velocity from the last time that .update() was called</dd>
@@ -476,10 +477,10 @@ extends java.lang.Object</pre>
 <h4>getRate</h4>
 <pre class="methodSignature">public&nbsp;double&nbsp;getRate()</pre>
 <div class="block">Gets the rate of the controller during the last .update() command. This will only return the
- interval between the last .update() command and the one before it. Thus, the rate may be slightly
- inconsistent if the update command is not called regularly.
+ interval between the last .update() command and the one before it. Thus, the rate may be
+ slightly inconsistent if the update command is not called regularly.
 
- This function may be overridden if a special controller needs a custom rate.</div>
+ <p>This function may be overridden if a special controller needs a custom rate.</div>
 <dl>
 <dt><span class="returnLabel">Returns:</span></dt>
 <dd>the rate of the controller during the last .update() command</dd>
@@ -528,10 +529,10 @@ extends java.lang.Object</pre>
 <h4>update</h4>
 <pre class="methodSignature">public final&nbsp;double&nbsp;update&#8203;(double&nbsp;setpoint,
                            double&nbsp;measurement)</pre>
-<div class="block">Update the controller with the measurement that was just made and the set point you would like it
- to approach
+<div class="block">Update the controller with the measurement that was just made and the set point you would
+ like it to approach
 
- This function just subtracts the two at this moment.</div>
+ <p>This function just subtracts the two at this moment.</div>
 <dl>
 <dt><span class="paramLabel">Parameters:</span></dt>
 <dd><code>setpoint</code> - desired result</dd>

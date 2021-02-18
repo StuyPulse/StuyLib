@@ -1,16 +1,20 @@
+// Copyright (c) 2021 StuyPulse Inc. All rights reserved.
+// This work is licensed under the terms of the MIT license
+// found in the root directory of this project.
+
+
 package com.stuypulse.stuylib.input.gamepads;
 
 import com.stuypulse.stuylib.input.Gamepad;
 
-import edu.wpi.first.wpilibj.XboxController;
 import edu.wpi.first.wpilibj.GenericHID.Hand;
+import edu.wpi.first.wpilibj.XboxController;
 
 /**
  * A wrapper for the XboxController class to work with the gamepad interface.
  *
  * @author Sam (sam.belliveau@gmail.com)
  */
-
 public class Xbox extends Gamepad {
 
     private XboxController mJoystick;

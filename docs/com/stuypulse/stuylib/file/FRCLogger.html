@@ -13,7 +13,8 @@
 <!--[if IE]>
 <script type="text/javascript" src="../../../../jquery/jszip-utils/dist/jszip-utils-ie.min.js"></script>
 <![endif]-->
-<script type="text/javascript" src="../../../../jquery/jquery-3.5.1.js"></script>
+<script type="text/javascript" src="../../../../jquery/jquery-3.3.1.js"></script>
+<script type="text/javascript" src="../../../../jquery/jquery-migrate-3.0.1.js"></script>
 <script type="text/javascript" src="../../../../jquery/jquery-ui.js"></script>
 </head>
 <body>
@@ -157,8 +158,8 @@ extends java.lang.Object</pre>
 <td class="colFirst"><code>static interface&nbsp;</code></td>
 <th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="FRCLogger.Loggable.html" title="interface in com.stuypulse.stuylib.file">FRCLogger.Loggable</a></span></code></th>
 <td class="colLast">
-<div class="block">The Loggable interface should be implemented by a class that can return a useful piece of data
- that can be called on demand to be written into the log.</div>
+<div class="block">The Loggable interface should be implemented by a class that can return a useful piece of
+ data that can be called on demand to be written into the log.</div>
 </td>
 </tr>
 </table>
@@ -253,8 +254,8 @@ extends java.lang.Object</pre>
 <td class="colFirst"><code>void</code></td>
 <th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#registerLoggable(com.stuypulse.stuylib.file.FRCLogger.Loggable)">registerLoggable</a></span>&#8203;(<a href="FRCLogger.Loggable.html" title="interface in com.stuypulse.stuylib.file">FRCLogger.Loggable</a>&nbsp;loggable)</code></th>
 <td class="colLast">
-<div class="block">Registers a new Loggable that upon call will put the next getLogData() at level getLogLevel() to
- the log if it will logThisIteration().</div>
+<div class="block">Registers a new Loggable that upon call will put the next getLogData() at level getLogLevel()
+ to the log if it will logThisIteration().</div>
 </td>
 </tr>
 <tr id="i7" class="rowColor">
@@ -335,8 +336,8 @@ extends java.lang.Object</pre>
 <li class="blockList">
 <h4>registerLoggable</h4>
 <pre class="methodSignature">public&nbsp;void&nbsp;registerLoggable&#8203;(<a href="FRCLogger.Loggable.html" title="interface in com.stuypulse.stuylib.file">FRCLogger.Loggable</a>&nbsp;loggable)</pre>
-<div class="block">Registers a new Loggable that upon call will put the next getLogData() at level getLogLevel() to
- the log if it will logThisIteration().</div>
+<div class="block">Registers a new Loggable that upon call will put the next getLogData() at level getLogLevel()
+ to the log if it will logThisIteration().</div>
 <dl>
 <dt><span class="paramLabel">Parameters:</span></dt>
 <dd><code>loggable</code> - Class implementing Loggable</dd>

@@ -1,3 +1,8 @@
+// Copyright (c) 2021 StuyPulse Inc. All rights reserved.
+// This work is licensed under the terms of the MIT license
+// found in the root directory of this project.
+
+
 package com.stuypulse.stuylib.input.gamepads;
 
 import com.stuypulse.stuylib.input.keyboard.NetKeyboard;
@@ -7,12 +12,9 @@ import com.stuypulse.stuylib.input.keyboard.NetKeyboard;
  *
  * @author Sam (sam.belliveau@gmail.com)
  */
-
 public class NetKeyGamepad extends KeyGamepad {
 
-    /**
-     * Underlying Network Keyboard
-     */
+    /** Underlying Network Keyboard */
     private NetKeyboard mKeyboard;
 
     /**
@@ -34,5 +36,4 @@ public class NetKeyGamepad extends KeyGamepad {
     public boolean getKey(String key) {
         return mKeyboard.getKey(key);
     }
-
 }

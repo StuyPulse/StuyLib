@@ -1,8 +1,12 @@
+// Copyright (c) 2021 StuyPulse Inc. All rights reserved.
+// This work is licensed under the terms of the MIT license
+// found in the root directory of this project.
+
+
 package com.stuypulse.stuylib.util.chart;
 
-import java.util.LinkedList;
 import java.util.ArrayList;
-
+import java.util.LinkedList;
 import org.knowm.xchart.XYChart;
 import org.knowm.xchart.style.markers.SeriesMarkers;
 
@@ -26,10 +30,10 @@ public class GraphData {
     /**
      * Create a Graph (no gui) with the following configuration
      *
-     * @param name      the name of the graph
+     * @param name the name of the graph
      * @param maxLength the number of entries in the graph
-     * @param min       the lowest value of the graph
-     * @param max       the highest value of the graph
+     * @param min the lowest value of the graph
+     * @param max the highest value of the graph
      */
     public GraphData(String name, int maxLength, double min, double max) {
         mGraphName = name;
@@ -40,11 +44,11 @@ public class GraphData {
         mValues = new LinkedList<>();
         mIndexes = new ArrayList<>();
 
-        while(mValues.size() < mMaxLength) {
+        while (mValues.size() < mMaxLength) {
             mValues.addFirst(0.0);
         }
 
-        for(int i = 0; i < mMaxLength; ++i) {
+        for (int i = 0; i < mMaxLength; ++i) {
             mIndexes.add(0.0 - i);
         }
     }
@@ -63,7 +67,7 @@ public class GraphData {
         mValues = new LinkedList<>(other.mValues);
         mIndexes = new ArrayList<>();
 
-        for(int i = 0; i < mMaxLength; ++i) {
+        for (int i = 0; i < mMaxLength; ++i) {
             mIndexes.add(0.0 - i);
         }
     }
@@ -77,40 +81,32 @@ public class GraphData {
     public void update(double val) {
         mValues.addFirst(val);
 
-        while(mValues.size() < mMaxLength) {
+        while (mValues.size() < mMaxLength) {
             mValues.addFirst(0.0);
         }
 
-        while(mValues.size() > mMaxLength) {
+        while (mValues.size() > mMaxLength) {
             mValues.removeLast();
         }
     }
 
     // GETTERS //
-    /**
-     * @return name
-     */
+    /** @return name */
     public final String getName() {
         return mGraphName;
     }
 
-    /**
-     * @return length
-     */
+    /** @return length */
     public final int getLength() {
         return mMaxLength;
     }
 
-    /**
-     * @return minumum value
-     */
+    /** @return minumum value */
     public final double getMinValue() {
         return mMinValue;
     }
 
-    /**
-     * @return maximum value
-     */
+    /** @return maximum value */
     public final double getMaxValue() {
         return mMaxValue;
     }
@@ -132,13 +128,11 @@ public class GraphData {
      */
     public final void updateXYChart(XYChart chart) {
         final LinkedList<Double> values = new LinkedList<Double>(this.mValues);
-        if(chart.getSeriesMap().containsKey(this.getName())) {
+        if (chart.getSeriesMap().containsKey(this.getName())) {
             chart.updateXYSeries(this.getName(), this.mIndexes, values, null);
         } else {
             chart.addSeries(this.getName(), this.mIndexes, values);
-            chart.getSeriesMap().get(this.getName())
-                    .setMarker(SeriesMarkers.NONE);
+            chart.getSeriesMap().get(this.getName()).setMarker(SeriesMarkers.NONE);
         }
     }
-
 }

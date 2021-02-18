@@ -1,3 +1,8 @@
+// Copyright (c) 2021 StuyPulse Inc. All rights reserved.
+// This work is licensed under the terms of the MIT license
+// found in the root directory of this project.
+
+
 package com.stuypulse.stuylib.util.chart;
 
 import java.awt.event.KeyAdapter;
@@ -12,14 +17,10 @@ import java.util.Set;
  */
 public final class KeyTracker extends KeyAdapter {
 
-    /**
-     * Set of key codes that will contain keys currently pressed.
-     */
+    /** Set of key codes that will contain keys currently pressed. */
     private Set<String> values;
 
-    /**
-     * Initialize set of key presses and key bindings.
-     */
+    /** Initialize set of key presses and key bindings. */
     public KeyTracker() {
         values = new HashSet<String>();
     }
@@ -52,8 +53,7 @@ public final class KeyTracker extends KeyAdapter {
 
     @Override
     public void keyPressed(KeyEvent e) {
-        if(e.getKeyCode() == KeyEvent.VK_ESCAPE)
-            System.exit(0);
+        if (e.getKeyCode() == KeyEvent.VK_ESCAPE) System.exit(0);
 
         values.add(getKeyName(e));
     }
@@ -62,5 +62,4 @@ public final class KeyTracker extends KeyAdapter {
     public void keyReleased(KeyEvent e) {
         values.remove(getKeyName(e));
     }
-
 }

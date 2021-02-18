@@ -1,9 +1,14 @@
+// Copyright (c) 2021 StuyPulse Inc. All rights reserved.
+// This work is licensed under the terms of the MIT license
+// found in the root directory of this project.
+
+
 package com.stuypulse.stuylib.input.gamepads;
+
+import com.stuypulse.stuylib.util.chart.KeyTracker;
 
 import java.awt.Color;
 import javax.swing.JFrame;
-
-import com.stuypulse.stuylib.util.chart.KeyTracker;
 
 /**
  * This class opens a window to accept keyboard input that acts as a gamepad. It is meant to be used
@@ -14,24 +19,16 @@ import com.stuypulse.stuylib.util.chart.KeyTracker;
  */
 public class SimKeyGamepad extends KeyGamepad {
 
-    /**
-     * Default size of an input area
-     */
+    /** Default size of an input area */
     private static final int DEFAULT_WIDTH = 300, DEFAULT_HEIGHT = 300;
 
-    /**
-     * Opens up a screen in which keyboard input is accepted.
-     */
+    /** Opens up a screen in which keyboard input is accepted. */
     private JFrame inputArea;
 
-    /**
-     * This keytracker is added to the input area to allow us to read key inputs
-     */
+    /** This keytracker is added to the input area to allow us to read key inputs */
     private KeyTracker keyboard;
 
-    /**
-     * Creates a sim gamepad and opens an input area with the default width and height
-     */
+    /** Creates a sim gamepad and opens an input area with the default width and height */
     public SimKeyGamepad() {
         this(DEFAULT_WIDTH, DEFAULT_HEIGHT);
     }
@@ -39,7 +36,7 @@ public class SimKeyGamepad extends KeyGamepad {
     /**
      * Creates a sim gamepad and opens an input area with the given width and height
      *
-     * @param width  width of input area
+     * @param width width of input area
      * @param height height of input area
      */
     public SimKeyGamepad(int width, int height) {
@@ -76,5 +73,4 @@ public class SimKeyGamepad extends KeyGamepad {
         Color color = Color.getHSBColor(0.0f, (float) intensity, 1.0f);
         inputArea.getContentPane().setBackground(color);
     }
-
 }

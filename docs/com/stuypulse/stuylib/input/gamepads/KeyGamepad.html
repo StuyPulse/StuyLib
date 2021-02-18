@@ -13,7 +13,8 @@
 <!--[if IE]>
 <script type="text/javascript" src="../../../../../jquery/jszip-utils/dist/jszip-utils-ie.min.js"></script>
 <![endif]-->
-<script type="text/javascript" src="../../../../../jquery/jquery-3.5.1.js"></script>
+<script type="text/javascript" src="../../../../../jquery/jquery-3.3.1.js"></script>
+<script type="text/javascript" src="../../../../../jquery/jquery-migrate-3.0.1.js"></script>
 <script type="text/javascript" src="../../../../../jquery/jquery-ui.js"></script>
 </head>
 <body>
@@ -141,17 +142,16 @@ $('.navPadding').css('padding-top', $('.fixedNav').css("height"));
 <hr>
 <pre>public class <span class="typeNameLabel">KeyGamepad</span>
 extends <a href="../Gamepad.html" title="class in com.stuypulse.stuylib.input">Gamepad</a></pre>
-<div class="block"><p>
- This is a base class for a gamepad controlled via keyboard. This class controls the keymappings.
+<div class="block">This is a base class for a gamepad controlled via keyboard. This class controls the keymappings.
  <i>All a child controller needs to do is provide a way to check if any keyboard button is
  pressed.</i>
- </p>
 
  <ul>
- <li><b>NOTE:</b> all input types are handled except rumble</li>
- <li><b>NOTE:</b> it is suggested to use this with filtered because your values will always be -1,
- 0, 1. Filtering is not included for simplicity</li>
+   <li><b>NOTE:</b> all input types are handled except rumble
+   <li><b>NOTE:</b> it is suggested to use this with filtered because your values will always be
+       -1, 0, 1. Filtering is not included for simplicity
  </ul>
+
  <br></div>
 <dl>
 <dt><span class="seeLabel">See Also:</span></dt>

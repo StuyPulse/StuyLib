@@ -13,7 +13,8 @@
 <!--[if IE]>
 <script type="text/javascript" src="../../../../jquery/jszip-utils/dist/jszip-utils-ie.min.js"></script>
 <![endif]-->
-<script type="text/javascript" src="../../../../jquery/jquery-3.5.1.js"></script>
+<script type="text/javascript" src="../../../../jquery/jquery-3.3.1.js"></script>
+<script type="text/javascript" src="../../../../jquery/jquery-migrate-3.0.1.js"></script>
 <script type="text/javascript" src="../../../../jquery/jquery-ui.js"></script>
 </head>
 <body>
@@ -141,8 +142,9 @@ extends <a href="Controller.html" title="class in com.stuypulse.stuylib.control"
  detect how much time has passed between each update. It is made to be easy to use and simple to
  understand while still being accurate.
 
- This PID controller resets the integral every time the error crosses 0 to prevent integral windup
- / lag. This means that it may not be suitable for setups involving rate instead of position</div>
+ <p>This PID controller resets the integral every time the error crosses 0 to prevent integral
+ windup / lag. This means that it may not be suitable for setups involving rate instead of
+ position</div>
 </li>
 </ul>
 </div>
@@ -464,10 +466,10 @@ extends <a href="Controller.html" title="class in com.stuypulse.stuylib.control"
 <li class="blockList">
 <h4>setIntegratorFilter</h4>
 <pre class="methodSignature">public&nbsp;<a href="PIDController.html" title="class in com.stuypulse.stuylib.control">PIDController</a>&nbsp;setIntegratorFilter&#8203;(<a href="../streams/filters/IFilter.html" title="interface in com.stuypulse.stuylib.streams.filters">IFilter</a>&nbsp;filter)</pre>
-<div class="block">It is common for a limit filter to be put on the I component to prevent Integral Windup. You can
- use SLMath.limit(x) to do this.
+<div class="block">It is common for a limit filter to be put on the I component to prevent Integral Windup. You
+ can use SLMath.limit(x) to do this.
 
- Passing null will disable the filter</div>
+ <p>Passing null will disable the filter</div>
 <dl>
 <dt><span class="paramLabel">Parameters:</span></dt>
 <dd><code>filter</code> - filter put on the I component of the PID Controller</dd>

@@ -1,3 +1,8 @@
+// Copyright (c) 2021 StuyPulse Inc. All rights reserved.
+// This work is licensed under the terms of the MIT license
+// found in the root directory of this project.
+
+
 package com.stuypulse.stuylib.math;
 
 import edu.wpi.first.wpilibj.geometry.Rotation2d;
@@ -20,6 +25,7 @@ public final class Angle {
     /******************************************************/
 
     public static final Angle kArcMinute = Angle.fromArcMinutes(1.0);
+
     public static final Angle kArcSecond = Angle.fromArcSeconds(1.0);
     public static final Angle kRadiant = Angle.fromRadians(1.0);
     public static final Angle kDegree = Angle.fromDegrees(1.0);
@@ -46,13 +52,14 @@ public final class Angle {
     /********************************/
 
     private static final double kPi = Math.PI;
+
     private static final double kTwoPi = 2.0 * kPi;
 
     /**
      * Normalize an angle in radians around a specified center
      *
      * @param radians the angle to be normalized
-     * @param center  the center of the normalized range +/- pi
+     * @param center the center of the normalized range +/- pi
      * @return the normalized angle
      */
     private static double normalizeRadians(double radians, double center) {
@@ -63,7 +70,7 @@ public final class Angle {
      * Normalize an angle in degrees around a specified center
      *
      * @param degrees the angle to be normalized
-     * @param center  the center of the normalized range +/- 180
+     * @param center the center of the normalized range +/- 180
      * @return the normalized angle
      */
     private static double normalizeDegrees(double degrees, double center) {
@@ -117,7 +124,7 @@ public final class Angle {
     /**
      * Contstruct a new Angle class from x and y positions.
      *
-     * You can think of this as getting the angle from rise [y] over run [x].
+     * <p>You can think of this as getting the angle from rise [y] over run [x].
      *
      * @param x the run of the vector
      * @param y the rise of the vector
@@ -130,7 +137,8 @@ public final class Angle {
     /**
      * Construct a new Angle class from a vector.
      *
-     * This is identicle to calling fromVector(x, y) but by passing in the vectors x and y values.
+     * <p>This is identicle to calling fromVector(x, y) but by passing in the vectors x and y
+     * values.
      *
      * @param vector the vector from which to get the angle from
      * @return the angle of the vector
@@ -142,7 +150,7 @@ public final class Angle {
     /**
      * Construct a new Angle from a slope.
      *
-     * This will get you the angle of any slope in the form of rise / run.
+     * <p>This will get you the angle of any slope in the form of rise / run.
      *
      * @param slope the slope to get the angle from
      * @return the angle of the slope
@@ -155,9 +163,7 @@ public final class Angle {
     /*** CLASS IMPLEMENTATION ***/
     /****************************/
 
-    /**
-     * The value of the angle stored in radians
-     */
+    /** The value of the angle stored in radians */
     private final double mRadians;
 
     /**
@@ -210,7 +216,7 @@ public final class Angle {
     /**
      * Return the StuyLib Angle class in the form of the WPILib Rotation2d.
      *
-     * This function is here in order to make interoperability with WPILib easier so that manual
+     * <p>This function is here in order to make interoperability with WPILib easier so that manual
      * conversion isn't needed as much.
      *
      * @return Rotation2d with the same value as this angle
@@ -311,11 +317,11 @@ public final class Angle {
      * @return both objects are Angle and they equal eachother
      */
     public boolean equals(Object other) {
-        if(this == other) {
+        if (this == other) {
             return true;
         }
 
-        if(other instanceof Angle) {
+        if (other instanceof Angle) {
             return this.toRadians() == ((Angle) other).toRadians();
         }
 
@@ -331,13 +337,11 @@ public final class Angle {
         StringBuilder out = new StringBuilder();
         out.append("Angle(");
 
-        if(STRING_RADIANS) {
-            out.append(SLMath.round(this.toRadians(), STRING_SIGFIGS))
-                    .append("pi, ");
+        if (STRING_RADIANS) {
+            out.append(SLMath.round(this.toRadians(), STRING_SIGFIGS)).append("pi, ");
         }
 
-        out.append(SLMath.round(this.toDegrees(), STRING_SIGFIGS))
-                .append("deg)");
+        out.append(SLMath.round(this.toDegrees(), STRING_SIGFIGS)).append("deg)");
 
         return out.toString();
     }

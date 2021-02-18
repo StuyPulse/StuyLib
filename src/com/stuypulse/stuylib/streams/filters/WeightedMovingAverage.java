@@ -1,3 +1,8 @@
+// Copyright (c) 2021 StuyPulse Inc. All rights reserved.
+// This work is licensed under the terms of the MIT license
+// found in the root directory of this project.
+
+
 package com.stuypulse.stuylib.streams.filters;
 
 /**
@@ -5,14 +10,13 @@ package com.stuypulse.stuylib.streams.filters;
  * average buffer is weighted linearly based on their position in the buffer. The most recent item
  * is weighted the most, and the last item is weighted the least.
  *
- * This implementation is very fast, however, it is also very hard to explain. It does however
+ * <p>This implementation is very fast, however, it is also very hard to explain. It does however
  * correctly calculate a weighted moving average.
  *
- * This implementation is O(1) unlike many other implementations of this algorithm.
+ * <p>This implementation is O(1) unlike many other implementations of this algorithm.
  *
  * @author Sam (sam.belliveau@gmail.com)
  */
-
 public class WeightedMovingAverage implements IFilter {
 
     private int mSize;
@@ -20,11 +24,9 @@ public class WeightedMovingAverage implements IFilter {
     private double mLastAverage;
     private MovingAverage mAverage;
 
-    /**
-     * @param size size of weighted moving average
-     */
+    /** @param size size of weighted moving average */
     public WeightedMovingAverage(int size) {
-        if(size <= 0) {
+        if (size <= 0) {
             throw new IllegalArgumentException("size must be greater than 0!");
         }
 

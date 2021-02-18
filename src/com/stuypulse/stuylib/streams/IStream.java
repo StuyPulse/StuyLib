@@ -1,3 +1,8 @@
+// Copyright (c) 2021 StuyPulse Inc. All rights reserved.
+// This work is licensed under the terms of the MIT license
+// found in the root directory of this project.
+
+
 package com.stuypulse.stuylib.streams;
 
 import com.stuypulse.stuylib.streams.filters.IFilter;
@@ -5,13 +10,12 @@ import com.stuypulse.stuylib.streams.filters.IFilter;
 /**
  * A stream of doubles that is accessed with the .get() function
  *
- * Can be created with lambdas to represent a stream of inputs.
+ * <p>Can be created with lambdas to represent a stream of inputs.
  *
- * It can be filitered with the available filtering options.
+ * <p>It can be filitered with the available filtering options.
  *
  * @author Sam (sam.belliveau@gmail.com)
  */
-
 public interface IStream {
 
     /**

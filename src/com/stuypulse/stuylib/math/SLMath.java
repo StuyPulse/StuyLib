@@ -1,3 +1,8 @@
+// Copyright (c) 2021 StuyPulse Inc. All rights reserved.
+// This work is licensed under the terms of the MIT license
+// found in the root directory of this project.
+
+
 package com.stuypulse.stuylib.math;
 
 /**
@@ -7,12 +12,10 @@ package com.stuypulse.stuylib.math;
  *
  * @author Sam (sam.belliveau@gmail.com)
  */
-
 public final class SLMath {
 
     // Prevent the class from being extended at all
-    private SLMath() {
-    }
+    private SLMath() {}
 
     /**************/
     /*** LIMITS ***/
@@ -21,23 +24,21 @@ public final class SLMath {
     /**
      * Limit input from max to min
      *
-     * @param x   input
+     * @param x input
      * @param min min value for x
      * @param max max value for x
      * @return limited input
      */
     public static double limit(double x, double min, double max) {
-        if(x > max)
-            return max;
-        if(x < min)
-            return min;
+        if (x > max) return max;
+        if (x < min) return min;
         return x;
     }
 
     /**
      * Limit input from max to -max
      *
-     * @param x   input
+     * @param x input
      * @param max max and min value
      * @return limited input
      */
@@ -62,14 +63,14 @@ public final class SLMath {
     /**
      * Dead bands x value with window being the dead band. all values for this are [-1.0...1.0]
      *
-     * @param x      value
+     * @param x value
      * @param window deadband window
      * @return deadbanded value
      */
     public static double deadband(double x, double window) {
         window = Math.abs(window);
 
-        if(Math.abs(x) < window) {
+        if (Math.abs(x) < window) {
             return 0.0;
         } else {
             return (x - Math.copySign(window, x)) / (1.0 - window);
@@ -103,7 +104,7 @@ public final class SLMath {
     /**
      * spow (signless pow), raises a number to a power without affecting the sign of the number
      *
-     * @param x     input
+     * @param x input
      * @param power power to raise x to
      * @return input ^ power
      */
@@ -116,12 +117,12 @@ public final class SLMath {
     /*****************/
 
     /**
-     * fpow (fast pow), is a pow function that takes in an integer for the exponent. This allows it to
-     * be much faster on repeated calls due to the fact that it does not need to deal with fractional
-     * exponents.
+     * fpow (fast pow), is a pow function that takes in an integer for the exponent. This allows it
+     * to be much faster on repeated calls due to the fact that it does not need to deal with
+     * fractional exponents.
      *
      * @param base base of the power
-     * @param exp  integer exponent of power
+     * @param exp integer exponent of power
      * @return result of calculation
      */
     public static double fpow(double base, int exp) {
@@ -129,13 +130,13 @@ public final class SLMath {
         double out = 1.0;
 
         // If the exponent is negative, divide instead of multiply
-        if(exp < 0) {
+        if (exp < 0) {
             // Flip exponent to make calculations easier
             exp = -exp;
 
             // Fast integer power algorithm
-            while(exp > 0) {
-                if((exp & 1) == 1) {
+            while (exp > 0) {
+                if ((exp & 1) == 1) {
                     out /= base;
                 }
                 base *= base;
@@ -143,8 +144,8 @@ public final class SLMath {
             }
         } else {
             // Fast integer power algorithm
-            while(exp > 0) {
-                if((exp & 1) == 1) {
+            while (exp > 0) {
+                if ((exp & 1) == 1) {
                     out *= base;
                 }
                 base *= base;
@@ -159,13 +160,13 @@ public final class SLMath {
     /**
      * Round a double by a certain amount of sigfigs in base 10
      *
-     * @param n       number to round
+     * @param n number to round
      * @param sigfigs amount of sigfigs to round it to
      * @return rounded number
      */
     public static double round(double n, int sigfigs) {
         // The value 0 returns nan if not accounted for
-        if(n == 0.0) {
+        if (n == 0.0) {
             return 0.0;
         }
 

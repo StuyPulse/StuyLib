@@ -1,3 +1,8 @@
+// Copyright (c) 2021 StuyPulse Inc. All rights reserved.
+// This work is licensed under the terms of the MIT license
+// found in the root directory of this project.
+
+
 package com.stuypulse.stuylib.util.chart;
 
 import java.awt.*;
@@ -10,9 +15,7 @@ import java.awt.*;
  */
 public class MouseTracker {
 
-    /**
-     * Panel for size reference
-     */
+    /** Panel for size reference */
     private final Container panel;
 
     /**

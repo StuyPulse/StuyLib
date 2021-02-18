@@ -1,3 +1,8 @@
+// Copyright (c) 2021 StuyPulse Inc. All rights reserved.
+// This work is licensed under the terms of the MIT license
+// found in the root directory of this project.
+
+
 package com.stuypulse.stuylib.util.chart;
 
 import com.stuypulse.stuylib.streams.filters.IFilter;
@@ -15,7 +20,7 @@ public class FilteredGraphData extends GraphData {
     /**
      * Create a Graph (no gui) with the following configuration
      *
-     * @param graph  graph configuration to make a filtered graph from
+     * @param graph graph configuration to make a filtered graph from
      * @param filter filter to filter all the values through
      */
     public FilteredGraphData(GraphData graph, IFilter filter) {
@@ -32,5 +37,4 @@ public class FilteredGraphData extends GraphData {
     public void update(double val) {
         super.update(mFilter.get(val));
     }
-
 }

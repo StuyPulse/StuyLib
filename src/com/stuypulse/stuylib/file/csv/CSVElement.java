@@ -1,14 +1,18 @@
+// Copyright (c) 2021 StuyPulse Inc. All rights reserved.
+// This work is licensed under the terms of the MIT license
+// found in the root directory of this project.
+
+
 package com.stuypulse.stuylib.file.csv;
 
 /**
  * Stores the data for each element in a custom class. This is to prevent the need to parse doubles
  * over and over again, when we can just store it as a double.
  *
- * Call .toString() or .toDouble() to get data
+ * <p>Call .toString() or .toDouble() to get data
  *
  * @author Sam (sam.belliveau@gmail.com)
  */
-
 public class CSVElement {
 
     // If value is a number
@@ -36,7 +40,7 @@ public class CSVElement {
         try {
             number = Double.parseDouble(mStringValue);
             isNumber = true;
-        } catch(NumberFormatException e) {
+        } catch (NumberFormatException e) {
             number = Double.NaN;
             isNumber = false;
         }
@@ -70,7 +74,7 @@ public class CSVElement {
      * @return value as a double
      */
     public double toDouble() throws NumberFormatException {
-        if(isDouble()) {
+        if (isDouble()) {
             return mNumberValue;
         } else {
             String message = "";

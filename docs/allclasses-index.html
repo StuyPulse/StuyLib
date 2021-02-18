@@ -13,7 +13,8 @@
 <!--[if IE]>
 <script type="text/javascript" src="jquery/jszip-utils/dist/jszip-utils-ie.min.js"></script>
 <![endif]-->
-<script type="text/javascript" src="jquery/jquery-3.5.1.js"></script>
+<script type="text/javascript" src="jquery/jquery-3.3.1.js"></script>
+<script type="text/javascript" src="jquery/jquery-migrate-3.0.1.js"></script>
 <script type="text/javascript" src="jquery/jquery-ui.js"></script>
 </head>
 <body>
@@ -118,9 +119,7 @@ $('.navPadding').css('padding-top', $('.fixedNav').css("height"));
 <tr id="i1" class="rowColor">
 <td class="colFirst"><a href="com/stuypulse/stuylib/control/BangBangController.html" title="class in com.stuypulse.stuylib.control">BangBangController</a></td>
 <th class="colLast" scope="row">
-<div class="block">A simple implementation of a BangBangController for the Stuylib Controller
-
- When the error is positive, it returns a fixed positive value.</div>
+<div class="block">A simple implementation of a BangBangController for the Stuylib Controller</div>
 </th>
 </tr>
 <tr id="i2" class="altColor">
@@ -132,9 +131,7 @@ $('.navPadding').css('padding-top', $('.fixedNav').css("height"));
 <tr id="i3" class="rowColor">
 <td class="colFirst"><a href="com/stuypulse/stuylib/streams/BufferedIStream.html" title="class in com.stuypulse.stuylib.streams">BufferedIStream</a></td>
 <th class="colLast" scope="row">
-<div class="block">This class allows you to use an input stream while recording the last N values from the stream
-
- It extends from IStream, so it also works with the existing IStream classes</div>
+<div class="block">This class allows you to use an input stream while recording the last N values from the stream</div>
 </th>
 </tr>
 <tr id="i4" class="altColor">
@@ -160,9 +157,7 @@ $('.navPadding').css('padding-top', $('.fixedNav').css("height"));
 <td class="colFirst"><a href="com/stuypulse/stuylib/streams/CSVIStream.html" title="class in com.stuypulse.stuylib.streams">CSVIStream</a></td>
 <th class="colLast" scope="row">
 <div class="block">Class Writer allows you to read input from an IStream into a CSV file Class Reader is an IStream
- that reads from CSV file
-
- They extend from IStream, so they also work with the existing IStream classes</div>
+ that reads from CSV file</div>
 </th>
 </tr>
 <tr id="i8" class="altColor">
@@ -174,8 +169,8 @@ $('.navPadding').css('padding-top', $('.fixedNav').css("height"));
 <tr id="i9" class="rowColor">
 <td class="colFirst"><a href="com/stuypulse/stuylib/streams/CSVIStream.Writer.html" title="class in com.stuypulse.stuylib.streams">CSVIStream.Writer</a></td>
 <th class="colLast" scope="row">
-<div class="block">This CSVIStream writer let an IStream pass through while recording the values of the IStream into
- a CSV file.</div>
+<div class="block">This CSVIStream writer let an IStream pass through while recording the values of the IStream
+ into a CSV file.</div>
 </th>
 </tr>
 <tr id="i10" class="altColor">
@@ -199,10 +194,7 @@ $('.navPadding').css('padding-top', $('.fixedNav').css("height"));
 <tr id="i13" class="rowColor">
 <td class="colFirst"><a href="com/stuypulse/stuylib/streams/filters/ExpMovingAverage.html" title="class in com.stuypulse.stuylib.streams.filters">ExpMovingAverage</a></td>
 <th class="colLast" scope="row">
-<div class="block">Simple implementation of an Exponential Moving Average
-
- This is not time dependant, so the values will change if you change the rate that you call this
- filter, the filter will not adapt for that.</div>
+<div class="block">Simple implementation of an Exponential Moving Average</div>
 </th>
 </tr>
 <tr id="i14" class="altColor">
@@ -214,9 +206,7 @@ $('.navPadding').css('padding-top', $('.fixedNav').css("height"));
 <tr id="i15" class="rowColor">
 <td class="colFirst"><a href="com/stuypulse/stuylib/streams/FilteredIStream.html" title="class in com.stuypulse.stuylib.streams">FilteredIStream</a></td>
 <th class="colLast" scope="row">
-<div class="block">Takes a Stream and a StreamFilter and makes a FilteredStream
-
- This could be used to automatically filter controller inputs</div>
+<div class="block">Takes a Stream and a StreamFilter and makes a FilteredStream</div>
 </th>
 </tr>
 <tr id="i16" class="altColor">
@@ -228,8 +218,8 @@ $('.navPadding').css('padding-top', $('.fixedNav').css("height"));
 <tr id="i17" class="rowColor">
 <td class="colFirst"><a href="com/stuypulse/stuylib/file/FRCLogger.Loggable.html" title="interface in com.stuypulse.stuylib.file">FRCLogger.Loggable</a></td>
 <th class="colLast" scope="row">
-<div class="block">The Loggable interface should be implemented by a class that can return a useful piece of data
- that can be called on demand to be written into the log.</div>
+<div class="block">The Loggable interface should be implemented by a class that can return a useful piece of
+ data that can be called on demand to be written into the log.</div>
 </th>
 </tr>
 <tr id="i18" class="altColor">
@@ -265,9 +255,7 @@ $('.navPadding').css('padding-top', $('.fixedNav').css("height"));
 <tr id="i23" class="rowColor">
 <td class="colFirst"><a href="com/stuypulse/stuylib/streams/IStream.html" title="interface in com.stuypulse.stuylib.streams">IStream</a></td>
 <th class="colLast" scope="row">
-<div class="block">A stream of doubles that is accessed with the .get() function
-
- Can be created with lambdas to represent a stream of inputs.</div>
+<div class="block">A stream of doubles that is accessed with the .get() function</div>
 </th>
 </tr>
 <tr id="i24" class="altColor">
@@ -279,8 +267,7 @@ $('.navPadding').css('padding-top', $('.fixedNav').css("height"));
 <tr id="i25" class="rowColor">
 <td class="colFirst"><a href="com/stuypulse/stuylib/input/gamepads/KeyGamepad.html" title="class in com.stuypulse.stuylib.input.gamepads">KeyGamepad</a></td>
 <th class="colLast" scope="row">
-<div class="block">
- This is a base class for a gamepad controlled via keyboard.</div>
+<div class="block">This is a base class for a gamepad controlled via keyboard.</div>
 </th>
 </tr>
 <tr id="i26" class="altColor">
@@ -320,13 +307,15 @@ $('.navPadding').css('padding-top', $('.fixedNav').css("height"));
 <tr id="i33" class="rowColor">
 <td class="colFirst"><a href="com/stuypulse/stuylib/input/gamepads/Logitech.DMode.html" title="class in com.stuypulse.stuylib.input.gamepads">Logitech.DMode</a></td>
 <th class="colLast" scope="row">
-<div class="block">There is a switch on the back of the controller this is for when the switch is in the D position</div>
+<div class="block">There is a switch on the back of the controller this is for when the switch is in the D
+ position</div>
 </th>
 </tr>
 <tr id="i34" class="altColor">
 <td class="colFirst"><a href="com/stuypulse/stuylib/input/gamepads/Logitech.XMode.html" title="class in com.stuypulse.stuylib.input.gamepads">Logitech.XMode</a></td>
 <th class="colLast" scope="row">
-<div class="block">There is a switch on the back of the controller this is for when the switch is in the X position</div>
+<div class="block">There is a switch on the back of the controller this is for when the switch is in the X
+ position</div>
 </th>
 </tr>
 <tr id="i35" class="rowColor">
@@ -350,18 +339,13 @@ $('.navPadding').css('padding-top', $('.fixedNav').css("height"));
 <tr id="i38" class="altColor">
 <td class="colFirst"><a href="com/stuypulse/stuylib/streams/filters/MovingAverage.html" title="class in com.stuypulse.stuylib.streams.filters">MovingAverage</a></td>
 <th class="colLast" scope="row">
-<div class="block">An implementation of an Simple Moving Average
-
- This is not time dependant, so the values will change if you change the rate that you call this
- filter, the filter will not adapt for that.</div>
+<div class="block">An implementation of an Simple Moving Average</div>
 </th>
 </tr>
 <tr id="i39" class="rowColor">
 <td class="colFirst"><a href="com/stuypulse/stuylib/input/keyboard/NetKeyboard.html" title="class in com.stuypulse.stuylib.input.keyboard">NetKeyboard</a></td>
 <th class="colLast" scope="row">
-<div class="block">This class lets you send and receive keyboard information over network tables
-
- Every other class will interact with the network keyboards through this class</div>
+<div class="block">This class lets you send and receive keyboard information over network tables</div>
 </th>
 </tr>
 <tr id="i40" class="altColor">
@@ -374,11 +358,7 @@ $('.navPadding').css('padding-top', $('.fixedNav').css("height"));
 <td class="colFirst"><a href="com/stuypulse/stuylib/input/keyboard/computer/NetKeyListener.html" title="class in com.stuypulse.stuylib.input.keyboard.computer">NetKeyListener</a></td>
 <th class="colLast" scope="row">
 <div class="block">A KeyListener that uploads all of the key strokes to a network table where they can then be
- received and put into the robot
-
- This would not be used on the robot, but should be used on the users computer
-
- Make an AWT window to use this listener</div>
+ received and put into the robot</div>
 </th>
 </tr>
 <tr id="i42" class="altColor">
@@ -422,9 +402,7 @@ $('.navPadding').css('padding-top', $('.fixedNav').css("height"));
 <tr id="i48" class="altColor">
 <td class="colFirst"><a href="com/stuypulse/stuylib/streams/PollingIStream.html" title="class in com.stuypulse.stuylib.streams">PollingIStream</a></td>
 <th class="colLast" scope="row">
-<div class="block">Takes an IStream and an IStreamFilter and makes a PollingIStream
-
- A PollingIStream calls .get() every x milliseconds instead of when the user calls get</div>
+<div class="block">Takes an IStream and an IStreamFilter and makes a PollingIStream</div>
 </th>
 </tr>
 <tr id="i49" class="rowColor">
@@ -436,12 +414,7 @@ $('.navPadding').css('padding-top', $('.fixedNav').css("height"));
 <tr id="i50" class="altColor">
 <td class="colFirst"><a href="com/stuypulse/stuylib/streams/filters/RateLimit.html" title="class in com.stuypulse.stuylib.streams.filters">RateLimit</a></td>
 <th class="colLast" scope="row">
-<div class="block">This class lets you rate limit a stream of inputs
-
- That means that the value can not change more than a specified amount in one update
-
- This is not time dependant, so the values will change if you change the rate that you call this
- filter, the filter will not adapt for that.</div>
+<div class="block">This class lets you rate limit a stream of inputs</div>
 </th>
 </tr>
 <tr id="i51" class="rowColor">
@@ -521,10 +494,7 @@ $('.navPadding').css('padding-top', $('.fixedNav').css("height"));
 <tr id="i63" class="rowColor">
 <td class="colFirst"><a href="com/stuypulse/stuylib/streams/filters/TimedRateLimit.html" title="class in com.stuypulse.stuylib.streams.filters">TimedRateLimit</a></td>
 <th class="colLast" scope="row">
-<div class="block">This class lets you rate limit a stream of inputs
-
- Instead of being based on the rate that update is called, the value you give it is based on how
- much it should be able to change in one second.</div>
+<div class="block">This class lets you rate limit a stream of inputs</div>
 </th>
 </tr>
 <tr id="i64" class="altColor">

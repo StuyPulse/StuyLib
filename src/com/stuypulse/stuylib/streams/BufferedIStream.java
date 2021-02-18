@@ -1,19 +1,21 @@
+// Copyright (c) 2021 StuyPulse Inc. All rights reserved.
+// This work is licensed under the terms of the MIT license
+// found in the root directory of this project.
+
+
 package com.stuypulse.stuylib.streams;
 
 /**
  * This class allows you to use an input stream while recording the last N values from the stream
  *
- * It extends from IStream, so it also works with the existing IStream classes
+ * <p>It extends from IStream, so it also works with the existing IStream classes
  *
  * @author Kevin (kc16777216@gmail.com)
  * @author Sam (sam.belliveau@gmail.com)
  */
-
 public class BufferedIStream implements IStream {
 
-    /**
-     * Default size of the buffer in BufferedIStream
-     */
+    /** Default size of the buffer in BufferedIStream */
     public static final int kDefaultSize = 50;
 
     private double[] mBuffer;
@@ -23,10 +25,10 @@ public class BufferedIStream implements IStream {
      * Creates a buffered istream with an istream and a custom buffer size
      *
      * @param istream istream that will be buffered
-     * @param size    size of buffer
+     * @param size size of buffer
      */
     public BufferedIStream(IStream istream, int size) {
-        if(size <= 0) {
+        if (size <= 0) {
             throw new IllegalArgumentException("size must be greater than 0");
         }
 
@@ -59,7 +61,7 @@ public class BufferedIStream implements IStream {
      * @return value from the istream
      */
     public double get(int delta) {
-        for(int i = mBuffer.length - 1; i > 0; --i) {
+        for (int i = mBuffer.length - 1; i > 0; --i) {
             mBuffer[i] = mBuffer[i - 1];
         }
 

@@ -1,3 +1,8 @@
+// Copyright (c) 2021 StuyPulse Inc. All rights reserved.
+// This work is licensed under the terms of the MIT license
+// found in the root directory of this project.
+
+
 package com.stuypulse.stuylib.network;
 
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
@@ -10,21 +15,17 @@ import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
  */
 public class SmartBoolean {
 
-    /**
-     * The ID / Name for the value on SmartDashboard.
-     */
+    /** The ID / Name for the value on SmartDashboard. */
     private String mTableID;
 
-    /**
-     * The default value that the SmartDashboard value was set too.
-     */
+    /** The default value that the SmartDashboard value was set too. */
     private boolean mDefaultValue;
 
     /**
      * Creates a SmartBoolean with the element name and a default value. The value on SmartDashboard
      * will be reset to the default value on initialization.
      *
-     * @param id    the name of the boolean on SmartDashboard
+     * @param id the name of the boolean on SmartDashboard
      * @param value the default / initialization value for the value
      */
     public SmartBoolean(String id, boolean value) {
@@ -80,9 +81,7 @@ public class SmartBoolean {
         mDefaultValue = value;
     }
 
-    /**
-     * Resets the value on SmartDashboard to the default value
-     */
+    /** Resets the value on SmartDashboard to the default value */
     public void reset() {
         set(getDefault());
     }

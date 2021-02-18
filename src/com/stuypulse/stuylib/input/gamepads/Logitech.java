@@ -1,3 +1,8 @@
+// Copyright (c) 2021 StuyPulse Inc. All rights reserved.
+// This work is licensed under the terms of the MIT license
+// found in the root directory of this project.
+
+
 package com.stuypulse.stuylib.input.gamepads;
 
 import com.stuypulse.stuylib.input.WPIGamepad;
@@ -7,7 +12,6 @@ import com.stuypulse.stuylib.input.WPIGamepad;
  *
  * @author Sam (sam.belliveau@gmail.com)
  */
-
 public class Logitech extends WPIGamepad {
 
     // Constructor //
@@ -33,7 +37,8 @@ public class Logitech extends WPIGamepad {
     }
 
     /**
-     * There is a switch on the back of the controller this is for when the switch is in the D position
+     * There is a switch on the back of the controller this is for when the switch is in the D
+     * position
      */
     public static class DMode extends Logitech {
 
@@ -119,7 +124,8 @@ public class Logitech extends WPIGamepad {
     }
 
     /**
-     * There is a switch on the back of the controller this is for when the switch is in the X position
+     * There is a switch on the back of the controller this is for when the switch is in the X
+     * position
      */
     public static class XMode extends Logitech {
 

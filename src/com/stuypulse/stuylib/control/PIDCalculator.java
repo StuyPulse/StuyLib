@@ -1,10 +1,15 @@
+// Copyright (c) 2021 StuyPulse Inc. All rights reserved.
+// This work is licensed under the terms of the MIT license
+// found in the root directory of this project.
+
+
 package com.stuypulse.stuylib.control;
 
+import com.stuypulse.stuylib.math.SLMath;
 import com.stuypulse.stuylib.streams.filters.IFilter;
 import com.stuypulse.stuylib.streams.filters.IFilterGroup;
 import com.stuypulse.stuylib.streams.filters.MovingAverage;
 import com.stuypulse.stuylib.util.StopWatch;
-import com.stuypulse.stuylib.math.SLMath;
 
 /**
  * This is a Bang-Bang controller that while controlling the robot, will be able to calculate the
@@ -49,9 +54,7 @@ public class PIDCalculator extends Controller {
     // Whether or not the system will measure the oscillation
     private boolean mRunning;
 
-    /**
-     * @param speed motor output for bang bang controller
-     */
+    /** @param speed motor output for bang bang controller */
     public PIDCalculator(Number speed) {
         mControlSpeed = speed;
 
@@ -85,19 +88,19 @@ public class PIDCalculator extends Controller {
      */
     protected double calculate(double error) {
         // If there is a gap in updates, then disable until next period
-        if(getRate() > kMaxTimeBeforeReset) {
+        if (getRate() > kMaxTimeBeforeReset) {
             mRunning = false;
         }
 
         // Check if we crossed 0, ie, time for next update
         double sign = Math.signum(error);
-        if((error * sign) < (getRawVelocity() * sign)) {
+        if ((error * sign) < (getRawVelocity() * sign)) {
             // Get period and amplitude
             double period = mPeriodTimer.reset() * 2.0;
             double amplitude = mLocalMax;
 
             // If we are running and period is valid, record it
-            if(mRunning && kMinPeriodTime < period) {
+            if (mRunning && kMinPeriodTime < period) {
                 mPeriod = mPeriodFilter.get(period);
                 mAmplitude = mAmplitudeFilter.get(amplitude);
             }
@@ -111,7 +114,7 @@ public class PIDCalculator extends Controller {
         mLocalMax = Math.max(Math.abs(mLocalMax), Math.abs(error));
 
         // Return bang bang control
-        if(error < 0) {
+        if (error < 0) {
             return -mControlSpeed.doubleValue();
         } else {
             return mControlSpeed.doubleValue();
@@ -147,7 +150,7 @@ public class PIDCalculator extends Controller {
         kI = Math.max(kI, 0.0);
         kD = Math.max(kD, 0.0);
 
-        if(mAmplitude > 0) {
+        if (mAmplitude > 0) {
             double t = getT();
             double k = getK();
 
@@ -157,40 +160,33 @@ public class PIDCalculator extends Controller {
         }
     }
 
-    /**
-     * @return calculated PID controller based off of measurements
-     */
+    /** @return calculated PID controller based off of measurements */
     public PIDController getPIDController() {
         return getPIDController(0.6, 1.2, 3.0 / 40.0);
     }
 
-    /**
-     * @return calculated PI controller based off of measurements
-     */
+    /** @return calculated PI controller based off of measurements */
     public PIDController getPIController() {
         return getPIDController(0.45, 0.54, -1);
     }
 
-    /**
-     * @return calculated PD controller based off of measurements
-     */
+    /** @return calculated PD controller based off of measurements */
     public PIDController getPDController() {
         return getPIDController(0.8, -1, 1.0 / 10.0);
     }
 
-    /**
-     * @return calculated P controller based off of measurements
-     */
+    /** @return calculated P controller based off of measurements */
     public PIDController getPController() {
         return getPIDController(0.5, -1, -1);
     }
 
-    /**
-     * @return information about this PIDController
-     */
+    /** @return information about this PIDController */
     public String toString() {
-        return "(K: " + SLMath.round(getK(), 4) + ", T: "
-                + SLMath.round(getT(), 4) + ") "
+        return "(K: "
+                + SLMath.round(getK(), 4)
+                + ", T: "
+                + SLMath.round(getT(), 4)
+                + ") "
                 + getPIDController().toString();
     }
 }
