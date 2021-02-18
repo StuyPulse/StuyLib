@@ -37,21 +37,17 @@ public class MovingAverage implements IFilter {
         mSize = size;
         mValues = new LinkedList<>();
         mTotal = 0.0;
-
-        while (mValues.size() < mSize) {
-            mValues.add(0.0);
-        }
     }
 
     public double get(double next) {
-        // Remove old value
-        mTotal -= mValues.remove();
-
         // Add new value
         mValues.add(next);
         mTotal += next;
 
+        // Remove old values
+        while (mSize < mValues.size()) mTotal -= mValues.remove();
+
         // Return average
-        return mTotal / mSize;
+        return mTotal / mValues.size();
     }
 }

@@ -20,7 +20,7 @@ import com.stuypulse.stuylib.input.Gamepad;
  *
  * <br>
  *
- * @see IFilter
+ * @see com.stuypulse.stuylib.streams.filters.IFilter
  * @author Myles Pasetsky (selym3)
  */
 public class KeyGamepad extends Gamepad {
