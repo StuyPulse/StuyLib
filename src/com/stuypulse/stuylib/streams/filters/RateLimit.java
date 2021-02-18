@@ -17,7 +17,7 @@ import com.stuypulse.stuylib.math.SLMath;
  *
  * @author Sam (sam.belliveau@gmail.com)
  */
-public class RateLimit extends IFilterGroup {
+public class RateLimit implements IFilter {
 
     // Used to limit the change from the last value
     private double mLastValue;
@@ -38,6 +38,6 @@ public class RateLimit extends IFilterGroup {
     }
 
     public double get(double next) {
-        return mLastValue += SLMath.limit(next, mRateLimit.doubleValue());
+        return mLastValue += SLMath.limit(next - mLastValue, mRateLimit.doubleValue());
     }
 }
