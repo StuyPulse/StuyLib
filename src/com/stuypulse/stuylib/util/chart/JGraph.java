@@ -87,8 +87,11 @@ public class JGraph {
         // FRAME LISTENER //
         frame.getContentPane().add(chartPanel);
 
-        frame.setResizable(true);
+        frame.setResizable(false);
+        
         frame.pack();
+
+        frame.setLocationRelativeTo(null);
         frame.setVisible(true);
     }
 
@@ -119,6 +122,7 @@ public class JGraph {
             i.updateXYChart(instance);
         }
 
+        Toolkit.getDefaultToolkit().sync();
         chartPanel.revalidate();
         chartPanel.repaint();
     }
@@ -134,6 +138,7 @@ public class JGraph {
             i.updateXYChart(instance);
         }
 
+        Toolkit.getDefaultToolkit().sync();
         chartPanel.revalidate();
         chartPanel.repaint();
     }
