@@ -38,6 +38,6 @@ public class TimedRateLimit implements IFilter {
 
     public double get(double next) {
         return mLastValue +=
-                SLMath.limit(next - mLastValue, mRateLimit.doubleValue() * mTimer.reset());
+                SLMath.clamp(next - mLastValue, mRateLimit.doubleValue() * mTimer.reset());
     }
 }

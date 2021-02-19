@@ -22,38 +22,43 @@ public final class SLMath {
     /**************/
 
     /**
-     * Limit input from max to min
+     * clamp input from max to min
      *
      * @param x input
      * @param min min value for x
      * @param max max value for x
-     * @return limited input
+     * @return clamp input
      */
-    public static double limit(double x, double min, double max) {
-        if (x > max) return max;
-        if (x < min) return min;
+    public static double clamp(double x, double min, double max) {
+        if (min < max) {
+            if (x > max) return max;
+            if (x < min) return min;
+        } else {
+            if (x > min) return min;
+            if (x < max) return max;
+        }
         return x;
     }
 
     /**
-     * Limit input from max to -max
+     * clamp input from max to -max
      *
      * @param x input
      * @param max max and min value
-     * @return limited input
+     * @return clamped input
      */
-    public static double limit(double x, double max) {
-        return limit(x, -max, max);
+    public static double clamp(double x, double max) {
+        return clamp(x, -max, max);
     }
 
     /**
-     * Limit input from -1 to 1
+     * clamp input from -1 to 1
      *
      * @param x input
-     * @return limited input
+     * @return clamped input
      */
-    public static double limit(double x) {
-        return limit(x, 1.0);
+    public static double clamp(double x) {
+        return clamp(x, 1.0);
     }
 
     /**************************/
@@ -85,20 +90,20 @@ public final class SLMath {
      * [WARNING! THIS WILL KEEP THE SIGN OF THE INPUT NUMBER] Square number and keep sign
      *
      * @param x input
-     * @return squared input with the same sign and limited
+     * @return squared input with the same sign
      */
     public static double square(double x) {
-        return limit(x * x * Math.signum(x));
+        return clamp(x * x * Math.signum(x));
     }
 
     /**
-     * Cube number
+     * Cube a number
      *
      * @param x input
-     * @return cubed input
+     * @return cubed input that
      */
     public static double cube(double x) {
-        return limit(x * x * x);
+        return x * x * x;
     }
 
     /**
@@ -109,7 +114,7 @@ public final class SLMath {
      * @return input ^ power
      */
     public static double spow(double x, double power) {
-        return limit(Math.pow(Math.abs(x), power) * Math.signum(x));
+        return Math.pow(Math.abs(x), power) * Math.signum(x);
     }
 
     /*****************/

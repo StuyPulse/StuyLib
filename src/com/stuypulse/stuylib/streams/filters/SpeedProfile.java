@@ -69,10 +69,10 @@ public class SpeedProfile implements IFilter {
         double targetAccel = next - projected;
 
         // Limit the acceleration change by jerk limit
-        mAccel += SLMath.limit(targetAccel - mAccel, mJerkLimit.doubleValue());
+        mAccel += SLMath.clamp(targetAccel - mAccel, mJerkLimit.doubleValue());
 
         // Limit acceleration
-        mAccel = SLMath.limit(mAccel, mAccelLimit.doubleValue());
+        mAccel = SLMath.clamp(mAccel, mAccelLimit.doubleValue());
 
         // Add acceleration to speed value
         return mSpeed += mAccel;

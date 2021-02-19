@@ -38,6 +38,6 @@ public class RateLimit implements IFilter {
     }
 
     public double get(double next) {
-        return mLastValue += SLMath.limit(next - mLastValue, mRateLimit.doubleValue());
+        return mLastValue += SLMath.clamp(next - mLastValue, mRateLimit.doubleValue());
     }
 }
