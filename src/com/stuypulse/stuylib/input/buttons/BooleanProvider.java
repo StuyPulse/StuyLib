@@ -5,7 +5,7 @@
 package com.stuypulse.stuylib.input.buttons;
 
 /**
- * Interface that provides boolean for button classes
+ * Interface that provides booleans for button classes
  *
  * @author Sam (sam.belliveau@gmail.com)
  */
