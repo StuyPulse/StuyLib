@@ -83,7 +83,7 @@ public class JGraph {
         frame.getContentPane().add(chartPanel);
 
         frame.setResizable(false);
-        
+
         frame.pack();
 
         frame.setLocationRelativeTo(null);
