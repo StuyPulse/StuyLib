@@ -116,11 +116,11 @@ public class Xbox extends Gamepad {
     }
 
     // Analog Stick Buttons //
-    public boolean getRawLeftAnalogButton() {
+    public boolean getRawLeftStickButton() {
         return getJoystick().getStickButton(Hand.kLeft);
     }
 
-    public boolean getRawRightAnalogButton() {
+    public boolean getRawRightStickButton() {
         return getJoystick().getStickButton(Hand.kRight);
     }
 }

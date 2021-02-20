@@ -117,11 +117,11 @@ public class KeyGamepad extends Gamepad {
     }
 
     // Analog Stick Buttons //
-    public boolean getRawLeftAnalogButton() {
+    public boolean getRawLeftStickButton() {
         return getKey("f");
     }
 
-    public boolean getRawRightAnalogButton() {
+    public boolean getRawRightStickButton() {
         return getKey("h");
     }
 }

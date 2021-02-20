@@ -6,6 +6,9 @@ package com.stuypulse.stuylib.input;
 
 import com.stuypulse.stuylib.math.Vector2D;
 
+import edu.wpi.first.wpilibj.Sendable;
+import edu.wpi.first.wpilibj.smartdashboard.SendableBuilder;
+import edu.wpi.first.wpilibj.smartdashboard.SendableRegistry;
 import edu.wpi.first.wpilibj2.command.button.Button;
 
 /**
@@ -23,7 +26,18 @@ import edu.wpi.first.wpilibj2.command.button.Button;
  *
  * @author Sam (sam.belliveau@gmail.com)
  */
-public class Gamepad {
+public class Gamepad implements Sendable {
+
+    /*******************/
+    /*** CONSTRUCTOR ***/
+    /*******************/
+
+    public Gamepad() {
+        String name = this.getClass().getSimpleName();
+        name = name.substring(name.lastIndexOf('.') + 1);
+        name = String.format("Gamepad [%s]", name);
+        SendableRegistry.addLW(this, name);
+    }
 
     /*******************************/
     /*** IMPLEMENTABLE FUNCTIONS ***/
@@ -113,11 +127,11 @@ public class Gamepad {
     }
 
     // Analog Stick Buttons //
-    public boolean getRawLeftAnalogButton() {
+    public boolean getRawLeftStickButton() {
         return false;
     }
 
-    public boolean getRawRightAnalogButton() {
+    public boolean getRawRightStickButton() {
         return false;
     }
 
@@ -229,10 +243,54 @@ public class Gamepad {
 
     // Analog Stick Buttons //
     public final Button getLeftAnalogButton() {
-        return new Button(this::getRawLeftAnalogButton);
+        return new Button(this::getRawLeftStickButton);
     }
 
     public final Button getRightAnalogButton() {
-        return new Button(this::getRawRightAnalogButton);
+        return new Button(this::getRawRightStickButton);
+    }
+
+    /*******************************/
+    /*** SENDABLE INITIALIZATION ***/
+    /*******************************/
+
+    @Override
+    public final void initSendable(SendableBuilder builder) {
+        // Left Stick
+        builder.addDoubleProperty("Left Stick X", this::getLeftX, x -> {});
+        builder.addDoubleProperty("Left Stick Y", this::getLeftY, x -> {});
+
+        // Right Stick
+        builder.addDoubleProperty("Right Stick X", this::getRightX, x -> {});
+        builder.addDoubleProperty("Right Stick Y", this::getRightY, x -> {});
+
+        // D-Pad
+        builder.addBooleanProperty("D-Pad Up", this::getRawDPadUp, x -> {});
+        builder.addBooleanProperty("D-Pad Down", this::getRawDPadDown, x -> {});
+        builder.addBooleanProperty("D-Pad Left", this::getRawDPadLeft, x -> {});
+        builder.addBooleanProperty("D-Pad Right", this::getRawDPadRight, x -> {});
+
+        // Bumpers
+        builder.addBooleanProperty("Bumper Left", this::getRawLeftBumper, x -> {});
+        builder.addBooleanProperty("Bumper Right", this::getRawRightBumper, x -> {});
+
+        // Triggers
+        builder.addDoubleProperty("Trigger Left", this::getLeftTrigger, x -> {});
+        builder.addDoubleProperty("Trigger Right", this::getRightTrigger, x -> {});
+
+        // Face Buttons
+        builder.addBooleanProperty("Face Button Top", this::getRawTopButton, x -> {});
+        builder.addBooleanProperty("Face Button Bottom", this::getRawBottomButton, x -> {});
+        builder.addBooleanProperty("Face Button Left", this::getRawLeftButton, x -> {});
+        builder.addBooleanProperty("Face Button Right", this::getRawRightButton, x -> {});
+
+        // Start / Select / Option
+        builder.addBooleanProperty("Button Select", this::getRawSelectButton, x -> {});
+        builder.addBooleanProperty("Button Start", this::getRawStartButton, x -> {});
+        builder.addBooleanProperty("Button Option", this::getRawOptionButton, x -> {});
+
+        // Analog Stick Buttons
+        builder.addBooleanProperty("Left Stick Button", this::getRawLeftStickButton, x -> {});
+        builder.addBooleanProperty("Right Stick Button", this::getRawRightStickButton, x -> {});
     }
 }

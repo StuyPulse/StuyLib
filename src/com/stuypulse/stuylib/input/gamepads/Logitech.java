@@ -113,11 +113,11 @@ public class Logitech extends WPIGamepad {
         }
 
         // Analog Stick Buttons //
-        public boolean getRawLeftAnalogButton() {
+        public boolean getRawLeftStickButton() {
             return getRawButton(11);
         }
 
-        public boolean getRawRightAnalogButton() {
+        public boolean getRawRightStickButton() {
             return getRawButton(12);
         }
     }
@@ -200,11 +200,11 @@ public class Logitech extends WPIGamepad {
         }
 
         // Analog Stick Buttons //
-        public boolean getRawLeftAnalogButton() {
+        public boolean getRawLeftStickButton() {
             return getRawButton(9);
         }
 
-        public boolean getRawRightAnalogButton() {
+        public boolean getRawRightStickButton() {
             return getRawButton(10);
         }
     }

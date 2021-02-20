@@ -54,8 +54,8 @@ public class GamepadState extends Gamepad {
     public final boolean buttonStart;
     public final boolean buttonOption;
 
-    public final boolean buttonAnalogLeft;
-    public final boolean buttonAnalogRight;
+    public final boolean buttonStickLeft;
+    public final boolean buttonStickRight;
 
     /*******************/
     /*** CONSTRUCTOR ***/
@@ -90,8 +90,8 @@ public class GamepadState extends Gamepad {
         this.buttonStart = gamepad.getRawStartButton();
         this.buttonOption = gamepad.getRawOptionButton();
 
-        this.buttonAnalogLeft = gamepad.getRawLeftAnalogButton();
-        this.buttonAnalogRight = gamepad.getRawRightAnalogButton();
+        this.buttonStickLeft = gamepad.getRawLeftStickButton();
+        this.buttonStickRight = gamepad.getRawRightStickButton();
     }
 
     /*******************************/
@@ -197,11 +197,11 @@ public class GamepadState extends Gamepad {
     }
 
     // Analog Stick Buttons //
-    public boolean getRawLeftAnalogButton() {
-        return this.buttonAnalogLeft;
+    public boolean getRawLeftStickButton() {
+        return this.buttonStickLeft;
     }
 
-    public boolean getRawRightAnalogButton() {
-        return this.buttonAnalogRight;
+    public boolean getRawRightStickButton() {
+        return this.buttonStickRight;
     }
 }
