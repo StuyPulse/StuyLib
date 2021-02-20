@@ -158,12 +158,36 @@ extends java.lang.Object</pre>
 </tr>
 <tr id="i0" class="altColor">
 <td class="colFirst"><code>static double</code></td>
-<th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#cube(double)">cube</a></span>&#8203;(double&nbsp;x)</code></th>
+<th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#clamp(double)">clamp</a></span>&#8203;(double&nbsp;x)</code></th>
 <td class="colLast">
-<div class="block">Cube number</div>
+<div class="block">clamp input from -1 to 1</div>
 </td>
 </tr>
 <tr id="i1" class="rowColor">
+<td class="colFirst"><code>static double</code></td>
+<th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#clamp(double,double)">clamp</a></span>&#8203;(double&nbsp;x,
+     double&nbsp;max)</code></th>
+<td class="colLast">
+<div class="block">clamp input from max to -max</div>
+</td>
+</tr>
+<tr id="i2" class="altColor">
+<td class="colFirst"><code>static double</code></td>
+<th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#clamp(double,double,double)">clamp</a></span>&#8203;(double&nbsp;x,
+     double&nbsp;min,
+     double&nbsp;max)</code></th>
+<td class="colLast">
+<div class="block">clamp input from max to min</div>
+</td>
+</tr>
+<tr id="i3" class="rowColor">
+<td class="colFirst"><code>static double</code></td>
+<th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#cube(double)">cube</a></span>&#8203;(double&nbsp;x)</code></th>
+<td class="colLast">
+<div class="block">Cube a number</div>
+</td>
+</tr>
+<tr id="i4" class="altColor">
 <td class="colFirst"><code>static double</code></td>
 <th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#deadband(double,double)">deadband</a></span>&#8203;(double&nbsp;x,
         double&nbsp;window)</code></th>
@@ -171,36 +195,12 @@ extends java.lang.Object</pre>
 <div class="block">Dead bands x value with window being the dead band.</div>
 </td>
 </tr>
-<tr id="i2" class="altColor">
+<tr id="i5" class="rowColor">
 <td class="colFirst"><code>static double</code></td>
 <th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#fpow(double,int)">fpow</a></span>&#8203;(double&nbsp;base,
     int&nbsp;exp)</code></th>
 <td class="colLast">
 <div class="block">fpow (fast pow), is a pow function that takes in an integer for the exponent.</div>
-</td>
-</tr>
-<tr id="i3" class="rowColor">
-<td class="colFirst"><code>static double</code></td>
-<th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#limit(double)">limit</a></span>&#8203;(double&nbsp;x)</code></th>
-<td class="colLast">
-<div class="block">Limit input from -1 to 1</div>
-</td>
-</tr>
-<tr id="i4" class="altColor">
-<td class="colFirst"><code>static double</code></td>
-<th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#limit(double,double)">limit</a></span>&#8203;(double&nbsp;x,
-     double&nbsp;max)</code></th>
-<td class="colLast">
-<div class="block">Limit input from max to -max</div>
-</td>
-</tr>
-<tr id="i5" class="rowColor">
-<td class="colFirst"><code>static double</code></td>
-<th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#limit(double,double,double)">limit</a></span>&#8203;(double&nbsp;x,
-     double&nbsp;min,
-     double&nbsp;max)</code></th>
-<td class="colLast">
-<div class="block">Limit input from max to min</div>
 </td>
 </tr>
 <tr id="i6" class="altColor">
@@ -250,57 +250,57 @@ extends java.lang.Object</pre>
 <!--   -->
 </a>
 <h3>Method Detail</h3>
-<a id="limit(double,double,double)">
+<a id="clamp(double,double,double)">
 <!--   -->
 </a>
 <ul class="blockList">
 <li class="blockList">
-<h4>limit</h4>
-<pre class="methodSignature">public static&nbsp;double&nbsp;limit&#8203;(double&nbsp;x,
+<h4>clamp</h4>
+<pre class="methodSignature">public static&nbsp;double&nbsp;clamp&#8203;(double&nbsp;x,
                            double&nbsp;min,
                            double&nbsp;max)</pre>
-<div class="block">Limit input from max to min</div>
+<div class="block">clamp input from max to min</div>
 <dl>
 <dt><span class="paramLabel">Parameters:</span></dt>
 <dd><code>x</code> - input</dd>
 <dd><code>min</code> - min value for x</dd>
 <dd><code>max</code> - max value for x</dd>
 <dt><span class="returnLabel">Returns:</span></dt>
-<dd>limited input</dd>
+<dd>clamp input</dd>
 </dl>
 </li>
 </ul>
-<a id="limit(double,double)">
+<a id="clamp(double,double)">
 <!--   -->
 </a>
 <ul class="blockList">
 <li class="blockList">
-<h4>limit</h4>
-<pre class="methodSignature">public static&nbsp;double&nbsp;limit&#8203;(double&nbsp;x,
+<h4>clamp</h4>
+<pre class="methodSignature">public static&nbsp;double&nbsp;clamp&#8203;(double&nbsp;x,
                            double&nbsp;max)</pre>
-<div class="block">Limit input from max to -max</div>
+<div class="block">clamp input from max to -max</div>
 <dl>
 <dt><span class="paramLabel">Parameters:</span></dt>
 <dd><code>x</code> - input</dd>
 <dd><code>max</code> - max and min value</dd>
 <dt><span class="returnLabel">Returns:</span></dt>
-<dd>limited input</dd>
+<dd>clamped input</dd>
 </dl>
 </li>
 </ul>
-<a id="limit(double)">
+<a id="clamp(double)">
 <!--   -->
 </a>
 <ul class="blockList">
 <li class="blockList">
-<h4>limit</h4>
-<pre class="methodSignature">public static&nbsp;double&nbsp;limit&#8203;(double&nbsp;x)</pre>
-<div class="block">Limit input from -1 to 1</div>
+<h4>clamp</h4>
+<pre class="methodSignature">public static&nbsp;double&nbsp;clamp&#8203;(double&nbsp;x)</pre>
+<div class="block">clamp input from -1 to 1</div>
 <dl>
 <dt><span class="paramLabel">Parameters:</span></dt>
 <dd><code>x</code> - input</dd>
 <dt><span class="returnLabel">Returns:</span></dt>
-<dd>limited input</dd>
+<dd>clamped input</dd>
 </dl>
 </li>
 </ul>
@@ -334,7 +334,7 @@ extends java.lang.Object</pre>
 <dt><span class="paramLabel">Parameters:</span></dt>
 <dd><code>x</code> - input</dd>
 <dt><span class="returnLabel">Returns:</span></dt>
-<dd>squared input with the same sign and limited</dd>
+<dd>squared input with the same sign</dd>
 </dl>
 </li>
 </ul>
@@ -345,12 +345,12 @@ extends java.lang.Object</pre>
 <li class="blockList">
 <h4>cube</h4>
 <pre class="methodSignature">public static&nbsp;double&nbsp;cube&#8203;(double&nbsp;x)</pre>
-<div class="block">Cube number</div>
+<div class="block">Cube a number</div>
 <dl>
 <dt><span class="paramLabel">Parameters:</span></dt>
 <dd><code>x</code> - input</dd>
 <dt><span class="returnLabel">Returns:</span></dt>
-<dd>cubed input</dd>
+<dd>cubed input that</dd>
 </dl>
 </li>
 </ul>

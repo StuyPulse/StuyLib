@@ -1,3 +1,0 @@
-# StuyLib File Access
-
-WIP...

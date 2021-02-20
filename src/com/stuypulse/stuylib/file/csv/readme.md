@@ -1,3 +1,0 @@
-# StuyLib CSV Library
-
-WIP...

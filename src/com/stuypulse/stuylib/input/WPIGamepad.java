@@ -4,9 +4,8 @@
 
 package com.stuypulse.stuylib.input;
 
-import com.stuypulse.stuylib.input.buttons.ButtonWrapper;
-
 import edu.wpi.first.wpilibj.Joystick;
+import edu.wpi.first.wpilibj2.command.button.Button;
 
 /**
  * WPI Gamepad extends Gamepad and adds functions that makes interacting with the underlying
@@ -87,8 +86,8 @@ public class WPIGamepad extends Gamepad {
      * @param button Joystick button id
      * @return the value of the button
      */
-    public final ButtonWrapper getButton(int button) {
-        return new ButtonWrapper(() -> getRawButton(button));
+    public final Button getButton(int button) {
+        return new Button(() -> getRawButton(button));
     }
 
     /**

@@ -123,12 +123,7 @@ $('.navPadding').css('padding-top', $('.fixedNav').css("height"));
 <li>java.lang.Object</li>
 <li>
 <ul class="inheritance">
-<li><a href="IFilterGroup.html" title="class in com.stuypulse.stuylib.streams.filters">com.stuypulse.stuylib.streams.filters.IFilterGroup</a></li>
-<li>
-<ul class="inheritance">
 <li>com.stuypulse.stuylib.streams.filters.RateLimit</li>
-</ul>
-</li>
 </ul>
 </li>
 </ul>
@@ -141,7 +136,8 @@ $('.navPadding').css('padding-top', $('.fixedNav').css("height"));
 </dl>
 <hr>
 <pre>public class <span class="typeNameLabel">RateLimit</span>
-extends <a href="IFilterGroup.html" title="class in com.stuypulse.stuylib.streams.filters">IFilterGroup</a></pre>
+extends java.lang.Object
+implements <a href="IFilter.html" title="interface in com.stuypulse.stuylib.streams.filters">IFilter</a></pre>
 <div class="block">This class lets you rate limit a stream of inputs
 
  <p>That means that the value can not change more than a specified amount in one update
@@ -258,8 +254,6 @@ extends <a href="IFilterGroup.html" title="class in com.stuypulse.stuylib.stream
 <dl>
 <dt><span class="overrideSpecifyLabel">Specified by:</span></dt>
 <dd><code><a href="IFilter.html#get(double)">get</a></code>&nbsp;in interface&nbsp;<code><a href="IFilter.html" title="interface in com.stuypulse.stuylib.streams.filters">IFilter</a></code></dd>
-<dt><span class="overrideSpecifyLabel">Overrides:</span></dt>
-<dd><code><a href="IFilterGroup.html#get(double)">get</a></code>&nbsp;in class&nbsp;<code><a href="IFilterGroup.html" title="class in com.stuypulse.stuylib.streams.filters">IFilterGroup</a></code></dd>
 <dt><span class="paramLabel">Parameters:</span></dt>
 <dd><code>next</code> - next input value in the stream</dd>
 <dt><span class="returnLabel">Returns:</span></dt>

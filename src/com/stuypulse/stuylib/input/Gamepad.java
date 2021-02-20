@@ -4,8 +4,9 @@
 
 package com.stuypulse.stuylib.input;
 
-import com.stuypulse.stuylib.input.buttons.ButtonWrapper;
 import com.stuypulse.stuylib.math.Vector2D;
+
+import edu.wpi.first.wpilibj2.command.button.Button;
 
 /**
  * An class for using gamepads with different interfaces. You can implement this class in another
@@ -82,19 +83,19 @@ public class Gamepad {
     }
 
     // Face Buttons //
-    public boolean getRawLeftButton() {
-        return false;
-    }
-
-    public boolean getRawRightButton() {
-        return false;
-    }
-
     public boolean getRawTopButton() {
         return false;
     }
 
     public boolean getRawBottomButton() {
+        return false;
+    }
+
+    public boolean getRawLeftButton() {
+        return false;
+    }
+
+    public boolean getRawRightButton() {
         return false;
     }
 
@@ -152,29 +153,29 @@ public class Gamepad {
         return new Vector2D(this.getDPadX(), this.getDPadY());
     }
 
-    public final ButtonWrapper getDPadUp() {
-        return new ButtonWrapper(this::getRawDPadUp);
+    public final Button getDPadUp() {
+        return new Button(this::getRawDPadUp);
     }
 
-    public final ButtonWrapper getDPadDown() {
-        return new ButtonWrapper(this::getRawDPadDown);
+    public final Button getDPadDown() {
+        return new Button(this::getRawDPadDown);
     }
 
-    public final ButtonWrapper getDPadLeft() {
-        return new ButtonWrapper(this::getRawDPadLeft);
+    public final Button getDPadLeft() {
+        return new Button(this::getRawDPadLeft);
     }
 
-    public final ButtonWrapper getDPadRight() {
-        return new ButtonWrapper(this::getRawDPadRight);
+    public final Button getDPadRight() {
+        return new Button(this::getRawDPadRight);
     }
 
     // Bumpers //
-    public final ButtonWrapper getLeftBumper() {
-        return new ButtonWrapper(this::getRawLeftBumper);
+    public final Button getLeftBumper() {
+        return new Button(this::getRawLeftBumper);
     }
 
-    public final ButtonWrapper getRightBumper() {
-        return new ButtonWrapper(this::getRawRightBumper);
+    public final Button getRightBumper() {
+        return new Button(this::getRawRightBumper);
     }
 
     // Triggers //
@@ -184,54 +185,54 @@ public class Gamepad {
         return getLeftTrigger() > TRIGGER_AXIS_THRESHOLD;
     }
 
-    public final ButtonWrapper getLeftTriggerButton() {
-        return new ButtonWrapper(this::getLeftTriggerPressed);
+    public final Button getLeftTriggerButton() {
+        return new Button(this::getLeftTriggerPressed);
     }
 
     public final boolean getRightTriggerPressed() {
         return getRightTrigger() > TRIGGER_AXIS_THRESHOLD;
     }
 
-    public final ButtonWrapper getRightTriggerButton() {
-        return new ButtonWrapper(this::getRightTriggerPressed);
+    public final Button getRightTriggerButton() {
+        return new Button(this::getRightTriggerPressed);
     }
 
     // Face Buttons //
-    public final ButtonWrapper getLeftButton() {
-        return new ButtonWrapper(this::getRawLeftButton);
+    public final Button getLeftButton() {
+        return new Button(this::getRawLeftButton);
     }
 
-    public final ButtonWrapper getRightButton() {
-        return new ButtonWrapper(this::getRawRightButton);
+    public final Button getRightButton() {
+        return new Button(this::getRawRightButton);
     }
 
-    public final ButtonWrapper getTopButton() {
-        return new ButtonWrapper(this::getRawTopButton);
+    public final Button getTopButton() {
+        return new Button(this::getRawTopButton);
     }
 
-    public final ButtonWrapper getBottomButton() {
-        return new ButtonWrapper(this::getRawBottomButton);
+    public final Button getBottomButton() {
+        return new Button(this::getRawBottomButton);
     }
 
     // Select / Start / Option //
-    public final ButtonWrapper getSelectButton() {
-        return new ButtonWrapper(this::getRawSelectButton);
+    public final Button getSelectButton() {
+        return new Button(this::getRawSelectButton);
     }
 
-    public final ButtonWrapper getStartButton() {
-        return new ButtonWrapper(this::getRawStartButton);
+    public final Button getStartButton() {
+        return new Button(this::getRawStartButton);
     }
 
-    public final ButtonWrapper getOptionButton() {
-        return new ButtonWrapper(this::getRawOptionButton);
+    public final Button getOptionButton() {
+        return new Button(this::getRawOptionButton);
     }
 
     // Analog Stick Buttons //
-    public final ButtonWrapper getLeftAnalogButton() {
-        return new ButtonWrapper(this::getRawLeftAnalogButton);
+    public final Button getLeftAnalogButton() {
+        return new Button(this::getRawLeftAnalogButton);
     }
 
-    public final ButtonWrapper getRightAnalogButton() {
-        return new ButtonWrapper(this::getRawRightAnalogButton);
+    public final Button getRightAnalogButton() {
+        return new Button(this::getRawRightAnalogButton);
     }
 }
