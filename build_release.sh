@@ -8,7 +8,7 @@ if [ -z "$1" ]
     echo "usage: $0 [version]"
 else 
     echo "Removing Old Builds..."
-    rm -f "./build/libs/*.jar"
+    rm -rf "./build/libs"
 
     echo "Force Building Project..."
     ./force_build.sh
