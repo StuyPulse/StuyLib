@@ -46,6 +46,28 @@ public class Polar2D {
     }
 
     /**
+     * Get the distance between two Polar2Ds
+     *
+     * @param other other Polar2D
+     * @return the distance between the two Polar2Ds
+     */
+    public double distance(Polar2D other) {
+        final double a = this.magnitude;
+        final double b = other.magnitude;
+        final Angle t = this.angle.sub(other.angle);
+        return Math.sqrt(a * a + b * b - 2.0 * a * b * t.cos());
+    }
+
+    /**
+     * Get the distance from 0, 0
+     *
+     * @return distance from 0, 0
+     */
+    public double distance() {
+        return this.magnitude;
+    }
+
+    /**
      * Get the magnitude of the Polar2D class
      *
      * @return magnitude of the Polar2D class
