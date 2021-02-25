@@ -37,7 +37,7 @@ public class MovingAverage implements IFilter {
         mValues = new LinkedList<>();
         mTotal = 0.0;
 
-        for(int i = 0; i < mSize; ++i) {
+        for (int i = 0; i < mSize; ++i) {
             mValues.add(0.0);
         }
     }
