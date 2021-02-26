@@ -27,8 +27,8 @@
     catch(err) {
     }
 //-->
-var data = {"i0":9,"i1":9,"i2":9,"i3":9,"i4":9,"i5":9,"i6":9,"i7":9,"i8":9,"i9":9,"i10":9,"i11":9,"i12":9,"i13":9,"i14":9,"i15":9,"i16":9,"i17":9,"i18":9,"i19":9,"i20":9,"i21":9,"i22":9,"i23":9,"i24":9,"i25":9,"i26":9,"i27":9,"i28":9,"i29":9,"i30":9,"i31":9,"i32":9};
-var tabs = {65535:["t0","All Methods"],1:["t1","Static Methods"],8:["t4","Concrete Methods"]};
+var data = {"i0":10,"i1":10,"i2":10,"i3":10,"i4":10,"i5":10,"i6":10,"i7":10,"i8":10,"i9":10,"i10":10,"i11":10,"i12":10,"i13":10,"i14":10,"i15":10,"i16":10,"i17":10,"i18":10,"i19":10,"i20":10,"i21":10,"i22":10,"i23":10,"i24":10,"i25":10,"i26":10,"i27":10,"i28":10,"i29":10,"i30":10};
+var tabs = {65535:["t0","All Methods"],2:["t2","Instance Methods"],8:["t4","Concrete Methods"]};
 var altColor = "altColor";
 var rowColor = "rowColor";
 var tableTab = "tableTab";
@@ -89,13 +89,13 @@ loadScripts(document, 'script');</script>
 <ul class="subNavList">
 <li>Summary:&nbsp;</li>
 <li><a href="#nested.class.summary">Nested</a>&nbsp;|&nbsp;</li>
-<li><a href="#field.summary">Field</a>&nbsp;|&nbsp;</li>
+<li>Field&nbsp;|&nbsp;</li>
 <li><a href="#constructor.summary">Constr</a>&nbsp;|&nbsp;</li>
 <li><a href="#method.summary">Method</a></li>
 </ul>
 <ul class="subNavList">
 <li>Detail:&nbsp;</li>
-<li><a href="#field.detail">Field</a>&nbsp;|&nbsp;</li>
+<li>Field&nbsp;|&nbsp;</li>
 <li><a href="#constructor.detail">Constr</a>&nbsp;|&nbsp;</li>
 <li><a href="#method.detail">Method</a></li>
 </ul>
@@ -131,7 +131,7 @@ $('.navPadding').css('padding-top', $('.fixedNav').css("height"));
 <ul class="blockList">
 <li class="blockList">
 <hr>
-<pre>public class <span class="typeNameLabel">Limelight</span>
+<pre>public final class <span class="typeNameLabel">Limelight</span>
 extends java.lang.Object</pre>
 <div class="block">This is a class that lets you interface with the limelight network table.</div>
 </li>
@@ -157,115 +157,30 @@ extends java.lang.Object</pre>
 <tr class="altColor">
 <td class="colFirst"><code>static class&nbsp;</code></td>
 <th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="Limelight.CameraStream.html" title="enum in com.stuypulse.stuylib.network.limelight">Limelight.CameraStream</a></span></code></th>
-<td class="colLast">&nbsp;</td>
+<td class="colLast">
+<div class="block">Modes for how the camera stream over the network should be delivered</div>
+</td>
 </tr>
 <tr class="rowColor">
 <td class="colFirst"><code>static class&nbsp;</code></td>
 <th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="Limelight.CamMode.html" title="enum in com.stuypulse.stuylib.network.limelight">Limelight.CamMode</a></span></code></th>
-<td class="colLast">&nbsp;</td>
+<td class="colLast">
+<div class="block">Modes for how the Camera should be configured</div>
+</td>
 </tr>
 <tr class="altColor">
 <td class="colFirst"><code>static class&nbsp;</code></td>
 <th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="Limelight.LEDMode.html" title="enum in com.stuypulse.stuylib.network.limelight">Limelight.LEDMode</a></span></code></th>
-<td class="colLast">&nbsp;</td>
+<td class="colLast">
+<div class="block">Modes for how the lights on the Limelight should be configured</div>
+</td>
 </tr>
 <tr class="rowColor">
 <td class="colFirst"><code>static class&nbsp;</code></td>
 <th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="Limelight.SnapshotMode.html" title="enum in com.stuypulse.stuylib.network.limelight">Limelight.SnapshotMode</a></span></code></th>
-<td class="colLast">&nbsp;</td>
-</tr>
-</table>
-</li>
-</ul>
-</section>
-<!-- =========== FIELD SUMMARY =========== -->
-<section role="region">
-<ul class="blockList">
-<li class="blockList"><a id="field.summary">
-<!--   -->
-</a>
-<h3>Field Summary</h3>
-<table class="memberSummary">
-<caption><span>Fields</span><span class="tabEnd">&nbsp;</span></caption>
-<tr>
-<th class="colFirst" scope="col">Modifier and Type</th>
-<th class="colSecond" scope="col">Field</th>
-<th class="colLast" scope="col">Description</th>
-</tr>
-<tr class="altColor">
-<td class="colFirst"><code>static double</code></td>
-<th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#IMAGE_CAPTURE_LATENCY">IMAGE_CAPTURE_LATENCY</a></span></code></th>
-<td class="colLast">&nbsp;</td>
-</tr>
-<tr class="rowColor">
-<td class="colFirst"><code>static boolean</code></td>
-<th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#IS_CONNECTED_REQUIRED">IS_CONNECTED_REQUIRED</a></span></code></th>
-<td class="colLast">&nbsp;</td>
-</tr>
-<tr class="altColor">
-<td class="colFirst"><code>static double</code></td>
-<th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#MAX_SIDE_LENGTH">MAX_SIDE_LENGTH</a></span></code></th>
-<td class="colLast">&nbsp;</td>
-</tr>
-<tr class="rowColor">
-<td class="colFirst"><code>static double</code></td>
-<th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#MAX_SKEW">MAX_SKEW</a></span></code></th>
-<td class="colLast">&nbsp;</td>
-</tr>
-<tr class="altColor">
-<td class="colFirst"><code>static double</code></td>
-<th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#MAX_TARGET_AREA">MAX_TARGET_AREA</a></span></code></th>
-<td class="colLast">&nbsp;</td>
-</tr>
-<tr class="rowColor">
-<td class="colFirst"><code>static long</code></td>
-<th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#MAX_UPDATE_TIME">MAX_UPDATE_TIME</a></span></code></th>
-<td class="colLast">&nbsp;</td>
-</tr>
-<tr class="altColor">
-<td class="colFirst"><code>static long</code></td>
-<th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#MAX_WARNING_TIME">MAX_WARNING_TIME</a></span></code></th>
-<td class="colLast">&nbsp;</td>
-</tr>
-<tr class="rowColor">
-<td class="colFirst"><code>static double</code></td>
-<th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#MAX_X_ANGLE">MAX_X_ANGLE</a></span></code></th>
-<td class="colLast">&nbsp;</td>
-</tr>
-<tr class="altColor">
-<td class="colFirst"><code>static double</code></td>
-<th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#MAX_Y_ANGLE">MAX_Y_ANGLE</a></span></code></th>
-<td class="colLast">&nbsp;</td>
-</tr>
-<tr class="rowColor">
-<td class="colFirst"><code>static double</code></td>
-<th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#MIN_SIDE_LENGTH">MIN_SIDE_LENGTH</a></span></code></th>
-<td class="colLast">&nbsp;</td>
-</tr>
-<tr class="altColor">
-<td class="colFirst"><code>static double</code></td>
-<th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#MIN_SKEW">MIN_SKEW</a></span></code></th>
-<td class="colLast">&nbsp;</td>
-</tr>
-<tr class="rowColor">
-<td class="colFirst"><code>static double</code></td>
-<th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#MIN_TARGET_AREA">MIN_TARGET_AREA</a></span></code></th>
-<td class="colLast">&nbsp;</td>
-</tr>
-<tr class="altColor">
-<td class="colFirst"><code>static long</code></td>
-<th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#MIN_WARNING_TIME">MIN_WARNING_TIME</a></span></code></th>
-<td class="colLast">&nbsp;</td>
-</tr>
-<tr class="rowColor">
-<td class="colFirst"><code>static double</code></td>
-<th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#MIN_X_ANGLE">MIN_X_ANGLE</a></span></code></th>
-<td class="colLast">&nbsp;</td>
-</tr>
-<tr class="altColor">
-<td class="colFirst"><code>static double</code></td>
-<th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#MIN_Y_ANGLE">MIN_Y_ANGLE</a></span></code></th>
-<td class="colLast">&nbsp;</td>
+<td class="colLast">
+<div class="block">Mode for how the limelight should take snapshots</div>
+</td>
 </tr>
 </table>
 </li>
@@ -286,7 +201,15 @@ extends java.lang.Object</pre>
 </tr>
 <tr class="altColor">
 <th class="colConstructorName" scope="row"><code><span class="memberNameLink"><a href="#%3Cinit%3E()">Limelight</a></span>()</code></th>
-<td class="colLast">&nbsp;</td>
+<td class="colLast">
+<div class="block">Construct a Limelight Class using the default table name.</div>
+</td>
+</tr>
+<tr class="rowColor">
+<th class="colConstructorName" scope="row"><code><span class="memberNameLink"><a href="#%3Cinit%3E(java.lang.String)">Limelight</a></span>&#8203;(java.lang.String&nbsp;tableName)</code></th>
+<td class="colLast">
+<div class="block">Construct a Limelight Class using a custom table name.</div>
+</td>
 </tr>
 </table>
 </li>
@@ -300,208 +223,168 @@ extends java.lang.Object</pre>
 </a>
 <h3>Method Summary</h3>
 <table class="memberSummary">
-<caption><span id="t0" class="activeTableTab"><span>All Methods</span><span class="tabEnd">&nbsp;</span></span><span id="t1" class="tableTab"><span><a href="javascript:show(1);">Static Methods</a></span><span class="tabEnd">&nbsp;</span></span><span id="t4" class="tableTab"><span><a href="javascript:show(8);">Concrete Methods</a></span><span class="tabEnd">&nbsp;</span></span></caption>
+<caption><span id="t0" class="activeTableTab"><span>All Methods</span><span class="tabEnd">&nbsp;</span></span><span id="t2" class="tableTab"><span><a href="javascript:show(2);">Instance Methods</a></span><span class="tabEnd">&nbsp;</span></span><span id="t4" class="tableTab"><span><a href="javascript:show(8);">Concrete Methods</a></span><span class="tabEnd">&nbsp;</span></span></caption>
 <tr>
 <th class="colFirst" scope="col">Modifier and Type</th>
 <th class="colSecond" scope="col">Method</th>
 <th class="colLast" scope="col">Description</th>
 </tr>
 <tr id="i0" class="altColor">
-<td class="colFirst"><code>static double</code></td>
+<td class="colFirst"><code>double</code></td>
 <th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#getCustomDouble(java.lang.String)">getCustomDouble</a></span>&#8203;(java.lang.String&nbsp;element)</code></th>
 <td class="colLast">&nbsp;</td>
 </tr>
 <tr id="i1" class="rowColor">
-<td class="colFirst"><code>static double</code></td>
+<td class="colFirst"><code>double</code></td>
 <th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#getCustomRawCrosshairX(int)">getCustomRawCrosshairX</a></span>&#8203;(int&nbsp;crosshair)</code></th>
 <td class="colLast">&nbsp;</td>
 </tr>
 <tr id="i2" class="altColor">
-<td class="colFirst"><code>static java.lang.String</code></td>
+<td class="colFirst"><code>java.lang.String</code></td>
 <th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#getCustomString(java.lang.String)">getCustomString</a></span>&#8203;(java.lang.String&nbsp;element)</code></th>
 <td class="colLast">&nbsp;</td>
 </tr>
 <tr id="i3" class="rowColor">
-<td class="colFirst"><code>static double</code></td>
+<td class="colFirst"><code>double</code></td>
 <th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#getHorizontalSidelength()">getHorizontalSidelength</a></span>()</code></th>
-<td class="colLast">
-<div class="block">Get the horizontal sidelength of the rough bounding box (0 - 320 pixels)</div>
-</td>
+<td class="colLast">&nbsp;</td>
 </tr>
 <tr id="i4" class="altColor">
-<td class="colFirst"><code>static double</code></td>
+<td class="colFirst"><code>double</code></td>
 <th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#getLatencyMs()">getLatencyMs</a></span>()</code></th>
-<td class="colLast">
-<div class="block">Get the latency of limelight information in milli-seconds</div>
-</td>
+<td class="colLast">&nbsp;</td>
 </tr>
 <tr id="i5" class="rowColor">
-<td class="colFirst"><code>static double</code></td>
+<td class="colFirst"><code>double</code></td>
 <th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#getLongestSidelength()">getLongestSidelength</a></span>()</code></th>
-<td class="colLast">
-<div class="block">Get the sidelength of longest side of the fitted bounding box (0 - 320 pixels)</div>
-</td>
+<td class="colLast">&nbsp;</td>
 </tr>
 <tr id="i6" class="altColor">
-<td class="colFirst"><code>static double</code></td>
+<td class="colFirst"><code>double</code></td>
 <th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#getPipeline()">getPipeline</a></span>()</code></th>
 <td class="colLast">&nbsp;</td>
 </tr>
 <tr id="i7" class="rowColor">
-<td class="colFirst"><code>static double</code></td>
+<td class="colFirst"><code>double</code></td>
 <th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#getRawCrosshairY(int)">getRawCrosshairY</a></span>&#8203;(int&nbsp;crosshair)</code></th>
 <td class="colLast">&nbsp;</td>
 </tr>
 <tr id="i8" class="altColor">
-<td class="colFirst"><code>static double</code></td>
+<td class="colFirst"><code>double</code></td>
 <th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#getRawTargetArea(int)">getRawTargetArea</a></span>&#8203;(int&nbsp;target)</code></th>
 <td class="colLast">&nbsp;</td>
 </tr>
 <tr id="i9" class="rowColor">
-<td class="colFirst"><code>static double</code></td>
-<th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#getRawTargetSkew(int)">getRawTargetSkew</a></span>&#8203;(int&nbsp;target)</code></th>
+<td class="colFirst"><code>double[]</code></td>
+<th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#getRawTargetCornersX()">getRawTargetCornersX</a></span>()</code></th>
 <td class="colLast">&nbsp;</td>
 </tr>
 <tr id="i10" class="altColor">
-<td class="colFirst"><code>static double</code></td>
-<th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#getRawTargetXAngle(int)">getRawTargetXAngle</a></span>&#8203;(int&nbsp;target)</code></th>
+<td class="colFirst"><code>double[]</code></td>
+<th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#getRawTargetCornersY()">getRawTargetCornersY</a></span>()</code></th>
 <td class="colLast">&nbsp;</td>
 </tr>
 <tr id="i11" class="rowColor">
-<td class="colFirst"><code>static double</code></td>
-<th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#getRawTargetYAngle(int)">getRawTargetYAngle</a></span>&#8203;(int&nbsp;target)</code></th>
+<td class="colFirst"><code>double</code></td>
+<th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#getRawTargetSkew(int)">getRawTargetSkew</a></span>&#8203;(int&nbsp;target)</code></th>
 <td class="colLast">&nbsp;</td>
 </tr>
 <tr id="i12" class="altColor">
-<td class="colFirst"><code>static double</code></td>
-<th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#getShortestSidelength()">getShortestSidelength</a></span>()</code></th>
-<td class="colLast">
-<div class="block">Get the sidelength of shortest side of the fitted bounding box (0 - 320 pixels)</div>
-</td>
+<td class="colFirst"><code>double</code></td>
+<th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#getRawTargetXAngle(int)">getRawTargetXAngle</a></span>&#8203;(int&nbsp;target)</code></th>
+<td class="colLast">&nbsp;</td>
 </tr>
 <tr id="i13" class="rowColor">
-<td class="colFirst"><code>static <a href="Solve3DResult.html" title="class in com.stuypulse.stuylib.network.limelight">Solve3DResult</a></code></td>
+<td class="colFirst"><code>double</code></td>
+<th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#getRawTargetYAngle(int)">getRawTargetYAngle</a></span>&#8203;(int&nbsp;target)</code></th>
+<td class="colLast">&nbsp;</td>
+</tr>
+<tr id="i14" class="altColor">
+<td class="colFirst"><code>double</code></td>
+<th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#getShortestSidelength()">getShortestSidelength</a></span>()</code></th>
+<td class="colLast">&nbsp;</td>
+</tr>
+<tr id="i15" class="rowColor">
+<td class="colFirst"><code><a href="Solve3DResult.html" title="class in com.stuypulse.stuylib.network.limelight">Solve3DResult</a></code></td>
 <th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#getSolve3D()">getSolve3D</a></span>()</code></th>
 <td class="colLast">
 <div class="block">Get Solve3D Result from network table</div>
 </td>
 </tr>
-<tr id="i14" class="altColor">
-<td class="colFirst"><code>static double</code></td>
+<tr id="i16" class="altColor">
+<td class="colFirst"><code>double</code></td>
 <th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#getTargetArea()">getTargetArea</a></span>()</code></th>
-<td class="colLast">
-<div class="block">Get the percent of the screen the target takes up on a scale of 0 to 1</div>
-</td>
+<td class="colLast">&nbsp;</td>
 </tr>
-<tr id="i15" class="rowColor">
-<td class="colFirst"><code>static <a href="../../math/Vector2D.html" title="class in com.stuypulse.stuylib.math">Vector2D</a>[]</code></td>
+<tr id="i17" class="rowColor">
+<td class="colFirst"><code><a href="../../math/Vector2D.html" title="class in com.stuypulse.stuylib.math">Vector2D</a>[]</code></td>
 <th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#getTargetCorner()">getTargetCorner</a></span>()</code></th>
 <td class="colLast">&nbsp;</td>
 </tr>
-<tr id="i16" class="altColor">
-<td class="colFirst"><code>static double[]</code></td>
-<th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#getTargetCornerX()">getTargetCornerX</a></span>()</code></th>
-<td class="colLast">
-<div class="block">Get a number array of corner x-coordinates</div>
-</td>
-</tr>
-<tr id="i17" class="rowColor">
-<td class="colFirst"><code>static double</code></td>
-<th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#getTargetCornerX(int)">getTargetCornerX</a></span>&#8203;(int&nbsp;corner)</code></th>
-<td class="colLast">
-<div class="block">Get the x axis of a corner on the target</div>
-</td>
-</tr>
 <tr id="i18" class="altColor">
-<td class="colFirst"><code>static double[]</code></td>
-<th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#getTargetCornerY()">getTargetCornerY</a></span>()</code></th>
-<td class="colLast">
-<div class="block">Get a number array of corner y-coordinates</div>
-</td>
+<td class="colFirst"><code>double</code></td>
+<th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#getTargetSkew()">getTargetSkew</a></span>()</code></th>
+<td class="colLast">&nbsp;</td>
 </tr>
 <tr id="i19" class="rowColor">
-<td class="colFirst"><code>static double</code></td>
-<th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#getTargetCornerY(int)">getTargetCornerY</a></span>&#8203;(int&nbsp;corner)</code></th>
-<td class="colLast">
-<div class="block">Get the x axis of a corner on the target</div>
-</td>
+<td class="colFirst"><code>double</code></td>
+<th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#getTargetXAngle()">getTargetXAngle</a></span>()</code></th>
+<td class="colLast">&nbsp;</td>
 </tr>
 <tr id="i20" class="altColor">
-<td class="colFirst"><code>static double</code></td>
-<th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#getTargetSkew()">getTargetSkew</a></span>()</code></th>
-<td class="colLast">
-<div class="block">Get the Skew or rotation (-90 degrees to 0 degrees)</div>
-</td>
+<td class="colFirst"><code>double</code></td>
+<th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#getTargetYAngle()">getTargetYAngle</a></span>()</code></th>
+<td class="colLast">&nbsp;</td>
 </tr>
 <tr id="i21" class="rowColor">
-<td class="colFirst"><code>static double</code></td>
-<th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#getTargetXAngle()">getTargetXAngle</a></span>()</code></th>
-<td class="colLast">
-<div class="block">Get The Horizontal Offset From Crosshair To Target (-27 degrees to 27 degrees)</div>
-</td>
+<td class="colFirst"><code>boolean</code></td>
+<th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#getValidTarget()">getValidTarget</a></span>()</code></th>
+<td class="colLast">&nbsp;</td>
 </tr>
 <tr id="i22" class="altColor">
-<td class="colFirst"><code>static double</code></td>
-<th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#getTargetYAngle()">getTargetYAngle</a></span>()</code></th>
-<td class="colLast">
-<div class="block">Get The Vertical Offset From Crosshair To Target (-20.5 degrees to 20.5 degrees)</div>
-</td>
+<td class="colFirst"><code>double</code></td>
+<th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#getVerticalSidelength()">getVerticalSidelength</a></span>()</code></th>
+<td class="colLast">&nbsp;</td>
 </tr>
 <tr id="i23" class="rowColor">
-<td class="colFirst"><code>static double</code></td>
-<th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#getVerticalSidelength()">getVerticalSidelength</a></span>()</code></th>
-<td class="colLast">
-<div class="block">Get the vertical sidelength of the rough bounding box (0 - 320 pixels)</div>
-</td>
+<td class="colFirst"><code>boolean</code></td>
+<th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#isConnected()">isConnected</a></span>()</code></th>
+<td class="colLast">&nbsp;</td>
 </tr>
 <tr id="i24" class="altColor">
-<td class="colFirst"><code>static boolean</code></td>
-<th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#hasValidTarget()">hasValidTarget</a></span>()</code></th>
-<td class="colLast">
-<div class="block">Get Whether the limelight has any valid targets</div>
-</td>
-</tr>
-<tr id="i25" class="rowColor">
-<td class="colFirst"><code>static boolean</code></td>
-<th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#isConnected()">isConnected</a></span>()</code></th>
-<td class="colLast">
-<div class="block">Check if the limelight is connected by using a timing test</div>
-</td>
-</tr>
-<tr id="i26" class="altColor">
-<td class="colFirst"><code>static void</code></td>
+<td class="colFirst"><code>void</code></td>
 <th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#setCameraStream(com.stuypulse.stuylib.network.limelight.Limelight.CameraStream)">setCameraStream</a></span>&#8203;(<a href="Limelight.CameraStream.html" title="enum in com.stuypulse.stuylib.network.limelight">Limelight.CameraStream</a>&nbsp;stream)</code></th>
 <td class="colLast">&nbsp;</td>
 </tr>
-<tr id="i27" class="rowColor">
-<td class="colFirst"><code>static void</code></td>
+<tr id="i25" class="rowColor">
+<td class="colFirst"><code>void</code></td>
 <th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#setCamMode(com.stuypulse.stuylib.network.limelight.Limelight.CamMode)">setCamMode</a></span>&#8203;(<a href="Limelight.CamMode.html" title="enum in com.stuypulse.stuylib.network.limelight">Limelight.CamMode</a>&nbsp;mode)</code></th>
 <td class="colLast">&nbsp;</td>
 </tr>
-<tr id="i28" class="altColor">
-<td class="colFirst"><code>static boolean</code></td>
+<tr id="i26" class="altColor">
+<td class="colFirst"><code>boolean</code></td>
 <th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#setCustomNumber(java.lang.String,java.lang.Number)">setCustomNumber</a></span>&#8203;(java.lang.String&nbsp;element,
                java.lang.Number&nbsp;value)</code></th>
 <td class="colLast">&nbsp;</td>
 </tr>
-<tr id="i29" class="rowColor">
-<td class="colFirst"><code>static boolean</code></td>
+<tr id="i27" class="rowColor">
+<td class="colFirst"><code>boolean</code></td>
 <th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#setCustomString(java.lang.String,java.lang.String)">setCustomString</a></span>&#8203;(java.lang.String&nbsp;element,
                java.lang.String&nbsp;value)</code></th>
 <td class="colLast">&nbsp;</td>
 </tr>
-<tr id="i30" class="altColor">
-<td class="colFirst"><code>static void</code></td>
+<tr id="i28" class="altColor">
+<td class="colFirst"><code>void</code></td>
 <th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#setLEDMode(com.stuypulse.stuylib.network.limelight.Limelight.LEDMode)">setLEDMode</a></span>&#8203;(<a href="Limelight.LEDMode.html" title="enum in com.stuypulse.stuylib.network.limelight">Limelight.LEDMode</a>&nbsp;mode)</code></th>
 <td class="colLast">&nbsp;</td>
 </tr>
-<tr id="i31" class="rowColor">
-<td class="colFirst"><code>static void</code></td>
+<tr id="i29" class="rowColor">
+<td class="colFirst"><code>void</code></td>
 <th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#setPipeline(int)">setPipeline</a></span>&#8203;(int&nbsp;pipeline)</code></th>
 <td class="colLast">&nbsp;</td>
 </tr>
-<tr id="i32" class="altColor">
-<td class="colFirst"><code>static void</code></td>
+<tr id="i30" class="altColor">
+<td class="colFirst"><code>void</code></td>
 <th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#setSnapshotMode(com.stuypulse.stuylib.network.limelight.Limelight.SnapshotMode)">setSnapshotMode</a></span>&#8203;(<a href="Limelight.SnapshotMode.html" title="enum in com.stuypulse.stuylib.network.limelight">Limelight.SnapshotMode</a>&nbsp;mode)</code></th>
 <td class="colLast">&nbsp;</td>
 </tr>
@@ -522,211 +405,6 @@ extends java.lang.Object</pre>
 <div class="details">
 <ul class="blockList">
 <li class="blockList">
-<!-- ============ FIELD DETAIL =========== -->
-<section role="region">
-<ul class="blockList">
-<li class="blockList"><a id="field.detail">
-<!--   -->
-</a>
-<h3>Field Detail</h3>
-<a id="MAX_UPDATE_TIME">
-<!--   -->
-</a>
-<ul class="blockList">
-<li class="blockList">
-<h4>MAX_UPDATE_TIME</h4>
-<pre>public static final&nbsp;long MAX_UPDATE_TIME</pre>
-<dl>
-<dt><span class="seeLabel">See Also:</span></dt>
-<dd><a href="../../../../../constant-values.html#com.stuypulse.stuylib.network.limelight.Limelight.MAX_UPDATE_TIME">Constant Field Values</a></dd>
-</dl>
-</li>
-</ul>
-<a id="MIN_WARNING_TIME">
-<!--   -->
-</a>
-<ul class="blockList">
-<li class="blockList">
-<h4>MIN_WARNING_TIME</h4>
-<pre>public static final&nbsp;long MIN_WARNING_TIME</pre>
-<dl>
-<dt><span class="seeLabel">See Also:</span></dt>
-<dd><a href="../../../../../constant-values.html#com.stuypulse.stuylib.network.limelight.Limelight.MIN_WARNING_TIME">Constant Field Values</a></dd>
-</dl>
-</li>
-</ul>
-<a id="MAX_WARNING_TIME">
-<!--   -->
-</a>
-<ul class="blockList">
-<li class="blockList">
-<h4>MAX_WARNING_TIME</h4>
-<pre>public static final&nbsp;long MAX_WARNING_TIME</pre>
-<dl>
-<dt><span class="seeLabel">See Also:</span></dt>
-<dd><a href="../../../../../constant-values.html#com.stuypulse.stuylib.network.limelight.Limelight.MAX_WARNING_TIME">Constant Field Values</a></dd>
-</dl>
-</li>
-</ul>
-<a id="IS_CONNECTED_REQUIRED">
-<!--   -->
-</a>
-<ul class="blockList">
-<li class="blockList">
-<h4>IS_CONNECTED_REQUIRED</h4>
-<pre>public static final&nbsp;boolean IS_CONNECTED_REQUIRED</pre>
-<dl>
-<dt><span class="seeLabel">See Also:</span></dt>
-<dd><a href="../../../../../constant-values.html#com.stuypulse.stuylib.network.limelight.Limelight.IS_CONNECTED_REQUIRED">Constant Field Values</a></dd>
-</dl>
-</li>
-</ul>
-<a id="MIN_X_ANGLE">
-<!--   -->
-</a>
-<ul class="blockList">
-<li class="blockList">
-<h4>MIN_X_ANGLE</h4>
-<pre>public static final&nbsp;double MIN_X_ANGLE</pre>
-<dl>
-<dt><span class="seeLabel">See Also:</span></dt>
-<dd><a href="../../../../../constant-values.html#com.stuypulse.stuylib.network.limelight.Limelight.MIN_X_ANGLE">Constant Field Values</a></dd>
-</dl>
-</li>
-</ul>
-<a id="MAX_X_ANGLE">
-<!--   -->
-</a>
-<ul class="blockList">
-<li class="blockList">
-<h4>MAX_X_ANGLE</h4>
-<pre>public static final&nbsp;double MAX_X_ANGLE</pre>
-<dl>
-<dt><span class="seeLabel">See Also:</span></dt>
-<dd><a href="../../../../../constant-values.html#com.stuypulse.stuylib.network.limelight.Limelight.MAX_X_ANGLE">Constant Field Values</a></dd>
-</dl>
-</li>
-</ul>
-<a id="MIN_Y_ANGLE">
-<!--   -->
-</a>
-<ul class="blockList">
-<li class="blockList">
-<h4>MIN_Y_ANGLE</h4>
-<pre>public static final&nbsp;double MIN_Y_ANGLE</pre>
-<dl>
-<dt><span class="seeLabel">See Also:</span></dt>
-<dd><a href="../../../../../constant-values.html#com.stuypulse.stuylib.network.limelight.Limelight.MIN_Y_ANGLE">Constant Field Values</a></dd>
-</dl>
-</li>
-</ul>
-<a id="MAX_Y_ANGLE">
-<!--   -->
-</a>
-<ul class="blockList">
-<li class="blockList">
-<h4>MAX_Y_ANGLE</h4>
-<pre>public static final&nbsp;double MAX_Y_ANGLE</pre>
-<dl>
-<dt><span class="seeLabel">See Also:</span></dt>
-<dd><a href="../../../../../constant-values.html#com.stuypulse.stuylib.network.limelight.Limelight.MAX_Y_ANGLE">Constant Field Values</a></dd>
-</dl>
-</li>
-</ul>
-<a id="MIN_TARGET_AREA">
-<!--   -->
-</a>
-<ul class="blockList">
-<li class="blockList">
-<h4>MIN_TARGET_AREA</h4>
-<pre>public static final&nbsp;double MIN_TARGET_AREA</pre>
-<dl>
-<dt><span class="seeLabel">See Also:</span></dt>
-<dd><a href="../../../../../constant-values.html#com.stuypulse.stuylib.network.limelight.Limelight.MIN_TARGET_AREA">Constant Field Values</a></dd>
-</dl>
-</li>
-</ul>
-<a id="MAX_TARGET_AREA">
-<!--   -->
-</a>
-<ul class="blockList">
-<li class="blockList">
-<h4>MAX_TARGET_AREA</h4>
-<pre>public static final&nbsp;double MAX_TARGET_AREA</pre>
-<dl>
-<dt><span class="seeLabel">See Also:</span></dt>
-<dd><a href="../../../../../constant-values.html#com.stuypulse.stuylib.network.limelight.Limelight.MAX_TARGET_AREA">Constant Field Values</a></dd>
-</dl>
-</li>
-</ul>
-<a id="MIN_SKEW">
-<!--   -->
-</a>
-<ul class="blockList">
-<li class="blockList">
-<h4>MIN_SKEW</h4>
-<pre>public static final&nbsp;double MIN_SKEW</pre>
-<dl>
-<dt><span class="seeLabel">See Also:</span></dt>
-<dd><a href="../../../../../constant-values.html#com.stuypulse.stuylib.network.limelight.Limelight.MIN_SKEW">Constant Field Values</a></dd>
-</dl>
-</li>
-</ul>
-<a id="MAX_SKEW">
-<!--   -->
-</a>
-<ul class="blockList">
-<li class="blockList">
-<h4>MAX_SKEW</h4>
-<pre>public static final&nbsp;double MAX_SKEW</pre>
-<dl>
-<dt><span class="seeLabel">See Also:</span></dt>
-<dd><a href="../../../../../constant-values.html#com.stuypulse.stuylib.network.limelight.Limelight.MAX_SKEW">Constant Field Values</a></dd>
-</dl>
-</li>
-</ul>
-<a id="IMAGE_CAPTURE_LATENCY">
-<!--   -->
-</a>
-<ul class="blockList">
-<li class="blockList">
-<h4>IMAGE_CAPTURE_LATENCY</h4>
-<pre>public static final&nbsp;double IMAGE_CAPTURE_LATENCY</pre>
-<dl>
-<dt><span class="seeLabel">See Also:</span></dt>
-<dd><a href="../../../../../constant-values.html#com.stuypulse.stuylib.network.limelight.Limelight.IMAGE_CAPTURE_LATENCY">Constant Field Values</a></dd>
-</dl>
-</li>
-</ul>
-<a id="MIN_SIDE_LENGTH">
-<!--   -->
-</a>
-<ul class="blockList">
-<li class="blockList">
-<h4>MIN_SIDE_LENGTH</h4>
-<pre>public static final&nbsp;double MIN_SIDE_LENGTH</pre>
-<dl>
-<dt><span class="seeLabel">See Also:</span></dt>
-<dd><a href="../../../../../constant-values.html#com.stuypulse.stuylib.network.limelight.Limelight.MIN_SIDE_LENGTH">Constant Field Values</a></dd>
-</dl>
-</li>
-</ul>
-<a id="MAX_SIDE_LENGTH">
-<!--   -->
-</a>
-<ul class="blockListLast">
-<li class="blockList">
-<h4>MAX_SIDE_LENGTH</h4>
-<pre>public static final&nbsp;double MAX_SIDE_LENGTH</pre>
-<dl>
-<dt><span class="seeLabel">See Also:</span></dt>
-<dd><a href="../../../../../constant-values.html#com.stuypulse.stuylib.network.limelight.Limelight.MAX_SIDE_LENGTH">Constant Field Values</a></dd>
-</dl>
-</li>
-</ul>
-</li>
-</ul>
-</section>
 <!-- ========= CONSTRUCTOR DETAIL ======== -->
 <section role="region">
 <ul class="blockList">
@@ -737,10 +415,29 @@ extends java.lang.Object</pre>
 <a id="&lt;init&gt;()">
 <!--   -->
 </a>
-<ul class="blockListLast">
+<ul class="blockList">
 <li class="blockList">
 <h4>Limelight</h4>
 <pre>public&nbsp;Limelight()</pre>
+<div class="block">Construct a Limelight Class using the default table name.
+
+ <p>If you only have one limelight, this is most likely the constructor you want to use.</div>
+</li>
+</ul>
+<a id="&lt;init&gt;(java.lang.String)">
+<!--   -->
+</a>
+<ul class="blockListLast">
+<li class="blockList">
+<h4>Limelight</h4>
+<pre>public&nbsp;Limelight&#8203;(java.lang.String&nbsp;tableName)</pre>
+<div class="block">Construct a Limelight Class using a custom table name.
+
+ <p>If you have multiple limelights, this is most likely the constructor you want to use.</div>
+<dl>
+<dt><span class="paramLabel">Parameters:</span></dt>
+<dd><code>tableName</code> - the table name of the limelight</dd>
+</dl>
 </li>
 </ul>
 </li>
@@ -759,22 +456,20 @@ extends java.lang.Object</pre>
 <ul class="blockList">
 <li class="blockList">
 <h4>isConnected</h4>
-<pre class="methodSignature">public static&nbsp;boolean&nbsp;isConnected()</pre>
-<div class="block">Check if the limelight is connected by using a timing test</div>
+<pre class="methodSignature">public&nbsp;boolean&nbsp;isConnected()</pre>
 <dl>
 <dt><span class="returnLabel">Returns:</span></dt>
-<dd>if limelight is connected</dd>
+<dd>if the limelight has updated its</dd>
 </dl>
 </li>
 </ul>
-<a id="hasValidTarget()">
+<a id="getValidTarget()">
 <!--   -->
 </a>
 <ul class="blockList">
 <li class="blockList">
-<h4>hasValidTarget</h4>
-<pre class="methodSignature">public static&nbsp;boolean&nbsp;hasValidTarget()</pre>
-<div class="block">Get Whether the limelight has any valid targets</div>
+<h4>getValidTarget</h4>
+<pre class="methodSignature">public&nbsp;boolean&nbsp;getValidTarget()</pre>
 <dl>
 <dt><span class="returnLabel">Returns:</span></dt>
 <dd>Whether the limelight has any valid targets</dd>
@@ -787,8 +482,7 @@ extends java.lang.Object</pre>
 <ul class="blockList">
 <li class="blockList">
 <h4>getTargetXAngle</h4>
-<pre class="methodSignature">public static&nbsp;double&nbsp;getTargetXAngle()</pre>
-<div class="block">Get The Horizontal Offset From Crosshair To Target (-27 degrees to 27 degrees)</div>
+<pre class="methodSignature">public&nbsp;double&nbsp;getTargetXAngle()</pre>
 <dl>
 <dt><span class="returnLabel">Returns:</span></dt>
 <dd>Horizontal Offset From Crosshair To Target (-27 degrees to 27 degrees)</dd>
@@ -801,8 +495,7 @@ extends java.lang.Object</pre>
 <ul class="blockList">
 <li class="blockList">
 <h4>getTargetYAngle</h4>
-<pre class="methodSignature">public static&nbsp;double&nbsp;getTargetYAngle()</pre>
-<div class="block">Get The Vertical Offset From Crosshair To Target (-20.5 degrees to 20.5 degrees)</div>
+<pre class="methodSignature">public&nbsp;double&nbsp;getTargetYAngle()</pre>
 <dl>
 <dt><span class="returnLabel">Returns:</span></dt>
 <dd>Vertical Offset From Crosshair To Target (-20.5 degrees to 20.5 degrees)</dd>
@@ -815,8 +508,7 @@ extends java.lang.Object</pre>
 <ul class="blockList">
 <li class="blockList">
 <h4>getTargetArea</h4>
-<pre class="methodSignature">public static&nbsp;double&nbsp;getTargetArea()</pre>
-<div class="block">Get the percent of the screen the target takes up on a scale of 0 to 1</div>
+<pre class="methodSignature">public&nbsp;double&nbsp;getTargetArea()</pre>
 <dl>
 <dt><span class="returnLabel">Returns:</span></dt>
 <dd>Percent of the screen the target takes up on a scale of 0 to 1</dd>
@@ -829,8 +521,7 @@ extends java.lang.Object</pre>
 <ul class="blockList">
 <li class="blockList">
 <h4>getTargetSkew</h4>
-<pre class="methodSignature">public static&nbsp;double&nbsp;getTargetSkew()</pre>
-<div class="block">Get the Skew or rotation (-90 degrees to 0 degrees)</div>
+<pre class="methodSignature">public&nbsp;double&nbsp;getTargetSkew()</pre>
 <dl>
 <dt><span class="returnLabel">Returns:</span></dt>
 <dd>Skew or rotation (-90 degrees to 0 degrees)</dd>
@@ -843,8 +534,7 @@ extends java.lang.Object</pre>
 <ul class="blockList">
 <li class="blockList">
 <h4>getLatencyMs</h4>
-<pre class="methodSignature">public static&nbsp;double&nbsp;getLatencyMs()</pre>
-<div class="block">Get the latency of limelight information in milli-seconds</div>
+<pre class="methodSignature">public&nbsp;double&nbsp;getLatencyMs()</pre>
 <dl>
 <dt><span class="returnLabel">Returns:</span></dt>
 <dd>Latency of limelight information in milli-seconds</dd>
@@ -857,8 +547,7 @@ extends java.lang.Object</pre>
 <ul class="blockList">
 <li class="blockList">
 <h4>getShortestSidelength</h4>
-<pre class="methodSignature">public static&nbsp;double&nbsp;getShortestSidelength()</pre>
-<div class="block">Get the sidelength of shortest side of the fitted bounding box (0 - 320 pixels)</div>
+<pre class="methodSignature">public&nbsp;double&nbsp;getShortestSidelength()</pre>
 <dl>
 <dt><span class="returnLabel">Returns:</span></dt>
 <dd>Shortest side length of target in pixels</dd>
@@ -871,11 +560,10 @@ extends java.lang.Object</pre>
 <ul class="blockList">
 <li class="blockList">
 <h4>getLongestSidelength</h4>
-<pre class="methodSignature">public static&nbsp;double&nbsp;getLongestSidelength()</pre>
-<div class="block">Get the sidelength of longest side of the fitted bounding box (0 - 320 pixels)</div>
+<pre class="methodSignature">public&nbsp;double&nbsp;getLongestSidelength()</pre>
 <dl>
 <dt><span class="returnLabel">Returns:</span></dt>
-<dd>Longest side length of the target in pixels</dd>
+<dd>Sidelength of longest side of the fitted bounding box (0 - 320 pixels)</dd>
 </dl>
 </li>
 </ul>
@@ -885,11 +573,10 @@ extends java.lang.Object</pre>
 <ul class="blockList">
 <li class="blockList">
 <h4>getHorizontalSidelength</h4>
-<pre class="methodSignature">public static&nbsp;double&nbsp;getHorizontalSidelength()</pre>
-<div class="block">Get the horizontal sidelength of the rough bounding box (0 - 320 pixels)</div>
+<pre class="methodSignature">public&nbsp;double&nbsp;getHorizontalSidelength()</pre>
 <dl>
 <dt><span class="returnLabel">Returns:</span></dt>
-<dd>Horizontal side length of target in pixels</dd>
+<dd>Horizontal sidelength of the rough bounding box (0 - 320 pixels)</dd>
 </dl>
 </li>
 </ul>
@@ -899,67 +586,36 @@ extends java.lang.Object</pre>
 <ul class="blockList">
 <li class="blockList">
 <h4>getVerticalSidelength</h4>
-<pre class="methodSignature">public static&nbsp;double&nbsp;getVerticalSidelength()</pre>
-<div class="block">Get the vertical sidelength of the rough bounding box (0 - 320 pixels)</div>
+<pre class="methodSignature">public&nbsp;double&nbsp;getVerticalSidelength()</pre>
 <dl>
 <dt><span class="returnLabel">Returns:</span></dt>
-<dd>Vertical side length of target in pixels</dd>
+<dd>Vertical sidelength of the rough bounding box (0 - 320 pixels)</dd>
 </dl>
 </li>
 </ul>
-<a id="getTargetCornerX()">
+<a id="getRawTargetCornersX()">
 <!--   -->
 </a>
 <ul class="blockList">
 <li class="blockList">
-<h4>getTargetCornerX</h4>
-<pre class="methodSignature">public static&nbsp;double[]&nbsp;getTargetCornerX()</pre>
-<div class="block">Get a number array of corner x-coordinates</div>
+<h4>getRawTargetCornersX</h4>
+<pre class="methodSignature">public&nbsp;double[]&nbsp;getRawTargetCornersX()</pre>
 <dl>
 <dt><span class="returnLabel">Returns:</span></dt>
 <dd>Number array of corner x-coordinates</dd>
 </dl>
 </li>
 </ul>
-<a id="getTargetCornerX(int)">
+<a id="getRawTargetCornersY()">
 <!--   -->
 </a>
 <ul class="blockList">
 <li class="blockList">
-<h4>getTargetCornerX</h4>
-<pre class="methodSignature">public static&nbsp;double&nbsp;getTargetCornerX&#8203;(int&nbsp;corner)</pre>
-<div class="block">Get the x axis of a corner on the target</div>
-<dl>
-<dt><span class="returnLabel">Returns:</span></dt>
-<dd>The x axis of a corner on the target</dd>
-</dl>
-</li>
-</ul>
-<a id="getTargetCornerY()">
-<!--   -->
-</a>
-<ul class="blockList">
-<li class="blockList">
-<h4>getTargetCornerY</h4>
-<pre class="methodSignature">public static&nbsp;double[]&nbsp;getTargetCornerY()</pre>
-<div class="block">Get a number array of corner y-coordinates</div>
+<h4>getRawTargetCornersY</h4>
+<pre class="methodSignature">public&nbsp;double[]&nbsp;getRawTargetCornersY()</pre>
 <dl>
 <dt><span class="returnLabel">Returns:</span></dt>
 <dd>Number array of corner y-coordinates</dd>
-</dl>
-</li>
-</ul>
-<a id="getTargetCornerY(int)">
-<!--   -->
-</a>
-<ul class="blockList">
-<li class="blockList">
-<h4>getTargetCornerY</h4>
-<pre class="methodSignature">public static&nbsp;double&nbsp;getTargetCornerY&#8203;(int&nbsp;corner)</pre>
-<div class="block">Get the x axis of a corner on the target</div>
-<dl>
-<dt><span class="returnLabel">Returns:</span></dt>
-<dd>The x axis of a corner on the target</dd>
 </dl>
 </li>
 </ul>
@@ -969,11 +625,10 @@ extends java.lang.Object</pre>
 <ul class="blockList">
 <li class="blockList">
 <h4>getTargetCorner</h4>
-<pre class="methodSignature">public static&nbsp;<a href="../../math/Vector2D.html" title="class in com.stuypulse.stuylib.math">Vector2D</a>[]&nbsp;getTargetCorner()</pre>
+<pre class="methodSignature">public&nbsp;<a href="../../math/Vector2D.html" title="class in com.stuypulse.stuylib.math">Vector2D</a>[]&nbsp;getTargetCorner()</pre>
 <dl>
 <dt><span class="returnLabel">Returns:</span></dt>
-<dd>Formatted 2D array of coordinates, consisting of an array of X * values and an array
-     of Y values.</dd>
+<dd>Vector2D array of the target corners</dd>
 </dl>
 </li>
 </ul>
@@ -983,7 +638,7 @@ extends java.lang.Object</pre>
 <ul class="blockList">
 <li class="blockList">
 <h4>getRawTargetXAngle</h4>
-<pre class="methodSignature">public static&nbsp;double&nbsp;getRawTargetXAngle&#8203;(int&nbsp;target)</pre>
+<pre class="methodSignature">public&nbsp;double&nbsp;getRawTargetXAngle&#8203;(int&nbsp;target)</pre>
 <dl>
 <dt><span class="paramLabel">Parameters:</span></dt>
 <dd><code>target</code> - Target to read X Angle from</dd>
@@ -998,7 +653,7 @@ extends java.lang.Object</pre>
 <ul class="blockList">
 <li class="blockList">
 <h4>getRawTargetYAngle</h4>
-<pre class="methodSignature">public static&nbsp;double&nbsp;getRawTargetYAngle&#8203;(int&nbsp;target)</pre>
+<pre class="methodSignature">public&nbsp;double&nbsp;getRawTargetYAngle&#8203;(int&nbsp;target)</pre>
 <dl>
 <dt><span class="paramLabel">Parameters:</span></dt>
 <dd><code>target</code> - Target to read Y Angle from</dd>
@@ -1013,7 +668,7 @@ extends java.lang.Object</pre>
 <ul class="blockList">
 <li class="blockList">
 <h4>getRawTargetArea</h4>
-<pre class="methodSignature">public static&nbsp;double&nbsp;getRawTargetArea&#8203;(int&nbsp;target)</pre>
+<pre class="methodSignature">public&nbsp;double&nbsp;getRawTargetArea&#8203;(int&nbsp;target)</pre>
 <dl>
 <dt><span class="paramLabel">Parameters:</span></dt>
 <dd><code>target</code> - Target to read Area from</dd>
@@ -1028,7 +683,7 @@ extends java.lang.Object</pre>
 <ul class="blockList">
 <li class="blockList">
 <h4>getRawTargetSkew</h4>
-<pre class="methodSignature">public static&nbsp;double&nbsp;getRawTargetSkew&#8203;(int&nbsp;target)</pre>
+<pre class="methodSignature">public&nbsp;double&nbsp;getRawTargetSkew&#8203;(int&nbsp;target)</pre>
 <dl>
 <dt><span class="paramLabel">Parameters:</span></dt>
 <dd><code>target</code> - Target to read Skew from</dd>
@@ -1043,7 +698,7 @@ extends java.lang.Object</pre>
 <ul class="blockList">
 <li class="blockList">
 <h4>getCustomRawCrosshairX</h4>
-<pre class="methodSignature">public static&nbsp;double&nbsp;getCustomRawCrosshairX&#8203;(int&nbsp;crosshair)</pre>
+<pre class="methodSignature">public&nbsp;double&nbsp;getCustomRawCrosshairX&#8203;(int&nbsp;crosshair)</pre>
 <dl>
 <dt><span class="paramLabel">Parameters:</span></dt>
 <dd><code>crosshair</code> - Crosshair to read coords from</dd>
@@ -1058,7 +713,7 @@ extends java.lang.Object</pre>
 <ul class="blockList">
 <li class="blockList">
 <h4>getRawCrosshairY</h4>
-<pre class="methodSignature">public static&nbsp;double&nbsp;getRawCrosshairY&#8203;(int&nbsp;crosshair)</pre>
+<pre class="methodSignature">public&nbsp;double&nbsp;getRawCrosshairY&#8203;(int&nbsp;crosshair)</pre>
 <dl>
 <dt><span class="paramLabel">Parameters:</span></dt>
 <dd><code>crosshair</code> - Crosshair to read coords from</dd>
@@ -1073,11 +728,89 @@ extends java.lang.Object</pre>
 <ul class="blockList">
 <li class="blockList">
 <h4>getSolve3D</h4>
-<pre class="methodSignature">public static&nbsp;<a href="Solve3DResult.html" title="class in com.stuypulse.stuylib.network.limelight">Solve3DResult</a>&nbsp;getSolve3D()</pre>
+<pre class="methodSignature">public&nbsp;<a href="Solve3DResult.html" title="class in com.stuypulse.stuylib.network.limelight">Solve3DResult</a>&nbsp;getSolve3D()</pre>
 <div class="block">Get Solve3D Result from network table</div>
 <dl>
 <dt><span class="returnLabel">Returns:</span></dt>
 <dd>Solve 3D Result</dd>
+</dl>
+</li>
+</ul>
+<a id="setLEDMode(com.stuypulse.stuylib.network.limelight.Limelight.LEDMode)">
+<!--   -->
+</a>
+<ul class="blockList">
+<li class="blockList">
+<h4>setLEDMode</h4>
+<pre class="methodSignature">public&nbsp;void&nbsp;setLEDMode&#8203;(<a href="Limelight.LEDMode.html" title="enum in com.stuypulse.stuylib.network.limelight">Limelight.LEDMode</a>&nbsp;mode)</pre>
+<dl>
+<dt><span class="paramLabel">Parameters:</span></dt>
+<dd><code>mode</code> - Specified LED Mode to set the limelight to</dd>
+</dl>
+</li>
+</ul>
+<a id="setCamMode(com.stuypulse.stuylib.network.limelight.Limelight.CamMode)">
+<!--   -->
+</a>
+<ul class="blockList">
+<li class="blockList">
+<h4>setCamMode</h4>
+<pre class="methodSignature">public&nbsp;void&nbsp;setCamMode&#8203;(<a href="Limelight.CamMode.html" title="enum in com.stuypulse.stuylib.network.limelight">Limelight.CamMode</a>&nbsp;mode)</pre>
+<dl>
+<dt><span class="paramLabel">Parameters:</span></dt>
+<dd><code>mode</code> - Specified Cam Mode to set the limelight to</dd>
+</dl>
+</li>
+</ul>
+<a id="setPipeline(int)">
+<!--   -->
+</a>
+<ul class="blockList">
+<li class="blockList">
+<h4>setPipeline</h4>
+<pre class="methodSignature">public&nbsp;void&nbsp;setPipeline&#8203;(int&nbsp;pipeline)</pre>
+<dl>
+<dt><span class="paramLabel">Parameters:</span></dt>
+<dd><code>pipeline</code> - Specified pipeline to set the limelight to</dd>
+</dl>
+</li>
+</ul>
+<a id="getPipeline()">
+<!--   -->
+</a>
+<ul class="blockList">
+<li class="blockList">
+<h4>getPipeline</h4>
+<pre class="methodSignature">public&nbsp;double&nbsp;getPipeline()</pre>
+<dl>
+<dt><span class="returnLabel">Returns:</span></dt>
+<dd>The current pipeline the limelight is set to</dd>
+</dl>
+</li>
+</ul>
+<a id="setCameraStream(com.stuypulse.stuylib.network.limelight.Limelight.CameraStream)">
+<!--   -->
+</a>
+<ul class="blockList">
+<li class="blockList">
+<h4>setCameraStream</h4>
+<pre class="methodSignature">public&nbsp;void&nbsp;setCameraStream&#8203;(<a href="Limelight.CameraStream.html" title="enum in com.stuypulse.stuylib.network.limelight">Limelight.CameraStream</a>&nbsp;stream)</pre>
+<dl>
+<dt><span class="paramLabel">Parameters:</span></dt>
+<dd><code>stream</code> - Specified Camera Stream to set the limelight to</dd>
+</dl>
+</li>
+</ul>
+<a id="setSnapshotMode(com.stuypulse.stuylib.network.limelight.Limelight.SnapshotMode)">
+<!--   -->
+</a>
+<ul class="blockList">
+<li class="blockList">
+<h4>setSnapshotMode</h4>
+<pre class="methodSignature">public&nbsp;void&nbsp;setSnapshotMode&#8203;(<a href="Limelight.SnapshotMode.html" title="enum in com.stuypulse.stuylib.network.limelight">Limelight.SnapshotMode</a>&nbsp;mode)</pre>
+<dl>
+<dt><span class="paramLabel">Parameters:</span></dt>
+<dd><code>mode</code> - Specified Snapshot Mode to set the limelight to</dd>
 </dl>
 </li>
 </ul>
@@ -1087,7 +820,7 @@ extends java.lang.Object</pre>
 <ul class="blockList">
 <li class="blockList">
 <h4>getCustomDouble</h4>
-<pre class="methodSignature">public static&nbsp;double&nbsp;getCustomDouble&#8203;(java.lang.String&nbsp;element)</pre>
+<pre class="methodSignature">public&nbsp;double&nbsp;getCustomDouble&#8203;(java.lang.String&nbsp;element)</pre>
 <dl>
 <dt><span class="paramLabel">Parameters:</span></dt>
 <dd><code>element</code> - Name of double provided by GRIP Pipeline</dd>
@@ -1102,8 +835,8 @@ extends java.lang.Object</pre>
 <ul class="blockList">
 <li class="blockList">
 <h4>setCustomNumber</h4>
-<pre class="methodSignature">public static&nbsp;boolean&nbsp;setCustomNumber&#8203;(java.lang.String&nbsp;element,
-                                      java.lang.Number&nbsp;value)</pre>
+<pre class="methodSignature">public&nbsp;boolean&nbsp;setCustomNumber&#8203;(java.lang.String&nbsp;element,
+                               java.lang.Number&nbsp;value)</pre>
 <dl>
 <dt><span class="paramLabel">Parameters:</span></dt>
 <dd><code>element</code> - Name of Number to set on Network Table</dd>
@@ -1119,7 +852,7 @@ extends java.lang.Object</pre>
 <ul class="blockList">
 <li class="blockList">
 <h4>getCustomString</h4>
-<pre class="methodSignature">public static&nbsp;java.lang.String&nbsp;getCustomString&#8203;(java.lang.String&nbsp;element)</pre>
+<pre class="methodSignature">public&nbsp;java.lang.String&nbsp;getCustomString&#8203;(java.lang.String&nbsp;element)</pre>
 <dl>
 <dt><span class="paramLabel">Parameters:</span></dt>
 <dd><code>element</code> - Name of String provided by GRIP Pipeline</dd>
@@ -1131,91 +864,17 @@ extends java.lang.Object</pre>
 <a id="setCustomString(java.lang.String,java.lang.String)">
 <!--   -->
 </a>
-<ul class="blockList">
+<ul class="blockListLast">
 <li class="blockList">
 <h4>setCustomString</h4>
-<pre class="methodSignature">public static&nbsp;boolean&nbsp;setCustomString&#8203;(java.lang.String&nbsp;element,
-                                      java.lang.String&nbsp;value)</pre>
+<pre class="methodSignature">public&nbsp;boolean&nbsp;setCustomString&#8203;(java.lang.String&nbsp;element,
+                               java.lang.String&nbsp;value)</pre>
 <dl>
 <dt><span class="paramLabel">Parameters:</span></dt>
 <dd><code>element</code> - Name of String to set on Network Table</dd>
 <dd><code>value</code> - Value to set the Sting on the Network Table to</dd>
 <dt><span class="returnLabel">Returns:</span></dt>
 <dd>Whether or not the write was successful</dd>
-</dl>
-</li>
-</ul>
-<a id="setLEDMode(com.stuypulse.stuylib.network.limelight.Limelight.LEDMode)">
-<!--   -->
-</a>
-<ul class="blockList">
-<li class="blockList">
-<h4>setLEDMode</h4>
-<pre class="methodSignature">public static&nbsp;void&nbsp;setLEDMode&#8203;(<a href="Limelight.LEDMode.html" title="enum in com.stuypulse.stuylib.network.limelight">Limelight.LEDMode</a>&nbsp;mode)</pre>
-<dl>
-<dt><span class="paramLabel">Parameters:</span></dt>
-<dd><code>mode</code> - Specified LED Mode to set the limelight to</dd>
-</dl>
-</li>
-</ul>
-<a id="setCamMode(com.stuypulse.stuylib.network.limelight.Limelight.CamMode)">
-<!--   -->
-</a>
-<ul class="blockList">
-<li class="blockList">
-<h4>setCamMode</h4>
-<pre class="methodSignature">public static&nbsp;void&nbsp;setCamMode&#8203;(<a href="Limelight.CamMode.html" title="enum in com.stuypulse.stuylib.network.limelight">Limelight.CamMode</a>&nbsp;mode)</pre>
-<dl>
-<dt><span class="paramLabel">Parameters:</span></dt>
-<dd><code>mode</code> - Specified Cam Mode to set the limelight to</dd>
-</dl>
-</li>
-</ul>
-<a id="setPipeline(int)">
-<!--   -->
-</a>
-<ul class="blockList">
-<li class="blockList">
-<h4>setPipeline</h4>
-<pre class="methodSignature">public static&nbsp;void&nbsp;setPipeline&#8203;(int&nbsp;pipeline)</pre>
-<dl>
-<dt><span class="paramLabel">Parameters:</span></dt>
-<dd><code>pipeline</code> - Specified pipeline to set the limelight to</dd>
-</dl>
-</li>
-</ul>
-<a id="getPipeline()">
-<!--   -->
-</a>
-<ul class="blockList">
-<li class="blockList">
-<h4>getPipeline</h4>
-<pre class="methodSignature">public static&nbsp;double&nbsp;getPipeline()</pre>
-</li>
-</ul>
-<a id="setCameraStream(com.stuypulse.stuylib.network.limelight.Limelight.CameraStream)">
-<!--   -->
-</a>
-<ul class="blockList">
-<li class="blockList">
-<h4>setCameraStream</h4>
-<pre class="methodSignature">public static&nbsp;void&nbsp;setCameraStream&#8203;(<a href="Limelight.CameraStream.html" title="enum in com.stuypulse.stuylib.network.limelight">Limelight.CameraStream</a>&nbsp;stream)</pre>
-<dl>
-<dt><span class="paramLabel">Parameters:</span></dt>
-<dd><code>stream</code> - Specified Camera Stream to set the limelight to</dd>
-</dl>
-</li>
-</ul>
-<a id="setSnapshotMode(com.stuypulse.stuylib.network.limelight.Limelight.SnapshotMode)">
-<!--   -->
-</a>
-<ul class="blockListLast">
-<li class="blockList">
-<h4>setSnapshotMode</h4>
-<pre class="methodSignature">public static&nbsp;void&nbsp;setSnapshotMode&#8203;(<a href="Limelight.SnapshotMode.html" title="enum in com.stuypulse.stuylib.network.limelight">Limelight.SnapshotMode</a>&nbsp;mode)</pre>
-<dl>
-<dt><span class="paramLabel">Parameters:</span></dt>
-<dd><code>mode</code> - Specified Snapshot Mode to set the limelight to</dd>
 </dl>
 </li>
 </ul>
@@ -1271,13 +930,13 @@ extends java.lang.Object</pre>
 <ul class="subNavList">
 <li>Summary:&nbsp;</li>
 <li><a href="#nested.class.summary">Nested</a>&nbsp;|&nbsp;</li>
-<li><a href="#field.summary">Field</a>&nbsp;|&nbsp;</li>
+<li>Field&nbsp;|&nbsp;</li>
 <li><a href="#constructor.summary">Constr</a>&nbsp;|&nbsp;</li>
 <li><a href="#method.summary">Method</a></li>
 </ul>
 <ul class="subNavList">
 <li>Detail:&nbsp;</li>
-<li><a href="#field.detail">Field</a>&nbsp;|&nbsp;</li>
+<li>Field&nbsp;|&nbsp;</li>
 <li><a href="#constructor.detail">Constr</a>&nbsp;|&nbsp;</li>
 <li><a href="#method.detail">Method</a></li>
 </ul>
