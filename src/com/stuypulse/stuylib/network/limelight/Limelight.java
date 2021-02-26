@@ -240,17 +240,9 @@ public final class Limelight {
         table.camMode.setNumber(mode.getCodeValue());
     }
 
-    /** @param pipeline Specified pipeline to set the limelight to */
-    public void setPipeline(int pipeline) {
-        // Prevent input of invalid pipelines
-        if (0 <= pipeline && pipeline <= 9) {
-            table.pipeline.setNumber(pipeline);
-        }
-    }
-
-    /** @return The current pipeline the limelight is set to */
-    public double getPipeline() {
-        return table.getPipeline.getDouble(0);
+    /** @param mode Specified Snapshot Mode to set the limelight to */
+    public void setSnapshotMode(SnapshotMode mode) {
+        table.snapshotMode.setNumber(mode.getCodeValue());
     }
 
     /** @param stream Specified Camera Stream to set the limelight to */
@@ -258,9 +250,40 @@ public final class Limelight {
         table.cameraStream.setNumber(stream.getCodeValue());
     }
 
-    /** @param mode Specified Snapshot Mode to set the limelight to */
-    public void setSnapshotMode(SnapshotMode mode) {
-        table.snapshotMode.setNumber(mode.getCodeValue());
+    /** @param pipeline Specified pipeline to set the limelight to */
+    public void setPipeline(Pipeline pipeline) {
+        if (!pipeline.equals(Pipeline.INVALID_PIPELINE))
+            table.pipeline.setNumber(pipeline.getCodeValue());
+    }
+
+    /** @return The current pipeline the limelight is set to */
+    public Pipeline getPipeline() {
+        double ntValue = table.getPipeline.getDouble(0);
+        int pipelineID = (int) (ntValue + 0.5);
+        switch (pipelineID) {
+            case 0:
+                return Pipeline.SETTING_0;
+            case 1:
+                return Pipeline.SETTING_1;
+            case 2:
+                return Pipeline.SETTING_2;
+            case 3:
+                return Pipeline.SETTING_3;
+            case 4:
+                return Pipeline.SETTING_4;
+            case 5:
+                return Pipeline.SETTING_5;
+            case 6:
+                return Pipeline.SETTING_6;
+            case 7:
+                return Pipeline.SETTING_7;
+            case 8:
+                return Pipeline.SETTING_8;
+            case 9:
+                return Pipeline.SETTING_9;
+            default:
+                return Pipeline.INVALID_PIPELINE;
+        }
     }
 
     /*************************************/
@@ -344,6 +367,31 @@ public final class Limelight {
         private final int value;
 
         CameraStream(int value) {
+            this.value = value;
+        }
+
+        public int getCodeValue() {
+            return value;
+        }
+    };
+
+    /** The different Pipelines that the limelight camera can be set to */
+    public enum Pipeline {
+        INVALID_PIPELINE(-1),
+        SETTING_0(0),
+        SETTING_1(1),
+        SETTING_2(2),
+        SETTING_3(3),
+        SETTING_4(4),
+        SETTING_5(5),
+        SETTING_6(6),
+        SETTING_7(7),
+        SETTING_8(8),
+        SETTING_9(9);
+
+        private final int value;
+
+        Pipeline(int value) {
             this.value = value;
         }
 

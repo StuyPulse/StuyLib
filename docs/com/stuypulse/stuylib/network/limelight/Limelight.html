@@ -177,6 +177,13 @@ extends java.lang.Object</pre>
 </tr>
 <tr class="rowColor">
 <td class="colFirst"><code>static class&nbsp;</code></td>
+<th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="Limelight.Pipeline.html" title="enum in com.stuypulse.stuylib.network.limelight">Limelight.Pipeline</a></span></code></th>
+<td class="colLast">
+<div class="block">The different Pipelines that the limelight camera can be set to</div>
+</td>
+</tr>
+<tr class="altColor">
+<td class="colFirst"><code>static class&nbsp;</code></td>
 <th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="Limelight.SnapshotMode.html" title="enum in com.stuypulse.stuylib.network.limelight">Limelight.SnapshotMode</a></span></code></th>
 <td class="colLast">
 <div class="block">Mode for how the limelight should take snapshots</div>
@@ -260,7 +267,7 @@ extends java.lang.Object</pre>
 <td class="colLast">&nbsp;</td>
 </tr>
 <tr id="i6" class="altColor">
-<td class="colFirst"><code>double</code></td>
+<td class="colFirst"><code><a href="Limelight.Pipeline.html" title="enum in com.stuypulse.stuylib.network.limelight">Limelight.Pipeline</a></code></td>
 <th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#getPipeline()">getPipeline</a></span>()</code></th>
 <td class="colLast">&nbsp;</td>
 </tr>
@@ -378,7 +385,7 @@ extends java.lang.Object</pre>
 </tr>
 <tr id="i29" class="rowColor">
 <td class="colFirst"><code>void</code></td>
-<th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#setPipeline(int)">setPipeline</a></span>&#8203;(int&nbsp;pipeline)</code></th>
+<th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#setPipeline(com.stuypulse.stuylib.network.limelight.Limelight.Pipeline)">setPipeline</a></span>&#8203;(<a href="Limelight.Pipeline.html" title="enum in com.stuypulse.stuylib.network.limelight">Limelight.Pipeline</a>&nbsp;pipeline)</code></th>
 <td class="colLast">&nbsp;</td>
 </tr>
 <tr id="i30" class="altColor">
@@ -759,29 +766,16 @@ extends java.lang.Object</pre>
 </dl>
 </li>
 </ul>
-<a id="setPipeline(int)">
+<a id="setSnapshotMode(com.stuypulse.stuylib.network.limelight.Limelight.SnapshotMode)">
 <!--   -->
 </a>
 <ul class="blockList">
 <li class="blockList">
-<h4>setPipeline</h4>
-<pre class="methodSignature">public&nbsp;void&nbsp;setPipeline&#8203;(int&nbsp;pipeline)</pre>
+<h4>setSnapshotMode</h4>
+<pre class="methodSignature">public&nbsp;void&nbsp;setSnapshotMode&#8203;(<a href="Limelight.SnapshotMode.html" title="enum in com.stuypulse.stuylib.network.limelight">Limelight.SnapshotMode</a>&nbsp;mode)</pre>
 <dl>
 <dt><span class="paramLabel">Parameters:</span></dt>
-<dd><code>pipeline</code> - Specified pipeline to set the limelight to</dd>
-</dl>
-</li>
-</ul>
-<a id="getPipeline()">
-<!--   -->
-</a>
-<ul class="blockList">
-<li class="blockList">
-<h4>getPipeline</h4>
-<pre class="methodSignature">public&nbsp;double&nbsp;getPipeline()</pre>
-<dl>
-<dt><span class="returnLabel">Returns:</span></dt>
-<dd>The current pipeline the limelight is set to</dd>
+<dd><code>mode</code> - Specified Snapshot Mode to set the limelight to</dd>
 </dl>
 </li>
 </ul>
@@ -798,16 +792,29 @@ extends java.lang.Object</pre>
 </dl>
 </li>
 </ul>
-<a id="setSnapshotMode(com.stuypulse.stuylib.network.limelight.Limelight.SnapshotMode)">
+<a id="setPipeline(com.stuypulse.stuylib.network.limelight.Limelight.Pipeline)">
 <!--   -->
 </a>
 <ul class="blockList">
 <li class="blockList">
-<h4>setSnapshotMode</h4>
-<pre class="methodSignature">public&nbsp;void&nbsp;setSnapshotMode&#8203;(<a href="Limelight.SnapshotMode.html" title="enum in com.stuypulse.stuylib.network.limelight">Limelight.SnapshotMode</a>&nbsp;mode)</pre>
+<h4>setPipeline</h4>
+<pre class="methodSignature">public&nbsp;void&nbsp;setPipeline&#8203;(<a href="Limelight.Pipeline.html" title="enum in com.stuypulse.stuylib.network.limelight">Limelight.Pipeline</a>&nbsp;pipeline)</pre>
 <dl>
 <dt><span class="paramLabel">Parameters:</span></dt>
-<dd><code>mode</code> - Specified Snapshot Mode to set the limelight to</dd>
+<dd><code>pipeline</code> - Specified pipeline to set the limelight to</dd>
+</dl>
+</li>
+</ul>
+<a id="getPipeline()">
+<!--   -->
+</a>
+<ul class="blockList">
+<li class="blockList">
+<h4>getPipeline</h4>
+<pre class="methodSignature">public&nbsp;<a href="Limelight.Pipeline.html" title="enum in com.stuypulse.stuylib.network.limelight">Limelight.Pipeline</a>&nbsp;getPipeline()</pre>
+<dl>
+<dt><span class="returnLabel">Returns:</span></dt>
+<dd>The current pipeline the limelight is set to</dd>
 </dl>
 </li>
 </ul>
