@@ -181,7 +181,7 @@ extends <a href="Gamepad.html" title="class in com.stuypulse.stuylib.input">Game
 <!--   -->
 </a>
 <h3>Fields inherited from class&nbsp;com.stuypulse.stuylib.input.<a href="Gamepad.html" title="class in com.stuypulse.stuylib.input">Gamepad</a></h3>
-<code><a href="Gamepad.html#TRIGGER_AXIS_THRESHOLD">TRIGGER_AXIS_THRESHOLD</a></code></li>
+<code><a href="Gamepad.html#TRIGGER_PRESSED_THRESHOLD">TRIGGER_PRESSED_THRESHOLD</a></code></li>
 </ul>
 </li>
 </ul>
@@ -228,44 +228,32 @@ extends <a href="Gamepad.html" title="class in com.stuypulse.stuylib.input">Game
 <tr id="i0" class="altColor">
 <td class="colFirst"><code>edu.wpi.first.wpilibj2.command.button.Button</code></td>
 <th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#getButton(int)">getButton</a></span>&#8203;(int&nbsp;button)</code></th>
-<td class="colLast">
-<div class="block">Get button from underlying joystick</div>
-</td>
+<td class="colLast">&nbsp;</td>
 </tr>
 <tr id="i1" class="rowColor">
 <td class="colFirst"><code>edu.wpi.first.wpilibj.Joystick</code></td>
 <th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#getJoystick()">getJoystick</a></span>()</code></th>
-<td class="colLast">
-<div class="block">Get underlying joystick</div>
-</td>
+<td class="colLast">&nbsp;</td>
 </tr>
 <tr id="i2" class="altColor">
 <td class="colFirst"><code>double</code></td>
 <th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#getRawAxis(int)">getRawAxis</a></span>&#8203;(int&nbsp;axis)</code></th>
-<td class="colLast">
-<div class="block">Get axis from underlying joystick</div>
-</td>
+<td class="colLast">&nbsp;</td>
 </tr>
 <tr id="i3" class="rowColor">
 <td class="colFirst"><code>boolean</code></td>
 <th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#getRawButton(int)">getRawButton</a></span>&#8203;(int&nbsp;button)</code></th>
-<td class="colLast">
-<div class="block">Get button from underlying joystick</div>
-</td>
+<td class="colLast">&nbsp;</td>
 </tr>
 <tr id="i4" class="altColor">
 <td class="colFirst"><code>boolean</code></td>
 <th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#hasJoystick()">hasJoystick</a></span>()</code></th>
-<td class="colLast">
-<div class="block">Checks if Gamepad has a Joystick</div>
-</td>
+<td class="colLast">&nbsp;</td>
 </tr>
 <tr id="i5" class="rowColor">
 <td class="colFirst"><code>void</code></td>
 <th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#setRumble(double)">setRumble</a></span>&#8203;(double&nbsp;intensity)</code></th>
-<td class="colLast">
-<div class="block">Set the rumble intensity of the gamepad</div>
-</td>
+<td class="colLast">&nbsp;</td>
 </tr>
 </table>
 <ul class="blockList">
@@ -312,6 +300,10 @@ extends <a href="Gamepad.html" title="class in com.stuypulse.stuylib.input">Game
 <li class="blockList">
 <h4>WPIGamepad</h4>
 <pre>public&nbsp;WPIGamepad&#8203;(edu.wpi.first.wpilibj.Joystick&nbsp;joystick)</pre>
+<dl>
+<dt><span class="paramLabel">Parameters:</span></dt>
+<dd><code>joystick</code> - WPI Joystick that will be stored in this class</dd>
+</dl>
 </li>
 </ul>
 <a id="&lt;init&gt;(int)">
@@ -321,6 +313,10 @@ extends <a href="Gamepad.html" title="class in com.stuypulse.stuylib.input">Game
 <li class="blockList">
 <h4>WPIGamepad</h4>
 <pre>public&nbsp;WPIGamepad&#8203;(int&nbsp;port)</pre>
+<dl>
+<dt><span class="paramLabel">Parameters:</span></dt>
+<dd><code>port</code> - The port that the gamepad is plugged into</dd>
+</dl>
 </li>
 </ul>
 </li>
@@ -340,7 +336,6 @@ extends <a href="Gamepad.html" title="class in com.stuypulse.stuylib.input">Game
 <li class="blockList">
 <h4>hasJoystick</h4>
 <pre class="methodSignature">public final&nbsp;boolean&nbsp;hasJoystick()</pre>
-<div class="block">Checks if Gamepad has a Joystick</div>
 <dl>
 <dt><span class="returnLabel">Returns:</span></dt>
 <dd>if Gamepad has a Joystick</dd>
@@ -354,7 +349,6 @@ extends <a href="Gamepad.html" title="class in com.stuypulse.stuylib.input">Game
 <li class="blockList">
 <h4>getJoystick</h4>
 <pre class="methodSignature">public final&nbsp;edu.wpi.first.wpilibj.Joystick&nbsp;getJoystick()</pre>
-<div class="block">Get underlying joystick</div>
 <dl>
 <dt><span class="returnLabel">Returns:</span></dt>
 <dd>Underlying joystick</dd>
@@ -368,12 +362,11 @@ extends <a href="Gamepad.html" title="class in com.stuypulse.stuylib.input">Game
 <li class="blockList">
 <h4>getRawButton</h4>
 <pre class="methodSignature">public final&nbsp;boolean&nbsp;getRawButton&#8203;(int&nbsp;button)</pre>
-<div class="block">Get button from underlying joystick</div>
 <dl>
 <dt><span class="paramLabel">Parameters:</span></dt>
 <dd><code>button</code> - Joystick button id</dd>
 <dt><span class="returnLabel">Returns:</span></dt>
-<dd>the value of the button</dd>
+<dd>The value of the button</dd>
 </dl>
 </li>
 </ul>
@@ -384,12 +377,11 @@ extends <a href="Gamepad.html" title="class in com.stuypulse.stuylib.input">Game
 <li class="blockList">
 <h4>getButton</h4>
 <pre class="methodSignature">public final&nbsp;edu.wpi.first.wpilibj2.command.button.Button&nbsp;getButton&#8203;(int&nbsp;button)</pre>
-<div class="block">Get button from underlying joystick</div>
 <dl>
 <dt><span class="paramLabel">Parameters:</span></dt>
 <dd><code>button</code> - Joystick button id</dd>
 <dt><span class="returnLabel">Returns:</span></dt>
-<dd>the value of the button</dd>
+<dd>Button that activates with <a href="#getRawButton(int)"><code>getRawButton(int)</code></a></dd>
 </dl>
 </li>
 </ul>
@@ -400,12 +392,11 @@ extends <a href="Gamepad.html" title="class in com.stuypulse.stuylib.input">Game
 <li class="blockList">
 <h4>getRawAxis</h4>
 <pre class="methodSignature">public final&nbsp;double&nbsp;getRawAxis&#8203;(int&nbsp;axis)</pre>
-<div class="block">Get axis from underlying joystick</div>
 <dl>
 <dt><span class="paramLabel">Parameters:</span></dt>
 <dd><code>axis</code> - Joystick axis id</dd>
 <dt><span class="returnLabel">Returns:</span></dt>
-<dd>the value of the axis</dd>
+<dd>The value of the axis</dd>
 </dl>
 </li>
 </ul>
@@ -416,12 +407,11 @@ extends <a href="Gamepad.html" title="class in com.stuypulse.stuylib.input">Game
 <li class="blockList">
 <h4>setRumble</h4>
 <pre class="methodSignature">public final&nbsp;void&nbsp;setRumble&#8203;(double&nbsp;intensity)</pre>
-<div class="block">Set the rumble intensity of the gamepad</div>
 <dl>
 <dt><span class="overrideSpecifyLabel">Overrides:</span></dt>
 <dd><code><a href="Gamepad.html#setRumble(double)">setRumble</a></code>&nbsp;in class&nbsp;<code><a href="Gamepad.html" title="class in com.stuypulse.stuylib.input">Gamepad</a></code></dd>
 <dt><span class="paramLabel">Parameters:</span></dt>
-<dd><code>intensity</code> - intensity of the rumble</dd>
+<dd><code>intensity</code> - amount to make the gamepad rumble</dd>
 </dl>
 </li>
 </ul>

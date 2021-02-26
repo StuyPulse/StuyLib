@@ -1,6 +1,6 @@
-// Copyright (c) 2021 StuyPulse Inc. All rights reserved.
-// This work is licensed under the terms of the MIT license
-// found in the root directory of this project.
+/* Copyright (c) 2021 StuyPulse Robotics. All rights reserved. */
+/* This work is licensed under the terms of the MIT license */
+/* found in the root directory of this project. */
 
 package com.stuypulse.stuylib.streams;
 

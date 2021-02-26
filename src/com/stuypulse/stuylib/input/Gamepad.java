@@ -1,6 +1,6 @@
-// Copyright (c) 2021 StuyPulse Inc. All rights reserved.
-// This work is licensed under the terms of the MIT license
-// found in the root directory of this project.
+/* Copyright (c) 2021 StuyPulse Robotics. All rights reserved. */
+/* This work is licensed under the terms of the MIT license */
+/* found in the root directory of this project. */
 
 package com.stuypulse.stuylib.input;
 
@@ -44,208 +44,260 @@ public class Gamepad implements Sendable {
     /*******************************/
 
     // Left Stick //
+    /** @return The X position of the left analog stick */
     public double getLeftX() {
         return 0.0;
     }
 
+    /** @return The Y position of the left analog stick */
     public double getLeftY() {
         return 0.0;
     }
 
     // Right Stick //
+    /** @return The X position of the right analog stick */
     public double getRightX() {
         return 0.0;
     }
 
+    /** @return The Y position of the right analog stick */
     public double getRightY() {
         return 0.0;
     }
 
     // D-Pad //
+    /** @return If the up d-pad button is pressed */
     public boolean getRawDPadUp() {
         return false;
     }
 
+    /** @return If the down d-pad button is pressed */
     public boolean getRawDPadDown() {
         return false;
     }
 
+    /** @return If the left d-pad button is pressed */
     public boolean getRawDPadLeft() {
         return false;
     }
 
+    /** @return If the right d-pad button is pressed */
     public boolean getRawDPadRight() {
         return false;
     }
 
     // Bumpers //
+    /** @return If the left bumper is pressed */
     public boolean getRawLeftBumper() {
         return false;
     }
 
+    /** @return If the right bumper is pressed */
     public boolean getRawRightBumper() {
         return false;
     }
 
     // Triggers //
+    /** @return The amount that the left trigger is pressed */
     public double getLeftTrigger() {
         return 0.0;
     }
 
+    /** @return The amount that the right trigger is pressed */
     public double getRightTrigger() {
         return 0.0;
     }
 
     // Face Buttons //
+    /** @return If the face button on the top is pressed */
     public boolean getRawTopButton() {
         return false;
     }
 
+    /** @return If the face button on the bottom is pressed */
     public boolean getRawBottomButton() {
         return false;
     }
 
+    /** @return If the face button on the left is pressed */
     public boolean getRawLeftButton() {
         return false;
     }
 
+    /** @return If the face button on the right is pressed */
     public boolean getRawRightButton() {
         return false;
     }
 
     // Start / Select / Option //
+    /** @return If the select button is pressed */
     public boolean getRawSelectButton() {
         return false;
     }
 
+    /** @return If the start button is pressed */
     public boolean getRawStartButton() {
         return false;
     }
 
+    /** @return If the option button is pressed */
     public boolean getRawOptionButton() {
         return false;
     }
 
     // Analog Stick Buttons //
+    /** @return If the left analog stick is pressed down */
     public boolean getRawLeftStickButton() {
         return false;
     }
 
+    /** @return If the right analog stick is pressed down */
     public boolean getRawRightStickButton() {
         return false;
     }
 
     // Rumble //
+    /** @param intensity amount to make the gamepad rumble */
     public void setRumble(double intensity) {
         return;
+    }
+
+    /*************************************************/
+    /*** HELPER FUNCTIONS BASED ON IMPLEMENTATIONS ***/
+    /*************************************************/
+
+    // Left Stick //
+    /** @return The position of the left analog stick in a Vector2D */
+    public final Vector2D getLeftStick() {
+        return new Vector2D(this.getLeftX(), this.getLeftY());
+    }
+
+    // Right Stick //
+    /** @return The position of the right analog stick in a Vector2D */
+    public final Vector2D getRightStick() {
+        return new Vector2D(this.getRightX(), this.getRightY());
+    }
+
+    // D-Pad //
+    /** @return The x position of the d-pad as if it were a stick */
+    public final double getDPadX() {
+        return (getRawDPadRight() ? 1.0 : 0.0) - (getRawDPadLeft() ? 1.0 : 0.0);
+    }
+
+    /** @return The y position of the d-pad as if it were a stick */
+    public final double getDPadY() {
+        return (getRawDPadUp() ? 1.0 : 0.0) - (getRawDPadDown() ? 1.0 : 0.0);
+    }
+
+    /** @return The position of the d-pad as if it were a stick in a Vector2D */
+    public final Vector2D getDPad() {
+        return new Vector2D(this.getDPadX(), this.getDPadY());
+    }
+
+    // Triggers //
+    public static final double TRIGGER_PRESSED_THRESHOLD = 1.0 / 4.0;
+
+    /** @return If the left trigger is pressed down more than {@link #TRIGGER_PRESSED_THRESHOLD} */
+    public final boolean getLeftTriggerPressed() {
+        return getLeftTrigger() > TRIGGER_PRESSED_THRESHOLD;
+    }
+
+    /** @return If the left trigger is pressed down more than {@link #TRIGGER_PRESSED_THRESHOLD} */
+    public final boolean getRightTriggerPressed() {
+        return getRightTrigger() > TRIGGER_PRESSED_THRESHOLD;
     }
 
     /**************************************************/
     /*** BUTTONS BASED OFF OF IMPLEMENTED FUNCTIONS ***/
     /**************************************************/
 
-    // Left Stick //
-    public final Vector2D getLeftStick() {
-        return new Vector2D(this.getLeftX(), this.getLeftY());
-    }
-
-    // Right Stick //
-    public final Vector2D getRightStick() {
-        return new Vector2D(this.getRightX(), this.getRightY());
-    }
-
     // D-Pad //
-    public final double getDPadX() {
-        return (getRawDPadRight() ? 1.0 : 0.0) - (getRawDPadLeft() ? 1.0 : 0.0);
-    }
-
-    public final double getDPadY() {
-        return (getRawDPadUp() ? 1.0 : 0.0) - (getRawDPadDown() ? 1.0 : 0.0);
-    }
-
-    public final Vector2D getDPad() {
-        return new Vector2D(this.getDPadX(), this.getDPadY());
-    }
-
+    /** @return Button that activates with {@link #getRawDPadUp()} */
     public final Button getDPadUp() {
         return new Button(this::getRawDPadUp);
     }
 
+    /** @return Button that activates with {@link #getRawDPadDown()} */
     public final Button getDPadDown() {
         return new Button(this::getRawDPadDown);
     }
 
+    /** @return Button that activates with {@link #getRawDPadLeft()} */
     public final Button getDPadLeft() {
         return new Button(this::getRawDPadLeft);
     }
 
+    /** @return Button that activates with {@link #getRawDPadRight()} */
     public final Button getDPadRight() {
         return new Button(this::getRawDPadRight);
     }
 
     // Bumpers //
+    /** @return Button that activates with {@link #getRawLeftBumper()} */
     public final Button getLeftBumper() {
         return new Button(this::getRawLeftBumper);
     }
 
+    /** @return Button that activates with {@link #getRawRightBumper()} */
     public final Button getRightBumper() {
         return new Button(this::getRawRightBumper);
     }
 
     // Triggers //
-    protected static final double TRIGGER_AXIS_THRESHOLD = 3.0 / 16.0;
-
-    public final boolean getLeftTriggerPressed() {
-        return getLeftTrigger() > TRIGGER_AXIS_THRESHOLD;
-    }
-
+    /** @return Button that activates with {@link #getLeftTriggerPressed()} */
     public final Button getLeftTriggerButton() {
         return new Button(this::getLeftTriggerPressed);
     }
 
-    public final boolean getRightTriggerPressed() {
-        return getRightTrigger() > TRIGGER_AXIS_THRESHOLD;
-    }
-
+    /** @return Button that activates with {@link #getRightTriggerPressed()} */
     public final Button getRightTriggerButton() {
         return new Button(this::getRightTriggerPressed);
     }
 
     // Face Buttons //
-    public final Button getLeftButton() {
-        return new Button(this::getRawLeftButton);
-    }
-
-    public final Button getRightButton() {
-        return new Button(this::getRawRightButton);
-    }
-
+    /** @return Button that activates with {@link #getRawTopButton()} */
     public final Button getTopButton() {
         return new Button(this::getRawTopButton);
     }
 
+    /** @return Button that activates with {@link #getRawBottomButton()} */
     public final Button getBottomButton() {
         return new Button(this::getRawBottomButton);
     }
 
+    /** @return Button that activates with {@link #getRawLeftButton()} */
+    public final Button getLeftButton() {
+        return new Button(this::getRawLeftButton);
+    }
+
+    /** @return Button that activates with {@link #getRawRightButton()} */
+    public final Button getRightButton() {
+        return new Button(this::getRawRightButton);
+    }
+
     // Select / Start / Option //
+    /** @return Button that activates with {@link #getRawSelectButton()} */
     public final Button getSelectButton() {
         return new Button(this::getRawSelectButton);
     }
 
+    /** @return Button that activates with {@link #getRawStartButton()} */
     public final Button getStartButton() {
         return new Button(this::getRawStartButton);
     }
 
+    /** @return Button that activates with {@link #getRawOptionButton()} */
     public final Button getOptionButton() {
         return new Button(this::getRawOptionButton);
     }
 
     // Analog Stick Buttons //
+    /** @return Button that activates with {@link #getRawLeftStickButton()} */
     public final Button getLeftAnalogButton() {
         return new Button(this::getRawLeftStickButton);
     }
 
+    /** @return Button that activates with {@link #getRawRightStickButton()} */
     public final Button getRightAnalogButton() {
         return new Button(this::getRawRightStickButton);
     }

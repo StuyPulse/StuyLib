@@ -1,6 +1,6 @@
-// Copyright (c) 2021 StuyPulse Inc. All rights reserved.
-// This work is licensed under the terms of the MIT license
-// found in the root directory of this project.
+/* Copyright (c) 2021 StuyPulse Robotics. All rights reserved. */
+/* This work is licensed under the terms of the MIT license */
+/* found in the root directory of this project. */
 
 package com.stuypulse.stuylib.network.limelight;
 
@@ -141,7 +141,7 @@ public final class Limelight {
     }
 
     /** @return Vector2D array of the target corners */
-    public Vector2D[] getTargetCorner() {
+    public Vector2D[] getTargetCorners() {
         double[] rawX = getRawTargetCornersX();
         double[] rawY = getRawTargetCornersX();
 

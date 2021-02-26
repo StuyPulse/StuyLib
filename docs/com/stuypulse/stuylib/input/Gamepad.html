@@ -174,8 +174,8 @@ implements edu.wpi.first.wpilibj.Sendable</pre>
 <th class="colLast" scope="col">Description</th>
 </tr>
 <tr class="altColor">
-<td class="colFirst"><code>protected static double</code></td>
-<th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#TRIGGER_AXIS_THRESHOLD">TRIGGER_AXIS_THRESHOLD</a></span></code></th>
+<td class="colFirst"><code>static double</code></td>
+<th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#TRIGGER_PRESSED_THRESHOLD">TRIGGER_PRESSED_THRESHOLD</a></span></code></th>
 <td class="colLast">&nbsp;</td>
 </tr>
 </table>
@@ -483,16 +483,16 @@ implements edu.wpi.first.wpilibj.Sendable</pre>
 <!--   -->
 </a>
 <h3>Field Detail</h3>
-<a id="TRIGGER_AXIS_THRESHOLD">
+<a id="TRIGGER_PRESSED_THRESHOLD">
 <!--   -->
 </a>
 <ul class="blockListLast">
 <li class="blockList">
-<h4>TRIGGER_AXIS_THRESHOLD</h4>
-<pre>protected static final&nbsp;double TRIGGER_AXIS_THRESHOLD</pre>
+<h4>TRIGGER_PRESSED_THRESHOLD</h4>
+<pre>public static final&nbsp;double TRIGGER_PRESSED_THRESHOLD</pre>
 <dl>
 <dt><span class="seeLabel">See Also:</span></dt>
-<dd><a href="../../../../constant-values.html#com.stuypulse.stuylib.input.Gamepad.TRIGGER_AXIS_THRESHOLD">Constant Field Values</a></dd>
+<dd><a href="../../../../constant-values.html#com.stuypulse.stuylib.input.Gamepad.TRIGGER_PRESSED_THRESHOLD">Constant Field Values</a></dd>
 </dl>
 </li>
 </ul>
@@ -532,6 +532,10 @@ implements edu.wpi.first.wpilibj.Sendable</pre>
 <li class="blockList">
 <h4>getLeftX</h4>
 <pre class="methodSignature">public&nbsp;double&nbsp;getLeftX()</pre>
+<dl>
+<dt><span class="returnLabel">Returns:</span></dt>
+<dd>The X position of the left analog stick</dd>
+</dl>
 </li>
 </ul>
 <a id="getLeftY()">
@@ -541,6 +545,10 @@ implements edu.wpi.first.wpilibj.Sendable</pre>
 <li class="blockList">
 <h4>getLeftY</h4>
 <pre class="methodSignature">public&nbsp;double&nbsp;getLeftY()</pre>
+<dl>
+<dt><span class="returnLabel">Returns:</span></dt>
+<dd>The Y position of the left analog stick</dd>
+</dl>
 </li>
 </ul>
 <a id="getRightX()">
@@ -550,6 +558,10 @@ implements edu.wpi.first.wpilibj.Sendable</pre>
 <li class="blockList">
 <h4>getRightX</h4>
 <pre class="methodSignature">public&nbsp;double&nbsp;getRightX()</pre>
+<dl>
+<dt><span class="returnLabel">Returns:</span></dt>
+<dd>The X position of the right analog stick</dd>
+</dl>
 </li>
 </ul>
 <a id="getRightY()">
@@ -559,6 +571,10 @@ implements edu.wpi.first.wpilibj.Sendable</pre>
 <li class="blockList">
 <h4>getRightY</h4>
 <pre class="methodSignature">public&nbsp;double&nbsp;getRightY()</pre>
+<dl>
+<dt><span class="returnLabel">Returns:</span></dt>
+<dd>The Y position of the right analog stick</dd>
+</dl>
 </li>
 </ul>
 <a id="getRawDPadUp()">
@@ -568,6 +584,10 @@ implements edu.wpi.first.wpilibj.Sendable</pre>
 <li class="blockList">
 <h4>getRawDPadUp</h4>
 <pre class="methodSignature">public&nbsp;boolean&nbsp;getRawDPadUp()</pre>
+<dl>
+<dt><span class="returnLabel">Returns:</span></dt>
+<dd>If the up d-pad button is pressed</dd>
+</dl>
 </li>
 </ul>
 <a id="getRawDPadDown()">
@@ -577,6 +597,10 @@ implements edu.wpi.first.wpilibj.Sendable</pre>
 <li class="blockList">
 <h4>getRawDPadDown</h4>
 <pre class="methodSignature">public&nbsp;boolean&nbsp;getRawDPadDown()</pre>
+<dl>
+<dt><span class="returnLabel">Returns:</span></dt>
+<dd>If the down d-pad button is pressed</dd>
+</dl>
 </li>
 </ul>
 <a id="getRawDPadLeft()">
@@ -586,6 +610,10 @@ implements edu.wpi.first.wpilibj.Sendable</pre>
 <li class="blockList">
 <h4>getRawDPadLeft</h4>
 <pre class="methodSignature">public&nbsp;boolean&nbsp;getRawDPadLeft()</pre>
+<dl>
+<dt><span class="returnLabel">Returns:</span></dt>
+<dd>If the left d-pad button is pressed</dd>
+</dl>
 </li>
 </ul>
 <a id="getRawDPadRight()">
@@ -595,6 +623,10 @@ implements edu.wpi.first.wpilibj.Sendable</pre>
 <li class="blockList">
 <h4>getRawDPadRight</h4>
 <pre class="methodSignature">public&nbsp;boolean&nbsp;getRawDPadRight()</pre>
+<dl>
+<dt><span class="returnLabel">Returns:</span></dt>
+<dd>If the right d-pad button is pressed</dd>
+</dl>
 </li>
 </ul>
 <a id="getRawLeftBumper()">
@@ -604,6 +636,10 @@ implements edu.wpi.first.wpilibj.Sendable</pre>
 <li class="blockList">
 <h4>getRawLeftBumper</h4>
 <pre class="methodSignature">public&nbsp;boolean&nbsp;getRawLeftBumper()</pre>
+<dl>
+<dt><span class="returnLabel">Returns:</span></dt>
+<dd>If the left bumper is pressed</dd>
+</dl>
 </li>
 </ul>
 <a id="getRawRightBumper()">
@@ -613,6 +649,10 @@ implements edu.wpi.first.wpilibj.Sendable</pre>
 <li class="blockList">
 <h4>getRawRightBumper</h4>
 <pre class="methodSignature">public&nbsp;boolean&nbsp;getRawRightBumper()</pre>
+<dl>
+<dt><span class="returnLabel">Returns:</span></dt>
+<dd>If the right bumper is pressed</dd>
+</dl>
 </li>
 </ul>
 <a id="getLeftTrigger()">
@@ -622,6 +662,10 @@ implements edu.wpi.first.wpilibj.Sendable</pre>
 <li class="blockList">
 <h4>getLeftTrigger</h4>
 <pre class="methodSignature">public&nbsp;double&nbsp;getLeftTrigger()</pre>
+<dl>
+<dt><span class="returnLabel">Returns:</span></dt>
+<dd>The amount that the left trigger is pressed</dd>
+</dl>
 </li>
 </ul>
 <a id="getRightTrigger()">
@@ -631,6 +675,10 @@ implements edu.wpi.first.wpilibj.Sendable</pre>
 <li class="blockList">
 <h4>getRightTrigger</h4>
 <pre class="methodSignature">public&nbsp;double&nbsp;getRightTrigger()</pre>
+<dl>
+<dt><span class="returnLabel">Returns:</span></dt>
+<dd>The amount that the right trigger is pressed</dd>
+</dl>
 </li>
 </ul>
 <a id="getRawTopButton()">
@@ -640,6 +688,10 @@ implements edu.wpi.first.wpilibj.Sendable</pre>
 <li class="blockList">
 <h4>getRawTopButton</h4>
 <pre class="methodSignature">public&nbsp;boolean&nbsp;getRawTopButton()</pre>
+<dl>
+<dt><span class="returnLabel">Returns:</span></dt>
+<dd>If the face button on the top is pressed</dd>
+</dl>
 </li>
 </ul>
 <a id="getRawBottomButton()">
@@ -649,6 +701,10 @@ implements edu.wpi.first.wpilibj.Sendable</pre>
 <li class="blockList">
 <h4>getRawBottomButton</h4>
 <pre class="methodSignature">public&nbsp;boolean&nbsp;getRawBottomButton()</pre>
+<dl>
+<dt><span class="returnLabel">Returns:</span></dt>
+<dd>If the face button on the bottom is pressed</dd>
+</dl>
 </li>
 </ul>
 <a id="getRawLeftButton()">
@@ -658,6 +714,10 @@ implements edu.wpi.first.wpilibj.Sendable</pre>
 <li class="blockList">
 <h4>getRawLeftButton</h4>
 <pre class="methodSignature">public&nbsp;boolean&nbsp;getRawLeftButton()</pre>
+<dl>
+<dt><span class="returnLabel">Returns:</span></dt>
+<dd>If the face button on the left is pressed</dd>
+</dl>
 </li>
 </ul>
 <a id="getRawRightButton()">
@@ -667,6 +727,10 @@ implements edu.wpi.first.wpilibj.Sendable</pre>
 <li class="blockList">
 <h4>getRawRightButton</h4>
 <pre class="methodSignature">public&nbsp;boolean&nbsp;getRawRightButton()</pre>
+<dl>
+<dt><span class="returnLabel">Returns:</span></dt>
+<dd>If the face button on the right is pressed</dd>
+</dl>
 </li>
 </ul>
 <a id="getRawSelectButton()">
@@ -676,6 +740,10 @@ implements edu.wpi.first.wpilibj.Sendable</pre>
 <li class="blockList">
 <h4>getRawSelectButton</h4>
 <pre class="methodSignature">public&nbsp;boolean&nbsp;getRawSelectButton()</pre>
+<dl>
+<dt><span class="returnLabel">Returns:</span></dt>
+<dd>If the select button is pressed</dd>
+</dl>
 </li>
 </ul>
 <a id="getRawStartButton()">
@@ -685,6 +753,10 @@ implements edu.wpi.first.wpilibj.Sendable</pre>
 <li class="blockList">
 <h4>getRawStartButton</h4>
 <pre class="methodSignature">public&nbsp;boolean&nbsp;getRawStartButton()</pre>
+<dl>
+<dt><span class="returnLabel">Returns:</span></dt>
+<dd>If the start button is pressed</dd>
+</dl>
 </li>
 </ul>
 <a id="getRawOptionButton()">
@@ -694,6 +766,10 @@ implements edu.wpi.first.wpilibj.Sendable</pre>
 <li class="blockList">
 <h4>getRawOptionButton</h4>
 <pre class="methodSignature">public&nbsp;boolean&nbsp;getRawOptionButton()</pre>
+<dl>
+<dt><span class="returnLabel">Returns:</span></dt>
+<dd>If the option button is pressed</dd>
+</dl>
 </li>
 </ul>
 <a id="getRawLeftStickButton()">
@@ -703,6 +779,10 @@ implements edu.wpi.first.wpilibj.Sendable</pre>
 <li class="blockList">
 <h4>getRawLeftStickButton</h4>
 <pre class="methodSignature">public&nbsp;boolean&nbsp;getRawLeftStickButton()</pre>
+<dl>
+<dt><span class="returnLabel">Returns:</span></dt>
+<dd>If the left analog stick is pressed down</dd>
+</dl>
 </li>
 </ul>
 <a id="getRawRightStickButton()">
@@ -712,6 +792,10 @@ implements edu.wpi.first.wpilibj.Sendable</pre>
 <li class="blockList">
 <h4>getRawRightStickButton</h4>
 <pre class="methodSignature">public&nbsp;boolean&nbsp;getRawRightStickButton()</pre>
+<dl>
+<dt><span class="returnLabel">Returns:</span></dt>
+<dd>If the right analog stick is pressed down</dd>
+</dl>
 </li>
 </ul>
 <a id="setRumble(double)">
@@ -721,6 +805,10 @@ implements edu.wpi.first.wpilibj.Sendable</pre>
 <li class="blockList">
 <h4>setRumble</h4>
 <pre class="methodSignature">public&nbsp;void&nbsp;setRumble&#8203;(double&nbsp;intensity)</pre>
+<dl>
+<dt><span class="paramLabel">Parameters:</span></dt>
+<dd><code>intensity</code> - amount to make the gamepad rumble</dd>
+</dl>
 </li>
 </ul>
 <a id="getLeftStick()">
@@ -730,6 +818,10 @@ implements edu.wpi.first.wpilibj.Sendable</pre>
 <li class="blockList">
 <h4>getLeftStick</h4>
 <pre class="methodSignature">public final&nbsp;<a href="../math/Vector2D.html" title="class in com.stuypulse.stuylib.math">Vector2D</a>&nbsp;getLeftStick()</pre>
+<dl>
+<dt><span class="returnLabel">Returns:</span></dt>
+<dd>The position of the left analog stick in a Vector2D</dd>
+</dl>
 </li>
 </ul>
 <a id="getRightStick()">
@@ -739,6 +831,10 @@ implements edu.wpi.first.wpilibj.Sendable</pre>
 <li class="blockList">
 <h4>getRightStick</h4>
 <pre class="methodSignature">public final&nbsp;<a href="../math/Vector2D.html" title="class in com.stuypulse.stuylib.math">Vector2D</a>&nbsp;getRightStick()</pre>
+<dl>
+<dt><span class="returnLabel">Returns:</span></dt>
+<dd>The position of the right analog stick in a Vector2D</dd>
+</dl>
 </li>
 </ul>
 <a id="getDPadX()">
@@ -748,6 +844,10 @@ implements edu.wpi.first.wpilibj.Sendable</pre>
 <li class="blockList">
 <h4>getDPadX</h4>
 <pre class="methodSignature">public final&nbsp;double&nbsp;getDPadX()</pre>
+<dl>
+<dt><span class="returnLabel">Returns:</span></dt>
+<dd>The x position of the d-pad as if it were a stick</dd>
+</dl>
 </li>
 </ul>
 <a id="getDPadY()">
@@ -757,6 +857,10 @@ implements edu.wpi.first.wpilibj.Sendable</pre>
 <li class="blockList">
 <h4>getDPadY</h4>
 <pre class="methodSignature">public final&nbsp;double&nbsp;getDPadY()</pre>
+<dl>
+<dt><span class="returnLabel">Returns:</span></dt>
+<dd>The y position of the d-pad as if it were a stick</dd>
+</dl>
 </li>
 </ul>
 <a id="getDPad()">
@@ -766,60 +870,10 @@ implements edu.wpi.first.wpilibj.Sendable</pre>
 <li class="blockList">
 <h4>getDPad</h4>
 <pre class="methodSignature">public final&nbsp;<a href="../math/Vector2D.html" title="class in com.stuypulse.stuylib.math">Vector2D</a>&nbsp;getDPad()</pre>
-</li>
-</ul>
-<a id="getDPadUp()">
-<!--   -->
-</a>
-<ul class="blockList">
-<li class="blockList">
-<h4>getDPadUp</h4>
-<pre class="methodSignature">public final&nbsp;edu.wpi.first.wpilibj2.command.button.Button&nbsp;getDPadUp()</pre>
-</li>
-</ul>
-<a id="getDPadDown()">
-<!--   -->
-</a>
-<ul class="blockList">
-<li class="blockList">
-<h4>getDPadDown</h4>
-<pre class="methodSignature">public final&nbsp;edu.wpi.first.wpilibj2.command.button.Button&nbsp;getDPadDown()</pre>
-</li>
-</ul>
-<a id="getDPadLeft()">
-<!--   -->
-</a>
-<ul class="blockList">
-<li class="blockList">
-<h4>getDPadLeft</h4>
-<pre class="methodSignature">public final&nbsp;edu.wpi.first.wpilibj2.command.button.Button&nbsp;getDPadLeft()</pre>
-</li>
-</ul>
-<a id="getDPadRight()">
-<!--   -->
-</a>
-<ul class="blockList">
-<li class="blockList">
-<h4>getDPadRight</h4>
-<pre class="methodSignature">public final&nbsp;edu.wpi.first.wpilibj2.command.button.Button&nbsp;getDPadRight()</pre>
-</li>
-</ul>
-<a id="getLeftBumper()">
-<!--   -->
-</a>
-<ul class="blockList">
-<li class="blockList">
-<h4>getLeftBumper</h4>
-<pre class="methodSignature">public final&nbsp;edu.wpi.first.wpilibj2.command.button.Button&nbsp;getLeftBumper()</pre>
-</li>
-</ul>
-<a id="getRightBumper()">
-<!--   -->
-</a>
-<ul class="blockList">
-<li class="blockList">
-<h4>getRightBumper</h4>
-<pre class="methodSignature">public final&nbsp;edu.wpi.first.wpilibj2.command.button.Button&nbsp;getRightBumper()</pre>
+<dl>
+<dt><span class="returnLabel">Returns:</span></dt>
+<dd>The position of the d-pad as if it were a stick in a Vector2D</dd>
+</dl>
 </li>
 </ul>
 <a id="getLeftTriggerPressed()">
@@ -829,15 +883,10 @@ implements edu.wpi.first.wpilibj.Sendable</pre>
 <li class="blockList">
 <h4>getLeftTriggerPressed</h4>
 <pre class="methodSignature">public final&nbsp;boolean&nbsp;getLeftTriggerPressed()</pre>
-</li>
-</ul>
-<a id="getLeftTriggerButton()">
-<!--   -->
-</a>
-<ul class="blockList">
-<li class="blockList">
-<h4>getLeftTriggerButton</h4>
-<pre class="methodSignature">public final&nbsp;edu.wpi.first.wpilibj2.command.button.Button&nbsp;getLeftTriggerButton()</pre>
+<dl>
+<dt><span class="returnLabel">Returns:</span></dt>
+<dd>If the left trigger is pressed down more than <a href="#TRIGGER_PRESSED_THRESHOLD"><code>TRIGGER_PRESSED_THRESHOLD</code></a></dd>
+</dl>
 </li>
 </ul>
 <a id="getRightTriggerPressed()">
@@ -847,6 +896,101 @@ implements edu.wpi.first.wpilibj.Sendable</pre>
 <li class="blockList">
 <h4>getRightTriggerPressed</h4>
 <pre class="methodSignature">public final&nbsp;boolean&nbsp;getRightTriggerPressed()</pre>
+<dl>
+<dt><span class="returnLabel">Returns:</span></dt>
+<dd>If the left trigger is pressed down more than <a href="#TRIGGER_PRESSED_THRESHOLD"><code>TRIGGER_PRESSED_THRESHOLD</code></a></dd>
+</dl>
+</li>
+</ul>
+<a id="getDPadUp()">
+<!--   -->
+</a>
+<ul class="blockList">
+<li class="blockList">
+<h4>getDPadUp</h4>
+<pre class="methodSignature">public final&nbsp;edu.wpi.first.wpilibj2.command.button.Button&nbsp;getDPadUp()</pre>
+<dl>
+<dt><span class="returnLabel">Returns:</span></dt>
+<dd>Button that activates with <a href="#getRawDPadUp()"><code>getRawDPadUp()</code></a></dd>
+</dl>
+</li>
+</ul>
+<a id="getDPadDown()">
+<!--   -->
+</a>
+<ul class="blockList">
+<li class="blockList">
+<h4>getDPadDown</h4>
+<pre class="methodSignature">public final&nbsp;edu.wpi.first.wpilibj2.command.button.Button&nbsp;getDPadDown()</pre>
+<dl>
+<dt><span class="returnLabel">Returns:</span></dt>
+<dd>Button that activates with <a href="#getRawDPadDown()"><code>getRawDPadDown()</code></a></dd>
+</dl>
+</li>
+</ul>
+<a id="getDPadLeft()">
+<!--   -->
+</a>
+<ul class="blockList">
+<li class="blockList">
+<h4>getDPadLeft</h4>
+<pre class="methodSignature">public final&nbsp;edu.wpi.first.wpilibj2.command.button.Button&nbsp;getDPadLeft()</pre>
+<dl>
+<dt><span class="returnLabel">Returns:</span></dt>
+<dd>Button that activates with <a href="#getRawDPadLeft()"><code>getRawDPadLeft()</code></a></dd>
+</dl>
+</li>
+</ul>
+<a id="getDPadRight()">
+<!--   -->
+</a>
+<ul class="blockList">
+<li class="blockList">
+<h4>getDPadRight</h4>
+<pre class="methodSignature">public final&nbsp;edu.wpi.first.wpilibj2.command.button.Button&nbsp;getDPadRight()</pre>
+<dl>
+<dt><span class="returnLabel">Returns:</span></dt>
+<dd>Button that activates with <a href="#getRawDPadRight()"><code>getRawDPadRight()</code></a></dd>
+</dl>
+</li>
+</ul>
+<a id="getLeftBumper()">
+<!--   -->
+</a>
+<ul class="blockList">
+<li class="blockList">
+<h4>getLeftBumper</h4>
+<pre class="methodSignature">public final&nbsp;edu.wpi.first.wpilibj2.command.button.Button&nbsp;getLeftBumper()</pre>
+<dl>
+<dt><span class="returnLabel">Returns:</span></dt>
+<dd>Button that activates with <a href="#getRawLeftBumper()"><code>getRawLeftBumper()</code></a></dd>
+</dl>
+</li>
+</ul>
+<a id="getRightBumper()">
+<!--   -->
+</a>
+<ul class="blockList">
+<li class="blockList">
+<h4>getRightBumper</h4>
+<pre class="methodSignature">public final&nbsp;edu.wpi.first.wpilibj2.command.button.Button&nbsp;getRightBumper()</pre>
+<dl>
+<dt><span class="returnLabel">Returns:</span></dt>
+<dd>Button that activates with <a href="#getRawRightBumper()"><code>getRawRightBumper()</code></a></dd>
+</dl>
+</li>
+</ul>
+<a id="getLeftTriggerButton()">
+<!--   -->
+</a>
+<ul class="blockList">
+<li class="blockList">
+<h4>getLeftTriggerButton</h4>
+<pre class="methodSignature">public final&nbsp;edu.wpi.first.wpilibj2.command.button.Button&nbsp;getLeftTriggerButton()</pre>
+<dl>
+<dt><span class="returnLabel">Returns:</span></dt>
+<dd>Button that activates with <a href="#getLeftTriggerPressed()"><code>getLeftTriggerPressed()</code></a></dd>
+</dl>
 </li>
 </ul>
 <a id="getRightTriggerButton()">
@@ -856,24 +1000,10 @@ implements edu.wpi.first.wpilibj.Sendable</pre>
 <li class="blockList">
 <h4>getRightTriggerButton</h4>
 <pre class="methodSignature">public final&nbsp;edu.wpi.first.wpilibj2.command.button.Button&nbsp;getRightTriggerButton()</pre>
-</li>
-</ul>
-<a id="getLeftButton()">
-<!--   -->
-</a>
-<ul class="blockList">
-<li class="blockList">
-<h4>getLeftButton</h4>
-<pre class="methodSignature">public final&nbsp;edu.wpi.first.wpilibj2.command.button.Button&nbsp;getLeftButton()</pre>
-</li>
-</ul>
-<a id="getRightButton()">
-<!--   -->
-</a>
-<ul class="blockList">
-<li class="blockList">
-<h4>getRightButton</h4>
-<pre class="methodSignature">public final&nbsp;edu.wpi.first.wpilibj2.command.button.Button&nbsp;getRightButton()</pre>
+<dl>
+<dt><span class="returnLabel">Returns:</span></dt>
+<dd>Button that activates with <a href="#getRightTriggerPressed()"><code>getRightTriggerPressed()</code></a></dd>
+</dl>
 </li>
 </ul>
 <a id="getTopButton()">
@@ -883,6 +1013,10 @@ implements edu.wpi.first.wpilibj.Sendable</pre>
 <li class="blockList">
 <h4>getTopButton</h4>
 <pre class="methodSignature">public final&nbsp;edu.wpi.first.wpilibj2.command.button.Button&nbsp;getTopButton()</pre>
+<dl>
+<dt><span class="returnLabel">Returns:</span></dt>
+<dd>Button that activates with <a href="#getRawTopButton()"><code>getRawTopButton()</code></a></dd>
+</dl>
 </li>
 </ul>
 <a id="getBottomButton()">
@@ -892,6 +1026,36 @@ implements edu.wpi.first.wpilibj.Sendable</pre>
 <li class="blockList">
 <h4>getBottomButton</h4>
 <pre class="methodSignature">public final&nbsp;edu.wpi.first.wpilibj2.command.button.Button&nbsp;getBottomButton()</pre>
+<dl>
+<dt><span class="returnLabel">Returns:</span></dt>
+<dd>Button that activates with <a href="#getRawBottomButton()"><code>getRawBottomButton()</code></a></dd>
+</dl>
+</li>
+</ul>
+<a id="getLeftButton()">
+<!--   -->
+</a>
+<ul class="blockList">
+<li class="blockList">
+<h4>getLeftButton</h4>
+<pre class="methodSignature">public final&nbsp;edu.wpi.first.wpilibj2.command.button.Button&nbsp;getLeftButton()</pre>
+<dl>
+<dt><span class="returnLabel">Returns:</span></dt>
+<dd>Button that activates with <a href="#getRawLeftButton()"><code>getRawLeftButton()</code></a></dd>
+</dl>
+</li>
+</ul>
+<a id="getRightButton()">
+<!--   -->
+</a>
+<ul class="blockList">
+<li class="blockList">
+<h4>getRightButton</h4>
+<pre class="methodSignature">public final&nbsp;edu.wpi.first.wpilibj2.command.button.Button&nbsp;getRightButton()</pre>
+<dl>
+<dt><span class="returnLabel">Returns:</span></dt>
+<dd>Button that activates with <a href="#getRawRightButton()"><code>getRawRightButton()</code></a></dd>
+</dl>
 </li>
 </ul>
 <a id="getSelectButton()">
@@ -901,6 +1065,10 @@ implements edu.wpi.first.wpilibj.Sendable</pre>
 <li class="blockList">
 <h4>getSelectButton</h4>
 <pre class="methodSignature">public final&nbsp;edu.wpi.first.wpilibj2.command.button.Button&nbsp;getSelectButton()</pre>
+<dl>
+<dt><span class="returnLabel">Returns:</span></dt>
+<dd>Button that activates with <a href="#getRawSelectButton()"><code>getRawSelectButton()</code></a></dd>
+</dl>
 </li>
 </ul>
 <a id="getStartButton()">
@@ -910,6 +1078,10 @@ implements edu.wpi.first.wpilibj.Sendable</pre>
 <li class="blockList">
 <h4>getStartButton</h4>
 <pre class="methodSignature">public final&nbsp;edu.wpi.first.wpilibj2.command.button.Button&nbsp;getStartButton()</pre>
+<dl>
+<dt><span class="returnLabel">Returns:</span></dt>
+<dd>Button that activates with <a href="#getRawStartButton()"><code>getRawStartButton()</code></a></dd>
+</dl>
 </li>
 </ul>
 <a id="getOptionButton()">
@@ -919,6 +1091,10 @@ implements edu.wpi.first.wpilibj.Sendable</pre>
 <li class="blockList">
 <h4>getOptionButton</h4>
 <pre class="methodSignature">public final&nbsp;edu.wpi.first.wpilibj2.command.button.Button&nbsp;getOptionButton()</pre>
+<dl>
+<dt><span class="returnLabel">Returns:</span></dt>
+<dd>Button that activates with <a href="#getRawOptionButton()"><code>getRawOptionButton()</code></a></dd>
+</dl>
 </li>
 </ul>
 <a id="getLeftAnalogButton()">
@@ -928,6 +1104,10 @@ implements edu.wpi.first.wpilibj.Sendable</pre>
 <li class="blockList">
 <h4>getLeftAnalogButton</h4>
 <pre class="methodSignature">public final&nbsp;edu.wpi.first.wpilibj2.command.button.Button&nbsp;getLeftAnalogButton()</pre>
+<dl>
+<dt><span class="returnLabel">Returns:</span></dt>
+<dd>Button that activates with <a href="#getRawLeftStickButton()"><code>getRawLeftStickButton()</code></a></dd>
+</dl>
 </li>
 </ul>
 <a id="getRightAnalogButton()">
@@ -937,6 +1117,10 @@ implements edu.wpi.first.wpilibj.Sendable</pre>
 <li class="blockList">
 <h4>getRightAnalogButton</h4>
 <pre class="methodSignature">public final&nbsp;edu.wpi.first.wpilibj2.command.button.Button&nbsp;getRightAnalogButton()</pre>
+<dl>
+<dt><span class="returnLabel">Returns:</span></dt>
+<dd>Button that activates with <a href="#getRawRightStickButton()"><code>getRawRightStickButton()</code></a></dd>
+</dl>
 </li>
 </ul>
 <a id="initSendable(edu.wpi.first.wpilibj.smartdashboard.SendableBuilder)">
