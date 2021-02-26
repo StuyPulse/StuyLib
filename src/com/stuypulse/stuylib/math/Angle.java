@@ -52,7 +52,7 @@ public final class Angle {
 
     private static final double kPi = Math.PI;
 
-    private static final double kTwoPi = 2.0 * kPi;
+    private static final double kTau = 2.0 * kPi;
 
     /**
      * Normalize an angle in radians around a specified center
@@ -62,7 +62,7 @@ public final class Angle {
      * @return the normalized angle
      */
     private static double normalizeRadians(double radians, double center) {
-        return radians - kTwoPi * Math.floor((radians + kPi - center) / kTwoPi);
+        return radians - kTau * Math.floor((radians + kPi - center) / kTau);
     }
 
     /**
@@ -165,6 +165,12 @@ public final class Angle {
     /** The value of the angle stored in radians */
     private final double mRadians;
 
+    /** Variables that we can precalculate trig functions */
+    private double mSin;
+
+    private double mCos;
+    private double mTan;
+
     /**
      * Create a new angle with radians as the unit
      *
@@ -172,6 +178,9 @@ public final class Angle {
      */
     private Angle(double radians) {
         mRadians = normalizeRadians(radians, 0.0);
+        mSin = Double.NaN;
+        mCos = Double.NaN;
+        mTan = Double.NaN;
     }
 
     /**
@@ -264,47 +273,30 @@ public final class Angle {
         return fromRadians(this.toRadians() / scale);
     }
 
-    /**
-     * Get an angle with a negative amount of radians
-     *
-     * @return an angle with a negative amount of radians
-     */
+    /** @return an angle rotated by 180 degrees or Pi Radians */
     public Angle negative() {
         return fromRadians(0.0 - this.toRadians());
     }
 
-    /**
-     * Get the sin of the angle
-     *
-     * @return the sin of this angle
-     */
+    /** @return the sine value of this angle */
     public double sin() {
-        return Math.sin(this.toRadians());
+        if (Double.isNaN(mSin)) mSin = Math.sin(this.toRadians());
+        return mSin;
     }
 
-    /**
-     * Get the cos of the angle
-     *
-     * @return the cos of this angle
-     */
+    /** @return the cosine value of this angle */
     public double cos() {
-        return Math.cos(this.toRadians());
+        if (Double.isNaN(mCos)) mCos = Math.cos(this.toRadians());
+        return mCos;
     }
 
-    /**
-     * Get the tan of the angle
-     *
-     * @return the tan of this angle
-     */
+    /** @return the tangent value of this angle */
     public double tan() {
-        return Math.tan(this.toRadians());
+        if (Double.isNaN(mTan)) mTan = Math.tan(this.toRadians());
+        return mTan;
     }
 
-    /**
-     * Get the point of the angle on the unit circle
-     *
-     * @return the point of the angle on the unit circle
-     */
+    /** @return the angle as a point on the unit circle */
     public Vector2D getVector() {
         return new Vector2D(this.cos(), this.sin());
     }
@@ -315,6 +307,7 @@ public final class Angle {
      * @param other object to compare to
      * @return both objects are Angle and they equal eachother
      */
+    @Override
     public boolean equals(Object other) {
         if (this == other) {
             return true;
@@ -327,11 +320,14 @@ public final class Angle {
         return false;
     }
 
-    /**
-     * Represents the Angle as a String
-     *
-     * @return the string representation of the angle
-     */
+    /** @return the hashCode of the double for the value in radians */
+    @Override
+    public int hashCode() {
+        return Double.hashCode(this.toRadians());
+    }
+
+    /** @return the string representation of the angle */
+    @Override
     public String toString() {
         StringBuilder out = new StringBuilder();
         out.append("Angle(");
