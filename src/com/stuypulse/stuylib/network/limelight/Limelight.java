@@ -221,11 +221,7 @@ public final class Limelight {
     /*** Solve 3D ***/
     /****************/
 
-    /**
-     * Get Solve3D Result from network table
-     *
-     * @return Solve 3D Result
-     */
+    /** @return The Solve 3D Result */
     public Solve3DResult getSolve3D() {
         return new Solve3DResult(table.solve3D.getDoubleArray(new double[] {}));
     }
