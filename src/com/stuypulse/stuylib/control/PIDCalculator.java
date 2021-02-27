@@ -7,7 +7,7 @@ package com.stuypulse.stuylib.control;
 import com.stuypulse.stuylib.math.SLMath;
 import com.stuypulse.stuylib.streams.filters.IFilter;
 import com.stuypulse.stuylib.streams.filters.IFilterGroup;
-import com.stuypulse.stuylib.streams.filters.MovingAverage;
+import com.stuypulse.stuylib.streams.filters.TimedMovingAverage;
 import com.stuypulse.stuylib.util.StopWatch;
 
 /**
@@ -30,11 +30,12 @@ public class PIDCalculator extends Controller {
     private static IFilter getMeasurementFilter() {
         // This is a mix between accuracy and speed of updating.
         // Takes about 6 periods to get accurate results
-        return new IFilterGroup(new MovingAverage(12));
+        return new IFilterGroup(new TimedMovingAverage(60));
     }
 
     // The speed that the bang bang controller will run at
     private Number mControlSpeed;
+    private double mCurrentSpeed;
 
     // The results of the period and amplitude
     private double mPeriod;
@@ -56,6 +57,7 @@ public class PIDCalculator extends Controller {
     /** @param speed motor output for bang bang controller */
     public PIDCalculator(Number speed) {
         mControlSpeed = speed;
+        mCurrentSpeed = mControlSpeed.doubleValue();
 
         mPeriod = 0;
         mPeriodFilter = getMeasurementFilter();
@@ -92,8 +94,10 @@ public class PIDCalculator extends Controller {
         }
 
         // Check if we crossed 0, ie, time for next update
-        double sign = Math.signum(error);
-        if ((error * sign) < (getRawVelocity() * sign)) {
+        if (Math.signum(mCurrentSpeed) < Math.signum(error)) {
+            // Update the controller
+            mCurrentSpeed = mControlSpeed.doubleValue() * Math.signum(error);
+
             // Get period and amplitude
             double period = mPeriodTimer.reset() * 2.0;
             double amplitude = mLocalMax;
@@ -113,11 +117,7 @@ public class PIDCalculator extends Controller {
         mLocalMax = Math.max(Math.abs(mLocalMax), Math.abs(error));
 
         // Return bang bang control
-        if (error < 0) {
-            return -mControlSpeed.doubleValue();
-        } else {
-            return mControlSpeed.doubleValue();
-        }
+        return mCurrentSpeed;
     }
 
     /**
