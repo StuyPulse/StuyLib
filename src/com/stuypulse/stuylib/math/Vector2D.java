@@ -20,6 +20,14 @@ public final class Vector2D {
     // Configuration for toString() function
     private static final int STRING_SIGFIGS = 5;
 
+    // Vector Constnants
+    public static final Vector2D kI = new Vector2D(1, 0);
+    public static final Vector2D kj = new Vector2D(1, 0);
+
+    /****************************/
+    /*** Class Implementation ***/
+    /****************************/
+
     /** The x position of the Vector2D */
     public final double x;
 
@@ -172,7 +180,12 @@ public final class Vector2D {
 
     /** @return result of normalizing the Vector2D so that the magnitude is 1.0 */
     public Vector2D normalize() {
-        return this.div(this.distance());
+        final double magnitude = this.distance();
+        if (SLMath.isZero(magnitude)) {
+            return Vector2D.kI;
+        } else {
+            return this.div(magnitude);
+        }
     }
 
     /** @return result of negating the x and y components */

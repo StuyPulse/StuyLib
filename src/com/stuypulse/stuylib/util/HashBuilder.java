@@ -13,6 +13,7 @@ package com.stuypulse.stuylib.util;
  * @author Sam B. (sam.belliveau@gmail.com)
  */
 public final class HashBuilder {
+
     /*******************************************/
     /*** Static HashBuilder Helper Functions ***/
     /*******************************************/

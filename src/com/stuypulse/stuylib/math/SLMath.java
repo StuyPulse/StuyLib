@@ -184,4 +184,16 @@ public final class SLMath {
         // Round number by the multiplier calculated
         return Math.round(n * mul) / mul;
     }
+
+    private static final double FLT_ELIPSON = 1.0 / (double) (1 << 20);
+
+    /**
+     * Compare a double to zero using a Elipson
+     *
+     * @param num number to compare to zero
+     * @return if the number equals a number close to zero
+     */
+    public static boolean isZero(double num) {
+        return Math.abs(num) < FLT_ELIPSON;
+    }
 }

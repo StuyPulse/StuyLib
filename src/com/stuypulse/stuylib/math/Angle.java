@@ -166,10 +166,9 @@ public final class Angle {
     private final double mRadians;
 
     /** Variables that we can precalculate trig functions */
-    private double mSin;
+    private final double mSin;
 
-    private double mCos;
-    private double mTan;
+    private final double mCos;
 
     /**
      * Create a new angle with radians as the unit
@@ -178,9 +177,8 @@ public final class Angle {
      */
     private Angle(double radians) {
         mRadians = normalizeRadians(radians, 0.0);
-        mSin = Double.NaN;
-        mCos = Double.NaN;
-        mTan = Double.NaN;
+        mSin = Math.sin(mRadians);
+        mCos = Math.cos(mRadians);
     }
 
     /**
@@ -280,20 +278,17 @@ public final class Angle {
 
     /** @return the sine value of this angle */
     public double sin() {
-        if (Double.isNaN(mSin)) mSin = Math.sin(this.toRadians());
         return mSin;
     }
 
     /** @return the cosine value of this angle */
     public double cos() {
-        if (Double.isNaN(mCos)) mCos = Math.cos(this.toRadians());
         return mCos;
     }
 
     /** @return the tangent value of this angle */
     public double tan() {
-        if (Double.isNaN(mTan)) mTan = Math.tan(this.toRadians());
-        return mTan;
+        return mSin / mCos;
     }
 
     /** @return the angle as a point on the unit circle */
