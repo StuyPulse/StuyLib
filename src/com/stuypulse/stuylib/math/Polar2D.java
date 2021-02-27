@@ -41,7 +41,7 @@ public class Polar2D {
     /**
      * Convert a Vector2D into Polar Coordinates
      *
-     * @param vec vector
+     * @param vec Vector2D to turn into polar coordinates
      */
     public Polar2D(Vector2D vec) {
         this(vec.magnitude(), vec.getAngle());
@@ -77,7 +77,7 @@ public class Polar2D {
 
     /** @return Polar Coordinates as a Vector2D */
     public Vector2D getVector() {
-        return angle.getVector().mul(magnitude);
+        return new Vector2D(angle.cos() * magnitude, angle.sin() * magnitude);
     }
 
     /**
