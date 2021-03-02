@@ -23,28 +23,44 @@ public final class Angle {
     /*** CONSTANT ANGLE VALUES, SET AT BENCHMARK VALUES ***/
     /******************************************************/
 
-    public static final Angle kArcMinute = Angle.fromArcMinutes(1.0);
-
-    public static final Angle kArcSecond = Angle.fromArcSeconds(1.0);
     public static final Angle kRadiant = Angle.fromRadians(1.0);
+    
     public static final Angle kDegree = Angle.fromDegrees(1.0);
+    
+    public static final Angle kArcMinute = Angle.fromArcMinutes(1.0);
+    public static final Angle kArcSecond = Angle.fromArcSeconds(1.0);
 
-    public static final Angle kZero = Angle.fromRadians(0);
+    public static final Angle kZero = Angle.fromDegrees(0);
+    public static final Angle k15deg = Angle.fromDegrees(15);
     public static final Angle k30deg = Angle.fromDegrees(30);
     public static final Angle k45deg = Angle.fromDegrees(45);
     public static final Angle k60deg = Angle.fromDegrees(60);
+    public static final Angle k75deg = Angle.fromDegrees(75);
     public static final Angle k90deg = Angle.fromDegrees(90);
+    public static final Angle k105deg = Angle.fromDegrees(105);
     public static final Angle k120deg = Angle.fromDegrees(120);
     public static final Angle k135deg = Angle.fromDegrees(135);
     public static final Angle k150deg = Angle.fromDegrees(150);
+    public static final Angle k165deg = Angle.fromDegrees(165);
     public static final Angle k180deg = Angle.fromDegrees(180);
+    public static final Angle k195deg = Angle.fromDegrees(195);
     public static final Angle k210deg = Angle.fromDegrees(210);
     public static final Angle k225deg = Angle.fromDegrees(225);
     public static final Angle k240deg = Angle.fromDegrees(240);
+    public static final Angle k255deg = Angle.fromDegrees(255);
     public static final Angle k270deg = Angle.fromDegrees(270);
+    public static final Angle k285deg = Angle.fromDegrees(285);
     public static final Angle k300deg = Angle.fromDegrees(300);
     public static final Angle k315deg = Angle.fromDegrees(315);
     public static final Angle k330deg = Angle.fromDegrees(330);
+    public static final Angle k345deg = Angle.fromDegrees(345);
+    
+    public static final Angle kSixthPiRad = Angle.fromRadians(kPi / 6.0);
+    public static final Angle kFifthPiRad = Angle.fromRadians(kPi / 5.0);
+    public static final Angle kQuarterPiRad = Angle.fromRadians(kPi / 4.0);
+    public static final Angle kThirdPiRad = Angle.fromRadians(kPi / 3.0);
+    public static final Angle kHalfPiRad = Angle.fromRadians(kPi / 2.0);
+    public static final Angle kPiRad = Angle.fromRadians(kPi / 1.0);
 
     /********************************/
     /*** PRIVATE HELPER FUNCTIONS ***/
