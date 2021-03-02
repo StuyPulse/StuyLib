@@ -68,6 +68,7 @@ public final class Limelight {
 
     /*****************************************/
     /*** Commonly Used Contour Information ***/
+    /*****************************************/
 
     /** @return Whether the limelight has any valid targets */
     public boolean getValidTarget() {
@@ -102,9 +103,9 @@ public final class Limelight {
         return table.latency.getDouble(0) + LimelightConstants.IMAGE_CAPTURE_LATENCY;
     }
 
-    /**********************/
+    /********************/
     /*** Side Lengths ***/
-    /**********************/
+    /********************/
 
     /** @return Shortest side length of target in pixels */
     public double getShortestSidelength() {
