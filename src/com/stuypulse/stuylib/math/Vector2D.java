@@ -22,7 +22,7 @@ public final class Vector2D {
 
     // Vector Constnants
     public static final Vector2D kI = new Vector2D(1, 0);
-    public static final Vector2D kj = new Vector2D(1, 0);
+    public static final Vector2D kJ = new Vector2D(0, 1);
 
     /****************************/
     /*** Class Implementation ***/
