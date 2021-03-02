@@ -24,9 +24,9 @@ public final class Angle {
     /******************************************************/
 
     public static final Angle kRadiant = Angle.fromRadians(1.0);
-    
+
     public static final Angle kDegree = Angle.fromDegrees(1.0);
-    
+
     public static final Angle kArcMinute = Angle.fromArcMinutes(1.0);
     public static final Angle kArcSecond = Angle.fromArcSeconds(1.0);
 
@@ -54,21 +54,17 @@ public final class Angle {
     public static final Angle k315deg = Angle.fromDegrees(315);
     public static final Angle k330deg = Angle.fromDegrees(330);
     public static final Angle k345deg = Angle.fromDegrees(345);
-    
-    public static final Angle kSixthPiRad = Angle.fromRadians(kPi / 6.0);
-    public static final Angle kFifthPiRad = Angle.fromRadians(kPi / 5.0);
-    public static final Angle kQuarterPiRad = Angle.fromRadians(kPi / 4.0);
-    public static final Angle kThirdPiRad = Angle.fromRadians(kPi / 3.0);
-    public static final Angle kHalfPiRad = Angle.fromRadians(kPi / 2.0);
-    public static final Angle kPiRad = Angle.fromRadians(kPi / 1.0);
+
+    public static final Angle kSixthPi = Angle.fromRadians(Math.PI / 6.0);
+    public static final Angle kFifthPi = Angle.fromRadians(Math.PI / 5.0);
+    public static final Angle kQuarterPi = Angle.fromRadians(Math.PI / 4.0);
+    public static final Angle kThirdPi = Angle.fromRadians(Math.PI / 3.0);
+    public static final Angle kHalfPi = Angle.fromRadians(Math.PI / 2.0);
+    public static final Angle kPi = Angle.fromRadians(Math.PI / 1.0);
 
     /********************************/
     /*** PRIVATE HELPER FUNCTIONS ***/
     /********************************/
-
-    private static final double kPi = Math.PI;
-
-    private static final double kTau = 2.0 * kPi;
 
     /**
      * Normalize an angle in radians around a specified center
@@ -78,7 +74,7 @@ public final class Angle {
      * @return the normalized angle
      */
     private static double normalizeRadians(double radians, double center) {
-        return radians - kTau * Math.floor((radians + kPi - center) / kTau);
+        return radians - 2.0 * Math.PI * Math.floor(0.5 * (radians + Math.PI - center) / Math.PI);
     }
 
     /**
