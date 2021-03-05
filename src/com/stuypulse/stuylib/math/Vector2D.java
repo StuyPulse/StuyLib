@@ -21,6 +21,7 @@ public final class Vector2D {
     private static final int STRING_SIGFIGS = 5;
 
     // Vector Constnants
+    public static final Vector2D kOrigin = new Vector2D(0, 0);
     public static final Vector2D kI = new Vector2D(1, 0);
     public static final Vector2D kJ = new Vector2D(0, 1);
 

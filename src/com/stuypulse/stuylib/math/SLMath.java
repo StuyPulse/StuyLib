@@ -185,7 +185,7 @@ public final class SLMath {
         return Math.round(n * mul) / mul;
     }
 
-    private static final double FLT_ELIPSON = 1.0 / (double) (1 << 20);
+    private static final double FLT_ELIPSON = fpow(0.5, 32);
 
     /**
      * Compare a double to zero using a Elipson
