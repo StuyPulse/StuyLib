@@ -30,62 +30,66 @@ public final class Angle {
     public static final Angle kArcMinute = Angle.fromArcMinutes(1.0);
     public static final Angle kArcSecond = Angle.fromArcSeconds(1.0);
 
-    public static final Angle kZero = Angle.fromDegrees(0);
-    public static final Angle k15deg = Angle.fromDegrees(15);
+    public static final Angle k0deg = Angle.fromDegrees(0);
     public static final Angle k30deg = Angle.fromDegrees(30);
     public static final Angle k45deg = Angle.fromDegrees(45);
     public static final Angle k60deg = Angle.fromDegrees(60);
-    public static final Angle k75deg = Angle.fromDegrees(75);
     public static final Angle k90deg = Angle.fromDegrees(90);
-    public static final Angle k105deg = Angle.fromDegrees(105);
     public static final Angle k120deg = Angle.fromDegrees(120);
     public static final Angle k135deg = Angle.fromDegrees(135);
     public static final Angle k150deg = Angle.fromDegrees(150);
-    public static final Angle k165deg = Angle.fromDegrees(165);
     public static final Angle k180deg = Angle.fromDegrees(180);
-    public static final Angle k195deg = Angle.fromDegrees(195);
     public static final Angle k210deg = Angle.fromDegrees(210);
     public static final Angle k225deg = Angle.fromDegrees(225);
     public static final Angle k240deg = Angle.fromDegrees(240);
-    public static final Angle k255deg = Angle.fromDegrees(255);
     public static final Angle k270deg = Angle.fromDegrees(270);
-    public static final Angle k285deg = Angle.fromDegrees(285);
     public static final Angle k300deg = Angle.fromDegrees(300);
     public static final Angle k315deg = Angle.fromDegrees(315);
     public static final Angle k330deg = Angle.fromDegrees(330);
-    public static final Angle k345deg = Angle.fromDegrees(345);
-
-    public static final Angle kSixthPi = Angle.fromRadians(Math.PI / 6.0);
-    public static final Angle kFifthPi = Angle.fromRadians(Math.PI / 5.0);
-    public static final Angle kQuarterPi = Angle.fromRadians(Math.PI / 4.0);
-    public static final Angle kThirdPi = Angle.fromRadians(Math.PI / 3.0);
-    public static final Angle kHalfPi = Angle.fromRadians(Math.PI / 2.0);
-    public static final Angle kPi = Angle.fromRadians(Math.PI / 1.0);
 
     /********************************/
     /*** PRIVATE HELPER FUNCTIONS ***/
     /********************************/
 
+    private static final double TAU = Math.PI * 2.0;
+
     /**
-     * Normalize an angle in radians around a specified center
-     *
      * @param radians the angle to be normalized
      * @param center the center of the normalized range +/- pi
      * @return the normalized angle
      */
     private static double normalizeRadians(double radians, double center) {
-        return radians - 2.0 * Math.PI * Math.floor(0.5 * (radians + Math.PI - center) / Math.PI);
+        return radians - TAU * Math.round((radians - center) / TAU);
     }
 
     /**
-     * Normalize an angle in degrees around a specified center
-     *
      * @param degrees the angle to be normalized
      * @param center the center of the normalized range +/- 180
      * @return the normalized angle
      */
     private static double normalizeDegrees(double degrees, double center) {
-        return degrees - 360.0 * Math.floor((degrees + 180.0 - center) / 360.0);
+        return degrees - 360.0 * Math.round((degrees - center) / 360.0);
+    }
+
+    /********************************/
+    /*** ANGLE CASHE OPTIMIZATION ***/
+    /********************************/
+
+    private static final Angle ANGLE_CASHE[] = new Angle[360];
+
+    static {
+        for (int degrees = 0; degrees < ANGLE_CASHE.length; ++degrees)
+            ANGLE_CASHE[degrees] = new Angle(Math.toRadians(degrees));
+    }
+
+    /**
+     * Get angle from cashed angle lookup table
+     *
+     * @param degrees degrees of the resulting angle
+     * @return the cashed angle
+     */
+    private static final Angle cashedAngle(int degrees) {
+        return ANGLE_CASHE[degrees - 360 * (int) (degrees / 360)];
     }
 
     /*************************/
@@ -110,6 +114,20 @@ public final class Angle {
      */
     public static Angle fromDegrees(double degrees) {
         return fromRadians(Math.toRadians(degrees));
+    }
+
+    /**
+     * Return a new Angle class with an integer in degrees.
+     *
+     * <p>Because the value that the angle is created from is an integer, every possible angle has
+     * been precalculated. You can use this method if you are worried about memory usage or
+     * computation time.
+     *
+     * @param degrees the angle for the new angle class in degrees
+     * @return an angle class with the specified angle
+     */
+    public static Angle fromDegrees(int degrees) {
+        return cashedAngle(degrees);
     }
 
     /**
@@ -177,54 +195,37 @@ public final class Angle {
     /** The value of the angle stored in radians */
     private final double mRadians;
 
-    /** Variables that we can precalculate trig functions */
+    // Precalculated Trig Values
     private final double mSin;
-
     private final double mCos;
 
-    /**
-     * Create a new angle with radians as the unit
-     *
-     * @param radians the value of the new angle
-     */
+    /** @param radians the value of the new angle */
     private Angle(double radians) {
         mRadians = normalizeRadians(radians, 0.0);
         mSin = Math.sin(mRadians);
         mCos = Math.cos(mRadians);
     }
 
-    /**
-     * Get the value of the angle in radians centered around 0.0
-     *
-     * @return the value of the angle in radians centered around 0.0
-     */
+    /** @return the value of the angle in radians centered around 0.0 (+/- pi) */
     public double toRadians() {
         return mRadians;
     }
 
     /**
-     * Get the angle normalized around a custom angle in radians
-     *
-     * @param center the center for the angle to be normalized around
+     * @param center the angle in radians to be centered around (+/- pi)
      * @return the angle normalized around the center in radians
      */
     public double toRadians(double center) {
         return normalizeRadians(this.toRadians(), center);
     }
 
-    /**
-     * Get the value of the angle in degrees centered around 0.0
-     *
-     * @return the value of the angle in degrees centered around 0.0
-     */
+    /** @return the value of the angle in degrees centered around 0.0 (+/- 180) */
     public double toDegrees() {
         return Math.toDegrees(this.toRadians());
     }
 
     /**
-     * Get the angle normalized around a custom angle in degrees
-     *
-     * @param center the center for the angle to be normalized around
+     * @param center the angle in degrees to be centered around (+/- 180)
      * @return the angle normalized around the center in degrees
      */
     public double toDegrees(double center) {
