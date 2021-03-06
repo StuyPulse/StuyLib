@@ -75,12 +75,7 @@ public final class Angle {
     /*** ANGLE cache OPTIMIZATION ***/
     /********************************/
 
-    private static final Angle ANGLE_CACHE[] = new Angle[360];
-
-    static {
-        for (int degrees = 0; degrees < ANGLE_CACHE.length; ++degrees)
-            ANGLE_CACHE[degrees] = new Angle(Math.toRadians(degrees));
-    }
+    private static Angle ANGLE_CACHE[] = null;
 
     /**
      * Get angle from cached angle lookup table
@@ -89,6 +84,13 @@ public final class Angle {
      * @return the cached angle
      */
     private static final Angle cachedAngle(int degrees) {
+        // if there is not cache, generate it
+        if (ANGLE_CACHE == null) {
+            ANGLE_CACHE = new Angle[360];
+            for (int deg = 0; deg < ANGLE_CACHE.length; ++deg)
+                ANGLE_CACHE[deg] = new Angle(Math.toRadians(deg));
+        }
+
         return ANGLE_CACHE[degrees - 360 * (int) (degrees / 360)];
     }
 
