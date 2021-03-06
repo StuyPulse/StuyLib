@@ -16,6 +16,36 @@ import edu.wpi.first.networktables.NetworkTableEntry;
  */
 public final class Limelight {
 
+    /*****************/
+    /*** Singleton ***/
+    /*****************/
+
+    private static Limelight mDefaultInstance = null;
+
+    /**
+     * Returns a Limelight Class using the default table name.
+     *
+     * <p>If you only have one limelight, this is most likely the constructor you want to use.
+     *
+     * @return instance of limelight
+     */
+    public static Limelight getInstance() {
+        if (mDefaultInstance == null) mDefaultInstance = new Limelight();
+        return mDefaultInstance;
+    }
+
+    /**
+     * Returns a Limelight Class using a custom table name.
+     *
+     * <p>If you have multiple limelights, this is most likely the constructor you want to use.
+     *
+     * @param tableName the table name of the limelight
+     * @return instance of limelight
+     */
+    public static Limelight getInstance(String tableName) {
+        return new Limelight(tableName);
+    }
+
     /********************/
     /*** Constructors ***/
     /********************/
@@ -25,7 +55,7 @@ public final class Limelight {
      *
      * <p>If you only have one limelight, this is most likely the constructor you want to use.
      */
-    public Limelight() {
+    private Limelight() {
         table = new LimelightTable();
         timingEntry = table.getEntry("TIMING_TEST_ENTRY");
     }
@@ -37,7 +67,7 @@ public final class Limelight {
      *
      * @param tableName the table name of the limelight
      */
-    public Limelight(String tableName) {
+    private Limelight(String tableName) {
         table = new LimelightTable(tableName);
         timingEntry = table.getEntry("TIMING_TEST_ENTRY");
     }
