@@ -76,7 +76,7 @@ public final class AutoGamepad extends Gamepad {
         }
     }
 
-    /** @return the internal gamepad class that this gamepad will be reeding from */
+    /** @return the internal gamepad class that this gamepad will be reading from */
     public Gamepad getDetectedGamepad() {
         if (mCurrent == mNull || MIN_CONTROLLER_CHECK < mTimer.getTime()) {
             mTimer.reset();
