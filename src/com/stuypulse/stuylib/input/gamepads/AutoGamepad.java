@@ -12,6 +12,15 @@ import edu.wpi.first.wpilibj.DriverStation;
 import edu.wpi.first.wpilibj.GenericHID.HIDType;
 import edu.wpi.first.wpilibj.Joystick;
 
+/**
+ * This class was created as a saftey measure to prevent issues that arise when the wrong gamepad is
+ * plugged in. After the robot smashed into a wall because we plugged in a PS4 controller when the
+ * code expected a Logitech controller, it was deemed that we needed this class. This class will
+ * ONLY RETURN SAFE VALUES, it will never return negatives or unusual values. This cannot be said
+ * about other gamepad classes.
+ *
+ * @author Sam (sam.belliveau@gmail.com)
+ */
 public final class AutoGamepad extends Gamepad {
 
     // The amount of time that the gamepad will go before checking the type
@@ -30,7 +39,7 @@ public final class AutoGamepad extends Gamepad {
     private StopWatch mTimer;
     private Gamepad mCurrent;
 
-    // Constructor
+    /** @param port the port that the gamepad should read from */
     public AutoGamepad(int port) {
         this.port = port;
         mJoystick = new Joystick(this.port);

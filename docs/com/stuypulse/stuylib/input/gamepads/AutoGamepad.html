@@ -142,6 +142,11 @@ $('.navPadding').css('padding-top', $('.fixedNav').css("height"));
 <hr>
 <pre>public final class <span class="typeNameLabel">AutoGamepad</span>
 extends <a href="../Gamepad.html" title="class in com.stuypulse.stuylib.input">Gamepad</a></pre>
+<div class="block">This class was created as a saftey measure to prevent issues that arise when the wrong gamepad is
+ plugged in. After the robot smashed into a wall because we plugged in a PS4 controller when the
+ code expected a Logitech controller, it was deemed that we needed this class. This class will
+ ONLY RETURN SAFE VALUES, it will never return negatives or unusual values. This cannot be said
+ about other gamepad classes.</div>
 </li>
 </ul>
 </div>
@@ -350,6 +355,10 @@ extends <a href="../Gamepad.html" title="class in com.stuypulse.stuylib.input">G
 <li class="blockList">
 <h4>AutoGamepad</h4>
 <pre>public&nbsp;AutoGamepad&#8203;(int&nbsp;port)</pre>
+<dl>
+<dt><span class="paramLabel">Parameters:</span></dt>
+<dd><code>port</code> - the port that the gamepad should read from</dd>
+</dl>
 </li>
 </ul>
 </li>
