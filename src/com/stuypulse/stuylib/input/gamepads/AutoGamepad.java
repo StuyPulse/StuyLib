@@ -8,7 +8,6 @@ import com.stuypulse.stuylib.input.Gamepad;
 import com.stuypulse.stuylib.math.SLMath;
 import com.stuypulse.stuylib.util.StopWatch;
 
-import edu.wpi.first.wpilibj.DriverStation;
 import edu.wpi.first.wpilibj.GenericHID.HIDType;
 import edu.wpi.first.wpilibj.Joystick;
 
@@ -30,7 +29,7 @@ public final class AutoGamepad extends Gamepad {
     // Logitech XMode is not here as it is the same as an Xbox Controller
     private final int port;
     private final Joystick mJoystick;
-    private final Gamepad mLogiDMode;
+    private final Gamepad mLogitech;
     private final Gamepad mPS4;
     private final Gamepad mXbox;
     private final Gamepad mNull;
@@ -43,7 +42,7 @@ public final class AutoGamepad extends Gamepad {
     public AutoGamepad(int port) {
         this.port = port;
         mJoystick = new Joystick(this.port);
-        mLogiDMode = new Logitech.DMode(mJoystick);
+        mLogitech = new Logitech.DMode(mJoystick);
         mPS4 = new PS4(mJoystick);
         mXbox = new Xbox(port);
         mNull = new Gamepad();
@@ -54,20 +53,20 @@ public final class AutoGamepad extends Gamepad {
 
     /** @return the correct type of gamepad coming from driverstation directly */
     private Gamepad forceDetectGamepad() {
-        DriverStation ds = DriverStation.getInstance();
-
-        // Edge Cases
-        if (ds.getJoystickIsXbox(this.port)) return mXbox;
+        // Check if joystick is connected
         if (!mJoystick.isConnected()) return mNull;
 
         // Get Type of Joystick
         HIDType type = mJoystick.getType();
 
+        // Return the right gamepad based on the gamepad type
         if (type == null) return mNull;
         else {
             switch (type) {
+                case kXInputGamepad:
+                    return mXbox;
                 case kHIDJoystick:
-                    return mLogiDMode;
+                    return mLogitech;
                 case kHIDGamepad:
                     return mPS4;
                 default:
