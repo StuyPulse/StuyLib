@@ -30,22 +30,8 @@ public final class Angle {
     public static final Angle kArcMinute = Angle.fromArcMinutes(1.0);
     public static final Angle kArcSecond = Angle.fromArcSeconds(1.0);
 
-    public static final Angle k0deg = Angle.fromDegrees(0);
-    public static final Angle k30deg = Angle.fromDegrees(30);
-    public static final Angle k45deg = Angle.fromDegrees(45);
-    public static final Angle k60deg = Angle.fromDegrees(60);
-    public static final Angle k90deg = Angle.fromDegrees(90);
-    public static final Angle k120deg = Angle.fromDegrees(120);
-    public static final Angle k135deg = Angle.fromDegrees(135);
-    public static final Angle k150deg = Angle.fromDegrees(150);
-    public static final Angle k180deg = Angle.fromDegrees(180);
-    public static final Angle k210deg = Angle.fromDegrees(210);
-    public static final Angle k225deg = Angle.fromDegrees(225);
-    public static final Angle k240deg = Angle.fromDegrees(240);
-    public static final Angle k270deg = Angle.fromDegrees(270);
-    public static final Angle k300deg = Angle.fromDegrees(300);
-    public static final Angle k315deg = Angle.fromDegrees(315);
-    public static final Angle k330deg = Angle.fromDegrees(330);
+    /** An angle that will return cos() = 0, sin() = 0, toRadians() = 0 */
+    public static final Angle kNull = new Angle();
 
     /********************************/
     /*** PRIVATE HELPER FUNCTIONS ***/
@@ -204,6 +190,13 @@ public final class Angle {
     // Precalculated Trig Values
     private final double mSin;
     private final double mCos;
+
+    /** Create an Angle with 0 radians, 0 sin, and 0 cos */
+    private Angle() {
+        mRadians = 0.0;
+        mSin = 0.0;
+        mCos = 0.0;
+    }
 
     /** @param radians the value of the new angle */
     private Angle(double radians) {

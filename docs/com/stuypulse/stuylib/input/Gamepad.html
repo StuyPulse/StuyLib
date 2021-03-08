@@ -27,7 +27,7 @@
     catch(err) {
     }
 //-->
-var data = {"i0":10,"i1":10,"i2":10,"i3":10,"i4":10,"i5":10,"i6":10,"i7":10,"i8":10,"i9":10,"i10":10,"i11":10,"i12":10,"i13":10,"i14":10,"i15":10,"i16":10,"i17":10,"i18":10,"i19":10,"i20":10,"i21":10,"i22":10,"i23":10,"i24":10,"i25":10,"i26":10,"i27":10,"i28":10,"i29":10,"i30":10,"i31":10,"i32":10,"i33":10,"i34":10,"i35":10,"i36":10,"i37":10,"i38":10,"i39":10,"i40":10,"i41":10,"i42":10,"i43":10,"i44":10,"i45":10,"i46":10};
+var data = {"i0":10,"i1":10,"i2":10,"i3":10,"i4":10,"i5":10,"i6":10,"i7":10,"i8":10,"i9":10,"i10":10,"i11":10,"i12":10,"i13":10,"i14":10,"i15":10,"i16":10,"i17":10,"i18":10,"i19":10,"i20":10,"i21":10,"i22":10,"i23":10,"i24":10,"i25":10,"i26":10,"i27":10,"i28":10,"i29":10,"i30":10,"i31":10,"i32":10,"i33":10,"i34":10,"i35":10,"i36":10,"i37":10,"i38":10,"i39":10,"i40":10,"i41":10,"i42":10,"i43":10,"i44":10};
 var tabs = {65535:["t0","All Methods"],2:["t2","Instance Methods"],8:["t4","Concrete Methods"]};
 var altColor = "altColor";
 var rowColor = "rowColor";
@@ -136,7 +136,7 @@ $('.navPadding').css('padding-top', $('.fixedNav').css("height"));
 </dl>
 <dl>
 <dt>Direct Known Subclasses:</dt>
-<dd><code><a href="GamepadState.html" title="class in com.stuypulse.stuylib.input">GamepadState</a></code>, <code><a href="gamepads/KeyGamepad.html" title="class in com.stuypulse.stuylib.input.gamepads">KeyGamepad</a></code>, <code><a href="WPIGamepad.html" title="class in com.stuypulse.stuylib.input">WPIGamepad</a></code>, <code><a href="gamepads/Xbox.html" title="class in com.stuypulse.stuylib.input.gamepads">Xbox</a></code></dd>
+<dd><code><a href="gamepads/AutoGamepad.html" title="class in com.stuypulse.stuylib.input.gamepads">AutoGamepad</a></code>, <code><a href="GamepadState.html" title="class in com.stuypulse.stuylib.input">GamepadState</a></code>, <code><a href="gamepads/keyboard/KeyGamepad.html" title="class in com.stuypulse.stuylib.input.gamepads.keyboard">KeyGamepad</a></code>, <code><a href="WPIGamepad.html" title="class in com.stuypulse.stuylib.input">WPIGamepad</a></code>, <code><a href="gamepads/Xbox.html" title="class in com.stuypulse.stuylib.input.gamepads">Xbox</a></code></dd>
 </dl>
 <hr>
 <pre>public class <span class="typeNameLabel">Gamepad</span>
@@ -303,151 +303,141 @@ implements edu.wpi.first.wpilibj.Sendable</pre>
 <td class="colLast">&nbsp;</td>
 </tr>
 <tr id="i17" class="rowColor">
-<td class="colFirst"><code>edu.wpi.first.wpilibj2.command.button.Button</code></td>
-<th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#getOptionButton()">getOptionButton</a></span>()</code></th>
-<td class="colLast">&nbsp;</td>
-</tr>
-<tr id="i18" class="altColor">
 <td class="colFirst"><code>boolean</code></td>
 <th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#getRawBottomButton()">getRawBottomButton</a></span>()</code></th>
 <td class="colLast">&nbsp;</td>
 </tr>
-<tr id="i19" class="rowColor">
+<tr id="i18" class="altColor">
 <td class="colFirst"><code>boolean</code></td>
 <th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#getRawDPadDown()">getRawDPadDown</a></span>()</code></th>
 <td class="colLast">&nbsp;</td>
 </tr>
-<tr id="i20" class="altColor">
+<tr id="i19" class="rowColor">
 <td class="colFirst"><code>boolean</code></td>
 <th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#getRawDPadLeft()">getRawDPadLeft</a></span>()</code></th>
 <td class="colLast">&nbsp;</td>
 </tr>
-<tr id="i21" class="rowColor">
+<tr id="i20" class="altColor">
 <td class="colFirst"><code>boolean</code></td>
 <th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#getRawDPadRight()">getRawDPadRight</a></span>()</code></th>
 <td class="colLast">&nbsp;</td>
 </tr>
-<tr id="i22" class="altColor">
+<tr id="i21" class="rowColor">
 <td class="colFirst"><code>boolean</code></td>
 <th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#getRawDPadUp()">getRawDPadUp</a></span>()</code></th>
 <td class="colLast">&nbsp;</td>
 </tr>
-<tr id="i23" class="rowColor">
+<tr id="i22" class="altColor">
 <td class="colFirst"><code>boolean</code></td>
 <th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#getRawLeftBumper()">getRawLeftBumper</a></span>()</code></th>
 <td class="colLast">&nbsp;</td>
 </tr>
-<tr id="i24" class="altColor">
+<tr id="i23" class="rowColor">
 <td class="colFirst"><code>boolean</code></td>
 <th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#getRawLeftButton()">getRawLeftButton</a></span>()</code></th>
 <td class="colLast">&nbsp;</td>
 </tr>
-<tr id="i25" class="rowColor">
+<tr id="i24" class="altColor">
 <td class="colFirst"><code>boolean</code></td>
 <th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#getRawLeftStickButton()">getRawLeftStickButton</a></span>()</code></th>
 <td class="colLast">&nbsp;</td>
 </tr>
-<tr id="i26" class="altColor">
-<td class="colFirst"><code>boolean</code></td>
-<th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#getRawOptionButton()">getRawOptionButton</a></span>()</code></th>
-<td class="colLast">&nbsp;</td>
-</tr>
-<tr id="i27" class="rowColor">
+<tr id="i25" class="rowColor">
 <td class="colFirst"><code>boolean</code></td>
 <th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#getRawRightBumper()">getRawRightBumper</a></span>()</code></th>
 <td class="colLast">&nbsp;</td>
 </tr>
-<tr id="i28" class="altColor">
+<tr id="i26" class="altColor">
 <td class="colFirst"><code>boolean</code></td>
 <th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#getRawRightButton()">getRawRightButton</a></span>()</code></th>
 <td class="colLast">&nbsp;</td>
 </tr>
-<tr id="i29" class="rowColor">
+<tr id="i27" class="rowColor">
 <td class="colFirst"><code>boolean</code></td>
 <th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#getRawRightStickButton()">getRawRightStickButton</a></span>()</code></th>
 <td class="colLast">&nbsp;</td>
 </tr>
-<tr id="i30" class="altColor">
+<tr id="i28" class="altColor">
 <td class="colFirst"><code>boolean</code></td>
 <th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#getRawSelectButton()">getRawSelectButton</a></span>()</code></th>
 <td class="colLast">&nbsp;</td>
 </tr>
-<tr id="i31" class="rowColor">
+<tr id="i29" class="rowColor">
 <td class="colFirst"><code>boolean</code></td>
 <th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#getRawStartButton()">getRawStartButton</a></span>()</code></th>
 <td class="colLast">&nbsp;</td>
 </tr>
-<tr id="i32" class="altColor">
+<tr id="i30" class="altColor">
 <td class="colFirst"><code>boolean</code></td>
 <th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#getRawTopButton()">getRawTopButton</a></span>()</code></th>
 <td class="colLast">&nbsp;</td>
 </tr>
-<tr id="i33" class="rowColor">
+<tr id="i31" class="rowColor">
 <td class="colFirst"><code>edu.wpi.first.wpilibj2.command.button.Button</code></td>
 <th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#getRightAnalogButton()">getRightAnalogButton</a></span>()</code></th>
 <td class="colLast">&nbsp;</td>
 </tr>
-<tr id="i34" class="altColor">
+<tr id="i32" class="altColor">
 <td class="colFirst"><code>edu.wpi.first.wpilibj2.command.button.Button</code></td>
 <th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#getRightBumper()">getRightBumper</a></span>()</code></th>
 <td class="colLast">&nbsp;</td>
 </tr>
-<tr id="i35" class="rowColor">
+<tr id="i33" class="rowColor">
 <td class="colFirst"><code>edu.wpi.first.wpilibj2.command.button.Button</code></td>
 <th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#getRightButton()">getRightButton</a></span>()</code></th>
 <td class="colLast">&nbsp;</td>
 </tr>
-<tr id="i36" class="altColor">
+<tr id="i34" class="altColor">
 <td class="colFirst"><code><a href="../math/Vector2D.html" title="class in com.stuypulse.stuylib.math">Vector2D</a></code></td>
 <th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#getRightStick()">getRightStick</a></span>()</code></th>
 <td class="colLast">&nbsp;</td>
 </tr>
-<tr id="i37" class="rowColor">
+<tr id="i35" class="rowColor">
 <td class="colFirst"><code>double</code></td>
 <th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#getRightTrigger()">getRightTrigger</a></span>()</code></th>
 <td class="colLast">&nbsp;</td>
 </tr>
-<tr id="i38" class="altColor">
+<tr id="i36" class="altColor">
 <td class="colFirst"><code>edu.wpi.first.wpilibj2.command.button.Button</code></td>
 <th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#getRightTriggerButton()">getRightTriggerButton</a></span>()</code></th>
 <td class="colLast">&nbsp;</td>
 </tr>
-<tr id="i39" class="rowColor">
+<tr id="i37" class="rowColor">
 <td class="colFirst"><code>boolean</code></td>
 <th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#getRightTriggerPressed()">getRightTriggerPressed</a></span>()</code></th>
 <td class="colLast">&nbsp;</td>
 </tr>
-<tr id="i40" class="altColor">
+<tr id="i38" class="altColor">
 <td class="colFirst"><code>double</code></td>
 <th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#getRightX()">getRightX</a></span>()</code></th>
 <td class="colLast">&nbsp;</td>
 </tr>
-<tr id="i41" class="rowColor">
+<tr id="i39" class="rowColor">
 <td class="colFirst"><code>double</code></td>
 <th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#getRightY()">getRightY</a></span>()</code></th>
 <td class="colLast">&nbsp;</td>
 </tr>
-<tr id="i42" class="altColor">
+<tr id="i40" class="altColor">
 <td class="colFirst"><code>edu.wpi.first.wpilibj2.command.button.Button</code></td>
 <th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#getSelectButton()">getSelectButton</a></span>()</code></th>
 <td class="colLast">&nbsp;</td>
 </tr>
-<tr id="i43" class="rowColor">
+<tr id="i41" class="rowColor">
 <td class="colFirst"><code>edu.wpi.first.wpilibj2.command.button.Button</code></td>
 <th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#getStartButton()">getStartButton</a></span>()</code></th>
 <td class="colLast">&nbsp;</td>
 </tr>
-<tr id="i44" class="altColor">
+<tr id="i42" class="altColor">
 <td class="colFirst"><code>edu.wpi.first.wpilibj2.command.button.Button</code></td>
 <th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#getTopButton()">getTopButton</a></span>()</code></th>
 <td class="colLast">&nbsp;</td>
 </tr>
-<tr id="i45" class="rowColor">
+<tr id="i43" class="rowColor">
 <td class="colFirst"><code>void</code></td>
 <th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#initSendable(edu.wpi.first.wpilibj.smartdashboard.SendableBuilder)">initSendable</a></span>&#8203;(edu.wpi.first.wpilibj.smartdashboard.SendableBuilder&nbsp;builder)</code></th>
 <td class="colLast">&nbsp;</td>
 </tr>
-<tr id="i46" class="altColor">
+<tr id="i44" class="altColor">
 <td class="colFirst"><code>void</code></td>
 <th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#setRumble(double)">setRumble</a></span>&#8203;(double&nbsp;intensity)</code></th>
 <td class="colLast">&nbsp;</td>
@@ -756,19 +746,6 @@ implements edu.wpi.first.wpilibj.Sendable</pre>
 <dl>
 <dt><span class="returnLabel">Returns:</span></dt>
 <dd>If the start button is pressed</dd>
-</dl>
-</li>
-</ul>
-<a id="getRawOptionButton()">
-<!--   -->
-</a>
-<ul class="blockList">
-<li class="blockList">
-<h4>getRawOptionButton</h4>
-<pre class="methodSignature">public&nbsp;boolean&nbsp;getRawOptionButton()</pre>
-<dl>
-<dt><span class="returnLabel">Returns:</span></dt>
-<dd>If the option button is pressed</dd>
 </dl>
 </li>
 </ul>
@@ -1081,19 +1058,6 @@ implements edu.wpi.first.wpilibj.Sendable</pre>
 <dl>
 <dt><span class="returnLabel">Returns:</span></dt>
 <dd>Button that activates with <a href="#getRawStartButton()"><code>getRawStartButton()</code></a></dd>
-</dl>
-</li>
-</ul>
-<a id="getOptionButton()">
-<!--   -->
-</a>
-<ul class="blockList">
-<li class="blockList">
-<h4>getOptionButton</h4>
-<pre class="methodSignature">public final&nbsp;edu.wpi.first.wpilibj2.command.button.Button&nbsp;getOptionButton()</pre>
-<dl>
-<dt><span class="returnLabel">Returns:</span></dt>
-<dd>Button that activates with <a href="#getRawOptionButton()"><code>getRawOptionButton()</code></a></dd>
 </dl>
 </li>
 </ul>

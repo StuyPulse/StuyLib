@@ -6,6 +6,8 @@ package com.stuypulse.stuylib.input.gamepads;
 
 import com.stuypulse.stuylib.input.WPIGamepad;
 
+import edu.wpi.first.wpilibj.Joystick;
+
 /**
  * Implementation of the PS4 for the Gamepad Class
  *
@@ -16,6 +18,10 @@ public class PS4 extends WPIGamepad {
     // Constructor //
     public PS4(int port) {
         super(port);
+    }
+
+    public PS4(Joystick joystick) {
+        super(joystick);
     }
 
     // Left Stick //
@@ -88,16 +94,12 @@ public class PS4 extends WPIGamepad {
         return getRawButton(4);
     }
 
-    // Start / Select / Option //
+    // Start / Select //
     public boolean getRawSelectButton() {
         return getRawButton(9);
     }
 
     public boolean getRawStartButton() {
-        return getRawButton(10);
-    }
-
-    public boolean getRawOptionButton() {
         return getRawButton(10);
     }
 

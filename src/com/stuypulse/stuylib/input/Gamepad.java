@@ -8,7 +8,6 @@ import com.stuypulse.stuylib.math.Vector2D;
 
 import edu.wpi.first.wpilibj.Sendable;
 import edu.wpi.first.wpilibj.smartdashboard.SendableBuilder;
-import edu.wpi.first.wpilibj.smartdashboard.SendableRegistry;
 import edu.wpi.first.wpilibj2.command.button.Button;
 
 /**
@@ -32,12 +31,7 @@ public class Gamepad implements Sendable {
     /*** CONSTRUCTOR ***/
     /*******************/
 
-    public Gamepad() {
-        String name = this.getClass().getSimpleName();
-        name = name.substring(name.lastIndexOf('.') + 1);
-        name = String.format("Gamepad [%s]", name);
-        SendableRegistry.addLW(this, name);
-    }
+    public Gamepad() {}
 
     /*******************************/
     /*** IMPLEMENTABLE FUNCTIONS ***/
@@ -137,11 +131,6 @@ public class Gamepad implements Sendable {
 
     /** @return If the start button is pressed */
     public boolean getRawStartButton() {
-        return false;
-    }
-
-    /** @return If the option button is pressed */
-    public boolean getRawOptionButton() {
         return false;
     }
 
@@ -286,11 +275,6 @@ public class Gamepad implements Sendable {
         return new Button(this::getRawStartButton);
     }
 
-    /** @return Button that activates with {@link #getRawOptionButton()} */
-    public final Button getOptionButton() {
-        return new Button(this::getRawOptionButton);
-    }
-
     // Analog Stick Buttons //
     /** @return Button that activates with {@link #getRawLeftStickButton()} */
     public final Button getLeftAnalogButton() {
@@ -339,7 +323,6 @@ public class Gamepad implements Sendable {
         // Start / Select / Option
         builder.addBooleanProperty("Button Select", this::getRawSelectButton, x -> {});
         builder.addBooleanProperty("Button Start", this::getRawStartButton, x -> {});
-        builder.addBooleanProperty("Button Option", this::getRawOptionButton, x -> {});
 
         // Analog Stick Buttons
         builder.addBooleanProperty("Left Stick Button", this::getRawLeftStickButton, x -> {});

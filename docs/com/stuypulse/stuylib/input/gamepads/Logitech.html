@@ -146,7 +146,7 @@ $('.navPadding').css('padding-top', $('.fixedNav').css("height"));
 </dl>
 <dl>
 <dt>Direct Known Subclasses:</dt>
-<dd><code><a href="Logitech.DMode.html" title="class in com.stuypulse.stuylib.input.gamepads">Logitech.DMode</a></code>, <code><a href="Logitech.XMode.html" title="class in com.stuypulse.stuylib.input.gamepads">Logitech.XMode</a></code></dd>
+<dd><code><a href="Logitech.DMode.html" title="class in com.stuypulse.stuylib.input.gamepads">Logitech.DMode</a></code></dd>
 </dl>
 <hr>
 <pre>public class <span class="typeNameLabel">Logitech</span>
@@ -185,7 +185,7 @@ extends <a href="../WPIGamepad.html" title="class in com.stuypulse.stuylib.input
 <th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="Logitech.XMode.html" title="class in com.stuypulse.stuylib.input.gamepads">Logitech.XMode</a></span></code></th>
 <td class="colLast">
 <div class="block">There is a switch on the back of the controller this is for when the switch is in the X
- position</div>
+ position.</div>
 </td>
 </tr>
 </table>
@@ -226,6 +226,11 @@ extends <a href="../WPIGamepad.html" title="class in com.stuypulse.stuylib.input
 <tr class="altColor">
 <td class="colFirst"><code>protected </code></td>
 <th class="colConstructorName" scope="row"><code><span class="memberNameLink"><a href="#%3Cinit%3E(int)">Logitech</a></span>&#8203;(int&nbsp;port)</code></th>
+<td class="colLast">&nbsp;</td>
+</tr>
+<tr class="rowColor">
+<td class="colFirst"><code>protected </code></td>
+<th class="colConstructorName" scope="row"><code><span class="memberNameLink"><a href="#%3Cinit%3E(edu.wpi.first.wpilibj.Joystick)">Logitech</a></span>&#8203;(edu.wpi.first.wpilibj.Joystick&nbsp;joystick)</code></th>
 <td class="colLast">&nbsp;</td>
 </tr>
 </table>
@@ -279,7 +284,7 @@ extends <a href="../WPIGamepad.html" title="class in com.stuypulse.stuylib.input
 <!--   -->
 </a>
 <h3>Methods inherited from class&nbsp;com.stuypulse.stuylib.input.<a href="../Gamepad.html" title="class in com.stuypulse.stuylib.input">Gamepad</a></h3>
-<code><a href="../Gamepad.html#getBottomButton()">getBottomButton</a>, <a href="../Gamepad.html#getDPad()">getDPad</a>, <a href="../Gamepad.html#getDPadDown()">getDPadDown</a>, <a href="../Gamepad.html#getDPadLeft()">getDPadLeft</a>, <a href="../Gamepad.html#getDPadRight()">getDPadRight</a>, <a href="../Gamepad.html#getDPadUp()">getDPadUp</a>, <a href="../Gamepad.html#getDPadX()">getDPadX</a>, <a href="../Gamepad.html#getDPadY()">getDPadY</a>, <a href="../Gamepad.html#getLeftAnalogButton()">getLeftAnalogButton</a>, <a href="../Gamepad.html#getLeftBumper()">getLeftBumper</a>, <a href="../Gamepad.html#getLeftButton()">getLeftButton</a>, <a href="../Gamepad.html#getLeftStick()">getLeftStick</a>, <a href="../Gamepad.html#getLeftTrigger()">getLeftTrigger</a>, <a href="../Gamepad.html#getLeftTriggerButton()">getLeftTriggerButton</a>, <a href="../Gamepad.html#getLeftTriggerPressed()">getLeftTriggerPressed</a>, <a href="../Gamepad.html#getLeftX()">getLeftX</a>, <a href="../Gamepad.html#getLeftY()">getLeftY</a>, <a href="../Gamepad.html#getOptionButton()">getOptionButton</a>, <a href="../Gamepad.html#getRawBottomButton()">getRawBottomButton</a>, <a href="../Gamepad.html#getRawLeftBumper()">getRawLeftBumper</a>, <a href="../Gamepad.html#getRawLeftButton()">getRawLeftButton</a>, <a href="../Gamepad.html#getRawLeftStickButton()">getRawLeftStickButton</a>, <a href="../Gamepad.html#getRawOptionButton()">getRawOptionButton</a>, <a href="../Gamepad.html#getRawRightBumper()">getRawRightBumper</a>, <a href="../Gamepad.html#getRawRightButton()">getRawRightButton</a>, <a href="../Gamepad.html#getRawRightStickButton()">getRawRightStickButton</a>, <a href="../Gamepad.html#getRawSelectButton()">getRawSelectButton</a>, <a href="../Gamepad.html#getRawStartButton()">getRawStartButton</a>, <a href="../Gamepad.html#getRawTopButton()">getRawTopButton</a>, <a href="../Gamepad.html#getRightAnalogButton()">getRightAnalogButton</a>, <a href="../Gamepad.html#getRightBumper()">getRightBumper</a>, <a href="../Gamepad.html#getRightButton()">getRightButton</a>, <a href="../Gamepad.html#getRightStick()">getRightStick</a>, <a href="../Gamepad.html#getRightTrigger()">getRightTrigger</a>, <a href="../Gamepad.html#getRightTriggerButton()">getRightTriggerButton</a>, <a href="../Gamepad.html#getRightTriggerPressed()">getRightTriggerPressed</a>, <a href="../Gamepad.html#getRightX()">getRightX</a>, <a href="../Gamepad.html#getRightY()">getRightY</a>, <a href="../Gamepad.html#getSelectButton()">getSelectButton</a>, <a href="../Gamepad.html#getStartButton()">getStartButton</a>, <a href="../Gamepad.html#getTopButton()">getTopButton</a>, <a href="../Gamepad.html#initSendable(edu.wpi.first.wpilibj.smartdashboard.SendableBuilder)">initSendable</a></code></li>
+<code><a href="../Gamepad.html#getBottomButton()">getBottomButton</a>, <a href="../Gamepad.html#getDPad()">getDPad</a>, <a href="../Gamepad.html#getDPadDown()">getDPadDown</a>, <a href="../Gamepad.html#getDPadLeft()">getDPadLeft</a>, <a href="../Gamepad.html#getDPadRight()">getDPadRight</a>, <a href="../Gamepad.html#getDPadUp()">getDPadUp</a>, <a href="../Gamepad.html#getDPadX()">getDPadX</a>, <a href="../Gamepad.html#getDPadY()">getDPadY</a>, <a href="../Gamepad.html#getLeftAnalogButton()">getLeftAnalogButton</a>, <a href="../Gamepad.html#getLeftBumper()">getLeftBumper</a>, <a href="../Gamepad.html#getLeftButton()">getLeftButton</a>, <a href="../Gamepad.html#getLeftStick()">getLeftStick</a>, <a href="../Gamepad.html#getLeftTrigger()">getLeftTrigger</a>, <a href="../Gamepad.html#getLeftTriggerButton()">getLeftTriggerButton</a>, <a href="../Gamepad.html#getLeftTriggerPressed()">getLeftTriggerPressed</a>, <a href="../Gamepad.html#getLeftX()">getLeftX</a>, <a href="../Gamepad.html#getLeftY()">getLeftY</a>, <a href="../Gamepad.html#getRawBottomButton()">getRawBottomButton</a>, <a href="../Gamepad.html#getRawLeftBumper()">getRawLeftBumper</a>, <a href="../Gamepad.html#getRawLeftButton()">getRawLeftButton</a>, <a href="../Gamepad.html#getRawLeftStickButton()">getRawLeftStickButton</a>, <a href="../Gamepad.html#getRawRightBumper()">getRawRightBumper</a>, <a href="../Gamepad.html#getRawRightButton()">getRawRightButton</a>, <a href="../Gamepad.html#getRawRightStickButton()">getRawRightStickButton</a>, <a href="../Gamepad.html#getRawSelectButton()">getRawSelectButton</a>, <a href="../Gamepad.html#getRawStartButton()">getRawStartButton</a>, <a href="../Gamepad.html#getRawTopButton()">getRawTopButton</a>, <a href="../Gamepad.html#getRightAnalogButton()">getRightAnalogButton</a>, <a href="../Gamepad.html#getRightBumper()">getRightBumper</a>, <a href="../Gamepad.html#getRightButton()">getRightButton</a>, <a href="../Gamepad.html#getRightStick()">getRightStick</a>, <a href="../Gamepad.html#getRightTrigger()">getRightTrigger</a>, <a href="../Gamepad.html#getRightTriggerButton()">getRightTriggerButton</a>, <a href="../Gamepad.html#getRightTriggerPressed()">getRightTriggerPressed</a>, <a href="../Gamepad.html#getRightX()">getRightX</a>, <a href="../Gamepad.html#getRightY()">getRightY</a>, <a href="../Gamepad.html#getSelectButton()">getSelectButton</a>, <a href="../Gamepad.html#getStartButton()">getStartButton</a>, <a href="../Gamepad.html#getTopButton()">getTopButton</a>, <a href="../Gamepad.html#initSendable(edu.wpi.first.wpilibj.smartdashboard.SendableBuilder)">initSendable</a></code></li>
 </ul>
 <ul class="blockList">
 <li class="blockList"><a id="methods.inherited.from.class.java.lang.Object">
@@ -314,10 +319,19 @@ extends <a href="../WPIGamepad.html" title="class in com.stuypulse.stuylib.input
 <a id="&lt;init&gt;(int)">
 <!--   -->
 </a>
-<ul class="blockListLast">
+<ul class="blockList">
 <li class="blockList">
 <h4>Logitech</h4>
 <pre>protected&nbsp;Logitech&#8203;(int&nbsp;port)</pre>
+</li>
+</ul>
+<a id="&lt;init&gt;(edu.wpi.first.wpilibj.Joystick)">
+<!--   -->
+</a>
+<ul class="blockListLast">
+<li class="blockList">
+<h4>Logitech</h4>
+<pre>protected&nbsp;Logitech&#8203;(edu.wpi.first.wpilibj.Joystick&nbsp;joystick)</pre>
 </li>
 </ul>
 </li>

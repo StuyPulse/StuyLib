@@ -6,6 +6,9 @@ package com.stuypulse.stuylib.input.gamepads;
 
 import com.stuypulse.stuylib.input.WPIGamepad;
 
+import edu.wpi.first.wpilibj.Joystick;
+import edu.wpi.first.wpilibj.XboxController;
+
 /**
  * Implementation of Logitech Controller and its 2 Modes for the Gamepad Class
  *
@@ -16,6 +19,10 @@ public class Logitech extends WPIGamepad {
     // Constructor //
     protected Logitech(int port) {
         super(port);
+    }
+
+    protected Logitech(Joystick joystick) {
+        super(joystick);
     }
 
     // D-Pad //
@@ -44,6 +51,10 @@ public class Logitech extends WPIGamepad {
         // Constructor //
         public DMode(int port) {
             super(port);
+        }
+
+        public DMode(Joystick joystick) {
+            super(joystick);
         }
 
         // Left Stick //
@@ -99,16 +110,12 @@ public class Logitech extends WPIGamepad {
             return getRawButton(4);
         }
 
-        // Start / Select / Option //
+        // Start / Select //
         public boolean getRawSelectButton() {
             return getRawButton(9);
         }
 
         public boolean getRawStartButton() {
-            return getRawButton(10);
-        }
-
-        public boolean getRawOptionButton() {
             return getRawButton(10);
         }
 
@@ -124,88 +131,19 @@ public class Logitech extends WPIGamepad {
 
     /**
      * There is a switch on the back of the controller this is for when the switch is in the X
-     * position
+     * position.
+     *
+     * <p>This is identicle to just using an Xbox controller
      */
-    public static class XMode extends Logitech {
+    public static class XMode extends Xbox {
 
         // Constructor //
         public XMode(int port) {
             super(port);
         }
 
-        // Left Stick //
-        public double getLeftX() {
-            return getRawAxis(0);
-        }
-
-        public double getLeftY() {
-            return -getRawAxis(1);
-        }
-
-        // Right Stick //
-        public double getRightX() {
-            return getRawAxis(4);
-        }
-
-        public double getRightY() {
-            return -getRawAxis(5);
-        }
-
-        // Bumpers //
-        public boolean getRawLeftBumper() {
-            return getRawButton(5);
-        }
-
-        public boolean getRawRightBumper() {
-            return getRawButton(6);
-        }
-
-        // Triggers //
-        public double getLeftTrigger() {
-            return getRawAxis(2);
-        }
-
-        public double getRightTrigger() {
-            return getRawAxis(3);
-        }
-
-        // Face Buttons //
-        public boolean getRawLeftButton() {
-            return getRawButton(3);
-        }
-
-        public boolean getRawBottomButton() {
-            return getRawButton(1);
-        }
-
-        public boolean getRawRightButton() {
-            return getRawButton(2);
-        }
-
-        public boolean getRawTopButton() {
-            return getRawButton(4);
-        }
-
-        // Start / Select / Option //
-        public boolean getRawSelectButton() {
-            return getRawButton(7);
-        }
-
-        public boolean getRawStartButton() {
-            return getRawButton(8);
-        }
-
-        public boolean getRawOptionButton() {
-            return getRawButton(8);
-        }
-
-        // Analog Stick Buttons //
-        public boolean getRawLeftStickButton() {
-            return getRawButton(9);
-        }
-
-        public boolean getRawRightStickButton() {
-            return getRawButton(10);
+        public XMode(XboxController joystick) {
+            super(joystick);
         }
     }
 }

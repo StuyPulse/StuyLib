@@ -2,7 +2,7 @@
 /* This work is licensed under the terms of the MIT license */
 /* found in the root directory of this project. */
 
-package com.stuypulse.stuylib.input.gamepads;
+package com.stuypulse.stuylib.input.gamepads.keyboard;
 
 import com.stuypulse.stuylib.input.Gamepad;
 
@@ -103,17 +103,13 @@ public class KeyGamepad extends Gamepad {
         return getKey("v");
     }
 
-    // Start / Select / Option //
+    // Start / Select //
     public boolean getRawSelectButton() {
         return getKey("r");
     }
 
     public boolean getRawStartButton() {
         return getKey("t");
-    }
-
-    public boolean getRawOptionButton() {
-        return getKey("y");
     }
 
     // Analog Stick Buttons //

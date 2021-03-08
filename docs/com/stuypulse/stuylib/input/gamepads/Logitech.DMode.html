@@ -27,7 +27,7 @@
     catch(err) {
     }
 //-->
-var data = {"i0":10,"i1":10,"i2":10,"i3":10,"i4":10,"i5":10,"i6":10,"i7":10,"i8":10,"i9":10,"i10":10,"i11":10,"i12":10,"i13":10,"i14":10,"i15":10,"i16":10};
+var data = {"i0":10,"i1":10,"i2":10,"i3":10,"i4":10,"i5":10,"i6":10,"i7":10,"i8":10,"i9":10,"i10":10,"i11":10,"i12":10,"i13":10,"i14":10,"i15":10};
 var tabs = {65535:["t0","All Methods"],2:["t2","Instance Methods"],8:["t4","Concrete Methods"]};
 var altColor = "altColor";
 var rowColor = "rowColor";
@@ -215,6 +215,10 @@ extends <a href="Logitech.html" title="class in com.stuypulse.stuylib.input.game
 <th class="colConstructorName" scope="row"><code><span class="memberNameLink"><a href="#%3Cinit%3E(int)">DMode</a></span>&#8203;(int&nbsp;port)</code></th>
 <td class="colLast">&nbsp;</td>
 </tr>
+<tr class="rowColor">
+<th class="colConstructorName" scope="row"><code><span class="memberNameLink"><a href="#%3Cinit%3E(edu.wpi.first.wpilibj.Joystick)">DMode</a></span>&#8203;(edu.wpi.first.wpilibj.Joystick&nbsp;joystick)</code></th>
+<td class="colLast">&nbsp;</td>
+</tr>
 </table>
 </li>
 </ul>
@@ -270,50 +274,45 @@ extends <a href="Logitech.html" title="class in com.stuypulse.stuylib.input.game
 </tr>
 <tr id="i7" class="rowColor">
 <td class="colFirst"><code>boolean</code></td>
-<th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#getRawOptionButton()">getRawOptionButton</a></span>()</code></th>
+<th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#getRawRightBumper()">getRawRightBumper</a></span>()</code></th>
 <td class="colLast">&nbsp;</td>
 </tr>
 <tr id="i8" class="altColor">
 <td class="colFirst"><code>boolean</code></td>
-<th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#getRawRightBumper()">getRawRightBumper</a></span>()</code></th>
+<th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#getRawRightButton()">getRawRightButton</a></span>()</code></th>
 <td class="colLast">&nbsp;</td>
 </tr>
 <tr id="i9" class="rowColor">
 <td class="colFirst"><code>boolean</code></td>
-<th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#getRawRightButton()">getRawRightButton</a></span>()</code></th>
+<th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#getRawRightStickButton()">getRawRightStickButton</a></span>()</code></th>
 <td class="colLast">&nbsp;</td>
 </tr>
 <tr id="i10" class="altColor">
 <td class="colFirst"><code>boolean</code></td>
-<th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#getRawRightStickButton()">getRawRightStickButton</a></span>()</code></th>
+<th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#getRawSelectButton()">getRawSelectButton</a></span>()</code></th>
 <td class="colLast">&nbsp;</td>
 </tr>
 <tr id="i11" class="rowColor">
 <td class="colFirst"><code>boolean</code></td>
-<th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#getRawSelectButton()">getRawSelectButton</a></span>()</code></th>
+<th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#getRawStartButton()">getRawStartButton</a></span>()</code></th>
 <td class="colLast">&nbsp;</td>
 </tr>
 <tr id="i12" class="altColor">
 <td class="colFirst"><code>boolean</code></td>
-<th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#getRawStartButton()">getRawStartButton</a></span>()</code></th>
-<td class="colLast">&nbsp;</td>
-</tr>
-<tr id="i13" class="rowColor">
-<td class="colFirst"><code>boolean</code></td>
 <th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#getRawTopButton()">getRawTopButton</a></span>()</code></th>
 <td class="colLast">&nbsp;</td>
 </tr>
-<tr id="i14" class="altColor">
+<tr id="i13" class="rowColor">
 <td class="colFirst"><code>double</code></td>
 <th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#getRightTrigger()">getRightTrigger</a></span>()</code></th>
 <td class="colLast">&nbsp;</td>
 </tr>
-<tr id="i15" class="rowColor">
+<tr id="i14" class="altColor">
 <td class="colFirst"><code>double</code></td>
 <th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#getRightX()">getRightX</a></span>()</code></th>
 <td class="colLast">&nbsp;</td>
 </tr>
-<tr id="i16" class="altColor">
+<tr id="i15" class="rowColor">
 <td class="colFirst"><code>double</code></td>
 <th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#getRightY()">getRightY</a></span>()</code></th>
 <td class="colLast">&nbsp;</td>
@@ -338,7 +337,7 @@ extends <a href="Logitech.html" title="class in com.stuypulse.stuylib.input.game
 <!--   -->
 </a>
 <h3>Methods inherited from class&nbsp;com.stuypulse.stuylib.input.<a href="../Gamepad.html" title="class in com.stuypulse.stuylib.input">Gamepad</a></h3>
-<code><a href="../Gamepad.html#getBottomButton()">getBottomButton</a>, <a href="../Gamepad.html#getDPad()">getDPad</a>, <a href="../Gamepad.html#getDPadDown()">getDPadDown</a>, <a href="../Gamepad.html#getDPadLeft()">getDPadLeft</a>, <a href="../Gamepad.html#getDPadRight()">getDPadRight</a>, <a href="../Gamepad.html#getDPadUp()">getDPadUp</a>, <a href="../Gamepad.html#getDPadX()">getDPadX</a>, <a href="../Gamepad.html#getDPadY()">getDPadY</a>, <a href="../Gamepad.html#getLeftAnalogButton()">getLeftAnalogButton</a>, <a href="../Gamepad.html#getLeftBumper()">getLeftBumper</a>, <a href="../Gamepad.html#getLeftButton()">getLeftButton</a>, <a href="../Gamepad.html#getLeftStick()">getLeftStick</a>, <a href="../Gamepad.html#getLeftTriggerButton()">getLeftTriggerButton</a>, <a href="../Gamepad.html#getLeftTriggerPressed()">getLeftTriggerPressed</a>, <a href="../Gamepad.html#getOptionButton()">getOptionButton</a>, <a href="../Gamepad.html#getRightAnalogButton()">getRightAnalogButton</a>, <a href="../Gamepad.html#getRightBumper()">getRightBumper</a>, <a href="../Gamepad.html#getRightButton()">getRightButton</a>, <a href="../Gamepad.html#getRightStick()">getRightStick</a>, <a href="../Gamepad.html#getRightTriggerButton()">getRightTriggerButton</a>, <a href="../Gamepad.html#getRightTriggerPressed()">getRightTriggerPressed</a>, <a href="../Gamepad.html#getSelectButton()">getSelectButton</a>, <a href="../Gamepad.html#getStartButton()">getStartButton</a>, <a href="../Gamepad.html#getTopButton()">getTopButton</a>, <a href="../Gamepad.html#initSendable(edu.wpi.first.wpilibj.smartdashboard.SendableBuilder)">initSendable</a></code></li>
+<code><a href="../Gamepad.html#getBottomButton()">getBottomButton</a>, <a href="../Gamepad.html#getDPad()">getDPad</a>, <a href="../Gamepad.html#getDPadDown()">getDPadDown</a>, <a href="../Gamepad.html#getDPadLeft()">getDPadLeft</a>, <a href="../Gamepad.html#getDPadRight()">getDPadRight</a>, <a href="../Gamepad.html#getDPadUp()">getDPadUp</a>, <a href="../Gamepad.html#getDPadX()">getDPadX</a>, <a href="../Gamepad.html#getDPadY()">getDPadY</a>, <a href="../Gamepad.html#getLeftAnalogButton()">getLeftAnalogButton</a>, <a href="../Gamepad.html#getLeftBumper()">getLeftBumper</a>, <a href="../Gamepad.html#getLeftButton()">getLeftButton</a>, <a href="../Gamepad.html#getLeftStick()">getLeftStick</a>, <a href="../Gamepad.html#getLeftTriggerButton()">getLeftTriggerButton</a>, <a href="../Gamepad.html#getLeftTriggerPressed()">getLeftTriggerPressed</a>, <a href="../Gamepad.html#getRightAnalogButton()">getRightAnalogButton</a>, <a href="../Gamepad.html#getRightBumper()">getRightBumper</a>, <a href="../Gamepad.html#getRightButton()">getRightButton</a>, <a href="../Gamepad.html#getRightStick()">getRightStick</a>, <a href="../Gamepad.html#getRightTriggerButton()">getRightTriggerButton</a>, <a href="../Gamepad.html#getRightTriggerPressed()">getRightTriggerPressed</a>, <a href="../Gamepad.html#getSelectButton()">getSelectButton</a>, <a href="../Gamepad.html#getStartButton()">getStartButton</a>, <a href="../Gamepad.html#getTopButton()">getTopButton</a>, <a href="../Gamepad.html#initSendable(edu.wpi.first.wpilibj.smartdashboard.SendableBuilder)">initSendable</a></code></li>
 </ul>
 <ul class="blockList">
 <li class="blockList"><a id="methods.inherited.from.class.java.lang.Object">
@@ -373,10 +372,19 @@ extends <a href="Logitech.html" title="class in com.stuypulse.stuylib.input.game
 <a id="&lt;init&gt;(int)">
 <!--   -->
 </a>
-<ul class="blockListLast">
+<ul class="blockList">
 <li class="blockList">
 <h4>DMode</h4>
 <pre>public&nbsp;DMode&#8203;(int&nbsp;port)</pre>
+</li>
+</ul>
+<a id="&lt;init&gt;(edu.wpi.first.wpilibj.Joystick)">
+<!--   -->
+</a>
+<ul class="blockListLast">
+<li class="blockList">
+<h4>DMode</h4>
+<pre>public&nbsp;DMode&#8203;(edu.wpi.first.wpilibj.Joystick&nbsp;joystick)</pre>
 </li>
 </ul>
 </li>
@@ -596,21 +604,6 @@ extends <a href="Logitech.html" title="class in com.stuypulse.stuylib.input.game
 <dd><code><a href="../Gamepad.html#getRawStartButton()">getRawStartButton</a></code>&nbsp;in class&nbsp;<code><a href="../Gamepad.html" title="class in com.stuypulse.stuylib.input">Gamepad</a></code></dd>
 <dt><span class="returnLabel">Returns:</span></dt>
 <dd>If the start button is pressed</dd>
-</dl>
-</li>
-</ul>
-<a id="getRawOptionButton()">
-<!--   -->
-</a>
-<ul class="blockList">
-<li class="blockList">
-<h4>getRawOptionButton</h4>
-<pre class="methodSignature">public&nbsp;boolean&nbsp;getRawOptionButton()</pre>
-<dl>
-<dt><span class="overrideSpecifyLabel">Overrides:</span></dt>
-<dd><code><a href="../Gamepad.html#getRawOptionButton()">getRawOptionButton</a></code>&nbsp;in class&nbsp;<code><a href="../Gamepad.html" title="class in com.stuypulse.stuylib.input">Gamepad</a></code></dd>
-<dt><span class="returnLabel">Returns:</span></dt>
-<dd>If the option button is pressed</dd>
 </dl>
 </li>
 </ul>
