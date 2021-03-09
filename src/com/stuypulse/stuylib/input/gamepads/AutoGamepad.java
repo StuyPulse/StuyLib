@@ -89,6 +89,12 @@ public final class AutoGamepad extends Gamepad {
     /*** Gamepad Passthrough ***/
     /***************************/
 
+    // Name //
+    @Override
+    public String getGamepadName() {
+        return "AutoGamepad (" + getDetectedGamepad().getGamepadName() + ")";
+    }
+
     // Left Stick //
     public double getLeftX() {
         return SLMath.clamp(getDetectedGamepad().getLeftX(), -1.0, 1.0);

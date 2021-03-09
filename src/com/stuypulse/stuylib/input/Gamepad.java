@@ -37,6 +37,14 @@ public class Gamepad implements Sendable {
     /*** IMPLEMENTABLE FUNCTIONS ***/
     /*******************************/
 
+    /**
+     * 
+     * @return The name of the gamepad being used
+     */
+    public String getGamepadName() {
+        return this.getClass().getSimpleName();
+    }
+
     // Left Stick //
     /** @return The X position of the left analog stick */
     public double getLeftX() {
@@ -292,6 +300,9 @@ public class Gamepad implements Sendable {
 
     @Override
     public final void initSendable(SendableBuilder builder) {
+        // Name
+        builder.addStringProperty("Gamepad Name", this::getGamepadName, x -> {});
+
         // Left Stick
         builder.addDoubleProperty("Left Stick X", this::getLeftX, x -> {});
         builder.addDoubleProperty("Left Stick Y", this::getLeftY, x -> {});

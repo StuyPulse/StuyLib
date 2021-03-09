@@ -4,8 +4,6 @@
 
 package com.stuypulse.stuylib.input;
 
-import com.stuypulse.stuylib.util.StopWatch;
-
 /**
  * This class stores the state of a gamepad as all of the different values for its buttons and axis.
  *
@@ -25,8 +23,6 @@ public class GamepadState extends Gamepad {
     /*************************************/
     /*** VARIABLES MAKING UP THE STATE ***/
     /*************************************/
-
-    private final StopWatch timer;
 
     public final double stickLeftX;
     public final double stickLeftY;
@@ -62,8 +58,6 @@ public class GamepadState extends Gamepad {
 
     /** @param gamepad Gamepad class to record in the state */
     public GamepadState(Gamepad gamepad) {
-        this.timer = new StopWatch();
-
         this.stickLeftX = gamepad.getLeftX();
         this.stickLeftY = gamepad.getLeftY();
 
@@ -97,105 +91,116 @@ public class GamepadState extends Gamepad {
     /*** GAMEPAD STATE FUNCTIONS ***/
     /*******************************/
 
-    /**
-     * Get the age of this class since construction.
-     *
-     * <p>This is done by an internal timer that is created at construction and can not be reset.
-     *
-     * @return the time since construction in seconds.
-     */
-    public double getAge() {
-        return this.timer.getTime();
-    }
+    // TODO: JSON FORMATTING
 
     /****************************************/
     /*** GAMEPAD IMPLEMENTATION FUNCTIONS ***/
     /****************************************/
 
     // Left Stick //
+    @Override
     public double getLeftX() {
         return this.stickLeftX;
     }
 
+    @Override
     public double getLeftY() {
         return this.stickLeftY;
     }
 
     // Right Stick //
+    @Override
     public double getRightX() {
         return this.stickRightX;
     }
 
+    @Override
     public double getRightY() {
         return this.stickRightY;
     }
 
     // D-Pad //
+    @Override
     public boolean getRawDPadUp() {
         return this.dpadUp;
     }
 
+    @Override
     public boolean getRawDPadDown() {
         return this.dpadDown;
     }
 
+    @Override
     public boolean getRawDPadLeft() {
         return this.dpadLeft;
     }
 
+    @Override
     public boolean getRawDPadRight() {
         return this.dpadRight;
     }
 
     // Bumpers //
+    @Override
     public boolean getRawLeftBumper() {
         return this.bumperLeft;
     }
 
+    @Override
     public boolean getRawRightBumper() {
         return this.bumperRight;
     }
 
     // Triggers //
+    @Override
     public double getLeftTrigger() {
         return this.triggerLeft;
     }
 
+    @Override
     public double getRightTrigger() {
         return this.triggerRight;
     }
 
     // Face Buttons //
+    @Override
     public boolean getRawTopButton() {
         return this.buttonTop;
     }
 
+    @Override
     public boolean getRawBottomButton() {
         return this.buttonBottom;
     }
 
+    @Override
     public boolean getRawLeftButton() {
         return this.buttonLeft;
     }
 
+    @Override
     public boolean getRawRightButton() {
         return this.buttonRight;
     }
 
     // Start / Select / Option //
+    @Override
     public boolean getRawSelectButton() {
         return this.buttonSelect;
     }
 
+    @Override
     public boolean getRawStartButton() {
         return this.buttonStart;
     }
 
     // Analog Stick Buttons //
+    @Override
     public boolean getRawLeftStickButton() {
         return this.buttonStickLeft;
     }
 
+    @Override
     public boolean getRawRightStickButton() {
         return this.buttonStickRight;
     }

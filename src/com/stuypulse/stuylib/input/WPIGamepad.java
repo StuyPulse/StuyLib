@@ -51,6 +51,11 @@ public class WPIGamepad extends Gamepad {
     /*** JOYSTICK STUFF ***/
     /**********************/
 
+    @Override
+    public String getGamepadName() {
+        return "WPIGamepad";
+    }
+
     /** @return if Gamepad has a Joystick */
     public final boolean hasJoystick() {
         return getJoystick() != null;
