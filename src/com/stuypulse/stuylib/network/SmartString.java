@@ -23,6 +23,15 @@ public class SmartString implements Supplier<String> {
     /** The default value that the {@link SmartDashboard} value was set too. */
     private final String mDefaultValue;
 
+    /**
+     * Creates a {@link SmartString} with a network table entry instead of a value for {@link
+     * SmartDashboard}. This allows you to put items on things like {@link
+     * edu.wpi.first.wpilibj.shuffleboard.Shuffleboard}, without having to use a raw {@link
+     * NetworkTableEntry}.
+     *
+     * @param entry the {@link NetworkTableEntry} the {@link SmartString} should be set to.
+     * @param value the default value of the {@link SmartString}
+     */
     public SmartString(NetworkTableEntry entry, String value) {
         mEntry = entry;
         mDefaultValue = value;

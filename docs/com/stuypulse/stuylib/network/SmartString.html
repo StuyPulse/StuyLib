@@ -163,7 +163,9 @@ implements java.util.function.Supplier&lt;java.lang.String&gt;</pre>
 <tr class="altColor">
 <th class="colConstructorName" scope="row"><code><span class="memberNameLink"><a href="#%3Cinit%3E(edu.wpi.first.networktables.NetworkTableEntry,java.lang.String)">SmartString</a></span>&#8203;(edu.wpi.first.networktables.NetworkTableEntry&nbsp;entry,
            java.lang.String&nbsp;value)</code></th>
-<td class="colLast">&nbsp;</td>
+<td class="colLast">
+<div class="block">Creates a <a href="SmartString.html" title="class in com.stuypulse.stuylib.network"><code>SmartString</code></a> with a network table entry instead of a value for <code>SmartDashboard</code>.</div>
+</td>
 </tr>
 <tr class="rowColor">
 <th class="colConstructorName" scope="row"><code><span class="memberNameLink"><a href="#%3Cinit%3E(java.lang.String,java.lang.String)">SmartString</a></span>&#8203;(java.lang.String&nbsp;id,
@@ -244,6 +246,12 @@ implements java.util.function.Supplier&lt;java.lang.String&gt;</pre>
 <h4>SmartString</h4>
 <pre>public&nbsp;SmartString&#8203;(edu.wpi.first.networktables.NetworkTableEntry&nbsp;entry,
                    java.lang.String&nbsp;value)</pre>
+<div class="block">Creates a <a href="SmartString.html" title="class in com.stuypulse.stuylib.network"><code>SmartString</code></a> with a network table entry instead of a value for <code>SmartDashboard</code>. This allows you to put items on things like <code>Shuffleboard</code>, without having to use a raw <code>NetworkTableEntry</code>.</div>
+<dl>
+<dt><span class="paramLabel">Parameters:</span></dt>
+<dd><code>entry</code> - the <code>NetworkTableEntry</code> the <a href="SmartString.html" title="class in com.stuypulse.stuylib.network"><code>SmartString</code></a> should be set to.</dd>
+<dd><code>value</code> - the default value of the <a href="SmartString.html" title="class in com.stuypulse.stuylib.network"><code>SmartString</code></a></dd>
+</dl>
 </li>
 </ul>
 <a id="&lt;init&gt;(java.lang.String,java.lang.String)">
