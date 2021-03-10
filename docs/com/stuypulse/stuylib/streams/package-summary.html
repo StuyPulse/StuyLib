@@ -108,7 +108,7 @@ $('.navPadding').css('padding-top', $('.fixedNav').css("height"));
 <tr class="altColor">
 <th class="colFirst" scope="row"><a href="IStream.html" title="interface in com.stuypulse.stuylib.streams">IStream</a></th>
 <td class="colLast">
-<div class="block">A stream of doubles that is accessed with the .get() function</div>
+<div class="block">A stream of doubles that is accessed with the <a href="IStream.html#get()"><code>IStream.get()</code></a> function</div>
 </td>
 </tr>
 </tbody>
@@ -131,13 +131,14 @@ $('.navPadding').css('padding-top', $('.fixedNav').css("height"));
 <tr class="rowColor">
 <th class="colFirst" scope="row"><a href="FilteredIStream.html" title="class in com.stuypulse.stuylib.streams">FilteredIStream</a></th>
 <td class="colLast">
-<div class="block">Takes a Stream and a StreamFilter and makes a FilteredStream</div>
+<div class="block">Takes an <a href="IStream.html" title="interface in com.stuypulse.stuylib.streams"><code>IStream</code></a> and a <a href="filters/IFilter.html" title="interface in com.stuypulse.stuylib.streams.filters"><code>IFilter</code></a> and makes a <a href="FilteredIStream.html" title="class in com.stuypulse.stuylib.streams"><code>FilteredIStream</code></a></div>
 </td>
 </tr>
 <tr class="altColor">
 <th class="colFirst" scope="row"><a href="PollingIStream.html" title="class in com.stuypulse.stuylib.streams">PollingIStream</a></th>
 <td class="colLast">
-<div class="block">Takes an IStream and an IStreamFilter and makes a PollingIStream</div>
+<div class="block">A PollingIStream calls <a href="IStream.html#get()"><code>IStream.get()</code></a> every x milliseconds instead of when the user calls
+ get</div>
 </td>
 </tr>
 </tbody>

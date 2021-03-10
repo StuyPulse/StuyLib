@@ -5,12 +5,13 @@
 package com.stuypulse.stuylib.input;
 
 /**
- * This class stores the state of a gamepad as all of the different values for its buttons and axis.
+ * This class stores the state of a {@link Gamepad} as all of the different values for its buttons
+ * and axis.
  *
- * <p>It can be constructed by passing in a gamepad, which it will grab all of the current values
- * and store them.
+ * <p>It can be constructed by passing in a {@link Gamepad}, which it will grab all of the current
+ * values and store them.
  *
- * <p>This class implements all of the functions for gamepad, making it a valid gamepad that
+ * <p>This class implements all of the functions for {@link Gamepad}, making it a valid gamepad that
  * something can call.
  *
  * <p>TODO: this class is designed to be turned into a JSON string and back, which has yet to be
@@ -25,6 +26,7 @@ public class GamepadState extends Gamepad {
     /*************************************/
 
     public final double stickLeftX;
+
     public final double stickLeftY;
 
     public final double stickRightX;

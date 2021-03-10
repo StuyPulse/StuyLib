@@ -9,7 +9,7 @@ import com.stuypulse.stuylib.input.WPIGamepad;
 import edu.wpi.first.wpilibj.Joystick;
 
 /**
- * Implementation of the PS4 for the Gamepad Class
+ * Implementation of the PS4 for the {@link com.stuypulse.stuylib.input.Gamepad} Class
  *
  * @author Sam (sam.belliveau@gmail.com)
  */

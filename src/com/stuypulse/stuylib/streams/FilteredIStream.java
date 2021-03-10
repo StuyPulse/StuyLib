@@ -8,7 +8,7 @@ import com.stuypulse.stuylib.streams.filters.IFilter;
 import com.stuypulse.stuylib.streams.filters.IFilterGroup;
 
 /**
- * Takes a Stream and a StreamFilter and makes a FilteredStream
+ * Takes an {@link IStream} and a {@link IFilter} and makes a {@link FilteredIStream}
  *
  * <p>This could be used to automatically filter controller inputs
  *

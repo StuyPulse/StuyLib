@@ -12,8 +12,9 @@ import java.util.Set;
 /**
  * The SLNetworkTable is a very fast way to easily interface with a network table.
  *
- * <p>If a function you want is not implemented, use getTable(), getRawEntry(), or getInstance() to
- * call the function yourself
+ * <p>If a function you want is not implemented, use {@link SLNetworkTable#getTable()}, {@link
+ * SLNetworkTable#getRawEntry(String)}, or {@link SLNetworkTable#getInstance()} to call the function
+ * yourself
  *
  * @author Sam (sam.belliveau@gmail.com)
  */

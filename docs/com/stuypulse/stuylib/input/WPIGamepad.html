@@ -27,7 +27,7 @@
     catch(err) {
     }
 //-->
-var data = {"i0":10,"i1":10,"i2":10,"i3":10,"i4":10,"i5":10};
+var data = {"i0":10,"i1":10,"i2":10,"i3":10,"i4":10,"i5":10,"i6":10};
 var tabs = {65535:["t0","All Methods"],2:["t2","Instance Methods"],8:["t4","Concrete Methods"]};
 var altColor = "altColor";
 var rowColor = "rowColor";
@@ -151,15 +151,14 @@ extends <a href="Gamepad.html" title="class in com.stuypulse.stuylib.input">Game
  if WPI updates.
 
  <p>If you would like to get a button id that is not defined, or an axis id that is not defined,
- use getRawButton(int id) or getRawAxis(int id). If you want it to return a button for an
- unimplemented button, type getButton(int id).
+ use <a href="#getRawButton(int)"><code>getRawButton(int)</code></a> or <a href="#getRawAxis(int)"><code>getRawAxis(int)</code></a>. If you want it to return a button for
+ an unimplemented button, type <a href="#getButton(int)"><code>getButton(int)</code></a>.
 
  <p>To initialize this class, pass in a Joystick or an int set to the port number. This will be
  the Joystick that the Gamepad class will interact with.
 
- <p>If you do not initialize with a Joystick, everything will still work except for -
- getRawButton(int id) - getButton(int id) - getRawAxis(int id) which will return either false or
- 0.0
+ <p>If you do not initialize with a Joystick, everything will still work except for - <a href="#getRawButton(int)"><code>getRawButton(int)</code></a> - <a href="#getRawAxis(int)"><code>getRawAxis(int)</code></a> - <a href="#getButton(int)"><code>getButton(int)</code></a> which will return either
+ false or 0.0
 
  <p>The difference between the implementations of the Gamepad class is how it interacts with the
  underlying Joystick class.</div>
@@ -231,26 +230,31 @@ extends <a href="Gamepad.html" title="class in com.stuypulse.stuylib.input">Game
 <td class="colLast">&nbsp;</td>
 </tr>
 <tr id="i1" class="rowColor">
+<td class="colFirst"><code>java.lang.String</code></td>
+<th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#getGamepadName()">getGamepadName</a></span>()</code></th>
+<td class="colLast">&nbsp;</td>
+</tr>
+<tr id="i2" class="altColor">
 <td class="colFirst"><code>edu.wpi.first.wpilibj.Joystick</code></td>
 <th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#getJoystick()">getJoystick</a></span>()</code></th>
 <td class="colLast">&nbsp;</td>
 </tr>
-<tr id="i2" class="altColor">
+<tr id="i3" class="rowColor">
 <td class="colFirst"><code>double</code></td>
 <th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#getRawAxis(int)">getRawAxis</a></span>&#8203;(int&nbsp;axis)</code></th>
 <td class="colLast">&nbsp;</td>
 </tr>
-<tr id="i3" class="rowColor">
+<tr id="i4" class="altColor">
 <td class="colFirst"><code>boolean</code></td>
 <th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#getRawButton(int)">getRawButton</a></span>&#8203;(int&nbsp;button)</code></th>
 <td class="colLast">&nbsp;</td>
 </tr>
-<tr id="i4" class="altColor">
+<tr id="i5" class="rowColor">
 <td class="colFirst"><code>boolean</code></td>
 <th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#hasJoystick()">hasJoystick</a></span>()</code></th>
 <td class="colLast">&nbsp;</td>
 </tr>
-<tr id="i5" class="rowColor">
+<tr id="i6" class="altColor">
 <td class="colFirst"><code>void</code></td>
 <th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#setRumble(double)">setRumble</a></span>&#8203;(double&nbsp;intensity)</code></th>
 <td class="colLast">&nbsp;</td>
@@ -329,6 +333,21 @@ extends <a href="Gamepad.html" title="class in com.stuypulse.stuylib.input">Game
 <!--   -->
 </a>
 <h3>Method Detail</h3>
+<a id="getGamepadName()">
+<!--   -->
+</a>
+<ul class="blockList">
+<li class="blockList">
+<h4>getGamepadName</h4>
+<pre class="methodSignature">public&nbsp;java.lang.String&nbsp;getGamepadName()</pre>
+<dl>
+<dt><span class="overrideSpecifyLabel">Overrides:</span></dt>
+<dd><code><a href="Gamepad.html#getGamepadName()">getGamepadName</a></code>&nbsp;in class&nbsp;<code><a href="Gamepad.html" title="class in com.stuypulse.stuylib.input">Gamepad</a></code></dd>
+<dt><span class="returnLabel">Returns:</span></dt>
+<dd>The name of the gamepad being used</dd>
+</dl>
+</li>
+</ul>
 <a id="hasJoystick()">
 <!--   -->
 </a>

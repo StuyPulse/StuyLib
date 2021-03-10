@@ -7,7 +7,8 @@ package com.stuypulse.stuylib.input.gamepads.keyboard;
 import com.stuypulse.stuylib.input.keyboard.NetKeyboard;
 
 /**
- * This class takes data from a Network Keyboard and puts it into a gamepad
+ * This class takes data from a {@link NetKeyboard} and puts it into a {@link
+ * com.stuypulse.stuylib.input.Gamepad}
  *
  * @author Sam (sam.belliveau@gmail.com)
  */

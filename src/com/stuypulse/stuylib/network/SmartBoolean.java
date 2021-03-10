@@ -4,83 +4,67 @@
 
 package com.stuypulse.stuylib.network;
 
+import edu.wpi.first.networktables.NetworkTableEntry;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
+import java.util.function.Supplier;
 
 /**
- * SmartBoolean works as a wrapper for values on SmartDashboard. The idea for this class was to make
- * getting values on SmartDashboard easier by making them variables that you know were initialized.
+ * {@link SmartBoolean} works as a wrapper for values on {@link SmartDashboard}. The idea for this
+ * class was to make getting values on {@link SmartDashboard} easier by making them variables that
+ * you know were initialized.
  *
  * @author Sam (sam.belliveau@gmail.com)
  */
-public class SmartBoolean {
+public class SmartBoolean implements Supplier<Boolean> {
 
-    /** The ID / Name for the value on SmartDashboard. */
-    private String mTableID;
+    /** The ID / Name for the value on {@link SmartDashboard}. */
+    private final NetworkTableEntry mEntry;
 
-    /** The default value that the SmartDashboard value was set too. */
-    private boolean mDefaultValue;
+    /** The default value that the {@link SmartDashboard} value was set too. */
+    private final boolean mDefaultValue;
 
     /**
-     * Creates a SmartBoolean with the element name and a default value. The value on SmartDashboard
-     * will be reset to the default value on initialization.
+     * Creates a {@link SmartBoolean} with a network table entry instead of a value for {@link
+     * SmartDashboard}. This allows you to put items on things like {@link
+     * edu.wpi.first.wpilibj.shuffleboard.Shuffleboard}, without having to use a raw {@link
+     * NetworkTableEntry}.
      *
-     * @param id the name of the boolean on SmartDashboard
+     * @param entry the {@link NetworkTableEntry} the {@link SmartBoolean} should be set to.
+     * @param value the default value of the {@link SmartBoolean}
+     */
+    public SmartBoolean(NetworkTableEntry entry, boolean value) {
+        mEntry = entry;
+        mDefaultValue = value;
+        mEntry.forceSetBoolean(value);
+    }
+
+    /**
+     * Creates a {@link SmartBoolean} with the element name and a default value. The value on {@link
+     * SmartDashboard} will be reset to the default value on initialization.
+     *
+     * @param id the name of the boolean on {@link SmartDashboard}
      * @param value the default / initialization value for the value
      */
     public SmartBoolean(String id, boolean value) {
-        mTableID = id;
-        mDefaultValue = value;
-        SmartDashboard.putBoolean(mTableID, mDefaultValue);
+        this(SmartDashboard.getEntry(id), value);
     }
 
-    /**
-     * Creates a SmartBoolean for an already existing value.
-     *
-     * @param id the name of the boolean on SmartDashboard
-     */
-    public SmartBoolean(String id) {
-        mTableID = id;
-        mDefaultValue = false;
-        SmartDashboard.setDefaultBoolean(mTableID, false);
+    /** @return the value of the boolean from {@link SmartDashboard} */
+    public Boolean get() {
+        return mEntry.getBoolean(mDefaultValue);
     }
 
-    /**
-     * Gets the value of the boolean from SmartDashboard
-     *
-     * @return the value of the boolean from SmartDashboard
-     */
-    public boolean get() {
-        return SmartDashboard.getBoolean(mTableID, mDefaultValue);
-    }
-
-    /**
-     * Gets the default value of the boolean
-     *
-     * @return the default value of the boolean
-     */
+    /** @return the default value of the boolean */
     public boolean getDefault() {
         return mDefaultValue;
     }
 
-    /**
-     * Sets the value of the boolean on SmartDashboard
-     *
-     * @param value what the value on SmartDashboard will be set to
-     */
+    /** @param value what the value on {@link SmartDashboard} will be set to */
     public void set(boolean value) {
-        SmartDashboard.putBoolean(mTableID, value);
+        mEntry.forceSetBoolean(value);
     }
 
-    /**
-     * Sets the default value of the boolean
-     *
-     * @param value what the default value of the boolean will be set to
-     */
-    public void setDefault(boolean value) {
-        mDefaultValue = value;
-    }
-
-    /** Resets the value on SmartDashboard to the default value */
+    /** Resets the value on {@link SmartDashboard} to the default value */
     public void reset() {
         set(getDefault());
     }

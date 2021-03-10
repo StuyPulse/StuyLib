@@ -159,7 +159,8 @@ public class Logitech extends WPIGamepad {
      * There is a switch on the back of the controller this is for when the switch is in the X
      * position.
      *
-     * <p>This is identicle to just using an Xbox controller
+     * <p>Because of the use of XInput, this is equivilant to using {@link Xbox}. However if you are
+     * using a logitech controller on XMode, use this class for readability.
      */
     public static class XMode extends Xbox {
 

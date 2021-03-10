@@ -7,7 +7,7 @@ package com.stuypulse.stuylib.streams;
 /**
  * This class allows you to use an input stream while recording the last N values from the stream
  *
- * <p>It extends from IStream, so it also works with the existing IStream classes
+ * <p>It extends from {@link IStream}, so it also works with the existing IStream classes
  *
  * @author Kevin (kc16777216@gmail.com)
  * @author Sam (sam.belliveau@gmail.com)

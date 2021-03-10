@@ -57,6 +57,8 @@ public final class LimelightTable {
         getPipeline = table.getEntry("getpipe");
         cameraStream = table.getEntry("stream");
         snapshotMode = table.getEntry("snapshot");
+
+        timingEntry = table.getEntry("custom/test_timing_entry");
     }
 
     /****************************************************/
@@ -110,6 +112,9 @@ public final class LimelightTable {
     public final NetworkTableEntry getPipeline;
     public final NetworkTableEntry cameraStream;
     public final NetworkTableEntry snapshotMode;
+
+    // Custom Timing NetworkTableEntries
+    public final NetworkTableEntry timingEntry;
 
     /************************************************/
     /*** Functions to get Entries not listed here ***/

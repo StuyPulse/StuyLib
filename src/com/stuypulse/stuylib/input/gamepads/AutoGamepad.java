@@ -18,6 +18,10 @@ import edu.wpi.first.wpilibj.Joystick;
  * ONLY RETURN SAFE VALUES, it will never return negatives or unusual values. This cannot be said
  * about other gamepad classes.
  *
+ * <p>The type of controllers supported are {@link Logitech.DMode}, {@link Logitech.XMode}, {@link
+ * PS4}, and {@link Xbox}. If none of these gamepads are detected, the code will default to a
+ * gamepad that does not do anything.
+ *
  * @author Sam (sam.belliveau@gmail.com)
  */
 public final class AutoGamepad extends Gamepad {

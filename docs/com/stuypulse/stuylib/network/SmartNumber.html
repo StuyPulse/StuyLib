@@ -27,7 +27,7 @@
     catch(err) {
     }
 //-->
-var data = {"i0":10,"i1":10,"i2":10,"i3":10,"i4":10,"i5":10,"i6":10,"i7":10,"i8":10};
+var data = {"i0":10,"i1":10,"i2":10,"i3":10,"i4":10,"i5":10,"i6":10,"i7":10};
 var tabs = {65535:["t0","All Methods"],2:["t2","Instance Methods"],8:["t4","Concrete Methods"]};
 var altColor = "altColor";
 var rowColor = "rowColor";
@@ -137,13 +137,15 @@ $('.navPadding').css('padding-top', $('.fixedNav').css("height"));
 <li class="blockList">
 <dl>
 <dt>All Implemented Interfaces:</dt>
-<dd><code>java.io.Serializable</code></dd>
+<dd><code><a href="../streams/IStream.html" title="interface in com.stuypulse.stuylib.streams">IStream</a></code>, <code>java.io.Serializable</code></dd>
 </dl>
 <hr>
 <pre>public class <span class="typeNameLabel">SmartNumber</span>
-extends java.lang.Number</pre>
-<div class="block">SmartNumber works as a wrapper for values on SmartDashboard. The idea for this class was to make
- getting values on SmartDashboard easier by making them variables that you know were initialized.</div>
+extends java.lang.Number
+implements <a href="../streams/IStream.html" title="interface in com.stuypulse.stuylib.streams">IStream</a></pre>
+<div class="block">SmartNumber works as a wrapper for values on <code>SmartDashboard</code>. The idea for this class was
+ to make getting values on <code>SmartDashboard</code> easier by making them variables that you know
+ were initialized.</div>
 <dl>
 <dt><span class="seeLabel">See Also:</span></dt>
 <dd><a href="../../../../serialized-form.html#com.stuypulse.stuylib.network.SmartNumber">Serialized Form</a></dd>
@@ -168,9 +170,10 @@ extends java.lang.Number</pre>
 <th class="colLast" scope="col">Description</th>
 </tr>
 <tr class="altColor">
-<th class="colConstructorName" scope="row"><code><span class="memberNameLink"><a href="#%3Cinit%3E(java.lang.String)">SmartNumber</a></span>&#8203;(java.lang.String&nbsp;id)</code></th>
+<th class="colConstructorName" scope="row"><code><span class="memberNameLink"><a href="#%3Cinit%3E(edu.wpi.first.networktables.NetworkTableEntry,double)">SmartNumber</a></span>&#8203;(edu.wpi.first.networktables.NetworkTableEntry&nbsp;entry,
+           double&nbsp;value)</code></th>
 <td class="colLast">
-<div class="block">Creates a SmartNumber for an already existing value.</div>
+<div class="block">Creates a <a href="SmartNumber.html" title="class in com.stuypulse.stuylib.network"><code>SmartNumber</code></a> with a network table entry instead of a value for <code>SmartDashboard</code>.</div>
 </td>
 </tr>
 <tr class="rowColor">
@@ -201,65 +204,44 @@ extends java.lang.Number</pre>
 <tr id="i0" class="altColor">
 <td class="colFirst"><code>double</code></td>
 <th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#doubleValue()">doubleValue</a></span>()</code></th>
-<td class="colLast">
-<div class="block">Gets the value of the number from SmartDashboard (casted to a double)</div>
-</td>
+<td class="colLast">&nbsp;</td>
 </tr>
 <tr id="i1" class="rowColor">
 <td class="colFirst"><code>float</code></td>
 <th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#floatValue()">floatValue</a></span>()</code></th>
-<td class="colLast">
-<div class="block">Gets the value of the number from SmartDashboard (casted to a float)</div>
-</td>
+<td class="colLast">&nbsp;</td>
 </tr>
 <tr id="i2" class="altColor">
 <td class="colFirst"><code>double</code></td>
 <th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#get()">get</a></span>()</code></th>
-<td class="colLast">
-<div class="block">Gets the value of the number from SmartDashboard</div>
-</td>
+<td class="colLast">&nbsp;</td>
 </tr>
 <tr id="i3" class="rowColor">
 <td class="colFirst"><code>double</code></td>
 <th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#getDefault()">getDefault</a></span>()</code></th>
-<td class="colLast">
-<div class="block">Gets the default value of the number</div>
-</td>
+<td class="colLast">&nbsp;</td>
 </tr>
 <tr id="i4" class="altColor">
 <td class="colFirst"><code>int</code></td>
 <th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#intValue()">intValue</a></span>()</code></th>
-<td class="colLast">
-<div class="block">Gets the value of the number from SmartDashboard (casted to a int)</div>
-</td>
+<td class="colLast">&nbsp;</td>
 </tr>
 <tr id="i5" class="rowColor">
 <td class="colFirst"><code>long</code></td>
 <th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#longValue()">longValue</a></span>()</code></th>
-<td class="colLast">
-<div class="block">Gets the value of the number from SmartDashboard (casted to a long)</div>
-</td>
+<td class="colLast">&nbsp;</td>
 </tr>
 <tr id="i6" class="altColor">
 <td class="colFirst"><code>void</code></td>
 <th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#reset()">reset</a></span>()</code></th>
 <td class="colLast">
-<div class="block">Resets the value on SmartDashboard to the default value</div>
+<div class="block">Resets the value on <code>SmartDashboard</code> to the default value</div>
 </td>
 </tr>
 <tr id="i7" class="rowColor">
 <td class="colFirst"><code>void</code></td>
-<th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#set(double)">set</a></span>&#8203;(double&nbsp;value)</code></th>
-<td class="colLast">
-<div class="block">Sets the value of the number on SmartDashboard</div>
-</td>
-</tr>
-<tr id="i8" class="altColor">
-<td class="colFirst"><code>void</code></td>
-<th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#setDefault(double)">setDefault</a></span>&#8203;(double&nbsp;value)</code></th>
-<td class="colLast">
-<div class="block">Sets the default value of the number</div>
-</td>
+<th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#set(java.lang.Number)">set</a></span>&#8203;(java.lang.Number&nbsp;value)</code></th>
+<td class="colLast">&nbsp;</td>
 </tr>
 </table>
 <ul class="blockList">
@@ -275,6 +257,13 @@ extends java.lang.Number</pre>
 </a>
 <h3>Methods inherited from class&nbsp;java.lang.Object</h3>
 <code>clone, equals, finalize, getClass, hashCode, notify, notifyAll, toString, wait, wait, wait</code></li>
+</ul>
+<ul class="blockList">
+<li class="blockList"><a id="methods.inherited.from.class.com.stuypulse.stuylib.streams.IStream">
+<!--   -->
+</a>
+<h3>Methods inherited from interface&nbsp;com.stuypulse.stuylib.streams.<a href="../streams/IStream.html" title="interface in com.stuypulse.stuylib.streams">IStream</a></h3>
+<code><a href="../streams/IStream.html#filtered(com.stuypulse.stuylib.streams.filters.IFilter...)">filtered</a></code></li>
 </ul>
 </li>
 </ul>
@@ -292,34 +281,35 @@ extends java.lang.Number</pre>
 <!--   -->
 </a>
 <h3>Constructor Detail</h3>
-<a id="&lt;init&gt;(java.lang.String,double)">
+<a id="&lt;init&gt;(edu.wpi.first.networktables.NetworkTableEntry,double)">
 <!--   -->
 </a>
 <ul class="blockList">
 <li class="blockList">
 <h4>SmartNumber</h4>
-<pre>public&nbsp;SmartNumber&#8203;(java.lang.String&nbsp;id,
+<pre>public&nbsp;SmartNumber&#8203;(edu.wpi.first.networktables.NetworkTableEntry&nbsp;entry,
                    double&nbsp;value)</pre>
-<div class="block">Creates a SmartNumber with the element name and a default value. The value on SmartDashboard
- will be reset to the default value on initialization.</div>
+<div class="block">Creates a <a href="SmartNumber.html" title="class in com.stuypulse.stuylib.network"><code>SmartNumber</code></a> with a network table entry instead of a value for <code>SmartDashboard</code>. This allows you to put items on things like <code>Shuffleboard</code>, without having to use a raw <code>NetworkTableEntry</code>.</div>
 <dl>
 <dt><span class="paramLabel">Parameters:</span></dt>
-<dd><code>id</code> - the name of the number on SmartDashboard</dd>
-<dd><code>value</code> - the default / initialization value for the value</dd>
+<dd><code>entry</code> - the <code>NetworkTableEntry</code> the <a href="SmartNumber.html" title="class in com.stuypulse.stuylib.network"><code>SmartNumber</code></a> should be set to.</dd>
+<dd><code>value</code> - the default value of the <a href="SmartNumber.html" title="class in com.stuypulse.stuylib.network"><code>SmartNumber</code></a></dd>
 </dl>
 </li>
 </ul>
-<a id="&lt;init&gt;(java.lang.String)">
+<a id="&lt;init&gt;(java.lang.String,double)">
 <!--   -->
 </a>
 <ul class="blockListLast">
 <li class="blockList">
 <h4>SmartNumber</h4>
-<pre>public&nbsp;SmartNumber&#8203;(java.lang.String&nbsp;id)</pre>
-<div class="block">Creates a SmartNumber for an already existing value.</div>
+<pre>public&nbsp;SmartNumber&#8203;(java.lang.String&nbsp;id,
+                   double&nbsp;value)</pre>
+<div class="block">Creates a SmartNumber with the element name and a default value. The value on <code>SmartDashboard</code> will be reset to the default value on initialization.</div>
 <dl>
 <dt><span class="paramLabel">Parameters:</span></dt>
 <dd><code>id</code> - the name of the number on SmartDashboard</dd>
+<dd><code>value</code> - the default / initialization value for the value</dd>
 </dl>
 </li>
 </ul>
@@ -340,8 +330,9 @@ extends java.lang.Number</pre>
 <li class="blockList">
 <h4>get</h4>
 <pre class="methodSignature">public&nbsp;double&nbsp;get()</pre>
-<div class="block">Gets the value of the number from SmartDashboard</div>
 <dl>
+<dt><span class="overrideSpecifyLabel">Specified by:</span></dt>
+<dd><code><a href="../streams/IStream.html#get()">get</a></code>&nbsp;in interface&nbsp;<code><a href="../streams/IStream.html" title="interface in com.stuypulse.stuylib.streams">IStream</a></code></dd>
 <dt><span class="returnLabel">Returns:</span></dt>
 <dd>the value of the number from SmartDashboard</dd>
 </dl>
@@ -354,38 +345,22 @@ extends java.lang.Number</pre>
 <li class="blockList">
 <h4>getDefault</h4>
 <pre class="methodSignature">public&nbsp;double&nbsp;getDefault()</pre>
-<div class="block">Gets the default value of the number</div>
 <dl>
 <dt><span class="returnLabel">Returns:</span></dt>
 <dd>the default value of the number</dd>
 </dl>
 </li>
 </ul>
-<a id="set(double)">
+<a id="set(java.lang.Number)">
 <!--   -->
 </a>
 <ul class="blockList">
 <li class="blockList">
 <h4>set</h4>
-<pre class="methodSignature">public&nbsp;void&nbsp;set&#8203;(double&nbsp;value)</pre>
-<div class="block">Sets the value of the number on SmartDashboard</div>
+<pre class="methodSignature">public&nbsp;void&nbsp;set&#8203;(java.lang.Number&nbsp;value)</pre>
 <dl>
 <dt><span class="paramLabel">Parameters:</span></dt>
-<dd><code>value</code> - what the value on SmartDashboard will be set to</dd>
-</dl>
-</li>
-</ul>
-<a id="setDefault(double)">
-<!--   -->
-</a>
-<ul class="blockList">
-<li class="blockList">
-<h4>setDefault</h4>
-<pre class="methodSignature">public&nbsp;void&nbsp;setDefault&#8203;(double&nbsp;value)</pre>
-<div class="block">Sets the default value of the number</div>
-<dl>
-<dt><span class="paramLabel">Parameters:</span></dt>
-<dd><code>value</code> - what the default value of the number will be set to</dd>
+<dd><code>value</code> - what the value on <code>SmartDashboard</code> will be set to</dd>
 </dl>
 </li>
 </ul>
@@ -396,7 +371,7 @@ extends java.lang.Number</pre>
 <li class="blockList">
 <h4>reset</h4>
 <pre class="methodSignature">public&nbsp;void&nbsp;reset()</pre>
-<div class="block">Resets the value on SmartDashboard to the default value</div>
+<div class="block">Resets the value on <code>SmartDashboard</code> to the default value</div>
 </li>
 </ul>
 <a id="doubleValue()">
@@ -406,12 +381,11 @@ extends java.lang.Number</pre>
 <li class="blockList">
 <h4>doubleValue</h4>
 <pre class="methodSignature">public&nbsp;double&nbsp;doubleValue()</pre>
-<div class="block">Gets the value of the number from SmartDashboard (casted to a double)</div>
 <dl>
 <dt><span class="overrideSpecifyLabel">Specified by:</span></dt>
 <dd><code>doubleValue</code>&nbsp;in class&nbsp;<code>java.lang.Number</code></dd>
 <dt><span class="returnLabel">Returns:</span></dt>
-<dd>the value of the number from SmartDashboard (casted to a double)</dd>
+<dd>the value of the number from <code>SmartDashboard</code> (casted to a double)</dd>
 </dl>
 </li>
 </ul>
@@ -422,12 +396,11 @@ extends java.lang.Number</pre>
 <li class="blockList">
 <h4>floatValue</h4>
 <pre class="methodSignature">public&nbsp;float&nbsp;floatValue()</pre>
-<div class="block">Gets the value of the number from SmartDashboard (casted to a float)</div>
 <dl>
 <dt><span class="overrideSpecifyLabel">Specified by:</span></dt>
 <dd><code>floatValue</code>&nbsp;in class&nbsp;<code>java.lang.Number</code></dd>
 <dt><span class="returnLabel">Returns:</span></dt>
-<dd>the value of the number from SmartDashboard (casted to a float)</dd>
+<dd>the value of the number from <code>SmartDashboard</code> (casted to a float)</dd>
 </dl>
 </li>
 </ul>
@@ -438,12 +411,11 @@ extends java.lang.Number</pre>
 <li class="blockList">
 <h4>intValue</h4>
 <pre class="methodSignature">public&nbsp;int&nbsp;intValue()</pre>
-<div class="block">Gets the value of the number from SmartDashboard (casted to a int)</div>
 <dl>
 <dt><span class="overrideSpecifyLabel">Specified by:</span></dt>
 <dd><code>intValue</code>&nbsp;in class&nbsp;<code>java.lang.Number</code></dd>
 <dt><span class="returnLabel">Returns:</span></dt>
-<dd>the value of the number from SmartDashboard (casted to a int)</dd>
+<dd>the value of the number from <code>SmartDashboard</code> (casted to a int)</dd>
 </dl>
 </li>
 </ul>
@@ -454,12 +426,11 @@ extends java.lang.Number</pre>
 <li class="blockList">
 <h4>longValue</h4>
 <pre class="methodSignature">public&nbsp;long&nbsp;longValue()</pre>
-<div class="block">Gets the value of the number from SmartDashboard (casted to a long)</div>
 <dl>
 <dt><span class="overrideSpecifyLabel">Specified by:</span></dt>
 <dd><code>longValue</code>&nbsp;in class&nbsp;<code>java.lang.Number</code></dd>
 <dt><span class="returnLabel">Returns:</span></dt>
-<dd>the value of the number from SmartDashboard (casted to a long)</dd>
+<dd>the value of the number from <code>SmartDashboard</code> (casted to a long)</dd>
 </dl>
 </li>
 </ul>

@@ -10,7 +10,7 @@ import edu.wpi.first.wpilibj.GenericHID.Hand;
 import edu.wpi.first.wpilibj.XboxController;
 
 /**
- * A wrapper for the XboxController class to work with the gamepad interface.
+ * A wrapper for the XboxController class to work with the {@link Gamepad} interface.
  *
  * @author Sam (sam.belliveau@gmail.com)
  */

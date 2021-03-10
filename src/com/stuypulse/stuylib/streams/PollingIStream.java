@@ -5,9 +5,8 @@
 package com.stuypulse.stuylib.streams;
 
 /**
- * Takes an IStream and an IStreamFilter and makes a PollingIStream
- *
- * <p>A PollingIStream calls .get() every x milliseconds instead of when the user calls get
+ * A PollingIStream calls {@link IStream#get()} every x milliseconds instead of when the user calls
+ * get
  *
  * @author Sam (sam.belliveau@gmail.com)
  */

@@ -7,7 +7,7 @@ package com.stuypulse.stuylib.streams;
 import com.stuypulse.stuylib.streams.filters.IFilter;
 
 /**
- * A stream of doubles that is accessed with the .get() function
+ * A stream of doubles that is accessed with the {@link IStream#get()} function
  *
  * <p>Can be created with lambdas to represent a stream of inputs.
  *
@@ -17,11 +17,7 @@ import com.stuypulse.stuylib.streams.filters.IFilter;
  */
 public interface IStream {
 
-    /**
-     * Get the next value in the stream
-     *
-     * @return next value in the stream
-     */
+    /** @return next value in the stream */
     public double get();
 
     /**

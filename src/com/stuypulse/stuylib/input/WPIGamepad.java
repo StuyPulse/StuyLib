@@ -13,15 +13,15 @@ import edu.wpi.first.wpilibj2.command.button.Button;
  * if WPI updates.
  *
  * <p>If you would like to get a button id that is not defined, or an axis id that is not defined,
- * use getRawButton(int id) or getRawAxis(int id). If you want it to return a button for an
- * unimplemented button, type getButton(int id).
+ * use {@link #getRawButton(int)} or {@link #getRawAxis(int)}. If you want it to return a button for
+ * an unimplemented button, type {@link #getButton(int)}.
  *
  * <p>To initialize this class, pass in a Joystick or an int set to the port number. This will be
  * the Joystick that the Gamepad class will interact with.
  *
- * <p>If you do not initialize with a Joystick, everything will still work except for -
- * getRawButton(int id) - getButton(int id) - getRawAxis(int id) which will return either false or
- * 0.0
+ * <p>If you do not initialize with a Joystick, everything will still work except for - {@link
+ * #getRawButton(int)} - {@link #getRawAxis(int)} - {@link #getButton(int)} which will return either
+ * false or 0.0
  *
  * <p>The difference between the implementations of the Gamepad class is how it interacts with the
  * underlying Joystick class.

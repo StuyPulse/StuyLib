@@ -7,8 +7,6 @@ package com.stuypulse.stuylib.network.limelight;
 import com.stuypulse.stuylib.math.SLMath;
 import com.stuypulse.stuylib.math.Vector2D;
 
-import edu.wpi.first.networktables.NetworkTableEntry;
-
 /**
  * This is a class that lets you interface with the limelight network table.
  *
@@ -57,7 +55,6 @@ public final class Limelight {
      */
     private Limelight() {
         table = new LimelightTable();
-        timingEntry = table.getEntry("TIMING_TEST_ENTRY");
     }
 
     /**
@@ -69,7 +66,6 @@ public final class Limelight {
      */
     private Limelight(String tableName) {
         table = new LimelightTable(tableName);
-        timingEntry = table.getEntry("TIMING_TEST_ENTRY");
     }
 
     /****************************/
@@ -82,15 +78,12 @@ public final class Limelight {
     /*** Connnection Test ***/
     /************************/
 
-    // Uses network tables to check status of limelight
-    private final NetworkTableEntry timingEntry;
-
     /** @return if the limelight has updated its */
     public boolean isConnected() {
         final long MAX_UPDATE_TIME = 250_000;
 
-        timingEntry.forceSetBoolean(timingEntry.getBoolean(false));
-        long currentTime = timingEntry.getLastChange();
+        table.timingEntry.forceSetBoolean(table.timingEntry.getBoolean(false));
+        long currentTime = table.timingEntry.getLastChange();
         long lastUpdate = table.latency.getLastChange();
 
         return Math.abs(currentTime - lastUpdate) < MAX_UPDATE_TIME;

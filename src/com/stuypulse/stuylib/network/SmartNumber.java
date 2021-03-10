@@ -4,121 +4,90 @@
 
 package com.stuypulse.stuylib.network;
 
+import com.stuypulse.stuylib.streams.IStream;
+
+import edu.wpi.first.networktables.NetworkTableEntry;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 
 /**
- * SmartNumber works as a wrapper for values on SmartDashboard. The idea for this class was to make
- * getting values on SmartDashboard easier by making them variables that you know were initialized.
+ * SmartNumber works as a wrapper for values on {@link SmartDashboard}. The idea for this class was
+ * to make getting values on {@link SmartDashboard} easier by making them variables that you know
+ * were initialized.
  *
  * @author Sam (sam.belliveau@gmail.com)
  */
-public class SmartNumber extends Number {
+public class SmartNumber extends Number implements IStream {
 
     private static final long serialVersionUID = 1L;
 
-    /** The ID / Name for the value on SmartDashboard. */
-    private String mTableID;
+    /** The ID / Name for the value on {@link SmartDashboard}. */
+    private final NetworkTableEntry mEntry;
 
-    /** The default value that the SmartDashboard value was set too. */
-    private double mDefaultValue;
+    /** The default value that the {@link SmartDashboard} value was set too. */
+    private final double mDefaultValue;
 
     /**
-     * Creates a SmartNumber with the element name and a default value. The value on SmartDashboard
-     * will be reset to the default value on initialization.
+     * Creates a {@link SmartNumber} with a network table entry instead of a value for {@link
+     * SmartDashboard}. This allows you to put items on things like {@link
+     * edu.wpi.first.wpilibj.shuffleboard.Shuffleboard}, without having to use a raw {@link
+     * NetworkTableEntry}.
+     *
+     * @param entry the {@link NetworkTableEntry} the {@link SmartNumber} should be set to.
+     * @param value the default value of the {@link SmartNumber}
+     */
+    public SmartNumber(NetworkTableEntry entry, double value) {
+        mEntry = entry;
+        mDefaultValue = value;
+        mEntry.forceSetNumber(value);
+    }
+
+    /**
+     * Creates a SmartNumber with the element name and a default value. The value on {@link
+     * SmartDashboard} will be reset to the default value on initialization.
      *
      * @param id the name of the number on SmartDashboard
      * @param value the default / initialization value for the value
      */
     public SmartNumber(String id, double value) {
-        mTableID = id;
-        mDefaultValue = value;
-        SmartDashboard.putNumber(mTableID, mDefaultValue);
+        this(SmartDashboard.getEntry(id), value);
     }
 
-    /**
-     * Creates a SmartNumber for an already existing value.
-     *
-     * @param id the name of the number on SmartDashboard
-     */
-    public SmartNumber(String id) {
-        mTableID = id;
-        mDefaultValue = 0.0;
-        SmartDashboard.setDefaultNumber(mTableID, 0.0);
-    }
-
-    /**
-     * Gets the value of the number from SmartDashboard
-     *
-     * @return the value of the number from SmartDashboard
-     */
+    /** @return the value of the number from SmartDashboard */
     public double get() {
-        return SmartDashboard.getNumber(mTableID, mDefaultValue);
+        return mEntry.getDouble(mDefaultValue);
     }
 
-    /**
-     * Gets the default value of the number
-     *
-     * @return the default value of the number
-     */
+    /** @return the default value of the number */
     public double getDefault() {
         return mDefaultValue;
     }
 
-    /**
-     * Sets the value of the number on SmartDashboard
-     *
-     * @param value what the value on SmartDashboard will be set to
-     */
-    public void set(double value) {
-        SmartDashboard.putNumber(mTableID, value);
+    /** @param value what the value on {@link SmartDashboard} will be set to */
+    public void set(Number value) {
+        mEntry.forceSetNumber(value);
     }
 
-    /**
-     * Sets the default value of the number
-     *
-     * @param value what the default value of the number will be set to
-     */
-    public void setDefault(double value) {
-        mDefaultValue = value;
-    }
-
-    /** Resets the value on SmartDashboard to the default value */
+    /** Resets the value on {@link SmartDashboard} to the default value */
     public void reset() {
         set(getDefault());
     }
 
-    /**
-     * Gets the value of the number from SmartDashboard (casted to a double)
-     *
-     * @return the value of the number from SmartDashboard (casted to a double)
-     */
+    /** @return the value of the number from {@link SmartDashboard} (casted to a double) */
     public double doubleValue() {
         return (double) this.get();
     }
 
-    /**
-     * Gets the value of the number from SmartDashboard (casted to a float)
-     *
-     * @return the value of the number from SmartDashboard (casted to a float)
-     */
+    /** @return the value of the number from {@link SmartDashboard} (casted to a float) */
     public float floatValue() {
         return (float) this.get();
     }
 
-    /**
-     * Gets the value of the number from SmartDashboard (casted to a int)
-     *
-     * @return the value of the number from SmartDashboard (casted to a int)
-     */
+    /** @return the value of the number from {@link SmartDashboard} (casted to a int) */
     public int intValue() {
         return (int) this.get();
     }
 
-    /**
-     * Gets the value of the number from SmartDashboard (casted to a long)
-     *
-     * @return the value of the number from SmartDashboard (casted to a long)
-     */
+    /** @return the value of the number from {@link SmartDashboard} (casted to a long) */
     public long longValue() {
         return (long) this.get();
     }
