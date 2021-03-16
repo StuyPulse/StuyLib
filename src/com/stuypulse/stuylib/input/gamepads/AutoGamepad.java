@@ -27,7 +27,7 @@ import edu.wpi.first.wpilibj.Joystick;
 public final class AutoGamepad extends Gamepad {
 
     // The amount of time that the gamepad will go before checking the type
-    private static final double MIN_CONTROLLER_CHECK = 2.5;
+    private static final double MIN_CONTROLLER_CHECK = 4;
 
     // All of the Different Gamepad classes that AutoGamepad Supports
     // Logitech XMode is not here as it is the same as an Xbox Controller
@@ -81,7 +81,7 @@ public final class AutoGamepad extends Gamepad {
 
     /** @return the internal gamepad class that this gamepad will be reading from */
     public Gamepad getDetectedGamepad() {
-        if (mCurrent == mNull || MIN_CONTROLLER_CHECK < mTimer.getTime()) {
+        if (MIN_CONTROLLER_CHECK < mTimer.getTime()) {
             mTimer.reset();
             mCurrent = forceDetectGamepad();
         }
