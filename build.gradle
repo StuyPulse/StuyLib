@@ -7,6 +7,7 @@ plugins {
 
    id "edu.wpi.first.GradleRIO" version "${WPI_VER}"
    id "com.diffplug.spotless" version "5.10.2"
+   id "com.github.spotbugs" version "4.7.0"
 }
 
 group = 'com.stuypulse'
@@ -67,9 +68,22 @@ spotless {
 
       importOrder('com.stuypulse.stuylib', 'com.stuypulse', 'edu.wpi')
       removeUnusedImports()
-
-
    }
+}
+
+// Example to configure HTML report
+spotbugsMain {
+    reports {
+        html {
+            enabled = true
+            destination = file("$buildDir/reports/spotbugs/main/spotbugs.html")
+            stylesheet = 'fancy-hist.xsl'
+        }
+    }
+}
+
+spotbugs {
+   effort = 'max'
 }
 
 javadoc {

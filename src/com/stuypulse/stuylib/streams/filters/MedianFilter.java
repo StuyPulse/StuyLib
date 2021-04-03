@@ -82,7 +82,7 @@ public class MedianFilter implements IFilter {
 
         // get the median from the ordered window
         double mid = mOrdered.get(orderedSize / 2);
-        if ((orderedSize % 2) == 1) return mid;
+        if ((orderedSize & 1) == 1) return mid;
         else return (mOrdered.get(orderedSize / 2 - 1) + mid) / 2.0;
     }
 }
