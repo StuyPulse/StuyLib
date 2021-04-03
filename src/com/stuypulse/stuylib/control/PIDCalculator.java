@@ -24,13 +24,13 @@ public class PIDCalculator extends Controller {
     private static final double kMaxTimeBeforeReset = 0.5;
 
     // The minimum period length that will be accepted as a valid period
-    private static final double kMinPeriodTime = 0.1;
+    private static final double kMinPeriodTime = 0.05;
 
     // The filter easuring the period and amplitude
     private static IFilter getMeasurementFilter() {
         // This is a mix between accuracy and speed of updating.
         // Takes about 6 periods to get accurate results
-        return new IFilterGroup(new TimedMovingAverage(60));
+        return new IFilterGroup(new TimedMovingAverage(30));
     }
 
     // The speed that the bang bang controller will run at
@@ -94,7 +94,7 @@ public class PIDCalculator extends Controller {
         }
 
         // Check if we crossed 0, ie, time for next update
-        if (Math.signum(mCurrentSpeed) < Math.signum(error)) {
+        if (Math.signum(mCurrentSpeed) != Math.signum(error)) {
             // Update the controller
             mCurrentSpeed = mControlSpeed.doubleValue() * Math.signum(error);
 
