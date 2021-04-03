@@ -26,8 +26,8 @@
     catch(err) {
     }
 //-->
-var data = {"i0":10,"i1":10,"i2":10,"i3":10,"i4":10,"i5":10,"i6":10,"i7":10};
-var tabs = {65535:["t0","All Methods"],2:["t2","Instance Methods"],8:["t4","Concrete Methods"]};
+var data = {"i0":10,"i1":10,"i2":10,"i3":10,"i4":10,"i5":10,"i6":10,"i7":10,"i8":9};
+var tabs = {65535:["t0","All Methods"],1:["t1","Static Methods"],2:["t2","Instance Methods"],8:["t4","Concrete Methods"]};
 var altColor = "altColor";
 var rowColor = "rowColor";
 var tableTab = "tableTab";
@@ -194,7 +194,7 @@ implements <a href="../streams/IStream.html" title="interface in com.stuypulse.s
 </a>
 <h3>Method Summary</h3>
 <table class="memberSummary">
-<caption><span id="t0" class="activeTableTab"><span>All Methods</span><span class="tabEnd">&nbsp;</span></span><span id="t2" class="tableTab"><span><a href="javascript:show(2);">Instance Methods</a></span><span class="tabEnd">&nbsp;</span></span><span id="t4" class="tableTab"><span><a href="javascript:show(8);">Concrete Methods</a></span><span class="tabEnd">&nbsp;</span></span></caption>
+<caption><span id="t0" class="activeTableTab"><span>All Methods</span><span class="tabEnd">&nbsp;</span></span><span id="t1" class="tableTab"><span><a href="javascript:show(1);">Static Methods</a></span><span class="tabEnd">&nbsp;</span></span><span id="t2" class="tableTab"><span><a href="javascript:show(2);">Instance Methods</a></span><span class="tabEnd">&nbsp;</span></span><span id="t4" class="tableTab"><span><a href="javascript:show(8);">Concrete Methods</a></span><span class="tabEnd">&nbsp;</span></span></caption>
 <tr>
 <th class="colFirst" scope="col">Modifier and Type</th>
 <th class="colSecond" scope="col">Method</th>
@@ -241,6 +241,15 @@ implements <a href="../streams/IStream.html" title="interface in com.stuypulse.s
 <td class="colFirst"><code>void</code></td>
 <th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#set(java.lang.Number)">set</a></span>&#8203;(java.lang.Number&nbsp;value)</code></th>
 <td class="colLast">&nbsp;</td>
+</tr>
+<tr id="i8" class="altColor">
+<td class="colFirst"><code>static java.lang.Number</code></td>
+<th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#setNumber(java.lang.Number,java.lang.Number)">setNumber</a></span>&#8203;(java.lang.Number&nbsp;oldNumber,
+         java.lang.Number&nbsp;newNumber)</code></th>
+<td class="colLast">
+<div class="block">This function checks to see if <code>oldNumber</code> is a <a href="SmartNumber.html" title="class in com.stuypulse.stuylib.network"><code>SmartNumber</code></a>, if it is, then it
+ sets the <code>oldNumber</code> to <code>newNumber</code> and returns the <code>oldNumber</code>.</div>
+</td>
 </tr>
 </table>
 <ul class="blockList">
@@ -421,7 +430,7 @@ implements <a href="../streams/IStream.html" title="interface in com.stuypulse.s
 <a id="longValue()">
 <!--   -->
 </a>
-<ul class="blockListLast">
+<ul class="blockList">
 <li class="blockList">
 <h4>longValue</h4>
 <pre class="methodSignature">public&nbsp;long&nbsp;longValue()</pre>
@@ -430,6 +439,28 @@ implements <a href="../streams/IStream.html" title="interface in com.stuypulse.s
 <dd><code>longValue</code>&nbsp;in class&nbsp;<code>java.lang.Number</code></dd>
 <dt><span class="returnLabel">Returns:</span></dt>
 <dd>the value of the number from <code>SmartDashboard</code> (casted to a long)</dd>
+</dl>
+</li>
+</ul>
+<a id="setNumber(java.lang.Number,java.lang.Number)">
+<!--   -->
+</a>
+<ul class="blockListLast">
+<li class="blockList">
+<h4>setNumber</h4>
+<pre class="methodSignature">public static&nbsp;java.lang.Number&nbsp;setNumber&#8203;(java.lang.Number&nbsp;oldNumber,
+                                         java.lang.Number&nbsp;newNumber)</pre>
+<div class="block">This function checks to see if <code>oldNumber</code> is a <a href="SmartNumber.html" title="class in com.stuypulse.stuylib.network"><code>SmartNumber</code></a>, if it is, then it
+ sets the <code>oldNumber</code> to <code>newNumber</code> and returns the <code>oldNumber</code>. Otherwise,
+ it just returns <code>newNumber</code>.</div>
+<dl>
+<dt><span class="paramLabel">Parameters:</span></dt>
+<dd><code>oldNumber</code> - number that is being replaced</dd>
+<dd><code>newNumber</code> - number representing the value of the new number</dd>
+<dt><span class="returnLabel">Returns:</span></dt>
+<dd>if <code>oldNumber</code> is not a <a href="SmartNumber.html" title="class in com.stuypulse.stuylib.network"><code>SmartNumber</code></a>, then this function will return
+     <code>newNumber</code>. If <code>oldNumber</code> is a <a href="SmartNumber.html" title="class in com.stuypulse.stuylib.network"><code>SmartNumber</code></a>, then this function will
+     return <code>oldNumber</code> with its value set to <code>newNumber</code></dd>
 </dl>
 </li>
 </ul>

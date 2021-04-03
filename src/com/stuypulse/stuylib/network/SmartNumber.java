@@ -91,4 +91,25 @@ public class SmartNumber extends Number implements IStream {
     public long longValue() {
         return (long) this.get();
     }
+
+    /**
+     * This function checks to see if {@code oldNumber} is a {@link SmartNumber}, if it is, then it
+     * sets the {@code oldNumber} to {@code newNumber} and returns the {@code oldNumber}. Otherwise,
+     * it just returns {@code newNumber}.
+     *
+     * @param oldNumber number that is being replaced
+     * @param newNumber number representing the value of the new number
+     * @return if {@code oldNumber} is not a {@link SmartNumber}, then this function will return
+     *     {@code newNumber}. If {@code oldNumber} is a {@link SmartNumber}, then this function will
+     *     return {@code oldNumber} with its value set to {@code newNumber}
+     */
+    public static Number setNumber(Number oldNumber, Number newNumber) {
+        if (oldNumber instanceof SmartNumber) {
+            SmartNumber oldSmartNumber = (SmartNumber) oldNumber;
+            oldSmartNumber.set(newNumber.doubleValue());
+            return oldSmartNumber;
+        } else {
+            return newNumber;
+        }
+    }
 }

@@ -4,6 +4,10 @@
 
 package com.stuypulse.stuylib.control;
 
+import com.stuypulse.stuylib.network.SmartNumber;
+
+import edu.wpi.first.wpilibj.smartdashboard.SendableBuilder;
+
 /**
  * The take back half algorithm is one made specifically to help with controlling shooters. The way
  * it works is it increases speed until it goes over the target, at which point it "takes back
@@ -34,7 +38,7 @@ public class TBHController extends Controller {
      * @return an instance of the TBHController
      */
     public TBHController setGain(Number gain) {
-        mGain = gain;
+        mGain = SmartNumber.setNumber(mGain, gain);
         return this;
     }
 
@@ -68,5 +72,16 @@ public class TBHController extends Controller {
         }
 
         return mOutput;
+    }
+
+    /*********************/
+    /*** Sendable Data ***/
+    /*********************/
+
+    @Override
+    public void initSendable(SendableBuilder builder) {
+        super.initSendable(builder);
+
+        builder.addDoubleProperty("(TBH) Gain", this::getGain, this::setGain);
     }
 }

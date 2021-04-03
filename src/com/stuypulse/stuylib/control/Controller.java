@@ -7,6 +7,9 @@ package com.stuypulse.stuylib.control;
 import com.stuypulse.stuylib.streams.filters.IFilter;
 import com.stuypulse.stuylib.util.StopWatch;
 
+import edu.wpi.first.wpilibj.Sendable;
+import edu.wpi.first.wpilibj.smartdashboard.SendableBuilder;
+
 /**
  * The controller class is an abstract class that is used to create different controllers. All a
  * class will need to do is implement calculate(double error), and then the user would use the
@@ -18,7 +21,7 @@ import com.stuypulse.stuylib.util.StopWatch;
  *
  * @author Sam (sam.belliveau@gmail.com)
  */
-public abstract class Controller {
+public abstract class Controller implements Sendable {
 
     /**
      * This function checks to see if a filter is null, if it is, it replaces it with a default
@@ -245,5 +248,17 @@ public abstract class Controller {
     /** Default to string funciton */
     public String toString() {
         return "(error: " + this.getError() + ")";
+    }
+
+    /*********************/
+    /*** Sendable Data ***/
+    /*********************/
+
+    @Override
+    public void initSendable(SendableBuilder builder) {
+        builder.addDoubleProperty("(Controller) System Error", this::getError, x -> {});
+        builder.addDoubleProperty("(Controller) System Velocity", this::getVelocity, x -> {});
+        builder.addDoubleProperty("(Controller) Control Rate", this::getRate, x -> {});
+        builder.addDoubleProperty("(Controller) Control Output", this::getOutput, x -> {});
     }
 }

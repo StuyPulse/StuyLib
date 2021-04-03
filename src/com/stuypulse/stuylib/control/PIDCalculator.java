@@ -5,10 +5,13 @@
 package com.stuypulse.stuylib.control;
 
 import com.stuypulse.stuylib.math.SLMath;
+import com.stuypulse.stuylib.network.SmartNumber;
 import com.stuypulse.stuylib.streams.filters.IFilter;
 import com.stuypulse.stuylib.streams.filters.IFilterGroup;
 import com.stuypulse.stuylib.streams.filters.TimedMovingAverage;
 import com.stuypulse.stuylib.util.StopWatch;
+
+import edu.wpi.first.wpilibj.smartdashboard.SendableBuilder;
 
 /**
  * This is a Bang-Bang controller that while controlling the robot, will be able to calculate the
@@ -76,7 +79,7 @@ public class PIDCalculator extends Controller {
      * @return the calculated result from the PIDController
      */
     public PIDCalculator setControlSpeed(Number speed) {
-        mControlSpeed = speed;
+        mControlSpeed = SmartNumber.setNumber(mControlSpeed, speed);
         return this;
     }
 
@@ -187,5 +190,24 @@ public class PIDCalculator extends Controller {
                 + SLMath.round(getT(), 4)
                 + ") "
                 + getPIDController().toString();
+    }
+
+    /*********************/
+    /*** Sendable Data ***/
+    /*********************/
+
+    @Override
+    public void initSendable(SendableBuilder builder) {
+        super.initSendable(builder);
+
+        builder.addDoubleProperty("(PIDCalculator) Period [T]", this::getT, x -> {});
+        builder.addDoubleProperty("(PIDCalculator) Adjusted Amplitude [K]", this::getK, x -> {});
+
+        builder.addDoubleProperty(
+                "(PIDCalculator) Calculated kP", () -> this.getPIDController().getP(), x -> {});
+        builder.addDoubleProperty(
+                "(PIDCalculator) Calculated kI", () -> this.getPIDController().getI(), x -> {});
+        builder.addDoubleProperty(
+                "(PIDCalculator) Calculated kD", () -> this.getPIDController().getD(), x -> {});
     }
 }

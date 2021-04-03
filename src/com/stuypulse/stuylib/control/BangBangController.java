@@ -4,6 +4,8 @@
 
 package com.stuypulse.stuylib.control;
 
+import edu.wpi.first.wpilibj.smartdashboard.SendableBuilder;
+
 /**
  * A simple implementation of a BangBangController for the Stuylib Controller
  *
@@ -61,5 +63,19 @@ public class BangBangController extends Controller {
         } else {
             return mPositive;
         }
+    }
+
+    /*********************/
+    /*** Sendable Data ***/
+    /*********************/
+
+    @Override
+    public void initSendable(SendableBuilder builder) {
+        super.initSendable(builder);
+
+        builder.addDoubleProperty(
+                "(BangBang) Positive Control", () -> mPositive, x -> mPositive = x);
+        builder.addDoubleProperty(
+                "(BangBang) Negative Control", () -> mNegative, x -> mNegative = x);
     }
 }

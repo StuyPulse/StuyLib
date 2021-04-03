@@ -26,7 +26,7 @@
     catch(err) {
     }
 //-->
-var data = {"i0":10,"i1":10,"i2":10,"i3":10,"i4":10,"i5":10,"i6":10,"i7":10,"i8":10};
+var data = {"i0":10,"i1":10,"i2":10,"i3":10,"i4":10,"i5":10,"i6":10,"i7":10,"i8":10,"i9":10};
 var tabs = {65535:["t0","All Methods"],2:["t2","Instance Methods"],8:["t4","Concrete Methods"]};
 var altColor = "altColor";
 var rowColor = "rowColor";
@@ -134,6 +134,10 @@ $('.navPadding').css('padding-top', $('.fixedNav').css("height"));
 <div class="description">
 <ul class="blockList">
 <li class="blockList">
+<dl>
+<dt>All Implemented Interfaces:</dt>
+<dd><code>edu.wpi.first.wpilibj.Sendable</code></dd>
+</dl>
 <hr>
 <pre>public class <span class="typeNameLabel">PIDCalculator</span>
 extends <a href="Controller.html" title="class in com.stuypulse.stuylib.control">Controller</a></pre>
@@ -224,11 +228,16 @@ extends <a href="Controller.html" title="class in com.stuypulse.stuylib.control"
 </td>
 </tr>
 <tr id="i7" class="rowColor">
+<td class="colFirst"><code>void</code></td>
+<th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#initSendable(edu.wpi.first.wpilibj.smartdashboard.SendableBuilder)">initSendable</a></span>&#8203;(edu.wpi.first.wpilibj.smartdashboard.SendableBuilder&nbsp;builder)</code></th>
+<td class="colLast">&nbsp;</td>
+</tr>
+<tr id="i8" class="altColor">
 <td class="colFirst"><code><a href="PIDCalculator.html" title="class in com.stuypulse.stuylib.control">PIDCalculator</a></code></td>
 <th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#setControlSpeed(java.lang.Number)">setControlSpeed</a></span>&#8203;(java.lang.Number&nbsp;speed)</code></th>
 <td class="colLast">&nbsp;</td>
 </tr>
-<tr id="i8" class="altColor">
+<tr id="i9" class="rowColor">
 <td class="colFirst"><code>java.lang.String</code></td>
 <th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#toString()">toString</a></span>()</code></th>
 <td class="colLast">
@@ -249,6 +258,13 @@ extends <a href="Controller.html" title="class in com.stuypulse.stuylib.control"
 </a>
 <h3>Methods inherited from class&nbsp;java.lang.Object</h3>
 <code>clone, equals, finalize, getClass, hashCode, notify, notifyAll, wait, wait, wait</code></li>
+</ul>
+<ul class="blockList">
+<li class="blockList"><a id="methods.inherited.from.class.edu.wpi.first.wpilibj.Sendable">
+<!--   -->
+</a>
+<h3>Methods inherited from interface&nbsp;edu.wpi.first.wpilibj.Sendable</h3>
+<code>addChild, getName, getSubsystem, setName, setName, setName, setName, setSubsystem</code></li>
 </ul>
 </li>
 </ul>
@@ -406,7 +422,7 @@ extends <a href="Controller.html" title="class in com.stuypulse.stuylib.control"
 <a id="toString()">
 <!--   -->
 </a>
-<ul class="blockListLast">
+<ul class="blockList">
 <li class="blockList">
 <h4>toString</h4>
 <pre class="methodSignature">public&nbsp;java.lang.String&nbsp;toString()</pre>
@@ -417,6 +433,21 @@ extends <a href="Controller.html" title="class in com.stuypulse.stuylib.control"
 <dd><code><a href="Controller.html#toString()">toString</a></code>&nbsp;in class&nbsp;<code><a href="Controller.html" title="class in com.stuypulse.stuylib.control">Controller</a></code></dd>
 <dt><span class="returnLabel">Returns:</span></dt>
 <dd>information about this PIDController</dd>
+</dl>
+</li>
+</ul>
+<a id="initSendable(edu.wpi.first.wpilibj.smartdashboard.SendableBuilder)">
+<!--   -->
+</a>
+<ul class="blockListLast">
+<li class="blockList">
+<h4>initSendable</h4>
+<pre class="methodSignature">public&nbsp;void&nbsp;initSendable&#8203;(edu.wpi.first.wpilibj.smartdashboard.SendableBuilder&nbsp;builder)</pre>
+<dl>
+<dt><span class="overrideSpecifyLabel">Specified by:</span></dt>
+<dd><code>initSendable</code>&nbsp;in interface&nbsp;<code>edu.wpi.first.wpilibj.Sendable</code></dd>
+<dt><span class="overrideSpecifyLabel">Overrides:</span></dt>
+<dd><code><a href="Controller.html#initSendable(edu.wpi.first.wpilibj.smartdashboard.SendableBuilder)">initSendable</a></code>&nbsp;in class&nbsp;<code><a href="Controller.html" title="class in com.stuypulse.stuylib.control">Controller</a></code></dd>
 </dl>
 </li>
 </ul>

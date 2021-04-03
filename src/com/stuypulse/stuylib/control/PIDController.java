@@ -5,7 +5,10 @@
 package com.stuypulse.stuylib.control;
 
 import com.stuypulse.stuylib.math.SLMath;
+import com.stuypulse.stuylib.network.SmartNumber;
 import com.stuypulse.stuylib.streams.filters.IFilter;
+
+import edu.wpi.first.wpilibj.smartdashboard.SendableBuilder;
 
 /**
  * This PID controller is built by extending the Controller class. It has a dynamic rate, so it can
@@ -110,7 +113,7 @@ public class PIDController extends Controller {
      * @return reference to PIDController (so you can chain the commands together)
      */
     public PIDController setP(Number p) {
-        mP = p;
+        mP = SmartNumber.setNumber(mP, p);
         return this;
     }
 
@@ -119,7 +122,7 @@ public class PIDController extends Controller {
      * @return reference to PIDController (so you can chain the commands together)
      */
     public PIDController setI(Number i) {
-        mI = i;
+        mI = SmartNumber.setNumber(mI, i);
         return this;
     }
 
@@ -128,7 +131,7 @@ public class PIDController extends Controller {
      * @return reference to PIDController (so you can chain the commands together)
      */
     public PIDController setD(Number d) {
-        mD = d;
+        mD = SmartNumber.setNumber(mD, d);
         return this;
     }
 
@@ -140,6 +143,14 @@ public class PIDController extends Controller {
      */
     public PIDController setPID(Number p, Number i, Number d) {
         return setP(p).setI(i).setD(d);
+    }
+
+    /**
+     * @param pidValues PIDController that stores the PID values
+     * @return reference to PIDController (so you can chain the commands together)
+     */
+    public PIDController setPID(PIDController pidValues) {
+        return setPID(pidValues.getP(), pidValues.getI(), pidValues.getD());
     }
 
     /**
@@ -166,5 +177,20 @@ public class PIDController extends Controller {
                 + ", D: "
                 + SLMath.round(getD(), 4)
                 + ")";
+    }
+
+    /*********************/
+    /*** Sendable Data ***/
+    /*********************/
+
+    @Override
+    public void initSendable(SendableBuilder builder) {
+        super.initSendable(builder);
+
+        builder.addDoubleProperty("(PID) kP", this::getP, this::setP);
+        builder.addDoubleProperty("(PID) kI", this::getI, this::setI);
+        builder.addDoubleProperty("(PID) kD", this::getD, this::setD);
+
+        builder.addDoubleProperty("(PID) Integral", () -> this.mIntegral, x -> {});
     }
 }
