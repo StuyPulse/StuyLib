@@ -21,4 +21,9 @@ jobs:
     - name: Grant execute permission for build tool
       run: chmod +x ./build_release.sh
     - name: Build Stuylib and generate jar file
-      run: ./build_release.sh TEST.BUILD
+      run: ./build_release.sh PRERELEASE
+    - name: Archive Build Jar
+      uses: actions/upload-artifact@v2
+      with:
+        name: stuylib-prerelease
+        path: releases/*
