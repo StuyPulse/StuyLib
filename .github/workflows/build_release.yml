@@ -25,5 +25,5 @@ jobs:
     - name: Archive Jar File
       uses: actions/upload-artifact@v2
       with:
-        name: stuylib-prerelease
+        name: StuyLib Jar File
         path: releases/*
