@@ -1,5 +1,5 @@
 buildscript {
-   ext.WPI_VER = "2021.2.2"
+   ext.WPI_VER = "2021.3.1"
 }
 
 plugins {
