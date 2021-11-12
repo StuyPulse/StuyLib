@@ -6,7 +6,7 @@ package com.stuypulse.stuylib.math;
 
 import com.stuypulse.stuylib.util.HashBuilder;
 
-import edu.wpi.first.wpilibj.geometry.Translation2d;
+import edu.wpi.first.math.geometry.Translation2d;
 
 /**
  * A Vector2D class that stores x and y position data. It is made to work with the StuyLib Angle

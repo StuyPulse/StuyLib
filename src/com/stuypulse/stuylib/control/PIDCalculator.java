@@ -11,7 +11,7 @@ import com.stuypulse.stuylib.streams.filters.IFilterGroup;
 import com.stuypulse.stuylib.streams.filters.TimedMovingAverage;
 import com.stuypulse.stuylib.util.StopWatch;
 
-import edu.wpi.first.wpilibj.smartdashboard.SendableBuilder;
+import edu.wpi.first.util.sendable.SendableBuilder;
 
 /**
  * This is a Bang-Bang controller that while controlling the robot, will be able to calculate the

@@ -6,7 +6,7 @@ package com.stuypulse.stuylib.control;
 
 import com.stuypulse.stuylib.network.SmartNumber;
 
-import edu.wpi.first.wpilibj.smartdashboard.SendableBuilder;
+import edu.wpi.first.util.sendable.SendableBuilder;
 
 /**
  * The take back half algorithm is one made specifically to help with controlling shooters. The way

@@ -4,7 +4,7 @@
 
 package com.stuypulse.stuylib.control;
 
-import edu.wpi.first.wpilibj.smartdashboard.SendableBuilder;
+import edu.wpi.first.util.sendable.SendableBuilder;
 
 /**
  * A simple implementation of a BangBangController for the Stuylib Controller

@@ -7,8 +7,8 @@ package com.stuypulse.stuylib.control;
 import com.stuypulse.stuylib.streams.filters.IFilter;
 import com.stuypulse.stuylib.util.StopWatch;
 
-import edu.wpi.first.wpilibj.Sendable;
-import edu.wpi.first.wpilibj.smartdashboard.SendableBuilder;
+import edu.wpi.first.util.sendable.Sendable;
+import edu.wpi.first.util.sendable.SendableBuilder;
 
 /**
  * The controller class is an abstract class that is used to create different controllers. All a

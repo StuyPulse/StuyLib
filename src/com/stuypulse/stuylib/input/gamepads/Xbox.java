@@ -6,7 +6,6 @@ package com.stuypulse.stuylib.input.gamepads;
 
 import com.stuypulse.stuylib.input.Gamepad;
 
-import edu.wpi.first.wpilibj.GenericHID.Hand;
 import edu.wpi.first.wpilibj.XboxController;
 
 /**
@@ -41,23 +40,23 @@ public class Xbox extends Gamepad {
     // Left Stick //
     @Override
     public double getLeftX() {
-        return getJoystick().getX(Hand.kLeft);
+        return getJoystick().getLeftX();
     }
 
     @Override
     public double getLeftY() {
-        return getJoystick().getY(Hand.kLeft);
+        return getJoystick().getLeftY();
     }
 
     // Right Stick //
     @Override
     public double getRightX() {
-        return getJoystick().getX(Hand.kRight);
+        return getJoystick().getRightX();
     }
 
     @Override
     public double getRightY() {
-        return getJoystick().getY(Hand.kRight);
+        return getJoystick().getRightY();
     }
 
     // D-Pad //
@@ -84,23 +83,23 @@ public class Xbox extends Gamepad {
     // Bumpers //
     @Override
     public boolean getRawLeftBumper() {
-        return getJoystick().getBumper(Hand.kLeft);
+        return getJoystick().getLeftBumper();
     }
 
     @Override
     public boolean getRawRightBumper() {
-        return getJoystick().getBumper(Hand.kRight);
+        return getJoystick().getRightBumper();
     }
 
     // Triggers //
     @Override
     public double getLeftTrigger() {
-        return getJoystick().getTriggerAxis(Hand.kLeft);
+        return getJoystick().getLeftTriggerAxis();
     }
 
     @Override
     public double getRightTrigger() {
-        return getJoystick().getTriggerAxis(Hand.kRight);
+        return getJoystick().getRightTriggerAxis();
     }
 
     // Face Buttons //
@@ -138,11 +137,11 @@ public class Xbox extends Gamepad {
     // Analog Stick Buttons //
     @Override
     public boolean getRawLeftStickButton() {
-        return getJoystick().getStickButton(Hand.kLeft);
+        return getJoystick().getLeftStickButton();
     }
 
     @Override
     public boolean getRawRightStickButton() {
-        return getJoystick().getStickButton(Hand.kRight);
+        return getJoystick().getRightStickButton();
     }
 }

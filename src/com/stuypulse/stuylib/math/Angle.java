@@ -4,7 +4,7 @@
 
 package com.stuypulse.stuylib.math;
 
-import edu.wpi.first.wpilibj.geometry.Rotation2d;
+import edu.wpi.first.math.geometry.Rotation2d;
 
 /**
  * This angle class is made to remove the ambiguity of units when passing or returning angles. It
