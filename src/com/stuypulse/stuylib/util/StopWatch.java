@@ -99,26 +99,25 @@ public class StopWatch {
                     return raw / 1_000.0;
                 }
             };
-    
+
     /**
-     * This engine is used to get the current time with the WPI function
-     * Timer.getFPGATimestamp()
+     * This engine is used to get the current time with the WPI function Timer.getFPGATimestamp()
      *
      * <p>this is used if for whatever reason you need to use the WPI Timer
      */
     public static final TimeEngine kFPGATimestamp =
-        new TimeEngine() {
+            new TimeEngine() {
 
-            // Amount to multiply the double by 
-            // before converting it to an integer
-            private static final long SCALE = (1L << 24);
+                // Amount to multiply the double by
+                // before converting it to an integer
+                private static final long SCALE = (1L << 24);
 
-            public long getRawTime() {
-                return (long)(Timer.getFPGATimestamp() * SCALE);
-            }
+                public long getRawTime() {
+                    return (long) (Timer.getFPGATimestamp() * SCALE);
+                }
 
-            public double toSeconds(long raw) {
-                return raw / (double)SCALE;
-            }
-        };
+                public double toSeconds(long raw) {
+                    return raw / (double) SCALE;
+                }
+            };
 }

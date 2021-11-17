@@ -6,7 +6,7 @@ plugins {
    id "java"
 
    id "edu.wpi.first.GradleRIO" version "${WPI_VER}"
-   id "com.diffplug.spotless" version "5.10.2"
+   id "com.diffplug.spotless" version "6.0.0"
    id "com.github.spotbugs" version "4.7.0"
 }
 
@@ -82,6 +82,7 @@ spotbugsMain {
 }
 
 spotbugs {
+   ignoreFailures = true
    effort = 'max'
 }
 
