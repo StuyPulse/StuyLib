@@ -5,6 +5,8 @@ buildscript {
 plugins {
    id "java"
 
+   id "maven-publish"
+
    id "edu.wpi.first.GradleRIO" version "${WPI_VER}"
    id "com.diffplug.spotless" version "6.0.0"
    id "com.github.spotbugs" version "4.7.0"
@@ -50,6 +52,18 @@ dependencies {
    implementation group: 'org.knowm.xchart', name: 'xchart', version: '3.2.2'
 
    testImplementation 'junit:junit:4.12'
+}
+
+publishing {
+   publications {
+      maven(MavenPublication) {
+         groupId = 'com.stuypulse.stuylib'
+         artifactId = 'library'
+         version = '1.0'
+
+         from components.java
+      }
+   }
 }
 
 spotless {
