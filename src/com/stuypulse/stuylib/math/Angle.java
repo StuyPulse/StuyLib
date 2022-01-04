@@ -30,6 +30,16 @@ public final class Angle {
     public static final Angle kArcMinute = Angle.fromArcMinutes(1.0);
     public static final Angle kArcSecond = Angle.fromArcSeconds(1.0);
 
+    public static final Angle kZero = Angle.fromDegrees(0);
+    public static final Angle k30deg = Angle.fromDegrees(30);
+    public static final Angle k45deg = Angle.fromDegrees(45);
+    public static final Angle k60deg = Angle.fromDegrees(60);
+    public static final Angle k90deg = Angle.fromDegrees(90);
+    public static final Angle k120deg = Angle.fromDegrees(120);
+    public static final Angle k135deg = Angle.fromDegrees(135);
+    public static final Angle k150deg = Angle.fromDegrees(150);
+    public static final Angle k180deg = Angle.fromDegrees(180);
+
     /** An angle that will return cos() = 0, sin() = 0, toRadians() = 0 */
     public static final Angle kNull = new Angle();
 
@@ -37,7 +47,19 @@ public final class Angle {
     /*** PRIVATE HELPER FUNCTIONS ***/
     /********************************/
 
-    private static final double TAU = Math.PI * 2.0;
+    private static final double PI = Math.PI;
+
+    private static final double TAU = PI * 2.0;
+
+    /**
+     * @param radians the value to be normalized
+     * @param center the center of the normalized range +/- (range/2)
+     * @param range range of normalized values
+     * @return the normalized value
+     */
+    private static double normalizeValue(double value, double center, double range) {
+        return value - range * Math.round((value - center) / range);
+    }
 
     /**
      * @param radians the angle to be normalized
@@ -45,7 +67,16 @@ public final class Angle {
      * @return the normalized angle
      */
     private static double normalizeRadians(double radians, double center) {
-        return radians - TAU * Math.round((radians - center) / TAU);
+        return normalizeValue(radians, center, TAU);
+    }
+
+    /**
+     * @param rotations the angle to be normalized
+     * @param center the center of the normalized range +/- 0.5
+     * @return the normalized angle
+     */
+    private static double normalizeRotations(double rotations, double center) {
+        return normalizeValue(rotations, center, 1.0);
     }
 
     /**
@@ -54,7 +85,7 @@ public final class Angle {
      * @return the normalized angle
      */
     private static double normalizeDegrees(double degrees, double center) {
-        return degrees - 360.0 * Math.round((degrees - center) / 360.0);
+        return normalizeValue(degrees, center, 360.0);
     }
 
     /********************************/
@@ -91,7 +122,7 @@ public final class Angle {
     /**
      * Construct a new Angle class with a double in radians
      *
-     * @param radians the angle for the new angle class in radians
+     * @param radians the angle for the new angle class measured in radians
      * @return an angle class with the specified angle
      */
     public static Angle fromRadians(double radians) {
@@ -99,9 +130,19 @@ public final class Angle {
     }
 
     /**
+     * Construct a new Angle class with a double in rotations
+     *
+     * @param rotations the angle for the new angle class measured in the number of rotations
+     * @return an angle class with the specified angle
+     */
+    public static Angle fromRotations(double rotations) {
+        return fromRadians(TAU * rotations);
+    }
+
+    /**
      * Construct a new Angle class with a double in degrees
      *
-     * @param degrees the angle for the new angle class in degrees
+     * @param degrees the angle for the new angle class measured in degrees
      * @return an angle class with the specified angle
      */
     public static Angle fromDegrees(double degrees) {
@@ -218,6 +259,19 @@ public final class Angle {
         return normalizeRadians(this.toRadians(), center);
     }
 
+    /** @return the value of the angle in rotations centered around 0.0 (+/- 0.5) */
+    public double toRotations() {
+        return this.toRadians() / TAU;
+    }
+
+    /**
+     * @param center the angle in rotations to be centered around (+/- 0.5)
+     * @return the angle normalized around the center in rotations
+     */
+    public double toRotations(double center) {
+        return normalizeRotations(this.toRotations(), center);
+    }
+
     /** @return the value of the angle in degrees centered around 0.0 (+/- 180) */
     public double toDegrees() {
         return Math.toDegrees(this.toRadians());
@@ -276,15 +330,20 @@ public final class Angle {
     /**
      * Divide the angle by a scalar value
      *
-     * @param scale the scaler value to Divide the angle by
+     * @param scale the scaler value to divide the angle by
      * @return the divided angle [normalized from (-pi, pi)]
      */
     public Angle div(double scale) {
         return fromRadians(this.toRadians() / scale);
     }
 
-    /** @return an angle rotated by 180 degrees or Pi Radians */
+    /** @return an angle with a negative value */
     public Angle negative() {
+        return fromRadians(0.0 - this.toRadians());
+    }
+
+    /** @return an angle rotated by 180 degrees or Pi radians */
+    public Angle halfTurn() {
         return fromRadians(0.0 - this.toRadians());
     }
 
