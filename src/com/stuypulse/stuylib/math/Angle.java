@@ -343,8 +343,8 @@ public final class Angle {
     }
 
     /** @return an angle rotated by 180 degrees or Pi radians */
-    public Angle halfTurn() {
-        return fromRadians(0.0 - this.toRadians());
+    public Angle opposite() {
+        return fromRadians(PI + this.toRadians());
     }
 
     /** @return the sine value of this angle */

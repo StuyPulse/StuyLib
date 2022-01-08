@@ -34,7 +34,7 @@ public class Polar2D {
             angle = ang;
         } else {
             magnitude = -mag;
-            angle = ang.negative();
+            angle = ang.opposite();
         }
     }
 
