@@ -97,6 +97,10 @@ public final class Matrix {
         return data[0].length;
     }
 
+    /**
+     * Returns a copy of this matrix, transposed
+     * @return a transposed version of this matrix
+     */
     public Matrix transpose() {
         Matrix result = new Matrix(getNumColumns(), getNumRows());
         for (int r = 0; r < getNumRows(); ++r) {
