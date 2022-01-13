@@ -97,6 +97,12 @@ public final class Matrix {
         return data[0].length;
     }
 
+    /**
+     * Adds two matrices together, entry-wise
+     * @param a a matrix to sum
+     * @param b a matrix to sum
+     * @return the sum of the two matrices
+     */
     public static Matrix add(Matrix a, Matrix b) {
         if (a.getNumRows() != b.getNumRows() || a.getNumColumns() != b.getNumColumns()) {
             throw new IllegalArgumentException("Matrices must have the same size to be added.");
@@ -111,6 +117,13 @@ public final class Matrix {
         return result;
     }
 
+    /**
+     * Performs matrix multiplication on two matrices. Remember that in matrix multiplication, order matters.
+     * 
+     * @param a the first matrix to multiply
+     * @param b the second matrix to multiply
+     * @return the result of the matrix multiplication
+     */
     public static Matrix mult(Matrix a, Matrix b) {
         if (a.getNumColumns() != b.getNumRows()) {
             throw new IllegalArgumentException("Matrix a must have the same column size as matrix b's row size to be multiplied.");
@@ -131,6 +144,11 @@ public final class Matrix {
         return result;
     }
 
+    /**
+     * Creates and returns an identity matrix of the given size.
+     * @param size the size of the identity matrix
+     * @return the created identity matrix
+     */
     public static Matrix identity(int size) {
         Matrix result = new Matrix(size);
         for (int i = 0; i < size; ++i) {
