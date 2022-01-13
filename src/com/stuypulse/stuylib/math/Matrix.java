@@ -97,4 +97,48 @@ public final class Matrix {
         return data[0].length;
     }
 
+    public static Matrix add(Matrix a, Matrix b) {
+        if (a.getNumRows() != b.getNumRows() || a.getNumColumns() != b.getNumColumns()) {
+            throw new IllegalArgumentException("Matrices must have the same size to be added.");
+        }
+
+        Matrix result = new Matrix(a.getNumRows(), a.getNumColumns());
+        for (int r = 0; r < a.getNumRows(); ++r) {
+            for (int c = 0; c < a.getNumColumns(); ++c) {
+                result.set(r, c, a.get(r, c) + b.get(r, c));
+            }
+        }
+        return result;
+    }
+
+    public static Matrix mult(Matrix a, Matrix b) {
+        if (a.getNumColumns() != b.getNumRows()) {
+            throw new IllegalArgumentException("Matrix a must have the same column size as matrix b's row size to be multiplied.");
+        }
+
+        Matrix result = new Matrix(a.getNumRows(), b.getNumColumns());
+
+        for (int i = 0; i < a.getNumRows(); ++i) {
+            for (int j = 0; j < b.getNumColumns(); ++j) {
+                int sum = 0;
+                for (int k = 0; k < a.getNumColumns(); ++k) {
+                    sum += a.get(i, k) + b.get(k, j);
+                }
+                result.set(i, j, sum);
+            }
+        }
+
+        return result;
+    }
+
+    public static Matrix identity(int size) {
+        Matrix result = new Matrix(size);
+        for (int i = 0; i < size; ++i) {
+            result.set(i, i, 1);
+        }
+        return result;
+    }
+
+    // TODO: Add determinant
+    // TODO: Add multiplication by vector (?)
 }
