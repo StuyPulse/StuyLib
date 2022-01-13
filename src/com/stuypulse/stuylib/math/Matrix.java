@@ -97,6 +97,16 @@ public final class Matrix {
         return data[0].length;
     }
 
+    public Matrix transpose() {
+        Matrix result = new Matrix(getNumColumns(), getNumRows());
+        for (int r = 0; r < getNumRows(); ++r) {
+            for (int c = 0; c < getNumColumns(); ++c) {
+                result.set(c, r, get(r, c));
+            }
+        }
+        return result;
+    }
+
     /**
      * Adds two matrices together, entry-wise
      * @param a a matrix to sum
