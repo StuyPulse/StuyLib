@@ -46,7 +46,9 @@ public final class Matrix {
 
         int columns = data[0].length;
         for (int r = 0; r < data.length; ++r) {
-            assert data[r].length == columns : "Could not construct matrix; given matrix rows are not of uniform length";
+            if (data[r].length != columns) {
+                throw new IllegalArgumentException("Could not construct matrix; given matrix data is not of uniform length");
+            }
             
             for (int c = 0; c < data[r].length; ++c) {
                 this.data[r][c] = data[r][c];
@@ -96,7 +98,9 @@ public final class Matrix {
     }
 
     public static Matrix add(Matrix a, Matrix b) {
-        assert a.getNumRows() == b.getNumRows() && a.getNumColumns() == b.getNumColumns() : "Matrices must have the same size to be added.";
+        if (a.getNumRows() != b.getNumRows() || a.getNumColumns() != b.getNumColumns()) {
+            throw new IllegalArgumentException("Matrices must have the same size to be added.");
+        }
 
         Matrix result = new Matrix(a.getNumRows(), a.getNumColumns());
         for (int r = 0; r < a.getNumRows(); ++r) {
@@ -108,7 +112,9 @@ public final class Matrix {
     }
 
     public static Matrix mult(Matrix a, Matrix b) {
-        assert a.getNumColumns() == b.getNumRows() : "Matrix a must have the same column size as matrix b's row size to be multiplied.";
+        if (a.getNumColumns() != b.getNumRows()) {
+            throw new IllegalArgumentException("Matrix a must have the same column size as matrix b's row size to be multiplied.");
+        }
 
         Matrix result = new Matrix(a.getNumRows(), b.getNumColumns());
 
