@@ -56,4 +56,45 @@ public final class Matrix {
         }
     }
 
+    /**
+     * Gets the value in the matrix at the r'th row and c'th column
+     * 
+     * @param r the row position of the returned value
+     * @param c the column position of the returned value
+     * @return the value in the matrix at the r'th row and c'th column 
+     */
+    public double get(int r, int c) {
+        return data[r][c];
+    }
+
+    /**
+     * Sets the value in the matrix at the r'th row and c'th column.
+     * 
+     * @param r the row position to modify
+     * @param c the column position to modify
+     * @param val the value to put in the matrix at the specified position
+     */
+    public void set(int r, int c, double val) {
+        data[r][c] = val;
+    }
+
+    /**
+     * Gets the number of rows, or the length of each column vector in the matrix.
+     * @return the number of rows
+     */
+    public int getNumRows() {
+        return data.length;
+    }
+
+    /**
+     * Gets the number of columns, or the length of each row vector in the matrix.
+     * @return the number of columns
+     */
+    public int getNumColumns() {
+        if (data.length <= 0) {
+            return 0;
+        }
+        return data[0].length;
+    }
+
 }
