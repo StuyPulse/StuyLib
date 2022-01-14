@@ -36,7 +36,7 @@ public final class Matrix {
      * Constructs a matrix with the given array of doubles. Throws an exception if the rows are not
      * uniform in length.
      *
-     * @param data
+     * @param data the matrix data to copy
      */
     public Matrix(double[][] data) {
         if (data.length <= 0) {
