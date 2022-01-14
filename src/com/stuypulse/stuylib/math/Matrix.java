@@ -14,7 +14,7 @@ public final class Matrix {
 
     /**
      * Constructs a square matrix with the given size, where all values are initialized to 0.0.
-     * 
+     *
      * @param size the size of the square matrix
      */
     public Matrix(int size) {
@@ -22,19 +22,21 @@ public final class Matrix {
     }
 
     /**
-     * Constructs a matrix with the given number of rows and columns, where all values are initialized to 0.0.
-     * 
+     * Constructs a matrix with the given number of rows and columns, where all values are
+     * initialized to 0.0.
+     *
      * @param rows the number of rows in the matrix
      * @param cols the number of cols in the matrix
      */
     public Matrix(int rows, int cols) {
         this.data = new double[rows][cols];
     }
-    
+
     /**
-     * Constructs a matrix with the given array of doubles. Throws an exception if the rows are not uniform in length. 
-     * 
-     * @param data 
+     * Constructs a matrix with the given array of doubles. Throws an exception if the rows are not
+     * uniform in length.
+     *
+     * @param data
      */
     public Matrix(double[][] data) {
         if (data.length <= 0) {
@@ -47,9 +49,10 @@ public final class Matrix {
         int columns = data[0].length;
         for (int r = 0; r < data.length; ++r) {
             if (data[r].length != columns) {
-                throw new IllegalArgumentException("Could not construct matrix; given matrix data is not of uniform length");
+                throw new IllegalArgumentException(
+                        "Could not construct matrix; given matrix data is not of uniform length");
             }
-            
+
             for (int c = 0; c < data[r].length; ++c) {
                 this.data[r][c] = data[r][c];
             }
@@ -58,10 +61,10 @@ public final class Matrix {
 
     /**
      * Gets the value in the matrix at the r'th row and c'th column
-     * 
+     *
      * @param r the row position of the returned value
      * @param c the column position of the returned value
-     * @return the value in the matrix at the r'th row and c'th column 
+     * @return the value in the matrix at the r'th row and c'th column
      */
     public double get(int r, int c) {
         return data[r][c];
@@ -69,7 +72,7 @@ public final class Matrix {
 
     /**
      * Sets the value in the matrix at the r'th row and c'th column.
-     * 
+     *
      * @param r the row position to modify
      * @param c the column position to modify
      * @param val the value to put in the matrix at the specified position
@@ -80,6 +83,7 @@ public final class Matrix {
 
     /**
      * Gets the number of rows, or the length of each column vector in the matrix.
+     *
      * @return the number of rows
      */
     public int getNumRows() {
@@ -88,6 +92,7 @@ public final class Matrix {
 
     /**
      * Gets the number of columns, or the length of each row vector in the matrix.
+     *
      * @return the number of columns
      */
     public int getNumColumns() {
@@ -99,6 +104,7 @@ public final class Matrix {
 
     /**
      * Returns a copy of this matrix, transposed
+     *
      * @return a transposed version of this matrix
      */
     public Matrix transpose() {
@@ -113,6 +119,7 @@ public final class Matrix {
 
     /**
      * Adds two matrices together, entry-wise
+     *
      * @param a a matrix to sum
      * @param b a matrix to sum
      * @return the sum of the two matrices
@@ -132,15 +139,17 @@ public final class Matrix {
     }
 
     /**
-     * Performs matrix multiplication on two matrices. Remember that in matrix multiplication, order matters.
-     * 
+     * Performs matrix multiplication on two matrices. Remember that in matrix multiplication, order
+     * matters.
+     *
      * @param a the first matrix to multiply
      * @param b the second matrix to multiply
      * @return the result of the matrix multiplication
      */
     public static Matrix mult(Matrix a, Matrix b) {
         if (a.getNumColumns() != b.getNumRows()) {
-            throw new IllegalArgumentException("Matrix a must have the same column size as matrix b's row size to be multiplied.");
+            throw new IllegalArgumentException(
+                    "Matrix a must have the same column size as matrix b's row size to be multiplied.");
         }
 
         Matrix result = new Matrix(a.getNumRows(), b.getNumColumns());
@@ -160,6 +169,7 @@ public final class Matrix {
 
     /**
      * Creates and returns an identity matrix of the given size.
+     *
      * @param size the size of the identity matrix
      * @return the created identity matrix
      */
