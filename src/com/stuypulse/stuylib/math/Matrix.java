@@ -9,7 +9,7 @@ package com.stuypulse.stuylib.math;
  *
  * @author Ivan Wei (ivanw8288@gmail.com)
  */
-public final class Matrix {
+public class Matrix {
     private double[][] data;
 
     /**
