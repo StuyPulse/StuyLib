@@ -61,7 +61,7 @@ If you are using network tables anywhere else than the robot, ie. on a laptop, y
 
 When contributing code, as always, make a branch and a pull request.
 
-All code MUST be commented, and no single class should be to complicated.
+All code MUST be commented, and no single class should be too complicated.
 
 At the top of each class, give a brief description of the class, along with an author tag which contains an email just in case anybody has any questions on how to use it.
 
