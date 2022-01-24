@@ -154,6 +154,17 @@ public class Matrix {
     }
 
     /**
+     * Subtracts two matrices, entry-wise
+     *
+     * @param a a matrix to subtract from
+     * @param b a matrix to subtract
+     * @return the difference of the two matrices
+     */
+    public static Matrix sub(Matrix a, Matrix b) {
+        return add(a, b.scale(-1.0));
+    }
+
+    /**
      * Performs matrix multiplication on two matrices. Remember that in matrix multiplication, order
      * matters.
      *
