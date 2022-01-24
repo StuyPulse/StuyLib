@@ -118,6 +118,21 @@ public class Matrix {
     }
 
     /**
+     * Returns a copy of this matrix, scaled
+     *
+     * @return a transposed version of this matrix
+     */
+    public Matrix scale(double scalar) {
+        Matrix result = new Matrix(getNumRows(), getNumColumns());
+        for (int r = 0; r < getNumRows(); ++r) {
+            for (int c = 0; c < getNumColumns(); ++c) {
+                result.set(r, c, scalar * get(r, c));
+            }
+        }
+        return result;
+    }
+
+    /**
      * Adds two matrices together, entry-wise
      *
      * @param a a matrix to sum
