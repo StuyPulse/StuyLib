@@ -6,7 +6,7 @@ package com.stuypulse.stuylib.util.chart;
 
 import com.stuypulse.stuylib.streams.filters.*;
 
-public final 2class Playground {
+public final class Playground {
 
     private interface Constants {
 
