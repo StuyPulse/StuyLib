@@ -1,5 +1,5 @@
 buildscript {
-   ext.WPI_VER = "2022.3.1"
+   ext.WPI_VER = "2022.2.1"
 }
 
 plugins {
@@ -48,6 +48,8 @@ dependencies {
    runtimeOnly "edu.wpi.first.ntcore:ntcore-jni:${WPI_VER}:windowsx86-64"
    runtimeOnly "edu.wpi.first.ntcore:ntcore-jni:${WPI_VER}:linuxx86-64"
    runtimeOnly "edu.wpi.first.ntcore:ntcore-jni:${WPI_VER}:osxx86-64"
+
+   implementation 'com.google.code.gson:gson:2.9.0'
 
    implementation group: 'org.knowm.xchart', name: 'xchart', version: '3.2.2'
 

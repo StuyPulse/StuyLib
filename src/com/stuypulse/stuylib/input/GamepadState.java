@@ -24,7 +24,6 @@ public class GamepadState extends Gamepad {
     /*************************************/
     /*** VARIABLES MAKING UP THE STATE ***/
     /*************************************/
-
     public final double stickLeftX;
 
     public final double stickLeftY;
@@ -87,6 +86,10 @@ public class GamepadState extends Gamepad {
 
         this.buttonStickLeft = gamepad.getRawLeftStickButton();
         this.buttonStickRight = gamepad.getRawRightStickButton();
+    }
+
+    public GamepadState() {
+        this(new Gamepad());
     }
 
     /*******************************/
