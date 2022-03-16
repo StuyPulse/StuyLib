@@ -7,6 +7,7 @@ package com.stuypulse.stuylib.control;
 import com.stuypulse.stuylib.math.SLMath;
 import com.stuypulse.stuylib.network.SmartNumber;
 import com.stuypulse.stuylib.streams.filters.IFilter;
+import com.stuypulse.stuylib.streams.filters.IFilterGroup;
 
 import edu.wpi.first.util.sendable.SendableBuilder;
 
@@ -44,7 +45,7 @@ public class PIDController extends Controller {
      * @param d The Derivative Multiplier
      */
     public PIDController(Number p, Number i, Number d) {
-        setIntegratorFilter(null);
+        setIntegratorFilter(0, 0);
         setPID(p, i, d);
         reset();
     }
@@ -154,17 +155,18 @@ public class PIDController extends Controller {
     }
 
     /**
-     * It is common for a limit filter to be put on the I component to prevent Integral Windup. You
-     * can use SLMath.limit(x) to do this.
+     * Add constraints to the integral of the PID Controller
      *
-     * <p>Passing null will disable the filter
-     *
-     * @param filter filter put on the I component of the PID Controller
+     * @param range the range of error in which the integral is allowed to accumulate (0 will
+     *     disable)
+     * @param limit the max / min the integral is allowed to accumulate to (0 will disables)
      * @return reference to PIDController (so you can chain the commands together)
      */
-    public PIDController setIntegratorFilter(IFilter filter) {
-        // Use default filter if given null
-        mIFilter = (filter == null) ? ((x) -> x) : filter;
+    public PIDController setIntegratorFilter(Number range, Number limit) {
+        mIFilter =
+                new IFilterGroup(
+                        x -> range.doubleValue() <= 0 || isDone(range.doubleValue()) ? x : 0,
+                        x -> limit.doubleValue() <= 0 ? x : SLMath.clamp(x, limit.doubleValue()));
         return this;
     }
 
