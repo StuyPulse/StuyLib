@@ -2,7 +2,7 @@
 
 ## What is a Stream
 
-A stream is any class / lambda than when you call `.get()` it returns a double.
+A stream is any class / lambda that when you call `.get()` it returns a double.
 
 For example, say we wanted a stream of controller inputs, we would write.
 
