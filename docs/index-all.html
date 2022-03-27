@@ -505,6 +505,10 @@ $('.navPadding').css('padding-top', $('.fixedNav').css("height"));
 <dd>
 <div class="block">Get next value from filtered stream</div>
 </dd>
+<dt><span class="memberNameLink"><a href="com/stuypulse/stuylib/streams/IFuser.html#get()">get()</a></span> - Method in class com.stuypulse.stuylib.streams.<a href="com/stuypulse/stuylib/streams/IFuser.html" title="class in com.stuypulse.stuylib.streams">IFuser</a></dt>
+<dd>
+<div class="block">Get the result of merging the setpoint and measurement streams</div>
+</dd>
 <dt><span class="memberNameLink"><a href="com/stuypulse/stuylib/streams/IStream.html#get()">get()</a></span> - Method in interface com.stuypulse.stuylib.streams.<a href="com/stuypulse/stuylib/streams/IStream.html" title="interface in com.stuypulse.stuylib.streams">IStream</a></dt>
 <dd>&nbsp;</dd>
 <dt><span class="memberNameLink"><a href="com/stuypulse/stuylib/streams/PollingIStream.html#get()">get()</a></span> - Method in class com.stuypulse.stuylib.streams.<a href="com/stuypulse/stuylib/streams/PollingIStream.html" title="class in com.stuypulse.stuylib.streams">PollingIStream</a></dt>
@@ -1215,8 +1219,21 @@ $('.navPadding').css('padding-top', $('.fixedNav').css("height"));
 <dd>
 <div class="block">Make IFilterGroup out of an array of Filters</div>
 </dd>
+<dt><a href="com/stuypulse/stuylib/streams/IFuser.html" title="class in com.stuypulse.stuylib.streams"><span class="typeNameLink">IFuser</span></a> - Class in <a href="com/stuypulse/stuylib/streams/package-summary.html">com.stuypulse.stuylib.streams</a></dt>
+<dd>
+<div class="block">A class that combines two IStreams, usually in order to combine some slow data source with a
+ faster one.</div>
+</dd>
+<dt><span class="memberNameLink"><a href="com/stuypulse/stuylib/streams/IFuser.html#%3Cinit%3E(java.lang.Number,com.stuypulse.stuylib.streams.IStream,com.stuypulse.stuylib.streams.IStream)">IFuser(Number, IStream, IStream)</a></span> - Constructor for class com.stuypulse.stuylib.streams.<a href="com/stuypulse/stuylib/streams/IFuser.html" title="class in com.stuypulse.stuylib.streams">IFuser</a></dt>
+<dd>
+<div class="block">Create an IFuser with an RC, Setpoint Filter, and Measurement Filter</div>
+</dd>
 <dt><span class="memberNameLink"><a href="com/stuypulse/stuylib/network/limelight/LimelightConstants.html#IMAGE_CAPTURE_LATENCY">IMAGE_CAPTURE_LATENCY</a></span> - Static variable in class com.stuypulse.stuylib.network.limelight.<a href="com/stuypulse/stuylib/network/limelight/LimelightConstants.html" title="class in com.stuypulse.stuylib.network.limelight">LimelightConstants</a></dt>
 <dd>&nbsp;</dd>
+<dt><span class="memberNameLink"><a href="com/stuypulse/stuylib/streams/IFuser.html#initialize()">initialize()</a></span> - Method in class com.stuypulse.stuylib.streams.<a href="com/stuypulse/stuylib/streams/IFuser.html" title="class in com.stuypulse.stuylib.streams">IFuser</a></dt>
+<dd>
+<div class="block">Resets the IFuser so that it can ignore any previous data / reset its initial read</div>
+</dd>
 <dt><span class="memberNameLink"><a href="com/stuypulse/stuylib/control/BangBangController.html#initSendable(edu.wpi.first.util.sendable.SendableBuilder)">initSendable(SendableBuilder)</a></span> - Method in class com.stuypulse.stuylib.control.<a href="com/stuypulse/stuylib/control/BangBangController.html" title="class in com.stuypulse.stuylib.control">BangBangController</a></dt>
 <dd>&nbsp;</dd>
 <dt><span class="memberNameLink"><a href="com/stuypulse/stuylib/control/Controller.html#initSendable(edu.wpi.first.util.sendable.SendableBuilder)">initSendable(SendableBuilder)</a></span> - Method in class com.stuypulse.stuylib.control.<a href="com/stuypulse/stuylib/control/Controller.html" title="class in com.stuypulse.stuylib.control">Controller</a></dt>
@@ -1752,9 +1769,9 @@ $('.navPadding').css('padding-top', $('.fixedNav').css("height"));
 <dd>&nbsp;</dd>
 <dt><span class="memberNameLink"><a href="com/stuypulse/stuylib/control/PIDController.html#setI(java.lang.Number)">setI(Number)</a></span> - Method in class com.stuypulse.stuylib.control.<a href="com/stuypulse/stuylib/control/PIDController.html" title="class in com.stuypulse.stuylib.control">PIDController</a></dt>
 <dd>&nbsp;</dd>
-<dt><span class="memberNameLink"><a href="com/stuypulse/stuylib/control/PIDController.html#setIntegratorFilter(com.stuypulse.stuylib.streams.filters.IFilter)">setIntegratorFilter(IFilter)</a></span> - Method in class com.stuypulse.stuylib.control.<a href="com/stuypulse/stuylib/control/PIDController.html" title="class in com.stuypulse.stuylib.control">PIDController</a></dt>
+<dt><span class="memberNameLink"><a href="com/stuypulse/stuylib/control/PIDController.html#setIntegratorFilter(java.lang.Number,java.lang.Number)">setIntegratorFilter(Number, Number)</a></span> - Method in class com.stuypulse.stuylib.control.<a href="com/stuypulse/stuylib/control/PIDController.html" title="class in com.stuypulse.stuylib.control">PIDController</a></dt>
 <dd>
-<div class="block">It is common for a limit filter to be put on the I component to prevent Integral Windup.</div>
+<div class="block">Add constraints to the integral of the PID Controller</div>
 </dd>
 <dt><span class="memberNameLink"><a href="com/stuypulse/stuylib/input/keyboard/NetKeyboard.html#setKey(java.lang.String,boolean)">setKey(String, boolean)</a></span> - Method in class com.stuypulse.stuylib.input.keyboard.<a href="com/stuypulse/stuylib/input/keyboard/NetKeyboard.html" title="class in com.stuypulse.stuylib.input.keyboard">NetKeyboard</a></dt>
 <dd>
