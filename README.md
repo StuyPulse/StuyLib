@@ -12,6 +12,10 @@ StuyLib is an FRC library / toolkit which includes many different utilities for 
 
 - IStreams / IStreamFilters: 
 	- [Innovation in Control Award sponsored by Rockwell Automation](https://www.thebluealliance.com/event/2020scmb#awards)
+- Limelight + Encoder Fusion / Drive Filters: 
+    - [Innovation in Control Award](https://www.thebluealliance.com/event/2022nyro#awards)
+- Clean & Concise Code / Smart Network Library:
+    - [Innovation in Control Award](https://www.thebluealliance.com/event/2022nyli2#awards)
 
 # How do I use StuyLib?
 
