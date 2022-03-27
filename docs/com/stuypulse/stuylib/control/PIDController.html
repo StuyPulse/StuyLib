@@ -243,9 +243,10 @@ extends <a href="Controller.html" title="class in com.stuypulse.stuylib.control"
 </tr>
 <tr id="i8" class="altColor">
 <td class="colFirst"><code><a href="PIDController.html" title="class in com.stuypulse.stuylib.control">PIDController</a></code></td>
-<th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#setIntegratorFilter(com.stuypulse.stuylib.streams.filters.IFilter)">setIntegratorFilter</a></span>&#8203;(<a href="../streams/filters/IFilter.html" title="interface in com.stuypulse.stuylib.streams.filters">IFilter</a>&nbsp;filter)</code></th>
+<th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#setIntegratorFilter(java.lang.Number,java.lang.Number)">setIntegratorFilter</a></span>&#8203;(java.lang.Number&nbsp;range,
+                   java.lang.Number&nbsp;limit)</code></th>
 <td class="colLast">
-<div class="block">It is common for a limit filter to be put on the I component to prevent Integral Windup.</div>
+<div class="block">Add constraints to the integral of the PID Controller</div>
 </td>
 </tr>
 <tr id="i9" class="rowColor">
@@ -487,20 +488,20 @@ extends <a href="Controller.html" title="class in com.stuypulse.stuylib.control"
 </dl>
 </li>
 </ul>
-<a id="setIntegratorFilter(com.stuypulse.stuylib.streams.filters.IFilter)">
+<a id="setIntegratorFilter(java.lang.Number,java.lang.Number)">
 <!--   -->
 </a>
 <ul class="blockList">
 <li class="blockList">
 <h4>setIntegratorFilter</h4>
-<pre class="methodSignature">public&nbsp;<a href="PIDController.html" title="class in com.stuypulse.stuylib.control">PIDController</a>&nbsp;setIntegratorFilter&#8203;(<a href="../streams/filters/IFilter.html" title="interface in com.stuypulse.stuylib.streams.filters">IFilter</a>&nbsp;filter)</pre>
-<div class="block">It is common for a limit filter to be put on the I component to prevent Integral Windup. You
- can use SLMath.limit(x) to do this.
-
- <p>Passing null will disable the filter</div>
+<pre class="methodSignature">public&nbsp;<a href="PIDController.html" title="class in com.stuypulse.stuylib.control">PIDController</a>&nbsp;setIntegratorFilter&#8203;(java.lang.Number&nbsp;range,
+                                         java.lang.Number&nbsp;limit)</pre>
+<div class="block">Add constraints to the integral of the PID Controller</div>
 <dl>
 <dt><span class="paramLabel">Parameters:</span></dt>
-<dd><code>filter</code> - filter put on the I component of the PID Controller</dd>
+<dd><code>range</code> - the range of error in which the integral is allowed to accumulate (0 will
+     disable)</dd>
+<dd><code>limit</code> - the max / min the integral is allowed to accumulate to (0 will disables)</dd>
 <dt><span class="returnLabel">Returns:</span></dt>
 <dd>reference to PIDController (so you can chain the commands together)</dd>
 </dl>
