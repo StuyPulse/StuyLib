@@ -19,8 +19,9 @@ public final class LimelightConstants {
     /*** Camera Mode Enums ***/
     /*************************/
 
-    public static final double MIN_X_ANGLE = -27;
+    public static final double IMAGE_CAPTURE_LATENCY = 11;
 
+    public static final double MIN_X_ANGLE = -27;
     public static final double MAX_X_ANGLE = 27;
 
     public static final double MIN_Y_ANGLE = -20.5;
@@ -31,8 +32,6 @@ public final class LimelightConstants {
 
     public static final double MIN_SKEW = -90;
     public static final double MAX_SKEW = 0;
-
-    public static final double IMAGE_CAPTURE_LATENCY = 11;
 
     public static final double MIN_SIDE_LENGTH = 0;
     public static final double MAX_SIDE_LENGTH = 320;
