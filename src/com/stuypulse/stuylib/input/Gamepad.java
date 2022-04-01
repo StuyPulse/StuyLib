@@ -206,42 +206,66 @@ public class Gamepad implements Sendable {
     /**************************************************/
 
     // Sticks //
-    /** @return Button that activates when {@link #getLeftY()} > +{@link #ANALOG_THRESHOLD} */
+    /**
+     * @return Button that activates when {@link #getLeftY()} is greater than +{@link
+     *     #ANALOG_THRESHOLD}
+     */
     public final Button getLeftStickUp() {
         return new Button(() -> getLeftY() > +ANALOG_THRESHOLD);
     }
 
-    /** @return Button that activates when {@link #getLeftY()} < -{@link #ANALOG_THRESHOLD} */
+    /**
+     * @return Button that activates when {@link #getLeftY()} is less than -{@link
+     *     #ANALOG_THRESHOLD}
+     */
     public final Button getLeftStickDown() {
         return new Button(() -> getLeftY() < -ANALOG_THRESHOLD);
     }
 
-    /** @return Button that activates when {@link #getLeftX()} < -{@link #ANALOG_THRESHOLD} */
+    /**
+     * @return Button that activates when {@link #getLeftX()} is less than -{@link
+     *     #ANALOG_THRESHOLD}
+     */
     public final Button getLeftStickLeft() {
         return new Button(() -> getLeftX() < -ANALOG_THRESHOLD);
     }
 
-    /** @return Button that activates when {@link #getLeftX()} > +{@link #ANALOG_THRESHOLD} */
+    /**
+     * @return Button that activates when {@link #getLeftX()} is greater than +{@link
+     *     #ANALOG_THRESHOLD}
+     */
     public final Button getLeftStickRight() {
         return new Button(() -> getLeftX() > +ANALOG_THRESHOLD);
     }
 
-    /** @return Button that activates when {@link #getRightY()} > +{@link #ANALOG_THRESHOLD} */
+    /**
+     * @return Button that activates when {@link #getRightY()} is greater than +{@link
+     *     #ANALOG_THRESHOLD}
+     */
     public final Button getRightStickUp() {
         return new Button(() -> getRightY() > +ANALOG_THRESHOLD);
     }
 
-    /** @return Button that activates when {@link #getRightY()} < -{@link #ANALOG_THRESHOLD} */
+    /**
+     * @return Button that activates when {@link #getRightY()} is less than -{@link
+     *     #ANALOG_THRESHOLD}
+     */
     public final Button getRightStickDown() {
         return new Button(() -> getRightY() < -ANALOG_THRESHOLD);
     }
 
-    /** @return Button that activates when {@link #getRightX()} < -{@link #ANALOG_THRESHOLD} */
+    /**
+     * @return Button that activates when {@link #getRightX()} is less than -{@link
+     *     #ANALOG_THRESHOLD}
+     */
     public final Button getRightStickLeft() {
         return new Button(() -> getRightX() < -ANALOG_THRESHOLD);
     }
 
-    /** @return Button that activates when {@link #getRightX()} > +{@link #ANALOG_THRESHOLD} */
+    /**
+     * @return Button that activates when {@link #getRightX()} is greater than +{@link
+     *     #ANALOG_THRESHOLD}
+     */
     public final Button getRightStickRight() {
         return new Button(() -> getRightX() > +ANALOG_THRESHOLD);
     }
