@@ -189,21 +189,62 @@ public class Gamepad implements Sendable {
     }
 
     // Triggers //
-    public static final double TRIGGER_PRESSED_THRESHOLD = 1.0 / 4.0;
+    public static final double ANALOG_THRESHOLD = 1.0 / 4.0;
 
-    /** @return If the left trigger is pressed down more than {@link #TRIGGER_PRESSED_THRESHOLD} */
+    /** @return If the left trigger is pressed down more than {@link #ANALOG_THRESHOLD} */
     public final boolean getLeftTriggerPressed() {
-        return getLeftTrigger() > TRIGGER_PRESSED_THRESHOLD;
+        return getLeftTrigger() > ANALOG_THRESHOLD;
     }
 
-    /** @return If the left trigger is pressed down more than {@link #TRIGGER_PRESSED_THRESHOLD} */
+    /** @return If the left trigger is pressed down more than {@link #ANALOG_THRESHOLD} */
     public final boolean getRightTriggerPressed() {
-        return getRightTrigger() > TRIGGER_PRESSED_THRESHOLD;
+        return getRightTrigger() > ANALOG_THRESHOLD;
     }
 
     /**************************************************/
     /*** BUTTONS BASED OFF OF IMPLEMENTED FUNCTIONS ***/
     /**************************************************/
+
+    // Sticks //
+    /** @return Button that activates when {@link #getLeftY()} > +{@link #ANALOG_THRESHOLD} */
+    public final Button getLeftStickUp() {
+        return new Button(() -> getLeftY() > +ANALOG_THRESHOLD);
+    }
+
+    /** @return Button that activates when {@link #getLeftY()} < -{@link #ANALOG_THRESHOLD} */
+    public final Button getLeftStickDown() {
+        return new Button(() -> getLeftY() < -ANALOG_THRESHOLD);
+    }
+
+    /** @return Button that activates when {@link #getLeftX()} < -{@link #ANALOG_THRESHOLD} */
+    public final Button getLeftStickLeft() {
+        return new Button(() -> getLeftX() < -ANALOG_THRESHOLD);
+    }
+
+    /** @return Button that activates when {@link #getLeftX()} > +{@link #ANALOG_THRESHOLD} */
+    public final Button getLeftStickRight() {
+        return new Button(() -> getLeftX() > +ANALOG_THRESHOLD);
+    }
+
+    /** @return Button that activates when {@link #getRightY()} > +{@link #ANALOG_THRESHOLD} */
+    public final Button getRightStickUp() {
+        return new Button(() -> getRightY() > +ANALOG_THRESHOLD);
+    }
+
+    /** @return Button that activates when {@link #getRightY()} < -{@link #ANALOG_THRESHOLD} */
+    public final Button getRightStickDown() {
+        return new Button(() -> getRightY() < -ANALOG_THRESHOLD);
+    }
+
+    /** @return Button that activates when {@link #getRightX()} < -{@link #ANALOG_THRESHOLD} */
+    public final Button getRightStickLeft() {
+        return new Button(() -> getRightX() < -ANALOG_THRESHOLD);
+    }
+
+    /** @return Button that activates when {@link #getRightX()} > +{@link #ANALOG_THRESHOLD} */
+    public final Button getRightStickRight() {
+        return new Button(() -> getRightX() > +ANALOG_THRESHOLD);
+    }
 
     // D-Pad //
     /** @return Button that activates with {@link #getRawDPadUp()} */
@@ -282,12 +323,12 @@ public class Gamepad implements Sendable {
 
     // Analog Stick Buttons //
     /** @return Button that activates with {@link #getRawLeftStickButton()} */
-    public final Button getLeftAnalogButton() {
+    public final Button getLeftStickButton() {
         return new Button(this::getRawLeftStickButton);
     }
 
     /** @return Button that activates with {@link #getRawRightStickButton()} */
-    public final Button getRightAnalogButton() {
+    public final Button getRightStickButton() {
         return new Button(this::getRawRightStickButton);
     }
 
