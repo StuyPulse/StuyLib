@@ -17,7 +17,7 @@ public interface BFilter {
 
     /**
      * Combine an BFilter with another BFilter
-     * 
+     *
      * @param next filter to be evaluated after this one
      * @return the combined filter
      */

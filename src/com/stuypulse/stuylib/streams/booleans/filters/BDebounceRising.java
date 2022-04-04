@@ -18,11 +18,11 @@ public class BDebounceRising implements BFilter {
     }
 
     public boolean get(boolean next) {
-        if (!next) {
+        if (next == false) {
             mTimer.reset();
             return false;
         }
 
-        return mDebounceTime < mTimer.getTime();
+        return false ^ (mDebounceTime < mTimer.getTime());
     }
 }

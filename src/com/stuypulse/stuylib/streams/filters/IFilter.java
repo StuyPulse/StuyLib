@@ -24,7 +24,7 @@ public interface IFilter {
 
     /**
      * Combine an IFilter with another IFilter
-     * 
+     *
      * @param next filter to be evaluated after this one
      * @return the combined filter
      */
