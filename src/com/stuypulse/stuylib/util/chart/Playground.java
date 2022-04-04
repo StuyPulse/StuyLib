@@ -10,7 +10,7 @@ public final class Playground {
 
     private interface Constants {
 
-        int TIME = 100;
+        int TIME = 300;
         int MAX = +1;
         int MIN = -1;
 
@@ -22,14 +22,18 @@ public final class Playground {
     public static void main(String... args) throws InterruptedException {
         System.out.println("Testing graph library...");
 
-        double RC = 0.2;
+        double RC = 0.5;
 
         GraphData[] inputs =
                 new GraphData[] {
                     new FilteredGraphData(Constants.make("Control"), x -> x),
-                    new FilteredGraphData(Constants.make("High Pass"), new HighPassFilter(RC)),
-                    new FilteredGraphData(Constants.make("Low Pass"), new LowPassFilter(RC)),
-                    new FilteredGraphData(Constants.make("Both"), x -> x)
+                    // new FilteredGraphData(Constants.make("High Pass"), new HighPassFilter(1 * RC)),
+                    // new FilteredGraphData(Constants.make("Low Pass"), new LowPassFilter(1.0)),
+                    // new FilteredGraphData(Constants.make("Timed Moving Average"), new TimedMovingAverage(RC)),
+                    new FilteredGraphData(Constants.make("Eric Filter"), new IFilterGroup(new LowPassFilter(1), new HighPassFilter(1)))
+                    // new FilteredGraphData(Constants.make("Eric Filter # 2"), new WeightedMovingAverage(50)),
+                    // new FilteredGraphData(graph, filter)
+                    
                 };
 
         JGraph graph = new JGraph(inputs);
