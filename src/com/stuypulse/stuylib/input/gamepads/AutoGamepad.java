@@ -186,4 +186,9 @@ public final class AutoGamepad extends Gamepad {
     public boolean getRawRightStickButton() {
         return getDetectedGamepad().getRawRightStickButton();
     }
+
+    // Rumble // 
+    public void setRumble(double intensity) {
+        getDetectedGamepad().setRumble(intensity);
+    }
 }
