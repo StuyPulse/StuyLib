@@ -29,4 +29,14 @@ public interface IStream {
     public default FilteredIStream filtered(IFilter... filters) {
         return new FilteredIStream(this, filters);
     }
+
+    /**
+     * Create a new PollingIStream from the current stream
+     *
+     * @param hz the frequency that you want to poll the IStream
+     * @return The PollingIStream
+     */
+    public default PollingIStream polling(double hz) {
+        return new PollingIStream(this, hz);
+    }
 }
