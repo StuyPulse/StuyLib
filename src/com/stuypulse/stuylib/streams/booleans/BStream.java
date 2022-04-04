@@ -6,10 +6,18 @@ package com.stuypulse.stuylib.streams.booleans;
 
 import com.stuypulse.stuylib.streams.booleans.filters.BFilter;
 
-/** @author Sam (sam.belliveau@gmail.com) */
-public interface BStream {
+import java.util.function.BooleanSupplier;
 
+/** @author Sam (sam.belliveau@gmail.com) */
+public interface BStream extends BooleanSupplier {
+
+    /** @return next value in the stream */
     public boolean get();
+
+    /** @return get BStream as a Boolean */
+    public default boolean getAsBoolean() {
+        return get();
+    }
 
     /**
      * Create a new FilteredBStream from the current stream

@@ -6,6 +6,8 @@ package com.stuypulse.stuylib.streams;
 
 import com.stuypulse.stuylib.streams.filters.IFilter;
 
+import java.util.function.DoubleSupplier;
+
 /**
  * A stream of doubles that is accessed with the {@link IStream#get()} function
  *
@@ -15,10 +17,15 @@ import com.stuypulse.stuylib.streams.filters.IFilter;
  *
  * @author Sam (sam.belliveau@gmail.com)
  */
-public interface IStream {
+public interface IStream extends DoubleSupplier {
 
     /** @return next value in the stream */
     public double get();
+
+    /** @return get IStream as a double */
+    public default double getAsDouble() {
+        return get();
+    }
 
     /**
      * Create a new FilteredIStream from the current stream
