@@ -4,12 +4,24 @@
 
 package com.stuypulse.stuylib.util;
 
-/** @author Sam (sam.belliveau@gmail.com) */
+/**
+ * A class that runs a function every dt seconds
+ *
+ * <p>If the function falls behind, this will speed up until its back on track. Due to the way it's
+ * programmed, it will never fall behind schedule as long as the time to execute the function is
+ * smaller than dt.
+ *
+ * @author Sam (sam.belliveau@gmail.com)
+ */
 public class Looper extends Thread {
 
     private final Runnable mFunction;
     private final double mDT;
 
+    /**
+     * @param function function to loop
+     * @param dt how long to wait between every function call
+     */
     public Looper(Runnable function, double dt) {
         mFunction = function;
         mDT = dt;
