@@ -11,6 +11,8 @@ public class IntervalInterpolator implements Interpolator {
     double x2; // this would be the second distance from the hub
     double y1; // for the limelight, this would be the first RPM(of the shooter)
     double y2; // this would be the second RPM(of the shooter)
+
+
     
     public IntervalInterpolator(double x1, double x2, double y1, double y2){
         //note: I would use a tuple/list for inputs but I don't know how it works for java 
