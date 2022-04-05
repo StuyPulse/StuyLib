@@ -48,7 +48,7 @@ public class BDebounceRC {
         }
 
         public boolean get(boolean next) {
-            return mFilter.get(next ? kTrue : kFalse) < kLowerLimit;
+            return mFilter.get(next ? kTrue : kFalse) > kLowerLimit;
         }
     }
 
@@ -56,22 +56,16 @@ public class BDebounceRC {
     public static class Both implements BFilter {
 
         private final LowPassFilter mFilter;
-        private boolean mLastValue;
+        private boolean mPrev;
 
         /** @param debounceTime amount of time on average to change value */
         public Both(double debounceTime) {
             mFilter = new LowPassFilter(debounceTime);
-            mLastValue = false;
+            mPrev = false;
         }
 
         public boolean get(boolean next) {
-            final double value = mFilter.get(next ? kTrue : kFalse);
-
-            if (mLastValue) {
-                return mLastValue = value > kLowerLimit;
-            } else {
-                return mLastValue = value > kUpperLimit;
-            }
+            return mPrev = mFilter.get(next ? kTrue : kFalse) > (mPrev ? kLowerLimit : kUpperLimit);
         }
     }
 }
