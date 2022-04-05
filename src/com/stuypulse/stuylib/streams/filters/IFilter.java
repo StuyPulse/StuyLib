@@ -80,4 +80,17 @@ public interface IFilter {
     public default IFilter sub(IFilter other) {
         return x -> get(x) - other.get(x);
     }
+
+    /**
+     * Invert an IFilter by subtracting the input from the result of the IFilter.
+     *
+     * <p>Inverting a LowPassFilter gives you a HighPassFilter and vise versa.
+     *
+     * <p>Inverting something twice gives you the original value.
+     *
+     * @return the inverted filter
+     */
+    public default IFilter invert() {
+        return x -> x - get(x);
+    }
 }
