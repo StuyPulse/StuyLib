@@ -10,7 +10,7 @@ import com.stuypulse.stuylib.util.Looper;
  * A PollingBStream is a BStream but its .get() method is called for you at a certain rate. This is
  * really helpful when you want to read from a sensor using a debouncer, but you dont always call
  * .get() in your periodic loop. This will do that for you, and give you the most recent result. It
- * is not recommended to filter a
+ * is not recommended to filter a PollingBStream as you should ideally filter before you poll.
  *
  * @author Sam (sam.belliveau@gmail.com)
  */
