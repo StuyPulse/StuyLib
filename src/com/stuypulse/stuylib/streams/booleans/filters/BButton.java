@@ -11,7 +11,7 @@ package com.stuypulse.stuylib.streams.booleans.filters;
  *
  * <p>2. Pressed - will return true if the BStream changes from false -> true
  *
- * <p>2. Released - will return true if the BStream changes from true -> false
+ * <p>3. Released - will return true if the BStream changes from true -> false
  *
  * @author Sam (sam.belliveau@gmail.com)
  */
