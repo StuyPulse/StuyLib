@@ -5,6 +5,10 @@
 package com.stuypulse.stuylib.util.chart;
 
 import com.stuypulse.stuylib.streams.IStream;
+import com.stuypulse.stuylib.streams.booleans.filters.BButton;
+import com.stuypulse.stuylib.streams.booleans.filters.BButtonRC;
+import com.stuypulse.stuylib.streams.booleans.filters.BDebounce;
+import com.stuypulse.stuylib.streams.booleans.filters.BFilter;
 import com.stuypulse.stuylib.streams.filters.*;
 import com.stuypulse.stuylib.util.Looper;
 
@@ -26,19 +30,38 @@ public final class Playground {
 
         double RC = 0.2;
 
+        IFilter hpf = IFilter.create();
+
+        for (int i = 0; i < 8; ++i) {
+            hpf =
+                    hpf.then(
+                            IFilter.create()
+                                    .sub(
+                                            new TimedMovingAverage(0.2)
+                                                    .then(new TimedMovingAverage(0.2))));
+        }
+
         GraphData[] inputs =
                 new GraphData[] {
-                    new FilteredGraphData(Constants.make("Control"), x -> x),
-                    new FilteredGraphData(Constants.make("High Pass"), new HighPassFilter(RC)),
-                    new FilteredGraphData(Constants.make("Low Pass"), new LowPassFilter(RC)),
-                    new FilteredGraphData(Constants.make("Both"), x -> x)
+                    new FilteredGraphData(
+                            Constants.make("Control"), IFilter.create(BFilter.create())),
+                    new FilteredGraphData(
+                            Constants.make("Pressed2"),
+                            IFilter.create(new BButton.Pressed().then(new BDebounce.Falling(0.5)))),
+                    new FilteredGraphData(
+                            Constants.make("Released2"),
+                            IFilter.create(
+                                    new BButton.Released().then(new BDebounce.Falling(0.5)))),
+                    new FilteredGraphData(
+                            Constants.make("Pressed"), IFilter.create(new BButtonRC.Pressed(0.5))),
+                    new FilteredGraphData(
+                            Constants.make("Released"),
+                            IFilter.create(new BButtonRC.Released(0.5))),
                 };
 
         JGraph graph = new JGraph(inputs);
 
-        final IStream mouse =
-                IStream.create(() -> (graph.getMouseTracker().getMouseY() - 0.5) * 2)
-                        .filtered(new MovingAverage(10).then(new MovingAverage(10)));
+        final IStream mouse = IStream.create(() -> (graph.getMouseTracker().getMouseY() - 0.5) * 2);
         Looper loop =
                 new Looper(
                         () -> {
