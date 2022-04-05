@@ -4,6 +4,7 @@
 
 package com.stuypulse.stuylib.streams;
 
+import com.stuypulse.stuylib.streams.booleans.BStream;
 import com.stuypulse.stuylib.streams.filters.IFilter;
 
 import java.util.function.DoubleSupplier;
@@ -18,6 +19,28 @@ import java.util.function.DoubleSupplier;
  * @author Sam (sam.belliveau@gmail.com)
  */
 public interface IStream extends DoubleSupplier {
+
+    /**
+     * Create an IStream from another IStream. This is helpful if you want to use some of the
+     * decorator functions with a lambda.
+     *
+     * @param stream stream to create IStream from
+     * @return the resulting IStream
+     */
+    public static IStream create(IStream stream) {
+        return stream;
+    }
+
+    /**
+     * Create a IStream from another BStream. This will check if the amplitude is above a certain
+     * threshold.
+     *
+     * @param stream stream to create IStream from
+     * @return the resulting IStream
+     */
+    public static IStream create(BStream stream) {
+        return () -> stream.get() ? 1.0 : 0.0;
+    }
 
     /** @return next value in the stream */
     public double get();

@@ -4,12 +4,36 @@
 
 package com.stuypulse.stuylib.streams.booleans;
 
+import com.stuypulse.stuylib.input.Gamepad;
+import com.stuypulse.stuylib.streams.IStream;
 import com.stuypulse.stuylib.streams.booleans.filters.BFilter;
 
 import java.util.function.BooleanSupplier;
 
 /** @author Sam (sam.belliveau@gmail.com) */
 public interface BStream extends BooleanSupplier {
+
+    /**
+     * Create a BStream from another BStream. This is helpful if you want to use some of the
+     * decorator functions with a lambda.
+     *
+     * @param stream stream to create BStream from
+     * @return the resulting BStream
+     */
+    public static BStream create(BStream stream) {
+        return stream;
+    }
+
+    /**
+     * Create a BStream from another IStream. This will check if the amplitude is above a certain
+     * threshold.
+     *
+     * @param stream stream to create IStream from
+     * @return the resulting BStream
+     */
+    public static BStream create(IStream stream) {
+        return () -> Math.abs(stream.get()) > Gamepad.ANALOG_THRESHOLD;
+    }
 
     /** @return next value in the stream */
     public boolean get();
