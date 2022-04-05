@@ -10,7 +10,7 @@ public final class Playground {
 
     private interface Constants {
 
-        int TIME = 100;
+        int TIME = 400;
         int MAX = +1;
         int MIN = -1;
 
@@ -36,9 +36,9 @@ public final class Playground {
 
         for (; ; ) {
             final double next = (graph.getMouseTracker().getMouseY() - 0.5) * 2;
-            graph.update(next);
+            graph.update(next + Math.random() * 0.1);
 
-            Thread.sleep(50);
+            Thread.sleep(20);
         }
     }
 }

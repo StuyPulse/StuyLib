@@ -37,10 +37,10 @@ public class LowPassFilter implements IFilter {
 
     public double get(double next) {
         // Get a constant, which is determined based on dt and the mRC constant
-        double a = 1.0 - Math.exp(-mTimer.reset() / mRC.doubleValue());
+        double a = Math.exp(-mTimer.reset() / mRC.doubleValue());
 
         // Based on the value of a (which is determined by dt), the next value
         // could either change a lot, or not by much. (smaller dt = smaller change)
-        return mLastValue += SLMath.clamp(a, 0.0, 1.0) * (next - mLastValue);
+        return mLastValue = SLMath.lerp(next, mLastValue, a);
     }
 }
