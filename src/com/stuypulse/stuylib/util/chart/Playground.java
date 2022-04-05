@@ -4,6 +4,8 @@
 
 package com.stuypulse.stuylib.util.chart;
 
+import com.stuypulse.stuylib.streams.IStream;
+import com.stuypulse.stuylib.streams.booleans.BStream;
 import com.stuypulse.stuylib.streams.filters.*;
 
 public final class Playground {
@@ -34,9 +36,14 @@ public final class Playground {
 
         JGraph graph = new JGraph(inputs);
 
+        IStream mouse =
+                IStream.create(
+                        BStream.create(() -> (graph.getMouseTracker().getMouseY() - 0.5) * 2));
+
+        mouse = mouse.polling(RC);
         for (; ; ) {
-            final double next = (graph.getMouseTracker().getMouseY() - 0.5) * 2;
-            graph.update(next + Math.random() * 0.1);
+            final double next = mouse.get();
+            graph.update(next);
 
             Thread.sleep(20);
         }

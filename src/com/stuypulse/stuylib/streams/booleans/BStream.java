@@ -10,7 +10,12 @@ import com.stuypulse.stuylib.streams.booleans.filters.BFilter;
 
 import java.util.function.BooleanSupplier;
 
-/** @author Sam (sam.belliveau@gmail.com) */
+/**
+ * A BStream is similar to an IStream, but instead of a stream of doubles, it represents a stream of
+ * booleans.
+ *
+ * @author Sam (sam.belliveau@gmail.com)
+ */
 public interface BStream extends BooleanSupplier {
 
     /**
@@ -56,7 +61,7 @@ public interface BStream extends BooleanSupplier {
     /**
      * Create a new PollingBStream from the current stream
      *
-     * @param hz the frequency that you want to poll the BStream
+     * @param dt the time inbetween each poll of the BStream
      * @return The PollingBStream
      */
     public default PollingBStream polling(double hz) {

@@ -6,12 +6,18 @@ package com.stuypulse.stuylib.streams.booleans.filters;
 
 import com.stuypulse.stuylib.util.StopWatch;
 
-/** @author Sam (sam.belliveau@gmail.com) */
+/**
+ * A Rising Debounce Class. This class requires the boolean stream to be true for (debounceTime)
+ * seconds before returning true. However if it returns false once, the timer is reset.
+ *
+ * @author Sam (sam.belliveau@gmail.com)
+ */
 public class BDebounceRising implements BFilter {
 
     private final StopWatch mTimer;
     private final double mDebounceTime;
 
+    /** @param debounceTime amount of time requred before the filter returns true */
     public BDebounceRising(double debounceTime) {
         mTimer = new StopWatch();
         mDebounceTime = debounceTime;

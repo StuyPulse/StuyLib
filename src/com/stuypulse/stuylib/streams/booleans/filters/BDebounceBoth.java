@@ -6,7 +6,13 @@ package com.stuypulse.stuylib.streams.booleans.filters;
 
 import com.stuypulse.stuylib.util.StopWatch;
 
-/** @author Sam (sam.belliveau@gmail.com) */
+/**
+ * A Debounce Class. This class requires the boolean stream to have changed for (debounceTime)
+ * seconds before returning the new value. However if it returns to its original value once, the
+ * timer is reset. It is similar to combining a Rising / Falling filter together.
+ *
+ * @author Sam (sam.belliveau@gmail.com)
+ */
 public class BDebounceBoth implements BFilter {
 
     private final StopWatch mTimer;

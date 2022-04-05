@@ -5,7 +5,7 @@
 package com.stuypulse.stuylib.streams.booleans.filters;
 
 /**
- * A class that lets you combine multiple boolean filters into one boolean filter
+ * A class that lets you combine multiple boolean filters into one boolean filter.
  *
  * @author Sam (sam.belliveau@gmail.com)
  */

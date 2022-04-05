@@ -7,8 +7,15 @@ package com.stuypulse.stuylib.streams.booleans;
 import com.stuypulse.stuylib.streams.booleans.filters.BFilter;
 import com.stuypulse.stuylib.streams.booleans.filters.BFilterGroup;
 
-/** @author Sam (sam.belliveau@gmail.com) */
-public class FilteredBStream {
+/**
+ * A FilteredBStream is similar to a FilteredIStream.
+ *
+ * <p>It works like a BStream, but every time you call .get(), it runs the value through the filters
+ * you provided it.
+ *
+ * @author Sam (sam.belliveau@gmail.com)
+ */
+public class FilteredBStream implements BStream {
 
     private BStream mStream; // Stream used
     private BFilter mStreamFilter; // StreamFilter used

@@ -4,59 +4,37 @@
 
 package com.stuypulse.stuylib.streams.booleans;
 
-/** @author Sam (sam.belliveau@gmail.com) */
-public class PollingBStream {
+import com.stuypulse.stuylib.util.Looper;
 
-    private Thread mPoller;
-    private boolean mResult;
+/**
+ * A PollingBStream is a BStream but its .get() method is called for you at a certain rate. This is
+ * really helpful when you want to read from a sensor using a debouncer, but you dont always call
+ * .get() in your periodic loop. This will do that for you, and give you the most recent result. It
+ * is not recommended to filter a
+ *
+ * @author Sam (sam.belliveau@gmail.com)
+ */
+public class PollingBStream implements BStream {
+
+    private Looper mPoller;
+    private volatile boolean mResult;
 
     /**
      * Creates a PollingBStream from an BStream and a time value
      *
      * @param stream BStream to poll from
-     * @param hz Number of calls per second
+     * @param dt time inbetween each poll
      */
-    public PollingBStream(BStream stream, double hz) {
-        if (hz <= 0) {
-            throw new IllegalArgumentException("hz must be greater than 0");
+    public PollingBStream(BStream stream, double dt) {
+        if (dt <= 0) {
+            throw new IllegalArgumentException("dt must be greater than 0");
         }
 
-        long wait = (long) (1000.0 / hz);
-
-        mPoller =
-                new Thread() {
-
-                    public void run() {
-                        while (!isInterrupted()) {
-                            long start = System.currentTimeMillis();
-                            set(stream.get());
-                            long end = System.currentTimeMillis();
-
-                            try {
-                                Thread.sleep(Math.max(0, wait - (end - start)));
-                            } catch (InterruptedException e) {
-                                break;
-                            }
-                        }
-                    }
-                };
+        mResult = false;
+        mPoller = new Looper(() -> mResult = stream.get(), dt);
     }
 
-    /**
-     * Thread safe read to the double mResult
-     *
-     * @return mResult
-     */
-    private synchronized void set(boolean value) {
-        mResult = value;
-    }
-
-    /**
-     * Thread safe read to the double mResult
-     *
-     * @return mResult
-     */
-    public synchronized boolean get() {
+    public boolean get() {
         if (!mPoller.isAlive()) {
             mPoller.start();
         }

@@ -63,10 +63,10 @@ public interface IStream extends DoubleSupplier {
     /**
      * Create a new PollingIStream from the current stream
      *
-     * @param hz the frequency that you want to poll the IStream
+     * @param dt the time inbetween each poll of the IStream
      * @return The PollingIStream
      */
-    public default PollingIStream polling(double hz) {
-        return new PollingIStream(this, hz);
+    public default PollingIStream polling(double dt) {
+        return new PollingIStream(this, dt);
     }
 }

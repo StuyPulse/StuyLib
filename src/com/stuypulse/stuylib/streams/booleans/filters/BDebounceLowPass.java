@@ -6,7 +6,12 @@ package com.stuypulse.stuylib.streams.booleans.filters;
 
 import com.stuypulse.stuylib.streams.filters.LowPassFilter;
 
-/** @author Sam (sam.belliveau@gmail.com) */
+/**
+ * A LowPass Debounce class takes the average of the past few boolean values to remove noise.
+ * Recommended to be called very often using a PollingBStream.
+ *
+ * @author Sam (sam.belliveau@gmail.com)
+ */
 public class BDebounceLowPass {
 
     private static final double kTrue = 1.0;

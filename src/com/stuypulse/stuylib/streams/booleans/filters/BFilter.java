@@ -4,7 +4,14 @@
 
 package com.stuypulse.stuylib.streams.booleans.filters;
 
-/** @author Sam (sam.belliveau@gmail.com) */
+/**
+ * This is the BFilter interface class that gives a definition for how to implement a filter.
+ *
+ * <p>All that a BFilter does is take in the next boolean in a stream and gives you the filtered
+ * value.
+ *
+ * @author Sam (sam.belliveau@gmail.com)
+ */
 public interface BFilter {
 
     /**
