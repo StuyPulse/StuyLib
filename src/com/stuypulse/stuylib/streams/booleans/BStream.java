@@ -4,7 +4,6 @@
 
 package com.stuypulse.stuylib.streams.booleans;
 
-import com.stuypulse.stuylib.input.Gamepad;
 import com.stuypulse.stuylib.streams.IStream;
 import com.stuypulse.stuylib.streams.booleans.filters.BFilter;
 
@@ -37,7 +36,7 @@ public interface BStream extends BooleanSupplier {
      * @return the resulting BStream
      */
     public static BStream create(IStream stream) {
-        return () -> Math.abs(stream.get()) > Gamepad.ANALOG_THRESHOLD;
+        return () -> Math.abs(stream.get()) > 0.5;
     }
 
     /** @return next value in the stream */
@@ -66,5 +65,35 @@ public interface BStream extends BooleanSupplier {
      */
     public default PollingBStream polling(double hz) {
         return new PollingBStream(this, hz);
+    }
+
+    /**
+     * Combine two BStreams by and'ing their results together
+     *
+     * @param other other BStream to and with this one
+     * @return the resulting BStream after the and
+     */
+    public default BStream and(BStream other) {
+        return () -> get() & other.get();
+    }
+
+    /**
+     * Combine two BStreams by or'ing their results together
+     *
+     * @param other other BStream to or with this one
+     * @return the resulting BStream after the or
+     */
+    public default BStream or(BStream other) {
+        return () -> get() | other.get();
+    }
+
+    /**
+     * Combine two BStreams by xor'ing their results together
+     *
+     * @param other other BStream to xor with this one
+     * @return the resulting BStream after the xor
+     */
+    public default BStream xor(BStream other) {
+        return () -> get() ^ other.get();
     }
 }

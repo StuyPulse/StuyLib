@@ -69,4 +69,24 @@ public interface IStream extends DoubleSupplier {
     public default PollingIStream polling(double dt) {
         return new PollingIStream(this, dt);
     }
+
+    /**
+     * Combine two IStreams by adding their results together
+     *
+     * @param other other IStream to add to this one
+     * @return the resulting IStream after the sum
+     */
+    public default IStream add(IStream other) {
+        return () -> get() + other.get();
+    }
+
+    /**
+     * Combine two IStreams by subtracting their results together
+     *
+     * @param other other IStream to subtract from this one
+     * @return the resulting IStream after the subtraction
+     */
+    public default IStream sub(IStream other) {
+        return () -> get() - other.get();
+    }
 }
