@@ -7,6 +7,7 @@ package com.stuypulse.stuylib.streams.booleans;
 import com.stuypulse.stuylib.streams.IStream;
 import com.stuypulse.stuylib.streams.booleans.filters.BFilter;
 
+import edu.wpi.first.wpilibj2.command.button.Button;
 import java.util.function.BooleanSupplier;
 
 /**
@@ -95,5 +96,10 @@ public interface BStream extends BooleanSupplier {
      */
     public default BStream xor(BStream other) {
         return () -> get() ^ other.get();
+    }
+
+    /** @return a WPILib Button that is pressed when this class is true */
+    public default Button toButton() {
+        return new Button(this);
     }
 }
