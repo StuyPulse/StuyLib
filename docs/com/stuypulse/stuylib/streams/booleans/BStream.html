@@ -26,7 +26,7 @@
     catch(err) {
     }
 //-->
-var data = {"i0":18,"i1":1,"i2":1,"i3":18,"i4":6,"i5":18,"i6":18,"i7":18,"i8":18,"i9":18};
+var data = {"i0":18,"i1":1,"i2":1,"i3":18,"i4":6,"i5":18,"i6":18,"i7":18,"i8":18,"i9":18,"i10":18};
 var tabs = {65535:["t0","All Methods"],1:["t1","Static Methods"],2:["t2","Instance Methods"],4:["t3","Abstract Methods"],16:["t5","Default Methods"]};
 var altColor = "altColor";
 var rowColor = "rowColor";
@@ -194,24 +194,31 @@ extends java.util.function.BooleanSupplier</pre>
 </tr>
 <tr id="i6" class="altColor">
 <td class="colFirst"><code>default <a href="BStream.html" title="interface in com.stuypulse.stuylib.streams.booleans">BStream</a></code></td>
+<th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#not()">not</a></span>()</code></th>
+<td class="colLast">
+<div class="block">Create a BStream that returns the opposite result as the original</div>
+</td>
+</tr>
+<tr id="i7" class="rowColor">
+<td class="colFirst"><code>default <a href="BStream.html" title="interface in com.stuypulse.stuylib.streams.booleans">BStream</a></code></td>
 <th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#or(com.stuypulse.stuylib.streams.booleans.BStream)">or</a></span>&#8203;(<a href="BStream.html" title="interface in com.stuypulse.stuylib.streams.booleans">BStream</a>&nbsp;other)</code></th>
 <td class="colLast">
 <div class="block">Combine two BStreams by or'ing their results together</div>
 </td>
 </tr>
-<tr id="i7" class="rowColor">
+<tr id="i8" class="altColor">
 <td class="colFirst"><code>default <a href="PollingBStream.html" title="class in com.stuypulse.stuylib.streams.booleans">PollingBStream</a></code></td>
 <th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#polling(double)">polling</a></span>&#8203;(double&nbsp;dt)</code></th>
 <td class="colLast">
 <div class="block">Create a new PollingBStream from the current stream</div>
 </td>
 </tr>
-<tr id="i8" class="altColor">
+<tr id="i9" class="rowColor">
 <td class="colFirst"><code>default edu.wpi.first.wpilibj2.command.button.Button</code></td>
 <th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#toButton()">toButton</a></span>()</code></th>
 <td class="colLast">&nbsp;</td>
 </tr>
-<tr id="i9" class="rowColor">
+<tr id="i10" class="altColor">
 <td class="colFirst"><code>default <a href="BStream.html" title="interface in com.stuypulse.stuylib.streams.booleans">BStream</a></code></td>
 <th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#xor(com.stuypulse.stuylib.streams.booleans.BStream)">xor</a></span>&#8203;(<a href="BStream.html" title="interface in com.stuypulse.stuylib.streams.booleans">BStream</a>&nbsp;other)</code></th>
 <td class="colLast">
@@ -374,6 +381,20 @@ extends java.util.function.BooleanSupplier</pre>
 <dd><code>other</code> - other BStream to xor with this one</dd>
 <dt><span class="returnLabel">Returns:</span></dt>
 <dd>the resulting BStream after the xor</dd>
+</dl>
+</li>
+</ul>
+<a id="not()">
+<!--   -->
+</a>
+<ul class="blockList">
+<li class="blockList">
+<h4>not</h4>
+<pre class="methodSignature">default&nbsp;<a href="BStream.html" title="interface in com.stuypulse.stuylib.streams.booleans">BStream</a>&nbsp;not()</pre>
+<div class="block">Create a BStream that returns the opposite result as the original</div>
+<dl>
+<dt><span class="returnLabel">Returns:</span></dt>
+<dd>the resulting BStream after the not operation</dd>
 </dl>
 </li>
 </ul>

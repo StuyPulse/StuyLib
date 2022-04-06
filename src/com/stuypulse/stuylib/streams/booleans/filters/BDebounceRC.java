@@ -12,20 +12,16 @@ import com.stuypulse.stuylib.streams.filters.LowPassFilter;
  *
  * @author Sam (sam.belliveau@gmail.com)
  */
-public class BDebounceRC {
+public interface BDebounceRC extends BFilter {
 
-    private BDebounceRC() {
-        /* This is an organizational class */
-    }
+    public static final double kTrue = 1.0;
+    public static final double kFalse = 0.0;
 
-    private static final double kTrue = 1.0;
-    private static final double kFalse = 0.0;
-
-    private static final double kLowerLimit = 1.0 / Math.E;
-    private static final double kUpperLimit = 1.0 - kLowerLimit;
+    public static final double kLowerLimit = 1.0 / Math.E;
+    public static final double kUpperLimit = 1.0 - kLowerLimit;
 
     /** An RC Debouncer that has a true bias */
-    public static class Rising implements BFilter {
+    public static class Rising implements BDebounceRC {
         private final LowPassFilter mFilter;
 
         /** @param debounceTime amount of time on average to go from false to true */
@@ -39,7 +35,7 @@ public class BDebounceRC {
     }
 
     /** An RC Debouncer that has a false bias */
-    public static class Falling implements BFilter {
+    public static class Falling implements BDebounceRC {
         private final LowPassFilter mFilter;
 
         /** @param debounceTime amount of time on average to go from true to false */
@@ -53,7 +49,7 @@ public class BDebounceRC {
     }
 
     /** An RC Debouncer that has a bias towards the previous value */
-    public static class Both implements BFilter {
+    public static class Both implements BDebounceRC {
 
         private final LowPassFilter mFilter;
         private boolean mPrev;

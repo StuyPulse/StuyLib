@@ -18,19 +18,15 @@ import com.stuypulse.stuylib.streams.filters.HighPassFilter;
  *
  * @author Sam (sam.belliveau@gmail.com)
  */
-public class BButtonRC {
+public interface BButtonRC extends BFilter {
 
-    private BButtonRC() {
-        /* This is an organizational class */
-    }
+    public static final double kTrue = 1.0;
+    public static final double kFalse = 0.0;
 
-    private static final double kTrue = 1.0;
-    private static final double kFalse = 0.0;
+    public static final double kPressedLimit = 1.0 / Math.E;
+    public static final double kReleasedLimit = -kPressedLimit;
 
-    private static final double kPressedLimit = 1.0 / Math.E;
-    private static final double kReleasedLimit = -kPressedLimit;
-
-    public static class Both implements BFilter {
+    public static class Both implements BButtonRC {
         private HighPassFilter mFilter;
 
         /** @param decay time in seconds to remain true after the BStream is pressed or released */
@@ -44,7 +40,7 @@ public class BButtonRC {
         }
     }
 
-    public static class Pressed implements BFilter {
+    public static class Pressed implements BButtonRC {
         private HighPassFilter mFilter;
 
         /** @param decay time in seconds to remain true after the BStream has been pressed */
@@ -57,7 +53,7 @@ public class BButtonRC {
         }
     }
 
-    public static class Released implements BFilter {
+    public static class Released implements BButtonRC {
         private HighPassFilter mFilter;
 
         /** @param decay time in seconds to remain true after the BStream has been released */

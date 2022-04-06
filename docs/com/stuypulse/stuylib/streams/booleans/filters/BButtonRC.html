@@ -82,13 +82,13 @@ loadScripts(document, 'script');</script>
 <ul class="subNavList">
 <li>Summary:&nbsp;</li>
 <li><a href="#nested.class.summary">Nested</a>&nbsp;|&nbsp;</li>
-<li>Field&nbsp;|&nbsp;</li>
+<li><a href="#field.summary">Field</a>&nbsp;|&nbsp;</li>
 <li>Constr&nbsp;|&nbsp;</li>
 <li><a href="#method.summary">Method</a></li>
 </ul>
 <ul class="subNavList">
 <li>Detail:&nbsp;</li>
-<li>Field&nbsp;|&nbsp;</li>
+<li><a href="#field.detail">Field</a>&nbsp;|&nbsp;</li>
 <li>Constr&nbsp;|&nbsp;</li>
 <li>Method</li>
 </ul>
@@ -109,23 +109,23 @@ $('.navPadding').css('padding-top', $('.fixedNav').css("height"));
 <main role="main">
 <div class="header">
 <div class="subTitle"><span class="packageLabelInType">Package</span>&nbsp;<a href="package-summary.html">com.stuypulse.stuylib.streams.booleans.filters</a></div>
-<h2 title="Class BButtonRC" class="title">Class BButtonRC</h2>
+<h2 title="Interface BButtonRC" class="title">Interface BButtonRC</h2>
 </div>
 <div class="contentContainer">
-<ul class="inheritance">
-<li>java.lang.Object</li>
-<li>
-<ul class="inheritance">
-<li>com.stuypulse.stuylib.streams.booleans.filters.BButtonRC</li>
-</ul>
-</li>
-</ul>
 <div class="description">
 <ul class="blockList">
 <li class="blockList">
+<dl>
+<dt>All Superinterfaces:</dt>
+<dd><code><a href="BFilter.html" title="interface in com.stuypulse.stuylib.streams.booleans.filters">BFilter</a></code></dd>
+</dl>
+<dl>
+<dt>All Known Implementing Classes:</dt>
+<dd><code><a href="BButtonRC.Both.html" title="class in com.stuypulse.stuylib.streams.booleans.filters">BButtonRC.Both</a></code>, <code><a href="BButtonRC.Pressed.html" title="class in com.stuypulse.stuylib.streams.booleans.filters">BButtonRC.Pressed</a></code>, <code><a href="BButtonRC.Released.html" title="class in com.stuypulse.stuylib.streams.booleans.filters">BButtonRC.Released</a></code></dd>
+</dl>
 <hr>
-<pre>public class <span class="typeNameLabel">BButtonRC</span>
-extends java.lang.Object</pre>
+<pre>public interface <span class="typeNameLabel">BButtonRC</span>
+extends <a href="BFilter.html" title="interface in com.stuypulse.stuylib.streams.booleans.filters">BFilter</a></pre>
 <div class="block">A simple boolean filter that returns true when a boolean stream changes depending on the type.
  This type of button filter will hold true for a certain decay length before returning to false.
 
@@ -151,7 +151,7 @@ extends java.lang.Object</pre>
 <caption><span>Nested Classes</span><span class="tabEnd">&nbsp;</span></caption>
 <tr>
 <th class="colFirst" scope="col">Modifier and Type</th>
-<th class="colSecond" scope="col">Class</th>
+<th class="colSecond" scope="col">Interface</th>
 <th class="colLast" scope="col">Description</th>
 </tr>
 <tr class="altColor">
@@ -173,6 +173,44 @@ extends java.lang.Object</pre>
 </li>
 </ul>
 </section>
+<!-- =========== FIELD SUMMARY =========== -->
+<section role="region">
+<ul class="blockList">
+<li class="blockList"><a id="field.summary">
+<!--   -->
+</a>
+<h3>Field Summary</h3>
+<table class="memberSummary">
+<caption><span>Fields</span><span class="tabEnd">&nbsp;</span></caption>
+<tr>
+<th class="colFirst" scope="col">Modifier and Type</th>
+<th class="colSecond" scope="col">Field</th>
+<th class="colLast" scope="col">Description</th>
+</tr>
+<tr class="altColor">
+<td class="colFirst"><code>static double</code></td>
+<th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#kFalse">kFalse</a></span></code></th>
+<td class="colLast">&nbsp;</td>
+</tr>
+<tr class="rowColor">
+<td class="colFirst"><code>static double</code></td>
+<th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#kPressedLimit">kPressedLimit</a></span></code></th>
+<td class="colLast">&nbsp;</td>
+</tr>
+<tr class="altColor">
+<td class="colFirst"><code>static double</code></td>
+<th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#kReleasedLimit">kReleasedLimit</a></span></code></th>
+<td class="colLast">&nbsp;</td>
+</tr>
+<tr class="rowColor">
+<td class="colFirst"><code>static double</code></td>
+<th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#kTrue">kTrue</a></span></code></th>
+<td class="colLast">&nbsp;</td>
+</tr>
+</table>
+</li>
+</ul>
+</section>
 <!-- ========== METHOD SUMMARY =========== -->
 <section role="region">
 <ul class="blockList">
@@ -181,11 +219,79 @@ extends java.lang.Object</pre>
 </a>
 <h3>Method Summary</h3>
 <ul class="blockList">
-<li class="blockList"><a id="methods.inherited.from.class.java.lang.Object">
+<li class="blockList"><a id="methods.inherited.from.class.com.stuypulse.stuylib.streams.booleans.filters.BFilter">
 <!--   -->
 </a>
-<h3>Methods inherited from class&nbsp;java.lang.Object</h3>
-<code>clone, equals, finalize, getClass, hashCode, notify, notifyAll, toString, wait, wait, wait</code></li>
+<h3>Methods inherited from interface&nbsp;com.stuypulse.stuylib.streams.booleans.filters.<a href="BFilter.html" title="interface in com.stuypulse.stuylib.streams.booleans.filters">BFilter</a></h3>
+<code><a href="BFilter.html#and(com.stuypulse.stuylib.streams.booleans.filters.BFilter)">and</a>, <a href="BFilter.html#get(boolean)">get</a>, <a href="BFilter.html#or(com.stuypulse.stuylib.streams.booleans.filters.BFilter)">or</a>, <a href="BFilter.html#then(com.stuypulse.stuylib.streams.booleans.filters.BFilter)">then</a>, <a href="BFilter.html#xor(com.stuypulse.stuylib.streams.booleans.filters.BFilter)">xor</a></code></li>
+</ul>
+</li>
+</ul>
+</section>
+</li>
+</ul>
+</div>
+<div class="details">
+<ul class="blockList">
+<li class="blockList">
+<!-- ============ FIELD DETAIL =========== -->
+<section role="region">
+<ul class="blockList">
+<li class="blockList"><a id="field.detail">
+<!--   -->
+</a>
+<h3>Field Detail</h3>
+<a id="kTrue">
+<!--   -->
+</a>
+<ul class="blockList">
+<li class="blockList">
+<h4>kTrue</h4>
+<pre>static final&nbsp;double kTrue</pre>
+<dl>
+<dt><span class="seeLabel">See Also:</span></dt>
+<dd><a href="../../../../../../constant-values.html#com.stuypulse.stuylib.streams.booleans.filters.BButtonRC.kTrue">Constant Field Values</a></dd>
+</dl>
+</li>
+</ul>
+<a id="kFalse">
+<!--   -->
+</a>
+<ul class="blockList">
+<li class="blockList">
+<h4>kFalse</h4>
+<pre>static final&nbsp;double kFalse</pre>
+<dl>
+<dt><span class="seeLabel">See Also:</span></dt>
+<dd><a href="../../../../../../constant-values.html#com.stuypulse.stuylib.streams.booleans.filters.BButtonRC.kFalse">Constant Field Values</a></dd>
+</dl>
+</li>
+</ul>
+<a id="kPressedLimit">
+<!--   -->
+</a>
+<ul class="blockList">
+<li class="blockList">
+<h4>kPressedLimit</h4>
+<pre>static final&nbsp;double kPressedLimit</pre>
+<dl>
+<dt><span class="seeLabel">See Also:</span></dt>
+<dd><a href="../../../../../../constant-values.html#com.stuypulse.stuylib.streams.booleans.filters.BButtonRC.kPressedLimit">Constant Field Values</a></dd>
+</dl>
+</li>
+</ul>
+<a id="kReleasedLimit">
+<!--   -->
+</a>
+<ul class="blockListLast">
+<li class="blockList">
+<h4>kReleasedLimit</h4>
+<pre>static final&nbsp;double kReleasedLimit</pre>
+<dl>
+<dt><span class="seeLabel">See Also:</span></dt>
+<dd><a href="../../../../../../constant-values.html#com.stuypulse.stuylib.streams.booleans.filters.BButtonRC.kReleasedLimit">Constant Field Values</a></dd>
+</dl>
+</li>
 </ul>
 </li>
 </ul>
@@ -239,13 +345,13 @@ extends java.lang.Object</pre>
 <ul class="subNavList">
 <li>Summary:&nbsp;</li>
 <li><a href="#nested.class.summary">Nested</a>&nbsp;|&nbsp;</li>
-<li>Field&nbsp;|&nbsp;</li>
+<li><a href="#field.summary">Field</a>&nbsp;|&nbsp;</li>
 <li>Constr&nbsp;|&nbsp;</li>
 <li><a href="#method.summary">Method</a></li>
 </ul>
 <ul class="subNavList">
 <li>Detail:&nbsp;</li>
-<li>Field&nbsp;|&nbsp;</li>
+<li><a href="#field.detail">Field</a>&nbsp;|&nbsp;</li>
 <li>Constr&nbsp;|&nbsp;</li>
 <li>Method</li>
 </ul>

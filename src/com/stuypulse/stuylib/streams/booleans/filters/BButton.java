@@ -15,13 +15,9 @@ package com.stuypulse.stuylib.streams.booleans.filters;
  *
  * @author Sam (sam.belliveau@gmail.com)
  */
-public class BButton {
+public interface BButton extends BFilter {
 
-    private BButton() {
-        /* This is an organizational class */
-    }
-
-    public static class Both implements BFilter {
+    public static class Both implements BButton {
         private boolean mLastValue;
 
         public Both() {
@@ -38,7 +34,7 @@ public class BButton {
         }
     }
 
-    public static class Pressed implements BFilter {
+    public static class Pressed implements BButton {
         private boolean mLastValue;
 
         public Pressed() {
@@ -54,7 +50,7 @@ public class BButton {
         }
     }
 
-    public static class Released implements BFilter {
+    public static class Released implements BButton {
         private boolean mLastValue;
 
         public Released() {

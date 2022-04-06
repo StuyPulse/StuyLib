@@ -98,6 +98,15 @@ public interface BStream extends BooleanSupplier {
         return () -> get() ^ other.get();
     }
 
+    /**
+     * Create a BStream that returns the opposite result as the original
+     *
+     * @return the resulting BStream after the not operation
+     */
+    public default BStream not() {
+        return () -> !get();
+    }
+
     /** @return a WPILib Button that is pressed when this class is true */
     public default Button toButton() {
         return new Button(this);

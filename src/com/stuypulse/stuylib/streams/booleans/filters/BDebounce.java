@@ -17,18 +17,14 @@ import com.stuypulse.stuylib.util.StopWatch;
  *
  * @author Sam (sam.belliveau@gmail.com)
  */
-public class BDebounce {
-
-    private BDebounce() {
-        /* This is an organizational class */
-    }
+public interface BDebounce extends BFilter {
 
     /**
      * A Rising Debounce Filter.
      *
      * <p>The input BStream must remain true for debounceTime before this returns true
      */
-    public static class Rising implements BFilter {
+    public static class Rising implements BDebounce {
 
         private final StopWatch mTimer;
         private final double mDebounceTime;
@@ -54,7 +50,7 @@ public class BDebounce {
      *
      * <p>The input BStream must remain false for debounceTime before this returns false
      */
-    public static class Falling implements BFilter {
+    public static class Falling implements BDebounce {
 
         private final StopWatch mTimer;
         private final double mDebounceTime;
@@ -83,7 +79,7 @@ public class BDebounce {
      * <p>The input BStream must remain the constant for debounceTime before it changes the value it
      * returns
      */
-    public static class Both implements BFilter {
+    public static class Both implements BDebounce {
 
         private final StopWatch mTimer;
         private final double mDebounceTime;
@@ -100,9 +96,12 @@ public class BDebounce {
             if (next == mLastValue) {
                 mTimer.reset();
                 return mLastValue;
+            } else if (mDebounceTime < mTimer.getTime()) {
+                mTimer.reset();
+                return mLastValue = next;
+            } else {
+                return mLastValue;
             }
-
-            return mLastValue ^= mDebounceTime < mTimer.getTime();
         }
     }
 }
