@@ -78,15 +78,22 @@ public final class Limelight {
     /*** Connnection Test ***/
     /************************/
 
+    /** @return time of last network table change from limelight */
+    public long getLastUpdate() {
+        long lastChange = table.latency.getLastChange();
+        lastChange = Math.max(lastChange, table.xAngle.getLastChange());
+        lastChange = Math.max(lastChange, table.yAngle.getLastChange());
+        return lastChange;
+    }
+
     /** @return if the limelight has updated its */
     public boolean isConnected() {
         final long MAX_UPDATE_TIME = 250_000;
 
-        table.timingEntry.forceSetBoolean(table.timingEntry.getBoolean(false));
+        table.timingEntry.forceSetBoolean(!table.timingEntry.getBoolean(false));
         long currentTime = table.timingEntry.getLastChange();
-        long lastUpdate = table.latency.getLastChange();
 
-        return Math.abs(currentTime - lastUpdate) < MAX_UPDATE_TIME;
+        return Math.abs(currentTime - getLastUpdate()) < MAX_UPDATE_TIME;
     }
 
     /*****************************************/

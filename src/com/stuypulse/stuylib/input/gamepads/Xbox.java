@@ -6,6 +6,7 @@ package com.stuypulse.stuylib.input.gamepads;
 
 import com.stuypulse.stuylib.input.Gamepad;
 
+import edu.wpi.first.wpilibj.GenericHID.RumbleType;
 import edu.wpi.first.wpilibj.XboxController;
 
 /**
@@ -143,5 +144,12 @@ public class Xbox extends Gamepad {
     @Override
     public boolean getRawRightStickButton() {
         return getJoystick().getRightStickButton();
+    }
+
+    // Rumble
+    @Override
+    public void setRumble(double intensity) {
+        mJoystick.setRumble(RumbleType.kLeftRumble, intensity);
+        mJoystick.setRumble(RumbleType.kRightRumble, intensity);
     }
 }

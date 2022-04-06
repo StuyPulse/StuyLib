@@ -102,6 +102,24 @@ $('.navPadding').css('padding-top', $('.fixedNav').css("height"));
 </dd>
 <dt><span class="memberNameLink"><a href="com/stuypulse/stuylib/math/Vector2D.html#add(com.stuypulse.stuylib.math.Vector2D)">add(Vector2D)</a></span> - Method in class com.stuypulse.stuylib.math.<a href="com/stuypulse/stuylib/math/Vector2D.html" title="class in com.stuypulse.stuylib.math">Vector2D</a></dt>
 <dd>&nbsp;</dd>
+<dt><span class="memberNameLink"><a href="com/stuypulse/stuylib/streams/filters/IFilter.html#add(com.stuypulse.stuylib.streams.filters.IFilter)">add(IFilter)</a></span> - Method in interface com.stuypulse.stuylib.streams.filters.<a href="com/stuypulse/stuylib/streams/filters/IFilter.html" title="interface in com.stuypulse.stuylib.streams.filters">IFilter</a></dt>
+<dd>
+<div class="block">Combine two IFilters by adding their results together</div>
+</dd>
+<dt><span class="memberNameLink"><a href="com/stuypulse/stuylib/streams/IStream.html#add(com.stuypulse.stuylib.streams.IStream)">add(IStream)</a></span> - Method in interface com.stuypulse.stuylib.streams.<a href="com/stuypulse/stuylib/streams/IStream.html" title="interface in com.stuypulse.stuylib.streams">IStream</a></dt>
+<dd>
+<div class="block">Combine two IStreams by adding their results together</div>
+</dd>
+<dt><span class="memberNameLink"><a href="com/stuypulse/stuylib/input/Gamepad.html#ANALOG_THRESHOLD">ANALOG_THRESHOLD</a></span> - Static variable in class com.stuypulse.stuylib.input.<a href="com/stuypulse/stuylib/input/Gamepad.html" title="class in com.stuypulse.stuylib.input">Gamepad</a></dt>
+<dd>&nbsp;</dd>
+<dt><span class="memberNameLink"><a href="com/stuypulse/stuylib/streams/booleans/BStream.html#and(com.stuypulse.stuylib.streams.booleans.BStream)">and(BStream)</a></span> - Method in interface com.stuypulse.stuylib.streams.booleans.<a href="com/stuypulse/stuylib/streams/booleans/BStream.html" title="interface in com.stuypulse.stuylib.streams.booleans">BStream</a></dt>
+<dd>
+<div class="block">Combine two BStreams by and'ing their results together</div>
+</dd>
+<dt><span class="memberNameLink"><a href="com/stuypulse/stuylib/streams/booleans/filters/BFilter.html#and(com.stuypulse.stuylib.streams.booleans.filters.BFilter)">and(BFilter)</a></span> - Method in interface com.stuypulse.stuylib.streams.booleans.filters.<a href="com/stuypulse/stuylib/streams/booleans/filters/BFilter.html" title="interface in com.stuypulse.stuylib.streams.booleans.filters">BFilter</a></dt>
+<dd>
+<div class="block">Combine two BFilters by and'ing their results together</div>
+</dd>
 <dt><span class="memberNameLink"><a href="com/stuypulse/stuylib/math/Polar2D.html#angle">angle</a></span> - Variable in class com.stuypulse.stuylib.math.<a href="com/stuypulse/stuylib/math/Polar2D.html" title="class in com.stuypulse.stuylib.math">Polar2D</a></dt>
 <dd>&nbsp;</dd>
 <dt><a href="com/stuypulse/stuylib/math/Angle.html" title="class in com.stuypulse.stuylib.math"><span class="typeNameLink">Angle</span></a> - Class in <a href="com/stuypulse/stuylib/math/package-summary.html">com.stuypulse.stuylib.math</a></dt>
@@ -174,17 +192,82 @@ $('.navPadding').css('padding-top', $('.fixedNav').css("height"));
 <dd>
 <div class="block">Creates a BangBangController with a specified positive and negative value</div>
 </dd>
-<dt><a href="com/stuypulse/stuylib/streams/BufferedIStream.html" title="class in com.stuypulse.stuylib.streams"><span class="typeNameLink">BufferedIStream</span></a> - Class in <a href="com/stuypulse/stuylib/streams/package-summary.html">com.stuypulse.stuylib.streams</a></dt>
+<dt><a href="com/stuypulse/stuylib/streams/booleans/filters/BButton.html" title="interface in com.stuypulse.stuylib.streams.booleans.filters"><span class="typeNameLink">BButton</span></a> - Interface in <a href="com/stuypulse/stuylib/streams/booleans/filters/package-summary.html">com.stuypulse.stuylib.streams.booleans.filters</a></dt>
 <dd>
-<div class="block">This class allows you to use an input stream while recording the last N values from the stream</div>
+<div class="block">A simple boolean filter that returns true when a boolean stream changes depending on the type.</div>
 </dd>
-<dt><span class="memberNameLink"><a href="com/stuypulse/stuylib/streams/BufferedIStream.html#%3Cinit%3E(com.stuypulse.stuylib.streams.IStream)">BufferedIStream(IStream)</a></span> - Constructor for class com.stuypulse.stuylib.streams.<a href="com/stuypulse/stuylib/streams/BufferedIStream.html" title="class in com.stuypulse.stuylib.streams">BufferedIStream</a></dt>
+<dt><a href="com/stuypulse/stuylib/streams/booleans/filters/BButton.Both.html" title="class in com.stuypulse.stuylib.streams.booleans.filters"><span class="typeNameLink">BButton.Both</span></a> - Class in <a href="com/stuypulse/stuylib/streams/booleans/filters/package-summary.html">com.stuypulse.stuylib.streams.booleans.filters</a></dt>
+<dd>&nbsp;</dd>
+<dt><a href="com/stuypulse/stuylib/streams/booleans/filters/BButton.Pressed.html" title="class in com.stuypulse.stuylib.streams.booleans.filters"><span class="typeNameLink">BButton.Pressed</span></a> - Class in <a href="com/stuypulse/stuylib/streams/booleans/filters/package-summary.html">com.stuypulse.stuylib.streams.booleans.filters</a></dt>
+<dd>&nbsp;</dd>
+<dt><a href="com/stuypulse/stuylib/streams/booleans/filters/BButton.Released.html" title="class in com.stuypulse.stuylib.streams.booleans.filters"><span class="typeNameLink">BButton.Released</span></a> - Class in <a href="com/stuypulse/stuylib/streams/booleans/filters/package-summary.html">com.stuypulse.stuylib.streams.booleans.filters</a></dt>
+<dd>&nbsp;</dd>
+<dt><a href="com/stuypulse/stuylib/streams/booleans/filters/BButtonRC.html" title="interface in com.stuypulse.stuylib.streams.booleans.filters"><span class="typeNameLink">BButtonRC</span></a> - Interface in <a href="com/stuypulse/stuylib/streams/booleans/filters/package-summary.html">com.stuypulse.stuylib.streams.booleans.filters</a></dt>
 <dd>
-<div class="block">Creates a buffered istream with default buffer size (kDefaultSize)</div>
+<div class="block">A simple boolean filter that returns true when a boolean stream changes depending on the type.</div>
 </dd>
-<dt><span class="memberNameLink"><a href="com/stuypulse/stuylib/streams/BufferedIStream.html#%3Cinit%3E(com.stuypulse.stuylib.streams.IStream,int)">BufferedIStream(IStream, int)</a></span> - Constructor for class com.stuypulse.stuylib.streams.<a href="com/stuypulse/stuylib/streams/BufferedIStream.html" title="class in com.stuypulse.stuylib.streams">BufferedIStream</a></dt>
+<dt><a href="com/stuypulse/stuylib/streams/booleans/filters/BButtonRC.Both.html" title="class in com.stuypulse.stuylib.streams.booleans.filters"><span class="typeNameLink">BButtonRC.Both</span></a> - Class in <a href="com/stuypulse/stuylib/streams/booleans/filters/package-summary.html">com.stuypulse.stuylib.streams.booleans.filters</a></dt>
+<dd>&nbsp;</dd>
+<dt><a href="com/stuypulse/stuylib/streams/booleans/filters/BButtonRC.Pressed.html" title="class in com.stuypulse.stuylib.streams.booleans.filters"><span class="typeNameLink">BButtonRC.Pressed</span></a> - Class in <a href="com/stuypulse/stuylib/streams/booleans/filters/package-summary.html">com.stuypulse.stuylib.streams.booleans.filters</a></dt>
+<dd>&nbsp;</dd>
+<dt><a href="com/stuypulse/stuylib/streams/booleans/filters/BButtonRC.Released.html" title="class in com.stuypulse.stuylib.streams.booleans.filters"><span class="typeNameLink">BButtonRC.Released</span></a> - Class in <a href="com/stuypulse/stuylib/streams/booleans/filters/package-summary.html">com.stuypulse.stuylib.streams.booleans.filters</a></dt>
+<dd>&nbsp;</dd>
+<dt><a href="com/stuypulse/stuylib/streams/booleans/filters/BDebounce.html" title="interface in com.stuypulse.stuylib.streams.booleans.filters"><span class="typeNameLink">BDebounce</span></a> - Interface in <a href="com/stuypulse/stuylib/streams/booleans/filters/package-summary.html">com.stuypulse.stuylib.streams.booleans.filters</a></dt>
 <dd>
-<div class="block">Creates a buffered istream with an istream and a custom buffer size</div>
+<div class="block">A collection of Debounce Classes in 3 flavors.</div>
+</dd>
+<dt><a href="com/stuypulse/stuylib/streams/booleans/filters/BDebounce.Both.html" title="class in com.stuypulse.stuylib.streams.booleans.filters"><span class="typeNameLink">BDebounce.Both</span></a> - Class in <a href="com/stuypulse/stuylib/streams/booleans/filters/package-summary.html">com.stuypulse.stuylib.streams.booleans.filters</a></dt>
+<dd>
+<div class="block">A General Debounce Filter.</div>
+</dd>
+<dt><a href="com/stuypulse/stuylib/streams/booleans/filters/BDebounce.Falling.html" title="class in com.stuypulse.stuylib.streams.booleans.filters"><span class="typeNameLink">BDebounce.Falling</span></a> - Class in <a href="com/stuypulse/stuylib/streams/booleans/filters/package-summary.html">com.stuypulse.stuylib.streams.booleans.filters</a></dt>
+<dd>
+<div class="block">A Falling Debounce Filter.</div>
+</dd>
+<dt><a href="com/stuypulse/stuylib/streams/booleans/filters/BDebounce.Rising.html" title="class in com.stuypulse.stuylib.streams.booleans.filters"><span class="typeNameLink">BDebounce.Rising</span></a> - Class in <a href="com/stuypulse/stuylib/streams/booleans/filters/package-summary.html">com.stuypulse.stuylib.streams.booleans.filters</a></dt>
+<dd>
+<div class="block">A Rising Debounce Filter.</div>
+</dd>
+<dt><a href="com/stuypulse/stuylib/streams/booleans/filters/BDebounceRC.html" title="interface in com.stuypulse.stuylib.streams.booleans.filters"><span class="typeNameLink">BDebounceRC</span></a> - Interface in <a href="com/stuypulse/stuylib/streams/booleans/filters/package-summary.html">com.stuypulse.stuylib.streams.booleans.filters</a></dt>
+<dd>
+<div class="block">An RC Debounce class takes the average of the past few boolean values to remove noise.</div>
+</dd>
+<dt><a href="com/stuypulse/stuylib/streams/booleans/filters/BDebounceRC.Both.html" title="class in com.stuypulse.stuylib.streams.booleans.filters"><span class="typeNameLink">BDebounceRC.Both</span></a> - Class in <a href="com/stuypulse/stuylib/streams/booleans/filters/package-summary.html">com.stuypulse.stuylib.streams.booleans.filters</a></dt>
+<dd>
+<div class="block">An RC Debouncer that has a bias towards the previous value</div>
+</dd>
+<dt><a href="com/stuypulse/stuylib/streams/booleans/filters/BDebounceRC.Falling.html" title="class in com.stuypulse.stuylib.streams.booleans.filters"><span class="typeNameLink">BDebounceRC.Falling</span></a> - Class in <a href="com/stuypulse/stuylib/streams/booleans/filters/package-summary.html">com.stuypulse.stuylib.streams.booleans.filters</a></dt>
+<dd>
+<div class="block">An RC Debouncer that has a false bias</div>
+</dd>
+<dt><a href="com/stuypulse/stuylib/streams/booleans/filters/BDebounceRC.Rising.html" title="class in com.stuypulse.stuylib.streams.booleans.filters"><span class="typeNameLink">BDebounceRC.Rising</span></a> - Class in <a href="com/stuypulse/stuylib/streams/booleans/filters/package-summary.html">com.stuypulse.stuylib.streams.booleans.filters</a></dt>
+<dd>
+<div class="block">An RC Debouncer that has a true bias</div>
+</dd>
+<dt><a href="com/stuypulse/stuylib/streams/booleans/filters/BFilter.html" title="interface in com.stuypulse.stuylib.streams.booleans.filters"><span class="typeNameLink">BFilter</span></a> - Interface in <a href="com/stuypulse/stuylib/streams/booleans/filters/package-summary.html">com.stuypulse.stuylib.streams.booleans.filters</a></dt>
+<dd>
+<div class="block">This is the BFilter interface class that gives a definition for how to implement a filter.</div>
+</dd>
+<dt><a href="com/stuypulse/stuylib/streams/booleans/filters/BFilterGroup.html" title="class in com.stuypulse.stuylib.streams.booleans.filters"><span class="typeNameLink">BFilterGroup</span></a> - Class in <a href="com/stuypulse/stuylib/streams/booleans/filters/package-summary.html">com.stuypulse.stuylib.streams.booleans.filters</a></dt>
+<dd>
+<div class="block">A class that lets you combine multiple boolean filters into one boolean filter.</div>
+</dd>
+<dt><span class="memberNameLink"><a href="com/stuypulse/stuylib/streams/booleans/filters/BFilterGroup.html#%3Cinit%3E(com.stuypulse.stuylib.streams.booleans.filters.BFilter...)">BFilterGroup(BFilter...)</a></span> - Constructor for class com.stuypulse.stuylib.streams.booleans.filters.<a href="com/stuypulse/stuylib/streams/booleans/filters/BFilterGroup.html" title="class in com.stuypulse.stuylib.streams.booleans.filters">BFilterGroup</a></dt>
+<dd>
+<div class="block">Make BFilterGroup out of an array of Filters</div>
+</dd>
+<dt><span class="memberNameLink"><a href="com/stuypulse/stuylib/streams/booleans/filters/BButton.Both.html#%3Cinit%3E()">Both()</a></span> - Constructor for class com.stuypulse.stuylib.streams.booleans.filters.<a href="com/stuypulse/stuylib/streams/booleans/filters/BButton.Both.html" title="class in com.stuypulse.stuylib.streams.booleans.filters">BButton.Both</a></dt>
+<dd>&nbsp;</dd>
+<dt><span class="memberNameLink"><a href="com/stuypulse/stuylib/streams/booleans/filters/BButtonRC.Both.html#%3Cinit%3E(double)">Both(double)</a></span> - Constructor for class com.stuypulse.stuylib.streams.booleans.filters.<a href="com/stuypulse/stuylib/streams/booleans/filters/BButtonRC.Both.html" title="class in com.stuypulse.stuylib.streams.booleans.filters">BButtonRC.Both</a></dt>
+<dd>&nbsp;</dd>
+<dt><span class="memberNameLink"><a href="com/stuypulse/stuylib/streams/booleans/filters/BDebounce.Both.html#%3Cinit%3E(double)">Both(double)</a></span> - Constructor for class com.stuypulse.stuylib.streams.booleans.filters.<a href="com/stuypulse/stuylib/streams/booleans/filters/BDebounce.Both.html" title="class in com.stuypulse.stuylib.streams.booleans.filters">BDebounce.Both</a></dt>
+<dd>&nbsp;</dd>
+<dt><span class="memberNameLink"><a href="com/stuypulse/stuylib/streams/booleans/filters/BDebounceRC.Both.html#%3Cinit%3E(double)">Both(double)</a></span> - Constructor for class com.stuypulse.stuylib.streams.booleans.filters.<a href="com/stuypulse/stuylib/streams/booleans/filters/BDebounceRC.Both.html" title="class in com.stuypulse.stuylib.streams.booleans.filters">BDebounceRC.Both</a></dt>
+<dd>&nbsp;</dd>
+<dt><a href="com/stuypulse/stuylib/streams/booleans/BStream.html" title="interface in com.stuypulse.stuylib.streams.booleans"><span class="typeNameLink">BStream</span></a> - Interface in <a href="com/stuypulse/stuylib/streams/booleans/package-summary.html">com.stuypulse.stuylib.streams.booleans</a></dt>
+<dd>
+<div class="block">A BStream is similar to an IStream, but instead of a stream of doubles, it represents a stream of
+ booleans.</div>
 </dd>
 <dt><span class="memberNameLink"><a href="com/stuypulse/stuylib/input/GamepadState.html#bumperLeft">bumperLeft</a></span> - Variable in class com.stuypulse.stuylib.input.<a href="com/stuypulse/stuylib/input/GamepadState.html" title="class in com.stuypulse.stuylib.input">GamepadState</a></dt>
 <dd>&nbsp;</dd>
@@ -267,6 +350,10 @@ $('.navPadding').css('padding-top', $('.fixedNav').css("height"));
 <dd>&nbsp;</dd>
 <dt><a href="com/stuypulse/stuylib/streams/package-summary.html">com.stuypulse.stuylib.streams</a> - package com.stuypulse.stuylib.streams</dt>
 <dd>&nbsp;</dd>
+<dt><a href="com/stuypulse/stuylib/streams/booleans/package-summary.html">com.stuypulse.stuylib.streams.booleans</a> - package com.stuypulse.stuylib.streams.booleans</dt>
+<dd>&nbsp;</dd>
+<dt><a href="com/stuypulse/stuylib/streams/booleans/filters/package-summary.html">com.stuypulse.stuylib.streams.booleans.filters</a> - package com.stuypulse.stuylib.streams.booleans.filters</dt>
+<dd>&nbsp;</dd>
 <dt><a href="com/stuypulse/stuylib/streams/filters/package-summary.html">com.stuypulse.stuylib.streams.filters</a> - package com.stuypulse.stuylib.streams.filters</dt>
 <dd>&nbsp;</dd>
 <dt><a href="com/stuypulse/stuylib/util/package-summary.html">com.stuypulse.stuylib.util</a> - package com.stuypulse.stuylib.util</dt>
@@ -303,6 +390,42 @@ $('.navPadding').css('padding-top', $('.fixedNav').css("height"));
 </dd>
 <dt><span class="memberNameLink"><a href="com/stuypulse/stuylib/math/Angle.html#cos()">cos()</a></span> - Method in class com.stuypulse.stuylib.math.<a href="com/stuypulse/stuylib/math/Angle.html" title="class in com.stuypulse.stuylib.math">Angle</a></dt>
 <dd>&nbsp;</dd>
+<dt><span class="memberNameLink"><a href="com/stuypulse/stuylib/streams/booleans/filters/BFilter.html#create()">create()</a></span> - Static method in interface com.stuypulse.stuylib.streams.booleans.filters.<a href="com/stuypulse/stuylib/streams/booleans/filters/BFilter.html" title="interface in com.stuypulse.stuylib.streams.booleans.filters">BFilter</a></dt>
+<dd>&nbsp;</dd>
+<dt><span class="memberNameLink"><a href="com/stuypulse/stuylib/streams/filters/IFilter.html#create()">create()</a></span> - Static method in interface com.stuypulse.stuylib.streams.filters.<a href="com/stuypulse/stuylib/streams/filters/IFilter.html" title="interface in com.stuypulse.stuylib.streams.filters">IFilter</a></dt>
+<dd>&nbsp;</dd>
+<dt><span class="memberNameLink"><a href="com/stuypulse/stuylib/streams/booleans/BStream.html#create(com.stuypulse.stuylib.streams.booleans.BStream)">create(BStream)</a></span> - Static method in interface com.stuypulse.stuylib.streams.booleans.<a href="com/stuypulse/stuylib/streams/booleans/BStream.html" title="interface in com.stuypulse.stuylib.streams.booleans">BStream</a></dt>
+<dd>
+<div class="block">Create a BStream from another BStream.</div>
+</dd>
+<dt><span class="memberNameLink"><a href="com/stuypulse/stuylib/streams/IStream.html#create(com.stuypulse.stuylib.streams.booleans.BStream)">create(BStream)</a></span> - Static method in interface com.stuypulse.stuylib.streams.<a href="com/stuypulse/stuylib/streams/IStream.html" title="interface in com.stuypulse.stuylib.streams">IStream</a></dt>
+<dd>
+<div class="block">Create a IStream from another BStream.</div>
+</dd>
+<dt><span class="memberNameLink"><a href="com/stuypulse/stuylib/streams/booleans/filters/BFilter.html#create(com.stuypulse.stuylib.streams.booleans.filters.BFilter)">create(BFilter)</a></span> - Static method in interface com.stuypulse.stuylib.streams.booleans.filters.<a href="com/stuypulse/stuylib/streams/booleans/filters/BFilter.html" title="interface in com.stuypulse.stuylib.streams.booleans.filters">BFilter</a></dt>
+<dd>
+<div class="block">Create an BFilter from another BFilter.</div>
+</dd>
+<dt><span class="memberNameLink"><a href="com/stuypulse/stuylib/streams/filters/IFilter.html#create(com.stuypulse.stuylib.streams.booleans.filters.BFilter)">create(BFilter)</a></span> - Static method in interface com.stuypulse.stuylib.streams.filters.<a href="com/stuypulse/stuylib/streams/filters/IFilter.html" title="interface in com.stuypulse.stuylib.streams.filters">IFilter</a></dt>
+<dd>
+<div class="block">Create an IFilter from a BFilter.</div>
+</dd>
+<dt><span class="memberNameLink"><a href="com/stuypulse/stuylib/streams/booleans/filters/BFilter.html#create(com.stuypulse.stuylib.streams.filters.IFilter)">create(IFilter)</a></span> - Static method in interface com.stuypulse.stuylib.streams.booleans.filters.<a href="com/stuypulse/stuylib/streams/booleans/filters/BFilter.html" title="interface in com.stuypulse.stuylib.streams.booleans.filters">BFilter</a></dt>
+<dd>
+<div class="block">Create a BFilter from an IFilter.</div>
+</dd>
+<dt><span class="memberNameLink"><a href="com/stuypulse/stuylib/streams/filters/IFilter.html#create(com.stuypulse.stuylib.streams.filters.IFilter)">create(IFilter)</a></span> - Static method in interface com.stuypulse.stuylib.streams.filters.<a href="com/stuypulse/stuylib/streams/filters/IFilter.html" title="interface in com.stuypulse.stuylib.streams.filters">IFilter</a></dt>
+<dd>
+<div class="block">Create an IFilter from another IFilter.</div>
+</dd>
+<dt><span class="memberNameLink"><a href="com/stuypulse/stuylib/streams/booleans/BStream.html#create(com.stuypulse.stuylib.streams.IStream)">create(IStream)</a></span> - Static method in interface com.stuypulse.stuylib.streams.booleans.<a href="com/stuypulse/stuylib/streams/booleans/BStream.html" title="interface in com.stuypulse.stuylib.streams.booleans">BStream</a></dt>
+<dd>
+<div class="block">Create a BStream from another IStream.</div>
+</dd>
+<dt><span class="memberNameLink"><a href="com/stuypulse/stuylib/streams/IStream.html#create(com.stuypulse.stuylib.streams.IStream)">create(IStream)</a></span> - Static method in interface com.stuypulse.stuylib.streams.<a href="com/stuypulse/stuylib/streams/IStream.html" title="interface in com.stuypulse.stuylib.streams">IStream</a></dt>
+<dd>
+<div class="block">Create an IStream from another IStream.</div>
+</dd>
 <dt><span class="memberNameLink"><a href="com/stuypulse/stuylib/math/SLMath.html#cube(double)">cube(double)</a></span> - Static method in class com.stuypulse.stuylib.math.<a href="com/stuypulse/stuylib/math/SLMath.html" title="class in com.stuypulse.stuylib.math">SLMath</a></dt>
 <dd>
 <div class="block">Cube a number</div>
@@ -404,9 +527,25 @@ $('.navPadding').css('padding-top', $('.fixedNav').css("height"));
 </a>
 <h2 class="title">F</h2>
 <dl>
+<dt><span class="memberNameLink"><a href="com/stuypulse/stuylib/streams/booleans/filters/BDebounce.Falling.html#%3Cinit%3E(double)">Falling(double)</a></span> - Constructor for class com.stuypulse.stuylib.streams.booleans.filters.<a href="com/stuypulse/stuylib/streams/booleans/filters/BDebounce.Falling.html" title="class in com.stuypulse.stuylib.streams.booleans.filters">BDebounce.Falling</a></dt>
+<dd>&nbsp;</dd>
+<dt><span class="memberNameLink"><a href="com/stuypulse/stuylib/streams/booleans/filters/BDebounceRC.Falling.html#%3Cinit%3E(double)">Falling(double)</a></span> - Constructor for class com.stuypulse.stuylib.streams.booleans.filters.<a href="com/stuypulse/stuylib/streams/booleans/filters/BDebounceRC.Falling.html" title="class in com.stuypulse.stuylib.streams.booleans.filters">BDebounceRC.Falling</a></dt>
+<dd>&nbsp;</dd>
+<dt><span class="memberNameLink"><a href="com/stuypulse/stuylib/streams/booleans/BStream.html#filtered(com.stuypulse.stuylib.streams.booleans.filters.BFilter...)">filtered(BFilter...)</a></span> - Method in interface com.stuypulse.stuylib.streams.booleans.<a href="com/stuypulse/stuylib/streams/booleans/BStream.html" title="interface in com.stuypulse.stuylib.streams.booleans">BStream</a></dt>
+<dd>
+<div class="block">Create a new FilteredBStream from the current stream</div>
+</dd>
 <dt><span class="memberNameLink"><a href="com/stuypulse/stuylib/streams/IStream.html#filtered(com.stuypulse.stuylib.streams.filters.IFilter...)">filtered(IFilter...)</a></span> - Method in interface com.stuypulse.stuylib.streams.<a href="com/stuypulse/stuylib/streams/IStream.html" title="interface in com.stuypulse.stuylib.streams">IStream</a></dt>
 <dd>
 <div class="block">Create a new FilteredIStream from the current stream</div>
+</dd>
+<dt><a href="com/stuypulse/stuylib/streams/booleans/FilteredBStream.html" title="class in com.stuypulse.stuylib.streams.booleans"><span class="typeNameLink">FilteredBStream</span></a> - Class in <a href="com/stuypulse/stuylib/streams/booleans/package-summary.html">com.stuypulse.stuylib.streams.booleans</a></dt>
+<dd>
+<div class="block">A FilteredBStream is similar to a FilteredIStream.</div>
+</dd>
+<dt><span class="memberNameLink"><a href="com/stuypulse/stuylib/streams/booleans/FilteredBStream.html#%3Cinit%3E(com.stuypulse.stuylib.streams.booleans.BStream,com.stuypulse.stuylib.streams.booleans.filters.BFilter...)">FilteredBStream(BStream, BFilter...)</a></span> - Constructor for class com.stuypulse.stuylib.streams.booleans.<a href="com/stuypulse/stuylib/streams/booleans/FilteredBStream.html" title="class in com.stuypulse.stuylib.streams.booleans">FilteredBStream</a></dt>
+<dd>
+<div class="block">Makes filtered stream from stream and stream filter</div>
 </dd>
 <dt><a href="com/stuypulse/stuylib/util/chart/FilteredGraphData.html" title="class in com.stuypulse.stuylib.util.chart"><span class="typeNameLink">FilteredGraphData</span></a> - Class in <a href="com/stuypulse/stuylib/util/chart/package-summary.html">com.stuypulse.stuylib.util.chart</a></dt>
 <dd>
@@ -497,10 +636,14 @@ $('.navPadding').css('padding-top', $('.fixedNav').css("height"));
 <dd>&nbsp;</dd>
 <dt><span class="memberNameLink"><a href="com/stuypulse/stuylib/network/SmartString.html#get()">get()</a></span> - Method in class com.stuypulse.stuylib.network.<a href="com/stuypulse/stuylib/network/SmartString.html" title="class in com.stuypulse.stuylib.network">SmartString</a></dt>
 <dd>&nbsp;</dd>
-<dt><span class="memberNameLink"><a href="com/stuypulse/stuylib/streams/BufferedIStream.html#get()">get()</a></span> - Method in class com.stuypulse.stuylib.streams.<a href="com/stuypulse/stuylib/streams/BufferedIStream.html" title="class in com.stuypulse.stuylib.streams">BufferedIStream</a></dt>
+<dt><span class="memberNameLink"><a href="com/stuypulse/stuylib/streams/booleans/BStream.html#get()">get()</a></span> - Method in interface com.stuypulse.stuylib.streams.booleans.<a href="com/stuypulse/stuylib/streams/booleans/BStream.html" title="interface in com.stuypulse.stuylib.streams.booleans">BStream</a></dt>
+<dd>&nbsp;</dd>
+<dt><span class="memberNameLink"><a href="com/stuypulse/stuylib/streams/booleans/FilteredBStream.html#get()">get()</a></span> - Method in class com.stuypulse.stuylib.streams.booleans.<a href="com/stuypulse/stuylib/streams/booleans/FilteredBStream.html" title="class in com.stuypulse.stuylib.streams.booleans">FilteredBStream</a></dt>
 <dd>
-<div class="block">Get value from istream and add value to buffer</div>
+<div class="block">Get next value from filtered stream</div>
 </dd>
+<dt><span class="memberNameLink"><a href="com/stuypulse/stuylib/streams/booleans/PollingBStream.html#get()">get()</a></span> - Method in class com.stuypulse.stuylib.streams.booleans.<a href="com/stuypulse/stuylib/streams/booleans/PollingBStream.html" title="class in com.stuypulse.stuylib.streams.booleans">PollingBStream</a></dt>
+<dd>&nbsp;</dd>
 <dt><span class="memberNameLink"><a href="com/stuypulse/stuylib/streams/FilteredIStream.html#get()">get()</a></span> - Method in class com.stuypulse.stuylib.streams.<a href="com/stuypulse/stuylib/streams/FilteredIStream.html" title="class in com.stuypulse.stuylib.streams">FilteredIStream</a></dt>
 <dd>
 <div class="block">Get next value from filtered stream</div>
@@ -512,9 +655,37 @@ $('.navPadding').css('padding-top', $('.fixedNav').css("height"));
 <dt><span class="memberNameLink"><a href="com/stuypulse/stuylib/streams/IStream.html#get()">get()</a></span> - Method in interface com.stuypulse.stuylib.streams.<a href="com/stuypulse/stuylib/streams/IStream.html" title="interface in com.stuypulse.stuylib.streams">IStream</a></dt>
 <dd>&nbsp;</dd>
 <dt><span class="memberNameLink"><a href="com/stuypulse/stuylib/streams/PollingIStream.html#get()">get()</a></span> - Method in class com.stuypulse.stuylib.streams.<a href="com/stuypulse/stuylib/streams/PollingIStream.html" title="class in com.stuypulse.stuylib.streams">PollingIStream</a></dt>
+<dd>&nbsp;</dd>
+<dt><span class="memberNameLink"><a href="com/stuypulse/stuylib/streams/booleans/filters/BButton.Both.html#get(boolean)">get(boolean)</a></span> - Method in class com.stuypulse.stuylib.streams.booleans.filters.<a href="com/stuypulse/stuylib/streams/booleans/filters/BButton.Both.html" title="class in com.stuypulse.stuylib.streams.booleans.filters">BButton.Both</a></dt>
+<dd>&nbsp;</dd>
+<dt><span class="memberNameLink"><a href="com/stuypulse/stuylib/streams/booleans/filters/BButton.Pressed.html#get(boolean)">get(boolean)</a></span> - Method in class com.stuypulse.stuylib.streams.booleans.filters.<a href="com/stuypulse/stuylib/streams/booleans/filters/BButton.Pressed.html" title="class in com.stuypulse.stuylib.streams.booleans.filters">BButton.Pressed</a></dt>
+<dd>&nbsp;</dd>
+<dt><span class="memberNameLink"><a href="com/stuypulse/stuylib/streams/booleans/filters/BButton.Released.html#get(boolean)">get(boolean)</a></span> - Method in class com.stuypulse.stuylib.streams.booleans.filters.<a href="com/stuypulse/stuylib/streams/booleans/filters/BButton.Released.html" title="class in com.stuypulse.stuylib.streams.booleans.filters">BButton.Released</a></dt>
+<dd>&nbsp;</dd>
+<dt><span class="memberNameLink"><a href="com/stuypulse/stuylib/streams/booleans/filters/BButtonRC.Both.html#get(boolean)">get(boolean)</a></span> - Method in class com.stuypulse.stuylib.streams.booleans.filters.<a href="com/stuypulse/stuylib/streams/booleans/filters/BButtonRC.Both.html" title="class in com.stuypulse.stuylib.streams.booleans.filters">BButtonRC.Both</a></dt>
+<dd>&nbsp;</dd>
+<dt><span class="memberNameLink"><a href="com/stuypulse/stuylib/streams/booleans/filters/BButtonRC.Pressed.html#get(boolean)">get(boolean)</a></span> - Method in class com.stuypulse.stuylib.streams.booleans.filters.<a href="com/stuypulse/stuylib/streams/booleans/filters/BButtonRC.Pressed.html" title="class in com.stuypulse.stuylib.streams.booleans.filters">BButtonRC.Pressed</a></dt>
+<dd>&nbsp;</dd>
+<dt><span class="memberNameLink"><a href="com/stuypulse/stuylib/streams/booleans/filters/BButtonRC.Released.html#get(boolean)">get(boolean)</a></span> - Method in class com.stuypulse.stuylib.streams.booleans.filters.<a href="com/stuypulse/stuylib/streams/booleans/filters/BButtonRC.Released.html" title="class in com.stuypulse.stuylib.streams.booleans.filters">BButtonRC.Released</a></dt>
+<dd>&nbsp;</dd>
+<dt><span class="memberNameLink"><a href="com/stuypulse/stuylib/streams/booleans/filters/BDebounce.Both.html#get(boolean)">get(boolean)</a></span> - Method in class com.stuypulse.stuylib.streams.booleans.filters.<a href="com/stuypulse/stuylib/streams/booleans/filters/BDebounce.Both.html" title="class in com.stuypulse.stuylib.streams.booleans.filters">BDebounce.Both</a></dt>
+<dd>&nbsp;</dd>
+<dt><span class="memberNameLink"><a href="com/stuypulse/stuylib/streams/booleans/filters/BDebounce.Falling.html#get(boolean)">get(boolean)</a></span> - Method in class com.stuypulse.stuylib.streams.booleans.filters.<a href="com/stuypulse/stuylib/streams/booleans/filters/BDebounce.Falling.html" title="class in com.stuypulse.stuylib.streams.booleans.filters">BDebounce.Falling</a></dt>
+<dd>&nbsp;</dd>
+<dt><span class="memberNameLink"><a href="com/stuypulse/stuylib/streams/booleans/filters/BDebounce.Rising.html#get(boolean)">get(boolean)</a></span> - Method in class com.stuypulse.stuylib.streams.booleans.filters.<a href="com/stuypulse/stuylib/streams/booleans/filters/BDebounce.Rising.html" title="class in com.stuypulse.stuylib.streams.booleans.filters">BDebounce.Rising</a></dt>
+<dd>&nbsp;</dd>
+<dt><span class="memberNameLink"><a href="com/stuypulse/stuylib/streams/booleans/filters/BDebounceRC.Both.html#get(boolean)">get(boolean)</a></span> - Method in class com.stuypulse.stuylib.streams.booleans.filters.<a href="com/stuypulse/stuylib/streams/booleans/filters/BDebounceRC.Both.html" title="class in com.stuypulse.stuylib.streams.booleans.filters">BDebounceRC.Both</a></dt>
+<dd>&nbsp;</dd>
+<dt><span class="memberNameLink"><a href="com/stuypulse/stuylib/streams/booleans/filters/BDebounceRC.Falling.html#get(boolean)">get(boolean)</a></span> - Method in class com.stuypulse.stuylib.streams.booleans.filters.<a href="com/stuypulse/stuylib/streams/booleans/filters/BDebounceRC.Falling.html" title="class in com.stuypulse.stuylib.streams.booleans.filters">BDebounceRC.Falling</a></dt>
+<dd>&nbsp;</dd>
+<dt><span class="memberNameLink"><a href="com/stuypulse/stuylib/streams/booleans/filters/BDebounceRC.Rising.html#get(boolean)">get(boolean)</a></span> - Method in class com.stuypulse.stuylib.streams.booleans.filters.<a href="com/stuypulse/stuylib/streams/booleans/filters/BDebounceRC.Rising.html" title="class in com.stuypulse.stuylib.streams.booleans.filters">BDebounceRC.Rising</a></dt>
+<dd>&nbsp;</dd>
+<dt><span class="memberNameLink"><a href="com/stuypulse/stuylib/streams/booleans/filters/BFilter.html#get(boolean)">get(boolean)</a></span> - Method in interface com.stuypulse.stuylib.streams.booleans.filters.<a href="com/stuypulse/stuylib/streams/booleans/filters/BFilter.html" title="interface in com.stuypulse.stuylib.streams.booleans.filters">BFilter</a></dt>
 <dd>
-<div class="block">Thread safe read to the double mResult</div>
+<div class="block">Get next value in Filter based on the next value given</div>
 </dd>
+<dt><span class="memberNameLink"><a href="com/stuypulse/stuylib/streams/booleans/filters/BFilterGroup.html#get(boolean)">get(boolean)</a></span> - Method in class com.stuypulse.stuylib.streams.booleans.filters.<a href="com/stuypulse/stuylib/streams/booleans/filters/BFilterGroup.html" title="class in com.stuypulse.stuylib.streams.booleans.filters">BFilterGroup</a></dt>
+<dd>&nbsp;</dd>
 <dt><span class="memberNameLink"><a href="com/stuypulse/stuylib/streams/filters/ExpMovingAverage.html#get(double)">get(double)</a></span> - Method in class com.stuypulse.stuylib.streams.filters.<a href="com/stuypulse/stuylib/streams/filters/ExpMovingAverage.html" title="class in com.stuypulse.stuylib.streams.filters">ExpMovingAverage</a></dt>
 <dd>&nbsp;</dd>
 <dt><span class="memberNameLink"><a href="com/stuypulse/stuylib/streams/filters/HighPassFilter.html#get(double)">get(double)</a></span> - Method in class com.stuypulse.stuylib.streams.filters.<a href="com/stuypulse/stuylib/streams/filters/HighPassFilter.html" title="class in com.stuypulse.stuylib.streams.filters">HighPassFilter</a></dt>
@@ -541,15 +712,15 @@ $('.navPadding').css('padding-top', $('.fixedNav').css("height"));
 <dd>&nbsp;</dd>
 <dt><span class="memberNameLink"><a href="com/stuypulse/stuylib/streams/filters/WeightedMovingAverage.html#get(double)">get(double)</a></span> - Method in class com.stuypulse.stuylib.streams.filters.<a href="com/stuypulse/stuylib/streams/filters/WeightedMovingAverage.html" title="class in com.stuypulse.stuylib.streams.filters">WeightedMovingAverage</a></dt>
 <dd>&nbsp;</dd>
-<dt><span class="memberNameLink"><a href="com/stuypulse/stuylib/streams/BufferedIStream.html#get(int)">get(int)</a></span> - Method in class com.stuypulse.stuylib.streams.<a href="com/stuypulse/stuylib/streams/BufferedIStream.html" title="class in com.stuypulse.stuylib.streams">BufferedIStream</a></dt>
-<dd>
-<div class="block">Get value from istream and add value to buffer</div>
-</dd>
 <dt><span class="memberNameLink"><a href="com/stuypulse/stuylib/math/Polar2D.html#getAngle()">getAngle()</a></span> - Method in class com.stuypulse.stuylib.math.<a href="com/stuypulse/stuylib/math/Polar2D.html" title="class in com.stuypulse.stuylib.math">Polar2D</a></dt>
 <dd>&nbsp;</dd>
 <dt><span class="memberNameLink"><a href="com/stuypulse/stuylib/math/Vector2D.html#getAngle()">getAngle()</a></span> - Method in class com.stuypulse.stuylib.math.<a href="com/stuypulse/stuylib/math/Vector2D.html" title="class in com.stuypulse.stuylib.math">Vector2D</a></dt>
 <dd>&nbsp;</dd>
 <dt><span class="memberNameLink"><a href="com/stuypulse/stuylib/math/Vector2D.html#getArray()">getArray()</a></span> - Method in class com.stuypulse.stuylib.math.<a href="com/stuypulse/stuylib/math/Vector2D.html" title="class in com.stuypulse.stuylib.math">Vector2D</a></dt>
+<dd>&nbsp;</dd>
+<dt><span class="memberNameLink"><a href="com/stuypulse/stuylib/streams/booleans/BStream.html#getAsBoolean()">getAsBoolean()</a></span> - Method in interface com.stuypulse.stuylib.streams.booleans.<a href="com/stuypulse/stuylib/streams/booleans/BStream.html" title="interface in com.stuypulse.stuylib.streams.booleans">BStream</a></dt>
+<dd>&nbsp;</dd>
+<dt><span class="memberNameLink"><a href="com/stuypulse/stuylib/streams/IStream.html#getAsDouble()">getAsDouble()</a></span> - Method in interface com.stuypulse.stuylib.streams.<a href="com/stuypulse/stuylib/streams/IStream.html" title="interface in com.stuypulse.stuylib.streams">IStream</a></dt>
 <dd>&nbsp;</dd>
 <dt><span class="memberNameLink"><a href="com/stuypulse/stuylib/network/SLNetworkTable.html#getBoolean(java.lang.String)">getBoolean(String)</a></span> - Method in class com.stuypulse.stuylib.network.<a href="com/stuypulse/stuylib/network/SLNetworkTable.html" title="class in com.stuypulse.stuylib.network">SLNetworkTable</a></dt>
 <dd>
@@ -673,15 +844,25 @@ $('.navPadding').css('padding-top', $('.fixedNav').css("height"));
 </dd>
 <dt><span class="memberNameLink"><a href="com/stuypulse/stuylib/util/chart/JGraph.html#getKeyTracker()">getKeyTracker()</a></span> - Method in class com.stuypulse.stuylib.util.chart.<a href="com/stuypulse/stuylib/util/chart/JGraph.html" title="class in com.stuypulse.stuylib.util.chart">JGraph</a></dt>
 <dd>&nbsp;</dd>
-<dt><span class="memberNameLink"><a href="com/stuypulse/stuylib/network/limelight/Limelight.html#getLatencyMs()">getLatencyMs()</a></span> - Method in class com.stuypulse.stuylib.network.limelight.<a href="com/stuypulse/stuylib/network/limelight/Limelight.html" title="class in com.stuypulse.stuylib.network.limelight">Limelight</a></dt>
+<dt><span class="memberNameLink"><a href="com/stuypulse/stuylib/network/limelight/Limelight.html#getLastUpdate()">getLastUpdate()</a></span> - Method in class com.stuypulse.stuylib.network.limelight.<a href="com/stuypulse/stuylib/network/limelight/Limelight.html" title="class in com.stuypulse.stuylib.network.limelight">Limelight</a></dt>
 <dd>&nbsp;</dd>
-<dt><span class="memberNameLink"><a href="com/stuypulse/stuylib/input/Gamepad.html#getLeftAnalogButton()">getLeftAnalogButton()</a></span> - Method in class com.stuypulse.stuylib.input.<a href="com/stuypulse/stuylib/input/Gamepad.html" title="class in com.stuypulse.stuylib.input">Gamepad</a></dt>
+<dt><span class="memberNameLink"><a href="com/stuypulse/stuylib/network/limelight/Limelight.html#getLatencyMs()">getLatencyMs()</a></span> - Method in class com.stuypulse.stuylib.network.limelight.<a href="com/stuypulse/stuylib/network/limelight/Limelight.html" title="class in com.stuypulse.stuylib.network.limelight">Limelight</a></dt>
 <dd>&nbsp;</dd>
 <dt><span class="memberNameLink"><a href="com/stuypulse/stuylib/input/Gamepad.html#getLeftBumper()">getLeftBumper()</a></span> - Method in class com.stuypulse.stuylib.input.<a href="com/stuypulse/stuylib/input/Gamepad.html" title="class in com.stuypulse.stuylib.input">Gamepad</a></dt>
 <dd>&nbsp;</dd>
 <dt><span class="memberNameLink"><a href="com/stuypulse/stuylib/input/Gamepad.html#getLeftButton()">getLeftButton()</a></span> - Method in class com.stuypulse.stuylib.input.<a href="com/stuypulse/stuylib/input/Gamepad.html" title="class in com.stuypulse.stuylib.input">Gamepad</a></dt>
 <dd>&nbsp;</dd>
 <dt><span class="memberNameLink"><a href="com/stuypulse/stuylib/input/Gamepad.html#getLeftStick()">getLeftStick()</a></span> - Method in class com.stuypulse.stuylib.input.<a href="com/stuypulse/stuylib/input/Gamepad.html" title="class in com.stuypulse.stuylib.input">Gamepad</a></dt>
+<dd>&nbsp;</dd>
+<dt><span class="memberNameLink"><a href="com/stuypulse/stuylib/input/Gamepad.html#getLeftStickButton()">getLeftStickButton()</a></span> - Method in class com.stuypulse.stuylib.input.<a href="com/stuypulse/stuylib/input/Gamepad.html" title="class in com.stuypulse.stuylib.input">Gamepad</a></dt>
+<dd>&nbsp;</dd>
+<dt><span class="memberNameLink"><a href="com/stuypulse/stuylib/input/Gamepad.html#getLeftStickDown()">getLeftStickDown()</a></span> - Method in class com.stuypulse.stuylib.input.<a href="com/stuypulse/stuylib/input/Gamepad.html" title="class in com.stuypulse.stuylib.input">Gamepad</a></dt>
+<dd>&nbsp;</dd>
+<dt><span class="memberNameLink"><a href="com/stuypulse/stuylib/input/Gamepad.html#getLeftStickLeft()">getLeftStickLeft()</a></span> - Method in class com.stuypulse.stuylib.input.<a href="com/stuypulse/stuylib/input/Gamepad.html" title="class in com.stuypulse.stuylib.input">Gamepad</a></dt>
+<dd>&nbsp;</dd>
+<dt><span class="memberNameLink"><a href="com/stuypulse/stuylib/input/Gamepad.html#getLeftStickRight()">getLeftStickRight()</a></span> - Method in class com.stuypulse.stuylib.input.<a href="com/stuypulse/stuylib/input/Gamepad.html" title="class in com.stuypulse.stuylib.input">Gamepad</a></dt>
+<dd>&nbsp;</dd>
+<dt><span class="memberNameLink"><a href="com/stuypulse/stuylib/input/Gamepad.html#getLeftStickUp()">getLeftStickUp()</a></span> - Method in class com.stuypulse.stuylib.input.<a href="com/stuypulse/stuylib/input/Gamepad.html" title="class in com.stuypulse.stuylib.input">Gamepad</a></dt>
 <dd>&nbsp;</dd>
 <dt><span class="memberNameLink"><a href="com/stuypulse/stuylib/input/Gamepad.html#getLeftTrigger()">getLeftTrigger()</a></span> - Method in class com.stuypulse.stuylib.input.<a href="com/stuypulse/stuylib/input/Gamepad.html" title="class in com.stuypulse.stuylib.input">Gamepad</a></dt>
 <dd>&nbsp;</dd>
@@ -1010,13 +1191,21 @@ $('.navPadding').css('padding-top', $('.fixedNav').css("height"));
 <div class="block">Gets the velocity, which is represented as the change in error since the last time that
  .update() was called</div>
 </dd>
-<dt><span class="memberNameLink"><a href="com/stuypulse/stuylib/input/Gamepad.html#getRightAnalogButton()">getRightAnalogButton()</a></span> - Method in class com.stuypulse.stuylib.input.<a href="com/stuypulse/stuylib/input/Gamepad.html" title="class in com.stuypulse.stuylib.input">Gamepad</a></dt>
-<dd>&nbsp;</dd>
 <dt><span class="memberNameLink"><a href="com/stuypulse/stuylib/input/Gamepad.html#getRightBumper()">getRightBumper()</a></span> - Method in class com.stuypulse.stuylib.input.<a href="com/stuypulse/stuylib/input/Gamepad.html" title="class in com.stuypulse.stuylib.input">Gamepad</a></dt>
 <dd>&nbsp;</dd>
 <dt><span class="memberNameLink"><a href="com/stuypulse/stuylib/input/Gamepad.html#getRightButton()">getRightButton()</a></span> - Method in class com.stuypulse.stuylib.input.<a href="com/stuypulse/stuylib/input/Gamepad.html" title="class in com.stuypulse.stuylib.input">Gamepad</a></dt>
 <dd>&nbsp;</dd>
 <dt><span class="memberNameLink"><a href="com/stuypulse/stuylib/input/Gamepad.html#getRightStick()">getRightStick()</a></span> - Method in class com.stuypulse.stuylib.input.<a href="com/stuypulse/stuylib/input/Gamepad.html" title="class in com.stuypulse.stuylib.input">Gamepad</a></dt>
+<dd>&nbsp;</dd>
+<dt><span class="memberNameLink"><a href="com/stuypulse/stuylib/input/Gamepad.html#getRightStickButton()">getRightStickButton()</a></span> - Method in class com.stuypulse.stuylib.input.<a href="com/stuypulse/stuylib/input/Gamepad.html" title="class in com.stuypulse.stuylib.input">Gamepad</a></dt>
+<dd>&nbsp;</dd>
+<dt><span class="memberNameLink"><a href="com/stuypulse/stuylib/input/Gamepad.html#getRightStickDown()">getRightStickDown()</a></span> - Method in class com.stuypulse.stuylib.input.<a href="com/stuypulse/stuylib/input/Gamepad.html" title="class in com.stuypulse.stuylib.input">Gamepad</a></dt>
+<dd>&nbsp;</dd>
+<dt><span class="memberNameLink"><a href="com/stuypulse/stuylib/input/Gamepad.html#getRightStickLeft()">getRightStickLeft()</a></span> - Method in class com.stuypulse.stuylib.input.<a href="com/stuypulse/stuylib/input/Gamepad.html" title="class in com.stuypulse.stuylib.input">Gamepad</a></dt>
+<dd>&nbsp;</dd>
+<dt><span class="memberNameLink"><a href="com/stuypulse/stuylib/input/Gamepad.html#getRightStickRight()">getRightStickRight()</a></span> - Method in class com.stuypulse.stuylib.input.<a href="com/stuypulse/stuylib/input/Gamepad.html" title="class in com.stuypulse.stuylib.input">Gamepad</a></dt>
+<dd>&nbsp;</dd>
+<dt><span class="memberNameLink"><a href="com/stuypulse/stuylib/input/Gamepad.html#getRightStickUp()">getRightStickUp()</a></span> - Method in class com.stuypulse.stuylib.input.<a href="com/stuypulse/stuylib/input/Gamepad.html" title="class in com.stuypulse.stuylib.input">Gamepad</a></dt>
 <dd>&nbsp;</dd>
 <dt><span class="memberNameLink"><a href="com/stuypulse/stuylib/input/Gamepad.html#getRightTrigger()">getRightTrigger()</a></span> - Method in class com.stuypulse.stuylib.input.<a href="com/stuypulse/stuylib/input/Gamepad.html" title="class in com.stuypulse.stuylib.input">Gamepad</a></dt>
 <dd>&nbsp;</dd>
@@ -1250,6 +1439,10 @@ $('.navPadding').css('padding-top', $('.fixedNav').css("height"));
 <dd>&nbsp;</dd>
 <dt><span class="memberNameLink"><a href="com/stuypulse/stuylib/network/limelight/Limelight.Pipeline.html#INVALID_PIPELINE">INVALID_PIPELINE</a></span> - com.stuypulse.stuylib.network.limelight.<a href="com/stuypulse/stuylib/network/limelight/Limelight.Pipeline.html" title="enum in com.stuypulse.stuylib.network.limelight">Limelight.Pipeline</a></dt>
 <dd>&nbsp;</dd>
+<dt><span class="memberNameLink"><a href="com/stuypulse/stuylib/streams/filters/IFilter.html#invert()">invert()</a></span> - Method in interface com.stuypulse.stuylib.streams.filters.<a href="com/stuypulse/stuylib/streams/filters/IFilter.html" title="interface in com.stuypulse.stuylib.streams.filters">IFilter</a></dt>
+<dd>
+<div class="block">Invert an IFilter by subtracting the input from the result of the IFilter.</div>
+</dd>
 <dt><span class="memberNameLink"><a href="com/stuypulse/stuylib/input/keyboard/computer/NetKeyListener.html#isConnected()">isConnected()</a></span> - Method in class com.stuypulse.stuylib.input.keyboard.computer.<a href="com/stuypulse/stuylib/input/keyboard/computer/NetKeyListener.html" title="class in com.stuypulse.stuylib.input.keyboard.computer">NetKeyListener</a></dt>
 <dd>
 <div class="block">Checks if network table is connected</div>
@@ -1324,10 +1517,6 @@ $('.navPadding').css('padding-top', $('.fixedNav').css("height"));
 <dd>&nbsp;</dd>
 <dt><span class="memberNameLink"><a href="com/stuypulse/stuylib/math/Angle.html#kArcSecond">kArcSecond</a></span> - Static variable in class com.stuypulse.stuylib.math.<a href="com/stuypulse/stuylib/math/Angle.html" title="class in com.stuypulse.stuylib.math">Angle</a></dt>
 <dd>&nbsp;</dd>
-<dt><span class="memberNameLink"><a href="com/stuypulse/stuylib/streams/BufferedIStream.html#kDefaultSize">kDefaultSize</a></span> - Static variable in class com.stuypulse.stuylib.streams.<a href="com/stuypulse/stuylib/streams/BufferedIStream.html" title="class in com.stuypulse.stuylib.streams">BufferedIStream</a></dt>
-<dd>
-<div class="block">Default size of the buffer in BufferedIStream</div>
-</dd>
 <dt><span class="memberNameLink"><a href="com/stuypulse/stuylib/math/Angle.html#kDegree">kDegree</a></span> - Static variable in class com.stuypulse.stuylib.math.<a href="com/stuypulse/stuylib/math/Angle.html" title="class in com.stuypulse.stuylib.math">Angle</a></dt>
 <dd>&nbsp;</dd>
 <dt><a href="com/stuypulse/stuylib/input/gamepads/keyboard/KeyGamepad.html" title="class in com.stuypulse.stuylib.input.gamepads.keyboard"><span class="typeNameLink">KeyGamepad</span></a> - Class in <a href="com/stuypulse/stuylib/input/gamepads/keyboard/package-summary.html">com.stuypulse.stuylib.input.gamepads.keyboard</a></dt>
@@ -1356,6 +1545,10 @@ $('.navPadding').css('padding-top', $('.fixedNav').css("height"));
 <dd>
 <div class="block">Initialize set of key presses and key bindings.</div>
 </dd>
+<dt><span class="memberNameLink"><a href="com/stuypulse/stuylib/streams/booleans/filters/BButtonRC.html#kFalse">kFalse</a></span> - Static variable in interface com.stuypulse.stuylib.streams.booleans.filters.<a href="com/stuypulse/stuylib/streams/booleans/filters/BButtonRC.html" title="interface in com.stuypulse.stuylib.streams.booleans.filters">BButtonRC</a></dt>
+<dd>&nbsp;</dd>
+<dt><span class="memberNameLink"><a href="com/stuypulse/stuylib/streams/booleans/filters/BDebounceRC.html#kFalse">kFalse</a></span> - Static variable in interface com.stuypulse.stuylib.streams.booleans.filters.<a href="com/stuypulse/stuylib/streams/booleans/filters/BDebounceRC.html" title="interface in com.stuypulse.stuylib.streams.booleans.filters">BDebounceRC</a></dt>
+<dd>&nbsp;</dd>
 <dt><span class="memberNameLink"><a href="com/stuypulse/stuylib/util/StopWatch.html#kFPGATimestamp">kFPGATimestamp</a></span> - Static variable in class com.stuypulse.stuylib.util.<a href="com/stuypulse/stuylib/util/StopWatch.html" title="class in com.stuypulse.stuylib.util">StopWatch</a></dt>
 <dd>
 <div class="block">This engine is used to get the current time with the WPI function Timer.getFPGATimestamp()</div>
@@ -1363,6 +1556,8 @@ $('.navPadding').css('padding-top', $('.fixedNav').css("height"));
 <dt><span class="memberNameLink"><a href="com/stuypulse/stuylib/math/Vector2D.html#kI">kI</a></span> - Static variable in class com.stuypulse.stuylib.math.<a href="com/stuypulse/stuylib/math/Vector2D.html" title="class in com.stuypulse.stuylib.math">Vector2D</a></dt>
 <dd>&nbsp;</dd>
 <dt><span class="memberNameLink"><a href="com/stuypulse/stuylib/math/Vector2D.html#kJ">kJ</a></span> - Static variable in class com.stuypulse.stuylib.math.<a href="com/stuypulse/stuylib/math/Vector2D.html" title="class in com.stuypulse.stuylib.math">Vector2D</a></dt>
+<dd>&nbsp;</dd>
+<dt><span class="memberNameLink"><a href="com/stuypulse/stuylib/streams/booleans/filters/BDebounceRC.html#kLowerLimit">kLowerLimit</a></span> - Static variable in interface com.stuypulse.stuylib.streams.booleans.filters.<a href="com/stuypulse/stuylib/streams/booleans/filters/BDebounceRC.html" title="interface in com.stuypulse.stuylib.streams.booleans.filters">BDebounceRC</a></dt>
 <dd>&nbsp;</dd>
 <dt><span class="memberNameLink"><a href="com/stuypulse/stuylib/util/StopWatch.html#kMillisEngine">kMillisEngine</a></span> - Static variable in class com.stuypulse.stuylib.util.<a href="com/stuypulse/stuylib/util/StopWatch.html" title="class in com.stuypulse.stuylib.util">StopWatch</a></dt>
 <dd>
@@ -1379,7 +1574,17 @@ $('.navPadding').css('padding-top', $('.fixedNav').css("height"));
 </dd>
 <dt><span class="memberNameLink"><a href="com/stuypulse/stuylib/math/Vector2D.html#kOrigin">kOrigin</a></span> - Static variable in class com.stuypulse.stuylib.math.<a href="com/stuypulse/stuylib/math/Vector2D.html" title="class in com.stuypulse.stuylib.math">Vector2D</a></dt>
 <dd>&nbsp;</dd>
+<dt><span class="memberNameLink"><a href="com/stuypulse/stuylib/streams/booleans/filters/BButtonRC.html#kPressedLimit">kPressedLimit</a></span> - Static variable in interface com.stuypulse.stuylib.streams.booleans.filters.<a href="com/stuypulse/stuylib/streams/booleans/filters/BButtonRC.html" title="interface in com.stuypulse.stuylib.streams.booleans.filters">BButtonRC</a></dt>
+<dd>&nbsp;</dd>
 <dt><span class="memberNameLink"><a href="com/stuypulse/stuylib/math/Angle.html#kRadiant">kRadiant</a></span> - Static variable in class com.stuypulse.stuylib.math.<a href="com/stuypulse/stuylib/math/Angle.html" title="class in com.stuypulse.stuylib.math">Angle</a></dt>
+<dd>&nbsp;</dd>
+<dt><span class="memberNameLink"><a href="com/stuypulse/stuylib/streams/booleans/filters/BButtonRC.html#kReleasedLimit">kReleasedLimit</a></span> - Static variable in interface com.stuypulse.stuylib.streams.booleans.filters.<a href="com/stuypulse/stuylib/streams/booleans/filters/BButtonRC.html" title="interface in com.stuypulse.stuylib.streams.booleans.filters">BButtonRC</a></dt>
+<dd>&nbsp;</dd>
+<dt><span class="memberNameLink"><a href="com/stuypulse/stuylib/streams/booleans/filters/BButtonRC.html#kTrue">kTrue</a></span> - Static variable in interface com.stuypulse.stuylib.streams.booleans.filters.<a href="com/stuypulse/stuylib/streams/booleans/filters/BButtonRC.html" title="interface in com.stuypulse.stuylib.streams.booleans.filters">BButtonRC</a></dt>
+<dd>&nbsp;</dd>
+<dt><span class="memberNameLink"><a href="com/stuypulse/stuylib/streams/booleans/filters/BDebounceRC.html#kTrue">kTrue</a></span> - Static variable in interface com.stuypulse.stuylib.streams.booleans.filters.<a href="com/stuypulse/stuylib/streams/booleans/filters/BDebounceRC.html" title="interface in com.stuypulse.stuylib.streams.booleans.filters">BDebounceRC</a></dt>
+<dd>&nbsp;</dd>
+<dt><span class="memberNameLink"><a href="com/stuypulse/stuylib/streams/booleans/filters/BDebounceRC.html#kUpperLimit">kUpperLimit</a></span> - Static variable in interface com.stuypulse.stuylib.streams.booleans.filters.<a href="com/stuypulse/stuylib/streams/booleans/filters/BDebounceRC.html" title="interface in com.stuypulse.stuylib.streams.booleans.filters">BDebounceRC</a></dt>
 <dd>&nbsp;</dd>
 <dt><span class="memberNameLink"><a href="com/stuypulse/stuylib/math/Angle.html#kZero">kZero</a></span> - Static variable in class com.stuypulse.stuylib.math.<a href="com/stuypulse/stuylib/math/Angle.html" title="class in com.stuypulse.stuylib.math">Angle</a></dt>
 <dd>&nbsp;</dd>
@@ -1389,18 +1594,14 @@ $('.navPadding').css('padding-top', $('.fixedNav').css("height"));
 </a>
 <h2 class="title">L</h2>
 <dl>
-<dt><span class="memberNameLink"><a href="com/stuypulse/stuylib/streams/BufferedIStream.html#last()">last()</a></span> - Method in class com.stuypulse.stuylib.streams.<a href="com/stuypulse/stuylib/streams/BufferedIStream.html" title="class in com.stuypulse.stuylib.streams">BufferedIStream</a></dt>
-<dd>
-<div class="block">Get the most recent value from the istream</div>
-</dd>
-<dt><span class="memberNameLink"><a href="com/stuypulse/stuylib/streams/BufferedIStream.html#last(int)">last(int)</a></span> - Method in class com.stuypulse.stuylib.streams.<a href="com/stuypulse/stuylib/streams/BufferedIStream.html" title="class in com.stuypulse.stuylib.streams">BufferedIStream</a></dt>
-<dd>
-<div class="block">Go back [delta] amount in the buffer, ie.</div>
-</dd>
 <dt><span class="memberNameLink"><a href="com/stuypulse/stuylib/network/limelight/LimelightTable.html#latency">latency</a></span> - Variable in class com.stuypulse.stuylib.network.limelight.<a href="com/stuypulse/stuylib/network/limelight/LimelightTable.html" title="class in com.stuypulse.stuylib.network.limelight">LimelightTable</a></dt>
 <dd>&nbsp;</dd>
 <dt><span class="memberNameLink"><a href="com/stuypulse/stuylib/network/limelight/LimelightTable.html#ledMode">ledMode</a></span> - Variable in class com.stuypulse.stuylib.network.limelight.<a href="com/stuypulse/stuylib/network/limelight/LimelightTable.html" title="class in com.stuypulse.stuylib.network.limelight">LimelightTable</a></dt>
 <dd>&nbsp;</dd>
+<dt><span class="memberNameLink"><a href="com/stuypulse/stuylib/math/SLMath.html#lerp(double,double,double)">lerp(double, double, double)</a></span> - Static method in class com.stuypulse.stuylib.math.<a href="com/stuypulse/stuylib/math/SLMath.html" title="class in com.stuypulse.stuylib.math">SLMath</a></dt>
+<dd>
+<div class="block">Linear Interpolation from start to end using value t [0...1]</div>
+</dd>
 <dt><a href="com/stuypulse/stuylib/network/limelight/Limelight.html" title="class in com.stuypulse.stuylib.network.limelight"><span class="typeNameLink">Limelight</span></a> - Class in <a href="com/stuypulse/stuylib/network/limelight/package-summary.html">com.stuypulse.stuylib.network.limelight</a></dt>
 <dd>
 <div class="block">This is a class that lets you interface with the limelight network table.</div>
@@ -1463,6 +1664,12 @@ $('.navPadding').css('padding-top', $('.fixedNav').css("height"));
 <dt><span class="memberNameLink"><a href="com/stuypulse/stuylib/network/limelight/LimelightTable.html#longestSideLength">longestSideLength</a></span> - Variable in class com.stuypulse.stuylib.network.limelight.<a href="com/stuypulse/stuylib/network/limelight/LimelightTable.html" title="class in com.stuypulse.stuylib.network.limelight">LimelightTable</a></dt>
 <dd>&nbsp;</dd>
 <dt><span class="memberNameLink"><a href="com/stuypulse/stuylib/network/SmartNumber.html#longValue()">longValue()</a></span> - Method in class com.stuypulse.stuylib.network.<a href="com/stuypulse/stuylib/network/SmartNumber.html" title="class in com.stuypulse.stuylib.network">SmartNumber</a></dt>
+<dd>&nbsp;</dd>
+<dt><a href="com/stuypulse/stuylib/util/Looper.html" title="class in com.stuypulse.stuylib.util"><span class="typeNameLink">Looper</span></a> - Class in <a href="com/stuypulse/stuylib/util/package-summary.html">com.stuypulse.stuylib.util</a></dt>
+<dd>
+<div class="block">A class that runs a function every dt seconds</div>
+</dd>
+<dt><span class="memberNameLink"><a href="com/stuypulse/stuylib/util/Looper.html#%3Cinit%3E(java.lang.Runnable,double)">Looper(Runnable, double)</a></span> - Constructor for class com.stuypulse.stuylib.util.<a href="com/stuypulse/stuylib/util/Looper.html" title="class in com.stuypulse.stuylib.util">Looper</a></dt>
 <dd>&nbsp;</dd>
 <dt><a href="com/stuypulse/stuylib/streams/filters/LowPassFilter.html" title="class in com.stuypulse.stuylib.streams.filters"><span class="typeNameLink">LowPassFilter</span></a> - Class in <a href="com/stuypulse/stuylib/streams/filters/package-summary.html">com.stuypulse.stuylib.streams.filters</a></dt>
 <dd>
@@ -1592,6 +1799,10 @@ $('.navPadding').css('padding-top', $('.fixedNav').css("height"));
 <dd>&nbsp;</dd>
 <dt><span class="memberNameLink"><a href="com/stuypulse/stuylib/math/Vector2D.html#normalize()">normalize()</a></span> - Method in class com.stuypulse.stuylib.math.<a href="com/stuypulse/stuylib/math/Vector2D.html" title="class in com.stuypulse.stuylib.math">Vector2D</a></dt>
 <dd>&nbsp;</dd>
+<dt><span class="memberNameLink"><a href="com/stuypulse/stuylib/streams/booleans/BStream.html#not()">not()</a></span> - Method in interface com.stuypulse.stuylib.streams.booleans.<a href="com/stuypulse/stuylib/streams/booleans/BStream.html" title="interface in com.stuypulse.stuylib.streams.booleans">BStream</a></dt>
+<dd>
+<div class="block">Create a BStream that returns the opposite result as the original</div>
+</dd>
 </dl>
 <a id="I:O">
 <!--   -->
@@ -1612,6 +1823,14 @@ $('.navPadding').css('padding-top', $('.fixedNav').css("height"));
 </dd>
 <dt><span class="memberNameLink"><a href="com/stuypulse/stuylib/math/Angle.html#opposite()">opposite()</a></span> - Method in class com.stuypulse.stuylib.math.<a href="com/stuypulse/stuylib/math/Angle.html" title="class in com.stuypulse.stuylib.math">Angle</a></dt>
 <dd>&nbsp;</dd>
+<dt><span class="memberNameLink"><a href="com/stuypulse/stuylib/streams/booleans/BStream.html#or(com.stuypulse.stuylib.streams.booleans.BStream)">or(BStream)</a></span> - Method in interface com.stuypulse.stuylib.streams.booleans.<a href="com/stuypulse/stuylib/streams/booleans/BStream.html" title="interface in com.stuypulse.stuylib.streams.booleans">BStream</a></dt>
+<dd>
+<div class="block">Combine two BStreams by or'ing their results together</div>
+</dd>
+<dt><span class="memberNameLink"><a href="com/stuypulse/stuylib/streams/booleans/filters/BFilter.html#or(com.stuypulse.stuylib.streams.booleans.filters.BFilter)">or(BFilter)</a></span> - Method in interface com.stuypulse.stuylib.streams.booleans.filters.<a href="com/stuypulse/stuylib/streams/booleans/filters/BFilter.html" title="interface in com.stuypulse.stuylib.streams.booleans.filters">BFilter</a></dt>
+<dd>
+<div class="block">Combine two BFilters by or'ing their results together</div>
+</dd>
 </dl>
 <a id="I:P">
 <!--   -->
@@ -1663,6 +1882,22 @@ $('.navPadding').css('padding-top', $('.fixedNav').css("height"));
 <dd>
 <div class="block">Convert a Vector2D into Polar Coordinates</div>
 </dd>
+<dt><span class="memberNameLink"><a href="com/stuypulse/stuylib/streams/booleans/BStream.html#polling(double)">polling(double)</a></span> - Method in interface com.stuypulse.stuylib.streams.booleans.<a href="com/stuypulse/stuylib/streams/booleans/BStream.html" title="interface in com.stuypulse.stuylib.streams.booleans">BStream</a></dt>
+<dd>
+<div class="block">Create a new PollingBStream from the current stream</div>
+</dd>
+<dt><span class="memberNameLink"><a href="com/stuypulse/stuylib/streams/IStream.html#polling(double)">polling(double)</a></span> - Method in interface com.stuypulse.stuylib.streams.<a href="com/stuypulse/stuylib/streams/IStream.html" title="interface in com.stuypulse.stuylib.streams">IStream</a></dt>
+<dd>
+<div class="block">Create a new PollingIStream from the current stream</div>
+</dd>
+<dt><a href="com/stuypulse/stuylib/streams/booleans/PollingBStream.html" title="class in com.stuypulse.stuylib.streams.booleans"><span class="typeNameLink">PollingBStream</span></a> - Class in <a href="com/stuypulse/stuylib/streams/booleans/package-summary.html">com.stuypulse.stuylib.streams.booleans</a></dt>
+<dd>
+<div class="block">A PollingBStream is a BStream but its .get() method is called for you at a certain rate.</div>
+</dd>
+<dt><span class="memberNameLink"><a href="com/stuypulse/stuylib/streams/booleans/PollingBStream.html#%3Cinit%3E(com.stuypulse.stuylib.streams.booleans.BStream,double)">PollingBStream(BStream, double)</a></span> - Constructor for class com.stuypulse.stuylib.streams.booleans.<a href="com/stuypulse/stuylib/streams/booleans/PollingBStream.html" title="class in com.stuypulse.stuylib.streams.booleans">PollingBStream</a></dt>
+<dd>
+<div class="block">Creates a PollingBStream from an BStream and a time value</div>
+</dd>
 <dt><a href="com/stuypulse/stuylib/streams/PollingIStream.html" title="class in com.stuypulse.stuylib.streams"><span class="typeNameLink">PollingIStream</span></a> - Class in <a href="com/stuypulse/stuylib/streams/package-summary.html">com.stuypulse.stuylib.streams</a></dt>
 <dd>
 <div class="block">A PollingIStream calls <a href="com/stuypulse/stuylib/streams/IStream.html#get()"><code>IStream.get()</code></a> every x milliseconds instead of when the user calls
@@ -1672,6 +1907,10 @@ $('.navPadding').css('padding-top', $('.fixedNav').css("height"));
 <dd>
 <div class="block">Creates a PollingIStream from an IStream and a time value</div>
 </dd>
+<dt><span class="memberNameLink"><a href="com/stuypulse/stuylib/streams/booleans/filters/BButton.Pressed.html#%3Cinit%3E()">Pressed()</a></span> - Constructor for class com.stuypulse.stuylib.streams.booleans.filters.<a href="com/stuypulse/stuylib/streams/booleans/filters/BButton.Pressed.html" title="class in com.stuypulse.stuylib.streams.booleans.filters">BButton.Pressed</a></dt>
+<dd>&nbsp;</dd>
+<dt><span class="memberNameLink"><a href="com/stuypulse/stuylib/streams/booleans/filters/BButtonRC.Pressed.html#%3Cinit%3E(double)">Pressed(double)</a></span> - Constructor for class com.stuypulse.stuylib.streams.booleans.filters.<a href="com/stuypulse/stuylib/streams/booleans/filters/BButtonRC.Pressed.html" title="class in com.stuypulse.stuylib.streams.booleans.filters">BButtonRC.Pressed</a></dt>
+<dd>&nbsp;</dd>
 <dt><a href="com/stuypulse/stuylib/input/gamepads/PS4.html" title="class in com.stuypulse.stuylib.input.gamepads"><span class="typeNameLink">PS4</span></a> - Class in <a href="com/stuypulse/stuylib/input/gamepads/package-summary.html">com.stuypulse.stuylib.input.gamepads</a></dt>
 <dd>
 <div class="block">Implementation of the PS4 for the <a href="com/stuypulse/stuylib/input/Gamepad.html" title="class in com.stuypulse.stuylib.input"><code>Gamepad</code></a> Class</div>
@@ -1694,6 +1933,10 @@ $('.navPadding').css('padding-top', $('.fixedNav').css("height"));
 <dd>
 <div class="block">Makes a new rate limiter with specified rate limit</div>
 </dd>
+<dt><span class="memberNameLink"><a href="com/stuypulse/stuylib/streams/booleans/filters/BButton.Released.html#%3Cinit%3E()">Released()</a></span> - Constructor for class com.stuypulse.stuylib.streams.booleans.filters.<a href="com/stuypulse/stuylib/streams/booleans/filters/BButton.Released.html" title="class in com.stuypulse.stuylib.streams.booleans.filters">BButton.Released</a></dt>
+<dd>&nbsp;</dd>
+<dt><span class="memberNameLink"><a href="com/stuypulse/stuylib/streams/booleans/filters/BButtonRC.Released.html#%3Cinit%3E(double)">Released(double)</a></span> - Constructor for class com.stuypulse.stuylib.streams.booleans.filters.<a href="com/stuypulse/stuylib/streams/booleans/filters/BButtonRC.Released.html" title="class in com.stuypulse.stuylib.streams.booleans.filters">BButtonRC.Released</a></dt>
+<dd>&nbsp;</dd>
 <dt><span class="memberNameLink"><a href="com/stuypulse/stuylib/control/PIDController.html#reset()">reset()</a></span> - Method in class com.stuypulse.stuylib.control.<a href="com/stuypulse/stuylib/control/PIDController.html" title="class in com.stuypulse.stuylib.control">PIDController</a></dt>
 <dd>
 <div class="block">Resets the integrator in the PIDController.</div>
@@ -1718,6 +1961,10 @@ $('.navPadding').css('padding-top', $('.fixedNav').css("height"));
 <dd>
 <div class="block">Resets the stop watch to the current time and returns time since last reset.</div>
 </dd>
+<dt><span class="memberNameLink"><a href="com/stuypulse/stuylib/streams/booleans/filters/BDebounce.Rising.html#%3Cinit%3E(double)">Rising(double)</a></span> - Constructor for class com.stuypulse.stuylib.streams.booleans.filters.<a href="com/stuypulse/stuylib/streams/booleans/filters/BDebounce.Rising.html" title="class in com.stuypulse.stuylib.streams.booleans.filters">BDebounce.Rising</a></dt>
+<dd>&nbsp;</dd>
+<dt><span class="memberNameLink"><a href="com/stuypulse/stuylib/streams/booleans/filters/BDebounceRC.Rising.html#%3Cinit%3E(double)">Rising(double)</a></span> - Constructor for class com.stuypulse.stuylib.streams.booleans.filters.<a href="com/stuypulse/stuylib/streams/booleans/filters/BDebounceRC.Rising.html" title="class in com.stuypulse.stuylib.streams.booleans.filters">BDebounceRC.Rising</a></dt>
+<dd>&nbsp;</dd>
 <dt><span class="memberNameLink"><a href="com/stuypulse/stuylib/math/Polar2D.html#rotate(com.stuypulse.stuylib.math.Angle)">rotate(Angle)</a></span> - Method in class com.stuypulse.stuylib.math.<a href="com/stuypulse/stuylib/math/Polar2D.html" title="class in com.stuypulse.stuylib.math">Polar2D</a></dt>
 <dd>&nbsp;</dd>
 <dt><span class="memberNameLink"><a href="com/stuypulse/stuylib/math/Vector2D.html#rotate(com.stuypulse.stuylib.math.Angle)">rotate(Angle)</a></span> - Method in class com.stuypulse.stuylib.math.<a href="com/stuypulse/stuylib/math/Vector2D.html" title="class in com.stuypulse.stuylib.math">Vector2D</a></dt>
@@ -1728,6 +1975,8 @@ $('.navPadding').css('padding-top', $('.fixedNav').css("height"));
 <dd>
 <div class="block">Round a double by a certain amount of sigfigs in base 10</div>
 </dd>
+<dt><span class="memberNameLink"><a href="com/stuypulse/stuylib/util/Looper.html#run()">run()</a></span> - Method in class com.stuypulse.stuylib.util.<a href="com/stuypulse/stuylib/util/Looper.html" title="class in com.stuypulse.stuylib.util">Looper</a></dt>
+<dd>&nbsp;</dd>
 </dl>
 <a id="I:S">
 <!--   -->
@@ -1802,10 +2051,14 @@ $('.navPadding').css('padding-top', $('.fixedNav').css("height"));
 <dd>&nbsp;</dd>
 <dt><span class="memberNameLink"><a href="com/stuypulse/stuylib/input/Gamepad.html#setRumble(double)">setRumble(double)</a></span> - Method in class com.stuypulse.stuylib.input.<a href="com/stuypulse/stuylib/input/Gamepad.html" title="class in com.stuypulse.stuylib.input">Gamepad</a></dt>
 <dd>&nbsp;</dd>
+<dt><span class="memberNameLink"><a href="com/stuypulse/stuylib/input/gamepads/AutoGamepad.html#setRumble(double)">setRumble(double)</a></span> - Method in class com.stuypulse.stuylib.input.gamepads.<a href="com/stuypulse/stuylib/input/gamepads/AutoGamepad.html" title="class in com.stuypulse.stuylib.input.gamepads">AutoGamepad</a></dt>
+<dd>&nbsp;</dd>
 <dt><span class="memberNameLink"><a href="com/stuypulse/stuylib/input/gamepads/keyboard/SimKeyGamepad.html#setRumble(double)">setRumble(double)</a></span> - Method in class com.stuypulse.stuylib.input.gamepads.keyboard.<a href="com/stuypulse/stuylib/input/gamepads/keyboard/SimKeyGamepad.html" title="class in com.stuypulse.stuylib.input.gamepads.keyboard">SimKeyGamepad</a></dt>
 <dd>
 <div class="block">Sets the color of the input area based on rumble</div>
 </dd>
+<dt><span class="memberNameLink"><a href="com/stuypulse/stuylib/input/gamepads/Xbox.html#setRumble(double)">setRumble(double)</a></span> - Method in class com.stuypulse.stuylib.input.gamepads.<a href="com/stuypulse/stuylib/input/gamepads/Xbox.html" title="class in com.stuypulse.stuylib.input.gamepads">Xbox</a></dt>
+<dd>&nbsp;</dd>
 <dt><span class="memberNameLink"><a href="com/stuypulse/stuylib/input/WPIGamepad.html#setRumble(double)">setRumble(double)</a></span> - Method in class com.stuypulse.stuylib.input.<a href="com/stuypulse/stuylib/input/WPIGamepad.html" title="class in com.stuypulse.stuylib.input">WPIGamepad</a></dt>
 <dd>&nbsp;</dd>
 <dt><span class="memberNameLink"><a href="com/stuypulse/stuylib/network/limelight/Limelight.html#setSnapshotMode(com.stuypulse.stuylib.network.limelight.Limelight.SnapshotMode)">setSnapshotMode(Limelight.SnapshotMode)</a></span> - Method in class com.stuypulse.stuylib.network.limelight.<a href="com/stuypulse/stuylib/network/limelight/Limelight.html" title="class in com.stuypulse.stuylib.network.limelight">Limelight</a></dt>
@@ -1969,6 +2222,14 @@ $('.navPadding').css('padding-top', $('.fixedNav').css("height"));
 </dd>
 <dt><span class="memberNameLink"><a href="com/stuypulse/stuylib/math/Vector2D.html#sub(com.stuypulse.stuylib.math.Vector2D)">sub(Vector2D)</a></span> - Method in class com.stuypulse.stuylib.math.<a href="com/stuypulse/stuylib/math/Vector2D.html" title="class in com.stuypulse.stuylib.math">Vector2D</a></dt>
 <dd>&nbsp;</dd>
+<dt><span class="memberNameLink"><a href="com/stuypulse/stuylib/streams/filters/IFilter.html#sub(com.stuypulse.stuylib.streams.filters.IFilter)">sub(IFilter)</a></span> - Method in interface com.stuypulse.stuylib.streams.filters.<a href="com/stuypulse/stuylib/streams/filters/IFilter.html" title="interface in com.stuypulse.stuylib.streams.filters">IFilter</a></dt>
+<dd>
+<div class="block">Combine two IFilters by subtracting their results together</div>
+</dd>
+<dt><span class="memberNameLink"><a href="com/stuypulse/stuylib/streams/IStream.html#sub(com.stuypulse.stuylib.streams.IStream)">sub(IStream)</a></span> - Method in interface com.stuypulse.stuylib.streams.<a href="com/stuypulse/stuylib/streams/IStream.html" title="interface in com.stuypulse.stuylib.streams">IStream</a></dt>
+<dd>
+<div class="block">Combine two IStreams by subtracting their results together</div>
+</dd>
 </dl>
 <a id="I:T">
 <!--   -->
@@ -1991,6 +2252,14 @@ $('.navPadding').css('padding-top', $('.fixedNav').css("height"));
 </dd>
 <dt><span class="memberNameLink"><a href="com/stuypulse/stuylib/control/TBHController.html#%3Cinit%3E(java.lang.Number)">TBHController(Number)</a></span> - Constructor for class com.stuypulse.stuylib.control.<a href="com/stuypulse/stuylib/control/TBHController.html" title="class in com.stuypulse.stuylib.control">TBHController</a></dt>
 <dd>&nbsp;</dd>
+<dt><span class="memberNameLink"><a href="com/stuypulse/stuylib/streams/booleans/filters/BFilter.html#then(com.stuypulse.stuylib.streams.booleans.filters.BFilter)">then(BFilter)</a></span> - Method in interface com.stuypulse.stuylib.streams.booleans.filters.<a href="com/stuypulse/stuylib/streams/booleans/filters/BFilter.html" title="interface in com.stuypulse.stuylib.streams.booleans.filters">BFilter</a></dt>
+<dd>
+<div class="block">Combine an BFilter with another BFilter</div>
+</dd>
+<dt><span class="memberNameLink"><a href="com/stuypulse/stuylib/streams/filters/IFilter.html#then(com.stuypulse.stuylib.streams.filters.IFilter)">then(IFilter)</a></span> - Method in interface com.stuypulse.stuylib.streams.filters.<a href="com/stuypulse/stuylib/streams/filters/IFilter.html" title="interface in com.stuypulse.stuylib.streams.filters">IFilter</a></dt>
+<dd>
+<div class="block">Combine an IFilter with another IFilter</div>
+</dd>
 <dt><a href="com/stuypulse/stuylib/streams/filters/TimedMovingAverage.html" title="class in com.stuypulse.stuylib.streams.filters"><span class="typeNameLink">TimedMovingAverage</span></a> - Class in <a href="com/stuypulse/stuylib/streams/filters/package-summary.html">com.stuypulse.stuylib.streams.filters</a></dt>
 <dd>
 <div class="block">A Simple Moving Average where instead of averaging the past x values, you average all the values
@@ -2007,6 +2276,8 @@ $('.navPadding').css('padding-top', $('.fixedNav').css("height"));
 <dt><span class="memberNameLink"><a href="com/stuypulse/stuylib/streams/filters/TimedRateLimit.html#%3Cinit%3E(java.lang.Number)">TimedRateLimit(Number)</a></span> - Constructor for class com.stuypulse.stuylib.streams.filters.<a href="com/stuypulse/stuylib/streams/filters/TimedRateLimit.html" title="class in com.stuypulse.stuylib.streams.filters">TimedRateLimit</a></dt>
 <dd>&nbsp;</dd>
 <dt><span class="memberNameLink"><a href="com/stuypulse/stuylib/network/limelight/LimelightTable.html#timingEntry">timingEntry</a></span> - Variable in class com.stuypulse.stuylib.network.limelight.<a href="com/stuypulse/stuylib/network/limelight/LimelightTable.html" title="class in com.stuypulse.stuylib.network.limelight">LimelightTable</a></dt>
+<dd>&nbsp;</dd>
+<dt><span class="memberNameLink"><a href="com/stuypulse/stuylib/streams/booleans/BStream.html#toButton()">toButton()</a></span> - Method in interface com.stuypulse.stuylib.streams.booleans.<a href="com/stuypulse/stuylib/streams/booleans/BStream.html" title="interface in com.stuypulse.stuylib.streams.booleans">BStream</a></dt>
 <dd>&nbsp;</dd>
 <dt><span class="memberNameLink"><a href="com/stuypulse/stuylib/math/Angle.html#toDegrees()">toDegrees()</a></span> - Method in class com.stuypulse.stuylib.math.<a href="com/stuypulse/stuylib/math/Angle.html" title="class in com.stuypulse.stuylib.math">Angle</a></dt>
 <dd>&nbsp;</dd>
@@ -2037,8 +2308,6 @@ $('.navPadding').css('padding-top', $('.fixedNav').css("height"));
 <dt><span class="memberNameLink"><a href="com/stuypulse/stuylib/math/Polar2D.html#toString()">toString()</a></span> - Method in class com.stuypulse.stuylib.math.<a href="com/stuypulse/stuylib/math/Polar2D.html" title="class in com.stuypulse.stuylib.math">Polar2D</a></dt>
 <dd>&nbsp;</dd>
 <dt><span class="memberNameLink"><a href="com/stuypulse/stuylib/math/Vector2D.html#toString()">toString()</a></span> - Method in class com.stuypulse.stuylib.math.<a href="com/stuypulse/stuylib/math/Vector2D.html" title="class in com.stuypulse.stuylib.math">Vector2D</a></dt>
-<dd>&nbsp;</dd>
-<dt><span class="memberNameLink"><a href="com/stuypulse/stuylib/input/Gamepad.html#TRIGGER_PRESSED_THRESHOLD">TRIGGER_PRESSED_THRESHOLD</a></span> - Static variable in class com.stuypulse.stuylib.input.<a href="com/stuypulse/stuylib/input/Gamepad.html" title="class in com.stuypulse.stuylib.input">Gamepad</a></dt>
 <dd>&nbsp;</dd>
 <dt><span class="memberNameLink"><a href="com/stuypulse/stuylib/input/GamepadState.html#triggerLeft">triggerLeft</a></span> - Variable in class com.stuypulse.stuylib.input.<a href="com/stuypulse/stuylib/input/GamepadState.html" title="class in com.stuypulse.stuylib.input">GamepadState</a></dt>
 <dd>&nbsp;</dd>
@@ -2193,6 +2462,14 @@ the order they are declared.</div>
 <dd>&nbsp;</dd>
 <dt><span class="memberNameLink"><a href="com/stuypulse/stuylib/input/gamepads/Logitech.XMode.html#%3Cinit%3E(edu.wpi.first.wpilibj.XboxController)">XMode(XboxController)</a></span> - Constructor for class com.stuypulse.stuylib.input.gamepads.<a href="com/stuypulse/stuylib/input/gamepads/Logitech.XMode.html" title="class in com.stuypulse.stuylib.input.gamepads">Logitech.XMode</a></dt>
 <dd>&nbsp;</dd>
+<dt><span class="memberNameLink"><a href="com/stuypulse/stuylib/streams/booleans/BStream.html#xor(com.stuypulse.stuylib.streams.booleans.BStream)">xor(BStream)</a></span> - Method in interface com.stuypulse.stuylib.streams.booleans.<a href="com/stuypulse/stuylib/streams/booleans/BStream.html" title="interface in com.stuypulse.stuylib.streams.booleans">BStream</a></dt>
+<dd>
+<div class="block">Combine two BStreams by xor'ing their results together</div>
+</dd>
+<dt><span class="memberNameLink"><a href="com/stuypulse/stuylib/streams/booleans/filters/BFilter.html#xor(com.stuypulse.stuylib.streams.booleans.filters.BFilter)">xor(BFilter)</a></span> - Method in interface com.stuypulse.stuylib.streams.booleans.filters.<a href="com/stuypulse/stuylib/streams/booleans/filters/BFilter.html" title="interface in com.stuypulse.stuylib.streams.booleans.filters">BFilter</a></dt>
+<dd>
+<div class="block">Combine two BFilters by xor'ing their results together</div>
+</dd>
 </dl>
 <a id="I:Y">
 <!--   -->

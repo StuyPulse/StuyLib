@@ -4,6 +4,7 @@
 
 package com.stuypulse.stuylib.streams.filters;
 
+import com.stuypulse.stuylib.math.SLMath;
 import com.stuypulse.stuylib.util.StopWatch;
 
 /**
@@ -35,14 +36,11 @@ public class LowPassFilter implements IFilter {
     }
 
     public double get(double next) {
-        // Get time since last .get() call
-        double dt = mTimer.reset(); 
-
         // Get a constant, which is determined based on dt and the mRC constant
-        double a = dt / (mRC.doubleValue() + dt);
+        double a = Math.exp(-mTimer.reset() / mRC.doubleValue());
 
         // Based on the value of a (which is determined by dt), the next value
         // could either change a lot, or not by much. (smaller dt = smaller change)
-        return mLastValue += a * (next - mLastValue); // mLastValue = mLastValue + a * (next - mLastValue);
+        return mLastValue = SLMath.lerp(next, mLastValue, a);
     }
 }

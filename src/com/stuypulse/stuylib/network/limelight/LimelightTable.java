@@ -58,7 +58,7 @@ public final class LimelightTable {
         cameraStream = table.getEntry("stream");
         snapshotMode = table.getEntry("snapshot");
 
-        timingEntry = table.getEntry("custom/test_timing_entry");
+        timingEntry = table.getEntry(".timing_data");
     }
 
     /****************************************************/

@@ -116,10 +116,10 @@ $('.navPadding').css('padding-top', $('.fixedNav').css("height"));
 </tr>
 <tbody>
 <tr class="altColor">
-<td class="colFirst"><a id="com.stuypulse.stuylib.input.Gamepad.TRIGGER_PRESSED_THRESHOLD">
+<td class="colFirst"><a id="com.stuypulse.stuylib.input.Gamepad.ANALOG_THRESHOLD">
 <!--   -->
 </a><code>public&nbsp;static&nbsp;final&nbsp;double</code></td>
-<th class="colSecond" scope="row"><code><a href="com/stuypulse/stuylib/input/Gamepad.html#TRIGGER_PRESSED_THRESHOLD">TRIGGER_PRESSED_THRESHOLD</a></code></th>
+<th class="colSecond" scope="row"><code><a href="com/stuypulse/stuylib/input/Gamepad.html#ANALOG_THRESHOLD">ANALOG_THRESHOLD</a></code></th>
 <td class="colLast"><code>0.25</code></td>
 </tr>
 </tbody>
@@ -255,7 +255,7 @@ $('.navPadding').css('padding-top', $('.fixedNav').css("height"));
 <ul class="blockList">
 <li class="blockList">
 <table class="constantsSummary">
-<caption><span>com.stuypulse.stuylib.streams.<a href="com/stuypulse/stuylib/streams/BufferedIStream.html" title="class in com.stuypulse.stuylib.streams">BufferedIStream</a></span><span class="tabEnd">&nbsp;</span></caption>
+<caption><span>com.stuypulse.stuylib.streams.booleans.filters.<a href="com/stuypulse/stuylib/streams/booleans/filters/BButtonRC.html" title="interface in com.stuypulse.stuylib.streams.booleans.filters">BButtonRC</a></span><span class="tabEnd">&nbsp;</span></caption>
 <tr>
 <th class="colFirst" scope="col">Modifier and Type</th>
 <th class="colSecond" scope="col">Constant Field</th>
@@ -263,11 +263,72 @@ $('.navPadding').css('padding-top', $('.fixedNav').css("height"));
 </tr>
 <tbody>
 <tr class="altColor">
-<td class="colFirst"><a id="com.stuypulse.stuylib.streams.BufferedIStream.kDefaultSize">
+<td class="colFirst"><a id="com.stuypulse.stuylib.streams.booleans.filters.BButtonRC.kFalse">
 <!--   -->
-</a><code>public&nbsp;static&nbsp;final&nbsp;int</code></td>
-<th class="colSecond" scope="row"><code><a href="com/stuypulse/stuylib/streams/BufferedIStream.html#kDefaultSize">kDefaultSize</a></code></th>
-<td class="colLast"><code>50</code></td>
+</a><code>public&nbsp;static&nbsp;final&nbsp;double</code></td>
+<th class="colSecond" scope="row"><code><a href="com/stuypulse/stuylib/streams/booleans/filters/BButtonRC.html#kFalse">kFalse</a></code></th>
+<td class="colLast"><code>0.0</code></td>
+</tr>
+<tr class="rowColor">
+<td class="colFirst"><a id="com.stuypulse.stuylib.streams.booleans.filters.BButtonRC.kPressedLimit">
+<!--   -->
+</a><code>public&nbsp;static&nbsp;final&nbsp;double</code></td>
+<th class="colSecond" scope="row"><code><a href="com/stuypulse/stuylib/streams/booleans/filters/BButtonRC.html#kPressedLimit">kPressedLimit</a></code></th>
+<td class="colLast"><code>0.36787944117144233</code></td>
+</tr>
+<tr class="altColor">
+<td class="colFirst"><a id="com.stuypulse.stuylib.streams.booleans.filters.BButtonRC.kReleasedLimit">
+<!--   -->
+</a><code>public&nbsp;static&nbsp;final&nbsp;double</code></td>
+<th class="colSecond" scope="row"><code><a href="com/stuypulse/stuylib/streams/booleans/filters/BButtonRC.html#kReleasedLimit">kReleasedLimit</a></code></th>
+<td class="colLast"><code>-0.36787944117144233</code></td>
+</tr>
+<tr class="rowColor">
+<td class="colFirst"><a id="com.stuypulse.stuylib.streams.booleans.filters.BButtonRC.kTrue">
+<!--   -->
+</a><code>public&nbsp;static&nbsp;final&nbsp;double</code></td>
+<th class="colSecond" scope="row"><code><a href="com/stuypulse/stuylib/streams/booleans/filters/BButtonRC.html#kTrue">kTrue</a></code></th>
+<td class="colLast"><code>1.0</code></td>
+</tr>
+</tbody>
+</table>
+</li>
+<li class="blockList">
+<table class="constantsSummary">
+<caption><span>com.stuypulse.stuylib.streams.booleans.filters.<a href="com/stuypulse/stuylib/streams/booleans/filters/BDebounceRC.html" title="interface in com.stuypulse.stuylib.streams.booleans.filters">BDebounceRC</a></span><span class="tabEnd">&nbsp;</span></caption>
+<tr>
+<th class="colFirst" scope="col">Modifier and Type</th>
+<th class="colSecond" scope="col">Constant Field</th>
+<th class="colLast" scope="col">Value</th>
+</tr>
+<tbody>
+<tr class="altColor">
+<td class="colFirst"><a id="com.stuypulse.stuylib.streams.booleans.filters.BDebounceRC.kFalse">
+<!--   -->
+</a><code>public&nbsp;static&nbsp;final&nbsp;double</code></td>
+<th class="colSecond" scope="row"><code><a href="com/stuypulse/stuylib/streams/booleans/filters/BDebounceRC.html#kFalse">kFalse</a></code></th>
+<td class="colLast"><code>0.0</code></td>
+</tr>
+<tr class="rowColor">
+<td class="colFirst"><a id="com.stuypulse.stuylib.streams.booleans.filters.BDebounceRC.kLowerLimit">
+<!--   -->
+</a><code>public&nbsp;static&nbsp;final&nbsp;double</code></td>
+<th class="colSecond" scope="row"><code><a href="com/stuypulse/stuylib/streams/booleans/filters/BDebounceRC.html#kLowerLimit">kLowerLimit</a></code></th>
+<td class="colLast"><code>0.36787944117144233</code></td>
+</tr>
+<tr class="altColor">
+<td class="colFirst"><a id="com.stuypulse.stuylib.streams.booleans.filters.BDebounceRC.kTrue">
+<!--   -->
+</a><code>public&nbsp;static&nbsp;final&nbsp;double</code></td>
+<th class="colSecond" scope="row"><code><a href="com/stuypulse/stuylib/streams/booleans/filters/BDebounceRC.html#kTrue">kTrue</a></code></th>
+<td class="colLast"><code>1.0</code></td>
+</tr>
+<tr class="rowColor">
+<td class="colFirst"><a id="com.stuypulse.stuylib.streams.booleans.filters.BDebounceRC.kUpperLimit">
+<!--   -->
+</a><code>public&nbsp;static&nbsp;final&nbsp;double</code></td>
+<th class="colSecond" scope="row"><code><a href="com/stuypulse/stuylib/streams/booleans/filters/BDebounceRC.html#kUpperLimit">kUpperLimit</a></code></th>
+<td class="colLast"><code>0.6321205588285577</code></td>
 </tr>
 </tbody>
 </table>
