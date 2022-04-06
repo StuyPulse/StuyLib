@@ -64,8 +64,8 @@ public interface BStream extends BooleanSupplier {
      * @param dt the time inbetween each poll of the BStream
      * @return The PollingBStream
      */
-    public default PollingBStream polling(double hz) {
-        return new PollingBStream(this, hz);
+    public default PollingBStream polling(double dt) {
+        return new PollingBStream(this, dt);
     }
 
     /**

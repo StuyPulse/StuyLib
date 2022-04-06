@@ -28,7 +28,7 @@ public class BDebounceRC {
     public static class Rising implements BFilter {
         private final LowPassFilter mFilter;
 
-        /** @param debounceTime amount of time on average to go from false -> true */
+        /** @param debounceTime amount of time on average to go from false to true */
         public Rising(double debounceTime) {
             mFilter = new LowPassFilter(debounceTime);
         }
@@ -42,7 +42,7 @@ public class BDebounceRC {
     public static class Falling implements BFilter {
         private final LowPassFilter mFilter;
 
-        /** @param debounceTime amount of time on average to go from true -> false */
+        /** @param debounceTime amount of time on average to go from true to false */
         public Falling(double debounceTime) {
             mFilter = new LowPassFilter(debounceTime);
         }

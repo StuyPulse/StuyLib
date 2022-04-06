@@ -12,9 +12,9 @@ import com.stuypulse.stuylib.streams.filters.HighPassFilter;
  *
  * <p>1. Both - will return true if the BStream changes at all
  *
- * <p>2. Pressed - will return true if the BStream changes from false -> true
+ * <p>2. Pressed - will return true if the BStream changes from false to true
  *
- * <p>3. Released - will return true if the BStream changes from true -> false
+ * <p>3. Released - will return true if the BStream changes from true to false
  *
  * @author Sam (sam.belliveau@gmail.com)
  */

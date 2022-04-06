@@ -6,8 +6,8 @@ package com.stuypulse.stuylib.input.gamepads;
 
 import com.stuypulse.stuylib.input.Gamepad;
 
-import edu.wpi.first.wpilibj.XboxController;
 import edu.wpi.first.wpilibj.GenericHID.RumbleType;
+import edu.wpi.first.wpilibj.XboxController;
 
 /**
  * A wrapper for the XboxController class to work with the {@link Gamepad} interface.
