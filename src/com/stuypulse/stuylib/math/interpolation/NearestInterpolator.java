@@ -19,66 +19,38 @@ public class NearestInterpolator implements Interpolator {
             
         }
     }
-    // this method will ask a user for a distance and then return a RPM
-    // we need a sorting algorithm to order the points in the list from least xAxis to greatest xAxis
-    // or we can just tell whoever uses this class to put it in order of increasing distance 
-    public double getRPMFromDistance(double distance){
+    /**   this method will ask a user for a distance and then return a RPM
+     **   put the points in order of increasing distance or else it's not gonna work 
+     **/
+    public double getInterpolatedValueFromDistance(double input){
         // this section will find the nearest refernce points to the distance
-        int refPoint1 = 0;// the two reference points that the distance is between. return the Vec
+        int refPoint1 = 0;
         int refPoint2 = 0;
 
-        for (int i = 0; i < points.size(); i ++){ // for each points in the ArrayList
-            if (distance < points.get(i).x){// if the distance is less than the x value of the vector2D
-                refPoint1 = i; // store the indexes of the points in between the two
+        for (int i = 0; i < points.size(); i ++){ 
+            if (input < points.get(i).x){
+                refPoint1 = i; 
                 refPoint2 = i - 1;
 
             }
 
         }
         
-        //After we have the two reference points, we need to intrapolate
-        double refPoint1Dist = points.get(refPoint1).x;
-        double refPoint2Dist = points.get(refPoint1).x;
-   
-        double refPoint2RPM = points.get(refPoint2).y;
-        double refPoint1RPM = points.get(refPoint1).y;
+        //After we have the two reference points, we need to interpolate
+        Interpolator inputInterpolator = new IntervalInterpolator(points.get(refPoint1), points.get(refPoint2));
 
-        new IntervalInterpolator(refPoint1Dist, refPoint2Dist, refPoint1RPM, refPoint2RPM);
-
-        double RPM = interpolate(distance);
+        double RPM = inputInterpolator.interpolate(input);
 
         return RPM;
 
     }
 
-    //TODO: change all of "RPM" and "Distance" into different variables
-
-    // public static void main(String args[]){
-    //     ReferencePoints(new Vector2D(0,0), new Vector2D(100, 100));
-    // }
-
-
-
-
-    // public static void main(String args[]){
-    //     int[] Array = {1, 2, 4, 6};
-    //     int target  = 3;
-        
-    //     for (int i = 0; i < Array.length; i++){
-    //         if (target < Array[i]){
-    //             System.out.println(Array[i - 1]);
-    //             System.out.println(Array[i]);
-    //             break;
-    //         }
-    //     }
-
-    // }
-
     
     @Override
     public double interpolate(double x) {
-        return 0;
+        return getInterpolatedValueFromDistance(x);
     }
+
 
 
 }
