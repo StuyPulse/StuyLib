@@ -4,9 +4,10 @@
 
 package com.stuypulse.stuylib.network;
 
+import com.stuypulse.stuylib.streams.booleans.BStream;
+
 import edu.wpi.first.networktables.NetworkTableEntry;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
-import java.util.function.Supplier;
 
 /**
  * {@link SmartBoolean} works as a wrapper for values on {@link SmartDashboard}. The idea for this
@@ -15,7 +16,7 @@ import java.util.function.Supplier;
  *
  * @author Sam (sam.belliveau@gmail.com)
  */
-public class SmartBoolean implements Supplier<Boolean> {
+public class SmartBoolean implements BStream {
 
     /** The ID / Name for the value on {@link SmartDashboard}. */
     private final NetworkTableEntry mEntry;
@@ -50,7 +51,7 @@ public class SmartBoolean implements Supplier<Boolean> {
     }
 
     /** @return the value of the boolean from {@link SmartDashboard} */
-    public Boolean get() {
+    public boolean get() {
         return mEntry.getBoolean(mDefaultValue);
     }
 

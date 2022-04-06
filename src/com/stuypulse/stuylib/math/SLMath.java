@@ -16,6 +16,22 @@ public final class SLMath {
     // Prevent the class from being extended at all
     private SLMath() {}
 
+    /*********************/
+    /*** INTERPOLATION ***/
+    /*********************/
+
+    /**
+     * Linear Interpolation from start to end using value t [0...1]
+     *
+     * @param start value of linear interpolation when t = 0
+     * @param end value of linear interpolation when t = 1
+     * @param t time value for linear interpolation [0...1]
+     * @return interpolated value
+     */
+    public static double lerp(double start, double end, double t) {
+        return start + (end - start) * clamp(t, 0.0, 1.0);
+    }
+
     /**************/
     /*** LIMITS ***/
     /**************/
