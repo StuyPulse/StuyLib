@@ -3,10 +3,10 @@ package com.stuypulse.stuylib.math.interpolation;
 import com.stuypulse.stuylib.math.Vector2D;
 
 public class InterpolatorMath {
-    //there may be some flawed logic in the for loop, it's adding to the end 
+    //there may be some flawed logic in the for loop 
     public static double[] getOriginalEquation(Vector2D point, int power){
-        double[] returnEquation = new double[power + 1];
-        for (int i = 0; i < power; i ++){
+        double[] returnEquation = new double[power + 2];
+        for (int i = 0; i < power - 1; i ++){
             returnEquation[i] = Math.pow(point.x, power + 1 - i);
         }
 

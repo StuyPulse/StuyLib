@@ -20,7 +20,7 @@ public class CubicInterpolator implements Interpolator{
         this.point4 = point4;
     }
 
-   public double[] getEquation(Vector2D point1, Vector2D point2, Vector2D point3){
+   public static double[] getEquation(Vector2D point1, Vector2D point2, Vector2D point3, Vector2D point4){
     // math 
     
 
@@ -65,9 +65,13 @@ public class CubicInterpolator implements Interpolator{
     return derivedEquation;
    }
 
-//    public static void main(String args[]) {
-//     double[] test =     
-//    }
+   public static void main(String args[]) {
+    double[] test = getEquation(new Vector2D(-2, 9), new Vector2D(-1, 2), new Vector2D(0, 3), new Vector2D(1, 12));
+    for (int i = 0; i < test.length; i ++){
+        System.out.println(test[i]);
+
+    }
+   }
    
    
    
