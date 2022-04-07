@@ -1,56 +1,52 @@
 package com.stuypulse.stuylib.math.interpolation;
+import java.util.Arrays;
 
-import java.util.ArrayList;
-
+import com.stuypulse.stuylib.math.SLMath;
 import com.stuypulse.stuylib.math.Vector2D;
 
 public class NearestInterpolator implements Interpolator {
 
-    private ArrayList<Vector2D> points = new ArrayList<Vector2D>(); // Java equivalent of a list
+    private final Vector2D[] points; // Java equivalent of a list
 
-    public NearestInterpolator(ArrayList<Vector2D> points) {
+    public NearestInterpolator(Vector2D... points) {
+        Arrays.sort(points, (lhs, rhs) -> (int)(Math.signum(lhs.x - rhs.x))); // sorts the points 
         this.points = points;
     }
-
-    // this method is used to input the reference point (to interpolate)
-    public void ReferencePoints(Vector2D... points) { // this takes in a unknown amount of points
-        for (Vector2D point : points) { // for each point in the array
-            this.points.add(point); // add the point to the arraylist
-            
-        }
-    }
-    /**   this method will ask a user for a distance and then return a RPM
-     **   put the points in order of increasing distance or else it's not gonna work 
-     **/
-    public double getInterpolatedValueFromDistance(double input){
-        // this section will find the nearest refernce points to the distance
-        int refPoint1 = 0;
-        int refPoint2 = 0;
-
-        for (int i = 0; i < points.size(); i ++){ 
-            if (input < points.get(i).x){
-                refPoint1 = i; 
-                refPoint2 = i - 1;
-
-            }
-
-        }
-        
-        //After we have the two reference points, we need to interpolate
-        Interpolator inputInterpolator = new IntervalInterpolator(points.get(refPoint1), points.get(refPoint2));
-
-        double RPM = inputInterpolator.interpolate(input);
-
-        return RPM;
-
-    }
-
     
     @Override
     public double interpolate(double x) {
-        return getInterpolatedValueFromDistance(x);
+        // this section will find the nearest refernce points to the distance
+        Vector2D left = Vector2D.kOrigin; // points are 0, 0
+        Vector2D right = Vector2D.kOrigin;
+
+        for (int i = 1; i < points.length; i ++){ 
+            Vector2D left_temp = points[i - 1];
+            Vector2D right_temp = points[i - 0];
+
+            if (left_temp.x < x && x < right_temp.x){
+                left = left_temp;
+                right = right_temp;
+                
+                break;
+            }
+        }
+        
+        return SLMath.lerp(left.x, right.x, (x - left.x) / (right.x - left.x));
+
     }
 
 
+    public static void main(String... args) {
+        Interpolator test = new NearestInterpolator(
+            new Vector2D(1, 6),
+            new Vector2D(6.5, 3),
+            new Vector2D(12, 6),
+            new Vector2D(9, 1)  
+        );
+
+        for(double i = 1; i < 12; i += 0.5) {
+            System.out.println(new Vector2D(i, test.interpolate(i)));
+        }
+    }
 
 }

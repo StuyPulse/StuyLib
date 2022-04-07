@@ -12,16 +12,12 @@ public class IntervalInterpolator implements Interpolator {
     Vector2D point1;
     Vector2D point2;
 
-    public IntervalInterpolator(Vector2D point1, Vector2D point2){
+    public IntervalInterpolator(Vector2D point1, Vector2D point2) {
         this.point1 = point1;
         this.point2 = point2;
     }
 
-    public double interpolate(double x){
-
-
-
-        
+    public double interpolate(double x) {
         double range = point2.x - point1.x;
         double slope = (point2.y - point1.y) / range;
         double yIntercept = point1.y - (slope * point1.x); // y = mx + b
