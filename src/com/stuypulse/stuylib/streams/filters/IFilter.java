@@ -4,6 +4,7 @@
 
 package com.stuypulse.stuylib.streams.filters;
 
+import com.stuypulse.stuylib.streams.booleans.BCast;
 import com.stuypulse.stuylib.streams.booleans.filters.BFilter;
 
 /**
@@ -15,6 +16,22 @@ import com.stuypulse.stuylib.streams.booleans.filters.BFilter;
  * @author Sam (sam.belliveau@gmail.com)
  */
 public interface IFilter {
+
+    /*****************/
+    /*** INTERFACE ***/
+    /*****************/
+
+    /**
+     * Get next value in Filter based on the next value given
+     *
+     * @param next next input value in the stream
+     * @return the output value of the filter
+     */
+    public double get(double next);
+
+    /*****************/
+    /*** FACTOREIS ***/
+    /*****************/
 
     /** @return a filter that just returns it's input */
     public static IFilter create() {
@@ -40,16 +57,12 @@ public interface IFilter {
      * @return the resulting IFilter
      */
     public static IFilter create(BFilter filter) {
-        return x -> filter.get(Math.abs(x) > 0.5) ? 1.0 : 0.0;
+        return x -> BCast.toDouble(filter.get(BCast.toBoolean(x)));
     }
 
-    /**
-     * Get next value in Filter based on the next value given
-     *
-     * @param next next input value in the stream
-     * @return the output value of the filter
-     */
-    public double get(double next);
+    /******************/
+    /*** DECORATORS ***/
+    /******************/
 
     /**
      * Combine an IFilter with another IFilter

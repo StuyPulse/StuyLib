@@ -18,6 +18,22 @@ import java.util.function.BooleanSupplier;
  */
 public interface BStream extends BooleanSupplier {
 
+    /*****************/
+    /*** INTERFACE ***/
+    /*****************/
+
+    /** @return next value in the stream */
+    public boolean get();
+
+    /** @return get BStream as a Boolean */
+    public default boolean getAsBoolean() {
+        return get();
+    }
+
+    /*****************/
+    /*** FACTOREIS ***/
+    /*****************/
+
     /**
      * Create a BStream from another BStream. This is helpful if you want to use some of the
      * decorator functions with a lambda.
@@ -37,16 +53,12 @@ public interface BStream extends BooleanSupplier {
      * @return the resulting BStream
      */
     public static BStream create(IStream stream) {
-        return () -> Math.abs(stream.get()) > 0.5;
+        return () -> BCast.toBoolean(stream.get());
     }
 
-    /** @return next value in the stream */
-    public boolean get();
-
-    /** @return get BStream as a Boolean */
-    public default boolean getAsBoolean() {
-        return get();
-    }
+    /******************/
+    /*** DECORATORS ***/
+    /******************/
 
     /**
      * Create a new FilteredBStream from the current stream

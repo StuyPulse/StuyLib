@@ -20,6 +20,22 @@ import java.util.function.DoubleSupplier;
  */
 public interface IStream extends DoubleSupplier {
 
+    /*****************/
+    /*** INTERFACE ***/
+    /*****************/
+
+    /** @return next value in the stream */
+    public double get();
+
+    /** @return get IStream as a double */
+    public default double getAsDouble() {
+        return get();
+    }
+
+    /*****************/
+    /*** FACTOREIS ***/
+    /*****************/
+
     /**
      * Create an IStream from another IStream. This is helpful if you want to use some of the
      * decorator functions with a lambda.
@@ -42,13 +58,9 @@ public interface IStream extends DoubleSupplier {
         return () -> stream.get() ? 1.0 : 0.0;
     }
 
-    /** @return next value in the stream */
-    public double get();
-
-    /** @return get IStream as a double */
-    public default double getAsDouble() {
-        return get();
-    }
+    /******************/
+    /*** DECORATORS ***/
+    /******************/
 
     /**
      * Create a new FilteredIStream from the current stream
