@@ -16,8 +16,7 @@ The [Controller](https://github.com/StuyPulse/StuyLib/blob/main/src/com/stuypuls
 
 ### [BangBangController](https://github.com/StuyPulse/StuyLib/blob/main/src/com/stuypulse/stuylib/control/BangBangController.java)
 
-<!-- A [BangBangController](https://github.com/StuyPulse/StuyLib/blob/main/src/com/stuypulse/stuylib/control/BangBangController.java), also known as an on-off controller, essentially only has two states.  -->
-<!-- A [BangBangController](https://github.com/StuyPulse/StuyLib/blob/main/src/com/stuypulse/stuylib/control/BangBangController.java) which returns positive values for positive error and negative values for negative error.  -->
+A [BangBangController](https://github.com/StuyPulse/StuyLib/blob/main/src/com/stuypulse/stuylib/control/BangBangController.java) goes forward at full force when the error is positive and backwards at full force when the error is negative. 
 
 ### [PIDCalculator](https://github.com/StuyPulse/StuyLib/blob/main/src/com/stuypulse/stuylib/control/PIDCalculator.java)
 
@@ -29,4 +28,4 @@ The [Controller](https://github.com/StuyPulse/StuyLib/blob/main/src/com/stuypuls
 
 ### [TBHController](https://github.com/StuyPulse/StuyLib/blob/main/src/com/stuypulse/stuylib/control/TBHController.java)
 
-A "take back half" controller which increases the speed until it goes over the reference, then decreases the speed by half and repeats the process. 
+A "take back half" controller which increases the speed until it goes over the reference, then decreases the speed by half and repeats the process until the error reaches 0. 
