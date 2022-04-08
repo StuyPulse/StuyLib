@@ -55,9 +55,9 @@ public class TimedMovingAverage implements IFilter {
 
     private void add(double next) {
         final Value val = new Value(next, mTimer.reset());
-        mTotal += val.value; // Add value to total
-        mCurrentTime += val.time; // Add time to current time
-        mValues.add(val); 
+        mTotal += val.value;
+        mCurrentTime += val.time;
+        mValues.add(val);
     }
 
     private void remove() {

@@ -28,7 +28,7 @@ public final class Playground {
     public static void main(String... args) throws InterruptedException {
         System.out.println("Testing graph library...");
 
-        double RC = 0.5;
+        double RC = 0.2;
 
         IFilter hpf = IFilter.create();
 
