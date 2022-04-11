@@ -4,13 +4,13 @@
 
 package com.stuypulse.stuylib.util.chart;
 
+import com.stuypulse.stuylib.math.Vector2D;
+import com.stuypulse.stuylib.math.interpolation.CubicInterpolator;
+import com.stuypulse.stuylib.math.interpolation.Interpolator;
+import com.stuypulse.stuylib.math.interpolation.NearestInterpolator;
+import com.stuypulse.stuylib.math.interpolation.PolyInterpolator;
 import com.stuypulse.stuylib.streams.IStream;
-import com.stuypulse.stuylib.streams.booleans.filters.BButton;
-import com.stuypulse.stuylib.streams.booleans.filters.BButtonRC;
-import com.stuypulse.stuylib.streams.booleans.filters.BDebounce;
-import com.stuypulse.stuylib.streams.booleans.filters.BFilter;
 import com.stuypulse.stuylib.streams.filters.*;
-import com.stuypulse.stuylib.util.Looper;
 
 public final class Playground {
 
@@ -25,52 +25,33 @@ public final class Playground {
         }
     }
 
-    public static void main(String... args) throws InterruptedException {
-        System.out.println("Testing graph library...");
+    public static Vector2D[] test_points = {
+        new Vector2D(0, 5),
+        new Vector2D(1, 1),
+        new Vector2D(3, 10),
+        new Vector2D(5, 2),
+        new Vector2D(8, 5),
+        new Vector2D(10, 2)  
+};
 
-        double RC = 0.2;
+    public static GraphData makeTest(String name, Interpolator interpolator) {
+        GraphData test_graph = new GraphData(name, 100, -5, 15);
 
-        IFilter hpf = IFilter.create();
-
-        for (int i = 0; i < 8; ++i) {
-            hpf =
-                    hpf.then(
-                            IFilter.create()
-                                    .sub(
-                                            new TimedMovingAverage(0.2)
-                                                    .then(new TimedMovingAverage(0.2))));
+        for (double i = 0; i < 10; i += 0.1) {
+                test_graph.update(interpolator.interpolate(i));
         }
+    
+        return test_graph;
+}
 
-        GraphData[] inputs =
-                new GraphData[] {
-                    new FilteredGraphData(
-                            Constants.make("Control"), IFilter.create(BFilter.create())),
-                    new FilteredGraphData(
-                            Constants.make("Pressed2"),
-                            IFilter.create(new BButton.Pressed().then(new BDebounce.Falling(0.5)))),
-                    new FilteredGraphData(
-                            Constants.make("Released2"),
-                            IFilter.create(
-                                    new BButton.Released().then(new BDebounce.Falling(0.5)))),
-                    new FilteredGraphData(
-                            Constants.make("Pressed"), IFilter.create(new BButtonRC.Pressed(0.5))),
-                    new FilteredGraphData(
-                            Constants.make("Released"),
-                            IFilter.create(new BButtonRC.Released(0.5))),
-                };
+    public static void main(String... args) throws InterruptedException {
+        JGraph graph = new JGraph(
+                // makeTest("Cubic", new CubicInterpolator(test_points)), 
+                // makeTest("Linear", new NearestInterpolator(test_points)),
+                makeTest("Poly", new PolyInterpolator(test_points))
+        );
 
-        JGraph graph = new JGraph(inputs);
+        graph.update();
 
-        final IStream mouse = IStream.create(() -> (graph.getMouseTracker().getMouseY() - 0.5) * 2);
-        Looper loop =
-                new Looper(
-                        () -> {
-                            final double next = mouse.get();
-                            graph.update(next);
-                        },
-                        0.02);
-
-        loop.start();
-        loop.join();
     }
 }

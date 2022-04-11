@@ -9,8 +9,7 @@ public class NearestInterpolator implements Interpolator {
     private final Vector2D[] points; // Java equivalent of a list
 
     public NearestInterpolator(Vector2D... points) {
-        Arrays.sort(points, (lhs, rhs) -> (int)(Math.signum(lhs.x - rhs.x))); // sorts the points 
-        this.points = points;
+        this.points = Interpolator.getSortedPoints(points);
     }
     
     @Override
@@ -23,7 +22,7 @@ public class NearestInterpolator implements Interpolator {
             Vector2D left_temp = points[i - 1];
             Vector2D right_temp = points[i - 0];
 
-            if (left_temp.x < x && x < right_temp.x){
+            if (left_temp.x <= x && x <= right_temp.x){
                 left = left_temp;
                 right = right_temp;
                 
@@ -31,7 +30,7 @@ public class NearestInterpolator implements Interpolator {
             }
         }
         
-        return SLMath.lerp(left.x, right.x, (x - left.x) / (right.x - left.x));
+        return SLMath.lerp(left.y, right.y, (x - left.x) / (right.x - left.x));
 
     }
 

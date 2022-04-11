@@ -1,88 +1,87 @@
 package com.stuypulse.stuylib.math.interpolation;
 
 
+import java.util.Arrays;
+
 import com.stuypulse.stuylib.math.Vector2D;
 
 public class CubicInterpolator implements Interpolator{
-    Vector2D point1;
-    Vector2D point2;
-    Vector2D point3;
-    Vector2D point4;
-    double a;
-    double b;
-    double c;
-    double d; 
-
-    public CubicInterpolator(Vector2D point1, Vector2D point2, Vector2D point3, Vector2D point4){
-        this.point1 = point1;
-        this.point2 = point2;
-        this.point3 = point3;
-        this.point4 = point4;
+    
+    private static double getTangent(Vector2D a, Vector2D b) {
+        return (b.y - a.y) / (b.x - a.x);
     }
 
-   public static double[] getEquation(Vector2D point1, Vector2D point2, Vector2D point3, Vector2D point4){
-    // math 
-    
+    private final int size;
+    private final Vector2D[] points;
+    private final double[] tangents;
 
+    public CubicInterpolator(Vector2D... points) {
+        if (points.length < 4) {
+            throw new IllegalArgumentException("CubicInterpolator requires at least 4 points");
+        }
 
-    // TODO: store everything below into a new class: GassianElimination
-    // write 3 equations out of the three points.
-    // store the equations in 3 arrays, and we can manipulate those arrays to get new arrays
+        this.size = points.length;
+        this.points = Interpolator.getSortedPoints(points);
+        this.tangents = new double[size];
 
+        this.tangents[0] = getTangent(this.points[0], this.points[1]);
+        this.tangents[size - 1] = getTangent(this.points[size - 2], this.points[size - 1]);
 
-    // all equations are in the form {coeffient of a, coefficent of b, coeffient of c, coeffiecent of d, equals to (usually y)}
-
-    double equation1[] = InterpolatorMath.getOriginalEquation(point1, 3);
-    double equation2[] = InterpolatorMath.getOriginalEquation(point2, 3);
-    double equation3[] = InterpolatorMath.getOriginalEquation(point3, 3);
-    double equation4[] = InterpolatorMath.getOriginalEquation(point4, 3);
-
-
-    double tripleVariableEquation1[] = InterpolatorMath.worklessCancel(equation1, equation2);
-    double tripleVariableEquation2[] = InterpolatorMath.worklessCancel(equation1, equation3);
-    double tripleVariableEquation3[] = InterpolatorMath.worklessCancel(equation1, equation4);
-
-    // we should be left with a set of triple variable equations. We then repeat. 
-
-    double doubleVariableEquation1[] = InterpolatorMath.worklessCancel(tripleVariableEquation1, tripleVariableEquation2);
-    double doubleVariableEquation2[] = InterpolatorMath.worklessCancel(tripleVariableEquation1, tripleVariableEquation3);
-
-    // now we have two doubleVariableEquations. We can now cancel to one variable
-
-    double singleVariableEquation[] = InterpolatorMath.worklessCancel(doubleVariableEquation1, doubleVariableEquation2);
-    
-    // we now have a singleVariable equation equal to a y value. we now have all the nessecary information to do cancelling
-    // we use one of each equation, a original equation, tripleVariable, a double, and the singleVariable equation and we can plug and solve
-
-
-    double d = singleVariableEquation[4] / singleVariableEquation[3]; // a * x = num
-    double c = (doubleVariableEquation1[4] - (d * doubleVariableEquation1[3])) / doubleVariableEquation1[2]; // ax + by = num, (num - by)/a
-    double b = (tripleVariableEquation1[4] - ((d * tripleVariableEquation1[3]) + (c * tripleVariableEquation1[2]))) / tripleVariableEquation1[1];
-    double a = equation1[4] - ((d * equation1[3]) + (c * equation1[2]) + (b * equation1[1])) / equation1[0];
-
-    double derivedEquation[] = {a, b, c, d};
-
-    return derivedEquation;
-   }
-
-   public static void main(String args[]) {
-    double[] test = getEquation(new Vector2D(-2, 9), new Vector2D(-1, 2), new Vector2D(0, 3), new Vector2D(1, 12));
-    for (int i = 0; i < test.length; i ++){
-        System.out.println(test[i]);
-
+        for (int i = 1; i < size - 1; ++i) {
+            this.tangents[i] = getTangent(this.points[i - 1], this.points[i + 1]);
+        }
     }
-   }
-   
-   
-   
-   
-   
 
-
-    @Override
     public double interpolate(double x) {
-        // TODO Auto-generated method stub
-        return 0.0;
+        // this section will find the nearest refernce points to the distance
+        Vector2D left = Vector2D.kOrigin; // points are 0, 0
+        Vector2D right = Vector2D.kOrigin;
+
+        double left_tangent = 0;
+        double right_tangent = 0;
+
+        for (int i = 1; i < points.length; i ++){ 
+            Vector2D left_temp = points[i - 1];
+            Vector2D right_temp = points[i - 0];
+
+            if (left_temp.x <= x && x <= right_temp.x){
+                left = left_temp;
+                right = right_temp;
+
+                left_tangent = tangents[i - 1];
+                right_tangent = tangents[i - 0];
+                
+                break;
+            }
+        }
+
+        double gap = (right.x - left.x);
+
+        double t = (x - left.x) / gap;
+        double tt = t * t;
+        double ttt = tt * t;
+
+        double h00 = 2 * ttt - 3 * tt + 1;
+        double h10 = ttt - 2 * tt + t;
+        double h01 = -2 * ttt + 3 * tt;
+        double h11 = ttt - tt;
+
+        return h00 * left.y + h10 * gap * left_tangent + h01 * right.y + h11 * gap * right_tangent;
     }
-    
+
+    public static void main(String... args) {
+        Interpolator test = new CubicInterpolator(
+            new Vector2D(1, 1),
+            new Vector2D(3, 2),
+            new Vector2D(8, 5),
+            new Vector2D(10, 2)  
+        );
+
+        for(double i = 3; i < 8; i += 0.5) {
+            System.out.println(new Vector2D(i, test.interpolate(i)));
+        }
+    }
+
+
+
 }
