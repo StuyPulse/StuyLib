@@ -46,8 +46,8 @@ public final class Playground {
 
     public static void main(String... args) throws InterruptedException {
         JGraph graph = new JGraph(
-                // makeTest("Cubic", new CubicInterpolator(test_points)), 
-                // makeTest("Linear", new NearestInterpolator(test_points)),
+                makeTest("Cubic", new CubicInterpolator(test_points)), 
+                makeTest("Linear", new NearestInterpolator(test_points)),
                 makeTest("Poly", new PolyInterpolator(test_points))
         );
 
