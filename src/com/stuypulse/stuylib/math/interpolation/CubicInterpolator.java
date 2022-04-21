@@ -36,12 +36,12 @@ public class CubicInterpolator implements Interpolator{
     
     /**
      * gets the tangents of the two reference points surrounding the point to be interpolated
-     * @param a the point on the left (? fact check this @sam)
-     * @param b the point on the right (? fact check this @sam)
-     * @return the slope/tangent (note that the slope and tangents are parallel)
+     * @param left the point on the left (? fact check this @sam)
+     * @param right the point on the right (? fact check this @sam)
+     * @return the slope/tangent (note that the slope and tangents are parallel
      */
-    private static double getTangent(Vector2D a, Vector2D b) {
-        return (b.y - a.y) / (b.x - a.x);
+    private static double getTangent(Vector2D left, Vector2D right) {
+        return (right.y - left.y) / (right.x - left.x);
     }
 
     private final int size;
@@ -58,7 +58,7 @@ public class CubicInterpolator implements Interpolator{
         this.points = Interpolator.getSortedPoints(points);
         this.tangents = new double[size];
         
-        // gets the tangent (m0 and m1) @sam pls explain this
+        // gets the tangent (m0 and m1) 
         this.tangents[0] = getTangent(this.points[0], this.points[1]);
         this.tangents[size - 1] = getTangent(this.points[size - 2], this.points[size - 1]);
 
