@@ -1,27 +1,52 @@
+/* Copyright (c) 2022 StuyPulse Robotics. All rights reserved. */
+/* This work is licensed under the terms of the MIT license */
+/* found in the root directory of this project. */
+
 package com.stuypulse.stuylib.math.interpolation;
 
 import java.util.ArrayList;
 
 import com.stuypulse.stuylib.math.Vector2D;
-
-// this class uses Lagrange interpolation polymial method. It interpolators any n number of points
-// @author Eric Lin (ericlin071906@gmail.com)
-// @author Myles Pasetsky (selym3 on github)
-
-
+ 
+/**
+ * this class uses Lagrange polynomial interpolation. It derives an equation for a set of pointss in the form:
+ *      P(x) = a(x) + b(x) + c(x) ...
+ * where a(x), b(x), c(x) .., is a "sub" - polynomial  / "partial" - polynomial
+ * These partial polynomials are derived from the reference data provided
+ * The Partial polynomial is derived by a(x-r1)(x-r2)(x-r3)... in where 
+ *      r1, r2, r3,... are the x coordinates of the reference points NOT including the current reference point
+ *      a is the y coordinate current reference point divided by (x-r1)(x-r2)(x-r3)...,
+ *           where x is replaced by the current x coordinate of the reference point, and NOT including the current reference point
+ * We then sum up all the partial polynomials to get the final polynomial
+ * This final polynomial is a polynomial that all reference points will pass through
+ * We plug the x value of the y we want to find into this polynomial and it will return the y value
+ * 
+ * @author Eric Lin (ericlin071906@gmail.com)
+ * @author Myles Pasetsky (selym3 on github)
+ */
 public class PolyInterpolator implements Interpolator {
 
-
+    /**
+     * This class contains a constructor that creates a polynomial. It has several functions that can be called
+     */
     private static class Polynomial {
         private double a;
         private ArrayList<Double> factors;
-
+        
+        /**
+         * A constructor that creates a new (partial) polynomial 
+         * stores all factors in a new arrayList for easy access
+         */
         public Polynomial() {
             a = 0.0; 
             factors = new ArrayList<>();
         }
-
-        public void setCoefficient(double a) { // sets Coefficent of a
+        
+        /**
+         * sets coefficent of a.
+         * @param a 
+         */
+        public void setCoefficient(double a) { 
             this.a = a;
         }
 
@@ -30,8 +55,12 @@ public class PolyInterpolator implements Interpolator {
             factors.add(zero);
         }
 
-        public double get(double x) { // x is target point
-            //evaluates polynomial in form a * (x - factors[0]) * (x - factors[1]) * ... 
+        /**
+         * Evaluates polynomial in the form a * (x - factors[0]) * (x - factors[1]) * ... 
+         * @param x target point (point we want to interpolate the y for)
+         * @return output (y)
+         */
+        public double get(double x) {
             double output = a;
             for (double factor : factors) {
                 output *= (x - factor);
@@ -41,18 +70,21 @@ public class PolyInterpolator implements Interpolator {
     }
     
 
-    // Lagrange polynomials is in the form F(x) = p(x) + q(x) + r(x) ... 
-    // each of the terms of the sum is called a PartialPolynomial
-    // this method finds the value of each partial polynomial 
-    private static Polynomial getPartialPolynomial(Vector2D target, Vector2D[] points) { 
+    /**
+     * This class a partial polynomial that is used to derive the polynomial
+     * @param targetReference the reference point for that partial polynomial
+     * @param points the reference points (for that partial polynomial)
+     * @return a partial polynomial
+     */
+    private static Polynomial getPartialPolynomial(Vector2D targetReference, Vector2D[] points) { 
         
 
         Polynomial polynomial =  new Polynomial();
-        double a = target.y;
+        double a = targetReference.y;
 
         for (Vector2D point : points){
-            if(point != target){
-                a /= target.x - point.x; 
+            if(point != targetReference){
+                a /= targetReference.x - point.x; 
                 polynomial.addZero(point.x);
             }
             
@@ -62,10 +94,13 @@ public class PolyInterpolator implements Interpolator {
        
     }
 
-  
+    
     private final Polynomial[] partialPolynomials; // storing the partial polynomials 
 
-    // gets the value of the partial polynomials
+    /**
+     * a constructor for the class that takes in a set of points and creates a polynomial
+     * @param points are reference points
+     */
     public PolyInterpolator(Vector2D... points) {
         if (points.length <= 1){
             throw new IllegalArgumentException("PolyInterpolator needs at least 2 or more points");
@@ -73,7 +108,7 @@ public class PolyInterpolator implements Interpolator {
 
         partialPolynomials = new Polynomial[points.length];
         
-        // returns a and factors for partial polynomials
+        // creates a list of partial polynomials
         for (int i = 0; i < points.length; i ++){
             partialPolynomials[i] = getPartialPolynomial(points[i], points);
         }
@@ -84,9 +119,11 @@ public class PolyInterpolator implements Interpolator {
     
 
     @Override
+    /**
+     * sums the list of partial polynomials from above, while plugging x into the polynomial
+     * @param x target point
+     */
     public double interpolate(double x) {
-        //sum of all partial function at x
-
         double fullPolynomial = 0;
         for (int i = 0; i < partialPolynomials.length; i ++){
             fullPolynomial += partialPolynomials[i].get(x);

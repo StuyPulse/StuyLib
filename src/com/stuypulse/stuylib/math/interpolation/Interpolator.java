@@ -1,3 +1,6 @@
+/* Copyright (c) 2022 StuyPulse Robotics. All rights reserved. */
+/* This work is licensed under the terms of the MIT license */
+/* found in the root directory of this project. */
 package com.stuypulse.stuylib.math.interpolation;
 
 import java.util.Arrays;
@@ -5,8 +8,19 @@ import java.util.Arrays;
 import com.stuypulse.stuylib.math.Vector2D;
 
 public interface Interpolator {
-    double interpolate(double x); // a behavior that takes in a double and returns a double
+    /**
+     *  a behavior that takes in a double and returns a double 
+     * @param x point to be intepolated
+     * @return nothing
+     */
+    double interpolate(double x); 
 
+
+    /**
+     * sorts the reference point by the value of x from smallest to greatest
+     * @param points reference points
+     * @return an array of sorted reference points
+     */
     public static Vector2D[] getSortedPoints(Vector2D... points) {
         if (points.length <= 1) {
             throw new IllegalArgumentException("Interpolation requires at 2 <= points");

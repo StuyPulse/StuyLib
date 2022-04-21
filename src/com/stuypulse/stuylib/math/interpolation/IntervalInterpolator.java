@@ -1,17 +1,24 @@
+/* Copyright (c) 2022 StuyPulse Robotics. All rights reserved. */
+/* This work is licensed under the terms of the MIT license */
+/* found in the root directory of this project. */
 package com.stuypulse.stuylib.math.interpolation;
 
 import com.stuypulse.stuylib.math.Vector2D;
 
-/* This class uses 3 sets of points, two of these are references to the shooter, and the third is
-the RPM of the shooter. For the third point, all we are giving is this distance, and all we are returning 
-is the RPM.
 
-*/
+/**
+ * This class uses two reference points to interpolate a third point's y value
+ */
 
 public class IntervalInterpolator implements Interpolator {
     Vector2D point1;
     Vector2D point2;
-
+    
+    /**
+     * stores the two reference points
+     * @param point1
+     * @param point2
+     */
     public IntervalInterpolator(Vector2D point1, Vector2D point2) {
         this.point1 = point1;
         this.point2 = point2;
