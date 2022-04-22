@@ -36,8 +36,8 @@ public class CubicInterpolator implements Interpolator{
     
     /**
      * gets the tangents of the two reference points surrounding the point to be interpolated
-     * @param left the point on the left (? fact check this @sam)
-     * @param right the point on the right (? fact check this @sam)
+     * @param left the point on the left 
+     * @param right the point on the right
      * @return the slope/tangent (note that the slope and tangents are parallel
      */
     private static double getTangent(Vector2D left, Vector2D right) {

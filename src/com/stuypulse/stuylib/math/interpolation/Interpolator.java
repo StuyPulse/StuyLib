@@ -11,7 +11,7 @@ public interface Interpolator {
     /**
      *  a behavior that takes in a double and returns a double 
      * @param x point to be intepolated
-     * @return nothing
+     * @return interpolated value
      */
     double interpolate(double x); 
 
