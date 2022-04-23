@@ -7,6 +7,7 @@ package com.stuypulse.stuylib.streams.booleans;
 import com.stuypulse.stuylib.streams.IStream;
 import com.stuypulse.stuylib.streams.booleans.filters.BFilter;
 
+import edu.wpi.first.wpilibj.DigitalInput;
 import edu.wpi.first.wpilibj2.command.button.Button;
 import java.util.function.BooleanSupplier;
 
@@ -27,6 +28,17 @@ public interface BStream extends BooleanSupplier {
      */
     public static BStream create(BStream stream) {
         return stream;
+    }
+
+    /**
+     * Create a BStream from a digital source. This can helpful for processing a digital stream,
+     * like negating the value when used for switches.
+     *
+     * @param input digital input object
+     * @return the resulting BStream
+     */
+    public static BStream create(DigitalInput input) {
+        return input::get;
     }
 
     /**

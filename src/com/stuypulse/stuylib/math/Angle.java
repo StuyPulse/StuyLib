@@ -221,6 +221,16 @@ public final class Angle {
         return fromRadians(Math.atan(slope));
     }
 
+    /**
+     * Constructs a new Angle from a WPILib Rotation2d
+     *
+     * @param rotation rotation2d object
+     * @return the same angle
+     */
+    public static Angle fromRotation2d(Rotation2d rotation) {
+        return Angle.fromDegrees(rotation.getDegrees());
+    }
+
     /****************************/
     /*** CLASS IMPLEMENTATION ***/
     /****************************/

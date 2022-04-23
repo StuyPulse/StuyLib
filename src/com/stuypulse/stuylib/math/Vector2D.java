@@ -57,6 +57,12 @@ public final class Vector2D {
         this.y = axis[1];
     }
 
+    /** @param translation Translation2d to copy this vector into */
+    public Vector2D(Translation2d translation) {
+        this.x = translation.getX();
+        this.y = translation.getY();
+    }
+
     /** @return double array of size 2 defined as {x, y} */
     public double[] getArray() {
         return new double[] {x, y};
