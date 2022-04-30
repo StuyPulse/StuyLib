@@ -9,17 +9,23 @@ import java.util.ArrayList;
 import com.stuypulse.stuylib.math.Vector2D;
  
 /**
- * this class uses Lagrange polynomial interpolation. It derives an equation for a set of pointss in the form:
+ * This class uses Lagrange polynomial interpolation. It derives an equation for a set of pointss in the form
+ * 
  *      P(x) = a(x) + b(x) + c(x) ...
- * where a(x), b(x), c(x) .., is a "sub" - polynomial  / "partial" - polynomial
- * These partial polynomials are derived from the reference data provided
- * The Partial polynomial is derived by a(x-r1)(x-r2)(x-r3)... in where 
+ * 
+ * where a(x), b(x), c(x) .., is a "sub" - polynomial  / "partial" - polynomial.
+ * 
+ * These partial polynomials are derived from the reference data provided.
+ * The partial polynomial is derived by a(x-r1)(x-r2)(x-r3)... in where 
+ * 
  *      r1, r2, r3,... are the x coordinates of the reference points NOT including the current reference point
  *      a is the y coordinate current reference point divided by (x-r1)(x-r2)(x-r3)...,
- *           where x is replaced by the current x coordinate of the reference point, and NOT including the current reference point
- * We then sum up all the partial polynomials to get the final polynomial
- * This final polynomial is a polynomial that all reference points will pass through
- * We plug the x value of the y we want to find into this polynomial and it will return the y value
+ *      
+ *      where x is replaced by the current x coordinate of the reference point, and NOT including the current reference point.
+ * 
+ * We then sum up all the partial polynomials to get the final polynomial.
+ * This final polynomial is a polynomial that all reference points will pass through.
+ * We plug the x value of the y we want to find into this polynomial and it will return the y value.
  * 
  * @author Eric Lin (ericlin071906@gmail.com)
  * @author Myles Pasetsky (selym3 on github)
@@ -34,7 +40,7 @@ public class PolyInterpolator implements Interpolator {
         private ArrayList<Double> factors;
         
         /**
-         * A constructor that creates a new (partial) polynomial 
+         * A constructor that creates a new (partial) polynomial and
          * stores all factors in a new arrayList for easy access
          */
         public Polynomial() {
@@ -43,7 +49,7 @@ public class PolyInterpolator implements Interpolator {
         }
         
         /**
-         * sets coefficent of a.
+         * Set the coefficent of a
          * @param a 
          */
         public void setCoefficient(double a) { 
@@ -51,7 +57,7 @@ public class PolyInterpolator implements Interpolator {
         }
 
         public void addZero(double zero) {
-            // add factor to the list of factors
+            // Add factor to the list of factors
             factors.add(zero);
         }
 
@@ -98,7 +104,7 @@ public class PolyInterpolator implements Interpolator {
     private final Polynomial[] partialPolynomials; // storing the partial polynomials 
 
     /**
-     * a constructor for the class that takes in a set of points and creates a polynomial
+     * Constructor for the class that takes in a set of points and creates a polynomial
      * @param points are reference points
      */
     public PolyInterpolator(Vector2D... points) {
@@ -120,7 +126,7 @@ public class PolyInterpolator implements Interpolator {
 
     @Override
     /**
-     * sums the list of partial polynomials from above, while plugging x into the polynomial
+     * Adds the list of partial polynomials from above, while plugging x into the polynomial
      * @param x target point
      */
     public double interpolate(double x) {

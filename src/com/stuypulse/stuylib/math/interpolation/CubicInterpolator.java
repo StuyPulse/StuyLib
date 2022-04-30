@@ -8,9 +8,9 @@ import com.stuypulse.stuylib.math.Vector2D;
 /**
  * This class uses Cubic Hermite interpolation (to find the RPM of the shooter). 
  * This class gets a polynomial that represents the model. We then use the polynomial to interpolate. 
+ * 
  * The polynomial can be written as
  *      P(t) = h00(t)p0 + h10(t)m0 + h01(t)p1 + h11(t)m1
- * 
  * 
  * in which 
  *       P(t) is the polynomial
@@ -20,7 +20,7 @@ import com.stuypulse.stuylib.math.Vector2D;
  *       h01(t) = -2(t * t * t) + 3(t * t)
  *       h11(t) = (t * t * t) - (t * t)
  *       m0, m1 is the slope (derivative) of the points
- *       t = time 
+ *       t = time (arbitrary point in interval)
  * 
  * It can be thought of as interpolating between the derivatives.
  *          https://www.desmos.com/calculator/wcjns2ayab
@@ -35,9 +35,9 @@ import com.stuypulse.stuylib.math.Vector2D;
 public class CubicInterpolator implements Interpolator{
     
     /**
-     * gets the tangents of the two reference points surrounding the point to be interpolated
-     * @param left the point on the left 
-     * @param right the point on the right
+     * Get the tangents of the two reference points surrounding the point to be interpolated
+     * @param left the left point
+     * @param right the right point
      * @return the slope/tangent (note that the slope and tangents are parallel
      */
     private static double getTangent(Vector2D left, Vector2D right) {
@@ -62,7 +62,8 @@ public class CubicInterpolator implements Interpolator{
         this.points = Interpolator.getSortedPoints(points);
         this.tangents = new double[size];
         
-        // gets the tangent (m0 and m1) by using the points left and right of it (note that they are parrallel) 
+        // gets the tangent (m0 and m1) 
+        // note that the tangent of the points are parrallel to the slope of the points surrounding it 
         this.tangents[0] = getTangent(this.points[0], this.points[1]);
         this.tangents[size - 1] = getTangent(this.points[size - 2], this.points[size - 1]);
 
@@ -72,14 +73,14 @@ public class CubicInterpolator implements Interpolator{
     }
 
     public double interpolate(double x) {
-        // this section will find the nearest reference points to the distance
-        Vector2D left = Vector2D.kOrigin; // kOrigin is  (0, 0)
+        // Find the nearest reference points to the distance
+        Vector2D left = Vector2D.kOrigin; // kOrigin is (0,0)
         Vector2D right = Vector2D.kOrigin;
 
         double left_tangent = 0;
         double right_tangent = 0;
 
-        // solving for the tangents of the left and right points that surround the target point
+        // Solve for the tangents of the left and right points that surround the target point
         for (int i = 1; i < points.length; i ++){ 
             Vector2D left_temp = points[i - 1];
             Vector2D right_temp = points[i - 0];
@@ -97,7 +98,7 @@ public class CubicInterpolator implements Interpolator{
 
         double gap = (right.x - left.x);
 
-        // applying the formula
+        // Apply the formula
         double t = (x - left.x) / gap;
         double tt = t * t;
         double ttt = tt * t;
@@ -110,7 +111,7 @@ public class CubicInterpolator implements Interpolator{
         return h00 * left.y + h10 * gap * left_tangent + h01 * right.y + h11 * gap * right_tangent;
     }
 
-    // test
+    // Tests
     public static void main(String... args) {
         Interpolator test = new CubicInterpolator(
             new Vector2D(1, 1),

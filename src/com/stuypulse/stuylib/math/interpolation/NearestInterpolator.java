@@ -18,22 +18,22 @@ public class NearestInterpolator implements Interpolator {
 
     private final Vector2D[] points; 
 
-    // sorts the points in ascending order
+    // Sort the points in ascending order
     public NearestInterpolator(Vector2D... points) {
         this.points = Interpolator.getSortedPoints(points); 
     }
     
     @Override
     /**
-     * @param x the point of extrapolation to get an output
+     * @param x the point of interpolation to get an output
      * @return interpolated value
      */
     public double interpolate(double x) {
-        // this section will find the nearest refernce points to the distance
-        Vector2D left = Vector2D.kOrigin; // points are 0, 0 for kOrigin
+        // Find the nearest refernce points to the distance
+        Vector2D left = Vector2D.kOrigin; // kOrigin is (0,0)
         Vector2D right = Vector2D.kOrigin; 
 
-        // searching for the points on the left and right of the target point. 
+        // Searching for the points on the left and right of the target point. 
 
         if (x <  points[0].x){
             left = points[0];
@@ -65,8 +65,8 @@ public class NearestInterpolator implements Interpolator {
     }
 
     
-    //for testing
-        public static void main(String... args) {
+    // Tests
+    public static void main(String... args) {
         Interpolator test = new NearestInterpolator(
             new Vector2D(1, 6),
             new Vector2D(6.5, 3),
