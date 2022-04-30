@@ -14,13 +14,13 @@ import com.stuypulse.stuylib.math.Vector2D;
  * 
  * in which 
  *       P(t) is the polynomial
- *       p0, p1 are the y coordinates of the reference points 
+ *       p0, p1 are the (x,y) coordinates of the reference points 
  *       h00(t) = 2(t * t * t) - 3(t * t) + 1 
  *       h10(t) = (t* t * t) - 2(t * t) + t
  *       h01(t) = -2(t * t * t) + 3(t * t)
  *       h11(t) = (t * t * t) - (t * t)
  *       m0, m1 is the slope (derivative) of the points
- *       t = time 
+ *       t = time (arbitrary point in interval)
  * 
  * It can be thought of as interpolating between the derivatives.
  *          https://www.desmos.com/calculator/wcjns2ayab
