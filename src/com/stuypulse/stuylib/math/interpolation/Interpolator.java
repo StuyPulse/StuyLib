@@ -7,9 +7,12 @@ import java.util.Arrays;
 
 import com.stuypulse.stuylib.math.Vector2D;
 
+/**
+ * @author Eric (ericlin071906@gmail.com)
+ */
 public interface Interpolator {
     /**
-     *  a behavior that takes in a double and returns a double 
+     * A behavior that takes in a double and returns a double 
      * @param x point to be intepolated
      * @return interpolated value
      */
@@ -17,13 +20,13 @@ public interface Interpolator {
 
 
     /**
-     * sorts the reference point by the value of x from smallest to greatest
+     * Sorts the reference point by the value of x from smallest to greatest
      * @param points reference points
      * @return an array of sorted reference points
      */
     public static Vector2D[] getSortedPoints(Vector2D... points) {
-        if (points.length <= 1) {
-            throw new IllegalArgumentException("Interpolation requires at 2 <= points");
+        if (points.length < 2) {
+            throw new IllegalArgumentException("Interpolation requires at least 2 points");
         }
 
         Vector2D[] output = points.clone();
@@ -31,7 +34,7 @@ public interface Interpolator {
 
         for(int i = 1; i < output.length; ++i) {
             if(output[i - 1].x == output[i - 0].x) {
-                throw new IllegalArgumentException("Interpolation requires all points to have unique X coordinates!");
+                throw new IllegalArgumentException("Interpolation requires all points to have unique x coordinates");
             }
         }
 
