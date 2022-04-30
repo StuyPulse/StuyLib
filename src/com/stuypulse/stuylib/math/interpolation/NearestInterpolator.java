@@ -34,33 +34,29 @@ public class NearestInterpolator implements Interpolator {
         Vector2D right = Vector2D.kOrigin; 
 
         // searching for the points on the left and right of the target point. 
-        for (int i = 1; i < points.length; i ++){ 
-            Vector2D left_temp = points[i - 1];
-            Vector2D right_temp = points[i - 0];
 
-            if (left_temp.x <= x && x <= right_temp.x){
-                left = left_temp;
-                right = right_temp;
-                
-                break;
-            }
+        if (x <  points[0].x){
+            left = points[0];
+            right = points[1];
+        } else if(x > points[points.length -1].x){
+            left = points[points.length -2];
+            right = points[points.length -1];
+        } else{
+            for (int i = 1; i < points.length; i ++){ 
+                Vector2D left_temp = points[i - 1];
+                Vector2D right_temp = points[i - 0];
 
-            if (x < points[0].x){ // if we're interpolating outside the data set
-                left = points[0]; // set left and right to be the outer edge
-                right = points[1];
-                IntervalInterpolator slope = new IntervalInterpolator(left, right);
-                return slope.interpolate(x);
-                
+                if (left_temp.x <= x && x <= right_temp.x){
+                    left = left_temp;
+                    right = right_temp;
+                    
+                    break;
+                }
             }
-            
-            // if(x > points[points.length].x){
-            //     left = points[points.length - 1];
-            //     right = points[points.length];
-            //     break;
-            // }
         }
-        
-        return SLMath.lerp(left.y, right.y, (x - left.x) / (right.x - left.x));
+
+        IntervalInterpolator NearestInterpolator = new IntervalInterpolator(left, right);
+        return NearestInterpolator.interpolate(x);
         /**   returns start + (end - start) * clamp(t, 0.0, 1.0)
          * t is x
          * E - S is the slope
