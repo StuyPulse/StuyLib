@@ -7,7 +7,8 @@ import com.stuypulse.stuylib.math.Vector2D;
 
 
 /**
- * This class uses two reference points to interpolate a third point's y value
+ * This class uses two reference points to interpolate for a third point's y value
+ * @author Eric (ericlin071906@gmail.com)
  */
 
 public class IntervalInterpolator implements Interpolator {
@@ -15,7 +16,7 @@ public class IntervalInterpolator implements Interpolator {
     Vector2D point2;
     
     /**
-     * stores the two reference points
+     * Store the two reference points
      * @param point1
      * @param point2
      */
