@@ -72,6 +72,7 @@ public class CubicInterpolator implements Interpolator{
         }
     }
 
+    @Override
     public double interpolate(double x) {
         // Find the nearest reference points to the distance
         Vector2D left = Vector2D.kOrigin; // kOrigin is (0,0)

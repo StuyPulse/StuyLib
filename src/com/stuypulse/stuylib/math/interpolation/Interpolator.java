@@ -8,7 +8,12 @@ import java.util.Arrays;
 import com.stuypulse.stuylib.math.Vector2D;
 import com.stuypulse.stuylib.streams.filters.IFilter;
 
+/**
+ * This class serves as a baseline for all other classes. 
+ * The Interpolator is a filter that will find the values of any point given a few reference points
+ */
 public interface Interpolator extends IFilter {
+
     /**
      * A behavior that takes in a double and returns a double 
      * @param x point to be intepolated
@@ -17,7 +22,11 @@ public interface Interpolator extends IFilter {
      */
     double interpolate(double x); 
 
+    // doesn't NEED to be overrided (hence the default). All filters need a get() method
+    // when get() is called, interpolated() will be passed through
     default double get(double x) { return interpolate(x); }
+
+
     /**
      * Sorts the reference point by the value of x from smallest to greatest
      * @param points reference points

@@ -7,7 +7,7 @@ import com.stuypulse.stuylib.math.Vector2D;
 
 
 /**
- * This class uses two reference points to interpolate all points on a line between them
+ * This class uses two reference points to interpolate all points on a line between them 
  * @author Eric (ericlin071906@gmail.com)
  */
 
@@ -25,6 +25,7 @@ public class IntervalInterpolator implements Interpolator {
         this.point2 = point2;
     }
 
+    @Override
     public double interpolate(double x) {
         double range = point2.x - point1.x;
         double slope = (point2.y - point1.y) / range;
