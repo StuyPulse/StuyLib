@@ -44,6 +44,20 @@ public class NearestInterpolator implements Interpolator {
                 
                 break;
             }
+
+            if (x < points[0].x){ // if we're interpolating outside the data set
+                left = points[0]; // set left and right to be the outer edge
+                right = points[1];
+                IntervalInterpolator slope = new IntervalInterpolator(left, right);
+                return slope.interpolate(x);
+                
+            }
+            
+            // if(x > points[points.length].x){
+            //     left = points[points.length - 1];
+            //     right = points[points.length];
+            //     break;
+            // }
         }
         
         return SLMath.lerp(left.y, right.y, (x - left.x) / (right.x - left.x));

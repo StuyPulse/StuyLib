@@ -6,7 +6,7 @@ package com.stuypulse.stuylib.math.interpolation;
 import com.stuypulse.stuylib.math.Vector2D;
 
 /**
- * This class uses Cublic Hermite interpolation (to find the RPM of the shooter). 
+ * This class uses Cubic Hermite interpolation (to find the RPM of the shooter). 
  * This class gets a polynomial that represents the model. We then use the polynomial to interpolate. 
  * The polynomial can be written as
  *      P(t) = h00(t)p0 + h10(t)m0 + h01(t)p1 + h11(t)m1
@@ -14,13 +14,13 @@ import com.stuypulse.stuylib.math.Vector2D;
  * 
  * in which 
  *       P(t) is the polynomial
- *       p0 and p0 are the x coordinates of the reference points (? fact check this @sam)
+ *       p0 and p1 are the y coordinates of the reference points 
  *       h00(t) = 2(t * t * t) - 3(t * t) + 1 
  *       h10(t) = (t* t * t) - 2(t * t) + t
  *       h01(t) = -2(t * t * t) + 3(t * t)
  *       h11(t) = (t * t * t) - (t * t)
  *       m0, m1 is the slope (derivative) of the points
- *       t = time (? fact check this @sam )
+ *       t = time 
  * 
  * It can be thought of as interpolating between the derivatives.
  *          https://www.desmos.com/calculator/wcjns2ayab
@@ -48,7 +48,11 @@ public class CubicInterpolator implements Interpolator{
     private final Vector2D[] points;
     private final double[] tangents;
 
-    
+    /**
+     * This constructor creates a new cubic hermite spline interpolator. It takes in at least 4 reference points
+     * it gets the tangent of every point by the two points around it and stores it in a array
+     * @param points the reference points we interpolate from. 
+     */
     public CubicInterpolator(Vector2D... points) {
         if (points.length < 4) {
             throw new IllegalArgumentException("CubicInterpolator requires at least 4 points");
@@ -58,7 +62,7 @@ public class CubicInterpolator implements Interpolator{
         this.points = Interpolator.getSortedPoints(points);
         this.tangents = new double[size];
         
-        // gets the tangent (m0 and m1) 
+        // gets the tangent (m0 and m1) by using the points left and right of it (note that they are parrallel) 
         this.tangents[0] = getTangent(this.points[0], this.points[1]);
         this.tangents[size - 1] = getTangent(this.points[size - 2], this.points[size - 1]);
 

@@ -6,8 +6,9 @@ package com.stuypulse.stuylib.math.interpolation;
 import java.util.Arrays;
 
 import com.stuypulse.stuylib.math.Vector2D;
+import com.stuypulse.stuylib.streams.filters.IFilter;
 
-public interface Interpolator {
+public interface Interpolator extends IFilter {
     /**
      *  a behavior that takes in a double and returns a double 
      * @param x point to be intepolated
@@ -15,7 +16,7 @@ public interface Interpolator {
      */
     double interpolate(double x); 
 
-
+    default double get(double x) { return interpolate(x); }
     /**
      * sorts the reference point by the value of x from smallest to greatest
      * @param points reference points

@@ -11,8 +11,8 @@ import com.stuypulse.stuylib.math.Vector2D;
  */
 
 public class IntervalInterpolator implements Interpolator {
-    Vector2D point1;
-    Vector2D point2;
+    private final Vector2D point1;
+    private final Vector2D point2;
     
     /**
      * stores the two reference points
