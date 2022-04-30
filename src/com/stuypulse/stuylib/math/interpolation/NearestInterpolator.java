@@ -55,8 +55,8 @@ public class NearestInterpolator implements Interpolator {
             }
         }
 
-        IntervalInterpolator NearestInterpolator = new IntervalInterpolator(left, right);
-        return NearestInterpolator.interpolate(x);
+
+        return new IntervalInterpolator(left, right).interpolate(x);
         /**   returns start + (end - start) * clamp(t, 0.0, 1.0)
          * t is x
          * E - S is the slope

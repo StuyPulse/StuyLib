@@ -13,6 +13,7 @@ public interface Interpolator extends IFilter {
      * A behavior that takes in a double and returns a double 
      * @param x point to be intepolated
      * @return interpolated value
+     * @author Eric Lin (ericlin071906@gmail.com)
      */
     double interpolate(double x); 
 

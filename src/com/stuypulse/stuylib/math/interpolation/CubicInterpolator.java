@@ -63,7 +63,7 @@ public class CubicInterpolator implements Interpolator{
         this.tangents = new double[size];
         
         // gets the tangent (m0 and m1) 
-        // note that the tangent of the points are parrallel to the slope of the points surrounding it 
+        // note that the tangent of the points are parrallel to the slope of the 2 points surrounding it 
         this.tangents[0] = getTangent(this.points[0], this.points[1]);
         this.tangents[size - 1] = getTangent(this.points[size - 2], this.points[size - 1]);
 

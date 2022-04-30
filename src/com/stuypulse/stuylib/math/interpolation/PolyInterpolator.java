@@ -9,7 +9,7 @@ import java.util.ArrayList;
 import com.stuypulse.stuylib.math.Vector2D;
  
 /**
- * This class uses Lagrange polynomial interpolation. It derives an equation for a set of pointss in the form
+ * This class uses Lagrange polynomial interpolation. It derives an equation for a set of points in the form
  * 
  *      P(x) = a(x) + b(x) + c(x) ...
  * 
