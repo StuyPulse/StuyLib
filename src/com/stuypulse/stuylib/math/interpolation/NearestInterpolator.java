@@ -4,12 +4,10 @@
 
 package com.stuypulse.stuylib.math.interpolation;
 
-import com.stuypulse.stuylib.math.SLMath;
 import com.stuypulse.stuylib.math.Vector2D;
 
 /**
- * This class is a modified version of Linear Interpolation (Lerp). Using this class will allow you to interpolate
- * between the NEAREST two reference points, as opposed to just interpolating between only two points in Linear Interpolator.
+ * Using this class will allow you to interpolate between the NEAREST two reference points, as opposed to just interpolating between only two points
  * @author Eric Lin (ericlin071906@gmail.com, Github: cire694)
  * @author Sam (sam.belliveau@gmail.com)
  */
@@ -57,11 +55,7 @@ public class NearestInterpolator implements Interpolator {
 
 
         return new IntervalInterpolator(left, right).interpolate(x);
-        /**   returns start + (end - start) * clamp(t, 0.0, 1.0)
-         * t is x
-         * E - S is the slope
-         * S is the start, and also b
-         * https://www.desmos.com/calculator/zue4m6xgbu */
+        
     }
 
     

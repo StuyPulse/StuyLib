@@ -7,7 +7,7 @@ import com.stuypulse.stuylib.math.Vector2D;
 
 
 /**
- * This class uses two reference points to interpolate for a third point's y value
+ * This class uses two reference points to interpolate all points on a line between them
  * @author Eric (ericlin071906@gmail.com)
  */
 
