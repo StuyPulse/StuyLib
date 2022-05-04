@@ -1,22 +1,23 @@
 /* Copyright (c) 2022 StuyPulse Robotics. All rights reserved. */
 /* This work is licensed under the terms of the MIT license */
 /* found in the root directory of this project. */
+
 package com.stuypulse.stuylib.math.interpolation;
 
 import com.stuypulse.stuylib.math.Vector2D;
 
-
 /**
- * This class uses two reference points to interpolate all points on a line between them 
+ * This class uses two reference points to interpolate all points on a line between them
+ *
  * @author Eric (ericlin071906@gmail.com)
  */
-
 public class IntervalInterpolator implements Interpolator {
     private final Vector2D point1;
     private final Vector2D point2;
-    
+
     /**
      * Store the two reference points
+     *
      * @param point1
      * @param point2
      */

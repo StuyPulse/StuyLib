@@ -344,6 +344,8 @@ $('.navPadding').css('padding-top', $('.fixedNav').css("height"));
 <dd>&nbsp;</dd>
 <dt><a href="com/stuypulse/stuylib/math/package-summary.html">com.stuypulse.stuylib.math</a> - package com.stuypulse.stuylib.math</dt>
 <dd>&nbsp;</dd>
+<dt><a href="com/stuypulse/stuylib/math/interpolation/package-summary.html">com.stuypulse.stuylib.math.interpolation</a> - package com.stuypulse.stuylib.math.interpolation</dt>
+<dd>&nbsp;</dd>
 <dt><a href="com/stuypulse/stuylib/network/package-summary.html">com.stuypulse.stuylib.network</a> - package com.stuypulse.stuylib.network</dt>
 <dd>&nbsp;</dd>
 <dt><a href="com/stuypulse/stuylib/network/limelight/package-summary.html">com.stuypulse.stuylib.network.limelight</a> - package com.stuypulse.stuylib.network.limelight</dt>
@@ -433,6 +435,14 @@ $('.navPadding').css('padding-top', $('.fixedNav').css("height"));
 <dt><span class="memberNameLink"><a href="com/stuypulse/stuylib/math/SLMath.html#cube(double)">cube(double)</a></span> - Static method in class com.stuypulse.stuylib.math.<a href="com/stuypulse/stuylib/math/SLMath.html" title="class in com.stuypulse.stuylib.math">SLMath</a></dt>
 <dd>
 <div class="block">Cube a number</div>
+</dd>
+<dt><a href="com/stuypulse/stuylib/math/interpolation/CubicInterpolator.html" title="class in com.stuypulse.stuylib.math.interpolation"><span class="typeNameLink">CubicInterpolator</span></a> - Class in <a href="com/stuypulse/stuylib/math/interpolation/package-summary.html">com.stuypulse.stuylib.math.interpolation</a></dt>
+<dd>
+<div class="block">This class uses Cubic Hermite interpolation (to find the RPM of the shooter).</div>
+</dd>
+<dt><span class="memberNameLink"><a href="com/stuypulse/stuylib/math/interpolation/CubicInterpolator.html#%3Cinit%3E(com.stuypulse.stuylib.math.Vector2D...)">CubicInterpolator(Vector2D...)</a></span> - Constructor for class com.stuypulse.stuylib.math.interpolation.<a href="com/stuypulse/stuylib/math/interpolation/CubicInterpolator.html" title="class in com.stuypulse.stuylib.math.interpolation">CubicInterpolator</a></dt>
+<dd>
+<div class="block">This constructor creates a new cubic hermite spline interpolator.</div>
 </dd>
 </dl>
 <a id="I:D">
@@ -693,6 +703,8 @@ $('.navPadding').css('padding-top', $('.fixedNav').css("height"));
 <div class="block">Get next value in Filter based on the next value given</div>
 </dd>
 <dt><span class="memberNameLink"><a href="com/stuypulse/stuylib/streams/booleans/filters/BFilterGroup.html#get(boolean)">get(boolean)</a></span> - Method in class com.stuypulse.stuylib.streams.booleans.filters.<a href="com/stuypulse/stuylib/streams/booleans/filters/BFilterGroup.html" title="class in com.stuypulse.stuylib.streams.booleans.filters">BFilterGroup</a></dt>
+<dd>&nbsp;</dd>
+<dt><span class="memberNameLink"><a href="com/stuypulse/stuylib/math/interpolation/Interpolator.html#get(double)">get(double)</a></span> - Method in interface com.stuypulse.stuylib.math.interpolation.<a href="com/stuypulse/stuylib/math/interpolation/Interpolator.html" title="interface in com.stuypulse.stuylib.math.interpolation">Interpolator</a></dt>
 <dd>&nbsp;</dd>
 <dt><span class="memberNameLink"><a href="com/stuypulse/stuylib/streams/filters/ExpMovingAverage.html#get(double)">get(double)</a></span> - Method in class com.stuypulse.stuylib.streams.filters.<a href="com/stuypulse/stuylib/streams/filters/ExpMovingAverage.html" title="class in com.stuypulse.stuylib.streams.filters">ExpMovingAverage</a></dt>
 <dd>&nbsp;</dd>
@@ -1275,6 +1287,10 @@ $('.navPadding').css('padding-top', $('.fixedNav').css("height"));
 <dd>&nbsp;</dd>
 <dt><span class="memberNameLink"><a href="com/stuypulse/stuylib/network/limelight/Limelight.html#getSolve3D()">getSolve3D()</a></span> - Method in class com.stuypulse.stuylib.network.limelight.<a href="com/stuypulse/stuylib/network/limelight/Limelight.html" title="class in com.stuypulse.stuylib.network.limelight">Limelight</a></dt>
 <dd>&nbsp;</dd>
+<dt><span class="memberNameLink"><a href="com/stuypulse/stuylib/math/interpolation/Interpolator.html#getSortedPoints(com.stuypulse.stuylib.math.Vector2D...)">getSortedPoints(Vector2D...)</a></span> - Static method in interface com.stuypulse.stuylib.math.interpolation.<a href="com/stuypulse/stuylib/math/interpolation/Interpolator.html" title="interface in com.stuypulse.stuylib.math.interpolation">Interpolator</a></dt>
+<dd>
+<div class="block">Sorts the reference point by the value of x from smallest to greatest</div>
+</dd>
 <dt><span class="memberNameLink"><a href="com/stuypulse/stuylib/input/Gamepad.html#getStartButton()">getStartButton()</a></span> - Method in class com.stuypulse.stuylib.input.<a href="com/stuypulse/stuylib/input/Gamepad.html" title="class in com.stuypulse.stuylib.input">Gamepad</a></dt>
 <dd>&nbsp;</dd>
 <dt><span class="memberNameLink"><a href="com/stuypulse/stuylib/network/SLNetworkTable.html#getString(java.lang.String)">getString(String)</a></span> - Method in class com.stuypulse.stuylib.network.<a href="com/stuypulse/stuylib/network/SLNetworkTable.html" title="class in com.stuypulse.stuylib.network">SLNetworkTable</a></dt>
@@ -1443,6 +1459,30 @@ $('.navPadding').css('padding-top', $('.fixedNav').css("height"));
 <dd>&nbsp;</dd>
 <dt><span class="memberNameLink"><a href="com/stuypulse/stuylib/input/Gamepad.html#initSendable(edu.wpi.first.util.sendable.SendableBuilder)">initSendable(SendableBuilder)</a></span> - Method in class com.stuypulse.stuylib.input.<a href="com/stuypulse/stuylib/input/Gamepad.html" title="class in com.stuypulse.stuylib.input">Gamepad</a></dt>
 <dd>&nbsp;</dd>
+<dt><span class="memberNameLink"><a href="com/stuypulse/stuylib/math/interpolation/CubicInterpolator.html#interpolate(double)">interpolate(double)</a></span> - Method in class com.stuypulse.stuylib.math.interpolation.<a href="com/stuypulse/stuylib/math/interpolation/CubicInterpolator.html" title="class in com.stuypulse.stuylib.math.interpolation">CubicInterpolator</a></dt>
+<dd>&nbsp;</dd>
+<dt><span class="memberNameLink"><a href="com/stuypulse/stuylib/math/interpolation/Interpolator.html#interpolate(double)">interpolate(double)</a></span> - Method in interface com.stuypulse.stuylib.math.interpolation.<a href="com/stuypulse/stuylib/math/interpolation/Interpolator.html" title="interface in com.stuypulse.stuylib.math.interpolation">Interpolator</a></dt>
+<dd>
+<div class="block">A behavior that takes in a double and returns a double</div>
+</dd>
+<dt><span class="memberNameLink"><a href="com/stuypulse/stuylib/math/interpolation/IntervalInterpolator.html#interpolate(double)">interpolate(double)</a></span> - Method in class com.stuypulse.stuylib.math.interpolation.<a href="com/stuypulse/stuylib/math/interpolation/IntervalInterpolator.html" title="class in com.stuypulse.stuylib.math.interpolation">IntervalInterpolator</a></dt>
+<dd>&nbsp;</dd>
+<dt><span class="memberNameLink"><a href="com/stuypulse/stuylib/math/interpolation/NearestInterpolator.html#interpolate(double)">interpolate(double)</a></span> - Method in class com.stuypulse.stuylib.math.interpolation.<a href="com/stuypulse/stuylib/math/interpolation/NearestInterpolator.html" title="class in com.stuypulse.stuylib.math.interpolation">NearestInterpolator</a></dt>
+<dd>&nbsp;</dd>
+<dt><span class="memberNameLink"><a href="com/stuypulse/stuylib/math/interpolation/PolyInterpolator.html#interpolate(double)">interpolate(double)</a></span> - Method in class com.stuypulse.stuylib.math.interpolation.<a href="com/stuypulse/stuylib/math/interpolation/PolyInterpolator.html" title="class in com.stuypulse.stuylib.math.interpolation">PolyInterpolator</a></dt>
+<dd>&nbsp;</dd>
+<dt><a href="com/stuypulse/stuylib/math/interpolation/Interpolator.html" title="interface in com.stuypulse.stuylib.math.interpolation"><span class="typeNameLink">Interpolator</span></a> - Interface in <a href="com/stuypulse/stuylib/math/interpolation/package-summary.html">com.stuypulse.stuylib.math.interpolation</a></dt>
+<dd>
+<div class="block">This class serves as a baseline for all other classes.</div>
+</dd>
+<dt><a href="com/stuypulse/stuylib/math/interpolation/IntervalInterpolator.html" title="class in com.stuypulse.stuylib.math.interpolation"><span class="typeNameLink">IntervalInterpolator</span></a> - Class in <a href="com/stuypulse/stuylib/math/interpolation/package-summary.html">com.stuypulse.stuylib.math.interpolation</a></dt>
+<dd>
+<div class="block">This class uses two reference points to interpolate all points on a line between them</div>
+</dd>
+<dt><span class="memberNameLink"><a href="com/stuypulse/stuylib/math/interpolation/IntervalInterpolator.html#%3Cinit%3E(com.stuypulse.stuylib.math.Vector2D,com.stuypulse.stuylib.math.Vector2D)">IntervalInterpolator(Vector2D, Vector2D)</a></span> - Constructor for class com.stuypulse.stuylib.math.interpolation.<a href="com/stuypulse/stuylib/math/interpolation/IntervalInterpolator.html" title="class in com.stuypulse.stuylib.math.interpolation">IntervalInterpolator</a></dt>
+<dd>
+<div class="block">Store the two reference points</div>
+</dd>
 <dt><span class="memberNameLink"><a href="com/stuypulse/stuylib/network/SmartNumber.html#intValue()">intValue()</a></span> - Method in class com.stuypulse.stuylib.network.<a href="com/stuypulse/stuylib/network/SmartNumber.html" title="class in com.stuypulse.stuylib.network">SmartNumber</a></dt>
 <dd>&nbsp;</dd>
 <dt><span class="memberNameLink"><a href="com/stuypulse/stuylib/network/limelight/Limelight.Pipeline.html#INVALID_PIPELINE">INVALID_PIPELINE</a></span> - com.stuypulse.stuylib.network.limelight.<a href="com/stuypulse/stuylib/network/limelight/Limelight.Pipeline.html" title="enum in com.stuypulse.stuylib.network.limelight">Limelight.Pipeline</a></dt>
@@ -1697,7 +1737,13 @@ $('.navPadding').css('padding-top', $('.fixedNav').css("height"));
 <dd>&nbsp;</dd>
 <dt><span class="memberNameLink"><a href="com/stuypulse/stuylib/math/Vector2D.html#magnitude()">magnitude()</a></span> - Method in class com.stuypulse.stuylib.math.<a href="com/stuypulse/stuylib/math/Vector2D.html" title="class in com.stuypulse.stuylib.math">Vector2D</a></dt>
 <dd>&nbsp;</dd>
+<dt><span class="memberNameLink"><a href="com/stuypulse/stuylib/math/interpolation/CubicInterpolator.html#main(java.lang.String...)">main(String...)</a></span> - Static method in class com.stuypulse.stuylib.math.interpolation.<a href="com/stuypulse/stuylib/math/interpolation/CubicInterpolator.html" title="class in com.stuypulse.stuylib.math.interpolation">CubicInterpolator</a></dt>
+<dd>&nbsp;</dd>
+<dt><span class="memberNameLink"><a href="com/stuypulse/stuylib/math/interpolation/NearestInterpolator.html#main(java.lang.String...)">main(String...)</a></span> - Static method in class com.stuypulse.stuylib.math.interpolation.<a href="com/stuypulse/stuylib/math/interpolation/NearestInterpolator.html" title="class in com.stuypulse.stuylib.math.interpolation">NearestInterpolator</a></dt>
+<dd>&nbsp;</dd>
 <dt><span class="memberNameLink"><a href="com/stuypulse/stuylib/util/chart/Playground.html#main(java.lang.String...)">main(String...)</a></span> - Static method in class com.stuypulse.stuylib.util.chart.<a href="com/stuypulse/stuylib/util/chart/Playground.html" title="class in com.stuypulse.stuylib.util.chart">Playground</a></dt>
+<dd>&nbsp;</dd>
+<dt><span class="memberNameLink"><a href="com/stuypulse/stuylib/util/chart/Playground.html#makeTest(java.lang.String,com.stuypulse.stuylib.math.interpolation.Interpolator)">makeTest(String, Interpolator)</a></span> - Static method in class com.stuypulse.stuylib.util.chart.<a href="com/stuypulse/stuylib/util/chart/Playground.html" title="class in com.stuypulse.stuylib.util.chart">Playground</a></dt>
 <dd>&nbsp;</dd>
 <dt><span class="memberNameLink"><a href="com/stuypulse/stuylib/network/limelight/LimelightConstants.html#MAX_SIDE_LENGTH">MAX_SIDE_LENGTH</a></span> - Static variable in class com.stuypulse.stuylib.network.limelight.<a href="com/stuypulse/stuylib/network/limelight/LimelightConstants.html" title="class in com.stuypulse.stuylib.network.limelight">LimelightConstants</a></dt>
 <dd>&nbsp;</dd>
@@ -1759,6 +1805,13 @@ $('.navPadding').css('padding-top', $('.fixedNav').css("height"));
 </a>
 <h2 class="title">N</h2>
 <dl>
+<dt><a href="com/stuypulse/stuylib/math/interpolation/NearestInterpolator.html" title="class in com.stuypulse.stuylib.math.interpolation"><span class="typeNameLink">NearestInterpolator</span></a> - Class in <a href="com/stuypulse/stuylib/math/interpolation/package-summary.html">com.stuypulse.stuylib.math.interpolation</a></dt>
+<dd>
+<div class="block">Using this class will allow you to interpolate between the NEAREST two reference points, as
+ opposed to just interpolating between only two points</div>
+</dd>
+<dt><span class="memberNameLink"><a href="com/stuypulse/stuylib/math/interpolation/NearestInterpolator.html#%3Cinit%3E(com.stuypulse.stuylib.math.Vector2D...)">NearestInterpolator(Vector2D...)</a></span> - Constructor for class com.stuypulse.stuylib.math.interpolation.<a href="com/stuypulse/stuylib/math/interpolation/NearestInterpolator.html" title="class in com.stuypulse.stuylib.math.interpolation">NearestInterpolator</a></dt>
+<dd>&nbsp;</dd>
 <dt><span class="memberNameLink"><a href="com/stuypulse/stuylib/math/Angle.html#negative()">negative()</a></span> - Method in class com.stuypulse.stuylib.math.<a href="com/stuypulse/stuylib/math/Angle.html" title="class in com.stuypulse.stuylib.math">Angle</a></dt>
 <dd>&nbsp;</dd>
 <dt><span class="memberNameLink"><a href="com/stuypulse/stuylib/math/Polar2D.html#negative()">negative()</a></span> - Method in class com.stuypulse.stuylib.math.<a href="com/stuypulse/stuylib/math/Polar2D.html" title="class in com.stuypulse.stuylib.math">Polar2D</a></dt>
@@ -1914,6 +1967,14 @@ $('.navPadding').css('padding-top', $('.fixedNav').css("height"));
 <dt><span class="memberNameLink"><a href="com/stuypulse/stuylib/streams/PollingIStream.html#%3Cinit%3E(com.stuypulse.stuylib.streams.IStream,double)">PollingIStream(IStream, double)</a></span> - Constructor for class com.stuypulse.stuylib.streams.<a href="com/stuypulse/stuylib/streams/PollingIStream.html" title="class in com.stuypulse.stuylib.streams">PollingIStream</a></dt>
 <dd>
 <div class="block">Creates a PollingIStream from an IStream and a time value</div>
+</dd>
+<dt><a href="com/stuypulse/stuylib/math/interpolation/PolyInterpolator.html" title="class in com.stuypulse.stuylib.math.interpolation"><span class="typeNameLink">PolyInterpolator</span></a> - Class in <a href="com/stuypulse/stuylib/math/interpolation/package-summary.html">com.stuypulse.stuylib.math.interpolation</a></dt>
+<dd>
+<div class="block">This class uses Lagrange polynomial interpolation.</div>
+</dd>
+<dt><span class="memberNameLink"><a href="com/stuypulse/stuylib/math/interpolation/PolyInterpolator.html#%3Cinit%3E(com.stuypulse.stuylib.math.Vector2D...)">PolyInterpolator(Vector2D...)</a></span> - Constructor for class com.stuypulse.stuylib.math.interpolation.<a href="com/stuypulse/stuylib/math/interpolation/PolyInterpolator.html" title="class in com.stuypulse.stuylib.math.interpolation">PolyInterpolator</a></dt>
+<dd>
+<div class="block">Constructor for the class that takes in a set of points and creates a polynomial</div>
 </dd>
 <dt><span class="memberNameLink"><a href="com/stuypulse/stuylib/streams/booleans/filters/BButton.Pressed.html#%3Cinit%3E()">Pressed()</a></span> - Constructor for class com.stuypulse.stuylib.streams.booleans.filters.<a href="com/stuypulse/stuylib/streams/booleans/filters/BButton.Pressed.html" title="class in com.stuypulse.stuylib.streams.booleans.filters">BButton.Pressed</a></dt>
 <dd>&nbsp;</dd>
@@ -2259,6 +2320,8 @@ $('.navPadding').css('padding-top', $('.fixedNav').css("height"));
 <div class="block">The take back half algorithm is one made specifically to help with controlling shooters.</div>
 </dd>
 <dt><span class="memberNameLink"><a href="com/stuypulse/stuylib/control/TBHController.html#%3Cinit%3E(java.lang.Number)">TBHController(Number)</a></span> - Constructor for class com.stuypulse.stuylib.control.<a href="com/stuypulse/stuylib/control/TBHController.html" title="class in com.stuypulse.stuylib.control">TBHController</a></dt>
+<dd>&nbsp;</dd>
+<dt><span class="memberNameLink"><a href="com/stuypulse/stuylib/util/chart/Playground.html#test_points">test_points</a></span> - Static variable in class com.stuypulse.stuylib.util.chart.<a href="com/stuypulse/stuylib/util/chart/Playground.html" title="class in com.stuypulse.stuylib.util.chart">Playground</a></dt>
 <dd>&nbsp;</dd>
 <dt><span class="memberNameLink"><a href="com/stuypulse/stuylib/streams/booleans/filters/BFilter.html#then(com.stuypulse.stuylib.streams.booleans.filters.BFilter)">then(BFilter)</a></span> - Method in interface com.stuypulse.stuylib.streams.booleans.filters.<a href="com/stuypulse/stuylib/streams/booleans/filters/BFilter.html" title="interface in com.stuypulse.stuylib.streams.booleans.filters">BFilter</a></dt>
 <dd>

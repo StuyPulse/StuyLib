@@ -5,6 +5,7 @@ com.stuypulse.stuylib.input.gamepads.keyboard
 com.stuypulse.stuylib.input.keyboard
 com.stuypulse.stuylib.input.keyboard.computer
 com.stuypulse.stuylib.math
+com.stuypulse.stuylib.math.interpolation
 com.stuypulse.stuylib.network
 com.stuypulse.stuylib.network.limelight
 com.stuypulse.stuylib.streams
