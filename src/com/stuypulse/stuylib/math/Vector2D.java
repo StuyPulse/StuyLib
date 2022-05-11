@@ -185,6 +185,14 @@ public final class Vector2D {
         return this.x * other.x + this.y * other.y;
     }
 
+    /**
+     * @param other Vector3D to perform cross product with
+     * @return result of performing the cross product with the other Vector2D
+     */
+    public double cross(Vector2D other) {
+        return this.x * other.y - this.y * other.x;
+    }
+
     /** @return result of normalizing the Vector2D so that the magnitude is 1.0 */
     public Vector2D normalize() {
         final double magnitude = this.distance();
@@ -238,4 +246,48 @@ public final class Vector2D {
         out.append(")");
         return out.toString();
     }
+    
+    /**************************/
+    /*** Swizzled Vector2Ds ***/
+    /**************************/
+
+    /** @return swizzled Vector2D with components x, x */
+    public Vector2D xx() { return new Vector2D(this.x, this.x); }
+
+    /** @return swizzled Vector2D with components x, y */
+    public Vector2D xy() { return new Vector2D(this.x, this.y); }
+
+    /** @return swizzled Vector2D with components y, x */
+    public Vector2D yx() { return new Vector2D(this.y, this.x); }
+
+    /** @return swizzled Vector2D with components y, y */
+    public Vector2D yy() { return new Vector2D(this.y, this.y); }
+
+    /**************************/
+    /*** Swizzled Vector3Ds ***/
+    /**************************/
+
+    /** @return swizzled Vector3D with components x, x, x */
+    public Vector3D xxx() { return new Vector3D(this.x, this.x, this.x); }
+
+    /** @return swizzled Vector3D with components x, x, y */
+    public Vector3D xxy() { return new Vector3D(this.x, this.x, this.y); }
+
+    /** @return swizzled Vector3D with components x, y, x */
+    public Vector3D xyx() { return new Vector3D(this.x, this.y, this.x); }
+
+    /** @return swizzled Vector3D with components x, y, y */
+    public Vector3D xyy() { return new Vector3D(this.x, this.y, this.y); }
+
+    /** @return swizzled Vector3D with components y, x, x */
+    public Vector3D yxx() { return new Vector3D(this.y, this.x, this.x); }
+
+    /** @return swizzled Vector3D with components y, x, y */
+    public Vector3D yxy() { return new Vector3D(this.y, this.x, this.y); }
+
+    /** @return swizzled Vector3D with components y, y, x */
+    public Vector3D yyx() { return new Vector3D(this.y, this.y, this.x); }
+
+    /** @return swizzled Vector3D with components y, y, y */
+    public Vector3D yyy() { return new Vector3D(this.y, this.y, this.y); }
 }
