@@ -49,8 +49,8 @@ public final class Vector3D {
     }
 
     /**
-     * @param axis Array of size 3 where the first element will be defined as x, the second will
-     *     be defined as y, and the third will be defined as z.
+     * @param axis Array of size 3 where the first element will be defined as x, the second will be
+     *     defined as y, and the third will be defined as z.
      */
     public Vector3D(double[] axis) {
         if (axis.length != 3) {
@@ -109,7 +109,6 @@ public final class Vector3D {
                 +this.x * angle.cos() + +this.z * angle.sin(),
                 +this.y,
                 -this.x * angle.sin() + +this.z * angle.cos());
-
     }
 
     /**
@@ -185,9 +184,9 @@ public final class Vector3D {
      */
     public Vector3D cross(Vector3D other) {
         return new Vector3D(
-            this.y * other.z - this.z * other.y, 
-            this.z * other.x - this.x * other.z, 
-            this.x * other.y - this.y * other.x);
+                this.y * other.z - this.z * other.y,
+                this.z * other.x - this.x * other.z,
+                this.x * other.y - this.y * other.x);
     }
 
     /** @return result of normalizing the Vector3D so that the magnitude is 1.0 */
@@ -251,114 +250,186 @@ public final class Vector3D {
     /**************************/
 
     /** @return swizzled Vector2D with components x, x */
-    public Vector2D xx() { return new Vector2D(this.x, this.x); }
+    public Vector2D xx() {
+        return new Vector2D(this.x, this.x);
+    }
 
     /** @return swizzled Vector2D with components x, y */
-    public Vector2D xy() { return new Vector2D(this.x, this.y); }
+    public Vector2D xy() {
+        return new Vector2D(this.x, this.y);
+    }
 
     /** @return swizzled Vector2D with components x, z */
-    public Vector2D xz() { return new Vector2D(this.x, this.z); }
+    public Vector2D xz() {
+        return new Vector2D(this.x, this.z);
+    }
 
     /** @return swizzled Vector2D with components y, x */
-    public Vector2D yx() { return new Vector2D(this.y, this.x); }
+    public Vector2D yx() {
+        return new Vector2D(this.y, this.x);
+    }
 
     /** @return swizzled Vector2D with components y, y */
-    public Vector2D yy() { return new Vector2D(this.y, this.y); }
+    public Vector2D yy() {
+        return new Vector2D(this.y, this.y);
+    }
 
     /** @return swizzled Vector2D with components y, z */
-    public Vector2D yz() { return new Vector2D(this.y, this.z); }
+    public Vector2D yz() {
+        return new Vector2D(this.y, this.z);
+    }
 
     /** @return swizzled Vector2D with components z, x */
-    public Vector2D zx() { return new Vector2D(this.z, this.x); }
+    public Vector2D zx() {
+        return new Vector2D(this.z, this.x);
+    }
 
     /** @return swizzled Vector2D with components z, y */
-    public Vector2D zy() { return new Vector2D(this.z, this.y); }
+    public Vector2D zy() {
+        return new Vector2D(this.z, this.y);
+    }
 
     /** @return swizzled Vector2D with components z, z */
-    public Vector2D zz() { return new Vector2D(this.z, this.z); }
+    public Vector2D zz() {
+        return new Vector2D(this.z, this.z);
+    }
 
     /**************************/
     /*** Swizzled Vector3Ds ***/
     /**************************/
 
     /** @return swizzled Vector3D with components x, x, x */
-    public Vector3D xxx() { return new Vector3D(this.x, this.x, this.x); }
+    public Vector3D xxx() {
+        return new Vector3D(this.x, this.x, this.x);
+    }
 
     /** @return swizzled Vector3D with components x, x, y */
-    public Vector3D xxy() { return new Vector3D(this.x, this.x, this.y); }
+    public Vector3D xxy() {
+        return new Vector3D(this.x, this.x, this.y);
+    }
 
     /** @return swizzled Vector3D with components x, x, z */
-    public Vector3D xxz() { return new Vector3D(this.x, this.x, this.z); }
+    public Vector3D xxz() {
+        return new Vector3D(this.x, this.x, this.z);
+    }
 
     /** @return swizzled Vector3D with components x, y, x */
-    public Vector3D xyx() { return new Vector3D(this.x, this.y, this.x); }
+    public Vector3D xyx() {
+        return new Vector3D(this.x, this.y, this.x);
+    }
 
     /** @return swizzled Vector3D with components x, y, y */
-    public Vector3D xyy() { return new Vector3D(this.x, this.y, this.y); }
+    public Vector3D xyy() {
+        return new Vector3D(this.x, this.y, this.y);
+    }
 
     /** @return swizzled Vector3D with components x, y, z */
-    public Vector3D xyz() { return new Vector3D(this.x, this.y, this.z); }
+    public Vector3D xyz() {
+        return new Vector3D(this.x, this.y, this.z);
+    }
 
     /** @return swizzled Vector3D with components x, z, x */
-    public Vector3D xzx() { return new Vector3D(this.x, this.z, this.x); }
+    public Vector3D xzx() {
+        return new Vector3D(this.x, this.z, this.x);
+    }
 
     /** @return swizzled Vector3D with components x, z, y */
-    public Vector3D xzy() { return new Vector3D(this.x, this.z, this.y); }
+    public Vector3D xzy() {
+        return new Vector3D(this.x, this.z, this.y);
+    }
 
     /** @return swizzled Vector3D with components x, z, z */
-    public Vector3D xzz() { return new Vector3D(this.x, this.z, this.z); }
+    public Vector3D xzz() {
+        return new Vector3D(this.x, this.z, this.z);
+    }
 
     /** @return swizzled Vector3D with components y, x, x */
-    public Vector3D yxx() { return new Vector3D(this.y, this.x, this.x); }
+    public Vector3D yxx() {
+        return new Vector3D(this.y, this.x, this.x);
+    }
 
     /** @return swizzled Vector3D with components y, x, y */
-    public Vector3D yxy() { return new Vector3D(this.y, this.x, this.y); }
+    public Vector3D yxy() {
+        return new Vector3D(this.y, this.x, this.y);
+    }
 
     /** @return swizzled Vector3D with components y, x, z */
-    public Vector3D yxz() { return new Vector3D(this.y, this.x, this.z); }
+    public Vector3D yxz() {
+        return new Vector3D(this.y, this.x, this.z);
+    }
 
     /** @return swizzled Vector3D with components y, y, x */
-    public Vector3D yyx() { return new Vector3D(this.y, this.y, this.x); }
+    public Vector3D yyx() {
+        return new Vector3D(this.y, this.y, this.x);
+    }
 
     /** @return swizzled Vector3D with components y, y, y */
-    public Vector3D yyy() { return new Vector3D(this.y, this.y, this.y); }
+    public Vector3D yyy() {
+        return new Vector3D(this.y, this.y, this.y);
+    }
 
     /** @return swizzled Vector3D with components y, y, z */
-    public Vector3D yyz() { return new Vector3D(this.y, this.y, this.z); }
+    public Vector3D yyz() {
+        return new Vector3D(this.y, this.y, this.z);
+    }
 
     /** @return swizzled Vector3D with components y, z, x */
-    public Vector3D yzx() { return new Vector3D(this.y, this.z, this.x); }
+    public Vector3D yzx() {
+        return new Vector3D(this.y, this.z, this.x);
+    }
 
     /** @return swizzled Vector3D with components y, z, y */
-    public Vector3D yzy() { return new Vector3D(this.y, this.z, this.y); }
+    public Vector3D yzy() {
+        return new Vector3D(this.y, this.z, this.y);
+    }
 
     /** @return swizzled Vector3D with components y, z, z */
-    public Vector3D yzz() { return new Vector3D(this.y, this.z, this.z); }
+    public Vector3D yzz() {
+        return new Vector3D(this.y, this.z, this.z);
+    }
 
     /** @return swizzled Vector3D with components z, x, x */
-    public Vector3D zxx() { return new Vector3D(this.z, this.x, this.x); }
+    public Vector3D zxx() {
+        return new Vector3D(this.z, this.x, this.x);
+    }
 
     /** @return swizzled Vector3D with components z, x, y */
-    public Vector3D zxy() { return new Vector3D(this.z, this.x, this.y); }
+    public Vector3D zxy() {
+        return new Vector3D(this.z, this.x, this.y);
+    }
 
     /** @return swizzled Vector3D with components z, x, z */
-    public Vector3D zxz() { return new Vector3D(this.z, this.x, this.z); }
+    public Vector3D zxz() {
+        return new Vector3D(this.z, this.x, this.z);
+    }
 
     /** @return swizzled Vector3D with components z, y, x */
-    public Vector3D zyx() { return new Vector3D(this.z, this.y, this.x); }
+    public Vector3D zyx() {
+        return new Vector3D(this.z, this.y, this.x);
+    }
 
     /** @return swizzled Vector3D with components z, y, y */
-    public Vector3D zyy() { return new Vector3D(this.z, this.y, this.y); }
+    public Vector3D zyy() {
+        return new Vector3D(this.z, this.y, this.y);
+    }
 
     /** @return swizzled Vector3D with components z, y, z */
-    public Vector3D zyz() { return new Vector3D(this.z, this.y, this.z); }
+    public Vector3D zyz() {
+        return new Vector3D(this.z, this.y, this.z);
+    }
 
     /** @return swizzled Vector3D with components z, z, x */
-    public Vector3D zzx() { return new Vector3D(this.z, this.z, this.x); }
+    public Vector3D zzx() {
+        return new Vector3D(this.z, this.z, this.x);
+    }
 
     /** @return swizzled Vector3D with components z, z, y */
-    public Vector3D zzy() { return new Vector3D(this.z, this.z, this.y); }
+    public Vector3D zzy() {
+        return new Vector3D(this.z, this.z, this.y);
+    }
 
     /** @return swizzled Vector3D with components z, z, z */
-    public Vector3D zzz() { return new Vector3D(this.z, this.z, this.z); }
+    public Vector3D zzz() {
+        return new Vector3D(this.z, this.z, this.z);
+    }
 }
