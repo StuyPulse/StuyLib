@@ -4,6 +4,12 @@
 
 package com.stuypulse.stuylib.math;
 
+/**
+ * A utility class that allows you to "Swizzle" vectors / scalars using standard notation commonly
+ * found in graphics programming languages.
+ *
+ * @author Sam (sam.belliveau@gmail.com)
+ */
 public final class Swizzler {
 
     private Swizzler() {
