@@ -18,8 +18,8 @@ public class IntervalInterpolator implements Interpolator {
     /**
      * Store the two reference points
      *
-     * @param point1
-     * @param point2
+     * @param point1 first point to interpolate from
+     * @param point2 second point to interpolate from
      */
     public IntervalInterpolator(Vector2D point1, Vector2D point2) {
         this.point1 = point1;
