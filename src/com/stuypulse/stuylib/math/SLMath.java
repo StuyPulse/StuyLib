@@ -226,7 +226,7 @@ public final class SLMath {
      * @param z input into the lambert W function. Required to be <b>nonnegative</b>.
      * @return the output of the lambert W function, or -1.0 if given a negative value.
      */
-    public static double lambertWPositiveDomain(double z) {
+    public static double lambertWNonNegDomain(double z) {
         if (z < 0.0) return -1.0;
 
         double guess = INITIAL_GUESS;
