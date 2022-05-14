@@ -10,6 +10,7 @@ package com.stuypulse.stuylib.math;
  * other new algorithms we came up with.
  *
  * @author Sam (sam.belliveau@gmail.com)
+ * @author Ivan Wei (ivanw8288@gmail.com)
  */
 public final class SLMath {
 
@@ -211,5 +212,33 @@ public final class SLMath {
      */
     public static boolean isZero(double num) {
         return Math.abs(num) < FLT_ELIPSON;
+    }
+
+    private static final int ITERATIONS = 5;
+    /**
+     * Evaluates the real-valued lambert-W function for <b>nonnegative</b> values. 
+     * <p>
+     * The lambert-W function is in shorthand W(z). It is the solution to z = W(z)e^W(z).
+     * <p>
+     * The evaluation is done via Halley's method with {@ITERATIONS} iterations.
+     * 
+     * @param z input into the lambert W function. Required to be <b>nonnegative</b>.
+     * @return the output of the lambert W function, or -1.0 if given a negative value.
+     */
+    public static double lambertWPositiveDomain(double z) {
+        if (z < 0.0) return -1.0;
+
+        double guess = 3.0;
+        for (int i = 0; i < ITERATIONS; ++i) {
+            guess = 
+                guess - 
+                    (guess * Math.exp(guess) - z) / 
+                    (Math.exp(guess) * (guess + 1) - 
+                        ((guess + 2) * (guess * Math.exp(guess) - z)) / 
+                        (2 * guess + 2)    
+                    );
+        }
+        
+        return guess;
     }
 }
