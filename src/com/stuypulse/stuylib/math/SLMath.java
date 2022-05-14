@@ -215,6 +215,7 @@ public final class SLMath {
     }
 
     private static final int ITERATIONS = 5;
+    private static final double INITIAL_GUESS = 3.0;
     /**
      * Evaluates the real-valued lambert-W function for <b>nonnegative</b> values. 
      * <p>
@@ -228,7 +229,7 @@ public final class SLMath {
     public static double lambertWPositiveDomain(double z) {
         if (z < 0.0) return -1.0;
 
-        double guess = 3.0;
+        double guess = INITIAL_GUESS;
         for (int i = 0; i < ITERATIONS; ++i) {
             guess = 
                 guess - 
