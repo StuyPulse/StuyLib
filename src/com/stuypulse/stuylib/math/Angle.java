@@ -52,22 +52,12 @@ public final class Angle {
     private static final double TAU = PI * 2.0;
 
     /**
-     * @param radians the value to be normalized
-     * @param center the center of the normalized range +/- (range/2)
-     * @param range range of normalized values
-     * @return the normalized value
-     */
-    private static double normalizeValue(double value, double center, double range) {
-        return value - range * Math.round((value - center) / range);
-    }
-
-    /**
      * @param radians the angle to be normalized
      * @param center the center of the normalized range +/- pi
      * @return the normalized angle
      */
     private static double normalizeRadians(double radians, double center) {
-        return normalizeValue(radians, center, TAU);
+        return SLMath.normalizeAroundCenter(radians, center, TAU);
     }
 
     /**
@@ -76,7 +66,7 @@ public final class Angle {
      * @return the normalized angle
      */
     private static double normalizeRotations(double rotations, double center) {
-        return normalizeValue(rotations, center, 1.0);
+        return SLMath.normalizeAroundCenter(rotations, center, 1.0);
     }
 
     /**
@@ -85,7 +75,7 @@ public final class Angle {
      * @return the normalized angle
      */
     private static double normalizeDegrees(double degrees, double center) {
-        return normalizeValue(degrees, center, 360.0);
+        return SLMath.normalizeAroundCenter(degrees, center, 360.0);
     }
 
     /********************************/
