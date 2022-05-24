@@ -4,7 +4,9 @@
 
 package com.stuypulse.stuylib.control;
 
+import com.stuypulse.stuylib.math.SLMath;
 import com.stuypulse.stuylib.streams.filters.IFilter;
+import com.stuypulse.stuylib.streams.filters.IFilterGroup;
 import com.stuypulse.stuylib.util.StopWatch;
 
 import edu.wpi.first.util.sendable.Sendable;
@@ -38,6 +40,11 @@ public abstract class Controller implements Sendable {
     private double mError;
     private IFilter mErrorFilter;
 
+    // Continuous error
+    private boolean mContinuous;
+    private Number mMin;
+    private Number mMax;
+
     // Velocity, Raw Velocity and Velocity Filter
     private double mVelocity;
     private IFilter mVelocityFilter;
@@ -55,6 +62,10 @@ public abstract class Controller implements Sendable {
     protected Controller() {
         mError = 0.0;
         setErrorFilter(null);
+
+        mContinuous = false;
+        mMin = 0.0;
+        mMax = 0.0;
 
         mRawVelocity = 0.0;
         mVelocity = 0.0;
@@ -85,7 +96,7 @@ public abstract class Controller implements Sendable {
      * @return reference to the controller (so you can chain the commands together)
      */
     public final Controller setErrorFilter(IFilter filter) {
-        mErrorFilter = sanitize(filter);
+        mErrorFilter = new IFilterGroup(this::normalizeError, sanitize(filter));
         return this;
     }
 
@@ -124,6 +135,28 @@ public abstract class Controller implements Sendable {
     public final Controller setOutputFilter(IFilter filter) {
         mOutputFilter = sanitize(filter);
         return this;
+    }
+
+    public final Controller enableContinuous(Number min, Number max) {
+        mContinuous = true;
+
+        mMin = min;
+        mMax = max;
+        return this;
+    }
+
+    public final Controller disableContinuous() {
+        mContinuous = false;
+        return this;
+    }
+
+    public final boolean isContinuous() {
+        return mContinuous;
+    }
+
+    private double normalizeError(double error) {
+        if (!isContinuous()) return error;
+        return SLMath.normalizeInRange(error, mMin.doubleValue(), mMax.doubleValue());
     }
 
     /**
