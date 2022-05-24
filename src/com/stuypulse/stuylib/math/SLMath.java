@@ -76,6 +76,30 @@ public final class SLMath {
         return clamp(x, 1.0);
     }
 
+    /**
+     * normalize a value in a range specified by a center and a radius
+     * 
+     * @param value value 
+     * @param center center of values
+     * @param range radius of values
+     * @return normalized value
+     */
+    public static double normalizeAroundCenter(double value, double center, double range) {
+        return value - range * Math.round((value - center) / range);
+    }
+
+    /**
+     * normalize a value inside a range specified by a min and max
+     * 
+     * @param value value 
+     * @param min min value
+     * @param max max value
+     * @return normalized value
+     */
+    public static double normalizeInRange(double value, double min, double max) {
+        return normalizeAroundCenter(value, (min + max) / 2.0, max - min);
+    }
+
     /**************************/
     /*** DEADBAND ALGORITHM ***/
     /**************************/
