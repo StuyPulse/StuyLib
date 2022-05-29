@@ -76,6 +76,37 @@ public final class SLMath {
         return clamp(x, 1.0);
     }
 
+    /***************/
+    /*** MAPPING ***/
+    /***************/
+
+    /**
+     * calculates a "time" that would produce value if linearly interpolating
+     * between min and max
+     * 
+     * @param value value
+     * @param min min 
+     * @param max max
+     * @return time that produces in the value in [min, max] if linearly interpolating
+     */
+    public static double calculateTime(double value, double min, double max) {
+        return (value - min) / (max - min);
+    }
+
+    /**
+     * Maps a value in the input range to a value in the output range
+     * 
+     * @param value value in input range
+     * @param inputMin input min
+     * @param inputMax input max
+     * @param outputMin output min
+     * @param outputMax output max
+     * @return input value mapped to the output range
+     */
+    public static double map(double value, double inputMin, double inputMax, double outputMin, double outputMax) {
+        return lerp(outputMin, outputMax, calculateTime(value, inputMin, inputMax));
+    }
+
     /**
      * normalize a value in a range specified by a center and a radius
      * 
