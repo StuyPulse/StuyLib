@@ -6,7 +6,6 @@ package com.stuypulse.stuylib.control;
 
 import com.stuypulse.stuylib.math.SLMath;
 import com.stuypulse.stuylib.streams.filters.IFilter;
-import com.stuypulse.stuylib.streams.filters.IFilterGroup;
 import com.stuypulse.stuylib.util.StopWatch;
 
 import edu.wpi.first.util.sendable.Sendable;
@@ -96,7 +95,7 @@ public abstract class Controller implements Sendable {
      * @return reference to the controller (so you can chain the commands together)
      */
     public final Controller setErrorFilter(IFilter filter) {
-        mErrorFilter = new IFilterGroup(this::normalizeError, sanitize(filter));
+        mErrorFilter = sanitize(filter);
         return this;
     }
 
@@ -257,7 +256,7 @@ public abstract class Controller implements Sendable {
         mRate = mRateTimer.reset();
 
         // Filter the error with the error filter
-        error = mErrorFilter.get(error);
+        error = normalizeError(mErrorFilter.get(error));
 
         // Get the velocity based on the change in error
         mRawVelocity = error - mError;
