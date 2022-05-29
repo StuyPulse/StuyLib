@@ -136,6 +136,17 @@ public abstract class Controller implements Sendable {
         return this;
     }
 
+    /**
+     * Enables continuous control for this controller. 
+     * 
+     * Is usually used for rotating mechanisms, where positional readings
+     * can loop from a "max" value to a "man" value because the "min" and "max"
+     * values represent the same position.
+     * 
+     * @param min minimum reading
+     * @param max maximum reading
+     * @return reference to controller (so you can chain the commands together)
+     */
     public final Controller enableContinuous(Number min, Number max) {
         mContinuous = true;
 
@@ -144,17 +155,36 @@ public abstract class Controller implements Sendable {
         return this;
     }
 
+    /**
+     * Disables continuous control
+     * 
+     * @return reference to controller (so you can chain the commands together)
+     */
     public final Controller disableContinuous() {
         mContinuous = false;
         return this;
     }
 
+    /**
+     * @return if the controller is continuous 
+     */
     public final boolean isContinuous() {
         return mContinuous;
     }
 
-    private double normalizeError(double error) {
-        if (!isContinuous()) return error;
+    /**
+     * If the controller is continuous, this function performs a 
+     * modulo operation on the error to put in the range from min
+     * to max. 
+     * 
+     * This allows the error to always be the smaller of the two possible
+     * errors. There are two possible errors because position is being
+     * measured on a circle when it is continuous.
+     * 
+     * @param error unlooped error
+     * @return looped error
+     */
+    private double moduloError(double error) {
         return SLMath.normalizeInRange(error, mMin.doubleValue(), mMax.doubleValue());
     }
 
@@ -256,7 +286,11 @@ public abstract class Controller implements Sendable {
         mRate = mRateTimer.reset();
 
         // Filter the error with the error filter
-        error = normalizeError(mErrorFilter.get(error));
+        error = mErrorFilter.get(error);
+
+        // Loop error if controller is continuous
+        if (isContinuous()) 
+            error = moduloError(error);
 
         // Get the velocity based on the change in error
         mRawVelocity = error - mError;
