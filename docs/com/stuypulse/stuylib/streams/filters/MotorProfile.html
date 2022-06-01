@@ -137,11 +137,10 @@ $('.navPadding').css('padding-top', $('.fixedNav').css("height"));
 <pre>public class <span class="typeNameLabel">MotorProfile</span>
 extends java.lang.Object
 implements <a href="IFilter.html" title="interface in com.stuypulse.stuylib.streams.filters">IFilter</a></pre>
-<div class="block">A filter, that when applied to the input of a motor, will characterize it. Similar to the way in
- which motion profiling can limit the amount of acceleration and jerk in an S-Curve, this can do
- that to real time input. Because this will add a delay, it is recommended that the jerklimit is
- as high as possible. Aside from the jerklimit, this is identicle to a SlewRateLimiter or
- TimedRateLimit.</div>
+<div class="block">A filter, that when applied to the input of a motor, will profile it. Similar to the way in which
+ motion profiling can limit the amount of acceleration and jerk in an S-Curve, this can do that to
+ real time input. Because this will add a delay, it is recommended that the jerklimit is as high
+ as possible. Aside from the jerklimit, this is identicle to a SlewRateLimiter or TimedRateLimit.</div>
 </li>
 </ul>
 </div>
