@@ -59,7 +59,9 @@ public class JerkLimit implements IFilter {
                 mAccel += SLMath.clamp(accel, dt * mJerkLimit.doubleValue());
             } else {
                 // the position it would end up if it attempted to come to a full stop
-                double future = mOutput + 0.5 * mAccel * (windup + dt);
+                double windJ = 0.5 * mAccel * dt; // windup caused by controller delay
+                double windA = 0.5 * mAccel * windup; // windup caused by acceleration
+                double future = mOutput + windA + windJ; // where the robot will end up
 
                 // Calculate acceleration needed to come to stop at target throughout windup
                 double accel = (target - future) / windup;
