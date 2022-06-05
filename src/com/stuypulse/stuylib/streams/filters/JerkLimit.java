@@ -15,7 +15,7 @@ import com.stuypulse.stuylib.util.StopWatch;
  *
  * @author Sam (sam.belliveau@gmail.com)
  */
-public class MotorProfile implements IFilter {
+public class JerkLimit implements IFilter {
 
     // Stopwatch to Track dt
     private StopWatch mTimer;
@@ -32,7 +32,7 @@ public class MotorProfile implements IFilter {
      * @param accelLimit maximum change in velocity per second (u/s)
      * @param jerkLimit maximum change in acceleration per second (u/s/s)
      */
-    public MotorProfile(Number accelLimit, Number jerkLimit) {
+    public JerkLimit(Number accelLimit, Number jerkLimit) {
         mTimer = new StopWatch();
 
         mAccelLimit = accelLimit;
@@ -48,16 +48,29 @@ public class MotorProfile implements IFilter {
         // if there is a jerk limit, limit the amount the acceleration can change
         if (0 < mJerkLimit.doubleValue()) {
             // amount of windup in system (how long it would take to slow down)
-            double windup = Math.abs(0.5 * mAccel / mJerkLimit.doubleValue());
+            double windup = Math.abs(mAccel) / mJerkLimit.doubleValue();
 
-            // the position it would end up if it attempted to come to a full stop
-            double future = target - (mOutput + mAccel * windup);
+            // If the windup is too small, just use normal algorithm to limit acceleration
+            if (windup < dt) {
+                // Calculate acceleration needed to reach target
+                double accel = (target - mOutput) / dt - mAccel;
 
-            // attempt to make acceleration the future divided by dt
-            mAccel += SLMath.clamp(future / dt - mAccel, dt * mJerkLimit.doubleValue());
+                // Try to reach it while abiding by jerklimit
+                mAccel += SLMath.clamp(accel, dt * mJerkLimit.doubleValue());
+            } else {
+                // the position it would end up if it attempted to come to a full stop
+                double future = mOutput + 0.5 * mAccel * (windup + dt);
+
+                // Calculate acceleration needed to come to stop at target throughout windup
+                double accel = (target - future) / windup;
+
+                // Try to reach it while abiding by jerklimit
+                mAccel += SLMath.clamp(accel, dt * mJerkLimit.doubleValue());
+            }
+
         } else {
             // make the acceleration the difference between target and current
-            mAccel = target - mOutput;
+            mAccel = (target - mOutput) / dt;
         }
 
         // if there is an acceleration limit, limit the acceleration

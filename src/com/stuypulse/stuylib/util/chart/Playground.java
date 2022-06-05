@@ -4,13 +4,14 @@
 
 package com.stuypulse.stuylib.util.chart;
 
+import com.stuypulse.stuylib.streams.IStream;
 import com.stuypulse.stuylib.streams.filters.*;
 
 public final class Playground {
 
     private interface Constants {
 
-        int TIME = 100;
+        int TIME = 200;
         int MAX = +1;
         int MIN = -1;
 
@@ -22,25 +23,35 @@ public final class Playground {
     public static void main(String... args) throws InterruptedException {
         System.out.println("Testing graph library...");
 
-        double RC = 0.2;
+        double accel = 1.0;
+        double jerk = 1.0;
 
         GraphData[] inputs =
                 new GraphData[] {
                     new FilteredGraphData(Constants.make("Control"), x -> x),
-                    new FilteredGraphData(Constants.make("Rate Limit"), new TimedRateLimit(1.0)),
+                    // new FilteredGraphData(Constants.make("Rate Limit"), new RateLimit(1.0)),
+                    new FilteredGraphData(Constants.make("AAA"), new JerkLimit(accel, jerk)),
                     new FilteredGraphData(
-                            Constants.make("Motor Profile"), new MotorProfile(1.0, 2.5)),
+                            Constants.make("BBB"),
+                            new JerkLimit(accel, jerk).then(new Derivative())),
+                    new FilteredGraphData(
+                            Constants.make("CCC"),
+                            new JerkLimit(accel, jerk)
+                                    .then(new Derivative())
+                                    .then(new Derivative())),
+
                     // new FilteredGraphData(Constants.make("Low Pass"), new LowPassFilter(RC)),
-                    new FilteredGraphData(Constants.make("Both"), x -> x)
                 };
 
         JGraph graph = new JGraph(inputs);
 
+        IStream mouse = IStream.create(() -> (graph.getMouseTracker().getMouseY() - 0.5) * 2);
+        // mouse = () -> (System.currentTimeMillis() % 4000 > 2000 ? 1.0 : 0.0);
         for (; ; ) {
-            final double next = (graph.getMouseTracker().getMouseY() - 0.5) * 2;
+            final double next = mouse.get();
             graph.update(next);
 
-            Thread.sleep(33);
+            Thread.sleep(20);
         }
     }
 }
