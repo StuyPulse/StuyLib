@@ -7,23 +7,21 @@ package com.stuypulse.stuylib.streams.filters;
 import com.stuypulse.stuylib.util.StopWatch;
 
 /**
- * This class takes an IStream and gives you the derivative with respect to time.
+ * This class takes an IStream and gives you the integral with respect to time.
  *
  * @author Sam (sam.belliveau@gmail.com)
  */
-public class Derivative implements IFilter {
+public class Integral implements IFilter {
 
     StopWatch mTimer;
-    double mLastValue;
+    double mTotal;
 
-    public Derivative() {
+    public Integral() {
         mTimer = new StopWatch();
-        mLastValue = 0.0;
+        mTotal = 0.0;
     }
 
     public double get(double next) {
-        double diff = next - mLastValue;
-        mLastValue = next;
-        return diff / mTimer.reset();
+        return mTotal += next * mTimer.reset();
     }
 }
