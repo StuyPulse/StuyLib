@@ -4,18 +4,14 @@
 
 package com.stuypulse.stuylib.util.chart;
 
-import com.stuypulse.stuylib.math.Vector2D;
-import com.stuypulse.stuylib.math.interpolation.CubicInterpolator;
-import com.stuypulse.stuylib.math.interpolation.Interpolator;
-import com.stuypulse.stuylib.math.interpolation.NearestInterpolator;
-import com.stuypulse.stuylib.math.interpolation.PolyInterpolator;
+import com.stuypulse.stuylib.streams.IStream;
 import com.stuypulse.stuylib.streams.filters.*;
 
 public final class Playground {
 
     private interface Constants {
 
-        int TIME = 400;
+        int TIME = 200;
         int MAX = +1;
         int MIN = -1;
 
@@ -24,32 +20,38 @@ public final class Playground {
         }
     }
 
-    public static Vector2D[] test_points = {
-        new Vector2D(0, 5),
-        new Vector2D(1, 1),
-        new Vector2D(3, 10),
-        new Vector2D(5, 2),
-        new Vector2D(8, 5),
-        new Vector2D(10, 2)
-    };
-
-    public static GraphData makeTest(String name, Interpolator interpolator) {
-        GraphData test_graph = new GraphData(name, 100, -5, 15);
-
-        for (double i = 0; i < 10; i += 0.1) {
-            test_graph.update(interpolator.interpolate(i));
-        }
-
-        return test_graph;
-    }
-
     public static void main(String... args) throws InterruptedException {
-        JGraph graph =
-                new JGraph(
-                        makeTest("Cubic", new CubicInterpolator(test_points)),
-                        makeTest("Linear", new NearestInterpolator(test_points)),
-                        makeTest("Poly", new PolyInterpolator(test_points)));
+        System.out.println("Testing graph library...");
 
-        graph.update();
+        double accel = 1.0;
+        double jerk = 1.0;
+
+        GraphData[] inputs =
+                new GraphData[] {
+                    new FilteredGraphData(Constants.make("Control"), x -> x),
+                    // new FilteredGraphData(Constants.make("Rate Limit"), new RateLimit(1.0)),
+                    new FilteredGraphData(Constants.make("AAA"), new JerkLimit(accel, jerk)),
+                    new FilteredGraphData(
+                            Constants.make("BBB"),
+                            new JerkLimit(accel, jerk).then(new Derivative())),
+                    new FilteredGraphData(
+                            Constants.make("CCC"),
+                            new JerkLimit(accel, jerk)
+                                    .then(new Derivative())
+                                    .then(new Derivative())),
+
+                    // new FilteredGraphData(Constants.make("Low Pass"), new LowPassFilter(RC)),
+                };
+
+        JGraph graph = new JGraph(inputs);
+
+        IStream mouse = IStream.create(() -> (graph.getMouseTracker().getMouseY() - 0.5) * 2);
+        // mouse = () -> (System.currentTimeMillis() % 4000 > 2000 ? 1.0 : 0.0);
+        for (; ; ) {
+            final double next = mouse.get();
+            graph.update(next);
+
+            Thread.sleep(20);
+        }
     }
 }
