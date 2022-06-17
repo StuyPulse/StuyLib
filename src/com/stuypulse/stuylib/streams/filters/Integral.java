@@ -13,8 +13,8 @@ import com.stuypulse.stuylib.util.StopWatch;
  */
 public class Integral implements IFilter {
 
-    StopWatch mTimer;
-    double mTotal;
+    private final StopWatch mTimer;
+    private double mTotal;
 
     public Integral() {
         mTimer = new StopWatch();
