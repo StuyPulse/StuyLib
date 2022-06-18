@@ -4,7 +4,7 @@
 
 package com.stuypulse.stuylib.util;
 
-import edu.wpi.first.wpilibj.Timer;
+import edu.wpi.first.wpilibj.RobotController;
 
 /**
  * This StopWatch class helps classes who want their functions to be time independent do that by
@@ -108,16 +108,12 @@ public class StopWatch {
     public static final TimeEngine kFPGATimestamp =
             new TimeEngine() {
 
-                // Amount to multiply the double by
-                // before converting it to an integer
-                private static final long SCALE = (1L << 24);
-
                 public long getRawTime() {
-                    return (long) (Timer.getFPGATimestamp() * SCALE);
+                    return RobotController.getFPGATime();
                 }
 
                 public double toSeconds(long raw) {
-                    return raw / (double) SCALE;
+                    return raw / 1_000_000.0;
                 }
             };
 }

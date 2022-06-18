@@ -39,8 +39,7 @@ public final class Playground {
                             new JerkLimit(accel, jerk)
                                     .then(new Derivative())
                                     .then(new Derivative())),
-
-                    // new FilteredGraphData(Constants.make("Low Pass"), new LowPassFilter(RC)),
+                    new FilteredGraphData(Constants.make("Low Pass"), new LowPassFilter(1)),
                 };
 
         JGraph graph = new JGraph(inputs);
