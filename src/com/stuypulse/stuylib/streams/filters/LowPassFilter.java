@@ -26,16 +26,17 @@ public class LowPassFilter implements IFilter {
      *     get 63.2% of the way to the target value. 63.2% is (1 - (1 / e)).
      */
     public LowPassFilter(Number rc) {
-        if (rc.doubleValue() < 0) {
-            throw new IllegalArgumentException("rc must be a positive number");
-        }
-
         mTimer = new StopWatch();
         mLastValue = 0;
         mRC = rc;
     }
 
     public double get(double next) {
+        // If RC will cause errors, disable filter
+        if (mRC.doubleValue() <= 0.0) {
+            return mLastValue = next;
+        }
+
         // Get a constant, which is determined based on dt and the mRC constant
         double a = Math.exp(-mTimer.reset() / mRC.doubleValue());
 

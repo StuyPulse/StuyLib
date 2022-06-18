@@ -13,8 +13,8 @@ import com.stuypulse.stuylib.util.StopWatch;
  */
 public class Derivative implements IFilter {
 
-    StopWatch mTimer;
-    double mLastValue;
+    private final StopWatch mTimer;
+    private double mLastValue;
 
     public Derivative() {
         mTimer = new StopWatch();
