@@ -11,11 +11,7 @@ public interface Conversion<From, To> {
     }
     
     default Conversion<To, From> invert() {
-        Conversion<From, To> o = this;
-        return new Conversion<To, From>() {
-            public From to(To value) { return o.from(value); }
-            public To from(From value) { return o.to(value); }
-        };
+        return make(this::from, this::to);
     }
 
     To to(From value);
