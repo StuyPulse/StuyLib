@@ -209,7 +209,7 @@ public abstract class Controller implements Sendable {
      * The angle controller will use this controller internally, so all the configuration done
      * to this controller will persist.
      * 
-     * BY DEFAULT, this controller should be tuned to accept angles in the unit of degrees, but
+     * BY DEFAULT, this controller should be tuned to accept angles in the unit of radians, but
      * this can be changed.
      * 
      * @return an angle controller

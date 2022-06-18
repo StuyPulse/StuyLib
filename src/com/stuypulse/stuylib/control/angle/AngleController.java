@@ -30,13 +30,13 @@ public class AngleController {
      * angle controller. Then .angle() should be called to create 
      * 
      * BY DEFAULT, this controller should expect to receive error
-     * in the unit of degrees.
+     * in the unit of radians.
      * 
      * @param controller controller to wrap
      */
     public AngleController(Controller controller) {
         mController = controller;
-        useDegrees();
+        useRadians();
     }
 
     /**
