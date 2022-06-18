@@ -1,5 +1,8 @@
 package com.stuypulse.stuylib.math;
 
+import com.stuypulse.stuylib.network.SmartAngle;
+import com.stuypulse.stuylib.network.SmartNumber;
+
 import edu.wpi.first.math.geometry.Rotation2d;
 
 public interface Angle {
@@ -72,8 +75,16 @@ public interface Angle {
         return new ImmutableAngle(radians);
     }
 
+    public static Angle fromRadians(SmartNumber radians) {
+        return new SmartAngle(radians).radians();
+    }
+
     public static Angle fromDegrees(double degrees) {
         return fromRadians(Math.toRadians(degrees));
+    }
+
+    public static Angle fromDegrees(SmartNumber degrees) {
+        return new SmartAngle(degrees).degrees();
     }
 
     public static Angle fromDegrees(int degrees) {
