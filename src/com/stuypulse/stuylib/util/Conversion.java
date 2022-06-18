@@ -2,6 +2,14 @@ package com.stuypulse.stuylib.util;
 
 import java.util.function.Function;
 
+/**
+ * Represents a conversion from a type to another type. 
+ * 
+ * Useful when wanting to package two related type/unit conversions functions
+ * together.
+ * 
+ * @author Myles Pasetsky 
+ */
 public interface Conversion<From, To> {
     static <In, Out> Conversion<In, Out> make(Function<In, Out> to, Function<Out, In> from) {
         return new Conversion<In, Out>() {
