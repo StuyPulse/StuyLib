@@ -4,8 +4,6 @@
 
 package com.stuypulse.stuylib.streams.booleans.filters;
 
-import com.stuypulse.stuylib.streams.filters.IFilter;
-
 /**
  * This is the BFilter interface class that gives a definition for how to implement a filter.
  *
@@ -16,31 +14,28 @@ import com.stuypulse.stuylib.streams.filters.IFilter;
  */
 public interface BFilter {
 
-    /** @return a filter that just returns it's input */
-    public static BFilter create() {
-        return x -> x;
-    }
-
     /**
-     * Create an BFilter from another BFilter. This is helpful if you want to use some of the
-     * decorator functions with a lambda.
+     * Create a BFilter from a list of BFilters. This will create a BFilter with the least possible
+     * overhead for the number of filters provided.
      *
-     * @param filter filter to create BFilter from
-     * @return the resulting BFilter
+     * @param filters list of BFilters to apply
+     * @return an BFilter that uses every filter given
      */
-    public static BFilter create(BFilter filter) {
-        return filter;
-    }
-
-    /**
-     * Create a BFilter from an IFilter. This will cast the boolean to a double, filter it, and cast
-     * it back to a boolean.
-     *
-     * @param filter filter to create IFilter from
-     * @return the resulting IFilter
-     */
-    public static BFilter create(IFilter filter) {
-        return x -> Math.abs(filter.get(x ? 1.0 : 0.0)) > 0.5;
+    public static BFilter create(BFilter... filters) {
+        switch (filters.length) {
+            case 0:
+                return x -> x;
+            case 1:
+                return filters[0];
+            case 2:
+                return x -> filters[1].get(filters[0].get(x));
+            case 3:
+                return x -> filters[2].get(filters[1].get(filters[0].get(x)));
+            case 4:
+                return x -> filters[3].get(filters[2].get(filters[1].get(filters[0].get(x))));
+            default:
+                return new BFilterGroup(filters);
+        }
     }
 
     /**

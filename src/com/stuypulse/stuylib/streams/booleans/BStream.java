@@ -4,7 +4,6 @@
 
 package com.stuypulse.stuylib.streams.booleans;
 
-import com.stuypulse.stuylib.streams.IStream;
 import com.stuypulse.stuylib.streams.booleans.filters.BFilter;
 
 import edu.wpi.first.wpilibj.DigitalInput;
@@ -39,17 +38,6 @@ public interface BStream extends BooleanSupplier {
      */
     public static BStream create(DigitalInput input) {
         return input::get;
-    }
-
-    /**
-     * Create a BStream from another IStream. This will check if the amplitude is above a certain
-     * threshold.
-     *
-     * @param stream stream to create IStream from
-     * @return the resulting BStream
-     */
-    public static BStream create(IStream stream) {
-        return () -> Math.abs(stream.get()) > 0.5;
     }
 
     /** @return next value in the stream */

@@ -5,7 +5,6 @@
 package com.stuypulse.stuylib.streams;
 
 import com.stuypulse.stuylib.streams.filters.IFilter;
-import com.stuypulse.stuylib.streams.filters.IFilterGroup;
 
 /**
  * Takes an {@link IStream} and a {@link IFilter} and makes a {@link FilteredIStream}
@@ -27,7 +26,7 @@ public class FilteredIStream implements IStream {
      */
     public FilteredIStream(IStream stream, IFilter... filter) {
         mStream = stream;
-        mStreamFilter = new IFilterGroup(filter);
+        mStreamFilter = IFilter.create(filter);
     }
 
     /**
