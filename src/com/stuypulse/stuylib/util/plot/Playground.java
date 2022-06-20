@@ -20,14 +20,18 @@ public class Playground {
     }
 
     public static void main(String[] args) throws InterruptedException {
+        /*
+        some things to change:
+         - the scale of plots can be changed from [0,1] but time series are stuck between [0, 1]
+         - random errors from XYChart
+         - cannnot turn off duration (may want to draw forever?)
+        */
         Plot plot = new Plot();
         
         VStream mouse = plot.getMouse()::getPosition;
         IStream mouse_y = plot.getMouse()::getY;
         
         plot
-            // .addSeries(new TimeSeries("mouse_y", mouse_y))
-            // .addSeries(new XYSeries(new Config("mouse", 500), mouse))
             .addSeries(Constants.make("y", mouse_y))
             .addSeries(Constants.make("mouse", mouse))
             .addSeries(Constants.make("jerk", mouse.filtered(new VJerkLimit(1.0, 10.0))))
