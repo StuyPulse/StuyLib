@@ -60,18 +60,7 @@ public class Plot {
         return mouse;
     }
 
-    public void update(String name, List<Double> x, List<Double> y) {
-        x = new ArrayList<>(x);
-        y = new ArrayList<>(y);
-        if (instance.getSeriesMap().containsKey(name)) {
-            instance.updateXYSeries(name, x, y, null);
-        } else {
-            instance.addSeries(name, x, y);
-            instance.getSeriesMap().get(name).setMarker(SeriesMarkers.NONE);
-        }
-    }
-
-    public void display() {
+    private void display() {
         Toolkit.getDefaultToolkit().sync();
         panel.revalidate();
         panel.repaint();
