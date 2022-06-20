@@ -3,6 +3,8 @@ package com.stuypulse.stuylib.util.plot;
 import com.stuypulse.stuylib.streams.IStream;
 import com.stuypulse.stuylib.streams.vectors.VStream;
 import com.stuypulse.stuylib.streams.vectors.filters.VJerkLimit;
+import com.stuypulse.stuylib.streams.vectors.filters.VLowPassFilter;
+import com.stuypulse.stuylib.streams.vectors.filters.VRateLimit;
 import com.stuypulse.stuylib.util.plot.Series.Config;
 
 public class Playground {
@@ -32,8 +34,9 @@ public class Playground {
         IStream mouse_y = plot.getMouse()::getY;
         
         plot
-            .addSeries(Constants.make("y", mouse_y))
             .addSeries(Constants.make("mouse", mouse))
+            .addSeries(Constants.make("lpf", mouse.filtered(new VLowPassFilter(0.2))))
+            .addSeries(Constants.make("rate", mouse.filtered(new VRateLimit(1.0))))
             .addSeries(Constants.make("jerk", mouse.filtered(new VJerkLimit(1.0, 10.0))))
         ;
 
