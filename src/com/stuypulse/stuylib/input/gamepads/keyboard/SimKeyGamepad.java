@@ -4,10 +4,10 @@
 
 package com.stuypulse.stuylib.input.gamepads.keyboard;
 
-import com.stuypulse.stuylib.util.chart.KeyTracker;
-
 import java.awt.Color;
 import javax.swing.JFrame;
+
+import com.stuypulse.stuylib.util.plot.KeyTracker;
 
 /**
  * This class opens a window to accept keyboard input that acts as a gamepad. It is meant to be used
