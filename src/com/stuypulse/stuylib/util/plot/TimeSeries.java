@@ -13,11 +13,15 @@ public class TimeSeries extends Series {
 
     private final IStream stream;
 
-    public TimeSeries(String name, IStream stream) {
-        super(name);
+    public TimeSeries(Config config, IStream stream) {
+        super(config);
 
         xValues = new ArrayList<>();
         yValues = new LinkedList<>();
+        for (int i = 0; i < config.getDuration(); ++i) {
+            xValues.add((i * 1.0)/config.getDuration());
+            yValues.add(0.0);
+        }
 
         this.stream = stream;
     }
@@ -33,7 +37,17 @@ public class TimeSeries extends Series {
     }
 
     @Override
-    protected void update() {
+    protected void poll() {
         yValues.add(stream.get());
+    }
+
+    @Override
+    protected void pop() {
+        yValues.remove(0);
+    }
+
+    @Override
+    public int size() {
+        return yValues.size();
     }
 }

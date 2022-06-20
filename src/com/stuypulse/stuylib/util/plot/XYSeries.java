@@ -13,8 +13,8 @@ public class XYSeries extends Series {
 
     private final VStream stream;
 
-    public XYSeries(String name, VStream stream) {
-        super(name);
+    public XYSeries(Config config, VStream stream) {
+        super(config);
 
         xValues = new LinkedList<>();
         yValues = new LinkedList<>();
@@ -33,10 +33,21 @@ public class XYSeries extends Series {
     }
 
     @Override
-    protected void update() {
+    protected void poll() {
         Vector2D next = stream.get();
         xValues.add(next.x);
         yValues.add(next.y);
+    }
+
+    @Override
+    protected void pop() {
+        xValues.remove(0);
+        yValues.remove(0);
+    }
+
+    @Override
+    public int size() {
+        return yValues.size();
     }
     
 }
