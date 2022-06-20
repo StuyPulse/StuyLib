@@ -6,6 +6,7 @@ import com.stuypulse.stuylib.streams.IStream;
 import com.stuypulse.stuylib.streams.vectors.VStream;
 
 import org.knowm.xchart.XYChart;
+import org.knowm.xchart.XYSeries.XYSeriesRenderStyle;
 import org.knowm.xchart.style.markers.SeriesMarkers;
 
 public abstract class Series {
@@ -68,7 +69,9 @@ public abstract class Series {
             chart.updateXYSeries(name, x, y, null);
         } else {
             chart.addSeries(name, x, y);
-            chart.getSeriesMap().get(name).setMarker(SeriesMarkers.NONE);
+            chart.getSeriesMap().get(name)
+                .setXYSeriesRenderStyle(XYSeriesRenderStyle.Line)
+                .setMarker(SeriesMarkers.NONE);
         }
     }
 
