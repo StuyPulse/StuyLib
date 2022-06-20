@@ -4,8 +4,6 @@ import java.awt.Dimension;
 
 import javax.swing.JFrame;
 
-import com.stuypulse.stuylib.util.chart.MouseTracker;
-
 import java.awt.Toolkit;
 import java.util.ArrayList;
 import java.util.List;
@@ -13,9 +11,10 @@ import java.util.List;
 import org.knowm.xchart.XChartPanel;
 import org.knowm.xchart.XYChart;
 import org.knowm.xchart.XYChartBuilder;
-import org.knowm.xchart.style.markers.SeriesMarkers;
 
 public class Plot {
+
+    private List<Series> plots;
 
     private JFrame frame;
 
@@ -25,6 +24,8 @@ public class Plot {
     private MouseTracker mouse;
 
     public Plot(Settings settings) {
+        plots = new ArrayList<>();
+
         frame = new JFrame(settings.getTitle());
 
         frame.getContentPane().setPreferredSize(new Dimension(settings.getWidth(), settings.getHeight()));
@@ -56,8 +57,26 @@ public class Plot {
         frame.setVisible(true);
     }
 
-    public MouseTracker getMouseTracker() {
+    public Plot() {
+        this(new Settings());
+    }
+
+    public MouseTracker getMouse() {
         return mouse;
+    }
+
+    public Plot addSeries(Series... series) {
+        for (Series e : series)
+            plots.add(e);
+        return this;
+    }
+
+    public void update() {
+        for (Series plot : plots) {
+            plot.update(instance);
+        }
+        
+        display();
     }
 
     private void display() {
