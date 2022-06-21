@@ -4,6 +4,8 @@
 
 package com.stuypulse.stuylib.streams.filters;
 
+import java.nio.file.attribute.AclEntry;
+
 import com.stuypulse.stuylib.math.SLMath;
 import com.stuypulse.stuylib.util.StopWatch;
 
@@ -45,41 +47,51 @@ public class JerkLimit implements IFilter {
     public double get(double target) {
         double dt = mTimer.reset();
 
-        // if there is a jerk limit, limit the amount the acceleration can change
-        if (0 < mJerkLimit.doubleValue()) {
-            // amount of windup in system (how long it would take to slow down)
-            double windup = Math.abs(mAccel) / mJerkLimit.doubleValue();
+        boolean reverse = target < mOutput;
 
-            // If the windup is too small, just use normal algorithm to limit acceleration
-            if (windup < dt) {
-                // Calculate acceleration needed to reach target
-                double accel = (target - mOutput) / dt - mAccel;
+        if(reverse) {
+            target *= -1;
+            mOutput *= -1;
+            mAccel *= -1;
+        }
 
-                // Try to reach it while abiding by jerklimit
-                mAccel += SLMath.clamp(accel, dt * mJerkLimit.doubleValue());
-            } else {
-                // the position it would end up if it attempted to come to a full stop
-                double windA = 0.5 * mAccel * (dt + windup); // windup caused by acceleration
-                double future = mOutput + windA; // where the robot will end up
+        mAccel = SLMath.clamp(mAccel, mAccelLimit.doubleValue());
 
-                // Calculate acceleration needed to come to stop at target throughout windup
-                double accel = (target - future) / windup;
+        double cutoffBegin = mAccel / mJerkLimit.doubleValue();
+        double cutoffDistBegin = cutoffBegin * cutoffBegin * mJerkLimit.doubleValue() * 0.5;
 
-                // Try to reach it while abiding by jerklimit
-                mAccel += SLMath.clamp(accel, dt * mJerkLimit.doubleValue());
-            }
+        double fullTrapezoidDist = cutoffDistBegin + (target - mOutput);
+        double accelerationTime = mAccelLimit.doubleValue() / mJerkLimit.doubleValue();
+        double fullSpeedDist = fullTrapezoidDist - accelerationTime * accelerationTime * mJerkLimit.doubleValue();
 
+        if (fullSpeedDist < 0) {
+            accelerationTime = Math.sqrt(fullTrapezoidDist / mJerkLimit.doubleValue());
+            fullSpeedDist = 0;
+        }
+
+        double endAccel = accelerationTime - cutoffBegin;
+        double endFullSpeed = endAccel + fullSpeedDist / mAccelLimit.doubleValue();
+        double endDeccel = endFullSpeed + accelerationTime;
+
+        if (dt < endAccel) {
+            mOutput += (mAccel + dt * mJerkLimit.doubleValue() * 0.5) * dt;
+            mAccel += dt * mJerkLimit.doubleValue();
+        } else if (dt < endFullSpeed) {
+            mOutput += (mAccel + endAccel * mJerkLimit.doubleValue() * 0.5) * endAccel + mAccelLimit.doubleValue() * (dt - endAccel);
+            mAccel = mAccelLimit.doubleValue();
+        } else if (dt <= endDeccel) {
+            double timeLeft = endDeccel - dt;
+            mOutput = target - (timeLeft * mJerkLimit.doubleValue() * 0.5) * timeLeft;
+            mAccel = timeLeft * mJerkLimit.doubleValue();
         } else {
-            // make the acceleration the difference between target and current
-            mAccel = (target - mOutput) / dt;
+            mOutput = target;
         }
 
-        // if there is an acceleration limit, limit the acceleration
-        if (0 < mAccelLimit.doubleValue()) {
-            mAccel = SLMath.clamp(mAccel, mAccelLimit.doubleValue());
+        if (reverse) {
+            mOutput *= -1;
+            mAccel *= -1;
         }
 
-        // adjust output by calculated acceleration
-        return mOutput += dt * mAccel;
+        return mOutput;
     }
 }

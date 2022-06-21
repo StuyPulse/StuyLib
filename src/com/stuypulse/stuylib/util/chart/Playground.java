@@ -4,9 +4,8 @@
 
 package com.stuypulse.stuylib.util.chart;
 
+import com.stuypulse.stuylib.streams.IStream;
 import com.stuypulse.stuylib.streams.filters.*;
-import com.stuypulse.stuylib.streams.vectors.VStream;
-import com.stuypulse.stuylib.streams.vectors.filters.VJerkLimit;
 
 public final class Playground {
 
@@ -27,30 +26,30 @@ public final class Playground {
         double accel = 1.0;
         double jerk = 1.0;
 
-        JGraph poop = new JGraph(new FilteredGraphData(Constants.make("poop"), x -> x));
+        GraphData[] inputs =
+                new GraphData[] {
+                    new FilteredGraphData(Constants.make("Control"), x -> x),
+                    // new FilteredGraphData(Constants.make("Rate Limit"), new RateLimit(1.0)),
+                    new FilteredGraphData(Constants.make("AAA"), new JerkLimit(accel, jerk)),
+                    new FilteredGraphData(
+                            Constants.make("BBB"),
+                            new JerkLimit(accel, jerk).then(new Derivative())),
+                    new FilteredGraphData(
+                            Constants.make("CCC"),
+                            new JerkLimit(accel, jerk)
+                                    .then(new Derivative())
+                                    .then(new Derivative())),
+                };
 
-        VStream mouse =
-                VStream.create(
-                        () -> (poop.getMouseTracker().getMouseX() - 0.5) * 2,
-                        () -> (poop.getMouseTracker().getMouseY() - 0.5) * 2);
-        ;
-        VStream filtered_mouse = mouse.filtered(new VJerkLimit(accel, jerk));
+        JGraph graph = new JGraph(inputs);
 
-        JGraph graph =
-                new JGraph(
-                        new FilteredGraphData(Constants.make("mouse_x"), x -> mouse.get().x),
-                        new FilteredGraphData(Constants.make("mouse_y"), x -> mouse.get().y),
-                        new FilteredGraphData(
-                                Constants.make("filtered_mouse_x"), x -> filtered_mouse.get().x),
-                        new FilteredGraphData(
-                                Constants.make("filtered_mouse_y"), x -> filtered_mouse.get().y));
-
+        IStream mouse = IStream.create(() -> (graph.getMouseTracker().getMouseY() - 0.5) * 2);
         // mouse = () -> (System.currentTimeMillis() % 4000 > 2000 ? 1.0 : 0.0);
         for (; ; ) {
-            graph.update(0.0);
-            poop.update();
+            final double next = mouse.get();
+            graph.update(next);
 
-            Thread.sleep(20);
+            Thread.sleep(50);
         }
     }
 }
