@@ -1,5 +1,6 @@
 package com.stuypulse.stuylib.util.plot;
 
+import java.awt.BasicStroke;
 import java.util.List;
 
 import com.stuypulse.stuylib.streams.IStream;
@@ -71,7 +72,8 @@ public abstract class Series {
             chart.addSeries(name, x, y);
             chart.getSeriesMap().get(name)
                 .setXYSeriesRenderStyle(XYSeriesRenderStyle.Line)
-                .setMarker(SeriesMarkers.NONE);
+                .setMarker(SeriesMarkers.NONE)
+                .setLineStyle(new BasicStroke(2.5f));
         }
     }
 
