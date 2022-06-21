@@ -4,9 +4,9 @@
 
 package com.stuypulse.stuylib.util.plot;
 
-import java.awt.*;
-
 import com.stuypulse.stuylib.math.Vector2D;
+
+import java.awt.*;
 
 /**
  * Tracks the mouse on a container without the need for a listener.
@@ -52,9 +52,7 @@ public class MouseTracker {
         return 1.0 - y;
     }
 
-    /**
-     * get mouse position
-     */
+    /** @return position of mouse */
     public Vector2D getPosition() {
         return new Vector2D(getX(), getY());
     }

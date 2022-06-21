@@ -5,7 +5,8 @@
 package com.stuypulse.stuylib.streams.vectors;
 
 import com.stuypulse.stuylib.math.Vector2D;
-import com.stuypulse.stuylib.util.Looper;
+
+import edu.wpi.first.wpilibj.Notifier;
 
 /**
  * A PollingVStream is a VStream but its .get() method is called for you at a certain rate. This
@@ -15,7 +16,7 @@ import com.stuypulse.stuylib.util.Looper;
  */
 public class PollingVStream implements VStream {
 
-    private Looper mPoller;
+    private Notifier mPoller;
     private volatile Vector2D mResult;
 
     /**
@@ -30,14 +31,20 @@ public class PollingVStream implements VStream {
         }
 
         mResult = Vector2D.kOrigin;
-        mPoller = new Looper(() -> mResult = stream.get(), dt);
+        mPoller = new Notifier(() -> mResult = stream.get());
+        mPoller.startPeriodic(dt);
     }
 
     public Vector2D get() {
-        if (!mPoller.isAlive()) {
-            mPoller.start();
-        }
-
         return mResult;
+    }
+
+    protected void finalize() {
+        close();
+    }
+
+    public void close() {
+        mPoller.close();
+        mResult = Vector2D.kOrigin;
     }
 }

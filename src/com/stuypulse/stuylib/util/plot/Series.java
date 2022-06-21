@@ -1,11 +1,14 @@
-package com.stuypulse.stuylib.util.plot;
+/* Copyright (c) 2022 StuyPulse Robotics. All rights reserved. */
+/* This work is licensed under the terms of the MIT license */
+/* found in the root directory of this project. */
 
-import java.awt.BasicStroke;
-import java.util.List;
+package com.stuypulse.stuylib.util.plot;
 
 import com.stuypulse.stuylib.streams.IStream;
 import com.stuypulse.stuylib.streams.vectors.VStream;
 
+import java.awt.BasicStroke;
+import java.util.List;
 import org.knowm.xchart.XYChart;
 import org.knowm.xchart.XYSeries.XYSeriesRenderStyle;
 import org.knowm.xchart.style.markers.SeriesMarkers;
@@ -21,10 +24,15 @@ public abstract class Series {
             this.duration = duration;
         }
 
-        public String getName() { return name; }
-        public int getDuration() { return duration; }
+        public String getName() {
+            return name;
+        }
+
+        public int getDuration() {
+            return duration;
+        }
     }
-    
+
     public static final Series make(Config config, IStream stream) {
         return new TimeSeries(config, stream);
     }
@@ -46,13 +54,15 @@ public abstract class Series {
     public abstract int size();
 
     protected abstract List<Double> getSafeXValues();
+
     protected abstract List<Double> getSafeYValues();
 
     protected abstract void pop();
+
     protected abstract void poll();
 
     private final void update() {
-        final int duration = getConfig().getDuration(); 
+        final int duration = getConfig().getDuration();
         poll();
         while (size() > duration) {
             pop();
@@ -70,11 +80,11 @@ public abstract class Series {
             chart.updateXYSeries(name, x, y, null);
         } else {
             chart.addSeries(name, x, y);
-            chart.getSeriesMap().get(name)
-                .setXYSeriesRenderStyle(XYSeriesRenderStyle.Line)
-                .setMarker(SeriesMarkers.NONE)
-                .setLineStyle(new BasicStroke(2.5f));
+            chart.getSeriesMap()
+                    .get(name)
+                    .setXYSeriesRenderStyle(XYSeriesRenderStyle.Line)
+                    .setMarker(SeriesMarkers.NONE)
+                    .setLineStyle(new BasicStroke(2.5f));
         }
     }
-
 }

@@ -1,10 +1,14 @@
-package com.stuypulse.stuylib.util.plot;
+/* Copyright (c) 2022 StuyPulse Robotics. All rights reserved. */
+/* This work is licensed under the terms of the MIT license */
+/* found in the root directory of this project. */
 
-import java.util.LinkedList;
-import java.util.List;
+package com.stuypulse.stuylib.util.plot;
 
 import com.stuypulse.stuylib.math.Vector2D;
 import com.stuypulse.stuylib.streams.vectors.VStream;
+
+import java.util.LinkedList;
+import java.util.List;
 
 public class XYSeries extends Series {
 
@@ -49,5 +53,4 @@ public class XYSeries extends Series {
     public int size() {
         return yValues.size();
     }
-    
 }

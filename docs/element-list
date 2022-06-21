@@ -16,4 +16,4 @@ com.stuypulse.stuylib.streams.filters
 com.stuypulse.stuylib.streams.vectors
 com.stuypulse.stuylib.streams.vectors.filters
 com.stuypulse.stuylib.util
-com.stuypulse.stuylib.util.chart
+com.stuypulse.stuylib.util.plot

@@ -17,16 +17,6 @@ import edu.wpi.first.wpilibj.RobotController;
  */
 public class StopWatch {
 
-    // Engine interface used to get the current time
-    public interface TimeEngine {
-
-        // Get the raw time as a long
-        public long getRawTime();
-
-        // Convert the integer time into a double
-        public double toSeconds(long raw);
-    }
-
     private TimeEngine mEngine;
     private long mLastTime;
 
@@ -42,7 +32,7 @@ public class StopWatch {
 
     /** Creates timer and reset it to now. */
     public StopWatch() {
-        this(kNanoEngine);
+        this(kDefaultEngine);
     }
 
     /**
@@ -67,6 +57,16 @@ public class StopWatch {
     public double getTime() {
         long delta = Math.max(1, mEngine.getRawTime() - mLastTime);
         return mEngine.toSeconds(delta);
+    }
+
+    // Engine interface used to get the current time
+    private interface TimeEngine {
+
+        // Get the raw time as a long
+        public long getRawTime();
+
+        // Convert the integer time into a double
+        public double toSeconds(long raw);
     }
 
     /** This engine is used to get the current time with the system function System.nanoTime() */
@@ -103,9 +103,9 @@ public class StopWatch {
     /**
      * This engine is used to get the current time with the WPI function Timer.getFPGATimestamp()
      *
-     * <p>this is used if for whatever reason you need to use the WPI Timer
+     * <p>This is more accurate when used on a real robot.
      */
-    public static final TimeEngine kFPGATimestamp =
+    public static final TimeEngine kFPGAEngine =
             new TimeEngine() {
 
                 public long getRawTime() {
@@ -116,4 +116,30 @@ public class StopWatch {
                     return raw / 1_000_000.0;
                 }
             };
+
+    /** Variable that stores the time engine we want to use by default */
+    private static TimeEngine kSelectedDefaultEngine = kNanoEngine;
+
+    /** This engine will return the same values as whatever is selected as the default engine */
+    public static final TimeEngine kDefaultEngine =
+            new TimeEngine() {
+                public long getRawTime() {
+                    return kSelectedDefaultEngine.getRawTime();
+                }
+
+                public double toSeconds(long raw) {
+                    return kSelectedDefaultEngine.toSeconds(raw);
+                }
+            };
+
+    /**
+     * Set the default engine for the StopWatch
+     *
+     * <p>This will be the engine used by every PID Loop and IFilter
+     *
+     * @param defaultEngine the engine that you want to be used by default
+     */
+    public static void setDefaultEngine(TimeEngine defaultEngine) {
+        kSelectedDefaultEngine = defaultEngine;
+    }
 }
