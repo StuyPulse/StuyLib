@@ -17,8 +17,8 @@ import com.stuypulse.stuylib.util.StopWatch;
  */
 public class JerkLimit implements IFilter {
 
-    // Number of times to apply filter (helps accuracy)
-    private static final int kSteps = 64;
+    // Default number of times to apply filter (helps accuracy)
+    private static final int kDefaultSteps = 64;
 
     // Stopwatch to Track dt
     private StopWatch mTimer;
@@ -31,11 +31,15 @@ public class JerkLimit implements IFilter {
     private double mOutput;
     private double mAccel;
 
+    // Number of times to apply filter (helps accuracy)
+    private final int mSteps;
+
     /**
      * @param accelLimit maximum change in velocity per second (u/s)
      * @param jerkLimit maximum change in acceleration per second (u/s/s)
+     * @param steps number of times to apply filter (improves accuracy)
      */
-    public JerkLimit(Number accelLimit, Number jerkLimit) {
+    public JerkLimit(Number accelLimit, Number jerkLimit, int steps) {
         mTimer = new StopWatch();
 
         mAccelLimit = accelLimit;
@@ -43,12 +47,22 @@ public class JerkLimit implements IFilter {
 
         mOutput = 0;
         mAccel = 0;
+        
+        mSteps = steps;
+    }
+
+    /**
+     * @param accelLimit maximum change in velocity per second (u/s)
+     * @param jerkLimit maximum change in acceleration per second (u/s/s)
+     */
+    public JerkLimit(Number accelLimit, Number jerkLimit) {
+        this(accelLimit, jerkLimit, kDefaultSteps);
     }
 
     public double get(double target) {
-        double dt = mTimer.reset() / kSteps;
+        double dt = mTimer.reset() / mSteps;
 
-        for (int i = 0; i < kSteps; ++i) {
+        for (int i = 0; i < mSteps; ++i) {
             // if there is a jerk limit, limit the amount the acceleration can change
             if (0 < mJerkLimit.doubleValue()) {
                 // amount of windup in system (how long it would take to slow down)
@@ -83,10 +97,10 @@ public class JerkLimit implements IFilter {
                 mAccel = SLMath.clamp(mAccel, mAccelLimit.doubleValue());
             }
 
+            // adjust output by calculated acceleration
             mOutput += dt * mAccel;
         }
 
-        // adjust output by calculated acceleration
         return mOutput;
     }
 }
