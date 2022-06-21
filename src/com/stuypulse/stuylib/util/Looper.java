@@ -28,7 +28,7 @@ public class Looper extends Thread {
     }
 
     public void run() {
-        final StopWatch timer = new StopWatch();
+        final StopWatch timer = new StopWatch(StopWatch.kNanoEngine);
         double time = 0.0;
 
         timer.reset();
