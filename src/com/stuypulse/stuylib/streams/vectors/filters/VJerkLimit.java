@@ -15,6 +15,9 @@ import com.stuypulse.stuylib.util.StopWatch;
  */
 public class VJerkLimit implements VFilter {
 
+    // Number of times to apply filter (helps accuracy)
+    private static final int kSteps = 64;
+
     // Stopwatch to Track dt
     private StopWatch mTimer;
 
@@ -41,43 +44,48 @@ public class VJerkLimit implements VFilter {
     }
 
     public Vector2D get(Vector2D target) {
-        double dt = mTimer.reset();
+        double dt = mTimer.reset() / kSteps;
 
-        // if there is a jerk limit, limit the amount the acceleration can change
-        if (0 < mJerkLimit.doubleValue()) {
-            // amount of windup in system (how long it would take to slow down)
-            double windup = mAccel.magnitude() / mJerkLimit.doubleValue();
+        for (int i = 0; i < kSteps; ++i) {
+            // if there is a jerk limit, limit the amount the acceleration can change
+            if (0 < mJerkLimit.doubleValue()) {
+                // amount of windup in system (how long it would take to slow down)
+                double windup = mAccel.magnitude() / mJerkLimit.doubleValue();
 
-            // If the windup is too small, just use normal algorithm to limit acceleration
-            if (windup < dt) {
-                // Calculate acceleration needed to reach target
-                Vector2D accel = target.sub(mOutput).div(dt).sub(mAccel);
+                // If the windup is too small, just use normal algorithm to limit acceleration
+                if (windup < dt) {
+                    // Calculate acceleration needed to reach target
+                    Vector2D accel = target.sub(mOutput).div(dt).sub(mAccel);
 
-                // Try to reach it while abiding by jerklimit
-                mAccel = mAccel.add(accel.clamp(dt * mJerkLimit.doubleValue()));
+                    // Try to reach it while abiding by jerklimit
+                    mAccel = mAccel.add(accel.clamp(dt * mJerkLimit.doubleValue()));
+                } else {
+                    // the position it would end up if it attempted to come to a full stop
+                    Vector2D windA =
+                            mAccel.mul(0.5 * (dt + windup)); // windup caused by acceleration
+                    Vector2D future = mOutput.add(windA); // where the robot will end up
+
+                    // Calculate acceleration needed to come to stop at target throughout windup
+                    Vector2D accel = (target.sub(future)).div(windup);
+
+                    // Try to reach it while abiding by jerklimit
+                    mAccel = mAccel.add(accel.clamp(dt * mJerkLimit.doubleValue()));
+                }
+
             } else {
-                // the position it would end up if it attempted to come to a full stop
-                Vector2D windA = mAccel.mul(0.5 * (dt + windup)); // windup caused by acceleration
-                Vector2D future = mOutput.add(windA); // where the robot will end up
-
-                // Calculate acceleration needed to come to stop at target throughout windup
-                Vector2D accel = (target.sub(future)).div(windup);
-
-                // Try to reach it while abiding by jerklimit
-                mAccel = mAccel.add(accel.clamp(dt * mJerkLimit.doubleValue()));
+                // make the acceleration the difference between target and current
+                mAccel = target.sub(mOutput).div(dt);
             }
 
-        } else {
-            // make the acceleration the difference between target and current
-            mAccel = target.sub(mOutput).div(dt);
-        }
+            // if there is an acceleration limit, limit the acceleration
+            if (0 < mAccelLimit.doubleValue()) {
+                mAccel = mAccel.clamp(mAccelLimit.doubleValue());
+            }
 
-        // if there is an acceleration limit, limit the acceleration
-        if (0 < mAccelLimit.doubleValue()) {
-            mAccel = mAccel.clamp(mAccelLimit.doubleValue());
+            mOutput = mOutput.add(mAccel.mul(dt));
         }
 
         // adjust output by calculated acceleration
-        return mOutput = mOutput.add(mAccel.mul(dt));
+        return mOutput;
     }
 }
