@@ -26,7 +26,7 @@
     catch(err) {
     }
 //-->
-var data = {"i0":18,"i1":1,"i2":1,"i3":1,"i4":6,"i5":18,"i6":18,"i7":18};
+var data = {"i0":18,"i1":1,"i2":6,"i3":18,"i4":18,"i5":18};
 var tabs = {65535:["t0","All Methods"],1:["t1","Static Methods"],2:["t2","Instance Methods"],4:["t3","Abstract Methods"],16:["t5","Default Methods"]};
 var altColor = "altColor";
 var rowColor = "rowColor";
@@ -164,45 +164,33 @@ $('.navPadding').css('padding-top', $('.fixedNav').css("height"));
 </tr>
 <tr id="i1" class="rowColor">
 <td class="colFirst"><code>static <a href="BFilter.html" title="interface in com.stuypulse.stuylib.streams.booleans.filters">BFilter</a></code></td>
-<th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#create()">create</a></span>()</code></th>
-<td class="colLast">&nbsp;</td>
+<th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#create(com.stuypulse.stuylib.streams.booleans.filters.BFilter...)">create</a></span>&#8203;(<a href="BFilter.html" title="interface in com.stuypulse.stuylib.streams.booleans.filters">BFilter</a>...&nbsp;filters)</code></th>
+<td class="colLast">
+<div class="block">Create a BFilter from a list of BFilters.</div>
+</td>
 </tr>
 <tr id="i2" class="altColor">
-<td class="colFirst"><code>static <a href="BFilter.html" title="interface in com.stuypulse.stuylib.streams.booleans.filters">BFilter</a></code></td>
-<th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#create(com.stuypulse.stuylib.streams.booleans.filters.BFilter)">create</a></span>&#8203;(<a href="BFilter.html" title="interface in com.stuypulse.stuylib.streams.booleans.filters">BFilter</a>&nbsp;filter)</code></th>
-<td class="colLast">
-<div class="block">Create an BFilter from another BFilter.</div>
-</td>
-</tr>
-<tr id="i3" class="rowColor">
-<td class="colFirst"><code>static <a href="BFilter.html" title="interface in com.stuypulse.stuylib.streams.booleans.filters">BFilter</a></code></td>
-<th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#create(com.stuypulse.stuylib.streams.filters.IFilter)">create</a></span>&#8203;(<a href="../../filters/IFilter.html" title="interface in com.stuypulse.stuylib.streams.filters">IFilter</a>&nbsp;filter)</code></th>
-<td class="colLast">
-<div class="block">Create a BFilter from an IFilter.</div>
-</td>
-</tr>
-<tr id="i4" class="altColor">
 <td class="colFirst"><code>boolean</code></td>
 <th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#get(boolean)">get</a></span>&#8203;(boolean&nbsp;next)</code></th>
 <td class="colLast">
 <div class="block">Get next value in Filter based on the next value given</div>
 </td>
 </tr>
-<tr id="i5" class="rowColor">
+<tr id="i3" class="rowColor">
 <td class="colFirst"><code>default <a href="BFilter.html" title="interface in com.stuypulse.stuylib.streams.booleans.filters">BFilter</a></code></td>
 <th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#or(com.stuypulse.stuylib.streams.booleans.filters.BFilter)">or</a></span>&#8203;(<a href="BFilter.html" title="interface in com.stuypulse.stuylib.streams.booleans.filters">BFilter</a>&nbsp;other)</code></th>
 <td class="colLast">
 <div class="block">Combine two BFilters by or'ing their results together</div>
 </td>
 </tr>
-<tr id="i6" class="altColor">
+<tr id="i4" class="altColor">
 <td class="colFirst"><code>default <a href="BFilter.html" title="interface in com.stuypulse.stuylib.streams.booleans.filters">BFilter</a></code></td>
 <th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#then(com.stuypulse.stuylib.streams.booleans.filters.BFilter)">then</a></span>&#8203;(<a href="BFilter.html" title="interface in com.stuypulse.stuylib.streams.booleans.filters">BFilter</a>&nbsp;next)</code></th>
 <td class="colLast">
 <div class="block">Combine an BFilter with another BFilter</div>
 </td>
 </tr>
-<tr id="i7" class="rowColor">
+<tr id="i5" class="rowColor">
 <td class="colFirst"><code>default <a href="BFilter.html" title="interface in com.stuypulse.stuylib.streams.booleans.filters">BFilter</a></code></td>
 <th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#xor(com.stuypulse.stuylib.streams.booleans.filters.BFilter)">xor</a></span>&#8203;(<a href="BFilter.html" title="interface in com.stuypulse.stuylib.streams.booleans.filters">BFilter</a>&nbsp;other)</code></th>
 <td class="colLast">
@@ -226,50 +214,20 @@ $('.navPadding').css('padding-top', $('.fixedNav').css("height"));
 <!--   -->
 </a>
 <h3>Method Detail</h3>
-<a id="create()">
+<a id="create(com.stuypulse.stuylib.streams.booleans.filters.BFilter...)">
 <!--   -->
 </a>
 <ul class="blockList">
 <li class="blockList">
 <h4>create</h4>
-<pre class="methodSignature">static&nbsp;<a href="BFilter.html" title="interface in com.stuypulse.stuylib.streams.booleans.filters">BFilter</a>&nbsp;create()</pre>
-<dl>
-<dt><span class="returnLabel">Returns:</span></dt>
-<dd>a filter that just returns it's input</dd>
-</dl>
-</li>
-</ul>
-<a id="create(com.stuypulse.stuylib.streams.booleans.filters.BFilter)">
-<!--   -->
-</a>
-<ul class="blockList">
-<li class="blockList">
-<h4>create</h4>
-<pre class="methodSignature">static&nbsp;<a href="BFilter.html" title="interface in com.stuypulse.stuylib.streams.booleans.filters">BFilter</a>&nbsp;create&#8203;(<a href="BFilter.html" title="interface in com.stuypulse.stuylib.streams.booleans.filters">BFilter</a>&nbsp;filter)</pre>
-<div class="block">Create an BFilter from another BFilter. This is helpful if you want to use some of the
- decorator functions with a lambda.</div>
+<pre class="methodSignature">static&nbsp;<a href="BFilter.html" title="interface in com.stuypulse.stuylib.streams.booleans.filters">BFilter</a>&nbsp;create&#8203;(<a href="BFilter.html" title="interface in com.stuypulse.stuylib.streams.booleans.filters">BFilter</a>...&nbsp;filters)</pre>
+<div class="block">Create a BFilter from a list of BFilters. This will create a BFilter with the least possible
+ overhead for the number of filters provided.</div>
 <dl>
 <dt><span class="paramLabel">Parameters:</span></dt>
-<dd><code>filter</code> - filter to create BFilter from</dd>
+<dd><code>filters</code> - list of BFilters to apply</dd>
 <dt><span class="returnLabel">Returns:</span></dt>
-<dd>the resulting BFilter</dd>
-</dl>
-</li>
-</ul>
-<a id="create(com.stuypulse.stuylib.streams.filters.IFilter)">
-<!--   -->
-</a>
-<ul class="blockList">
-<li class="blockList">
-<h4>create</h4>
-<pre class="methodSignature">static&nbsp;<a href="BFilter.html" title="interface in com.stuypulse.stuylib.streams.booleans.filters">BFilter</a>&nbsp;create&#8203;(<a href="../../filters/IFilter.html" title="interface in com.stuypulse.stuylib.streams.filters">IFilter</a>&nbsp;filter)</pre>
-<div class="block">Create a BFilter from an IFilter. This will cast the boolean to a double, filter it, and cast
- it back to a boolean.</div>
-<dl>
-<dt><span class="paramLabel">Parameters:</span></dt>
-<dd><code>filter</code> - filter to create IFilter from</dd>
-<dt><span class="returnLabel">Returns:</span></dt>
-<dd>the resulting IFilter</dd>
+<dd>an BFilter that uses every filter given</dd>
 </dl>
 </li>
 </ul>

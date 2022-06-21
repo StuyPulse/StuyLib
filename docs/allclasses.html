@@ -21,6 +21,7 @@
 <main role="main" class="indexContainer">
 <ul>
 <li><a href="com/stuypulse/stuylib/math/Angle.html" title="class in com.stuypulse.stuylib.math">Angle</a></li>
+<li><a href="com/stuypulse/stuylib/control/angle/AngleController.html" title="class in com.stuypulse.stuylib.control.angle">AngleController</a></li>
 <li><a href="com/stuypulse/stuylib/input/gamepads/AutoGamepad.html" title="class in com.stuypulse.stuylib.input.gamepads">AutoGamepad</a></li>
 <li><a href="com/stuypulse/stuylib/control/BangBangController.html" title="class in com.stuypulse.stuylib.control">BangBangController</a></li>
 <li><a href="com/stuypulse/stuylib/streams/booleans/filters/BButton.html" title="interface in com.stuypulse.stuylib.streams.booleans.filters"><span class="interfaceName">BButton</span></a></li>
@@ -46,10 +47,10 @@
 <li><a href="com/stuypulse/stuylib/util/Conversion.html" title="interface in com.stuypulse.stuylib.util"><span class="interfaceName">Conversion</span></a></li>
 <li><a href="com/stuypulse/stuylib/math/interpolation/CubicInterpolator.html" title="class in com.stuypulse.stuylib.math.interpolation">CubicInterpolator</a></li>
 <li><a href="com/stuypulse/stuylib/streams/filters/Derivative.html" title="class in com.stuypulse.stuylib.streams.filters">Derivative</a></li>
-<li><a href="com/stuypulse/stuylib/streams/filters/ExpMovingAverage.html" title="class in com.stuypulse.stuylib.streams.filters">ExpMovingAverage</a></li>
 <li><a href="com/stuypulse/stuylib/streams/booleans/FilteredBStream.html" title="class in com.stuypulse.stuylib.streams.booleans">FilteredBStream</a></li>
 <li><a href="com/stuypulse/stuylib/util/chart/FilteredGraphData.html" title="class in com.stuypulse.stuylib.util.chart">FilteredGraphData</a></li>
 <li><a href="com/stuypulse/stuylib/streams/FilteredIStream.html" title="class in com.stuypulse.stuylib.streams">FilteredIStream</a></li>
+<li><a href="com/stuypulse/stuylib/streams/vectors/FilteredVStream.html" title="class in com.stuypulse.stuylib.streams.vectors">FilteredVStream</a></li>
 <li><a href="com/stuypulse/stuylib/input/Gamepad.html" title="class in com.stuypulse.stuylib.input">Gamepad</a></li>
 <li><a href="com/stuypulse/stuylib/input/GamepadState.html" title="class in com.stuypulse.stuylib.input">GamepadState</a></li>
 <li><a href="com/stuypulse/stuylib/util/chart/GraphData.html" title="class in com.stuypulse.stuylib.util.chart">GraphData</a></li>
@@ -93,6 +94,7 @@
 <li><a href="com/stuypulse/stuylib/math/Polar2D.html" title="class in com.stuypulse.stuylib.math">Polar2D</a></li>
 <li><a href="com/stuypulse/stuylib/streams/booleans/PollingBStream.html" title="class in com.stuypulse.stuylib.streams.booleans">PollingBStream</a></li>
 <li><a href="com/stuypulse/stuylib/streams/PollingIStream.html" title="class in com.stuypulse.stuylib.streams">PollingIStream</a></li>
+<li><a href="com/stuypulse/stuylib/streams/vectors/PollingVStream.html" title="class in com.stuypulse.stuylib.streams.vectors">PollingVStream</a></li>
 <li><a href="com/stuypulse/stuylib/math/interpolation/PolyInterpolator.html" title="class in com.stuypulse.stuylib.math.interpolation">PolyInterpolator</a></li>
 <li><a href="com/stuypulse/stuylib/input/gamepads/PS4.html" title="class in com.stuypulse.stuylib.input.gamepads">PS4</a></li>
 <li><a href="com/stuypulse/stuylib/streams/filters/RateLimit.html" title="class in com.stuypulse.stuylib.streams.filters">RateLimit</a></li>
@@ -109,11 +111,27 @@
 <li><a href="com/stuypulse/stuylib/math/Swizzler.html" title="class in com.stuypulse.stuylib.math">Swizzler</a></li>
 <li><a href="com/stuypulse/stuylib/control/TBHController.html" title="class in com.stuypulse.stuylib.control">TBHController</a></li>
 <li><a href="com/stuypulse/stuylib/streams/filters/TimedMovingAverage.html" title="class in com.stuypulse.stuylib.streams.filters">TimedMovingAverage</a></li>
+<li><a href="com/stuypulse/stuylib/streams/vectors/filters/VClamp.html" title="class in com.stuypulse.stuylib.streams.vectors.filters">VClamp</a></li>
+<li><a href="com/stuypulse/stuylib/streams/vectors/filters/VDeadZone.html" title="class in com.stuypulse.stuylib.streams.vectors.filters">VDeadZone</a></li>
+<li><a href="com/stuypulse/stuylib/streams/vectors/filters/VDerivative.html" title="class in com.stuypulse.stuylib.streams.vectors.filters">VDerivative</a></li>
 <li><a href="com/stuypulse/stuylib/math/Vector2D.html" title="class in com.stuypulse.stuylib.math">Vector2D</a></li>
 <li><a href="com/stuypulse/stuylib/math/Vector3D.html" title="class in com.stuypulse.stuylib.math">Vector3D</a></li>
+<li><a href="com/stuypulse/stuylib/streams/vectors/filters/VFilter.html" title="interface in com.stuypulse.stuylib.streams.vectors.filters"><span class="interfaceName">VFilter</span></a></li>
+<li><a href="com/stuypulse/stuylib/streams/vectors/filters/VFilterGroup.html" title="class in com.stuypulse.stuylib.streams.vectors.filters">VFilterGroup</a></li>
+<li><a href="com/stuypulse/stuylib/streams/vectors/VFuser.html" title="class in com.stuypulse.stuylib.streams.vectors">VFuser</a></li>
+<li><a href="com/stuypulse/stuylib/streams/vectors/filters/VHighPassFilter.html" title="class in com.stuypulse.stuylib.streams.vectors.filters">VHighPassFilter</a></li>
+<li><a href="com/stuypulse/stuylib/streams/vectors/filters/VIntegral.html" title="class in com.stuypulse.stuylib.streams.vectors.filters">VIntegral</a></li>
+<li><a href="com/stuypulse/stuylib/streams/vectors/filters/VJerkLimit.html" title="class in com.stuypulse.stuylib.streams.vectors.filters">VJerkLimit</a></li>
+<li><a href="com/stuypulse/stuylib/streams/vectors/filters/VLowPassFilter.html" title="class in com.stuypulse.stuylib.streams.vectors.filters">VLowPassFilter</a></li>
+<li><a href="com/stuypulse/stuylib/streams/vectors/filters/VMovingAverage.html" title="class in com.stuypulse.stuylib.streams.vectors.filters">VMovingAverage</a></li>
+<li><a href="com/stuypulse/stuylib/streams/vectors/filters/VRateLimit.html" title="class in com.stuypulse.stuylib.streams.vectors.filters">VRateLimit</a></li>
+<li><a href="com/stuypulse/stuylib/streams/vectors/VStream.html" title="interface in com.stuypulse.stuylib.streams.vectors"><span class="interfaceName">VStream</span></a></li>
+<li><a href="com/stuypulse/stuylib/streams/vectors/filters/VTimedMovingAverage.html" title="class in com.stuypulse.stuylib.streams.vectors.filters">VTimedMovingAverage</a></li>
+<li><a href="com/stuypulse/stuylib/streams/vectors/filters/VWeightedMovingAverage.html" title="class in com.stuypulse.stuylib.streams.vectors.filters">VWeightedMovingAverage</a></li>
 <li><a href="com/stuypulse/stuylib/streams/filters/WeightedMovingAverage.html" title="class in com.stuypulse.stuylib.streams.filters">WeightedMovingAverage</a></li>
 <li><a href="com/stuypulse/stuylib/input/WPIGamepad.html" title="class in com.stuypulse.stuylib.input">WPIGamepad</a></li>
 <li><a href="com/stuypulse/stuylib/input/gamepads/Xbox.html" title="class in com.stuypulse.stuylib.input.gamepads">Xbox</a></li>
+<li><a href="com/stuypulse/stuylib/streams/vectors/filters/XYFilter.html" title="class in com.stuypulse.stuylib.streams.vectors.filters">XYFilter</a></li>
 </ul>
 </main>
 </body>

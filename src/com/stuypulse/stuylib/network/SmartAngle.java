@@ -122,7 +122,7 @@ public class SmartAngle implements Supplier<Angle> {
         return getAngle();
     }
 
-    /** sets the angle of SmartAngle. */
+    /** @param angle angle to set SmartAngle to */
     public void set(Angle angle) {
         mEntry.forceSetDouble(mConversion.from(angle));
     }

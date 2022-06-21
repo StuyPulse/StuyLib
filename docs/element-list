@@ -1,4 +1,5 @@
 com.stuypulse.stuylib.control
+com.stuypulse.stuylib.control.angle
 com.stuypulse.stuylib.input
 com.stuypulse.stuylib.input.gamepads
 com.stuypulse.stuylib.input.gamepads.keyboard
@@ -12,5 +13,7 @@ com.stuypulse.stuylib.streams
 com.stuypulse.stuylib.streams.booleans
 com.stuypulse.stuylib.streams.booleans.filters
 com.stuypulse.stuylib.streams.filters
+com.stuypulse.stuylib.streams.vectors
+com.stuypulse.stuylib.streams.vectors.filters
 com.stuypulse.stuylib.util
 com.stuypulse.stuylib.util.chart
