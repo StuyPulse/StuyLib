@@ -165,6 +165,12 @@ implements <a href="IFilter.html" title="interface in com.stuypulse.stuylib.stre
          java.lang.Number&nbsp;jerkLimit)</code></th>
 <td class="colLast">&nbsp;</td>
 </tr>
+<tr class="rowColor">
+<th class="colConstructorName" scope="row"><code><span class="memberNameLink"><a href="#%3Cinit%3E(java.lang.Number,java.lang.Number,int)">JerkLimit</a></span>&#8203;(java.lang.Number&nbsp;accelLimit,
+         java.lang.Number&nbsp;jerkLimit,
+         int&nbsp;steps)</code></th>
+<td class="colLast">&nbsp;</td>
+</tr>
 </table>
 </li>
 </ul>
@@ -221,6 +227,23 @@ implements <a href="IFilter.html" title="interface in com.stuypulse.stuylib.stre
 <!--   -->
 </a>
 <h3>Constructor Detail</h3>
+<a id="&lt;init&gt;(java.lang.Number,java.lang.Number,int)">
+<!--   -->
+</a>
+<ul class="blockList">
+<li class="blockList">
+<h4>JerkLimit</h4>
+<pre>public&nbsp;JerkLimit&#8203;(java.lang.Number&nbsp;accelLimit,
+                 java.lang.Number&nbsp;jerkLimit,
+                 int&nbsp;steps)</pre>
+<dl>
+<dt><span class="paramLabel">Parameters:</span></dt>
+<dd><code>accelLimit</code> - maximum change in velocity per second (u/s)</dd>
+<dd><code>jerkLimit</code> - maximum change in acceleration per second (u/s/s)</dd>
+<dd><code>steps</code> - number of times to apply filter (improves accuracy)</dd>
+</dl>
+</li>
+</ul>
 <a id="&lt;init&gt;(java.lang.Number,java.lang.Number)">
 <!--   -->
 </a>

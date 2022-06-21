@@ -47,7 +47,7 @@ public class JerkLimit implements IFilter {
 
         mOutput = 0;
         mAccel = 0;
-        
+
         mSteps = steps;
     }
 

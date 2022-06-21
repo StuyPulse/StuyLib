@@ -1,4 +1,5 @@
 com.stuypulse.stuylib.control
+com.stuypulse.stuylib.control.angle
 com.stuypulse.stuylib.input
 com.stuypulse.stuylib.input.gamepads
 com.stuypulse.stuylib.input.gamepads.keyboard
