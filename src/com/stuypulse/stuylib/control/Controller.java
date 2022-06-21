@@ -4,6 +4,7 @@
 
 package com.stuypulse.stuylib.control;
 
+import com.stuypulse.stuylib.control.angle.AngleController;
 import com.stuypulse.stuylib.streams.filters.IFilter;
 import com.stuypulse.stuylib.util.StopWatch;
 
@@ -197,6 +198,24 @@ public abstract class Controller implements Sendable {
     public boolean isDone(double maxError, double maxVelocity) {
         return ((Math.abs(getError()) < Math.abs(maxError))
                 && (Math.abs(getVelocity()) < Math.abs(maxVelocity)));
+    }
+
+    /**
+     * Creates an angle controller out of this controller.
+     *
+     * <p>An angle controller handles continuous systems that are (most often) measured on a circle,
+     * which means the error must be calculated slightly differently.
+     *
+     * <p>The angle controller will use this controller internally, so all the configuration done to
+     * this controller will persist.
+     *
+     * <p>BY DEFAULT, this controller should be tuned to accept angles in the unit of radians, but
+     * this can be changed.
+     *
+     * @return an angle controller
+     */
+    public AngleController angle() {
+        return new AngleController(this);
     }
 
     /**

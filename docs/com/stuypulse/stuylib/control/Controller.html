@@ -26,7 +26,7 @@
     catch(err) {
     }
 //-->
-var data = {"i0":6,"i1":10,"i2":10,"i3":10,"i4":10,"i5":10,"i6":10,"i7":10,"i8":10,"i9":10,"i10":10,"i11":10,"i12":10,"i13":10,"i14":10};
+var data = {"i0":10,"i1":6,"i2":10,"i3":10,"i4":10,"i5":10,"i6":10,"i7":10,"i8":10,"i9":10,"i10":10,"i11":10,"i12":10,"i13":10,"i14":10,"i15":10};
 var tabs = {65535:["t0","All Methods"],2:["t2","Instance Methods"],4:["t3","Abstract Methods"],8:["t4","Concrete Methods"]};
 var altColor = "altColor";
 var rowColor = "rowColor";
@@ -194,34 +194,41 @@ implements edu.wpi.first.util.sendable.Sendable</pre>
 <th class="colLast" scope="col">Description</th>
 </tr>
 <tr id="i0" class="altColor">
+<td class="colFirst"><code><a href="angle/AngleController.html" title="class in com.stuypulse.stuylib.control.angle">AngleController</a></code></td>
+<th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#angle()">angle</a></span>()</code></th>
+<td class="colLast">
+<div class="block">Creates an angle controller out of this controller.</div>
+</td>
+</tr>
+<tr id="i1" class="rowColor">
 <td class="colFirst"><code>protected abstract double</code></td>
 <th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#calculate(double)">calculate</a></span>&#8203;(double&nbsp;error)</code></th>
 <td class="colLast">
 <div class="block">Update the controller with the error just measured</div>
 </td>
 </tr>
-<tr id="i1" class="rowColor">
+<tr id="i2" class="altColor">
 <td class="colFirst"><code>double</code></td>
 <th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#getError()">getError</a></span>()</code></th>
 <td class="colLast">
 <div class="block">Gets the error from the last time that .update() was called</div>
 </td>
 </tr>
-<tr id="i2" class="altColor">
+<tr id="i3" class="rowColor">
 <td class="colFirst"><code>double</code></td>
 <th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#getOutput()">getOutput</a></span>()</code></th>
 <td class="colLast">
 <div class="block">Gets the motor output from the last time that .update() was called</div>
 </td>
 </tr>
-<tr id="i3" class="rowColor">
+<tr id="i4" class="altColor">
 <td class="colFirst"><code>double</code></td>
 <th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#getRate()">getRate</a></span>()</code></th>
 <td class="colLast">
 <div class="block">Gets the rate of the controller during the last .update() command.</div>
 </td>
 </tr>
-<tr id="i4" class="altColor">
+<tr id="i5" class="rowColor">
 <td class="colFirst"><code>double</code></td>
 <th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#getRawVelocity()">getRawVelocity</a></span>()</code></th>
 <td class="colLast">
@@ -229,7 +236,7 @@ implements edu.wpi.first.util.sendable.Sendable</pre>
  .update() was called</div>
 </td>
 </tr>
-<tr id="i5" class="rowColor">
+<tr id="i6" class="altColor">
 <td class="colFirst"><code>double</code></td>
 <th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#getVelocity()">getVelocity</a></span>()</code></th>
 <td class="colLast">
@@ -237,19 +244,19 @@ implements edu.wpi.first.util.sendable.Sendable</pre>
  second</div>
 </td>
 </tr>
-<tr id="i6" class="altColor">
+<tr id="i7" class="rowColor">
 <td class="colFirst"><code>void</code></td>
 <th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#initSendable(edu.wpi.first.util.sendable.SendableBuilder)">initSendable</a></span>&#8203;(edu.wpi.first.util.sendable.SendableBuilder&nbsp;builder)</code></th>
 <td class="colLast">&nbsp;</td>
 </tr>
-<tr id="i7" class="rowColor">
+<tr id="i8" class="altColor">
 <td class="colFirst"><code>boolean</code></td>
 <th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#isDone(double)">isDone</a></span>&#8203;(double&nbsp;maxError)</code></th>
 <td class="colLast">
 <div class="block">Get whether or not the Controller has arrived at the target.</div>
 </td>
 </tr>
-<tr id="i8" class="altColor">
+<tr id="i9" class="rowColor">
 <td class="colFirst"><code>boolean</code></td>
 <th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#isDone(double,double)">isDone</a></span>&#8203;(double&nbsp;maxError,
       double&nbsp;maxVelocity)</code></th>
@@ -257,7 +264,7 @@ implements edu.wpi.first.util.sendable.Sendable</pre>
 <div class="block">Get whether or not the Controller has arrived at the target.</div>
 </td>
 </tr>
-<tr id="i9" class="rowColor">
+<tr id="i10" class="altColor">
 <td class="colFirst"><code><a href="Controller.html" title="class in com.stuypulse.stuylib.control">Controller</a></code></td>
 <th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#setErrorFilter(com.stuypulse.stuylib.streams.filters.IFilter)">setErrorFilter</a></span>&#8203;(<a href="../streams/filters/IFilter.html" title="interface in com.stuypulse.stuylib.streams.filters">IFilter</a>&nbsp;filter)</code></th>
 <td class="colLast">
@@ -265,35 +272,35 @@ implements edu.wpi.first.util.sendable.Sendable</pre>
  controller.</div>
 </td>
 </tr>
-<tr id="i10" class="altColor">
+<tr id="i11" class="rowColor">
 <td class="colFirst"><code><a href="Controller.html" title="class in com.stuypulse.stuylib.control">Controller</a></code></td>
 <th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#setOutputFilter(com.stuypulse.stuylib.streams.filters.IFilter)">setOutputFilter</a></span>&#8203;(<a href="../streams/filters/IFilter.html" title="interface in com.stuypulse.stuylib.streams.filters">IFilter</a>&nbsp;filter)</code></th>
 <td class="colLast">
 <div class="block">Lets you specify a filter that will be applied to all of the outputs of the controller.</div>
 </td>
 </tr>
-<tr id="i11" class="rowColor">
+<tr id="i12" class="altColor">
 <td class="colFirst"><code><a href="Controller.html" title="class in com.stuypulse.stuylib.control">Controller</a></code></td>
 <th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#setVelocityFilter(com.stuypulse.stuylib.streams.filters.IFilter)">setVelocityFilter</a></span>&#8203;(<a href="../streams/filters/IFilter.html" title="interface in com.stuypulse.stuylib.streams.filters">IFilter</a>&nbsp;filter)</code></th>
 <td class="colLast">
 <div class="block">Lets you specify a filter that will be applied to the velocity measurements.</div>
 </td>
 </tr>
-<tr id="i12" class="altColor">
+<tr id="i13" class="rowColor">
 <td class="colFirst"><code>java.lang.String</code></td>
 <th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#toString()">toString</a></span>()</code></th>
 <td class="colLast">
 <div class="block">Default to string funciton</div>
 </td>
 </tr>
-<tr id="i13" class="rowColor">
+<tr id="i14" class="altColor">
 <td class="colFirst"><code>double</code></td>
 <th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#update(double)">update</a></span>&#8203;(double&nbsp;error)</code></th>
 <td class="colLast">
 <div class="block">Update the controller with the error from the destination that you want to reach</div>
 </td>
 </tr>
-<tr id="i14" class="altColor">
+<tr id="i15" class="rowColor">
 <td class="colFirst"><code>double</code></td>
 <th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#update(double,double)">update</a></span>&#8203;(double&nbsp;setpoint,
       double&nbsp;measurement)</code></th>
@@ -527,6 +534,29 @@ implements edu.wpi.first.util.sendable.Sendable</pre>
 <dd><code>maxVelocity</code> - the maximum amount of change in error over a second allowed</dd>
 <dt><span class="returnLabel">Returns:</span></dt>
 <dd>if the controller has arrived at the target</dd>
+</dl>
+</li>
+</ul>
+<a id="angle()">
+<!--   -->
+</a>
+<ul class="blockList">
+<li class="blockList">
+<h4>angle</h4>
+<pre class="methodSignature">public&nbsp;<a href="angle/AngleController.html" title="class in com.stuypulse.stuylib.control.angle">AngleController</a>&nbsp;angle()</pre>
+<div class="block">Creates an angle controller out of this controller.
+
+ <p>An angle controller handles continuous systems that are (most often) measured on a circle,
+ which means the error must be calculated slightly differently.
+
+ <p>The angle controller will use this controller internally, so all the configuration done to
+ this controller will persist.
+
+ <p>BY DEFAULT, this controller should be tuned to accept angles in the unit of radians, but
+ this can be changed.</div>
+<dl>
+<dt><span class="returnLabel">Returns:</span></dt>
+<dd>an angle controller</dd>
 </dl>
 </li>
 </ul>

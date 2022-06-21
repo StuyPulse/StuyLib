@@ -2,7 +2,7 @@
 /* This work is licensed under the terms of the MIT license */
 /* found in the root directory of this project. */
 
-package com.stuypulse.stuylib.util.chart;
+package com.stuypulse.stuylib.util.plot;
 
 import java.awt.event.KeyAdapter;
 import java.awt.event.KeyEvent;
