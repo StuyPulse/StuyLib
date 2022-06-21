@@ -2,9 +2,11 @@
 /* This work is licensed under the terms of the MIT license */
 /* found in the root directory of this project. */
 
-package com.stuypulse.stuylib.util.chart;
+package com.stuypulse.stuylib.util.plot;
 
 import java.awt.*;
+
+import com.stuypulse.stuylib.math.Vector2D;
 
 /**
  * Tracks the mouse on a container without the need for a listener.
@@ -31,7 +33,7 @@ public class MouseTracker {
      *
      * @return mouse x position as a percentage of the screen width
      */
-    public double getMouseX() {
+    public double getX() {
         double x = MouseInfo.getPointerInfo().getLocation().x;
         x -= panel.getLocationOnScreen().x;
         x /= panel.getWidth();
@@ -43,10 +45,17 @@ public class MouseTracker {
      *
      * @return mouse y position as a percentage of the screen height
      */
-    public double getMouseY() {
+    public double getY() {
         double y = MouseInfo.getPointerInfo().getLocation().y;
         y -= panel.getLocationOnScreen().y;
         y /= panel.getHeight();
         return 1.0 - y;
+    }
+
+    /**
+     * get mouse position
+     */
+    public Vector2D getPosition() {
+        return new Vector2D(getX(), getY());
     }
 }

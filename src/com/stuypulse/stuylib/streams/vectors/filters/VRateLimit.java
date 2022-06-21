@@ -22,6 +22,8 @@ public class VRateLimit implements VFilter {
     public VRateLimit(Number rateLimit) {
         mTimer = new StopWatch();
         mRateLimit = rateLimit;
+
+        mLastValue = Vector2D.kOrigin;
     }
 
     public Vector2D get(Vector2D next) {
