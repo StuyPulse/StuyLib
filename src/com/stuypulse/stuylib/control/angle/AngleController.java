@@ -5,6 +5,8 @@ import java.util.function.Function;
 import com.stuypulse.stuylib.control.Controller;
 import com.stuypulse.stuylib.math.Angle;
 
+import edu.wpi.first.math.geometry.Rotation2d;
+
 /**
  * A continuous controller whose measurements and setpoints will be angles.
  * 
@@ -91,6 +93,29 @@ public class AngleController {
      */
     public double update(Angle error) {
         return mController.update(mUnits.apply(error));
+    }
+
+    /**
+     * Calculates the desired output based on a rotation2d measurement
+     * and setpoint
+     * 
+     * @param setpoint
+     * @param measurement
+     * @return controller output
+     */
+    public double update(Rotation2d setpoint, Rotation2d measurement) {
+        return update(Angle.fromRadians(setpoint.getRadians() - measurement.getRadians()));
+    }
+
+    /**
+     * Calculates the desired output based on a rotation2d angle error
+     * 
+     * @param setpoint
+     * @param measurement
+     * @return controller output
+     */
+    public double update(Rotation2d error) {
+        return update(Angle.fromRadians(error.getRadians()));
     }
 
 }
