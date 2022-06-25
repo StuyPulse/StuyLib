@@ -9,8 +9,6 @@ import java.nio.file.attribute.AclEntry;
 import com.stuypulse.stuylib.math.SLMath;
 import com.stuypulse.stuylib.util.StopWatch;
 
-import edu.wpi.first.math.trajectory.TrapezoidProfile;
-
 /**
  * A filter, that when applied to the input of a motor, will profile it. Similar to the way in which
  * motion profiling can limit the amount of acceleration and jerk in an S-Curve, this can do that to
@@ -49,14 +47,51 @@ public class JerkLimit implements IFilter {
     public double get(double target) {
         double dt = mTimer.reset();
 
-        TrapezoidProfile profile = new TrapezoidProfile(
-            new TrapezoidProfile.Constraints(mAccelLimit.doubleValue(), mJerkLimit.doubleValue()), 
-            new TrapezoidProfile.State(target, 0.0),
-            new TrapezoidProfile.State(mOutput, mAccel));
+        boolean reverse = target < mOutput;
 
-        TrapezoidProfile.State next = profile.calculate(dt);
+        if(reverse) {
+            target *= -1;
+            mOutput *= -1;
+            mAccel *= -1;
+        }
 
-        mAccel = next.velocity;
-        return mOutput = next.position;
+        mAccel = SLMath.clamp(mAccel, mAccelLimit.doubleValue());
+
+        double cutoffBegin = mAccel / mJerkLimit.doubleValue();
+        double cutoffDistBegin = cutoffBegin * cutoffBegin * mJerkLimit.doubleValue() * 0.5;
+
+        double fullTrapezoidDist = cutoffDistBegin + (target - mOutput);
+        double accelerationTime = mAccelLimit.doubleValue() / mJerkLimit.doubleValue();
+        double fullSpeedDist = fullTrapezoidDist - accelerationTime * accelerationTime * mJerkLimit.doubleValue();
+
+        if (fullSpeedDist < 0) {
+            accelerationTime = Math.sqrt(fullTrapezoidDist / mJerkLimit.doubleValue());
+            fullSpeedDist = 0;
+        }
+
+        double endAccel = accelerationTime - cutoffBegin;
+        double endFullSpeed = endAccel + fullSpeedDist / mAccelLimit.doubleValue();
+        double endDeccel = endFullSpeed + accelerationTime;
+
+        if (dt < endAccel) {
+            mAccel += dt * mJerkLimit.doubleValue();
+        } else if (dt < endFullSpeed) {
+            mAccel += SLMath.clamp(mAccelLimit.doubleValue() - mAccel, mJerkLimit.doubleValue() * dt);
+        } else if (dt <= endDeccel) {
+            double timeLeft = endDeccel - dt;
+            double toutput = target - 0.5 * mJerkLimit.doubleValue() * timeLeft * timeLeft;
+            mAccel += SLMath.clamp((toutput - mOutput) / dt - mAccel, mJerkLimit.doubleValue() * dt);
+        } else {
+            mAccel += SLMath.clamp((target - mOutput) / dt - mAccel, mJerkLimit.doubleValue() * dt);
+        }
+
+        mOutput += mAccel * dt;
+
+        if (reverse) {
+            mOutput *= -1;
+            mAccel *= -1;
+        }
+
+        return mOutput;
     }
 }
