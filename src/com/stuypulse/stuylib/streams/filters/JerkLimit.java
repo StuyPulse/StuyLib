@@ -79,8 +79,8 @@ public class JerkLimit implements IFilter {
             mAccel += SLMath.clamp(mAccelLimit.doubleValue() - mAccel, mJerkLimit.doubleValue() * dt);
         } else if (dt <= endDeccel) {
             double timeLeft = endDeccel - dt;
-            double toutput = target - 0.5 * mJerkLimit.doubleValue() * timeLeft * timeLeft;
-            mAccel += SLMath.clamp((toutput - mOutput) / dt - mAccel, mJerkLimit.doubleValue() * dt);
+            double future = mOutput + 0.5 * mJerkLimit.doubleValue() * timeLeft * timeLeft;
+            mAccel += SLMath.clamp((target - future) / dt - mAccel, mJerkLimit.doubleValue() * dt);
         } else {
             mAccel += SLMath.clamp((target - mOutput) / dt - mAccel, mJerkLimit.doubleValue() * dt);
         }
