@@ -26,7 +26,7 @@
     catch(err) {
     }
 //-->
-var data = {"i0":18,"i1":1,"i2":1,"i3":18,"i4":6,"i5":18,"i6":18,"i7":18};
+var data = {"i0":18,"i1":1,"i2":1,"i3":18,"i4":6,"i5":18,"i6":18,"i7":18,"i8":18};
 var tabs = {65535:["t0","All Methods"],1:["t1","Static Methods"],2:["t2","Instance Methods"],4:["t3","Abstract Methods"],16:["t5","Default Methods"]};
 var altColor = "altColor";
 var rowColor = "rowColor";
@@ -127,7 +127,7 @@ $('.navPadding').css('padding-top', $('.fixedNav').css("height"));
 </dl>
 <dl>
 <dt>All Known Implementing Classes:</dt>
-<dd><code><a href="FilteredIStream.html" title="class in com.stuypulse.stuylib.streams">FilteredIStream</a></code>, <code><a href="IFuser.html" title="class in com.stuypulse.stuylib.streams">IFuser</a></code>, <code><a href="PollingIStream.html" title="class in com.stuypulse.stuylib.streams">PollingIStream</a></code>, <code><a href="../network/SmartNumber.html" title="class in com.stuypulse.stuylib.network">SmartNumber</a></code></dd>
+<dd><code><a href="FilteredIStream.html" title="class in com.stuypulse.stuylib.streams">FilteredIStream</a></code>, <code><a href="IFuser.html" title="class in com.stuypulse.stuylib.streams">IFuser</a></code>, <code><a href="NumberStream.html" title="class in com.stuypulse.stuylib.streams">NumberStream</a></code>, <code><a href="PollingIStream.html" title="class in com.stuypulse.stuylib.streams">PollingIStream</a></code>, <code><a href="../network/SmartNumber.html" title="class in com.stuypulse.stuylib.network">SmartNumber</a></code></dd>
 </dl>
 <hr>
 <pre>public interface <span class="typeNameLabel">IStream</span>
@@ -196,13 +196,20 @@ extends java.util.function.DoubleSupplier</pre>
 <td class="colLast">&nbsp;</td>
 </tr>
 <tr id="i6" class="altColor">
+<td class="colFirst"><code>default <a href="NumberStream.html" title="class in com.stuypulse.stuylib.streams">NumberStream</a></code></td>
+<th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#number()">number</a></span>()</code></th>
+<td class="colLast">
+<div class="block">Casts an IStream to a Number</div>
+</td>
+</tr>
+<tr id="i7" class="rowColor">
 <td class="colFirst"><code>default <a href="PollingIStream.html" title="class in com.stuypulse.stuylib.streams">PollingIStream</a></code></td>
 <th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#polling(double)">polling</a></span>&#8203;(double&nbsp;dt)</code></th>
 <td class="colLast">
 <div class="block">Create a new PollingIStream from the current stream</div>
 </td>
 </tr>
-<tr id="i7" class="rowColor">
+<tr id="i8" class="altColor">
 <td class="colFirst"><code>default <a href="IStream.html" title="interface in com.stuypulse.stuylib.streams">IStream</a></code></td>
 <th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#sub(com.stuypulse.stuylib.streams.IStream)">sub</a></span>&#8203;(<a href="IStream.html" title="interface in com.stuypulse.stuylib.streams">IStream</a>&nbsp;other)</code></th>
 <td class="colLast">
@@ -339,7 +346,7 @@ extends java.util.function.DoubleSupplier</pre>
 <a id="sub(com.stuypulse.stuylib.streams.IStream)">
 <!--   -->
 </a>
-<ul class="blockListLast">
+<ul class="blockList">
 <li class="blockList">
 <h4>sub</h4>
 <pre class="methodSignature">default&nbsp;<a href="IStream.html" title="interface in com.stuypulse.stuylib.streams">IStream</a>&nbsp;sub&#8203;(<a href="IStream.html" title="interface in com.stuypulse.stuylib.streams">IStream</a>&nbsp;other)</pre>
@@ -349,6 +356,20 @@ extends java.util.function.DoubleSupplier</pre>
 <dd><code>other</code> - other IStream to subtract from this one</dd>
 <dt><span class="returnLabel">Returns:</span></dt>
 <dd>the resulting IStream after the subtraction</dd>
+</dl>
+</li>
+</ul>
+<a id="number()">
+<!--   -->
+</a>
+<ul class="blockListLast">
+<li class="blockList">
+<h4>number</h4>
+<pre class="methodSignature">default&nbsp;<a href="NumberStream.html" title="class in com.stuypulse.stuylib.streams">NumberStream</a>&nbsp;number()</pre>
+<div class="block">Casts an IStream to a Number</div>
+<dl>
+<dt><span class="returnLabel">Returns:</span></dt>
+<dd>a Number that reads from this stream</dd>
 </dl>
 </li>
 </ul>

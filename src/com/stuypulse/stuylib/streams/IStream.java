@@ -91,8 +91,8 @@ public interface IStream extends DoubleSupplier {
     }
 
     /**
-     * Casts an IStream to a Number 
-     * 
+     * Casts an IStream to a Number
+     *
      * @return a Number that reads from this stream
      */
     public default NumberStream number() {
