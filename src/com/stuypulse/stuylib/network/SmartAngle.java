@@ -53,7 +53,7 @@ public class SmartAngle implements Supplier<Angle> {
         mEntry.setDefaultDouble(mConversion.from(mDefaultValue));
 
         mEntry.addListener(this::update, LISTENER_FLAGS);
-        degrees();
+        useDegrees();
     }
 
     /**
@@ -83,7 +83,7 @@ public class SmartAngle implements Supplier<Angle> {
      * @param conversion conversion between Double and Angle
      * @return reference to this
      */
-    public SmartAngle units(Conversion<Double, Angle> conversion) {
+    public SmartAngle useConversion(Conversion<Double, Angle> conversion) {
         mConversion = conversion;
         return this;
     }
@@ -93,8 +93,8 @@ public class SmartAngle implements Supplier<Angle> {
      *
      * @return reference to this
      */
-    public SmartAngle radians() {
-        return units(kRadians);
+    public SmartAngle useRadians() {
+        return useConversion(kRadians);
     }
 
     /**
@@ -102,8 +102,8 @@ public class SmartAngle implements Supplier<Angle> {
      *
      * @return reference to this
      */
-    public SmartAngle degrees() {
-        return units(kDegrees);
+    public SmartAngle useDegrees() {
+        return useConversion(kDegrees);
     }
 
     /** @return the angle stored by the SmartAngle */
