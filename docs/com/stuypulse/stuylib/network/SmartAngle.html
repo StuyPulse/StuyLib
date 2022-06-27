@@ -219,56 +219,56 @@ implements java.util.function.Supplier&lt;<a href="../math/Angle.html" title="cl
 <th class="colLast" scope="col">Description</th>
 </tr>
 <tr id="i0" class="altColor">
-<td class="colFirst"><code><a href="SmartAngle.html" title="class in com.stuypulse.stuylib.network">SmartAngle</a></code></td>
-<th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#degrees()">degrees</a></span>()</code></th>
-<td class="colLast">
-<div class="block">Sets the unit of the network double to be degrees</div>
-</td>
-</tr>
-<tr id="i1" class="rowColor">
 <td class="colFirst"><code><a href="../math/Angle.html" title="class in com.stuypulse.stuylib.math">Angle</a></code></td>
 <th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#get()">get</a></span>()</code></th>
 <td class="colLast">&nbsp;</td>
 </tr>
-<tr id="i2" class="altColor">
+<tr id="i1" class="rowColor">
 <td class="colFirst"><code><a href="../math/Angle.html" title="class in com.stuypulse.stuylib.math">Angle</a></code></td>
 <th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#getAngle()">getAngle</a></span>()</code></th>
 <td class="colLast">&nbsp;</td>
 </tr>
-<tr id="i3" class="rowColor">
+<tr id="i2" class="altColor">
 <td class="colFirst"><code><a href="../math/Angle.html" title="class in com.stuypulse.stuylib.math">Angle</a></code></td>
 <th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#getDefault()">getDefault</a></span>()</code></th>
 <td class="colLast">&nbsp;</td>
 </tr>
-<tr id="i4" class="altColor">
+<tr id="i3" class="rowColor">
 <td class="colFirst"><code>edu.wpi.first.math.geometry.Rotation2d</code></td>
 <th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#getRotation2d()">getRotation2d</a></span>()</code></th>
 <td class="colLast">&nbsp;</td>
 </tr>
-<tr id="i5" class="rowColor">
-<td class="colFirst"><code><a href="SmartAngle.html" title="class in com.stuypulse.stuylib.network">SmartAngle</a></code></td>
-<th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#radians()">radians</a></span>()</code></th>
-<td class="colLast">
-<div class="block">Sets the unit of the network double to be radians</div>
-</td>
-</tr>
-<tr id="i6" class="altColor">
+<tr id="i4" class="altColor">
 <td class="colFirst"><code>void</code></td>
 <th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#reset()">reset</a></span>()</code></th>
 <td class="colLast">
 <div class="block">resets the SmartAngle to its default value</div>
 </td>
 </tr>
-<tr id="i7" class="rowColor">
+<tr id="i5" class="rowColor">
 <td class="colFirst"><code>void</code></td>
 <th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#set(com.stuypulse.stuylib.math.Angle)">set</a></span>&#8203;(<a href="../math/Angle.html" title="class in com.stuypulse.stuylib.math">Angle</a>&nbsp;angle)</code></th>
 <td class="colLast">&nbsp;</td>
 </tr>
-<tr id="i8" class="altColor">
+<tr id="i6" class="altColor">
 <td class="colFirst"><code><a href="SmartAngle.html" title="class in com.stuypulse.stuylib.network">SmartAngle</a></code></td>
-<th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#units(com.stuypulse.stuylib.util.Conversion)">units</a></span>&#8203;(<a href="../util/Conversion.html" title="interface in com.stuypulse.stuylib.util">Conversion</a>&lt;java.lang.Double,&#8203;<a href="../math/Angle.html" title="class in com.stuypulse.stuylib.math">Angle</a>&gt;&nbsp;conversion)</code></th>
+<th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#useConversion(com.stuypulse.stuylib.util.Conversion)">useConversion</a></span>&#8203;(<a href="../util/Conversion.html" title="interface in com.stuypulse.stuylib.util">Conversion</a>&lt;java.lang.Double,&#8203;<a href="../math/Angle.html" title="class in com.stuypulse.stuylib.math">Angle</a>&gt;&nbsp;conversion)</code></th>
 <td class="colLast">
 <div class="block">Sets the conversion from the double stored on the network to an Angle class (e.g.</div>
+</td>
+</tr>
+<tr id="i7" class="rowColor">
+<td class="colFirst"><code><a href="SmartAngle.html" title="class in com.stuypulse.stuylib.network">SmartAngle</a></code></td>
+<th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#useDegrees()">useDegrees</a></span>()</code></th>
+<td class="colLast">
+<div class="block">Sets the unit of the network double to be degrees</div>
+</td>
+</tr>
+<tr id="i8" class="altColor">
+<td class="colFirst"><code><a href="SmartAngle.html" title="class in com.stuypulse.stuylib.network">SmartAngle</a></code></td>
+<th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#useRadians()">useRadians</a></span>()</code></th>
+<td class="colLast">
+<div class="block">Sets the unit of the network double to be radians</div>
 </td>
 </tr>
 </table>
@@ -365,13 +365,13 @@ implements java.util.function.Supplier&lt;<a href="../math/Angle.html" title="cl
 <!--   -->
 </a>
 <h3>Method Detail</h3>
-<a id="units(com.stuypulse.stuylib.util.Conversion)">
+<a id="useConversion(com.stuypulse.stuylib.util.Conversion)">
 <!--   -->
 </a>
 <ul class="blockList">
 <li class="blockList">
-<h4>units</h4>
-<pre class="methodSignature">public&nbsp;<a href="SmartAngle.html" title="class in com.stuypulse.stuylib.network">SmartAngle</a>&nbsp;units&#8203;(<a href="../util/Conversion.html" title="interface in com.stuypulse.stuylib.util">Conversion</a>&lt;java.lang.Double,&#8203;<a href="../math/Angle.html" title="class in com.stuypulse.stuylib.math">Angle</a>&gt;&nbsp;conversion)</pre>
+<h4>useConversion</h4>
+<pre class="methodSignature">public&nbsp;<a href="SmartAngle.html" title="class in com.stuypulse.stuylib.network">SmartAngle</a>&nbsp;useConversion&#8203;(<a href="../util/Conversion.html" title="interface in com.stuypulse.stuylib.util">Conversion</a>&lt;java.lang.Double,&#8203;<a href="../math/Angle.html" title="class in com.stuypulse.stuylib.math">Angle</a>&gt;&nbsp;conversion)</pre>
 <div class="block">Sets the conversion from the double stored on the network to an Angle class (e.g. sets what
  unit the double on the network is in)</div>
 <dl>
@@ -382,13 +382,13 @@ implements java.util.function.Supplier&lt;<a href="../math/Angle.html" title="cl
 </dl>
 </li>
 </ul>
-<a id="radians()">
+<a id="useRadians()">
 <!--   -->
 </a>
 <ul class="blockList">
 <li class="blockList">
-<h4>radians</h4>
-<pre class="methodSignature">public&nbsp;<a href="SmartAngle.html" title="class in com.stuypulse.stuylib.network">SmartAngle</a>&nbsp;radians()</pre>
+<h4>useRadians</h4>
+<pre class="methodSignature">public&nbsp;<a href="SmartAngle.html" title="class in com.stuypulse.stuylib.network">SmartAngle</a>&nbsp;useRadians()</pre>
 <div class="block">Sets the unit of the network double to be radians</div>
 <dl>
 <dt><span class="returnLabel">Returns:</span></dt>
@@ -396,13 +396,13 @@ implements java.util.function.Supplier&lt;<a href="../math/Angle.html" title="cl
 </dl>
 </li>
 </ul>
-<a id="degrees()">
+<a id="useDegrees()">
 <!--   -->
 </a>
 <ul class="blockList">
 <li class="blockList">
-<h4>degrees</h4>
-<pre class="methodSignature">public&nbsp;<a href="SmartAngle.html" title="class in com.stuypulse.stuylib.network">SmartAngle</a>&nbsp;degrees()</pre>
+<h4>useDegrees</h4>
+<pre class="methodSignature">public&nbsp;<a href="SmartAngle.html" title="class in com.stuypulse.stuylib.network">SmartAngle</a>&nbsp;useDegrees()</pre>
 <div class="block">Sets the unit of the network double to be degrees</div>
 <dl>
 <dt><span class="returnLabel">Returns:</span></dt>
