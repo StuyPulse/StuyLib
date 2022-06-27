@@ -16,6 +16,8 @@ StuyLib is an FRC library / toolkit which includes many different utilities for 
     - [Innovation in Control Award](https://www.thebluealliance.com/event/2022nyro#awards)
 - Clean & Concise Code / Smart Network Library:
     - [Innovation in Control Award](https://www.thebluealliance.com/event/2022nyli2#awards)
+- Usage of Encoders / Limelight + Encoder Fusion:
+    - [Innovation in Control Award](https://www.thebluealliance.com/event/2022nyny#awards)
 
 # How do I use StuyLib?
 
