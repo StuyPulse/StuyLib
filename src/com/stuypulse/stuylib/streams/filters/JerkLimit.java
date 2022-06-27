@@ -45,9 +45,11 @@ public class JerkLimit implements IFilter {
     }
 
     public double get(double target) {
-        double dt = mTimer.reset();
+        final double dt = mTimer.reset();
+        final boolean reverse = target < mOutput;
 
-        boolean reverse = target < mOutput;
+        final double accelLimit = mAccelLimit.doubleValue();
+        final double jerkLimit = mJerkLimit.doubleValue();
 
         if(reverse) {
             target *= -1;
@@ -55,36 +57,31 @@ public class JerkLimit implements IFilter {
             mAccel *= -1;
         }
 
-        mAccel = SLMath.clamp(mAccel, mAccelLimit.doubleValue());
+        mAccel = SLMath.clamp(mAccel, accelLimit);
 
-        double cutoffBegin = mAccel / mJerkLimit.doubleValue();
-        double cutoffDistBegin = cutoffBegin * cutoffBegin * mJerkLimit.doubleValue() * 0.5;
+        double cutoffBegin = mAccel / jerkLimit;
+        double cutoffDistBegin = cutoffBegin * cutoffBegin * jerkLimit * 0.5;
 
         double fullTrapezoidDist = cutoffDistBegin + (target - mOutput);
-        double accelerationTime = mAccelLimit.doubleValue() / mJerkLimit.doubleValue();
-        double fullSpeedDist = fullTrapezoidDist - accelerationTime * accelerationTime * mJerkLimit.doubleValue();
+        double accelerationTime = accelLimit / jerkLimit;
+        double fullSpeedDist = fullTrapezoidDist - accelerationTime * accelerationTime * jerkLimit;
 
         if (fullSpeedDist < 0) {
-            accelerationTime = Math.sqrt(fullTrapezoidDist / mJerkLimit.doubleValue());
+            accelerationTime = Math.sqrt(fullTrapezoidDist / jerkLimit);
             fullSpeedDist = 0;
         }
 
-        double endAccel = accelerationTime - cutoffBegin;
-        double endFullSpeed = endAccel + fullSpeedDist / mAccelLimit.doubleValue();
-        double endDeccel = endFullSpeed + accelerationTime;
+        double endFullSpeed = accelerationTime - cutoffBegin + fullSpeedDist / accelLimit;
+        double endDeccel = accelerationTime + endFullSpeed;
 
-        if (dt < endAccel) {
-            mAccel += dt * mJerkLimit.doubleValue();
-        } else if (dt < endFullSpeed) {
-            mAccel += SLMath.clamp(mAccelLimit.doubleValue() - mAccel, mJerkLimit.doubleValue() * dt);
-        } else if (dt <= endDeccel) {
-            double timeLeft = endDeccel - dt;
-            double future = mOutput + 0.5 * mJerkLimit.doubleValue() * timeLeft * timeLeft;
-            mAccel += SLMath.clamp((target - future) / dt - mAccel, mJerkLimit.doubleValue() * dt);
-        } else {
-            mAccel += SLMath.clamp((target - mOutput) / dt - mAccel, mJerkLimit.doubleValue() * dt);
+        if (dt < endFullSpeed) {
+            endDeccel = 0.0;
         }
 
+        double timeLeft = Math.max(0.0, endDeccel - dt);
+        double future = mOutput + 0.5 * jerkLimit * timeLeft * timeLeft;
+        mAccel += SLMath.clamp((target - future) / dt - mAccel, jerkLimit * dt);
+        
         mOutput += mAccel * dt;
 
         if (reverse) {

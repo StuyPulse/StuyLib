@@ -43,13 +43,13 @@ public final class Playground {
 
         JGraph graph = new JGraph(inputs);
 
-        IStream mouse = IStream.create(() -> (graph.getMouseTracker().getMouseY() - 0.5) * 2);
+        IStream mouse = IStream.create(() -> (graph.getMouseTracker().getMouseY() - 0.5) * 2).filtered(new MedianFilter(10));
         // mouse = () -> (System.currentTimeMillis() % 4000 > 2000 ? 1.0 : 0.0);
         for (; ; ) {
             final double next = mouse.get();
             graph.update(next);
 
-            Thread.sleep(50);
+            Thread.sleep(20);
         }
     }
 }
