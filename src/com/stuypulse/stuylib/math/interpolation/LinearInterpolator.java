@@ -13,12 +13,12 @@ import com.stuypulse.stuylib.math.Vector2D;
  * @author Eric Lin (ericlin071906@gmail.com, Github: cire694)
  * @author Sam (sam.belliveau@gmail.com)
  */
-public class NearestInterpolator implements Interpolator {
+public class LinearInterpolator implements Interpolator {
 
     private final Vector2D[] points;
 
     // Sort the points in ascending order
-    public NearestInterpolator(Vector2D... points) {
+    public LinearInterpolator(Vector2D... points) {
         this.points = Interpolator.getSortedPoints(points);
     }
 
@@ -60,7 +60,7 @@ public class NearestInterpolator implements Interpolator {
     // Tests
     public static void main(String... args) {
         Interpolator test =
-                new NearestInterpolator(
+                new LinearInterpolator(
                         new Vector2D(1, 6),
                         new Vector2D(6.5, 3),
                         new Vector2D(12, 6),
