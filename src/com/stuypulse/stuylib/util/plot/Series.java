@@ -33,14 +33,6 @@ public abstract class Series {
         }
     }
 
-    public static final Series make(Config config, IStream stream) {
-        return new TimeSeries(config, stream);
-    }
-
-    public static final Series make(Config config, VStream stream) {
-        return new XYSeries(config, stream);
-    }
-
     private final Config config;
 
     public Series(Config config) {
