@@ -12,20 +12,29 @@ import java.util.List;
 
 public class TimeSeries extends Series {
 
+    public static class TimeSpan {
+        private final double min, max;
+
+        public TimeSpan(double min, double max) {
+            this.min = min;
+            this.max = max;
+        }
+    }
+
     private List<Double> xValues;
     private List<Double> yValues;
 
     private final IStream stream;
 
-    public TimeSeries(Config config, double tmin, double tmax, IStream stream) {
+    public TimeSeries(Config config, TimeSpan span, IStream stream) {
         super(config);
 
         xValues = new ArrayList<>();
         yValues = new LinkedList<>();
         
-        final double delta = (tmax - tmin) / config.getDuration();
+        final double delta = (span.max - span.min) / config.getDuration();
         for (int i = 0; i < config.getDuration(); ++i) {
-            xValues.add(tmin + i * delta);
+            xValues.add(span.min + i * delta);
             yValues.add(0.0);
         }
 
