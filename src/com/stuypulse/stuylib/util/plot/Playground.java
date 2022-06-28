@@ -5,56 +5,33 @@
 package com.stuypulse.stuylib.util.plot;
 
 import com.stuypulse.stuylib.math.Vector2D;
-import com.stuypulse.stuylib.math.interpolation.Interpolator;
-import com.stuypulse.stuylib.math.interpolation.NearestInterpolator;
+import com.stuypulse.stuylib.math.interpolation.*;
+import com.stuypulse.stuylib.streams.*;
+import com.stuypulse.stuylib.streams.filters.*;
+import com.stuypulse.stuylib.streams.vectors.*;
+import com.stuypulse.stuylib.streams.vectors.filters.*;
+
+import com.stuypulse.stuylib.util.plot.FuncSeries.Domain;
 import com.stuypulse.stuylib.util.plot.Series.Config;
 import com.stuypulse.stuylib.util.plot.TimeSeries.TimeSpan;
 
 public class Playground {
 
-    public interface Distances {
-        double RING = 150;
-        double POINT_A = 167;
-        double POINT_B = 184;
-        double LAUNCHPAD = 217;
-    }
-
-    public interface RPMs {
-        double RING = 2950;
-        double POINT_A = 3050;
-        double POINT_B = 3200;
-        double LAUNCHPAD = 3650;
-    }
-
-    public interface Interpolators {
-        Interpolator TWO =
-            new NearestInterpolator(
-                new Vector2D(Distances.RING, RPMs.RING),  
-                new Vector2D(Distances.LAUNCHPAD, RPMs.LAUNCHPAD));
-
-        Interpolator FOUR =
-            new NearestInterpolator(
-                new Vector2D(Distances.RING, RPMs.RING),
-                new Vector2D(Distances.POINT_A, RPMs.POINT_A),
-                new Vector2D(Distances.POINT_B, RPMs.POINT_B),    
-                new Vector2D(Distances.LAUNCHPAD, RPMs.LAUNCHPAD));
-    }
-
     public interface Constants {
         int DURATION = 500;
 
-        String TITLE = "RPM vs Distance";
-        String X_AXIS = "Distance (inches)";
-        String Y_AXIS = "RPM";
+        String TITLE = "StuyLib Plotting Library";
+        String X_AXIS = "x-axis";
+        String Y_AXIS = "y-axis";
 
-        int WIDTH = 640;
-        int HEIGHT = 480;
+        int WIDTH = 800;
+        int HEIGHT = 600;
 
-        double MIN_X = Distances.RING;
-        double MAX_X = Distances.LAUNCHPAD;
+        double MIN_X = 0.0;
+        double MAX_X = 1.0;
 
-        double MIN_Y = RPMs.RING;
-        double MAX_Y = RPMs.LAUNCHPAD;
+        double MIN_Y = 0.0;
+        double MAX_Y = 1.0;
 
         Settings SETTINGS = new Settings()
                 .setSize(WIDTH, HEIGHT)
@@ -63,12 +40,16 @@ public class Playground {
                 .setYRange(MIN_Y, MAX_Y)
             ;
 
-        public static Series make(String id, Interpolator i) {
-            return new FuncSeries(
-                new Config(id, DURATION), 
-                new TimeSpan(MIN_X, MAX_X), 
-                i
-            );
+        public static Series make(String id, IFilter function) {
+            return new FuncSeries(new Config(id, DURATION), new Domain(MIN_X, MAX_X), function);
+        }
+
+        public static Series make(String id, IStream series) {
+            return new TimeSeries(new Config(id, DURATION), new TimeSpan(MIN_X, MAX_X), series);
+        }
+
+        public static Series make(String id, VStream series) {
+            return new XYSeries(new Config(id, DURATION), series);
         }
     }
 
@@ -76,8 +57,45 @@ public class Playground {
     public static void main(String[] args) throws InterruptedException {
         Plot plot = new Plot(Constants.SETTINGS);
 
-        plot.addSeries(Constants.make("2 points", Interpolators.TWO));
-        plot.addSeries(Constants.make("4 points", Interpolators.FOUR));
+        plot
+            .addSeries(Constants.make(
+                "y=x",
+                x -> x
+            ))
+
+            .addSeries(Constants.make(
+                "interp", 
+                new NearestInterpolator(
+                    new Vector2D(0.0, 0.43),
+                    new Vector2D(0.2, 0.56),
+                    new Vector2D(0.4, 0.72),
+                    new Vector2D(0.6, 0.81),
+                    new Vector2D(0.8, 0.02),
+                    new Vector2D(1.0, 0.11)
+                )
+            ))
+
+            .addSeries(Constants.make(
+                "mouse y",
+                IStream.create(plot::getMouseY)
+            ))
+
+            .addSeries(Constants.make(
+                "lpf",
+                IStream.create(plot::getMouseY).filtered(new LowPassFilter(0.2))
+            ))
+
+            .addSeries(Constants.make(
+                "mouse position",
+                VStream.create(plot::getMouse)
+            ))
+
+            .addSeries(Constants.make(
+                "jerk limit",
+                VStream.create(plot::getMouse).filtered(new VJerkLimit(10.0, 5.0))
+            ))
+
+        ;
 
         while (plot.isRunning()) {
             plot.update();
