@@ -4,7 +4,6 @@ import java.util.ArrayList;
 import java.util.List;
 
 import com.stuypulse.stuylib.streams.filters.IFilter;
-import com.stuypulse.stuylib.util.plot.TimeSeries.TimeSpan;
 
 /**
  * 
@@ -12,10 +11,18 @@ import com.stuypulse.stuylib.util.plot.TimeSeries.TimeSpan;
  */
 public class FuncSeries extends Series {
 
+    public static class Domain {
+        public final double min, max;
+        public Domain(double min, double max) {
+            this.min = min; 
+            this.max = max;
+        }
+    }
+
     private List<Double> xValues;
     private List<Double> yValues;
     
-    public FuncSeries(Config config, TimeSpan time, IFilter func) {
+    public FuncSeries(Config config, Domain domain, IFilter func) {
         super(config);
 
         xValues = new ArrayList<Double>();
@@ -23,7 +30,7 @@ public class FuncSeries extends Series {
 
         // Duration is the number of points
         for (int i = 0; i < config.getDuration(); i++) {
-            double x = (i * (time.max - time.min)) / config.getDuration() + time.min;
+            double x = (i * (domain.max - domain.min)) / config.getDuration() + domain.min;
 
             xValues.add(x);
             yValues.add(func.get(x));
