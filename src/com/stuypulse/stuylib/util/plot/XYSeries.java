@@ -53,4 +53,9 @@ public class XYSeries extends Series {
     public int size() {
         return yValues.size();
     }
+
+    @Override
+    protected boolean isPolling() {
+        return true;
+    }
 }

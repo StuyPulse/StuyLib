@@ -50,6 +50,8 @@ public abstract class Series {
 
     protected abstract void poll();
 
+    protected abstract boolean isPolling();
+
     private final void update() {
         final int duration = getConfig().getDuration();
         poll();

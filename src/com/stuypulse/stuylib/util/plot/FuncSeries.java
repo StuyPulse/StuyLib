@@ -4,14 +4,18 @@ import java.util.ArrayList;
 import java.util.List;
 
 import com.stuypulse.stuylib.streams.filters.IFilter;
+import com.stuypulse.stuylib.util.plot.TimeSeries.TimeSpan;
 
-// Doesnt use duration
+/**
+ * 
+ * @author Ben Goldfisher 
+ */
 public class FuncSeries extends Series {
 
     private List<Double> xValues;
     private List<Double> yValues;
     
-    public FuncSeries(IFilter func, Config config, double left, double right) {
+    public FuncSeries(Config config, TimeSpan time, IFilter func) {
         super(config);
 
         xValues = new ArrayList<Double>();
@@ -19,7 +23,7 @@ public class FuncSeries extends Series {
 
         // Duration is the number of points
         for (int i = 0; i < config.getDuration(); i++) {
-            double x = (i * (right - left)) / config.getDuration() + left;
+            double x = (i * (time.max - time.min)) / config.getDuration() + time.min;
 
             xValues.add(x);
             yValues.add(func.get(x));
@@ -46,5 +50,10 @@ public class FuncSeries extends Series {
 
     @Override
     protected void poll() {}
+
+    @Override
+    protected boolean isPolling() {
+        return false;
+    }
 
 }

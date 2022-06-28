@@ -13,7 +13,7 @@ import java.util.List;
 public class TimeSeries extends Series {
 
     public static class TimeSpan {
-        private final double min, max;
+        public final double min, max;
 
         public TimeSpan(double min, double max) {
             this.min = min;
@@ -64,5 +64,10 @@ public class TimeSeries extends Series {
     @Override
     public int size() {
         return yValues.size();
+    }
+
+    @Override
+    protected boolean isPolling() {
+        return true;
     }
 }
