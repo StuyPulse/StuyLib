@@ -9,6 +9,9 @@ import java.awt.Toolkit;
 import java.util.ArrayList;
 import java.util.List;
 import javax.swing.JFrame;
+
+import com.stuypulse.stuylib.math.Vector2D;
+
 import org.knowm.xchart.XChartPanel;
 import org.knowm.xchart.XYChart;
 import org.knowm.xchart.XYChartBuilder;
@@ -68,8 +71,16 @@ public class Plot {
         this(new Settings());
     }
 
-    public MouseTracker getMouse() {
-        return mouse;
+    public Vector2D getMouse() {
+        return mouse.getPosition();
+    }
+
+    public double getMouseY() {
+        return mouse.getY();
+    }
+
+    public double getMouseX() {
+        return mouse.getX();
     }
 
     public Plot addSeries(Series... series) {
