@@ -17,13 +17,15 @@ public class TimeSeries extends Series {
 
     private final IStream stream;
 
-    public TimeSeries(Config config, IStream stream) {
+    public TimeSeries(Config config, double tmin, double tmax, IStream stream) {
         super(config);
 
         xValues = new ArrayList<>();
         yValues = new LinkedList<>();
+        
+        final double delta = (tmax - tmin) / config.getDuration();
         for (int i = 0; i < config.getDuration(); ++i) {
-            xValues.add((i * 1.0) / config.getDuration());
+            xValues.add(tmin + i * delta);
             yValues.add(0.0);
         }
 
