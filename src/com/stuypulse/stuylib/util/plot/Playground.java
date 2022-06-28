@@ -7,6 +7,8 @@ package com.stuypulse.stuylib.util.plot;
 import com.stuypulse.stuylib.math.Vector2D;
 import com.stuypulse.stuylib.math.interpolation.*;
 import com.stuypulse.stuylib.streams.*;
+import com.stuypulse.stuylib.streams.booleans.*;
+import com.stuypulse.stuylib.streams.booleans.filters.*;
 import com.stuypulse.stuylib.streams.filters.*;
 import com.stuypulse.stuylib.streams.vectors.*;
 import com.stuypulse.stuylib.streams.vectors.filters.*;
@@ -18,7 +20,7 @@ import com.stuypulse.stuylib.util.plot.TimeSeries.TimeSpan;
 public class Playground {
 
     public interface Constants {
-        int DURATION = 500;
+        int DURATION = 200;
 
         String TITLE = "StuyLib Plotting Library";
         String X_AXIS = "x-axis";
@@ -50,6 +52,10 @@ public class Playground {
 
         public static Series make(String id, VStream series) {
             return new XYSeries(new Config(id, DURATION), series);
+        }
+
+        public static Series make(String id, BStream series) {
+            return make(id, IStream.create(series));
         }
     }
 
@@ -83,6 +89,16 @@ public class Playground {
             .addSeries(Constants.make(
                 "lpf",
                 IStream.create(plot::getMouseY).filtered(new LowPassFilter(0.2))
+            ))
+
+            .addSeries(Constants.make(
+                "mouse bool",
+                BStream.create(() -> plot.getMouseY() > 0.5)
+            ))
+
+            .addSeries(Constants.make(
+                "debounced",
+                BStream.create(() -> plot.getMouseY() > 0.5).filtered(new BDebounce.Both(1.0))
             ))
 
             .addSeries(Constants.make(
