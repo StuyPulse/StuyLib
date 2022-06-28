@@ -4,9 +4,6 @@
 
 package com.stuypulse.stuylib.util.plot;
 
-import com.stuypulse.stuylib.streams.IStream;
-import com.stuypulse.stuylib.streams.vectors.VStream;
-
 import java.awt.BasicStroke;
 import java.util.List;
 import org.knowm.xchart.XYChart;
