@@ -7,38 +7,13 @@ package com.stuypulse.stuylib.util.plot;
 import com.stuypulse.stuylib.math.Vector2D;
 import com.stuypulse.stuylib.math.interpolation.Interpolator;
 import com.stuypulse.stuylib.math.interpolation.NearestInterpolator;
-import com.stuypulse.stuylib.streams.IStream;
 import com.stuypulse.stuylib.util.plot.Series.Config;
 import com.stuypulse.stuylib.util.plot.TimeSeries.TimeSpan;
 
 public class Playground {
 
-    public static class Range implements IStream {
-
-        private double value;
-        private double delta;
-        private int steps;
-
-        public Range(double min, double max, int steps) {
-            this.value = min;
-            this.delta = (max-min)/steps;
-            this.steps = steps;
-        }
-
-        public Range(double min, double max) {
-            this(min, max, (int)(max-min));
-        }
-
-        @Override
-        public double get() {
-            if (steps-- < 0) return value;
-            return value += delta;
-        }
-
-    }
-
     public interface Distances {
-        double RING = 157;
+        double RING = 150;
         double POINT_A = 167;
         double POINT_B = 184;
         double LAUNCHPAD = 217;
@@ -88,15 +63,11 @@ public class Playground {
                 .setYRange(MIN_Y, MAX_Y)
             ;
 
-        private static Range getRange() {
-            return new Range(MIN_X, MAX_X, DURATION);
-        }
-
         public static Series make(String id, Interpolator i) {
-            return new TimeSeries(
+            return new FuncSeries(
                 new Config(id, DURATION), 
                 new TimeSpan(MIN_X, MAX_X), 
-                getRange().filtered(i)
+                i
             );
         }
     }
@@ -108,11 +79,9 @@ public class Playground {
         plot.addSeries(Constants.make("2 points", Interpolators.TWO));
         plot.addSeries(Constants.make("4 points", Interpolators.FOUR));
 
-
-        for (int i = 0; i < Constants.DURATION; ++i) {
-            plot.updateSeries();
+        while (plot.isRunning()) {
+            plot.update();
+            Thread.sleep(20);
         }
-
-        plot.display();
     }
 }
