@@ -24,6 +24,8 @@ public class Plot {
 
     private MouseTracker mouse;
 
+    private boolean runOnce;
+
     public Plot(Settings settings) {
         plots = new ArrayList<>();
 
@@ -58,6 +60,8 @@ public class Plot {
 
         frame.setLocationRelativeTo(null);
         frame.setVisible(true);
+
+        runOnce = true;
     }
 
     public Plot() {
@@ -88,5 +92,17 @@ public class Plot {
         Toolkit.getDefaultToolkit().sync();
         panel.revalidate();
         panel.repaint();
+    }
+
+    public boolean isRunning() {
+        if (runOnce) {
+            runOnce = false;
+            return true;
+        }
+
+        for (Series e : plots) {
+            if (e.isPolling()) return true;
+        }
+        return false;
     }
 }
