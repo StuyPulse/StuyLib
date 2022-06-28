@@ -4,12 +4,14 @@
 
 package com.stuypulse.stuylib.util.plot;
 
+import com.stuypulse.stuylib.math.Vector2D;
+import com.stuypulse.stuylib.math.interpolation.Interpolator;
+import com.stuypulse.stuylib.math.interpolation.NearestInterpolator;
 import com.stuypulse.stuylib.streams.IStream;
 import com.stuypulse.stuylib.streams.vectors.VStream;
-import com.stuypulse.stuylib.streams.vectors.filters.VJerkLimit;
-import com.stuypulse.stuylib.streams.vectors.filters.VLowPassFilter;
-import com.stuypulse.stuylib.streams.vectors.filters.VRateLimit;
 import com.stuypulse.stuylib.util.plot.Series.Config;
+
+import edu.wpi.first.math.util.Units;
 
 public class Playground {
 
@@ -25,16 +27,91 @@ public class Playground {
         }
     }
 
+    public interface Distances {
+        double RING = Units.inchesToMeters(150);
+        double POINT_A = Units.inchesToMeters(167);
+        double POINT_B = Units.inchesToMeters(184);
+        double LAUNCHPAD = Units.inchesToMeters(217);
+    }
+
+    public interface RPMs {
+        double RING = 2950;
+        double POINT_A = 3050;
+        double POINT_B = 3200;
+        double LAUNCHPAD = 3650;
+    }
+
+    public interface Yaws {
+        double RING = 6.50694;
+        double POINT_A = 6.25;
+        double POINT_B = 5.70;
+        double LAUNCHPAD = 5;
+    }
+
+    public interface FirstShotMap {
+        Interpolator DIST_TO_RPM =
+            new NearestInterpolator(
+                new Vector2D(Distances.RING, RPMs.RING),  
+                new Vector2D(Distances.LAUNCHPAD, RPMs.LAUNCHPAD));
+
+        Interpolator DIST_TO_YAW =
+            new NearestInterpolator(
+                new Vector2D(Distances.RING, Yaws.RING),
+                new Vector2D(Distances.LAUNCHPAD, Yaws.LAUNCHPAD));
+    }
+
+    public interface SecondShotMap {
+        Interpolator DIST_TO_RPM =
+            new NearestInterpolator(
+                new Vector2D(Distances.RING, RPMs.RING),
+                new Vector2D(Distances.POINT_A, RPMs.POINT_A),
+                new Vector2D(Distances.POINT_B, RPMs.POINT_B),    
+                new Vector2D(Distances.LAUNCHPAD, RPMs.LAUNCHPAD));
+
+        Interpolator DIST_TO_YAW =
+            new NearestInterpolator(
+                new Vector2D(Distances.RING, Yaws.RING),
+                new Vector2D(Distances.POINT_A, Yaws.POINT_A),
+                new Vector2D(Distances.POINT_B, Yaws.POINT_B),
+                new Vector2D(Distances.LAUNCHPAD, Yaws.LAUNCHPAD));
+    }
+
     public static void main(String[] args) throws InterruptedException {
-        Plot plot = new Plot();
+        double max_dist = 8;
 
-        VStream mouse = plot.getMouse()::getPosition;
-        IStream mouse_y = plot.getMouse()::getY;
+        Settings settings = new Settings();
 
-        plot.addSeries(Constants.make("mouse", mouse))
-                .addSeries(Constants.make("lpf", mouse.filtered(new VLowPassFilter(0.2))))
-                .addSeries(Constants.make("rate", mouse.filtered(new VRateLimit(1.0))))
-                .addSeries(Constants.make("jerk", mouse.filtered(new VJerkLimit(1.0, 10.0))));
+        settings.setXMax(8);
+
+        // rpm range
+        settings.setYMin(1000);
+        settings.setYMax(4000);
+
+        Plot plot = new Plot(settings);
+
+        // mouse input on y axis is distance, output is time plot of rpm
+        // IStream mouse_y = IStream.create(plot.getMouse()::getY).filtered(x -> x * mouse_multiplier);
+        // plot.addSeries(Constants.make("ring shot", () -> RPMs.RING))
+        //         .addSeries(Constants.make("pad", () -> RPMs.LAUNCHPAD))
+        //         .addSeries(Constants.make("first rpm", mouse_y.filtered(FirstShotMap.DIST_TO_RPM)))
+        //         .addSeries(Constants.make("second rpm", mouse_y.filtered(SecondShotMap.DIST_TO_RPM)));
+                
+        // mouse input on x axis is distance, output is distance, rpm plot
+        IStream mouse_x = IStream.create(plot.getMouse()::getX).filtered(x -> x * max_dist);
+        plot.addSeries(Constants.make("ring shot", () -> new Vector2D(Distances.RING, RPMs.RING)))
+                .addSeries(Constants.make("pad", () -> new Vector2D(Distances.LAUNCHPAD, RPMs.LAUNCHPAD)))
+                .addSeries(Constants.make("first rpm", VStream.create(mouse_x, mouse_x.filtered(FirstShotMap.DIST_TO_RPM))))
+                .addSeries(Constants.make("second rpm", VStream.create(mouse_x, mouse_x.filtered(SecondShotMap.DIST_TO_RPM))));
+                
+        // mouse input on x axis is distance, outputs yaw, rpm plot
+        // plot.addSeries(Constants.make("ring shot", () -> new Vector2D(Yaws.RING, RPMs.RING)))
+        //         .addSeries(Constants.make("pad", () -> new Vector2D(Yaws.LAUNCHPAD, RPMs.LAUNCHPAD)))
+        //         .addSeries(Constants.make("first", VStream.create(
+        //             mouse_x.filtered(FirstShotMap.DIST_TO_YAW),
+        //             mouse_x.filtered(FirstShotMap.DIST_TO_RPM))))
+        //         .addSeries(Constants.make("second",VStream.create(
+        //             mouse_x.filtered(SecondShotMap.DIST_TO_YAW),
+        //             mouse_x.filtered(SecondShotMap.DIST_TO_RPM))));
 
         for (; ; ) {
             plot.update();
