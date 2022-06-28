@@ -73,15 +73,18 @@ public class Plot {
         return this;
     }
 
-    public void update() {
+    public void updateSeries() {
         for (Series plot : plots) {
             plot.update(instance);
         }
+    }
 
+    public void update() {
+        updateSeries();
         display();
     }
 
-    private void display() {
+    public void display() {
         Toolkit.getDefaultToolkit().sync();
         panel.revalidate();
         panel.repaint();
