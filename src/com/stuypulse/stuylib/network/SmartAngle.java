@@ -48,12 +48,13 @@ public class SmartAngle implements Supplier<Angle> {
      * @param value default angle value
      */
     public SmartAngle(NetworkTableEntry entry, Angle value) {
+        useDegrees();
+
         mEntry = entry;
         mDefaultValue = value;
         mEntry.setDefaultDouble(mConversion.from(mDefaultValue));
 
         mEntry.addListener(this::update, LISTENER_FLAGS);
-        useDegrees();
     }
 
     /**
