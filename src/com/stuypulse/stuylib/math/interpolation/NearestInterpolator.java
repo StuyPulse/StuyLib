@@ -14,7 +14,8 @@ import com.stuypulse.stuylib.math.Vector2D;
  * being interpolated for. However, the left and right "biases" will only use reference 
  * points to the left and right, respectively. 
  * 
- * Because left and right biases reject points, they may not have outputs at certain x-values.
+ * Because left and right biases reject points, they may not have reference points for certain
+ * x-values, in which case extrapolation is done using the y-value of the nearest point.
  * 
  * @author Myles Pasetsky
  */
@@ -72,9 +73,11 @@ public class NearestInterpolator implements Interpolator {
      * Given an x-value, returns the y-value of the nearest reference
      * point. 
      * 
-     * Due to biasing of reference points, there may be no value, in 
-     * which this function returns NaN
+     * Due to biasing of reference points, there may be no point to refer to. In this
+     * case, extrapolation is done. This means if the input x is biased to the left, but
+     * there are no reference points to its left, it will use the rightmost point.
      * 
+     * @param x the input value to interpolate the value of
      * @return the interpolated value
      */
     @Override
@@ -92,12 +95,10 @@ public class NearestInterpolator implements Interpolator {
             }
         }
 
-        /*
         if (Double.isNaN(y)) {
             if (x < mPoints[0].x) return mPoints[0].y;
             else return mPoints[mPoints.length - 1].y;
         } 
-        */
 
         return y;
     }
