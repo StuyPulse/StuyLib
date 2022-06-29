@@ -31,11 +31,11 @@ public abstract class Series {
     }
 
     private final Config config;
-    protected final boolean isPolling;
+    private final boolean polling;
 
-    public Series(Config config, boolean isPolling) {
+    public Series(Config config, boolean polling) {
         this.config = config;
-        this.isPolling = isPolling;
+        this.polling = polling;
     }
 
     public Config getConfig() {
@@ -52,8 +52,8 @@ public abstract class Series {
 
     protected abstract void poll();
 
-    public final boolean isPolling() {
-        return isPolling;
+    protected final boolean isPolling() {
+        return polling;
     }
 
     private final void update() {
