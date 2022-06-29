@@ -14,19 +14,19 @@ public abstract class Series {
 
     public static class Config {
         private String name;
-        private int duration;
+        private int capacity;
 
-        public Config(String name, int duration) {
+        public Config(String name, int capacity) {
             this.name = name;
-            this.duration = duration;
+            this.capacity = capacity;
         }
 
         public String getName() {
             return name;
         }
 
-        public int getDuration() {
-            return duration;
+        public int getCapacity() {
+            return capacity;
         }
     }
 
@@ -57,9 +57,9 @@ public abstract class Series {
     }
 
     private final void update() {
-        final int duration = getConfig().getDuration();
+        final int capacity = getConfig().getCapacity();
         poll();
-        while (size() > duration) {
+        while (size() > capacity) {
             pop();
         }
     }

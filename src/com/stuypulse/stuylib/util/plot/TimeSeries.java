@@ -32,8 +32,8 @@ public class TimeSeries extends Series {
         xValues = new ArrayList<>();
         yValues = new LinkedList<>();
         
-        final double delta = (span.max - span.min) / config.getDuration();
-        for (int i = 0; i < config.getDuration(); ++i) {
+        final double delta = (span.max - span.min) / config.getCapacity();
+        for (int i = 0; i < config.getCapacity(); ++i) {
             xValues.add(span.min + i * delta);
             yValues.add(0.0);
         }

@@ -28,9 +28,8 @@ public class FuncSeries extends Series {
         xValues = new ArrayList<Double>();
         yValues = new ArrayList<Double>();
 
-        // Duration is the number of points
-        for (int i = 0; i < config.getDuration(); i++) {
-            double x = (i * (domain.max - domain.min)) / config.getDuration() + domain.min;
+        for (int i = 0; i < config.getCapacity(); i++) {
+            double x = (i * (domain.max - domain.min)) / config.getCapacity() + domain.min;
 
             xValues.add(x);
             yValues.add(func.get(x));
@@ -39,7 +38,7 @@ public class FuncSeries extends Series {
 
     @Override
     public int size() {
-        return getConfig().getDuration();
+        return getConfig().getCapacity();
     }
 
     @Override
