@@ -7,18 +7,18 @@ import com.stuypulse.stuylib.math.Vector2D;
 
 public class NearestInterpolator implements Interpolator {
     public static enum Bias {
-        kLeft((m, n) -> m >= n), 
-        kCenter((m, n) -> true), 
-        kRight((m, n) -> m <= n);
+        kLeft((x, point) -> x >= point.x), 
+        kCenter((x, point) -> true), 
+        kRight((x, point) -> x <= point.x);
 
-        private BiFunction<Double, Double, Boolean> mAcceptor;
+        private BiFunction<Double, Vector2D, Boolean> mAcceptor;
 
-        private Bias(BiFunction<Double, Double, Boolean> acceptor) {
+        private Bias(BiFunction<Double, Vector2D, Boolean> acceptor) {
             mAcceptor = acceptor;
         }
 
-        private boolean accept(double interpX, double dataX) {
-            return mAcceptor.apply(interpX, dataX);
+        private boolean accept(double x, Vector2D point) {
+            return mAcceptor.apply(x, point);
         }
     }
 
@@ -44,7 +44,7 @@ public class NearestInterpolator implements Interpolator {
         double y = Double.NaN;
 
         for (Vector2D point : mPoints) {
-            if (!mBias.accept(x, point.x)) continue;
+            if (!mBias.accept(x, point)) continue;
             
             double distance = Math.abs(point.x - x);
             if (distance < nearest) {
@@ -53,10 +53,12 @@ public class NearestInterpolator implements Interpolator {
             }
         }
 
+        /*
         if (Double.isNaN(y)) {
             if (x < mPoints[0].x) return mPoints[0].y;
             else return mPoints[mPoints.length - 1].y;
         } 
+        */
 
         return y;
     }
