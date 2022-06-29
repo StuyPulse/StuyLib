@@ -23,7 +23,7 @@ public class FuncSeries extends Series {
     private List<Double> yValues;
     
     public FuncSeries(Config config, Domain domain, IFilter func) {
-        super(config);
+        super(config, false);
 
         xValues = new ArrayList<Double>();
         yValues = new ArrayList<Double>();
@@ -57,10 +57,5 @@ public class FuncSeries extends Series {
 
     @Override
     protected void poll() {}
-
-    @Override
-    protected boolean isPolling() {
-        return false;
-    }
 
 }

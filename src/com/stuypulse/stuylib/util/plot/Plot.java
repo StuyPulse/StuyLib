@@ -112,7 +112,7 @@ public class Plot {
         }
 
         for (Series e : plots) {
-            if (e.isPolling()) return true;
+            if (e.isPolling) return true;
         }
         return false;
     }
