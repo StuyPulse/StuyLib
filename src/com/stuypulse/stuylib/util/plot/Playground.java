@@ -20,7 +20,7 @@ import com.stuypulse.stuylib.util.plot.TimeSeries.TimeSpan;
 public class Playground {
 
     public interface Constants {
-        int DURATION = 200;
+        int CAPACITY = 200;
 
         String TITLE = "StuyLib Plotting Library";
         String X_AXIS = "x-axis";
@@ -43,15 +43,15 @@ public class Playground {
             ;
 
         public static Series make(String id, IFilter function) {
-            return new FuncSeries(new Config(id, DURATION), new Domain(MIN_X, MAX_X), function);
+            return new FuncSeries(new Config(id, CAPACITY), new Domain(MIN_X, MAX_X), function);
         }
 
         public static Series make(String id, IStream series) {
-            return new TimeSeries(new Config(id, DURATION), new TimeSpan(MIN_X, MAX_X), series);
+            return new TimeSeries(new Config(id, CAPACITY), new TimeSpan(MIN_X, MAX_X), series);
         }
 
         public static Series make(String id, VStream series) {
-            return new XYSeries(new Config(id, DURATION), series);
+            return new XYSeries(new Config(id, CAPACITY), series);
         }
 
         public static Series make(String id, BStream series) {
