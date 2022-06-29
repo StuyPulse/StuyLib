@@ -5,12 +5,35 @@ import java.util.function.BiFunction;
 import com.stuypulse.stuylib.math.SLMath;
 import com.stuypulse.stuylib.math.Vector2D;
 
+/**
+ * A nearest interpolator takes the y-value of the reference point closest 
+ * on the x-axis. 
+ * 
+ * There are three interpolation "biases": left, center, right. The center "bias" 
+ * will simply use x-axis distance to find the nearest reference point to the x-value
+ * being interpolated for. However, the left and right "biases" will only use reference 
+ * points to the left and right, respectively. 
+ * 
+ * Because left and right biases reject points, they may not have outputs at certain x-values.
+ * 
+ * @author Myles Pasetsky
+ */
 public class NearestInterpolator implements Interpolator {
-    public static enum Bias {
-        kLeft((x, point) -> x >= point.x), 
-        kCenter((x, point) -> true), 
-        kRight((x, point) -> x <= point.x);
 
+    /**
+     * A bias describes how the interpolator will accept or reject
+     * points. 
+     */
+    public static enum Bias {
+        // use points to the left 
+        kLeft((x, point) -> x >= point.x), 
+
+        // use any point
+        kCenter((x, point) -> true), 
+
+        // use points to the right
+        kRight((x, point) -> x <= point.x);
+ 
         private BiFunction<Double, Vector2D, Boolean> mAcceptor;
 
         private Bias(BiFunction<Double, Vector2D, Boolean> acceptor) {
@@ -22,9 +45,20 @@ public class NearestInterpolator implements Interpolator {
         }
     }
 
+    /** array of reference points */
     private final Vector2D[] mPoints;
+
+    /** bias mode to use */
     private final Bias mBias;
 
+    /**
+     * Creates a nearest interpolator given a bias mode and reference points.
+     * 
+     * There must be at least one reference point.
+     * 
+     * @param bias bias mode
+     * @param points reference points
+     */
     public NearestInterpolator(Bias bias, Vector2D... points) {
         if (points.length < 1) {
             throw new IllegalArgumentException("Nearest Interpolator requires 1 point");
@@ -34,10 +68,15 @@ public class NearestInterpolator implements Interpolator {
         mBias = bias;
     }
 
-    public NearestInterpolator(Vector2D... points) {
-        this(Bias.kCenter, points);
-    }
-
+    /**
+     * Given an x-value, returns the y-value of the nearest reference
+     * point. 
+     * 
+     * Due to biasing of reference points, there may be no value, in 
+     * which this function returns NaN
+     * 
+     * @return the interpolated value
+     */
     @Override
     public double interpolate(double x) {
         double nearest = Double.MAX_VALUE;
@@ -78,8 +117,6 @@ public class NearestInterpolator implements Interpolator {
             }
             System.out.println();
         }
-
-        System.out.println(Double.NaN < Double.NaN);
     }
 
 }
