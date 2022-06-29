@@ -52,6 +52,7 @@ public class SmartAngle implements Supplier<Angle> {
 
         mEntry = entry;
         mDefaultValue = value;
+        mAngle = value;
         mEntry.setDefaultDouble(mConversion.from(mDefaultValue));
 
         mEntry.addListener(this::update, LISTENER_FLAGS);
