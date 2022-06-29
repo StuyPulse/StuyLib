@@ -18,7 +18,7 @@ public class XYSeries extends Series {
     private final VStream stream;
 
     public XYSeries(Config config, VStream stream) {
-        super(config);
+        super(config, true);
 
         xValues = new LinkedList<>();
         yValues = new LinkedList<>();
@@ -52,10 +52,5 @@ public class XYSeries extends Series {
     @Override
     public int size() {
         return yValues.size();
-    }
-
-    @Override
-    protected boolean isPolling() {
-        return true;
     }
 }

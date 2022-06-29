@@ -27,7 +27,7 @@ public class TimeSeries extends Series {
     private final IStream stream;
 
     public TimeSeries(Config config, TimeSpan span, IStream stream) {
-        super(config);
+        super(config, true);
 
         xValues = new ArrayList<>();
         yValues = new LinkedList<>();
@@ -64,10 +64,5 @@ public class TimeSeries extends Series {
     @Override
     public int size() {
         return yValues.size();
-    }
-
-    @Override
-    protected boolean isPolling() {
-        return true;
     }
 }

@@ -31,9 +31,11 @@ public abstract class Series {
     }
 
     private final Config config;
+    protected final boolean isPolling;
 
-    public Series(Config config) {
+    public Series(Config config, boolean isPolling) {
         this.config = config;
+        this.isPolling = isPolling;
     }
 
     public Config getConfig() {
@@ -50,7 +52,9 @@ public abstract class Series {
 
     protected abstract void poll();
 
-    protected abstract boolean isPolling();
+    public final boolean isPolling() {
+        return isPolling;
+    }
 
     private final void update() {
         final int capacity = getConfig().getCapacity();
