@@ -19,6 +19,10 @@ public class LinearInterpolator implements Interpolator {
 
     // Sort the points in ascending order
     public LinearInterpolator(Vector2D... points) {
+        if (points.length < 2) {
+            throw new IllegalArgumentException("Linear Interpolator needs at least 2 points");
+        }
+
         this.points = Interpolator.getSortedPoints(points);
     }
 
