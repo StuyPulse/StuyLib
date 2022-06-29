@@ -14,7 +14,7 @@ In order to free up space for new points to be added, the `.pop()` method is cal
 
 ### Polling
 
-Because many series change with time, like following the user's mouse or adding points from a stream, a series can be is polled to update its data. Non-changing series like FuncSeries  disable polling by returning false in `.isPolling()`.
+Because many series change with time, like following the user's mouse or adding points from a stream, a series can be is polled to update its data. Non-changing series like FuncSeries disable polling by setting `Series.polling` to false through Series' constructor.
 
 ### Data
 
