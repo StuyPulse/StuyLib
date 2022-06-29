@@ -50,14 +50,24 @@ public interface Interpolator extends IFilter {
     }
 
     /**
-     * Sorts the reference point by the value of x from smallest to greatest
+     * Performs an in-place sort by the value of x from smallest to greatest
+     * @param points the array for which to sort reference points
+     * @return the parameter array, for chaining
+     */
+    public static Vector2D[] sortPoints(Vector2D[] points) {
+        Arrays.sort(points, (lhs, rhs) -> (int) (Math.signum(lhs.x - rhs.x)));
+        return points;
+    }
+
+    /**
+     * Returns a sorted array of reference points by the value of x from smallest to greatest
      *
      * @param points reference points
      * @return an array of sorted reference points
      */
     public static Vector2D[] getSortedPoints(Vector2D... points) {
         Vector2D[] output = points.clone();
-        Arrays.sort(points, (lhs, rhs) -> (int) (Math.signum(lhs.x - rhs.x)));
+        sortPoints(points);
         return output;
     }
 }
