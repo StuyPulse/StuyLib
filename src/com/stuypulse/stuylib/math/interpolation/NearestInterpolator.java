@@ -65,7 +65,7 @@ public class NearestInterpolator implements Interpolator {
             throw new IllegalArgumentException("Nearest Interpolator requires 1 point");
         }
 
-        mPoints = points;
+        mPoints = Interpolator.getSortedPoints(points);
         mBias = bias;
     }
 
