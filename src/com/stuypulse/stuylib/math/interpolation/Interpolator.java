@@ -56,20 +56,8 @@ public interface Interpolator extends IFilter {
      * @return an array of sorted reference points
      */
     public static Vector2D[] getSortedPoints(Vector2D... points) {
-        if (points.length < 2) {
-            throw new IllegalArgumentException("Interpolation requires at least 2 points");
-        }
-
         Vector2D[] output = points.clone();
         Arrays.sort(points, (lhs, rhs) -> (int) (Math.signum(lhs.x - rhs.x)));
-
-        for (int i = 1; i < output.length; ++i) {
-            if (output[i - 1].x == output[i - 0].x) {
-                throw new IllegalArgumentException(
-                        "Interpolation requires all points to have unique x coordinates");
-            }
-        }
-
         return output;
     }
 }
