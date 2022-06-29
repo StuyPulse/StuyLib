@@ -6,8 +6,6 @@ A simple library for plotting streams and filters. Wraps [Knowm's XChart library
 
 A series represents any kind of function or data to be graphed.
 
-## Parts of a Series
-
 ### Config
 
 Series includes a Config class which stores the name and capacity of a series. The capacity is the max amount of points that can be plotted at the same time.
@@ -66,4 +64,27 @@ XYSeries jerk = new XYSeries(
     new Config("jerk limit", 500),
     VStream.create(plot::getMouse)
         .filtered(new VJerkLimit(10.0, 5.0)));
+```
+
+## What is a Plot?
+
+A Plot contains all of the graphics elements and references to [Knowm's XChart library](https://knowm.org/open-source/xchart/). It also holds all of the Series to be graphed and a MouseTracker.
+
+A Plot can be additionally created with a [Settings](https://github.com/StuyPulse/StuyLib/blob/bg/plot-docs/src/com/stuypulse/stuylib/util/plot/Settings.java), which can change the title, axes labels, size, and ranges of the plot.
+
+### Working with a Plot
+
+Like shown in the Series examples, the MouseTracker's methods are exposed through `.getMouse()`, `.getMouseY()`, and `.getMouseX()`. These methods can be used in creating a Series and can be casted to streams, ex. `IStream.create(plot::getMouseY)`.
+
+Series can be added to the plot through `.addSeries()`, and Series are updated through `.updateSeries()`, which will poll each series and update its points. In `.isRunning()`, a plot will check if each of its Series are polling and will keep running if so. For example, a plot conatining only a FuncSeries will not be polling and will only run once.
+
+A typical plot loop might look like this:
+
+```java
+Plot plot = new Plot();
+
+while (plot.isRunning()) {
+    plot.update();
+    Thread.sleep(20);
+}
 ```
