@@ -11,8 +11,6 @@ import com.stuypulse.stuylib.streams.filters.IFilterGroup;
 import com.stuypulse.stuylib.streams.filters.TimedMovingAverage;
 import com.stuypulse.stuylib.util.StopWatch;
 
-import edu.wpi.first.util.sendable.SendableBuilder;
-
 /**
  * This is a Bang-Bang controller that while controlling the robot, will be able to calculate the
  * values for the PID controller. It does this by taking the results of oscillations, then creating
@@ -57,6 +55,8 @@ public class PIDCalculator extends Controller {
     // Whether or not the system will measure the oscillation
     private boolean mRunning;
 
+    private final StopWatch mTimer;
+
     /** @param speed motor output for bang bang controller */
     public PIDCalculator(Number speed) {
         mControlSpeed = speed;
@@ -72,6 +72,7 @@ public class PIDCalculator extends Controller {
         mLocalMax = 0;
 
         mRunning = false;
+        mTimer = new StopWatch();
     }
 
     /**
@@ -90,9 +91,12 @@ public class PIDCalculator extends Controller {
      * @param error the error that the controller will use
      * @return the calculated result from the controller
      */
-    protected double calculate(double error) {
+    protected double calculate(double setpoint, double measurement) {
+        double error = setpoint - measurement;
+        double dt = mTimer.reset();
+
         // If there is a gap in updates, then disable until next period
-        if (getRate() > kMaxTimeBeforeReset) {
+        if (dt > kMaxTimeBeforeReset) {
             mRunning = false;
         }
 
@@ -192,22 +196,4 @@ public class PIDCalculator extends Controller {
                 + getPIDController().toString();
     }
 
-    /*********************/
-    /*** Sendable Data ***/
-    /*********************/
-
-    @Override
-    public void initSendable(SendableBuilder builder) {
-        super.initSendable(builder);
-
-        builder.addDoubleProperty("(PIDCalculator) Period [T]", this::getT, x -> {});
-        builder.addDoubleProperty("(PIDCalculator) Adjusted Amplitude [K]", this::getK, x -> {});
-
-        builder.addDoubleProperty(
-                "(PIDCalculator) Calculated kP", () -> this.getPIDController().getP(), x -> {});
-        builder.addDoubleProperty(
-                "(PIDCalculator) Calculated kI", () -> this.getPIDController().getI(), x -> {});
-        builder.addDoubleProperty(
-                "(PIDCalculator) Calculated kD", () -> this.getPIDController().getD(), x -> {});
-    }
 }
