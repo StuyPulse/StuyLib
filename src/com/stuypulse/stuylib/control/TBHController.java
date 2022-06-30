@@ -5,6 +5,7 @@
 package com.stuypulse.stuylib.control;
 
 import com.stuypulse.stuylib.network.SmartNumber;
+import com.stuypulse.stuylib.util.StopWatch;
 
 import edu.wpi.first.util.sendable.SendableBuilder;
 
@@ -23,6 +24,8 @@ import edu.wpi.first.util.sendable.SendableBuilder;
  */
 public class TBHController extends Controller {
 
+    private final StopWatch mTimer;
+
     private Number mGain;
     private double mTBH;
     private double mPreviousError;
@@ -30,6 +33,7 @@ public class TBHController extends Controller {
 
     /** @param gain the gain in the take back half algorithm */
     public TBHController(Number gain) {
+        mTimer = new StopWatch();
         setGain(gain).reset();
     }
 
@@ -61,8 +65,10 @@ public class TBHController extends Controller {
      * @return the calculated result from the Take Back Half algorithm
      */
     @Override
-    protected double calculate(double error) {
-        mOutput += getGain() * error * this.getRate();
+    protected double calculate(double setpoint, double measurement) {
+        double error = setpoint - measurement;
+
+        mOutput += getGain() * error * mTimer.reset();
         if ((error < 0) != (mPreviousError < 0)) {
             mOutput += mTBH;
             mOutput *= 0.5;
@@ -74,14 +80,4 @@ public class TBHController extends Controller {
         return mOutput;
     }
 
-    /*********************/
-    /*** Sendable Data ***/
-    /*********************/
-
-    @Override
-    public void initSendable(SendableBuilder builder) {
-        super.initSendable(builder);
-
-        builder.addDoubleProperty("(TBH) Gain", this::getGain, this::setGain);
-    }
 }
