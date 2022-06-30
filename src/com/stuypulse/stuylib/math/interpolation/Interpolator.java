@@ -12,7 +12,7 @@ import java.util.Arrays;
 /**
  * This class serves as a baseline for all other classes. The Interpolator is a filter that will
  * find the values of any point given a few reference points
- * 
+ *
  * @author Eric (ericlin071906@gmail.com)
  * @author Ivan Wei (ivanw8288@gmail.com)
  */
@@ -31,11 +31,11 @@ public interface Interpolator extends IFilter {
     default double get(double x) {
         return interpolate(x);
     }
-    
+
     /**
-     * Returns the index of the point with the greatest x-coordinate less than or equal to x, or -1 if it is lower than every element.
-     * Assumes that the array is sorted.
-     * 
+     * Returns the index of the point with the greatest x-coordinate less than or equal to x, or -1
+     * if it is lower than every element. Assumes that the array is sorted.
+     *
      * @param x the x-value to compare to
      * @param points the points to find the lower bound among
      * @return the index of the lower bound, or -1
@@ -51,6 +51,7 @@ public interface Interpolator extends IFilter {
 
     /**
      * Performs an in-place sort by the value of x from smallest to greatest
+     *
      * @param points the array for which to sort reference points
      * @return the parameter array, for chaining
      */

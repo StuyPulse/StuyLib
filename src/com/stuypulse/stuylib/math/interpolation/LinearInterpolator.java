@@ -7,8 +7,7 @@ package com.stuypulse.stuylib.math.interpolation;
 import com.stuypulse.stuylib.math.Vector2D;
 
 /**
- * Using this class will allow you to linearly interpolate between two surrounding reference 
- * points.
+ * Using this class will allow you to linearly interpolate between two surrounding reference points.
  *
  * @author Eric Lin (ericlin071906@gmail.com, Github: cire694)
  * @author Sam (sam.belliveau@gmail.com)

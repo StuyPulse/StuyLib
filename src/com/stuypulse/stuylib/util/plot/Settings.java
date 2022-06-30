@@ -6,13 +6,13 @@ package com.stuypulse.stuylib.util.plot;
 
 /**
  * Settings for a plot.
- * 
- * Supports changing labels, axis bounds, and window size. 
- * 
+ *
+ * <p>Supports changing labels, axis bounds, and window size.
+ *
  * @author Myles Pasetsky (myles.pasetsky@gmail.com)
  */
 public final class Settings {
-    
+
     /** Convenience struct to represent axis labels */
     public static class Axes {
 
@@ -35,19 +35,23 @@ public final class Settings {
 
     /** labels of the plot */
     private String title;
+
     private String xAxis;
     private String yAxis;
 
     /** window size */
     private int width;
+
     private int height;
 
     /** x-axis bounds */
     private double xMin;
+
     private double xMax;
 
     /** y-axis bounds */
     private double yMin;
+
     private double yMax;
 
     /** Create a settings object with default values */
@@ -66,7 +70,7 @@ public final class Settings {
         yMax = 1.0;
     }
 
-    /** @return title  */
+    /** @return title */
     public String getTitle() {
         return title;
     }
@@ -111,9 +115,9 @@ public final class Settings {
         return yMax;
     }
 
-    /** 
+    /**
      * Sets title of plot
-     * 
+     *
      * @param title title
      * @return reference to self for chaining methods
      */
@@ -122,9 +126,9 @@ public final class Settings {
         return this;
     }
 
-    /** 
+    /**
      * Sets x-axis label
-     * 
+     *
      * @param xAxis x-axis label
      * @return reference to self for chaining methods
      */
@@ -133,9 +137,9 @@ public final class Settings {
         return this;
     }
 
-    /** 
+    /**
      * Set y-axis label
-     * 
+     *
      * @param yAxis y-axis label
      * @return reference to self for chaining methods
      */
@@ -144,9 +148,9 @@ public final class Settings {
         return this;
     }
 
-    /** 
+    /**
      * Set all axis labels at once
-     * 
+     *
      * @param title title
      * @param xAxis x-axis label
      * @param yAxis y-axis label
@@ -159,9 +163,9 @@ public final class Settings {
         return this;
     }
 
-    /** 
-     * Sets all the axis labels at once 
-     * 
+    /**
+     * Sets all the axis labels at once
+     *
      * @param axes object containing axis labels
      * @return reference to self for chaining methods
      */
@@ -169,9 +173,9 @@ public final class Settings {
         return setAxes(axes.title, axes.x, axes.y);
     }
 
-    /** 
+    /**
      * Sets lower bound for x-axis
-     * 
+     *
      * @param xMin lower bound for x-axis
      * @return reference to self for chaining methods
      */
@@ -180,9 +184,9 @@ public final class Settings {
         return this;
     }
 
-    /** 
+    /**
      * Sets upper bound for x-axis
-     * 
+     *
      * @param xMax upper bound for x-axis
      * @return reference to self for chaining methods
      */
@@ -191,11 +195,11 @@ public final class Settings {
         return this;
     }
 
-    /** 
+    /**
      * Sets range of x-values on plot
-     * 
+     *
      * @param min x axis lower bound
-     * @param max x axis upper bound 
+     * @param max x axis upper bound
      * @return reference to self for chaining methods
      */
     public Settings setXRange(double min, double max) {
@@ -204,10 +208,10 @@ public final class Settings {
         return this;
     }
 
-    /** 
+    /**
      * Sets lower bound for y-axis
-     * 
-     * @param xMin lower bound for y-axis
+     *
+     * @param yMin lower bound for y-axis
      * @return reference to self for chaining methods
      */
     public Settings setYMin(double yMin) {
@@ -215,10 +219,10 @@ public final class Settings {
         return this;
     }
 
-    /** 
+    /**
      * Sets upper bound for y-axis
-     * 
-     * @param xMin upper bound for y-axis
+     *
+     * @param yMax upper bound for y-axis
      * @return reference to self for chaining methods
      */
     public Settings setYMax(double yMax) {
@@ -226,11 +230,11 @@ public final class Settings {
         return this;
     }
 
-    /** 
+    /**
      * Sets range of y-values on plot
-     * 
+     *
      * @param min y axis lower bound
-     * @param max y axis upper bound 
+     * @param max y axis upper bound
      * @return reference to self for chaining methods
      */
     public Settings setYRange(double min, double max) {
@@ -239,9 +243,9 @@ public final class Settings {
         return this;
     }
 
-    /** 
+    /**
      * Sets width of window
-     * 
+     *
      * @param width width of window
      * @return reference to self for chaining methods
      */
@@ -250,10 +254,10 @@ public final class Settings {
         return this;
     }
 
-    /** 
+    /**
      * Sets height of window
-     * 
-     * @param width height of window
+     *
+     * @param height height of window
      * @return reference to self for chaining methods
      */
     public Settings setHeight(int height) {
@@ -261,9 +265,9 @@ public final class Settings {
         return this;
     }
 
-    /** 
+    /**
      * Sets size of window
-     * 
+     *
      * @param width width of window
      * @param height height of window
      * @return reference to self for chaining methods

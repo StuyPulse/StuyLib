@@ -11,29 +11,23 @@ import org.knowm.xchart.XYSeries.XYSeriesRenderStyle;
 import org.knowm.xchart.style.markers.SeriesMarkers;
 
 /**
- * A series handles (x, y) data that will be graphed. It supports 
- * getting safe copies of this data, as well optionally supporting
- * pushing and popping this data.
- * 
- * Using these operations, a series can update its data points and add
- * itself to an XYChart.
- * 
- * A series must be created with a config, which has the label of the
- * series (which appears in the legend) and its maximum number of entries. 
- * 
- * A series must also specifiy whether or not it is polling. If a
- * series is "polling", it means that its values will change when the poll
- * operation is performed. This is useful as the plot doesn't have to redraw
- * if its series aren't polling because they will never change. 
- * 
+ * A series handles (x, y) data that will be graphed. It supports getting safe copies of this data,
+ * as well optionally supporting pushing and popping this data.
+ *
+ * <p>Using these operations, a series can update its data points and add itself to an XYChart.
+ *
+ * <p>A series must be created with a config, which has the label of the series (which appears in
+ * the legend) and its maximum number of entries.
+ *
+ * <p>A series must also specifiy whether or not it is polling. If a series is "polling", it means
+ * that its values will change when the poll operation is performed. This is useful as the plot
+ * doesn't have to redraw if its series aren't polling because they will never change.
+ *
  * @author Myles Pasetsky (myles.pasetsky@gmail.com)
  */
 public abstract class Series {
 
-    /**
-     * Config describes the baseline settings for a series
-     * that need to be configured.
-     */
+    /** Config describes the baseline settings for a series that need to be configured. */
     public static class Config {
 
         /** label of a series that appears on the legend */
@@ -43,8 +37,8 @@ public abstract class Series {
         private int capacity;
 
         /**
-         * Creates a config 
-         * 
+         * Creates a config
+         *
          * @param label series label, which appears on legend
          * @param capacity capacity, which sets max number of entries for a series
          */
@@ -72,7 +66,7 @@ public abstract class Series {
 
     /**
      * Creates a series given a config and if it's polling
-     * 
+     *
      * @param config series config
      * @param polling whether or not this series polls
      */
@@ -88,15 +82,11 @@ public abstract class Series {
 
     /** @return the number of data points the series has */
     public abstract int size();
-    
-    /** 
-     * @return a "safe" copy of the x-data that can be read by XYChart's threads
-     */
+
+    /** @return a "safe" copy of the x-data that can be read by XYChart's threads */
     protected abstract List<Double> getSafeXValues();
 
-    /** 
-     * @return a "safe" copy of the y-data that can be read by XYChart's threads
-     */
+    /** @return a "safe" copy of the y-data that can be read by XYChart's threads */
     protected abstract List<Double> getSafeYValues();
 
     /** removes oldest data point (can be a no-op depending on implementation) */
@@ -111,10 +101,9 @@ public abstract class Series {
     }
 
     /**
-     * Pushes new data point and removes data points if
-     * over capacity in the config 
-     * 
-     * Depending on the implementation of a series, this may be a no-op
+     * Pushes new data point and removes data points if over capacity in the config
+     *
+     * <p>Depending on the implementation of a series, this may be a no-op
      */
     private final void update() {
         final int capacity = getConfig().getCapacity();
@@ -125,10 +114,9 @@ public abstract class Series {
     }
 
     /**
-     * Puts the 'safe' data into the chart instance under the 
-     * label specified in the config.
-     * 
-     * @param chart chart to put x, y data into 
+     * Puts the 'safe' data into the chart instance under the label specified in the config.
+     *
+     * @param chart chart to put x, y data into
      */
     protected final void update(XYChart chart) {
         update();

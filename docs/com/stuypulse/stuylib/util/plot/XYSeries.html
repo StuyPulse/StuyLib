@@ -137,6 +137,7 @@ $('.navPadding').css('padding-top', $('.fixedNav').css("height"));
 <hr>
 <pre>public class <span class="typeNameLabel">XYSeries</span>
 extends <a href="Series.html" title="class in com.stuypulse.stuylib.util.plot">Series</a></pre>
+<div class="block">An XYSeries is used to plot a stream of points (VStream) that changes over time.</div>
 </li>
 </ul>
 </div>
@@ -176,7 +177,9 @@ extends <a href="Series.html" title="class in com.stuypulse.stuylib.util.plot">S
 <tr class="altColor">
 <th class="colConstructorName" scope="row"><code><span class="memberNameLink"><a href="#%3Cinit%3E(com.stuypulse.stuylib.util.plot.Series.Config,com.stuypulse.stuylib.streams.vectors.VStream)">XYSeries</a></span>&#8203;(<a href="Series.Config.html" title="class in com.stuypulse.stuylib.util.plot">Series.Config</a>&nbsp;config,
         <a href="../../streams/vectors/VStream.html" title="interface in com.stuypulse.stuylib.streams.vectors">VStream</a>&nbsp;stream)</code></th>
-<td class="colLast">&nbsp;</td>
+<td class="colLast">
+<div class="block">Creates a XYSeries and specifies that it is polling.</div>
+</td>
 </tr>
 </table>
 </li>
@@ -209,12 +212,16 @@ extends <a href="Series.html" title="class in com.stuypulse.stuylib.util.plot">S
 <tr id="i2" class="altColor">
 <td class="colFirst"><code>protected void</code></td>
 <th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#poll()">poll</a></span>()</code></th>
-<td class="colLast">&nbsp;</td>
+<td class="colLast">
+<div class="block">Adds next point from the stream to x and y values</div>
+</td>
 </tr>
 <tr id="i3" class="rowColor">
 <td class="colFirst"><code>protected void</code></td>
 <th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#pop()">pop</a></span>()</code></th>
-<td class="colLast">&nbsp;</td>
+<td class="colLast">
+<div class="block">Removes oldest point from x and y values</div>
+</td>
 </tr>
 <tr id="i4" class="altColor">
 <td class="colFirst"><code>int</code></td>
@@ -227,7 +234,7 @@ extends <a href="Series.html" title="class in com.stuypulse.stuylib.util.plot">S
 <!--   -->
 </a>
 <h3>Methods inherited from class&nbsp;com.stuypulse.stuylib.util.plot.<a href="Series.html" title="class in com.stuypulse.stuylib.util.plot">Series</a></h3>
-<code><a href="Series.html#getConfig()">getConfig</a>, <a href="Series.html#make(com.stuypulse.stuylib.util.plot.Series.Config,com.stuypulse.stuylib.streams.IStream)">make</a>, <a href="Series.html#make(com.stuypulse.stuylib.util.plot.Series.Config,com.stuypulse.stuylib.streams.vectors.VStream)">make</a>, <a href="Series.html#update(org.knowm.xchart.XYChart)">update</a></code></li>
+<code><a href="Series.html#getConfig()">getConfig</a>, <a href="Series.html#isPolling()">isPolling</a>, <a href="Series.html#update(org.knowm.xchart.XYChart)">update</a></code></li>
 </ul>
 <ul class="blockList">
 <li class="blockList"><a id="methods.inherited.from.class.java.lang.Object">
@@ -260,6 +267,12 @@ extends <a href="Series.html" title="class in com.stuypulse.stuylib.util.plot">S
 <h4>XYSeries</h4>
 <pre>public&nbsp;XYSeries&#8203;(<a href="Series.Config.html" title="class in com.stuypulse.stuylib.util.plot">Series.Config</a>&nbsp;config,
                 <a href="../../streams/vectors/VStream.html" title="interface in com.stuypulse.stuylib.streams.vectors">VStream</a>&nbsp;stream)</pre>
+<div class="block">Creates a XYSeries and specifies that it is polling.</div>
+<dl>
+<dt><span class="paramLabel">Parameters:</span></dt>
+<dd><code>config</code> - series config</dd>
+<dd><code>stream</code> - determines the points to be plotted</dd>
+</dl>
 </li>
 </ul>
 </li>
@@ -282,6 +295,8 @@ extends <a href="Series.html" title="class in com.stuypulse.stuylib.util.plot">S
 <dl>
 <dt><span class="overrideSpecifyLabel">Specified by:</span></dt>
 <dd><code><a href="Series.html#getSafeXValues()">getSafeXValues</a></code>&nbsp;in class&nbsp;<code><a href="Series.html" title="class in com.stuypulse.stuylib.util.plot">Series</a></code></dd>
+<dt><span class="returnLabel">Returns:</span></dt>
+<dd>copied list of x values</dd>
 </dl>
 </li>
 </ul>
@@ -295,6 +310,8 @@ extends <a href="Series.html" title="class in com.stuypulse.stuylib.util.plot">S
 <dl>
 <dt><span class="overrideSpecifyLabel">Specified by:</span></dt>
 <dd><code><a href="Series.html#getSafeYValues()">getSafeYValues</a></code>&nbsp;in class&nbsp;<code><a href="Series.html" title="class in com.stuypulse.stuylib.util.plot">Series</a></code></dd>
+<dt><span class="returnLabel">Returns:</span></dt>
+<dd>copied list of y values</dd>
 </dl>
 </li>
 </ul>
@@ -305,6 +322,7 @@ extends <a href="Series.html" title="class in com.stuypulse.stuylib.util.plot">S
 <li class="blockList">
 <h4>poll</h4>
 <pre class="methodSignature">protected&nbsp;void&nbsp;poll()</pre>
+<div class="block">Adds next point from the stream to x and y values</div>
 <dl>
 <dt><span class="overrideSpecifyLabel">Specified by:</span></dt>
 <dd><code><a href="Series.html#poll()">poll</a></code>&nbsp;in class&nbsp;<code><a href="Series.html" title="class in com.stuypulse.stuylib.util.plot">Series</a></code></dd>
@@ -318,6 +336,7 @@ extends <a href="Series.html" title="class in com.stuypulse.stuylib.util.plot">S
 <li class="blockList">
 <h4>pop</h4>
 <pre class="methodSignature">protected&nbsp;void&nbsp;pop()</pre>
+<div class="block">Removes oldest point from x and y values</div>
 <dl>
 <dt><span class="overrideSpecifyLabel">Specified by:</span></dt>
 <dd><code><a href="Series.html#pop()">pop</a></code>&nbsp;in class&nbsp;<code><a href="Series.html" title="class in com.stuypulse.stuylib.util.plot">Series</a></code></dd>
@@ -334,6 +353,8 @@ extends <a href="Series.html" title="class in com.stuypulse.stuylib.util.plot">S
 <dl>
 <dt><span class="overrideSpecifyLabel">Specified by:</span></dt>
 <dd><code><a href="Series.html#size()">size</a></code>&nbsp;in class&nbsp;<code><a href="Series.html" title="class in com.stuypulse.stuylib.util.plot">Series</a></code></dd>
+<dt><span class="returnLabel">Returns:</span></dt>
+<dd>number of stored points</dd>
 </dl>
 </li>
 </ul>

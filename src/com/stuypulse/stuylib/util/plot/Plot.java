@@ -4,26 +4,23 @@
 
 package com.stuypulse.stuylib.util.plot;
 
+import com.stuypulse.stuylib.math.Vector2D;
+
 import java.awt.Dimension;
 import java.awt.Toolkit;
 import java.util.ArrayList;
 import java.util.List;
 import javax.swing.JFrame;
-
-import com.stuypulse.stuylib.math.Vector2D;
-
 import org.knowm.xchart.XChartPanel;
 import org.knowm.xchart.XYChart;
 import org.knowm.xchart.XYChartBuilder;
 
 /**
- * A plot contains and manages the window to which any data
- * is drawn.
- * 
- * It stores the Series that it is going draw. It also has 
- * methods that read the mouse's position, which can be used as 
- * an input stream for a series.  
- * 
+ * A plot contains and manages the window to which any data is drawn.
+ *
+ * <p>It stores the Series that it is going draw. It also has methods that read the mouse's
+ * position, which can be used as an input stream for a series.
+ *
  * @author Myles Pasetsky (myles.pasetsky@gmail.com)
  */
 public class Plot {
@@ -36,6 +33,7 @@ public class Plot {
 
     /** A reference to the XChart library */
     private XYChart instance;
+
     private XChartPanel<XYChart> panel;
 
     /** A utility for finding mouse positions */
@@ -43,10 +41,10 @@ public class Plot {
 
     /** A boolean to ensure the plot is updated at least once */
     private boolean runOnce;
-    
+
     /**
      * Creates a configured plot
-     * 
+     *
      * @param settings plot & window settings
      */
     public Plot(Settings settings) {
@@ -104,7 +102,7 @@ public class Plot {
     public double getMouseY() {
         return mouse.getY();
     }
-    
+
     /** @return mouse x position */
     public double getMouseX() {
         return mouse.getX();
@@ -112,15 +110,16 @@ public class Plot {
 
     /**
      * Adds series to be graphed
-     * 
-     * @return reference to self 
+     *
+     * @param series series to add
+     * @return reference to self
      */
     public Plot addSeries(Series... series) {
         for (Series e : series) plots.add(e);
         return this;
     }
-    
-    /** allows the series to update the XYChart  */
+
+    /** allows the series to update the XYChart */
     public void updateSeries() {
         for (Series plot : plots) {
             plot.update(instance);
@@ -140,10 +139,9 @@ public class Plot {
     }
 
     /**
-     * Checks if any series are polling to see if the plot
-     * should still update. 
-     * 
-     * @return if the plot should still run 
+     * Checks if any series are polling to see if the plot should still update.
+     *
+     * @return if the plot should still run
      */
     public boolean isRunning() {
         if (runOnce) {

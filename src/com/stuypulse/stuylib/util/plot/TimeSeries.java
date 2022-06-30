@@ -11,28 +11,26 @@ import java.util.LinkedList;
 import java.util.List;
 
 /**
- * A TimeSeries is used to plot a stream of values (IStream) 
- * that changes over time. 
- * 
- * A TimeSeries is created with a TimeSpan, which the stream is
- * always assumed to be in. This allows the x-axis to be precomputed
- * with evenly spaced points in the time span. 
- * 
+ * A TimeSeries is used to plot a stream of values (IStream) that changes over time.
+ *
+ * <p>A TimeSeries is created with a TimeSpan, which the stream is always assumed to be in. This
+ * allows the x-axis to be precomputed with evenly spaced points in the time span.
+ *
  * @author Myles Pasetsky (myles.pasetsky@gmail.com)
  */
 public class TimeSeries extends Series {
 
-    /** The span of time that the series is within*/
+    /** The span of time that the series is within */
     public static class TimeSpan {
 
         /** bounds of time span */
         public final double min, max;
 
-        /** 
+        /**
          * Create a TimeSpan
-         * 
+         *
          * @param min minimum time
-         * @param max maximum time 
+         * @param max maximum time
          */
         public TimeSpan(double min, double max) {
             this.min = min;
@@ -61,7 +59,7 @@ public class TimeSeries extends Series {
 
         xValues = new ArrayList<>();
         yValues = new LinkedList<>();
-        
+
         final double delta = (span.max - span.min) / config.getCapacity();
         for (int i = 0; i < config.getCapacity(); ++i) {
             xValues.add(span.min + i * delta);
@@ -72,8 +70,7 @@ public class TimeSeries extends Series {
     }
 
     /**
-     * Returns reference to x values, which is safe because they
-     * are precompted and non-changing 
+     * Returns reference to x values, which is safe because they are precompted and non-changing
      *
      * @return reference to x values
      */

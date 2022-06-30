@@ -26,7 +26,7 @@
     catch(err) {
     }
 //-->
-var data = {"i0":10,"i1":10,"i2":10,"i3":10,"i4":10,"i5":10,"i6":10,"i7":10,"i8":10,"i9":10,"i10":10,"i11":10,"i12":10,"i13":10,"i14":10,"i15":10,"i16":10,"i17":10};
+var data = {"i0":10,"i1":10,"i2":10,"i3":10,"i4":10,"i5":10,"i6":10,"i7":10,"i8":10,"i9":10,"i10":10,"i11":10,"i12":10,"i13":10,"i14":10,"i15":10,"i16":10,"i17":10,"i18":10,"i19":10,"i20":10,"i21":10,"i22":10};
 var tabs = {65535:["t0","All Methods"],2:["t2","Instance Methods"],8:["t4","Concrete Methods"]};
 var altColor = "altColor";
 var rowColor = "rowColor";
@@ -87,7 +87,7 @@ loadScripts(document, 'script');</script>
 <div>
 <ul class="subNavList">
 <li>Summary:&nbsp;</li>
-<li>Nested&nbsp;|&nbsp;</li>
+<li><a href="#nested.class.summary">Nested</a>&nbsp;|&nbsp;</li>
 <li>Field&nbsp;|&nbsp;</li>
 <li><a href="#constructor.summary">Constr</a>&nbsp;|&nbsp;</li>
 <li><a href="#method.summary">Method</a></li>
@@ -132,12 +132,40 @@ $('.navPadding').css('padding-top', $('.fixedNav').css("height"));
 <hr>
 <pre>public final class <span class="typeNameLabel">Settings</span>
 extends java.lang.Object</pre>
+<div class="block">Settings for a plot.
+
+ <p>Supports changing labels, axis bounds, and window size.</div>
 </li>
 </ul>
 </div>
 <div class="summary">
 <ul class="blockList">
 <li class="blockList">
+<!-- ======== NESTED CLASS SUMMARY ======== -->
+<section role="region">
+<ul class="blockList">
+<li class="blockList"><a id="nested.class.summary">
+<!--   -->
+</a>
+<h3>Nested Class Summary</h3>
+<table class="memberSummary">
+<caption><span>Nested Classes</span><span class="tabEnd">&nbsp;</span></caption>
+<tr>
+<th class="colFirst" scope="col">Modifier and Type</th>
+<th class="colSecond" scope="col">Class</th>
+<th class="colLast" scope="col">Description</th>
+</tr>
+<tr class="altColor">
+<td class="colFirst"><code>static class&nbsp;</code></td>
+<th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="Settings.Axes.html" title="class in com.stuypulse.stuylib.util.plot">Settings.Axes</a></span></code></th>
+<td class="colLast">
+<div class="block">Convenience struct to represent axis labels</div>
+</td>
+</tr>
+</table>
+</li>
+</ul>
+</section>
 <!-- ======== CONSTRUCTOR SUMMARY ======== -->
 <section role="region">
 <ul class="blockList">
@@ -153,7 +181,9 @@ extends java.lang.Object</pre>
 </tr>
 <tr class="altColor">
 <th class="colConstructorName" scope="row"><code><span class="memberNameLink"><a href="#%3Cinit%3E()">Settings</a></span>()</code></th>
-<td class="colLast">&nbsp;</td>
+<td class="colLast">
+<div class="block">Create a settings object with default values</div>
+</td>
 </tr>
 </table>
 </li>
@@ -220,48 +250,106 @@ extends java.lang.Object</pre>
 </tr>
 <tr id="i9" class="rowColor">
 <td class="colFirst"><code><a href="Settings.html" title="class in com.stuypulse.stuylib.util.plot">Settings</a></code></td>
-<th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#setHeight(int)">setHeight</a></span>&#8203;(int&nbsp;height)</code></th>
-<td class="colLast">&nbsp;</td>
+<th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#setAxes(com.stuypulse.stuylib.util.plot.Settings.Axes)">setAxes</a></span>&#8203;(<a href="Settings.Axes.html" title="class in com.stuypulse.stuylib.util.plot">Settings.Axes</a>&nbsp;axes)</code></th>
+<td class="colLast">
+<div class="block">Sets all the axis labels at once</div>
+</td>
 </tr>
 <tr id="i10" class="altColor">
 <td class="colFirst"><code><a href="Settings.html" title="class in com.stuypulse.stuylib.util.plot">Settings</a></code></td>
-<th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#setTitle(java.lang.String)">setTitle</a></span>&#8203;(java.lang.String&nbsp;title)</code></th>
-<td class="colLast">&nbsp;</td>
+<th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#setAxes(java.lang.String,java.lang.String,java.lang.String)">setAxes</a></span>&#8203;(java.lang.String&nbsp;title,
+       java.lang.String&nbsp;xAxis,
+       java.lang.String&nbsp;yAxis)</code></th>
+<td class="colLast">
+<div class="block">Set all axis labels at once</div>
+</td>
 </tr>
 <tr id="i11" class="rowColor">
 <td class="colFirst"><code><a href="Settings.html" title="class in com.stuypulse.stuylib.util.plot">Settings</a></code></td>
-<th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#setWidth(int)">setWidth</a></span>&#8203;(int&nbsp;width)</code></th>
-<td class="colLast">&nbsp;</td>
+<th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#setHeight(int)">setHeight</a></span>&#8203;(int&nbsp;height)</code></th>
+<td class="colLast">
+<div class="block">Sets height of window</div>
+</td>
 </tr>
 <tr id="i12" class="altColor">
 <td class="colFirst"><code><a href="Settings.html" title="class in com.stuypulse.stuylib.util.plot">Settings</a></code></td>
-<th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#setXAxis(java.lang.String)">setXAxis</a></span>&#8203;(java.lang.String&nbsp;xAxis)</code></th>
-<td class="colLast">&nbsp;</td>
+<th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#setSize(int,int)">setSize</a></span>&#8203;(int&nbsp;width,
+       int&nbsp;height)</code></th>
+<td class="colLast">
+<div class="block">Sets size of window</div>
+</td>
 </tr>
 <tr id="i13" class="rowColor">
 <td class="colFirst"><code><a href="Settings.html" title="class in com.stuypulse.stuylib.util.plot">Settings</a></code></td>
-<th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#setXMax(double)">setXMax</a></span>&#8203;(double&nbsp;xMax)</code></th>
-<td class="colLast">&nbsp;</td>
+<th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#setTitle(java.lang.String)">setTitle</a></span>&#8203;(java.lang.String&nbsp;title)</code></th>
+<td class="colLast">
+<div class="block">Sets title of plot</div>
+</td>
 </tr>
 <tr id="i14" class="altColor">
 <td class="colFirst"><code><a href="Settings.html" title="class in com.stuypulse.stuylib.util.plot">Settings</a></code></td>
-<th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#setXMin(double)">setXMin</a></span>&#8203;(double&nbsp;xMin)</code></th>
-<td class="colLast">&nbsp;</td>
+<th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#setWidth(int)">setWidth</a></span>&#8203;(int&nbsp;width)</code></th>
+<td class="colLast">
+<div class="block">Sets width of window</div>
+</td>
 </tr>
 <tr id="i15" class="rowColor">
 <td class="colFirst"><code><a href="Settings.html" title="class in com.stuypulse.stuylib.util.plot">Settings</a></code></td>
-<th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#setYAxis(java.lang.String)">setYAxis</a></span>&#8203;(java.lang.String&nbsp;yAxis)</code></th>
-<td class="colLast">&nbsp;</td>
+<th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#setXAxis(java.lang.String)">setXAxis</a></span>&#8203;(java.lang.String&nbsp;xAxis)</code></th>
+<td class="colLast">
+<div class="block">Sets x-axis label</div>
+</td>
 </tr>
 <tr id="i16" class="altColor">
 <td class="colFirst"><code><a href="Settings.html" title="class in com.stuypulse.stuylib.util.plot">Settings</a></code></td>
-<th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#setYMax(double)">setYMax</a></span>&#8203;(double&nbsp;yMax)</code></th>
-<td class="colLast">&nbsp;</td>
+<th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#setXMax(double)">setXMax</a></span>&#8203;(double&nbsp;xMax)</code></th>
+<td class="colLast">
+<div class="block">Sets upper bound for x-axis</div>
+</td>
 </tr>
 <tr id="i17" class="rowColor">
 <td class="colFirst"><code><a href="Settings.html" title="class in com.stuypulse.stuylib.util.plot">Settings</a></code></td>
+<th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#setXMin(double)">setXMin</a></span>&#8203;(double&nbsp;xMin)</code></th>
+<td class="colLast">
+<div class="block">Sets lower bound for x-axis</div>
+</td>
+</tr>
+<tr id="i18" class="altColor">
+<td class="colFirst"><code><a href="Settings.html" title="class in com.stuypulse.stuylib.util.plot">Settings</a></code></td>
+<th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#setXRange(double,double)">setXRange</a></span>&#8203;(double&nbsp;min,
+         double&nbsp;max)</code></th>
+<td class="colLast">
+<div class="block">Sets range of x-values on plot</div>
+</td>
+</tr>
+<tr id="i19" class="rowColor">
+<td class="colFirst"><code><a href="Settings.html" title="class in com.stuypulse.stuylib.util.plot">Settings</a></code></td>
+<th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#setYAxis(java.lang.String)">setYAxis</a></span>&#8203;(java.lang.String&nbsp;yAxis)</code></th>
+<td class="colLast">
+<div class="block">Set y-axis label</div>
+</td>
+</tr>
+<tr id="i20" class="altColor">
+<td class="colFirst"><code><a href="Settings.html" title="class in com.stuypulse.stuylib.util.plot">Settings</a></code></td>
+<th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#setYMax(double)">setYMax</a></span>&#8203;(double&nbsp;yMax)</code></th>
+<td class="colLast">
+<div class="block">Sets upper bound for y-axis</div>
+</td>
+</tr>
+<tr id="i21" class="rowColor">
+<td class="colFirst"><code><a href="Settings.html" title="class in com.stuypulse.stuylib.util.plot">Settings</a></code></td>
 <th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#setYMin(double)">setYMin</a></span>&#8203;(double&nbsp;yMin)</code></th>
-<td class="colLast">&nbsp;</td>
+<td class="colLast">
+<div class="block">Sets lower bound for y-axis</div>
+</td>
+</tr>
+<tr id="i22" class="altColor">
+<td class="colFirst"><code><a href="Settings.html" title="class in com.stuypulse.stuylib.util.plot">Settings</a></code></td>
+<th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#setYRange(double,double)">setYRange</a></span>&#8203;(double&nbsp;min,
+         double&nbsp;max)</code></th>
+<td class="colLast">
+<div class="block">Sets range of y-values on plot</div>
+</td>
 </tr>
 </table>
 <ul class="blockList">
@@ -294,6 +382,7 @@ extends java.lang.Object</pre>
 <li class="blockList">
 <h4>Settings</h4>
 <pre>public&nbsp;Settings()</pre>
+<div class="block">Create a settings object with default values</div>
 </li>
 </ul>
 </li>
@@ -313,6 +402,10 @@ extends java.lang.Object</pre>
 <li class="blockList">
 <h4>getTitle</h4>
 <pre class="methodSignature">public&nbsp;java.lang.String&nbsp;getTitle()</pre>
+<dl>
+<dt><span class="returnLabel">Returns:</span></dt>
+<dd>title</dd>
+</dl>
 </li>
 </ul>
 <a id="getXAxis()">
@@ -322,6 +415,10 @@ extends java.lang.Object</pre>
 <li class="blockList">
 <h4>getXAxis</h4>
 <pre class="methodSignature">public&nbsp;java.lang.String&nbsp;getXAxis()</pre>
+<dl>
+<dt><span class="returnLabel">Returns:</span></dt>
+<dd>x-axis label</dd>
+</dl>
 </li>
 </ul>
 <a id="getYAxis()">
@@ -331,6 +428,10 @@ extends java.lang.Object</pre>
 <li class="blockList">
 <h4>getYAxis</h4>
 <pre class="methodSignature">public&nbsp;java.lang.String&nbsp;getYAxis()</pre>
+<dl>
+<dt><span class="returnLabel">Returns:</span></dt>
+<dd>y-axis label</dd>
+</dl>
 </li>
 </ul>
 <a id="getWidth()">
@@ -340,6 +441,10 @@ extends java.lang.Object</pre>
 <li class="blockList">
 <h4>getWidth</h4>
 <pre class="methodSignature">public&nbsp;int&nbsp;getWidth()</pre>
+<dl>
+<dt><span class="returnLabel">Returns:</span></dt>
+<dd>width of window</dd>
+</dl>
 </li>
 </ul>
 <a id="getHeight()">
@@ -349,6 +454,10 @@ extends java.lang.Object</pre>
 <li class="blockList">
 <h4>getHeight</h4>
 <pre class="methodSignature">public&nbsp;int&nbsp;getHeight()</pre>
+<dl>
+<dt><span class="returnLabel">Returns:</span></dt>
+<dd>height of window</dd>
+</dl>
 </li>
 </ul>
 <a id="getXMin()">
@@ -358,6 +467,10 @@ extends java.lang.Object</pre>
 <li class="blockList">
 <h4>getXMin</h4>
 <pre class="methodSignature">public&nbsp;double&nbsp;getXMin()</pre>
+<dl>
+<dt><span class="returnLabel">Returns:</span></dt>
+<dd>lower bound of x-axis</dd>
+</dl>
 </li>
 </ul>
 <a id="getXMax()">
@@ -367,6 +480,10 @@ extends java.lang.Object</pre>
 <li class="blockList">
 <h4>getXMax</h4>
 <pre class="methodSignature">public&nbsp;double&nbsp;getXMax()</pre>
+<dl>
+<dt><span class="returnLabel">Returns:</span></dt>
+<dd>upper bound of x-axis</dd>
+</dl>
 </li>
 </ul>
 <a id="getYMin()">
@@ -376,6 +493,10 @@ extends java.lang.Object</pre>
 <li class="blockList">
 <h4>getYMin</h4>
 <pre class="methodSignature">public&nbsp;double&nbsp;getYMin()</pre>
+<dl>
+<dt><span class="returnLabel">Returns:</span></dt>
+<dd>lower bound of y-axis</dd>
+</dl>
 </li>
 </ul>
 <a id="getYMax()">
@@ -385,6 +506,10 @@ extends java.lang.Object</pre>
 <li class="blockList">
 <h4>getYMax</h4>
 <pre class="methodSignature">public&nbsp;double&nbsp;getYMax()</pre>
+<dl>
+<dt><span class="returnLabel">Returns:</span></dt>
+<dd>upper bound of y-axis</dd>
+</dl>
 </li>
 </ul>
 <a id="setTitle(java.lang.String)">
@@ -394,6 +519,13 @@ extends java.lang.Object</pre>
 <li class="blockList">
 <h4>setTitle</h4>
 <pre class="methodSignature">public&nbsp;<a href="Settings.html" title="class in com.stuypulse.stuylib.util.plot">Settings</a>&nbsp;setTitle&#8203;(java.lang.String&nbsp;title)</pre>
+<div class="block">Sets title of plot</div>
+<dl>
+<dt><span class="paramLabel">Parameters:</span></dt>
+<dd><code>title</code> - title</dd>
+<dt><span class="returnLabel">Returns:</span></dt>
+<dd>reference to self for chaining methods</dd>
+</dl>
 </li>
 </ul>
 <a id="setXAxis(java.lang.String)">
@@ -403,6 +535,13 @@ extends java.lang.Object</pre>
 <li class="blockList">
 <h4>setXAxis</h4>
 <pre class="methodSignature">public&nbsp;<a href="Settings.html" title="class in com.stuypulse.stuylib.util.plot">Settings</a>&nbsp;setXAxis&#8203;(java.lang.String&nbsp;xAxis)</pre>
+<div class="block">Sets x-axis label</div>
+<dl>
+<dt><span class="paramLabel">Parameters:</span></dt>
+<dd><code>xAxis</code> - x-axis label</dd>
+<dt><span class="returnLabel">Returns:</span></dt>
+<dd>reference to self for chaining methods</dd>
+</dl>
 </li>
 </ul>
 <a id="setYAxis(java.lang.String)">
@@ -412,6 +551,49 @@ extends java.lang.Object</pre>
 <li class="blockList">
 <h4>setYAxis</h4>
 <pre class="methodSignature">public&nbsp;<a href="Settings.html" title="class in com.stuypulse.stuylib.util.plot">Settings</a>&nbsp;setYAxis&#8203;(java.lang.String&nbsp;yAxis)</pre>
+<div class="block">Set y-axis label</div>
+<dl>
+<dt><span class="paramLabel">Parameters:</span></dt>
+<dd><code>yAxis</code> - y-axis label</dd>
+<dt><span class="returnLabel">Returns:</span></dt>
+<dd>reference to self for chaining methods</dd>
+</dl>
+</li>
+</ul>
+<a id="setAxes(java.lang.String,java.lang.String,java.lang.String)">
+<!--   -->
+</a>
+<ul class="blockList">
+<li class="blockList">
+<h4>setAxes</h4>
+<pre class="methodSignature">public&nbsp;<a href="Settings.html" title="class in com.stuypulse.stuylib.util.plot">Settings</a>&nbsp;setAxes&#8203;(java.lang.String&nbsp;title,
+                        java.lang.String&nbsp;xAxis,
+                        java.lang.String&nbsp;yAxis)</pre>
+<div class="block">Set all axis labels at once</div>
+<dl>
+<dt><span class="paramLabel">Parameters:</span></dt>
+<dd><code>title</code> - title</dd>
+<dd><code>xAxis</code> - x-axis label</dd>
+<dd><code>yAxis</code> - y-axis label</dd>
+<dt><span class="returnLabel">Returns:</span></dt>
+<dd>reference to self for chaining methods</dd>
+</dl>
+</li>
+</ul>
+<a id="setAxes(com.stuypulse.stuylib.util.plot.Settings.Axes)">
+<!--   -->
+</a>
+<ul class="blockList">
+<li class="blockList">
+<h4>setAxes</h4>
+<pre class="methodSignature">public&nbsp;<a href="Settings.html" title="class in com.stuypulse.stuylib.util.plot">Settings</a>&nbsp;setAxes&#8203;(<a href="Settings.Axes.html" title="class in com.stuypulse.stuylib.util.plot">Settings.Axes</a>&nbsp;axes)</pre>
+<div class="block">Sets all the axis labels at once</div>
+<dl>
+<dt><span class="paramLabel">Parameters:</span></dt>
+<dd><code>axes</code> - object containing axis labels</dd>
+<dt><span class="returnLabel">Returns:</span></dt>
+<dd>reference to self for chaining methods</dd>
+</dl>
 </li>
 </ul>
 <a id="setXMin(double)">
@@ -421,6 +603,13 @@ extends java.lang.Object</pre>
 <li class="blockList">
 <h4>setXMin</h4>
 <pre class="methodSignature">public&nbsp;<a href="Settings.html" title="class in com.stuypulse.stuylib.util.plot">Settings</a>&nbsp;setXMin&#8203;(double&nbsp;xMin)</pre>
+<div class="block">Sets lower bound for x-axis</div>
+<dl>
+<dt><span class="paramLabel">Parameters:</span></dt>
+<dd><code>xMin</code> - lower bound for x-axis</dd>
+<dt><span class="returnLabel">Returns:</span></dt>
+<dd>reference to self for chaining methods</dd>
+</dl>
 </li>
 </ul>
 <a id="setXMax(double)">
@@ -430,6 +619,31 @@ extends java.lang.Object</pre>
 <li class="blockList">
 <h4>setXMax</h4>
 <pre class="methodSignature">public&nbsp;<a href="Settings.html" title="class in com.stuypulse.stuylib.util.plot">Settings</a>&nbsp;setXMax&#8203;(double&nbsp;xMax)</pre>
+<div class="block">Sets upper bound for x-axis</div>
+<dl>
+<dt><span class="paramLabel">Parameters:</span></dt>
+<dd><code>xMax</code> - upper bound for x-axis</dd>
+<dt><span class="returnLabel">Returns:</span></dt>
+<dd>reference to self for chaining methods</dd>
+</dl>
+</li>
+</ul>
+<a id="setXRange(double,double)">
+<!--   -->
+</a>
+<ul class="blockList">
+<li class="blockList">
+<h4>setXRange</h4>
+<pre class="methodSignature">public&nbsp;<a href="Settings.html" title="class in com.stuypulse.stuylib.util.plot">Settings</a>&nbsp;setXRange&#8203;(double&nbsp;min,
+                          double&nbsp;max)</pre>
+<div class="block">Sets range of x-values on plot</div>
+<dl>
+<dt><span class="paramLabel">Parameters:</span></dt>
+<dd><code>min</code> - x axis lower bound</dd>
+<dd><code>max</code> - x axis upper bound</dd>
+<dt><span class="returnLabel">Returns:</span></dt>
+<dd>reference to self for chaining methods</dd>
+</dl>
 </li>
 </ul>
 <a id="setYMin(double)">
@@ -439,6 +653,13 @@ extends java.lang.Object</pre>
 <li class="blockList">
 <h4>setYMin</h4>
 <pre class="methodSignature">public&nbsp;<a href="Settings.html" title="class in com.stuypulse.stuylib.util.plot">Settings</a>&nbsp;setYMin&#8203;(double&nbsp;yMin)</pre>
+<div class="block">Sets lower bound for y-axis</div>
+<dl>
+<dt><span class="paramLabel">Parameters:</span></dt>
+<dd><code>yMin</code> - lower bound for y-axis</dd>
+<dt><span class="returnLabel">Returns:</span></dt>
+<dd>reference to self for chaining methods</dd>
+</dl>
 </li>
 </ul>
 <a id="setYMax(double)">
@@ -448,6 +669,31 @@ extends java.lang.Object</pre>
 <li class="blockList">
 <h4>setYMax</h4>
 <pre class="methodSignature">public&nbsp;<a href="Settings.html" title="class in com.stuypulse.stuylib.util.plot">Settings</a>&nbsp;setYMax&#8203;(double&nbsp;yMax)</pre>
+<div class="block">Sets upper bound for y-axis</div>
+<dl>
+<dt><span class="paramLabel">Parameters:</span></dt>
+<dd><code>yMax</code> - upper bound for y-axis</dd>
+<dt><span class="returnLabel">Returns:</span></dt>
+<dd>reference to self for chaining methods</dd>
+</dl>
+</li>
+</ul>
+<a id="setYRange(double,double)">
+<!--   -->
+</a>
+<ul class="blockList">
+<li class="blockList">
+<h4>setYRange</h4>
+<pre class="methodSignature">public&nbsp;<a href="Settings.html" title="class in com.stuypulse.stuylib.util.plot">Settings</a>&nbsp;setYRange&#8203;(double&nbsp;min,
+                          double&nbsp;max)</pre>
+<div class="block">Sets range of y-values on plot</div>
+<dl>
+<dt><span class="paramLabel">Parameters:</span></dt>
+<dd><code>min</code> - y axis lower bound</dd>
+<dd><code>max</code> - y axis upper bound</dd>
+<dt><span class="returnLabel">Returns:</span></dt>
+<dd>reference to self for chaining methods</dd>
+</dl>
 </li>
 </ul>
 <a id="setWidth(int)">
@@ -457,15 +703,47 @@ extends java.lang.Object</pre>
 <li class="blockList">
 <h4>setWidth</h4>
 <pre class="methodSignature">public&nbsp;<a href="Settings.html" title="class in com.stuypulse.stuylib.util.plot">Settings</a>&nbsp;setWidth&#8203;(int&nbsp;width)</pre>
+<div class="block">Sets width of window</div>
+<dl>
+<dt><span class="paramLabel">Parameters:</span></dt>
+<dd><code>width</code> - width of window</dd>
+<dt><span class="returnLabel">Returns:</span></dt>
+<dd>reference to self for chaining methods</dd>
+</dl>
 </li>
 </ul>
 <a id="setHeight(int)">
 <!--   -->
 </a>
-<ul class="blockListLast">
+<ul class="blockList">
 <li class="blockList">
 <h4>setHeight</h4>
 <pre class="methodSignature">public&nbsp;<a href="Settings.html" title="class in com.stuypulse.stuylib.util.plot">Settings</a>&nbsp;setHeight&#8203;(int&nbsp;height)</pre>
+<div class="block">Sets height of window</div>
+<dl>
+<dt><span class="paramLabel">Parameters:</span></dt>
+<dd><code>height</code> - height of window</dd>
+<dt><span class="returnLabel">Returns:</span></dt>
+<dd>reference to self for chaining methods</dd>
+</dl>
+</li>
+</ul>
+<a id="setSize(int,int)">
+<!--   -->
+</a>
+<ul class="blockListLast">
+<li class="blockList">
+<h4>setSize</h4>
+<pre class="methodSignature">public&nbsp;<a href="Settings.html" title="class in com.stuypulse.stuylib.util.plot">Settings</a>&nbsp;setSize&#8203;(int&nbsp;width,
+                        int&nbsp;height)</pre>
+<div class="block">Sets size of window</div>
+<dl>
+<dt><span class="paramLabel">Parameters:</span></dt>
+<dd><code>width</code> - width of window</dd>
+<dd><code>height</code> - height of window</dd>
+<dt><span class="returnLabel">Returns:</span></dt>
+<dd>reference to self for chaining methods</dd>
+</dl>
 </li>
 </ul>
 </li>
@@ -519,7 +797,7 @@ extends java.lang.Object</pre>
 <div>
 <ul class="subNavList">
 <li>Summary:&nbsp;</li>
-<li>Nested&nbsp;|&nbsp;</li>
+<li><a href="#nested.class.summary">Nested</a>&nbsp;|&nbsp;</li>
 <li>Field&nbsp;|&nbsp;</li>
 <li><a href="#constructor.summary">Constr</a>&nbsp;|&nbsp;</li>
 <li><a href="#method.summary">Method</a></li>

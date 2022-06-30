@@ -26,7 +26,7 @@
     catch(err) {
     }
 //-->
-var data = {"i0":18,"i1":1,"i2":6};
+var data = {"i0":18,"i1":1,"i2":1,"i3":6,"i4":1};
 var tabs = {65535:["t0","All Methods"],1:["t1","Static Methods"],2:["t2","Instance Methods"],4:["t3","Abstract Methods"],16:["t5","Default Methods"]};
 var altColor = "altColor";
 var rowColor = "rowColor";
@@ -127,7 +127,7 @@ $('.navPadding').css('padding-top', $('.fixedNav').css("height"));
 </dl>
 <dl>
 <dt>All Known Implementing Classes:</dt>
-<dd><code><a href="CubicInterpolator.html" title="class in com.stuypulse.stuylib.math.interpolation">CubicInterpolator</a></code>, <code><a href="IntervalInterpolator.html" title="class in com.stuypulse.stuylib.math.interpolation">IntervalInterpolator</a></code>, <code><a href="NearestInterpolator.html" title="class in com.stuypulse.stuylib.math.interpolation">NearestInterpolator</a></code>, <code><a href="PolyInterpolator.html" title="class in com.stuypulse.stuylib.math.interpolation">PolyInterpolator</a></code></dd>
+<dd><code><a href="CubicInterpolator.html" title="class in com.stuypulse.stuylib.math.interpolation">CubicInterpolator</a></code>, <code><a href="IntervalInterpolator.html" title="class in com.stuypulse.stuylib.math.interpolation">IntervalInterpolator</a></code>, <code><a href="LinearInterpolator.html" title="class in com.stuypulse.stuylib.math.interpolation">LinearInterpolator</a></code>, <code><a href="NearestInterpolator.html" title="class in com.stuypulse.stuylib.math.interpolation">NearestInterpolator</a></code>, <code><a href="PolyInterpolator.html" title="class in com.stuypulse.stuylib.math.interpolation">PolyInterpolator</a></code></dd>
 </dl>
 <hr>
 <pre>public interface <span class="typeNameLabel">Interpolator</span>
@@ -165,14 +165,30 @@ extends <a href="../../streams/filters/IFilter.html" title="interface in com.stu
 <td class="colFirst"><code>static <a href="../Vector2D.html" title="class in com.stuypulse.stuylib.math">Vector2D</a>[]</code></td>
 <th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#getSortedPoints(com.stuypulse.stuylib.math.Vector2D...)">getSortedPoints</a></span>&#8203;(<a href="../Vector2D.html" title="class in com.stuypulse.stuylib.math">Vector2D</a>...&nbsp;points)</code></th>
 <td class="colLast">
-<div class="block">Sorts the reference point by the value of x from smallest to greatest</div>
+<div class="block">Returns a sorted array of reference points by the value of x from smallest to greatest</div>
 </td>
 </tr>
 <tr id="i2" class="altColor">
+<td class="colFirst"><code>static int</code></td>
+<th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#indexLowerBound(double,com.stuypulse.stuylib.math.Vector2D...)">indexLowerBound</a></span>&#8203;(double&nbsp;x,
+               <a href="../Vector2D.html" title="class in com.stuypulse.stuylib.math">Vector2D</a>...&nbsp;points)</code></th>
+<td class="colLast">
+<div class="block">Returns the index of the point with the greatest x-coordinate less than or equal to x, or -1
+ if it is lower than every element.</div>
+</td>
+</tr>
+<tr id="i3" class="rowColor">
 <td class="colFirst"><code>double</code></td>
 <th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#interpolate(double)">interpolate</a></span>&#8203;(double&nbsp;x)</code></th>
 <td class="colLast">
 <div class="block">A behavior that takes in a double and returns a double</div>
+</td>
+</tr>
+<tr id="i4" class="altColor">
+<td class="colFirst"><code>static <a href="../Vector2D.html" title="class in com.stuypulse.stuylib.math">Vector2D</a>[]</code></td>
+<th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#sortPoints(com.stuypulse.stuylib.math.Vector2D%5B%5D)">sortPoints</a></span>&#8203;(<a href="../Vector2D.html" title="class in com.stuypulse.stuylib.math">Vector2D</a>[]&nbsp;points)</code></th>
+<td class="colLast">
+<div class="block">Performs an in-place sort by the value of x from smallest to greatest</div>
 </td>
 </tr>
 </table>
@@ -234,6 +250,41 @@ extends <a href="../../streams/filters/IFilter.html" title="interface in com.stu
 </dl>
 </li>
 </ul>
+<a id="indexLowerBound(double,com.stuypulse.stuylib.math.Vector2D...)">
+<!--   -->
+</a>
+<ul class="blockList">
+<li class="blockList">
+<h4>indexLowerBound</h4>
+<pre class="methodSignature">static&nbsp;int&nbsp;indexLowerBound&#8203;(double&nbsp;x,
+                           <a href="../Vector2D.html" title="class in com.stuypulse.stuylib.math">Vector2D</a>...&nbsp;points)</pre>
+<div class="block">Returns the index of the point with the greatest x-coordinate less than or equal to x, or -1
+ if it is lower than every element. Assumes that the array is sorted.</div>
+<dl>
+<dt><span class="paramLabel">Parameters:</span></dt>
+<dd><code>x</code> - the x-value to compare to</dd>
+<dd><code>points</code> - the points to find the lower bound among</dd>
+<dt><span class="returnLabel">Returns:</span></dt>
+<dd>the index of the lower bound, or -1</dd>
+</dl>
+</li>
+</ul>
+<a id="sortPoints(com.stuypulse.stuylib.math.Vector2D[])">
+<!--   -->
+</a>
+<ul class="blockList">
+<li class="blockList">
+<h4>sortPoints</h4>
+<pre class="methodSignature">static&nbsp;<a href="../Vector2D.html" title="class in com.stuypulse.stuylib.math">Vector2D</a>[]&nbsp;sortPoints&#8203;(<a href="../Vector2D.html" title="class in com.stuypulse.stuylib.math">Vector2D</a>[]&nbsp;points)</pre>
+<div class="block">Performs an in-place sort by the value of x from smallest to greatest</div>
+<dl>
+<dt><span class="paramLabel">Parameters:</span></dt>
+<dd><code>points</code> - the array for which to sort reference points</dd>
+<dt><span class="returnLabel">Returns:</span></dt>
+<dd>the parameter array, for chaining</dd>
+</dl>
+</li>
+</ul>
 <a id="getSortedPoints(com.stuypulse.stuylib.math.Vector2D...)">
 <!--   -->
 </a>
@@ -241,7 +292,7 @@ extends <a href="../../streams/filters/IFilter.html" title="interface in com.stu
 <li class="blockList">
 <h4>getSortedPoints</h4>
 <pre class="methodSignature">static&nbsp;<a href="../Vector2D.html" title="class in com.stuypulse.stuylib.math">Vector2D</a>[]&nbsp;getSortedPoints&#8203;(<a href="../Vector2D.html" title="class in com.stuypulse.stuylib.math">Vector2D</a>...&nbsp;points)</pre>
-<div class="block">Sorts the reference point by the value of x from smallest to greatest</div>
+<div class="block">Returns a sorted array of reference points by the value of x from smallest to greatest</div>
 <dl>
 <dt><span class="paramLabel">Parameters:</span></dt>
 <dd><code>points</code> - reference points</dd>

@@ -1,18 +1,21 @@
+/* Copyright (c) 2022 StuyPulse Robotics. All rights reserved. */
+/* This work is licensed under the terms of the MIT license */
+/* found in the root directory of this project. */
+
 package com.stuypulse.stuylib.util.plot;
+
+import com.stuypulse.stuylib.streams.filters.IFilter;
 
 import java.util.ArrayList;
 import java.util.List;
 
-import com.stuypulse.stuylib.streams.filters.IFilter;
-
 /**
  * A FuncSeries plots a function (IFilter) over a given domain.
- * 
- * A FuncSeries data is precomputed, so its x and y values
- * are non-changing. This means that the series does not get
- * polled and does not implement pop() or poll().
- * 
- * @author Ben Goldfisher 
+ *
+ * <p>A FuncSeries data is precomputed, so its x and y values are non-changing. This means that the
+ * series does not get polled and does not implement pop() or poll().
+ *
+ * @author Ben Goldfisher
  */
 public class FuncSeries extends Series {
 
@@ -24,23 +27,24 @@ public class FuncSeries extends Series {
 
         /**
          * Creates a Domain
-         * 
+         *
          * @param min smallest x-value that will be graphed
          * @param max largest x-value that will be graphed
-        */
+         */
         public Domain(double min, double max) {
-            this.min = min; 
+            this.min = min;
             this.max = max;
         }
     }
 
     /** Contains the precomputed (x, y) data values */
     private List<Double> xValues;
+
     private List<Double> yValues;
-    
+
     /**
      * Creates a FuncSeries and specifies that it is not polling.
-     * 
+     *
      * @param config series config
      * @param domain range of x-values inputted to the function
      * @param func a function with one input and output to be graphed
@@ -67,8 +71,7 @@ public class FuncSeries extends Series {
     }
 
     /**
-     * Returns reference to x values, which is safe because they
-     * are precompted and non-changing 
+     * Returns reference to x values, which is safe because they are precompted and non-changing
      *
      * @return reference to x values
      */
@@ -78,8 +81,7 @@ public class FuncSeries extends Series {
     }
 
     /**
-     * Returns reference to y values, which is safe because they
-     * are precompted and non-changing 
+     * Returns reference to y values, which is safe because they are precompted and non-changing
      *
      * @return reference to y values
      */
@@ -88,16 +90,11 @@ public class FuncSeries extends Series {
         return yValues;
     }
 
-    /**
-     * No-op because series is non-polling
-     */
+    /** No-op because series is non-polling */
     @Override
     protected void pop() {}
 
-    /**
-     * No-op because series is non-polling
-     */
+    /** No-op because series is non-polling */
     @Override
     protected void poll() {}
-
 }

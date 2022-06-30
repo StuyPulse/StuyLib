@@ -11,15 +11,15 @@ import java.util.LinkedList;
 import java.util.List;
 
 /**
- * An XYSeries is used to plot a stream of points (VStream) 
- * that changes over time.
- * 
+ * An XYSeries is used to plot a stream of points (VStream) that changes over time.
+ *
  * @author Myles Pasetsky (myles.pasetsky@gmail.com)
  */
 public class XYSeries extends Series {
 
     /** Contains the (x, y) data points */
     private List<Double> xValues;
+
     private List<Double> yValues;
 
     /** Outputs values to be plotted */
@@ -27,7 +27,7 @@ public class XYSeries extends Series {
 
     /**
      * Creates a XYSeries and specifies that it is polling.
-     * 
+     *
      * @param config series config
      * @param stream determines the points to be plotted
      */
