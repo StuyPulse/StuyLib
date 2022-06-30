@@ -35,16 +35,20 @@ public abstract class Controller {
         return this;
     }
 
+    public boolean isReady(double acceptableError) {
+        return Math.abs(mSetpoint - mMeasurement) < acceptableError;
+    }
+
+    public Controller and(Controller other) {
+        return new InlineController((s, m) -> this.update(s, m) + other.update(s, m));
+    }
+
     public double update(double setpoint, double measurement) {
         mSetpoint = mSetpointFilter.get(setpoint);
         mMeasurement = mMeasurementFilter.get(measurement);
 
         double output = calculate(mSetpoint, mMeasurement);
         return mOutputFilter.get(output);
-    }
-
-    public boolean isReady(double acceptableError) {
-        return Math.abs(mSetpoint - mMeasurement) < acceptableError;
     }
 
     protected abstract double calculate(double setpoint, double measurement);
