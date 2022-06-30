@@ -71,7 +71,7 @@ public class Playground {
 
             .addSeries(Constants.make(
                 "interp", 
-                new NearestInterpolator(
+                new LinearInterpolator(
                     new Vector2D(0.0, 0.43),
                     new Vector2D(0.2, 0.56),
                     new Vector2D(0.4, 0.72),
