@@ -1,7 +1,14 @@
-# StuyLib Control Algorithms
+# StuyLib Control Library
 
-WPI...
+A rudimentary control theory library designed to create controllers using feedback, feedforward, and signal processing algorithms.
 
-## Why is `Number` used over `double`
+## TODO
 
-This is to allow for the use of [SmartNumber](https://github.com/StuyPulse/StuyLib/blob/main/src/com/stuypulse/stuylib/network/SmartNumber.java), which extends `Number`. This makes things like configuring PID values significantly easier, as they can be instantly hooked into SmartDashboard without any configuration.
+* document
+* add `FeedbackController` to make feedback controllers nicer to adapt
+* test, test, test
+* test feedforward (can use values from [recalc](https://www.reca.lc/))
+* graphs
+* integrate with logging nicely
+* test classes like `VelocityMotor` and `PositionMotor`
+* add MORE/BETTER ways to compose controllers (upgrade `InlineController`?, what other ways can controllers be composed)
