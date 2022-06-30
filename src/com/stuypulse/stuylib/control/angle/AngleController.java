@@ -80,17 +80,7 @@ public class AngleController {
      * @return output that will drive measurement to setpoint
      */
     public double update(Angle setpoint, Angle measurement) {
-        return update(setpoint.sub(measurement));
-    }
-
-    /**
-     * Calculates the desired output based on an angular error
-     *
-     * @param error the error given to contrller
-     * @return output that will drive measurement to setpoint
-     */
-    public double update(Angle error) {
-        return mController.update(mUnits.apply(error));
+        return mController.update(mUnits.apply(setpoint), mUnits.apply(measurement));
     }
 
     /**
@@ -101,16 +91,7 @@ public class AngleController {
      * @return controller output
      */
     public double update(Rotation2d setpoint, Rotation2d measurement) {
-        return update(Angle.fromRadians(setpoint.getRadians() - measurement.getRadians()));
+        return update(Angle.fromRotation2d(setpoint), Angle.fromRotation2d(measurement));
     }
 
-    /**
-     * Calculates the desired output based on a rotation2d angle error
-     *
-     * @param error error given to controller
-     * @return controller output
-     */
-    public double update(Rotation2d error) {
-        return update(Angle.fromRadians(error.getRadians()));
-    }
 }
