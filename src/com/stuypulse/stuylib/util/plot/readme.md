@@ -12,9 +12,9 @@ There are actual no methods in a `Series` that the programmer has to call, but t
 
 ### Config
 
-Series includes a Config class which stores the name and capacity of a series. The capacity is the max amount of points that can be plotted at the same time.
+A `Series` is created with a `Config` class that stores the name and capacity of a series.
 
-The `.pop()` method is called to remove the oldest point from a series when its reached its capacity. If a series is non-changing it can leave this blank.
+The capacity is the max amount of points that can be plotted at the same time. The `.pop()` method enables this feature, as is called to when the oldest point should be removed from a series when its reached its capacity. If a series is non-changing it can leave this blank.
 
 The name of the config is what will appear on the legend of the plot.
 
