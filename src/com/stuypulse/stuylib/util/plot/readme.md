@@ -138,13 +138,13 @@ plot.addSeries(mouse, lpf)
 
 ### Working with a Plot
 
-All the series in a plot are updated with `.updateSeries()`, which cann call the `.poll()` and `.pop()` methods of each series.
+All the series in a plot are updated with `.updateSeries()`, which can call the `.poll()` and `.pop()` methods of each series.
 
 The plot is redrawn with the `.display()` method.
 
 Both of these methods are packaged into `.update()`.
 
-The `.isRunning()` method will check if a plot needs to updates its series and redraw anymore. To do this, it checks if each of its Series are polling and will keep running if any of them are polling. *For example, a plot conatining only a `FuncSeries` will not be polling and will only run once.*
+The `.isRunning()` method will check if a plot needs to updates its series and redraw anymore. To do this, it checks if each of its Series and will keep running if any of them are polling. *For example, a plot conatining only a `FuncSeries` will not be polling and will only run once.*
 
 A typical plot loop might look like this:
 
