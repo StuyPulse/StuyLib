@@ -64,7 +64,7 @@ public abstract class Series {
         }
     }
 
-    public final void update(XYChart chart) {
+    protected final void update(XYChart chart) {
         update();
 
         String name = getConfig().getName();
