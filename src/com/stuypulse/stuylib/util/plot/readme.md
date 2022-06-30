@@ -2,29 +2,45 @@
 
 A simple library for plotting streams and filters. Wraps [Knowm's XChart library](https://knowm.org/open-source/xchart/).
 
+The library is based around a `Plot` that can have various types of `Series`. A plot handles displaying data, while a Series handles organizing data.
+
 ## What is a Series?
 
-A series represents any kind of function or data to be graphed.
+A series represents any kind of function or data to be graphed. There are three things that series must say about itself: its "configuration", whether or not it's "polling", and its (x,y) data. The main assumption made about a series is that the data should be represented by a line.
+
+There are actual no methods in a `Series` that the programmer has to call, but the way a `Series` works and the methods that make it work are covered below:
 
 ### Config
 
 Series includes a Config class which stores the name and capacity of a series. The capacity is the max amount of points that can be plotted at the same time.
 
-In order to free up space for new points to be added, the `.pop()` method is called to remove a point (usually the oldest) from a series.
+The `.pop()` method is called to remove the oldest point from a series when its reached its capacity. If a series is non-changing it can leave this blank.
+
+The name of the config is what will appear on the legend of the plot.
 
 ### Polling
 
-Because many series change with time, like following the user's mouse or adding points from a stream, a series can be is polled to update its data. Non-changing series like FuncSeries disable polling by setting `Series.polling` to false through Series' constructor.
+Because many series change with time, like following the user's mouse or adding points from a stream, a series can be is polled to update its data. Non-changing series (e.g. all data points can be pre-calculated) disable polling by setting `Series.polling` to false through Series' constructor.
+
+One method in Series enable polling: `.poll()`. Here a series should add a value from wherever its reading data to itself. If a series is non-changing it can leave this blank.
 
 ### Data
 
-The actual data for a series is accessed through `.getSafeXValues()` and `.getSafeYValues()` in x, y pairs. These methods should return a 'safe' (copied) list, as XChart can modify the returned list at the same time as the series which could cause a concurrent modification exception. However, some series that don't modify their internal data don't need to return a copied list, like FuncSeries.
+The actual data for a series is accessed through `.getSafeXValues()` and `.getSafeYValues()` in x, y pairs. These methods should return a 'safe' (e.g. copied) list. XChart can modify the returned list at the same time as the series, which will cause a concurrent modification exception.
+
+Some series don't modify their internal data, so these series don't need to copy and can simply return a reference to their data.
+
+## Types of Series
 
 ### [TimeSeries](https://github.com/StuyPulse/StuyLib/blob/main/src/com/stuypulse/stuylib/util/plot/TimeSeries.java)
 
-A [TimeSeries](https://github.com/StuyPulse/StuyLib/blob/main/src/com/stuypulse/stuylib/util/plot/TimeSeries.java) plots the output of an [IStream](https://github.com/StuyPulse/StuyLib/blob/main/src/com/stuypulse/stuylib/streams/IStream.java) on the y-axis and time on the x-axis. It can be used if you want to test [IFilters](https://github.com/StuyPulse/StuyLib/blob/main/src/com/stuypulse/stuylib/streams/filters/IFilter.java) or any data that changes through time. A TimeSeries is additionally created with a `TimeSpan`, which determines the time range that the series will be graphed on. Using TimeSpan and `Config.capacity`, the x-axis is precomputed to put points evenly through the TimeSpan.
+A [TimeSeries](https://github.com/StuyPulse/StuyLib/blob/main/src/com/stuypulse/stuylib/util/plot/TimeSeries.java) is used to plot a stream of values that changes over time.
 
-TimeSeries can be used with [MouseTracker](https://github.com/StuyPulse/StuyLib/blob/main/src/com/stuypulse/stuylib/util/plot/MouseTracker.java), like shown below:
+A `TimeSeries` uses an [IStream](https://github.com/StuyPulse/StuyLib/blob/main/src/com/stuypulse/stuylib/streams/IStream.java) to get new values. Note, the `IStream` does not have access to time, it is simply a stream of data. If a function of time is needed, see `FuncSeries`. A `TimeSeries` can be used to test [IFilters](https://github.com/StuyPulse/StuyLib/blob/main/src/com/stuypulse/stuylib/streams/filters/IFilter.java) because an `IStream` can be filtered.
+
+A `TimeSeries` is created with a `TimeSpan`, which determines the time range that the series will be graphed on. Using `TimeSpan` and `Config.capacity`, the x-axis is precomputed to put points evenly through the TimeSpan.
+
+`TimeSeries` can be used with [MouseTracker](https://github.com/StuyPulse/StuyLib/blob/main/src/com/stuypulse/stuylib/util/plot/MouseTracker.java), like shown below:
 
 ```java
 TimeSeries mouse = new TimeSeries(
@@ -41,7 +57,13 @@ TimeSeries lpf = new TimeSeries(
 
 ### [FuncSeries](https://github.com/StuyPulse/StuyLib/blob/main/src/com/stuypulse/stuylib/util/plot/FuncSeries.java)
 
-[FuncSeries](https://github.com/StuyPulse/StuyLib/blob/main/src/com/stuypulse/stuylib/util/plot/FuncSeries.java) graphs an [IFilter](https://github.com/StuyPulse/StuyLib/blob/main/src/com/stuypulse/stuylib/streams/filters/IFilter.java) and can be used to graph any static functions like x<sup>2</sup> with one input and one output. FuncSeries can also be used to test and visualize [Interpolators](https://github.com/StuyPulse/StuyLib/blob/bg/plot-docs/src/com/stuypulse/stuylib/math/interpolation/Interpolator.java). Similar to TimeSeries, FuncSeries is additionally created with a `Domain` which limits the x-values that function is graped over.
+A [FuncSeries](https://github.com/StuyPulse/StuyLib/blob/main/src/com/stuypulse/stuylib/util/plot/FuncSeries.java) is used to plot a function on a given domain.
+
+[FuncSeries](https://github.com/StuyPulse/StuyLib/blob/main/src/com/stuypulse/stuylib/util/plot/FuncSeries.java) uses an [IFilter](https://github.com/StuyPulse/StuyLib/blob/main/src/com/stuypulse/stuylib/streams/filters/IFilter.java) to represent a function.
+
+A `FuncSeries` should graph static functions like x<sup>2</sup> (e.g. functions whose outputs for a given x-value don't change with time). This is because a `FuncSeries` precomputes the graph on the entire domain, so if the outputs *did* change over time, they wouldn't be reflect in the graph. However, this does mean that a `FuncSeries` can also be used to visualize [Interpolators](https://github.com/StuyPulse/StuyLib/blob/bg/plot-docs/src/com/stuypulse/stuylib/math/interpolation/Interpolator.java).
+
+Similar to `TimeSeries`, `FuncSeries` is created with a `Domain` which limits the x-values that function is graped over.
 
 In the example below, x<sup>2</sup> is graphed by inputting `x -> x * x` as an IFilter.
 
@@ -53,7 +75,12 @@ FuncSeries xsq = new FuncSeries(
 ```
 
 ### [XYSeries](https://github.com/StuyPulse/StuyLib/blob/main/src/com/stuypulse/stuylib/util/plot/XYSeries.java)
-[XYSeries](https://github.com/StuyPulse/StuyLib/blob/main/src/com/stuypulse/stuylib/util/plot/XYSeries.java) works with [VStreams](https://github.com/StuyPulse/StuyLib/blob/main/src/com/stuypulse/stuylib/streams/vectors/VStream.java) and [VFilters](https://github.com/StuyPulse/StuyLib/blob/main/src/com/stuypulse/stuylib/streams/vectors/filters/VFilter.java). Like TimeSeries, it can be used with `MouseTracker` to demonstrate filters, but this time in two dimensions! XYSeries is helpful to test VFilters and visualize 2D data.
+
+A [XYSeries](https://github.com/StuyPulse/StuyLib/blob/main/src/com/stuypulse/stuylib/util/plot/XYSeries.java) is used to plot a stream of points (x,y values) that changes over time.
+
+[XYSeries](https://github.com/StuyPulse/StuyLib/blob/main/src/com/stuypulse/stuylib/util/plot/XYSeries.java) uses [VStreams](https://github.com/StuyPulse/StuyLib/blob/main/src/com/stuypulse/stuylib/streams/vectors/VStream.java) to get data. These streams can be paired with [VFilters](https://github.com/StuyPulse/StuyLib/blob/main/src/com/stuypulse/stuylib/streams/vectors/filters/VFilter.java) using `.filtered(...)`.
+
+Like `TimeSeries`, it can be used with `MouseTracker` to demonstrate filters, but this time in two dimensions! XYSeries is helpful to test VFilters and visualize 2D data.
 
 ```java
 XYSeries mouse = new XYSeries(
