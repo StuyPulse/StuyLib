@@ -39,11 +39,6 @@ public final class Settings {
     private String xAxis;
     private String yAxis;
 
-    /** window size */
-    private int width;
-
-    private int height;
-
     /** x-axis bounds */
     private double xMin;
 
@@ -59,9 +54,6 @@ public final class Settings {
         title = "Plot";
         xAxis = "x";
         yAxis = "y";
-
-        width = 640;
-        height = 480;
 
         xMin = 0.0;
         xMax = 1.0;
@@ -85,16 +77,6 @@ public final class Settings {
         return yAxis;
     }
 
-    /** @return width of window */
-    public int getWidth() {
-        return width;
-    }
-
-    /** @return height of window */
-    public int getHeight() {
-        return height;
-    }
-
     /** @return lower bound of x-axis */
     public double getXMin() {
         return xMin;
@@ -115,7 +97,7 @@ public final class Settings {
         return yMax;
     }
 
-    /**
+        /**
      * Sets title of plot
      *
      * @param title title
@@ -240,41 +222,6 @@ public final class Settings {
     public Settings setYRange(double min, double max) {
         setYMax(max);
         setYMin(min);
-        return this;
-    }
-
-    /**
-     * Sets width of window
-     *
-     * @param width width of window
-     * @return reference to self for chaining methods
-     */
-    public Settings setWidth(int width) {
-        this.width = width;
-        return this;
-    }
-
-    /**
-     * Sets height of window
-     *
-     * @param height height of window
-     * @return reference to self for chaining methods
-     */
-    public Settings setHeight(int height) {
-        this.height = height;
-        return this;
-    }
-
-    /**
-     * Sets size of window
-     *
-     * @param width width of window
-     * @param height height of window
-     * @return reference to self for chaining methods
-     */
-    public Settings setSize(int width, int height) {
-        setWidth(width);
-        setHeight(height);
         return this;
     }
 }

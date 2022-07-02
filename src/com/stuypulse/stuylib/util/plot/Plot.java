@@ -6,11 +6,9 @@ package com.stuypulse.stuylib.util.plot;
 
 import com.stuypulse.stuylib.math.Vector2D;
 
-import java.awt.Dimension;
 import java.awt.Toolkit;
 import java.util.ArrayList;
 import java.util.List;
-import javax.swing.JFrame;
 import org.knowm.xchart.XChartPanel;
 import org.knowm.xchart.XYChart;
 import org.knowm.xchart.XYChartBuilder;
@@ -27,9 +25,6 @@ public class Plot {
 
     /** A collection of Series to be graphed */
     private List<Series> plots;
-
-    /** The window that is created */
-    private JFrame frame;
 
     /** A reference to the XChart library */
     private XYChart instance;
@@ -51,12 +46,6 @@ public class Plot {
         // Setup series
         plots = new ArrayList<>();
 
-        // Setup window
-        frame = new JFrame(settings.getTitle());
-
-        frame.getContentPane()
-                .setPreferredSize(new Dimension(settings.getWidth(), settings.getHeight()));
-        frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 
         // Create XYChart using settings
         instance =
@@ -76,14 +65,6 @@ public class Plot {
         panel.setName(settings.getTitle());
 
         mouse = new MouseTracker(panel);
-
-        frame.getContentPane().add(panel);
-        frame.setResizable(false);
-
-        frame.pack();
-
-        frame.setLocationRelativeTo(null);
-        frame.setVisible(true);
 
         runOnce = true;
     }
@@ -106,6 +87,10 @@ public class Plot {
     /** @return mouse x position */
     public double getMouseX() {
         return mouse.getX();
+    }
+
+    protected XChartPanel<XYChart> getPanel() {
+        return panel;
     }
 
     /**

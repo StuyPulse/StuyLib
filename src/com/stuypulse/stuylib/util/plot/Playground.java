@@ -25,8 +25,8 @@ public class Playground {
         String X_AXIS = "x-axis";
         String Y_AXIS = "y-axis";
 
-        int WIDTH = 800;
-        int HEIGHT = 600;
+        int WIDTH = 1600;
+        int HEIGHT = 1200;
 
         double MIN_X = 0.0;
         double MAX_X = 1.0;
@@ -36,7 +36,6 @@ public class Playground {
 
         Settings SETTINGS =
                 new Settings()
-                        .setSize(WIDTH, HEIGHT)
                         .setAxes(TITLE, X_AXIS, Y_AXIS)
                         .setXRange(MIN_X, MAX_X)
                         .setYRange(MIN_Y, MAX_Y);
@@ -59,9 +58,8 @@ public class Playground {
     }
 
     public static void main(String[] args) throws InterruptedException {
-        Plot plot = new Plot(Constants.SETTINGS);
-
-        plot.addSeries(Constants.make("y=x", x -> x))
+        Plot fplot = new Plot(Constants.SETTINGS)
+                .addSeries(Constants.make("y=x", x -> x))
                 .addSeries(
                         Constants.make(
                                 "interp",
@@ -71,8 +69,11 @@ public class Playground {
                                         new Vector2D(0.4, 0.72),
                                         new Vector2D(0.6, 0.81),
                                         new Vector2D(0.8, 0.02),
-                                        new Vector2D(1.0, 0.11))))
-                .addSeries(Constants.make("mouse y", IStream.create(plot::getMouseY)))
+                                        new Vector2D(1.0, 0.11))));
+
+        Plot plot = new Plot(Constants.SETTINGS);
+        
+        plot.addSeries(Constants.make("mouse y", IStream.create(plot::getMouseY)))
                 .addSeries(
                         Constants.make(
                                 "lpf",
@@ -83,16 +84,27 @@ public class Playground {
                         Constants.make(
                                 "debounced",
                                 BStream.create(() -> plot.getMouseY() > 0.5)
-                                        .filtered(new BDebounce.Both(1.0))))
-                .addSeries(Constants.make("mouse position", VStream.create(plot::getMouse)))
+                                        .filtered(new BDebounce.Both(1.0))));
+
+        Plot vplot = new Plot(Constants.SETTINGS);
+
+        vplot.addSeries(Constants.make("mouse position", VStream.create(plot::getMouse)))
                 .addSeries(
                         Constants.make(
                                 "jerk limit",
                                 VStream.create(plot::getMouse)
                                         .filtered(new VJerkLimit(10.0, 5.0))));
 
-        while (plot.isRunning()) {
-            plot.update();
+        Window window = new Window(
+                Constants.TITLE,
+                Constants.WIDTH,
+                Constants.HEIGHT,
+                plot,
+                fplot,
+                vplot);
+                                        
+        for (;;) {
+            window.update();
             Thread.sleep(20);
         }
     }
