@@ -25,8 +25,8 @@ public class Playground {
         String X_AXIS = "x-axis";
         String Y_AXIS = "y-axis";
 
-        int WIDTH = 1200;
-        int HEIGHT = 800;
+        int WIDTH = 640;
+        int HEIGHT = 480;
 
         double MIN_X = 0.0;
         double MAX_X = 1.0;

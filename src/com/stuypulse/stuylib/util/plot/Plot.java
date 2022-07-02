@@ -7,11 +7,13 @@ package com.stuypulse.stuylib.util.plot;
 import com.stuypulse.stuylib.math.Vector2D;
 
 import java.awt.Dimension;
-import java.awt.GridLayout;
+import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 import javax.swing.JFrame;
+import javax.swing.JTabbedPane;
 
 /**
  * A plot contains and manages the window to which any data is drawn.
@@ -23,11 +25,12 @@ import javax.swing.JFrame;
  */
 public class Plot {
 
-    private Map<String, Tab> tabs;
-
-    private String defaultTab;
+    private List<Tab> tabs;
+    private Map<String, Integer> names;
+    private int defaultTab;
 
     private JFrame frame;
+    private JTabbedPane pane;
 
     /** A utility for finding mouse positions */
     private MouseTracker mouse;
@@ -36,12 +39,15 @@ public class Plot {
      * Creates a configured plot
      */
     public Plot() {
-        tabs = new HashMap<String, Tab>();
+        tabs = new ArrayList<Tab>();
+        names = new HashMap<String, Integer>();
 
-        defaultTab = null;
+        defaultTab = 0;
     }
     
     public void build(String title, int width, int height) {
+        pane = new JTabbedPane();
+
 		frame = new JFrame(title);
 		
         frame.getContentPane()
@@ -50,15 +56,11 @@ public class Plot {
 		
 		frame.setResizable(false);
 
-		// from SwingWrapper.java from XChart
-		int rows = (int) (Math.sqrt(tabs.size()) + .5);
-		int cols = (int) ((double) tabs.size() / rows + 1);
-
-		frame.getContentPane().setLayout(new GridLayout(rows, cols));
-
-		for (String tab : tabs.keySet()) {
-			frame.add(tabs.get(tab).panel);
+		for (Tab tab : tabs) {
+            pane.addTab(tab.panel.getName(), tab.panel);
 		}
+
+        frame.getContentPane().add(pane);
 
 		frame.pack();
 
@@ -71,9 +73,10 @@ public class Plot {
     public Plot addPlot(Settings settings) {
         Tab tab = new Tab(settings);
 
-        tabs.put(settings.getTitle(), tab);
+        tabs.add(tab);
+        names.put(settings.getTitle(), tabs.size() - 1);
 
-        if (defaultTab == null) defaultTab = settings.getTitle();
+        defaultTab = tabs.size() - 1;
 
         return this;
     }
@@ -100,24 +103,24 @@ public class Plot {
      * @return reference to self
      */
     public Plot addSeries(String tabId, Series... series) {
-        if (!tabs.containsKey(tabId)) {
+        if (!names.containsKey(tabId)) {
             System.err.println("Invalid tab ID \"" + tabId + "\" given");
             return this;
         }
 
-        tabs.get(tabId).addSeries(series);
+        tabs.get(names.get(tabId)).addSeries(series);
         return this;
     }
 
     public Plot addSeries(Series... series) {
-        return addSeries(defaultTab, series);
+        tabs.get(defaultTab).addSeries(series);
+        return this;
     }
 
     public void update() {
-        for (String key : tabs.keySet()) {
-            Tab tab = tabs.get(key);
-            
-            if (tab.isRunning()) tab.update();
-        }
+        int selected = pane.getSelectedIndex();
+
+        if (tabs.get(selected).isRunning())
+            tabs.get(selected).update();
     }
 }
