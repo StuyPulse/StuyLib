@@ -6,12 +6,12 @@ package com.stuypulse.stuylib.util.plot;
 
 import com.stuypulse.stuylib.math.Vector2D;
 
-import java.awt.Toolkit;
-import java.util.ArrayList;
-import java.util.List;
-import org.knowm.xchart.XChartPanel;
-import org.knowm.xchart.XYChart;
-import org.knowm.xchart.XYChartBuilder;
+import java.awt.Dimension;
+import java.awt.GridLayout;
+import java.util.HashMap;
+import java.util.Map;
+
+import javax.swing.JFrame;
 
 /**
  * A plot contains and manages the window to which any data is drawn.
@@ -23,55 +23,59 @@ import org.knowm.xchart.XYChartBuilder;
  */
 public class Plot {
 
-    /** A collection of Series to be graphed */
-    private List<Series> plots;
+    private Map<String, Tab> tabs;
 
-    /** A reference to the XChart library */
-    private XYChart instance;
+    private String defaultTab;
 
-    private XChartPanel<XYChart> panel;
+    private JFrame frame;
 
     /** A utility for finding mouse positions */
     private MouseTracker mouse;
 
-    /** A boolean to ensure the plot is updated at least once */
-    private boolean runOnce;
-
     /**
      * Creates a configured plot
-     *
-     * @param settings plot & window settings
      */
-    public Plot(Settings settings) {
-        // Setup series
-        plots = new ArrayList<>();
+    public Plot() {
+        tabs = new HashMap<String, Tab>();
 
+        defaultTab = null;
+    }
+    
+    public void build(String title, int width, int height) {
+		frame = new JFrame(title);
+		
+        frame.getContentPane()
+                .setPreferredSize(new Dimension(width, height));
+        frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		
+		frame.setResizable(false);
 
-        // Create XYChart using settings
-        instance =
-                new XYChartBuilder()
-                        .title(settings.getTitle())
-                        .xAxisTitle(settings.getXAxis())
-                        .yAxisTitle(settings.getYAxis())
-                        .build();
+		// from SwingWrapper.java from XChart
+		int rows = (int) (Math.sqrt(tabs.size()) + .5);
+		int cols = (int) ((double) tabs.size() / rows + 1);
 
-        instance.getStyler().setYAxisMin(settings.getYMin());
-        instance.getStyler().setYAxisMax(settings.getYMax());
+		frame.getContentPane().setLayout(new GridLayout(rows, cols));
 
-        instance.getStyler().setXAxisMin(settings.getXMin());
-        instance.getStyler().setXAxisMax(settings.getXMax());
+		for (String tab : tabs.keySet()) {
+			frame.add(tabs.get(tab).panel);
+		}
 
-        panel = new XChartPanel<XYChart>(instance);
-        panel.setName(settings.getTitle());
+		frame.pack();
 
-        mouse = new MouseTracker(panel);
-
-        runOnce = true;
+		frame.setLocationRelativeTo(null);
+		frame.setVisible(true);
+        
+        mouse = new MouseTracker(frame);
     }
 
-    /** Creates a plot with default settings */
-    public Plot() {
-        this(new Settings());
+    public Plot addPlot(Settings settings) {
+        Tab tab = new Tab(settings);
+
+        tabs.put(settings.getTitle(), tab);
+
+        if (defaultTab == null) defaultTab = settings.getTitle();
+
+        return this;
     }
 
     /** @return mouse position */
@@ -89,54 +93,31 @@ public class Plot {
         return mouse.getX();
     }
 
-    protected XChartPanel<XYChart> getPanel() {
-        return panel;
-    }
-
     /**
      * Adds series to be graphed
      *
      * @param series series to add
      * @return reference to self
      */
-    public Plot addSeries(Series... series) {
-        for (Series e : series) plots.add(e);
+    public Plot addSeries(String tabId, Series... series) {
+        if (!tabs.containsKey(tabId)) {
+            System.err.println("Invalid tab ID \"" + tabId + "\" given");
+            return this;
+        }
+
+        tabs.get(tabId).addSeries(series);
         return this;
     }
 
-    /** allows the series to update the XYChart */
-    public void updateSeries() {
-        for (Series plot : plots) {
-            plot.update(instance);
-        }
-    }
-
-    /** repaints the screen */
-    public void display() {
-        Toolkit.getDefaultToolkit().sync();
-        panel.revalidate();
-        panel.repaint();
+    public Plot addSeries(Series... series) {
+        return addSeries(defaultTab, series);
     }
 
     public void update() {
-        updateSeries();
-        display();
-    }
-
-    /**
-     * Checks if any series are polling to see if the plot should still update.
-     *
-     * @return if the plot should still run
-     */
-    public boolean isRunning() {
-        if (runOnce) {
-            runOnce = false;
-            return true;
+        for (String key : tabs.keySet()) {
+            Tab tab = tabs.get(key);
+            
+            if (tab.isRunning()) tab.update();
         }
-
-        for (Series e : plots) {
-            if (e.isPolling()) return true;
-        }
-        return false;
     }
 }

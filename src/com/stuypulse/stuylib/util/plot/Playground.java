@@ -25,8 +25,8 @@ public class Playground {
         String X_AXIS = "x-axis";
         String Y_AXIS = "y-axis";
 
-        int WIDTH = 1600;
-        int HEIGHT = 1200;
+        int WIDTH = 1200;
+        int HEIGHT = 800;
 
         double MIN_X = 0.0;
         double MAX_X = 1.0;
@@ -58,53 +58,45 @@ public class Playground {
     }
 
     public static void main(String[] args) throws InterruptedException {
-        Plot fplot = new Plot(Constants.SETTINGS)
-                .addSeries(Constants.make("y=x", x -> x))
-                .addSeries(
-                        Constants.make(
-                                "interp",
-                                new LinearInterpolator(
-                                        new Vector2D(0.0, 0.43),
-                                        new Vector2D(0.2, 0.56),
-                                        new Vector2D(0.4, 0.72),
-                                        new Vector2D(0.6, 0.81),
-                                        new Vector2D(0.8, 0.02),
-                                        new Vector2D(1.0, 0.11))));
+        Plot plot = new Plot();
 
-        Plot plot = new Plot(Constants.SETTINGS);
-        
-        plot.addSeries(Constants.make("mouse y", IStream.create(plot::getMouseY)))
-                .addSeries(
-                        Constants.make(
-                                "lpf",
-                                IStream.create(plot::getMouseY).filtered(new LowPassFilter(0.2))))
-                .addSeries(
-                        Constants.make("mouse bool", BStream.create(() -> plot.getMouseY() > 0.5)))
-                .addSeries(
-                        Constants.make(
-                                "debounced",
-                                BStream.create(() -> plot.getMouseY() > 0.5)
-                                        .filtered(new BDebounce.Both(1.0))));
+        plot.addPlot(Constants.SETTINGS.setTitle("Functions"))
+			.addSeries("Functions",
+				Constants.make("y=x", x -> x),
+				Constants.make(
+					"interp",
+					new LinearInterpolator(
+						new Vector2D(0.0, 0.43),
+						new Vector2D(0.2, 0.56),
+						new Vector2D(0.4, 0.72),
+						new Vector2D(0.6, 0.81),
+						new Vector2D(0.8, 0.02),
+						new Vector2D(1.0, 0.11))))
 
-        Plot vplot = new Plot(Constants.SETTINGS);
+			.addPlot(Constants.SETTINGS.setTitle("Filters"))
+			.addSeries("Filters",
+				Constants.make("mouse y", IStream.create(plot::getMouseY)),
+				Constants.make(
+					"lpf",
+					IStream.create(plot::getMouseY).filtered(new LowPassFilter(0.2))),
+				Constants.make("mouse bool", BStream.create(() -> plot.getMouseY() > 0.5)),
+				Constants.make(
+					"debounced",
+					BStream.create(() -> plot.getMouseY() > 0.5)
+						.filtered(new BDebounce.Both(1.0))))
 
-        vplot.addSeries(Constants.make("mouse position", VStream.create(plot::getMouse)))
-                .addSeries(
-                        Constants.make(
-                                "jerk limit",
-                                VStream.create(plot::getMouse)
-                                        .filtered(new VJerkLimit(10.0, 5.0))));
+			.addPlot(Constants.SETTINGS.setTitle("XY Graph"))
+			.addSeries("XY Graph",
+				Constants.make("mouse position", VStream.create(plot::getMouse)),
+				Constants.make(
+					"jerk limit",
+					VStream.create(plot::getMouse)
+						.filtered(new VJerkLimit(10.0, 5.0))))
 
-        Window window = new Window(
-                Constants.TITLE,
-                Constants.WIDTH,
-                Constants.HEIGHT,
-                plot,
-                fplot,
-                vplot);
-                                        
+			.build(Constants.TITLE, Constants.WIDTH, Constants.HEIGHT);
+
         for (;;) {
-            window.update();
+            plot.update();
             Thread.sleep(20);
         }
     }
