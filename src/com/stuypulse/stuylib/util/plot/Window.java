@@ -9,10 +9,6 @@ import javax.swing.JFrame;
 
 public class Window {
 
-	public static void createWindow(Plot... graphs) {
-
-	}
-
 	private List<Plot> graphs;
 
 	public Window(String title, int width, int height, Plot... plots) {
