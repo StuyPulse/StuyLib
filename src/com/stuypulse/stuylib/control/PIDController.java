@@ -4,11 +4,11 @@
 
 package com.stuypulse.stuylib.control;
 
+import com.stuypulse.stuylib.control.feedback.FeedbackController;
 import com.stuypulse.stuylib.math.SLMath;
 import com.stuypulse.stuylib.network.SmartNumber;
 import com.stuypulse.stuylib.streams.filters.IFilter;
 import com.stuypulse.stuylib.streams.filters.IFilterGroup;
-import com.stuypulse.stuylib.util.StopWatch;
 
 /**
  * This PID controller is built by extending the Controller class. It has a dynamic rate, so it can
@@ -21,15 +21,13 @@ import com.stuypulse.stuylib.util.StopWatch;
  *
  * @author Sam (sam.belliveau@gmail.com)
  */
-public class PIDController extends Controller {
+public class PIDController extends FeedbackController {
 
     /**
      * Amount of time in between .update() calls that is aloud before the controller resets the
      * system
      */
     private static final double kMaxTimeBeforeReset = 0.5;
-
-    private final StopWatch mTimer;
 
     // Constants used by the PID controller
     private Number mP;
@@ -40,8 +38,10 @@ public class PIDController extends Controller {
     private double mIntegral;
     private IFilter mIFilter;
 
+    // The Derivative of the error and the filter for the D Component
     private double mLastError;
     private IFilter mDFilter;
+
 
     /**
      * @param p The Proportional Multiplier
@@ -49,9 +49,8 @@ public class PIDController extends Controller {
      * @param d The Derivative Multiplier
      */
     public PIDController(Number p, Number i, Number d) {
-        mTimer = new StopWatch();
-        
         setIntegratorFilter(0, 0);
+        setDerivativeFilter(x -> x);
         setPID(p, i, d);
         reset();
     }
@@ -76,24 +75,22 @@ public class PIDController extends Controller {
      * @return the calculated result from the PIDController
      */
     @Override
-    protected double calculate(double setpoint, double measurement) {
-        double error = setpoint - measurement;
-        double dt = mTimer.reset();
-    
+    protected double calculate(double error) {
         // Calculate P Component
         double p_out = error * getP();
 
         // Calculate I Component
-        mIntegral += error * dt;
+        mIntegral += error * getRate();
         mIntegral = mIFilter.get(mIntegral);
         double i_out = mIntegral * getI();
 
         // Calculate D Component
-        double dError = (error - mLastError)/dt;
-        double d_out = mDFilter.get(dError) * getD();
+        double derivative = mDFilter.get((error - mLastError) / getRate());
+        mLastError = error;
+        double d_out = derivative * getD();
 
         // Check if time passed exceeds reset limit
-        if (dt < kMaxTimeBeforeReset) {
+        if (getRate() < kMaxTimeBeforeReset) {
             // Return the calculated result
             return p_out + i_out + d_out;
         } else {
@@ -175,11 +172,17 @@ public class PIDController extends Controller {
     public PIDController setIntegratorFilter(Number range, Number limit) {
         mIFilter =
                 new IFilterGroup(
-                        x -> range.doubleValue() <= 0 || isReady(range.doubleValue()) ? x : 0,
+                        x -> range.doubleValue() <= 0 || isDone(range.doubleValue()) ? x : 0,
                         x -> limit.doubleValue() <= 0 ? x : SLMath.clamp(x, limit.doubleValue()));
         return this;
     }
 
+    /**
+     * Add a filter to the error velocity / derivative of the PID controller. 
+     * 
+     * @param derivativeFilter the filter to apply to derivative 
+     * @return reference to PIDController (so you can chain the commands together)
+     */
     public PIDController setDerivativeFilter(IFilter derivativeFilter) {
         mDFilter = derivativeFilter;
         return this;
