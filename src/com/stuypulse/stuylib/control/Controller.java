@@ -35,8 +35,20 @@ public abstract class Controller {
         return this;
     }
 
-    public boolean isReady(double acceptableError) {
-        return Math.abs(mSetpoint - mMeasurement) < acceptableError;
+    public double getSetpoint() {
+        return mSetpoint;
+    }
+
+    public double getMeasurement() {
+        return mMeasurement;
+    }
+
+    public double getError() {
+        return getSetpoint() - getMeasurement();
+    }
+
+    public boolean isDone(double acceptableError) {
+        return Math.abs(getError()) < acceptableError;
     }
 
     public Controller and(Controller other) {
