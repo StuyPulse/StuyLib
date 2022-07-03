@@ -2,9 +2,8 @@
 /* This work is licensed under the terms of the MIT license */
 /* found in the root directory of this project. */
 
-package com.stuypulse.stuylib.control;
+package com.stuypulse.stuylib.control.feedback;
 
-import com.stuypulse.stuylib.control.feedback.FeedbackController;
 import com.stuypulse.stuylib.network.SmartNumber;
 
 /**

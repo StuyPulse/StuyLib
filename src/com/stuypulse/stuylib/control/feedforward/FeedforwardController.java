@@ -1,6 +1,6 @@
-package com.stuypulse.stuylib.control;
+package com.stuypulse.stuylib.control.feedforward;
 
-import com.stuypulse.stuylib.control.feedforward.Feedforward;
+import com.stuypulse.stuylib.control.Controller;
 
 public class FeedforwardController extends Controller {
 

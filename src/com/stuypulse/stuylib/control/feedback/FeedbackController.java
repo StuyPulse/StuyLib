@@ -3,6 +3,12 @@ package com.stuypulse.stuylib.control.feedback;
 import com.stuypulse.stuylib.control.Controller;
 import com.stuypulse.stuylib.util.StopWatch;
 
+/**
+ * This is a utility class for defining usually time-based feedback
+ * control algorithms that work on error, rather than setpoint or measurement. 
+ * 
+ * @author Myles Pasetsky (@selym3)
+ */
 public abstract class FeedbackController extends Controller {
     
     private final StopWatch mTimer;

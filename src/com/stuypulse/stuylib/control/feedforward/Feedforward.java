@@ -1,6 +1,5 @@
 package com.stuypulse.stuylib.control.feedforward;
 
-import com.stuypulse.stuylib.control.FeedforwardController;
 import com.stuypulse.stuylib.streams.filters.Derivative;
 
 public abstract class Feedforward {
