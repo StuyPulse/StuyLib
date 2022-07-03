@@ -4,6 +4,7 @@
 
 package com.stuypulse.stuylib.control;
 
+import com.stuypulse.stuylib.control.feedback.FeedbackController;
 import com.stuypulse.stuylib.math.SLMath;
 import com.stuypulse.stuylib.network.SmartNumber;
 import com.stuypulse.stuylib.streams.filters.IFilter;
@@ -18,7 +19,7 @@ import com.stuypulse.stuylib.util.StopWatch;
  *
  * @author Sam (sam.belliveau@gmail.com)
  */
-public class PIDCalculator extends Controller {
+public class PIDCalculator extends FeedbackController {
 
     // Maximum amount of time between update commands before the calculator
     // resets its measurements
@@ -55,8 +56,6 @@ public class PIDCalculator extends Controller {
     // Whether or not the system will measure the oscillation
     private boolean mRunning;
 
-    private final StopWatch mTimer;
-
     /** @param speed motor output for bang bang controller */
     public PIDCalculator(Number speed) {
         mControlSpeed = speed;
@@ -72,7 +71,6 @@ public class PIDCalculator extends Controller {
         mLocalMax = 0;
 
         mRunning = false;
-        mTimer = new StopWatch();
     }
 
     /**
@@ -91,12 +89,9 @@ public class PIDCalculator extends Controller {
      * @param error the error that the controller will use
      * @return the calculated result from the controller
      */
-    protected double calculate(double setpoint, double measurement) {
-        double error = setpoint - measurement;
-        double dt = mTimer.reset();
-
+    protected double calculate(double error) {
         // If there is a gap in updates, then disable until next period
-        if (dt > kMaxTimeBeforeReset) {
+        if (getRate() > kMaxTimeBeforeReset) {
             mRunning = false;
         }
 

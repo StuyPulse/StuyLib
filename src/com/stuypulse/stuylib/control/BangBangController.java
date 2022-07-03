@@ -4,6 +4,8 @@
 
 package com.stuypulse.stuylib.control;
 
+import com.stuypulse.stuylib.control.feedback.FeedbackController;
+
 /**
  * A simple implementation of a BangBangController for the Stuylib Controller
  *
@@ -15,7 +17,7 @@ package com.stuypulse.stuylib.control;
  *
  * @author Sam (sam.belliveau@gmail.com)
  */
-public class BangBangController extends Controller {
+public class BangBangController extends FeedbackController {
 
     private double mPositive;
     private double mNegative;
@@ -55,12 +57,11 @@ public class BangBangController extends Controller {
      *     is negative
      */
     @Override
-    protected double calculate(double setpoint, double measurement) {
-        if (setpoint > measurement) {
-            return mPositive;
-        } else {
+    public double calculate(double error) {
+        if (error < 0) {
             return mNegative;
+        } else {
+            return mPositive;
         }
     }
-
 }

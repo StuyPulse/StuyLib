@@ -4,10 +4,8 @@
 
 package com.stuypulse.stuylib.control;
 
+import com.stuypulse.stuylib.control.feedback.FeedbackController;
 import com.stuypulse.stuylib.network.SmartNumber;
-import com.stuypulse.stuylib.util.StopWatch;
-
-import edu.wpi.first.util.sendable.SendableBuilder;
 
 /**
  * The take back half algorithm is one made specifically to help with controlling shooters. The way
@@ -22,9 +20,7 @@ import edu.wpi.first.util.sendable.SendableBuilder;
  *
  * @author Sam (sam.belliveau@gmail.com)
  */
-public class TBHController extends Controller {
-
-    private final StopWatch mTimer;
+public class TBHController extends FeedbackController {
 
     private Number mGain;
     private double mTBH;
@@ -33,7 +29,6 @@ public class TBHController extends Controller {
 
     /** @param gain the gain in the take back half algorithm */
     public TBHController(Number gain) {
-        mTimer = new StopWatch();
         setGain(gain).reset();
     }
 
@@ -65,10 +60,8 @@ public class TBHController extends Controller {
      * @return the calculated result from the Take Back Half algorithm
      */
     @Override
-    protected double calculate(double setpoint, double measurement) {
-        double error = setpoint - measurement;
-
-        mOutput += getGain() * error * mTimer.reset();
+    protected double calculate(double error) {
+        mOutput += getGain() * error * this.getRate();
         if ((error < 0) != (mPreviousError < 0)) {
             mOutput += mTBH;
             mOutput *= 0.5;
@@ -79,5 +72,4 @@ public class TBHController extends Controller {
 
         return mOutput;
     }
-
 }
