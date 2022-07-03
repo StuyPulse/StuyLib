@@ -41,6 +41,12 @@ public abstract class Feedforward {
         }
     }
 
+    public static class Flywheel extends Motor {
+        public Flywheel(Number kS, Number kV, Number kA) {
+            super(kS, kV, kA);
+        }
+    }
+
     public static class Elevator extends Motor {
         private final Number kG;
 
