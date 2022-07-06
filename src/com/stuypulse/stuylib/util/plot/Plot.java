@@ -27,7 +27,6 @@ public class Plot {
 
     private List<Tab> tabs;
     private Map<String, Integer> names;
-    private int defaultTab;
 
     private JFrame frame;
     private JTabbedPane pane;
@@ -41,8 +40,6 @@ public class Plot {
     public Plot() {
         tabs = new ArrayList<Tab>();
         names = new HashMap<String, Integer>();
-
-        defaultTab = 0;
     }
     
     public void build(String title, int width, int height) {
@@ -75,8 +72,6 @@ public class Plot {
 
         tabs.add(tab);
         names.put(settings.getTitle(), tabs.size() - 1);
-
-        defaultTab = tabs.size() - 1;
 
         return this;
     }
@@ -113,7 +108,7 @@ public class Plot {
     }
 
     public Plot addSeries(Series... series) {
-        tabs.get(defaultTab).addSeries(series);
+        tabs.get(tabs.size() - 1).addSeries(series);
         return this;
     }
 
