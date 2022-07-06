@@ -40,6 +40,13 @@ public class Playground {
                         .setXRange(MIN_X, MAX_X)
                         .setYRange(MIN_Y, MAX_Y);
 
+        public static Settings settings(String title) {
+            return new Settings()
+                .setAxes(title, X_AXIS, Y_AXIS)
+                .setXRange(MIN_X, MAX_X)
+                .setYRange(MIN_Y, MAX_Y);
+        }
+
         public static Series make(String id, IFilter function) {
             return new FuncSeries(new Config(id, CAPACITY), new Domain(MIN_X, MAX_X), function);
         }
@@ -60,9 +67,9 @@ public class Playground {
     public static void main(String[] args) throws InterruptedException {
         Plot plot = new Plot();
 
-        plot.addPlot(Constants.SETTINGS.setTitle("Functions"))
-			.addSeries("Functions",
-				Constants.make("y=x", x -> x),
+        plot.addPlot(Constants.settings("Functions"))
+			.addSeries(Constants.make("y=x", x -> x))
+            .addSeries(
 				Constants.make(
 					"interp",
 					new LinearInterpolator(
@@ -73,22 +80,23 @@ public class Playground {
 						new Vector2D(0.8, 0.02),
 						new Vector2D(1.0, 0.11))))
 
-			.addPlot(Constants.SETTINGS.setTitle("Filters"))
-			.addSeries("Filters",
-				Constants.make("mouse y", IStream.create(plot::getMouseY)),
+			.addPlot(Constants.settings("Filters"))
+			.addSeries(Constants.make("mouse y", IStream.create(plot::getMouseY)))
+            .addSeries(
 				Constants.make(
 					"lpf",
-					IStream.create(plot::getMouseY).filtered(new LowPassFilter(0.2))),
-				Constants.make("mouse bool", BStream.create(() -> plot.getMouseY() > 0.5)),
-				Constants.make(
+					IStream.create(plot::getMouseY).filtered(new LowPassFilter(0.2))))
+            .addSeries(
+                Constants.make("mouse bool", BStream.create(() -> plot.getMouseY() > 0.5)))
+			.addSeries(
+                Constants.make(
 					"debounced",
 					BStream.create(() -> plot.getMouseY() > 0.5)
 						.filtered(new BDebounce.Both(1.0))))
 
-			.addPlot(Constants.SETTINGS.setTitle("XY Graph"))
-			.addSeries("XY Graph",
-				Constants.make("mouse position", VStream.create(plot::getMouse)),
-				Constants.make(
+			.addPlot(Constants.settings("XY Graph"))
+			.addSeries(Constants.make("mouse position", VStream.create(plot::getMouse)))
+			.addSeries(Constants.make(
 					"jerk limit",
 					VStream.create(plot::getMouse)
 						.filtered(new VJerkLimit(10.0, 5.0))))
