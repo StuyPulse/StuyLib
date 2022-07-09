@@ -25,7 +25,7 @@ public interface BDebounceRC extends BFilter {
         private final LowPassFilter mFilter;
 
         /** @param debounceTime amount of time on average to go from false to true */
-        public Rising(double debounceTime) {
+        public Rising(Number debounceTime) {
             mFilter = new LowPassFilter(debounceTime);
         }
 
@@ -39,7 +39,7 @@ public interface BDebounceRC extends BFilter {
         private final LowPassFilter mFilter;
 
         /** @param debounceTime amount of time on average to go from true to false */
-        public Falling(double debounceTime) {
+        public Falling(Number debounceTime) {
             mFilter = new LowPassFilter(debounceTime);
         }
 
@@ -55,7 +55,7 @@ public interface BDebounceRC extends BFilter {
         private boolean mPrev;
 
         /** @param debounceTime amount of time on average to change value */
-        public Both(double debounceTime) {
+        public Both(Number debounceTime) {
             mFilter = new LowPassFilter(debounceTime);
             mPrev = false;
         }
