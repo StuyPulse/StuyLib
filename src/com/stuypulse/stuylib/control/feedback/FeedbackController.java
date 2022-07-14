@@ -25,7 +25,7 @@ public abstract class FeedbackController extends Controller {
 
     protected final double calculate(double setpoint, double measurement) {
         mRate = mTimer.reset();
-        return calculate(setpoint, measurement);
+        return calculate(setpoint - measurement);
     }
 
     protected abstract double calculate(double error);
