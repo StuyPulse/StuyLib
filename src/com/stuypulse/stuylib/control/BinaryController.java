@@ -3,13 +3,13 @@ package com.stuypulse.stuylib.control;
 import com.stuypulse.stuylib.control.angle.AngleController;
 import com.stuypulse.stuylib.math.Angle;
 
-public class AndController extends Controller {
+public class BinaryController extends Controller {
 
-    private static class AngleAndController extends AngleController {
+    private static class AngleBinaryController extends AngleController {
         private final AngleController mControllerA;
         private final AngleController mControllerB;
 
-        public AngleAndController(AngleController controllerA, AngleController controllerB) {
+        public AngleBinaryController(AngleController controllerA, AngleController controllerB) {
             mControllerA = controllerA;
             mControllerB = controllerB;
         }
@@ -23,14 +23,14 @@ public class AndController extends Controller {
     private final Controller mControllerA;
     private final Controller mControllerB;
 
-    public AndController(Controller controllerA, Controller controllerB) {
+    public BinaryController(Controller controllerA, Controller controllerB) {
         mControllerA = controllerA;
         mControllerB = controllerB;
     }
 
     @Override
     public AngleController angle() {
-        return new AngleAndController(mControllerA.angle(), mControllerB.angle());
+        return new AngleBinaryController(mControllerA.angle(), mControllerB.angle());
     }
 
     @Override

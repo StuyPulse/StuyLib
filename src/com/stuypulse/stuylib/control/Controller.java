@@ -53,7 +53,7 @@ public abstract class Controller {
     }
 
     public Controller and(Controller other) {
-        return new AndController(this, other);
+        return new BinaryController(this, other);
     }
 
     public abstract AngleController angle();
