@@ -4,17 +4,21 @@ import com.stuypulse.stuylib.streams.filters.Derivative;
 
 public class PositionFeedforwardController extends FeedforwardController {
 
-    private final Derivative mDerivative;
+    private final Derivative mVelocity;
+    private final Derivative mAcceleration;
     private final Feedforward mFeedforward;
 
     public PositionFeedforwardController(Feedforward feedforward) {
-        mDerivative = new Derivative();
+        mVelocity = new Derivative();
+        mAcceleration = new Derivative();
         mFeedforward = feedforward;
     }
 
     @Override
     protected double calculate(double setpoint, double measurement) {
-        return mFeedforward.calculate(mDerivative.get(setpoint));
+        double velocity = mVelocity.get(setpoint);
+        double acceleration = mAcceleration.get(velocity);
+        return mFeedforward.calculate(velocity, acceleration);
     }
 
 
