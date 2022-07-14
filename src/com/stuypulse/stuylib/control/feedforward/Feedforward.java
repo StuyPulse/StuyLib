@@ -10,8 +10,12 @@ public abstract class Feedforward {
         mDerivative = new Derivative();
     }
 
-    public final FeedforwardController controller() {
-        return new FeedforwardController(this);
+    public final VelocityFeedforwardController velocity() {
+        return new VelocityFeedforwardController(this);
+    }
+
+    public final PositionFeedforwardController position() {
+        return new PositionFeedforwardController(this);
     }
 
     public final double calculate(double velocity) {
