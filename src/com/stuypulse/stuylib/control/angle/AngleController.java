@@ -13,7 +13,9 @@ import java.util.function.Function;
 /**
  * A continuous controller whose measurements and setpoints will be angles.
  *
- * <p>An angle controller handles continuous systems that are (most often) measured on a circle,
+ * <p>
+ * An angle controller handles continuous systems that are (most often) measured
+ * on a circle,
  * which means the error must be normalized into the range [-180, +180].
  *
  * @author Myles Pasetsky (@selym3)
@@ -30,10 +32,14 @@ public class AngleController {
     /**
      * Creates an angle controller from a controller.
      *
-     * <p>The controller should be configured BEFORE being passed into the angle controller. Then
+     * <p>
+     * The controller should be configured BEFORE being passed into the angle
+     * controller. Then
      * .angle() should be called to create
      *
-     * <p>BY DEFAULT, this controller should expect to receive error in the unit of radians.
+     * <p>
+     * BY DEFAULT, this controller should expect to receive error in the unit of
+     * radians.
      *
      * @param controller controller to wrap
      */
@@ -43,7 +49,8 @@ public class AngleController {
     }
 
     /**
-     * Set what unit the angle error should be converted to before being passed to the underlying
+     * Set what unit the angle error should be converted to before being passed to
+     * the underlying
      * controller.
      *
      * @param units conversion function
@@ -75,7 +82,7 @@ public class AngleController {
     /**
      * Calculates the desired output based on an angular setpoint and measurement.
      *
-     * @param setpoint target angle to reach
+     * @param setpoint    target angle to reach
      * @param measurement current angle of system
      * @return output that will drive measurement to setpoint
      */
@@ -86,7 +93,7 @@ public class AngleController {
     /**
      * Calculates the desired output based on a rotation2d measurement and setpoint
      *
-     * @param setpoint target angle to reach
+     * @param setpoint    target angle to reach
      * @param measurement current angle of system
      * @return controller output
      */
