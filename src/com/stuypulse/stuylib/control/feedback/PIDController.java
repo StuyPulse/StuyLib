@@ -14,10 +14,6 @@ import com.stuypulse.stuylib.streams.filters.IFilterGroup;
  * detect how much time has passed between each update. It is made to be easy to use and simple to
  * understand while still being accurate.
  *
- * <p>This PID controller resets the integral every time the error crosses 0 to prevent integral
- * windup / lag. This means that it may not be suitable for setups involving rate instead of
- * position
- *
  * @author Sam (sam.belliveau@gmail.com)
  */
 public class PIDController extends FeedbackController {
