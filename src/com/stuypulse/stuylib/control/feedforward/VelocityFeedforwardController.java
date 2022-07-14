@@ -1,8 +1,6 @@
 package com.stuypulse.stuylib.control.feedforward;
 
-import com.stuypulse.stuylib.control.Controller;
-
-public class VelocityFeedforwardController extends Controller {
+public class VelocityFeedforwardController extends FeedforwardController {
 
     private final Feedforward mFeedforward;
     
