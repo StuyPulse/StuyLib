@@ -3,7 +3,7 @@ package com.stuypulse.stuylib.control.feedforward;
 import com.stuypulse.stuylib.control.Controller;
 import com.stuypulse.stuylib.streams.filters.Derivative;
 
-public class PositionFeedforwardController extends Controller {
+public class PositionFeedforwardController extends FeedforwardController {
 
     private final Derivative mDerivative;
     private final Feedforward mFeedforward;

@@ -1,5 +1,7 @@
 package com.stuypulse.stuylib.control;
 
+import com.stuypulse.stuylib.control.angle.AngleController;
+import com.stuypulse.stuylib.control.angle._AngleController;
 import com.stuypulse.stuylib.streams.filters.IFilter;
 
 public abstract class Controller {
@@ -52,8 +54,10 @@ public abstract class Controller {
     }
 
     public Controller and(Controller other) {
-        return new InlineController((s, m) -> this.update(s, m) + other.update(s, m));
+        return new AndController(this, other);
     }
+
+    public abstract AngleController angle();
 
     public double update(double setpoint, double measurement) {
         mSetpoint = mSetpointFilter.get(setpoint);
