@@ -64,17 +64,4 @@ public abstract class Feedforward {
         }
     }
 
-    public static class Arm extends Motor {
-        private final Number kG;
-        public Arm(Number kG, Number kS, Number kV, Number kA) {
-            super(kS, kV, kA);
-            this.kG = kG;
-        }
-
-        @Override
-        protected double calculate(double velocity, double acceleration) {
-            return Math.cos(kG.doubleValue()) + super.calculate(velocity, acceleration);
-        }
-    }
-
 }
