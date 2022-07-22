@@ -4,10 +4,12 @@
 
 package com.stuypulse.stuylib.control.feedback;
 
+import com.stuypulse.stuylib.control.Controller;
 import com.stuypulse.stuylib.math.SLMath;
 import com.stuypulse.stuylib.network.SmartNumber;
 import com.stuypulse.stuylib.streams.filters.IFilter;
 import com.stuypulse.stuylib.streams.filters.IFilterGroup;
+import com.stuypulse.stuylib.util.StopWatch;
 
 /**
  * This PID controller is built by extending the Controller class. It has a dynamic rate, so it can
@@ -16,13 +18,16 @@ import com.stuypulse.stuylib.streams.filters.IFilterGroup;
  *
  * @author Sam (sam.belliveau@gmail.com)
  */
-public class PIDController extends FeedbackController {
+public class PIDController extends Controller {
 
     /**
      * Amount of time in between .update() calls that is aloud before the controller resets the
      * system
      */
     private static final double kMaxTimeBeforeReset = 0.5;
+
+    // Internal timer used by Controller
+    private StopWatch mTimer;
 
     // Constants used by the PID controller
     private Number mP;
@@ -44,6 +49,8 @@ public class PIDController extends FeedbackController {
      * @param d The Derivative Multiplier
      */
     public PIDController(Number p, Number i, Number d) {
+        mTimer = new StopWatch();
+
         setIntegratorFilter(0, 0);
         setDerivativeFilter(x -> x);
         setPID(p, i, d);
@@ -70,22 +77,26 @@ public class PIDController extends FeedbackController {
      * @return the calculated result from the PIDController
      */
     @Override
-    protected double calculate(double error) {
+    protected double calculate(double setpoint, double measurement) {
+        // Calculate error & time step
+        double error = setpoint - measurement;
+        double dt = mTimer.reset();
+
         // Calculate P Component
         double p_out = error * getP();
 
         // Calculate I Component
-        mIntegral += error * getRate();
+        mIntegral += error * dt;
         mIntegral = mIFilter.get(mIntegral);
         double i_out = mIntegral * getI();
 
         // Calculate D Component
-        double derivative = mDFilter.get((error - mLastError) / getRate());
+        double derivative = mDFilter.get((error - mLastError) / dt);
         mLastError = error;
         double d_out = derivative * getD();
 
         // Check if time passed exceeds reset limit
-        if (getRate() < kMaxTimeBeforeReset) {
+        if (dt < kMaxTimeBeforeReset) {
             // Return the calculated result
             return p_out + i_out + d_out;
         } else {

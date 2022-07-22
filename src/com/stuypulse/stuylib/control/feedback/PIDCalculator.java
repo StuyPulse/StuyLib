@@ -4,6 +4,7 @@
 
 package com.stuypulse.stuylib.control.feedback;
 
+import com.stuypulse.stuylib.control.Controller;
 import com.stuypulse.stuylib.math.SLMath;
 import com.stuypulse.stuylib.network.SmartNumber;
 import com.stuypulse.stuylib.streams.filters.IFilter;
@@ -18,7 +19,7 @@ import com.stuypulse.stuylib.util.StopWatch;
  *
  * @author Sam (sam.belliveau@gmail.com)
  */
-public class PIDCalculator extends FeedbackController {
+public class PIDCalculator extends Controller {
 
     // Maximum amount of time between update commands before the calculator
     // resets its measurements
@@ -33,6 +34,9 @@ public class PIDCalculator extends FeedbackController {
         // Takes about 6 periods to get accurate results
         return new IFilterGroup(new TimedMovingAverage(30));
     }
+
+    // Internal timer used by PID Calculator
+    private StopWatch mTimer;
 
     // The speed that the bang bang controller will run at
     private Number mControlSpeed;
@@ -57,6 +61,8 @@ public class PIDCalculator extends FeedbackController {
 
     /** @param speed motor output for bang bang controller */
     public PIDCalculator(Number speed) {
+        mTimer = new StopWatch();
+
         mControlSpeed = speed;
         mCurrentSpeed = mControlSpeed.doubleValue();
 
@@ -88,11 +94,16 @@ public class PIDCalculator extends FeedbackController {
      * @param error the error that the controller will use
      * @return the calculated result from the controller
      */
-    protected double calculate(double error) {
+    protected double calculate(double setpoint, double measurement) {
+        // Calculate error & time step
+        double error = setpoint - measurement;
+        double dt = mTimer.reset();
+
         // If there is a gap in updates, then disable until next period
-        if (getRate() > kMaxTimeBeforeReset) {
+        if (dt > kMaxTimeBeforeReset) {
             mRunning = false;
         }
+
 
         // Check if we crossed 0, ie, time for next update
         if (Math.signum(mCurrentSpeed) != Math.signum(error)) {
