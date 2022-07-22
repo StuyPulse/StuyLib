@@ -38,7 +38,7 @@ public class ARateLimit implements AFilter {
 
     public Angle get(Angle next) {
         final double limit = mRateLimit.doubleValue() * mTimer.reset();
-        final Angle diff = Angle.fromRadians(SLMath.clamp(next.sub(mLastValue).toRadians(), limit));
-        return mLastValue = mLastValue.add(diff);
+        return mLastValue =
+                mLastValue.addRadians(SLMath.clamp(next.sub(mLastValue).toRadians(), limit));
     }
 }
