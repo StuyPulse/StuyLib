@@ -1,5 +1,6 @@
 package com.stuypulse.stuylib.control.feedforward;
 
+import com.stuypulse.stuylib.control.angle.feedforward.AnglePositionFeedforwardController;
 import com.stuypulse.stuylib.streams.filters.Derivative;
 
 public abstract class Feedforward {
@@ -16,6 +17,10 @@ public abstract class Feedforward {
 
     public final PositionFeedforwardController position() {
         return new PositionFeedforwardController(this);
+    }
+
+    public final AnglePositionFeedforwardController angle() {
+        return new AnglePositionFeedforwardController(this);
     }
 
     public final double calculate(double velocity) {
