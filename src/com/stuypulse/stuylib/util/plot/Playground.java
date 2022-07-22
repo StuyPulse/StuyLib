@@ -24,7 +24,7 @@ import com.stuypulse.stuylib.util.plot.TimeSeries.TimeSpan;
 public class Playground {
 
     public interface Constants {
-        int CAPACITY = 50;
+        int CAPACITY = 10;
 
         String TITLE = "StuyLib Plotting Library";
         String X_AXIS = "x-axis";
@@ -66,9 +66,11 @@ public class Playground {
     public static void main(String[] args) throws InterruptedException {
         Plot plot = new Plot(Constants.SETTINGS);
 
-        AStream angle_mouse =
-                AStream.create(() -> plot.getMouse().sub(new Vector2D(0.5, 0.5)).getAngle());
-        AStream jerk_angle = angle_mouse.filtered(new AJerkLimit(-1, 1));
+        VStream m =
+                VStream.create(() -> plot.getMouse().sub(new Vector2D(0.5, 0.5)).mul(2))
+                        .filtered(new VJerkLimit(1, 2));
+        AStream angle_mouse = AStream.create(() -> m.get().getAngle());
+        AStream jerk_angle = angle_mouse.filtered(new AJerkLimit(-1, 4));
         AStream rate_angle = angle_mouse.filtered(new ARateLimit(1));
         AStream lpf_angle = angle_mouse.filtered(new ALowPassFilter(0.5));
         AStream hpf_angle = angle_mouse.filtered(new AHighPassFilter(0.5));
@@ -83,7 +85,9 @@ public class Playground {
                 .addSeries(Constants.make("Jerk", jerk))
                 .addSeries(Constants.make("Rate", rate))
                 .addSeries(Constants.make("LPF", lpf))
-                .addSeries(Constants.make("HPF", hpf));
+                // .addSeries(Constants.make("HPF", hpf))
+                .addSeries(Constants.make("mouse", m));
+        //
         // .addSeries(Constants.make("y=x", x -> x))
         // .addSeries(
         //         Constants.make(
@@ -116,7 +120,7 @@ public class Playground {
 
         while (plot.isRunning()) {
             plot.update();
-            Thread.sleep(20);
+            Thread.sleep(10);
         }
     }
 }

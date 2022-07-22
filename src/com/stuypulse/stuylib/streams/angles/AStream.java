@@ -5,7 +5,9 @@
 package com.stuypulse.stuylib.streams.angles;
 
 import com.stuypulse.stuylib.math.Angle;
+import com.stuypulse.stuylib.streams.IStream;
 import com.stuypulse.stuylib.streams.angles.filters.AFilter;
+import com.stuypulse.stuylib.streams.vectors.VStream;
 
 import java.util.function.Supplier;
 
@@ -13,6 +15,14 @@ public interface AStream extends Supplier<Angle> {
 
     public static AStream create(AStream stream) {
         return stream;
+    }
+
+    public static AStream create(IStream stream) {
+        return () -> Angle.fromRadians(stream.get());
+    }
+
+    public static AStream create(VStream stream) {
+        return () -> stream.get().getAngle();
     }
 
     /** @return next value in the stream */

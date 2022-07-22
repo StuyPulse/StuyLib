@@ -4,6 +4,7 @@
 
 package com.stuypulse.stuylib.streams;
 
+import com.stuypulse.stuylib.streams.angles.AStream;
 import com.stuypulse.stuylib.streams.booleans.BStream;
 import com.stuypulse.stuylib.streams.filters.IFilter;
 
@@ -29,6 +30,16 @@ public interface IStream extends DoubleSupplier {
      */
     public static IStream create(IStream stream) {
         return stream;
+    }
+
+    /**
+     * Create an IStream from another AStream. This will convert the angle to a double in radians.
+     *
+     * @param stream stream to create IStream from
+     * @return the resulting IStream
+     */
+    public static IStream create(AStream stream) {
+        return () -> stream.get().toRadians();
     }
 
     /**
