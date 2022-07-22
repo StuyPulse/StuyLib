@@ -318,13 +318,73 @@ public final class Angle {
     }
 
     /**
+     * Add two angles together
+     *
+     * @param other the other angle in the sum
+     * @return the sum of the two angles [normalized from (-pi, pi)]
+     */
+    public Angle addRadians(double radians) {
+        return fromRadians(this.toRadians() + radians);
+    }
+
+    /**
+     * Add two angles together
+     *
+     * @param other the other angle in the sum
+     * @return the sum of the two angles [normalized from (-pi, pi)]
+     */
+    public Angle addRotations(double rotations) {
+        return fromRotations(this.toDegrees() + rotations);
+    }
+
+    /**
+     * Add two angles together
+     *
+     * @param other the other angle in the sum
+     * @return the sum of the two angles [normalized from (-pi, pi)]
+     */
+    public Angle addDegrees(double degrees) {
+        return fromDegrees(this.toDegrees() + degrees);
+    }
+
+    /**
      * Subtract two angles from each other
      *
      * @param other the other angle to subtract
-     * @return the first angle subtracted from the other [normalized from (-pi, pi)]
+     * @return the second angle subtracted from the first [normalized from (-pi, pi)]
      */
     public Angle sub(Angle other) {
         return fromRadians(this.toRadians() - other.toRadians());
+    }
+
+    /**
+     * Subtract two angles from each other
+     *
+     * @param other the other angle to subtract
+     * @return the second angle subtracted from the first [normalized from (-pi, pi)]
+     */
+    public Angle subRadians(double radians) {
+        return fromRadians(this.toRadians() - radians);
+    }
+
+    /**
+     * Subtract two angles from each other
+     *
+     * @param other the other angle to subtract
+     * @return the second angle subtracted from the first [normalized from (-pi, pi)]
+     */
+    public Angle subRotations(double rotations) {
+        return fromRotations(this.toDegrees() - rotations);
+    }
+
+    /**
+     * Subtract two angles from each other
+     *
+     * @param other the other angle to subtract
+     * @return the second angle subtracted from the first [normalized from (-pi, pi)]
+     */
+    public Angle subDegrees(double degrees) {
+        return fromDegrees(this.toDegrees() - degrees);
     }
 
     /**
@@ -337,7 +397,7 @@ public final class Angle {
     public double velocityRadians(Angle prev, double dt) {
         return normalizeRadians(this.toRadians() - prev.toRadians(), 0.0) / dt;
     }
-    
+
     /**
      * Get the angular velocity in rotations/s given 2 angles and a dt
      *
@@ -348,7 +408,7 @@ public final class Angle {
     public double velocityRotations(Angle prev, double dt) {
         return normalizeRotations(this.toRotations() - prev.toRotations(), 0.0) / dt;
     }
-    
+
     /**
      * Get the angular velocity in degrees/s given 2 angles and a dt
      *
@@ -359,7 +419,7 @@ public final class Angle {
     public double velocityDegrees(Angle prev, double dt) {
         return normalizeDegrees(this.toDegrees() - prev.toDegrees(), 0.0) / dt;
     }
-    
+
     /**
      * Multiply the angle by a scalar value
      *

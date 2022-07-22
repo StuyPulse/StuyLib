@@ -1,10 +1,14 @@
+/* Copyright (c) 2022 StuyPulse Robotics. All rights reserved. */
+/* This work is licensed under the terms of the MIT license */
+/* found in the root directory of this project. */
+
 package com.stuypulse.stuylib.control.feedforward;
 
 import com.stuypulse.stuylib.control.angle.feedforward.AnglePositionFeedforwardController;
 import com.stuypulse.stuylib.streams.filters.Derivative;
 
 public abstract class Feedforward {
-    
+
     private final Derivative mDerivative;
 
     public Feedforward() {
@@ -39,7 +43,9 @@ public abstract class Feedforward {
         }
 
         protected double calculate(double velocity, double acceleration) {
-            return kS.doubleValue() * Math.signum(velocity) + kV.doubleValue() * velocity + kA.doubleValue() * acceleration;
+            return kS.doubleValue() * Math.signum(velocity)
+                    + kV.doubleValue() * velocity
+                    + kA.doubleValue() * acceleration;
         }
     }
 
@@ -68,5 +74,4 @@ public abstract class Feedforward {
             return kG.doubleValue() + super.calculate(velocity, acceleration);
         }
     }
-
 }

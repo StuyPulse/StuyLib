@@ -105,7 +105,6 @@ public class AnglePIDCalculator extends AngleController {
             mRunning = false;
         }
 
-
         // Check if we crossed 0, ie, time for next update
         if (Math.signum(mCurrentSpeed) != Math.signum(error)) {
             // Update the controller
@@ -201,5 +200,4 @@ public class AnglePIDCalculator extends AngleController {
                 + ") "
                 + getPIDController().toString();
     }
-
 }

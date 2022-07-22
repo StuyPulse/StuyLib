@@ -1,3 +1,7 @@
+/* Copyright (c) 2022 StuyPulse Robotics. All rights reserved. */
+/* This work is licensed under the terms of the MIT license */
+/* found in the root directory of this project. */
+
 package com.stuypulse.stuylib.control.angle;
 
 import com.stuypulse.stuylib.math.Angle;
@@ -14,7 +18,7 @@ public class AngleBinaryController extends AngleController {
 
     @Override
     protected double calculate(Angle setpoint, Angle measurement) {
-        return mControllerA.calculate(setpoint, measurement) + mControllerB.calculate(setpoint, measurement);
+        return mControllerA.calculate(setpoint, measurement)
+                + mControllerB.calculate(setpoint, measurement);
     }
-
 }

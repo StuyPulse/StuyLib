@@ -1,9 +1,13 @@
+/* Copyright (c) 2022 StuyPulse Robotics. All rights reserved. */
+/* This work is licensed under the terms of the MIT license */
+/* found in the root directory of this project. */
+
 package com.stuypulse.stuylib.util;
 
 import com.stuypulse.stuylib.math.Angle;
 
 public class AngleVelocity {
-    
+
     private final StopWatch mTimer;
     private Angle mPreviousAngle;
 
@@ -17,5 +21,4 @@ public class AngleVelocity {
         mPreviousAngle = angle;
         return velocity;
     }
-
 }

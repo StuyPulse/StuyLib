@@ -42,7 +42,6 @@ public class PIDController extends Controller {
     private double mLastError;
     private IFilter mDFilter;
 
-
     /**
      * @param p The Proportional Multiplier
      * @param i The Integral Multiplier
@@ -184,9 +183,9 @@ public class PIDController extends Controller {
     }
 
     /**
-     * Add a filter to the error velocity / derivative of the PID controller. 
-     * 
-     * @param derivativeFilter the filter to apply to derivative 
+     * Add a filter to the error velocity / derivative of the PID controller.
+     *
+     * @param derivativeFilter the filter to apply to derivative
      * @return reference to PIDController (so you can chain the commands together)
      */
     public PIDController setDerivativeFilter(IFilter derivativeFilter) {
@@ -204,5 +203,4 @@ public class PIDController extends Controller {
                 + SLMath.round(getD(), 4)
                 + ")";
     }
-
 }

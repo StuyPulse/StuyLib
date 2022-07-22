@@ -1,3 +1,7 @@
+/* Copyright (c) 2022 StuyPulse Robotics. All rights reserved. */
+/* This work is licensed under the terms of the MIT license */
+/* found in the root directory of this project. */
+
 package com.stuypulse.stuylib.control;
 
 import com.stuypulse.stuylib.streams.filters.IFilter;
@@ -64,5 +68,4 @@ public abstract class Controller {
     }
 
     protected abstract double calculate(double setpoint, double measurement);
-
 }

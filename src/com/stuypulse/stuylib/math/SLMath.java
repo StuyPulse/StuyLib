@@ -31,18 +31,19 @@ public final class SLMath {
     public static double lerp(double start, double end, double t) {
         return start + (end - start) * clamp(t, 0.0, 1.0);
     }
-    
+
     /**
      * Maps an input in one range to an output in another range
-     * 
+     *
      * @param input value to map
      * @param minInput minimum value of input
-     * @param maxInput maximum value of input 
-     * @param minOutput minimum value of output 
-     * @param maxOutput maximum value of output 
+     * @param maxInput maximum value of input
+     * @param minOutput minimum value of output
+     * @param maxOutput maximum value of output
      * @return the mapped value
      */
-    public static double map(double input, double minInput, double maxInput, double minOutput, double maxOutput) {
+    public static double map(
+            double input, double minInput, double maxInput, double minOutput, double maxOutput) {
         return lerp(minOutput, maxOutput, (input - minInput) / (maxInput - minInput));
     }
 

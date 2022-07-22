@@ -43,7 +43,6 @@ public class AnglePIDController extends AngleController {
     private double mLastError;
     private IFilter mDFilter;
 
-
     /**
      * @param p The Proportional Multiplier
      * @param i The Integral Multiplier
@@ -81,7 +80,7 @@ public class AnglePIDController extends AngleController {
     protected double calculate(Angle setpoint, Angle measurement) {
         // Calculate error & time step
         // TODO: configurable controller units
-        double error = setpoint.sub(measurement).toRadians(); 
+        double error = setpoint.sub(measurement).toRadians();
         double dt = mTimer.reset();
 
         // Calculate P Component
@@ -186,9 +185,9 @@ public class AnglePIDController extends AngleController {
     }
 
     /**
-     * Add a filter to the error velocity / derivative of the PID controller. 
-     * 
-     * @param derivativeFilter the filter to apply to derivative 
+     * Add a filter to the error velocity / derivative of the PID controller.
+     *
+     * @param derivativeFilter the filter to apply to derivative
      * @return reference to PIDController (so you can chain the commands together)
      */
     public AnglePIDController setDerivativeFilter(IFilter derivativeFilter) {
@@ -206,5 +205,4 @@ public class AnglePIDController extends AngleController {
                 + SLMath.round(getD(), 4)
                 + ")";
     }
-
 }
