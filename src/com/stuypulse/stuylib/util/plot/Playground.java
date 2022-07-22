@@ -66,9 +66,7 @@ public class Playground {
     public static void main(String[] args) throws InterruptedException {
         Plot plot = new Plot(Constants.SETTINGS);
 
-        VStream m =
-                VStream.create(() -> plot.getMouse().sub(new Vector2D(0.5, 0.5)).mul(2))
-                        .filtered(new VJerkLimit(1, 2));
+        VStream m = VStream.create(() -> plot.getMouse().sub(new Vector2D(0.5, 0.5)).mul(2));
         AStream angle_mouse = AStream.create(() -> m.get().getAngle());
         AStream jerk_angle = angle_mouse.filtered(new AJerkLimit(-1, 4));
         AStream rate_angle = angle_mouse.filtered(new ARateLimit(1));
@@ -85,7 +83,7 @@ public class Playground {
                 .addSeries(Constants.make("Jerk", jerk))
                 .addSeries(Constants.make("Rate", rate))
                 .addSeries(Constants.make("LPF", lpf))
-                // .addSeries(Constants.make("HPF", hpf))
+                .addSeries(Constants.make("HPF", hpf))
                 .addSeries(Constants.make("mouse", m));
         //
         // .addSeries(Constants.make("y=x", x -> x))
