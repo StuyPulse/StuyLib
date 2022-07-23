@@ -55,7 +55,7 @@ public abstract class Controller {
         return Math.abs(getError()) < acceptableError;
     }
 
-    public Controller and(Controller other) {
+    public BinaryController add(Controller other) {
         return new BinaryController(this, other);
     }
 
