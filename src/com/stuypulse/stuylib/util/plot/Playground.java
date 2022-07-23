@@ -9,8 +9,8 @@ import com.stuypulse.stuylib.math.interpolation.*;
 import com.stuypulse.stuylib.streams.*;
 import com.stuypulse.stuylib.streams.angles.AStream;
 import com.stuypulse.stuylib.streams.angles.filters.AHighPassFilter;
-import com.stuypulse.stuylib.streams.angles.filters.AJerkLimit;
 import com.stuypulse.stuylib.streams.angles.filters.ALowPassFilter;
+import com.stuypulse.stuylib.streams.angles.filters.AMotionProfile;
 import com.stuypulse.stuylib.streams.angles.filters.ARateLimit;
 import com.stuypulse.stuylib.streams.booleans.*;
 import com.stuypulse.stuylib.streams.booleans.filters.*;
@@ -68,7 +68,7 @@ public class Playground {
 
         VStream m = VStream.create(() -> plot.getMouse().sub(new Vector2D(0.5, 0.5)).mul(2));
         AStream angle_mouse = AStream.create(() -> m.get().getAngle());
-        AStream jerk_angle = angle_mouse.filtered(new AJerkLimit(-1, 4));
+        AStream jerk_angle = angle_mouse.filtered(new AMotionProfile(-1, 4));
         AStream rate_angle = angle_mouse.filtered(new ARateLimit(1));
         AStream lpf_angle = angle_mouse.filtered(new ALowPassFilter(0.5));
         AStream hpf_angle = angle_mouse.filtered(new AHighPassFilter(0.5));
