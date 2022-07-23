@@ -57,8 +57,8 @@ public abstract class AngleController {
         return Math.abs(getError()) < acceptableError;
     }
 
-    public AngleBinaryController and(AngleController other) {
-        return new AngleBinaryController(this, other);
+    public AngleControllerGroup add(AngleController... other) {
+        return new AngleControllerGroup(this, other);
     }
 
     public double update(Angle setpoint, Angle measurement) {

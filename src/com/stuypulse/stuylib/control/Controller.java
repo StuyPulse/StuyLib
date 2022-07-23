@@ -55,8 +55,8 @@ public abstract class Controller {
         return Math.abs(getError()) < acceptableError;
     }
 
-    public BinaryController add(Controller other) {
-        return new BinaryController(this, other);
+    public ControllerGroup add(Controller... other) {
+        return new ControllerGroup(this, other);
     }
 
     public DerivativeController derivative() {
