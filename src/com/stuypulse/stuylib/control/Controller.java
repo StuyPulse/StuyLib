@@ -24,18 +24,18 @@ public abstract class Controller {
         mOutputFilter = x -> x;
     }
 
-    public Controller setSetpointFilter(IFilter setpointFilter) {
-        mSetpointFilter = setpointFilter;
+    public Controller setSetpointFilter(IFilter... setpointFilter) {
+        mSetpointFilter = IFilter.create(setpointFilter);
         return this;
     }
 
-    public Controller setMeasurementFilter(IFilter measurementFilter) {
-        mMeasurementFilter = measurementFilter;
+    public Controller setMeasurementFilter(IFilter... measurementFilter) {
+        mMeasurementFilter = IFilter.create(measurementFilter);
         return this;
     }
 
-    public Controller setOutputFilter(IFilter outputFilter) {
-        mOutputFilter = outputFilter;
+    public Controller setOutputFilter(IFilter... outputFilter) {
+        mOutputFilter = IFilter.create(outputFilter);
         return this;
     }
 

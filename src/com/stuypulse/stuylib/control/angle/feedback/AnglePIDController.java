@@ -190,8 +190,8 @@ public class AnglePIDController extends AngleController {
      * @param derivativeFilter the filter to apply to derivative
      * @return reference to PIDController (so you can chain the commands together)
      */
-    public AnglePIDController setDerivativeFilter(IFilter derivativeFilter) {
-        mDFilter = derivativeFilter;
+    public AnglePIDController setDerivativeFilter(IFilter... derivativeFilter) {
+        mDFilter = IFilter.create(derivativeFilter);
         return this;
     }
 

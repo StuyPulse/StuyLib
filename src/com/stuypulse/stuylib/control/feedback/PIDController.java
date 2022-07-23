@@ -188,8 +188,8 @@ public class PIDController extends Controller {
      * @param derivativeFilter the filter to apply to derivative
      * @return reference to PIDController (so you can chain the commands together)
      */
-    public PIDController setDerivativeFilter(IFilter derivativeFilter) {
-        mDFilter = derivativeFilter;
+    public PIDController setDerivativeFilter(IFilter... derivativeFilter) {
+        mDFilter = IFilter.create(derivativeFilter);
         return this;
     }
 

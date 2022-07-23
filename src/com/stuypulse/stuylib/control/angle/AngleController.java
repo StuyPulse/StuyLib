@@ -25,18 +25,18 @@ public abstract class AngleController {
         mOutputFilter = x -> x;
     }
 
-    public AngleController setSetpointFilter(AFilter setpointFilter) {
-        mSetpointFilter = setpointFilter;
+    public AngleController setSetpointFilter(AFilter... setpointFilter) {
+        mSetpointFilter = AFilter.create(setpointFilter);
         return this;
     }
 
-    public AngleController setMeasurementFilter(AFilter measurementFilter) {
-        mMeasurementFilter = measurementFilter;
+    public AngleController setMeasurementFilter(AFilter... measurementFilter) {
+        mMeasurementFilter = AFilter.create(measurementFilter);
         return this;
     }
 
-    public AngleController setOutputFilter(IFilter outputFilter) {
-        mOutputFilter = outputFilter;
+    public AngleController setOutputFilter(IFilter... outputFilter) {
+        mOutputFilter = IFilter.create(outputFilter);
         return this;
     }
 
