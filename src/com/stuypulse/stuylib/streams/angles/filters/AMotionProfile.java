@@ -16,7 +16,7 @@ import com.stuypulse.stuylib.util.StopWatch;
  *
  * @author Sam (sam.belliveau@gmail.com)
  */
-public class AJerkLimit implements AFilter {
+public class AMotionProfile implements AFilter {
 
     // Default number of times to apply filter (helps accuracy)
     private static final int kDefaultSteps = 64;
@@ -25,8 +25,8 @@ public class AJerkLimit implements AFilter {
     private StopWatch mTimer;
 
     // Limits for each of the derivatives
+    private Number mVelLimit;
     private Number mAccelLimit;
-    private Number mJerkLimit;
 
     // The last output / acceleration
     private Angle mOutput;
@@ -40,11 +40,11 @@ public class AJerkLimit implements AFilter {
      * @param jerkLimit maximum change in acceleration per second (u/s/s)
      * @param steps number of times to apply filter (improves accuracy)
      */
-    public AJerkLimit(Number accelLimit, Number jerkLimit, int steps) {
+    public AMotionProfile(Number velLimit, Number accelLimit, int steps) {
         mTimer = new StopWatch();
 
+        mVelLimit = velLimit;
         mAccelLimit = accelLimit;
-        mJerkLimit = jerkLimit;
 
         mOutput = Angle.kZero;
         mAccel = 0;
@@ -56,7 +56,7 @@ public class AJerkLimit implements AFilter {
      * @param accelLimit maximum change in velocity per second (u/s)
      * @param jerkLimit maximum change in acceleration per second (u/s/s)
      */
-    public AJerkLimit(Number accelLimit, Number jerkLimit) {
+    public AMotionProfile(Number accelLimit, Number jerkLimit) {
         this(accelLimit, jerkLimit, kDefaultSteps);
     }
 
@@ -65,9 +65,9 @@ public class AJerkLimit implements AFilter {
 
         for (int i = 0; i < mSteps; ++i) {
             // if there is a jerk limit, limit the amount the acceleration can change
-            if (0 < mJerkLimit.doubleValue()) {
+            if (0 < mAccelLimit.doubleValue()) {
                 // amount of windup in system (how long it would take to slow down)
-                double windup = Math.abs(mAccel) / mJerkLimit.doubleValue();
+                double windup = Math.abs(mAccel) / mAccelLimit.doubleValue();
 
                 // If the windup is too small, just use normal algorithm to limit acceleration
                 if (windup < dt) {
@@ -75,7 +75,7 @@ public class AJerkLimit implements AFilter {
                     double accel = target.velocityRadians(mOutput, dt) - mAccel;
 
                     // Try to reach it while abiding by jerklimit
-                    mAccel += SLMath.clamp(accel, dt * mJerkLimit.doubleValue());
+                    mAccel += SLMath.clamp(accel, dt * mAccelLimit.doubleValue());
                 } else {
                     // the position it would end up if it attempted to come to a full stop
                     Angle future =
@@ -86,7 +86,7 @@ public class AJerkLimit implements AFilter {
                     double accel = target.velocityRadians(future, windup);
 
                     // Try to reach it while abiding by jerklimit
-                    mAccel += SLMath.clamp(accel, dt * mJerkLimit.doubleValue());
+                    mAccel += SLMath.clamp(accel, dt * mAccelLimit.doubleValue());
                 }
 
             } else {
@@ -95,8 +95,8 @@ public class AJerkLimit implements AFilter {
             }
 
             // if there is an acceleration limit, limit the acceleration
-            if (0 < mAccelLimit.doubleValue()) {
-                mAccel = SLMath.clamp(mAccel, mAccelLimit.doubleValue());
+            if (0 < mVelLimit.doubleValue()) {
+                mAccel = SLMath.clamp(mAccel, mVelLimit.doubleValue());
             }
 
             // adjust output by calculated acceleration
