@@ -59,6 +59,10 @@ public abstract class Controller {
         return new BinaryController(this, other);
     }
 
+    public DerivativeController derivative() {
+        return new DerivativeController(this);
+    }
+
     public double update(double setpoint, double measurement) {
         mSetpoint = mSetpointFilter.get(setpoint);
         mMeasurement = mMeasurementFilter.get(measurement);
