@@ -67,7 +67,7 @@ public class Playground {
     public static void main(String[] args) throws InterruptedException {
         Plot plot = new Plot();
 
-        plot.addPlot(Constants.settings("Functions"))
+        plot.addTab(Constants.settings("Functions"))
 			.addSeries(Constants.make("y=x", x -> x))
             .addSeries(
 				Constants.make(
@@ -80,7 +80,7 @@ public class Playground {
 						new Vector2D(0.8, 0.02),
 						new Vector2D(1.0, 0.11))))
 
-			.addPlot(Constants.settings("Filters"))
+			.addTab(Constants.settings("Filters"))
 			.addSeries(Constants.make("mouse y", IStream.create(plot::getMouseY)))
             .addSeries(
 				Constants.make(
@@ -94,7 +94,7 @@ public class Playground {
 					BStream.create(() -> plot.getMouseY() > 0.5)
 						.filtered(new BDebounce.Both(1.0))))
 
-			.addPlot(Constants.settings("XY Graph"))
+			.addTab(Constants.settings("XY Graph"))
 			.addSeries(Constants.make("mouse position", VStream.create(plot::getMouse)))
 			.addSeries(Constants.make(
 					"jerk limit",

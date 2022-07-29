@@ -67,7 +67,7 @@ public class Plot {
         mouse = new MouseTracker(frame);
     }
 
-    public Plot addPlot(Settings settings) {
+    public Plot addTab(Settings settings) {
         Tab tab = new Tab(settings);
 
         tabs.add(tab);
