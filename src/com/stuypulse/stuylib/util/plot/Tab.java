@@ -7,6 +7,7 @@ import java.util.List;
 import org.knowm.xchart.XChartPanel;
 import org.knowm.xchart.XYChart;
 import org.knowm.xchart.XYChartBuilder;
+import org.knowm.xchart.style.Styler.LegendPosition;
 
 public class Tab {
 
@@ -37,6 +38,8 @@ public class Tab {
 
         instance.getStyler().setXAxisMin(settings.getXMin());
         instance.getStyler().setXAxisMax(settings.getXMax());
+
+        instance.getStyler().setLegendPosition(LegendPosition.InsideNW);
 		
         panel = new XChartPanel<XYChart>(instance);
         panel.setName(settings.getTitle());
