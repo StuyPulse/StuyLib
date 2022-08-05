@@ -73,8 +73,8 @@ public class Playground {
         AStream rate_angle = angle_mouse.filtered(new ARateLimit(1));
         AStream lpf_angle = angle_mouse.filtered(new ALowPassFilter(0.5));
         AStream hpf_angle = angle_mouse.filtered(new AHighPassFilter(0.5));
-        AStream delay_angle = angle_mouse.filtered(new ALowPassFilter(0.04),new ALowPassFilter(0.04),new ALowPassFilter(0.04),new ALowPassFilter(0.04),new ALowPassFilter(0.04));
-        AStream afuser_angle = new AFuser(0.1, delay_angle, angle_mouse);
+        AStream delay_angle = angle_mouse.filtered(new ALowPassFilter(0.25)).add(AStream.create(IStream.create(() -> Math.random() - 0.5).filtered(new LowPassFilter(1))));
+        AStream afuser_angle = new AFuser(1, delay_angle, angle_mouse);
 
         VStream mouse = VStream.create(() -> angle_mouse.get().getVector().mul(1.0));
         VStream jerk = VStream.create(() -> jerk_angle.get().getVector().mul(0.95));
