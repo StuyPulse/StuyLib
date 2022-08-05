@@ -60,7 +60,7 @@ public class VFuser implements VStream {
     }
 
     private Vector2D getFast() {
-        return mFastFilter.get(mFast.get().sub(mFastOffset));
+        return mFastFilter.get(mFast.get().add(mFastOffset));
     }
 
     /** Get the result of merging the two datastreams together */

@@ -60,7 +60,7 @@ public class AFuser implements AStream {
     }
 
     private Angle getFast() {
-        return mFastFilter.get(mFast.get().sub(mFastOffset));
+        return mFastFilter.get(mFast.get().add(mFastOffset));
     }
 
     /** Get the result of merging the two datastreams together */

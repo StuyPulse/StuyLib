@@ -59,7 +59,7 @@ public class IFuser implements IStream {
     }
 
     private double getFast() {
-        return mFastFilter.get(mFast.get() - mFastOffset);
+        return mFastFilter.get(mFast.get() + mFastOffset);
     }
 
     /** Get the result of merging the two datastreams together */
