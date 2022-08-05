@@ -11,11 +11,11 @@ import com.stuypulse.stuylib.streams.vectors.filters.VLowPassFilter;
 
 /**
  * A class that combines two VStreams, usually in order to combine some slow data source with a
- * faster one. The Setpoint VStream will return the error of some system, and the Measurement
- * VStream will return the value of the faster data source. The Measurement VStream should generally
- * move in the opposite direction of the Setpoint VStream.
+ * faster one. The Base Measurement should generally drift less while the Fast Measurement should
+ * have less delay. The Fast measurement will go through a high pass filter so it is less important
+ * if that one drifts compared to the Base Measurement.
  *
- * <p>Example Usage: Setpoint = Limelight, Measurement = Encoders
+ * <p>Example Usage: BaseMeasurement = Limelight, FastMeasurement = Encoders
  *
  * @author Myles Pasetsky
  */
@@ -23,49 +23,48 @@ public class VFuser implements VStream {
 
     private final Number mFilterRC;
 
-    private final VStream mSetpoint;
-    private final VStream mMeasurement;
+    private final VStream mBase;
+    private final VStream mFast;
 
-    private VFilter mSetpointFilter;
-    private VFilter mMeasurementFilter;
+    private VFilter mBaseFilter;
+    private VFilter mFastFilter;
 
-    private Vector2D mInitialTarget;
+    private Vector2D mFastOffset;
 
     /**
-     * Create an VFuser with an RC, Setpoint Filter, and Measurement Filter
+     * Create an VFuser with an RC, Base/Fast Measurement stream
      *
      * @param rc RC value for the lowpass / highpass filters
-     * @param setpoint a filter that returns the error in a control loop
-     * @param measurement a filter that returns an encoder / any measurement (should be negative of
-     *     setpoint)
+     * @param baseMeasurement a stream that returns the slow, but accurate measurement values
+     * @param fastMeasurement a stream that returns faster, less accurate measurement values
      */
-    public VFuser(Number rc, VStream setpoint, VStream measurement) {
-        mSetpoint = setpoint;
-        mMeasurement = measurement;
+    public VFuser(Number rc, VStream baseMeasurement, VStream fastMeasurement) {
+        mBase = baseMeasurement;
+        mFast = fastMeasurement;
 
         mFilterRC = rc;
 
-        initialize();
+        reset();
     }
 
     /** Resets the VFuser so that it can ignore any previous data / reset its initial read */
-    public void initialize() {
-        mSetpointFilter = new VLowPassFilter(mFilterRC);
-        mMeasurementFilter = new VHighPassFilter(mFilterRC);
+    public void reset() {
+        mBaseFilter = new VLowPassFilter(mFilterRC);
+        mFastFilter = new VHighPassFilter(mFilterRC);
 
-        mInitialTarget = mSetpoint.get().add(mMeasurement.get());
+        mFastOffset = mBase.get().sub(mFast.get());
     }
 
-    private Vector2D getSetpoint() {
-        return mSetpointFilter.get(mSetpoint.get());
+    private Vector2D getBase() {
+        return mBaseFilter.get(mBase.get());
     }
 
-    private Vector2D getMeasurement() {
-        return mMeasurementFilter.get(mInitialTarget.sub(mMeasurement.get()));
+    private Vector2D getFast() {
+        return mFastFilter.get(mFast.get().sub(mFastOffset));
     }
 
-    /** Get the result of merging the setpoint and measurement streams */
+    /** Get the result of merging the two datastreams together */
     public Vector2D get() {
-        return getSetpoint().add(getMeasurement());
+        return getBase().add(getFast());
     }
 }

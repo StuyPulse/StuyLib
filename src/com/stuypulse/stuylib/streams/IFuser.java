@@ -10,11 +10,11 @@ import com.stuypulse.stuylib.streams.filters.LowPassFilter;
 
 /**
  * A class that combines two IStreams, usually in order to combine some slow data source with a
- * faster one. The Setpoint IStream will return the error of some system, and the Measurement
- * IStream will return the value of the faster data source. The Measurement IStream should generally
- * move in the opposite direction of the Setpoint IStream.
+ * faster one. The Base Measurement should generally drift less while the Fast Measurement should
+ * have less delay. The Fast measurement will go through a high pass filter so it is less important
+ * if that one drifts compared to the Base Measurement.
  *
- * <p>Example Usage: Setpoint = Limelight, Measurement = Encoders
+ * <p>Example Usage: BaseMeasurement = Limelight, FastMeasurement = Encoders
  *
  * @author Myles Pasetsky
  */
@@ -22,49 +22,48 @@ public class IFuser implements IStream {
 
     private final Number mFilterRC;
 
-    private final IStream mSetpoint;
-    private final IStream mMeasurement;
+    private final IStream mBase;
+    private final IStream mFast;
 
-    private IFilter mSetpointFilter;
-    private IFilter mMeasurementFilter;
+    private IFilter mBaseFilter;
+    private IFilter mFastFilter;
 
-    private double mInitialTarget;
+    private double mFastOffset;
 
     /**
-     * Create an IFuser with an RC, Setpoint Filter, and Measurement Filter
+     * Create an IFuser with an RC, Base/Fast Measurement stream
      *
      * @param rc RC value for the lowpass / highpass filters
-     * @param setpoint a filter that returns the error in a control loop
-     * @param measurement a filter that returns an encoder / any measurement (should be negative of
-     *     setpoint)
+     * @param baseMeasurement a stream that returns the slow, but accurate measurement values
+     * @param fastMeasurement a stream that returns faster, less accurate measurement values
      */
-    public IFuser(Number rc, IStream setpoint, IStream measurement) {
-        mSetpoint = setpoint;
-        mMeasurement = measurement;
+    public IFuser(Number rc, IStream baseMeasurement, IStream fastMeasurement) {
+        mBase = baseMeasurement;
+        mFast = fastMeasurement;
 
         mFilterRC = rc;
 
-        initialize();
+        reset();
     }
 
     /** Resets the IFuser so that it can ignore any previous data / reset its initial read */
-    public void initialize() {
-        mSetpointFilter = new LowPassFilter(mFilterRC);
-        mMeasurementFilter = new HighPassFilter(mFilterRC);
+    public void reset() {
+        mBaseFilter = new LowPassFilter(mFilterRC);
+        mFastFilter = new HighPassFilter(mFilterRC);
 
-        mInitialTarget = mSetpoint.get() + mMeasurement.get();
+        mFastOffset = mBase.get() - mFast.get();
     }
 
-    private double getSetpoint() {
-        return mSetpointFilter.get(mSetpoint.get());
+    private double getBase() {
+        return mBaseFilter.get(mBase.get());
     }
 
-    private double getMeasurement() {
-        return mMeasurementFilter.get(mInitialTarget - mMeasurement.get());
+    private double getFast() {
+        return mFastFilter.get(mFast.get() - mFastOffset);
     }
 
-    /** Get the result of merging the setpoint and measurement streams */
+    /** Get the result of merging the two datastreams together */
     public double get() {
-        return getSetpoint() + getMeasurement();
+        return getBase() + getFast();
     }
 }
