@@ -2,7 +2,6 @@
 
 [![Jitpack Website](https://jitpack.io/v/StuyPulse/StuyLib.svg)](https://jitpack.io/#StuyPulse/StuyLib)
 [![Build](https://github.com/StuyPulse/StuyLib/actions/workflows/build.yml/badge.svg)](https://github.com/StuyPulse/StuyLib/actions/workflows/build.yml)
-[![Pages](https://github.com/StuyPulse/StuyLib/actions/workflows/pages.yml/badge.svg)](https://stuypulse.github.io/StuyLib/)
 
 ---
 
