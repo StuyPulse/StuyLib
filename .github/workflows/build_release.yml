@@ -25,7 +25,7 @@ jobs:
         uses: actions/checkout@v3
 
       - name: Set up JDK ${{ env.JAVA_VERSION }}
-        uses: actions/setup-java@v1
+        uses: actions/setup-java@v3.4.1
         with:
           java-version: ${{ env.JAVA_VERSION }}
 
@@ -35,41 +35,42 @@ jobs:
           arguments: javadoc -Pversion=${{ github.event.release.tag_name }}
         
       - name: Setup Pages
-        uses: actions/configure-pages@v1
+        uses: actions/configure-pages@v2.0.0
       
       - name: Upload artifact
-        uses: actions/upload-pages-artifact@v1
+        uses: actions/upload-pages-artifact@v1.0.3
         with:
           path: './docs/'
       
       - name: Deploy to GitHub Pages
         id: deployment
-        uses: actions/deploy-pages@v1
+        uses: actions/deploy-pages@v1.0.9
 
   deploy:
     name: Prepare Jar & JitPack
     
     runs-on: ubuntu-latest
     steps:
-    - uses: actions/checkout@v2
+      - name: Checkout
+        uses: actions/checkout@v3
     
-    - name: Set up JDK ${{ env.JAVA_VERSION }}
-      uses: actions/setup-java@v1
-      with:
-        java-version: ${{ env.JAVA_VERSION }}
-        
-    - name: Build - Gradle ${{ env.GRADLE_VERSION }}
-      uses: gradle/gradle-build-action@v2.3.0-beta.1
-      with:
-        arguments: build -Pversion=${{ github.event.release.tag_name }}
+      - name: Set up JDK ${{ env.JAVA_VERSION }}
+        uses: actions/setup-java@v3.4.1
+        with:
+          java-version: ${{ env.JAVA_VERSION }}
 
-    - name: Upload Assets to Release
-      uses: AButler/upload-release-assets@v2.0
-      with:
-        files: ./build/libs/*.jar
-        repo-token: ${{ secrets.GITHUB_TOKEN }}
-        
-    - name: Update JitPack
-      uses: badasintended/autojitpack@v1
-      with:
-        version: ${{ github.event.release.tag_name }}
+      - name: Build - Gradle ${{ env.GRADLE_VERSION }}
+        uses: gradle/gradle-build-action@v2.3.0-beta.1
+        with:
+          arguments: build -Pversion=${{ github.event.release.tag_name }}
+
+      - name: Upload Assets to Release
+        uses: AButler/upload-release-assets@v2.0
+        with:
+          files: ./build/libs/*.jar
+          repo-token: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Update JitPack
+        uses: badasintended/autojitpack@v1
+        with:
+          version: ${{ github.event.release.tag_name }}
