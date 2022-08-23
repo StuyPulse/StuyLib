@@ -45,7 +45,7 @@ public class Plot {
     /**
      * Creates a configured plot
      *
-     * @param settings plot & window settings
+     * @param settings plot and window settings
      */
     public Plot(Settings settings) {
         // Setup series
