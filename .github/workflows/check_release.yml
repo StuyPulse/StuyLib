@@ -2,30 +2,54 @@ name: Build StuyLib
 
 on: [push, fork, pull_request]
 
+env:
+  JAVA_VERSION: 1.11
+  GRADLE_VERSION: 7.2
+  
 jobs:
-  build:
-
+  build-check:
     runs-on: ubuntu-latest
-
     steps:
     - uses: actions/checkout@v2
     
-    - name: Set up JDK 1.11
+    - name: Set up JDK ${{ env.JAVA_VERSION }}
       uses: actions/setup-java@v1
       with:
-        java-version: 1.11
-        
-    - name: Spotless Check
-      uses: gradle/gradle-build-action@v2.3.0-beta.1
-      with:
-        arguments: spotlessCheck
-        
-    - name: Javadocs Check
-      uses: gradle/gradle-build-action@v2.3.0-beta.1
-      with:
-        arguments: javadoc
+        java-version: ${{ env.JAVA_VERSION }}
         
     - name: Build
       uses: gradle/gradle-build-action@v2.3.0-beta.1
       with:
         arguments: build
+        
+  spotless-check:
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v2
+    
+    - name: Set up JDK ${{ env.JAVA_VERSION }}
+      uses: actions/setup-java@v1
+      with:
+        java-version: ${{ env.JAVA_VERSION }}
+        
+    - name: Spotless Check
+      uses: gradle/gradle-build-action@v2.3.0-beta.1
+      with:
+        gradle-version: ${{ env.GRADLE_VERSION }} 
+        arguments: spotlessCheck
+        
+  javadocs-check:
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v2
+    
+    - name: Set up JDK ${{ env.JAVA_VERSION }}
+      uses: actions/setup-java@v1
+      with:
+        java-version: ${{ env.JAVA_VERSION }}
+      
+    - name: Javadocs Check
+      uses: gradle/gradle-build-action@v2.3.0-beta.1
+      with:
+        arguments: javadoc
+        
