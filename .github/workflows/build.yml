@@ -1,4 +1,4 @@
-name: StuyLib Checks / Build Release
+name: Build
 
 on: [push, fork, pull_request]
 
@@ -8,7 +8,7 @@ env:
   
 jobs:   
   spotless-check:
-    name: Check Spotless Apply
+    name: Spotless Apply
   
     runs-on: ubuntu-latest
     steps:
@@ -26,7 +26,7 @@ jobs:
         arguments: spotlessCheck
         
   javadocs-check:
-    name: Check Javadocs
+    name: Javadocs
     
     runs-on: ubuntu-latest
     steps:
@@ -43,7 +43,7 @@ jobs:
         arguments: javadoc
         
   final-build:
-    name: Final Build
+    name: Finalize
     
     needs: 
     - spotless-check
