@@ -9,10 +9,10 @@ import com.stuypulse.stuylib.math.Vector2D;
 import com.stuypulse.stuylib.streams.vectors.VStream;
 
 /**
- * When controlling angle with a joystick that has a deadzone filter, the angle will snap to 0 degrees
- * while in the deadzone. This class prevents the angle snapping and will return the most recent
- * angle from outside of the deadzone.
- * 
+ * When controlling angle with a joystick that has a deadzone filter, the angle will snap to 0
+ * degrees while in the deadzone. This class prevents the angle snapping and will return the most
+ * recent angle from outside of the deadzone.
+ *
  * @author Benjamin Goldfisher
  */
 public class AStick implements AStream {
@@ -39,5 +39,4 @@ public class AStick implements AStream {
 
         return mPrevious;
     }
-    
 }

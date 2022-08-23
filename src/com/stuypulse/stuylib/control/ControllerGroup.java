@@ -6,7 +6,7 @@ package com.stuypulse.stuylib.control;
 
 public class ControllerGroup extends Controller {
 
-    private final Controller mController; 
+    private final Controller mController;
     private final Controller[] mControllers;
 
     public ControllerGroup(Controller controller, Controller... controllers) {
@@ -21,7 +21,7 @@ public class ControllerGroup extends Controller {
         for (Controller controller : mControllers) {
             output += controller.update(setpoint, measurement);
         }
-        
+
         return output;
     }
 }
