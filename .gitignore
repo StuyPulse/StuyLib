@@ -4,11 +4,11 @@
 !.gitignore
 
 # Folders used for code
-!.github/
-!gradle/
-!pictures/
-!src/
-!vendordeps/
+!.github
+!gradle
+!pictures
+!src
+!vendordeps
 
 # Files uses for JitPack CI
 !.classpath
