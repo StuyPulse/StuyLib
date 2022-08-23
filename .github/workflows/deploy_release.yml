@@ -2,7 +2,7 @@ name: Deploy Release
 
 on:
   release:
-    type: [created]
+    types: [created]
 
 env:
   JAVA_VERSION: 1.11
