@@ -42,3 +42,8 @@ jobs:
       with:
         files: ./build/libs/*.jar
         repo-token: ${{ secrets.GITHUB_TOKEN }}
+        
+    - name: Update JitPack
+      uses: badasintended/autojitpack@v1
+      with:
+        version: ${{ github.event.release.tag_name }}
