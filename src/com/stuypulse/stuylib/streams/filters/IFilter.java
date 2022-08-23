@@ -4,8 +4,6 @@
 
 package com.stuypulse.stuylib.streams.filters;
 
-import com.stuypulse.stuylib.streams.booleans.filters.BFilter;
-
 /**
  * This is the Filter interface class that gives a definition for how to implement a filter.
  *
@@ -16,31 +14,28 @@ import com.stuypulse.stuylib.streams.booleans.filters.BFilter;
  */
 public interface IFilter {
 
-    /** @return a filter that just returns it's input */
-    public static IFilter create() {
-        return x -> x;
-    }
-
     /**
-     * Create an IFilter from another IFilter. This is helpful if you want to use some of the
-     * decorator functions with a lambda.
+     * Create an IFilter from a list of IFilters. This will create an IFilter with the least
+     * possible overhead for the number of filters provided.
      *
-     * @param filter filter to create IFilter from
-     * @return the resulting IFilter
+     * @param filters list of IFilters to apply
+     * @return an IFilter that uses every filter given
      */
-    public static IFilter create(IFilter filter) {
-        return filter;
-    }
-
-    /**
-     * Create an IFilter from a BFilter. This will cast the double to a boolean, filter it, and cast
-     * it back to a double.
-     *
-     * @param filter filter to create IFilter from
-     * @return the resulting IFilter
-     */
-    public static IFilter create(BFilter filter) {
-        return x -> filter.get(Math.abs(x) > 0.5) ? 1.0 : 0.0;
+    public static IFilter create(IFilter... filters) {
+        switch (filters.length) {
+            case 0:
+                return x -> x;
+            case 1:
+                return filters[0];
+            case 2:
+                return x -> filters[1].get(filters[0].get(x));
+            case 3:
+                return x -> filters[2].get(filters[1].get(filters[0].get(x)));
+            case 4:
+                return x -> filters[3].get(filters[2].get(filters[1].get(filters[0].get(x))));
+            default:
+                return new IFilterGroup(filters);
+        }
     }
 
     /**

@@ -203,6 +203,24 @@ public final class Vector2D {
         }
     }
 
+    /**
+     * limit the magnitude of a vector to a maximum
+     *
+     * @param maxMagnitude max magitude of resulting vector
+     * @return vector with limited magnitude
+     */
+    public Vector2D clamp(double maxMagnitude) {
+        if (maxMagnitude <= 0.0) return Vector2D.kOrigin;
+
+        final double magnitude = this.distance();
+
+        if (maxMagnitude <= magnitude) {
+            return mul(maxMagnitude / magnitude);
+        }
+
+        return this;
+    }
+
     /** @return result of negating the x and y components */
     public Vector2D negative() {
         return new Vector2D(-this.x, -this.y);

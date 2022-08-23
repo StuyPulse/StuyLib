@@ -5,7 +5,6 @@
 package com.stuypulse.stuylib.streams.booleans;
 
 import com.stuypulse.stuylib.streams.booleans.filters.BFilter;
-import com.stuypulse.stuylib.streams.booleans.filters.BFilterGroup;
 
 /**
  * A FilteredBStream is similar to a FilteredIStream.
@@ -28,7 +27,7 @@ public class FilteredBStream implements BStream {
      */
     public FilteredBStream(BStream stream, BFilter... filter) {
         mStream = stream;
-        mStreamFilter = new BFilterGroup(filter);
+        mStreamFilter = BFilter.create(filter);
     }
 
     /**

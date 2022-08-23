@@ -4,7 +4,7 @@
 
 package com.stuypulse.stuylib.streams;
 
-import com.stuypulse.stuylib.util.Looper;
+import edu.wpi.first.wpilibj.Notifier;
 
 /**
  * A PollingIStream calls {@link IStream#get()} every x milliseconds instead of when the user calls
@@ -12,9 +12,9 @@ import com.stuypulse.stuylib.util.Looper;
  *
  * @author Sam (sam.belliveau@gmail.com)
  */
-public class PollingIStream implements IStream {
+public class PollingIStream implements IStream, AutoCloseable {
 
-    private Looper mPoller;
+    private Notifier mPoller;
     private volatile double mResult;
 
     /**
@@ -29,14 +29,20 @@ public class PollingIStream implements IStream {
         }
 
         mResult = 0.0;
-        mPoller = new Looper(() -> mResult = stream.get(), dt);
+        mPoller = new Notifier(() -> mResult = stream.get());
+        mPoller.startPeriodic(dt);
     }
 
     public double get() {
-        if (!mPoller.isAlive()) {
-            mPoller.start();
-        }
-
         return mResult;
+    }
+
+    protected void finalize() {
+        close();
+    }
+
+    public void close() {
+        mPoller.close();
+        mResult = 0.0;
     }
 }

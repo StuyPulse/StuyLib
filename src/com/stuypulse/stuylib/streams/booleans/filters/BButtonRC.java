@@ -30,7 +30,7 @@ public interface BButtonRC extends BFilter {
         private HighPassFilter mFilter;
 
         /** @param decay time in seconds to remain true after the BStream is pressed or released */
-        public Both(double decay) {
+        public Both(Number decay) {
             mFilter = new HighPassFilter(decay);
         }
 
@@ -44,7 +44,7 @@ public interface BButtonRC extends BFilter {
         private HighPassFilter mFilter;
 
         /** @param decay time in seconds to remain true after the BStream has been pressed */
-        public Pressed(double decay) {
+        public Pressed(Number decay) {
             mFilter = new HighPassFilter(decay);
         }
 
@@ -57,7 +57,7 @@ public interface BButtonRC extends BFilter {
         private HighPassFilter mFilter;
 
         /** @param decay time in seconds to remain true after the BStream has been released */
-        public Released(double decay) {
+        public Released(Number decay) {
             mFilter = new HighPassFilter(decay);
         }
 
