@@ -1,15 +1,8 @@
 name: Deploy Release
 
-on: 
+on:
   release:
-
-env:
-  JAVA_VERSION: 1.11
-  GRADLE_VERSION: 7.2
-  
-  jobs:name: Build
-
-on: [push, fork, pull_request]
+    type: create
 
 env:
   JAVA_VERSION: 1.11
@@ -18,10 +11,6 @@ env:
 jobs:
   deploy:
     name: Deploy
-    
-    needs: 
-    - spotless-check
-    - javadocs-check
     
     runs-on: ubuntu-latest
     steps:
@@ -47,3 +36,9 @@ jobs:
       uses: gradle/gradle-build-action@v2.3.0-beta.1
       with:
         arguments: build -Pversion=${{ github.event.release.tag_name }}
+
+    - name: Upload Assets to Release
+      uses: AButler/upload-release-assets@v2.0
+      with:
+        files: ./build./libs/*.jar
+        repo-token: ${{ secrets.github_token }}
