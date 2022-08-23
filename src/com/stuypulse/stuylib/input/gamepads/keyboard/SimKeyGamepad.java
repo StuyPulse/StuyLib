@@ -4,7 +4,7 @@
 
 package com.stuypulse.stuylib.input.gamepads.keyboard;
 
-import com.stuypulse.stuylib.util.chart.KeyTracker;
+import com.stuypulse.stuylib.util.plot.KeyTracker;
 
 import java.awt.Color;
 import javax.swing.JFrame;

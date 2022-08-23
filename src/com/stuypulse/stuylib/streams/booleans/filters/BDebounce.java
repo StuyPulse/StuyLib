@@ -27,10 +27,10 @@ public interface BDebounce extends BFilter {
     public static class Rising implements BDebounce {
 
         private final StopWatch mTimer;
-        private final double mDebounceTime;
+        private final Number mDebounceTime;
 
         /** @param debounceTime amount of time the BStream must remain true before returning true */
-        public Rising(double debounceTime) {
+        public Rising(Number debounceTime) {
             mTimer = new StopWatch();
             mDebounceTime = debounceTime;
         }
@@ -41,7 +41,7 @@ public interface BDebounce extends BFilter {
                 return false;
             }
 
-            return (mDebounceTime < mTimer.getTime()) == true;
+            return (mDebounceTime.doubleValue() < mTimer.getTime()) == true;
         }
     }
 
@@ -53,12 +53,12 @@ public interface BDebounce extends BFilter {
     public static class Falling implements BDebounce {
 
         private final StopWatch mTimer;
-        private final double mDebounceTime;
+        private final Number mDebounceTime;
 
         /**
          * @param debounceTime amount of time the BStream must remain false before returning false
          */
-        public Falling(double debounceTime) {
+        public Falling(Number debounceTime) {
             mTimer = new StopWatch();
             mDebounceTime = debounceTime;
         }
@@ -69,7 +69,7 @@ public interface BDebounce extends BFilter {
                 return true;
             }
 
-            return (mDebounceTime < mTimer.getTime()) == false;
+            return (mDebounceTime.doubleValue() < mTimer.getTime()) == false;
         }
     }
 
@@ -82,11 +82,11 @@ public interface BDebounce extends BFilter {
     public static class Both implements BDebounce {
 
         private final StopWatch mTimer;
-        private final double mDebounceTime;
+        private final Number mDebounceTime;
         private boolean mLastValue;
 
         /** @param debounceTime amount of time the BStream must remain constant before changing */
-        public Both(double debounceTime) {
+        public Both(Number debounceTime) {
             mTimer = new StopWatch();
             mDebounceTime = debounceTime;
             mLastValue = false;
@@ -96,7 +96,7 @@ public interface BDebounce extends BFilter {
             if (next == mLastValue) {
                 mTimer.reset();
                 return mLastValue;
-            } else if (mDebounceTime < mTimer.getTime()) {
+            } else if (mDebounceTime.doubleValue() < mTimer.getTime()) {
                 mTimer.reset();
                 return mLastValue = next;
             } else {

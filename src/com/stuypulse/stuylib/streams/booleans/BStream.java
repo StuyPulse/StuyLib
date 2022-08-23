@@ -4,9 +4,9 @@
 
 package com.stuypulse.stuylib.streams.booleans;
 
-import com.stuypulse.stuylib.streams.IStream;
 import com.stuypulse.stuylib.streams.booleans.filters.BFilter;
 
+import edu.wpi.first.wpilibj.DigitalInput;
 import edu.wpi.first.wpilibj2.command.button.Button;
 import java.util.function.BooleanSupplier;
 
@@ -30,14 +30,14 @@ public interface BStream extends BooleanSupplier {
     }
 
     /**
-     * Create a BStream from another IStream. This will check if the amplitude is above a certain
-     * threshold.
+     * Create a BStream from a digital source. This can helpful for processing a digital stream,
+     * like negating the value when used for switches.
      *
-     * @param stream stream to create IStream from
+     * @param input digital input object
      * @return the resulting BStream
      */
-    public static BStream create(IStream stream) {
-        return () -> Math.abs(stream.get()) > 0.5;
+    public static BStream create(DigitalInput input) {
+        return input::get;
     }
 
     /** @return next value in the stream */

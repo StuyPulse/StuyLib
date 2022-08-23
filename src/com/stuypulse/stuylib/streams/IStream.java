@@ -89,4 +89,13 @@ public interface IStream extends DoubleSupplier {
     public default IStream sub(IStream other) {
         return () -> get() - other.get();
     }
+
+    /**
+     * Casts an IStream to a Number
+     *
+     * @return a Number that reads from this stream
+     */
+    public default NumberStream number() {
+        return new NumberStream(this);
+    }
 }

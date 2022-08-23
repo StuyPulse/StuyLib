@@ -1,3 +1,0 @@
-# StuyLib Chart Library
-
-WIP...

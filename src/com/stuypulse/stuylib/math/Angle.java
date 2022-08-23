@@ -221,6 +221,16 @@ public final class Angle {
         return fromRadians(Math.atan(slope));
     }
 
+    /**
+     * Constructs a new Angle from a WPILib Rotation2d
+     *
+     * @param rotation rotation2d object
+     * @return the same angle
+     */
+    public static Angle fromRotation2d(Rotation2d rotation) {
+        return Angle.fromDegrees(rotation.getDegrees());
+    }
+
     /****************************/
     /*** CLASS IMPLEMENTATION ***/
     /****************************/
@@ -315,6 +325,39 @@ public final class Angle {
      */
     public Angle sub(Angle other) {
         return fromRadians(this.toRadians() - other.toRadians());
+    }
+
+    /**
+     * Get the angular velocity in radians given 2 angles and a dt
+     *
+     * @param prev the previous angle to measure velocity from
+     * @param dt the time between measurements
+     * @return the calculated angular velocity in radians/s
+     */
+    public double velocityRadians(Angle prev, double dt) {
+        return normalizeRadians(this.toRadians() - prev.toRadians(), 0.0) / dt;
+    }
+
+    /**
+     * Get the angular velocity in rotations/s given 2 angles and a dt
+     *
+     * @param prev the previous angle to measure velocity from
+     * @param dt the time between measurements
+     * @return the calculated angular velocity in rotations/s
+     */
+    public double velocityRotations(Angle prev, double dt) {
+        return normalizeRotations(this.toRotations() - prev.toRotations(), 0.0) / dt;
+    }
+
+    /**
+     * Get the angular velocity in degrees/s given 2 angles and a dt
+     *
+     * @param prev the previous angle to measure velocity from
+     * @param dt the time between measurements
+     * @return the calculated angular velocity in degrees/s
+     */
+    public double velocityDegrees(Angle prev, double dt) {
+        return normalizeDegrees(this.toDegrees() - prev.toDegrees(), 0.0) / dt;
     }
 
     /**

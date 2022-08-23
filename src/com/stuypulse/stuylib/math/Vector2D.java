@@ -57,6 +57,12 @@ public final class Vector2D {
         this.y = axis[1];
     }
 
+    /** @param translation Translation2d to copy this vector into */
+    public Vector2D(Translation2d translation) {
+        this.x = translation.getX();
+        this.y = translation.getY();
+    }
+
     /** @return double array of size 2 defined as {x, y} */
     public double[] getArray() {
         return new double[] {x, y};
@@ -179,6 +185,14 @@ public final class Vector2D {
         return this.x * other.x + this.y * other.y;
     }
 
+    /**
+     * @param other Vector3D to perform cross product with
+     * @return result of performing the cross product with the other Vector2D
+     */
+    public double cross(Vector2D other) {
+        return this.x * other.y - this.y * other.x;
+    }
+
     /** @return result of normalizing the Vector2D so that the magnitude is 1.0 */
     public Vector2D normalize() {
         final double magnitude = this.distance();
@@ -187,6 +201,24 @@ public final class Vector2D {
         } else {
             return this.div(magnitude);
         }
+    }
+
+    /**
+     * limit the magnitude of a vector to a maximum
+     *
+     * @param maxMagnitude max magitude of resulting vector
+     * @return vector with limited magnitude
+     */
+    public Vector2D clamp(double maxMagnitude) {
+        if (maxMagnitude <= 0.0) return Vector2D.kOrigin;
+
+        final double magnitude = this.distance();
+
+        if (maxMagnitude <= magnitude) {
+            return mul(maxMagnitude / magnitude);
+        }
+
+        return this;
     }
 
     /** @return result of negating the x and y components */
