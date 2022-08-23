@@ -7,7 +7,7 @@ on:
 env:
   JAVA_VERSION: 1.11
   GRADLE_VERSION: 7.2
- 
+
 jobs:
   deploy:
     name: Deploy
@@ -41,4 +41,4 @@ jobs:
       uses: AButler/upload-release-assets@v2.0
       with:
         files: ./build./libs/*.jar
-        repo-token: ${{ secrets.github_token }}
+        repo-token: ${{ secrets.GITHUB_TOKEN }}
