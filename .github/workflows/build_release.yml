@@ -1,11 +1,7 @@
 
 name: Build StuyLib
 
-on:
-  push:
-    branches: [ main ]
-  pull_request:
-    branches: [ main ]
+on: [push, fork, pull_request]
 
 jobs:
   build:
