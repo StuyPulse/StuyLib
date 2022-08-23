@@ -1,15 +1,33 @@
 # Ignore everything
-.*
-*/
+*
 !.gitignore
 
-# Folders used for code
+# Folders / Formats used for code
 !.github/
-!gradle/
-!pictures/
-!src/
-!vendordeps/
+!.github/**/*
 
-# Files uses for JitPack CI
+!gradle/
+!gradle/**/*
+
+!pictures/
+!pictures/**/*
+
+!vendordeps/
+!vendordeps/**/*
+
+!src/
+!src/**/*
+
+# Files reauired by gradle
+!build.gradle
+!gradlew
+!gradlew.bat
+!settings.gradle
+
+# Github Files
+!LICENSE
+!README.md
+
+# Files used for JitPack CI
 !.classpath
 !.travis.yml
