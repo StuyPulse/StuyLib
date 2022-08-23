@@ -19,7 +19,7 @@ public class NumberStream extends Number implements IStream {
     /**
      * Create a number stream given a stream
      *
-     * @param stream
+     * @param stream IStream to return through number classes
      */
     public NumberStream(IStream stream) {
         mStream = stream;

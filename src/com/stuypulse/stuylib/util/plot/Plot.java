@@ -36,6 +36,8 @@ public class Plot {
 
     /**
      * Creates a configured plot
+     *
+     * @param settings plot and window settings
      */
     public Plot() {
         tabs = new ArrayList<Tab>();

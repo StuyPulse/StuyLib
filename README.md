@@ -1,6 +1,6 @@
 ![(Stuylib Logo)](https://github.com/StuyPulse/StuyLib/blob/main/pictures/StuyLibREADME.png?raw=true)
 
-[![Jitpack Website](https://jitpack.io/v/StuyPulse/StuyLib.svg)](https://jitpack.io/#StuyPulse/StuyLib) ![Build StuyLib](https://github.com/StuyPulse/StuyLib/workflows/Build%20StuyLib/badge.svg)
+[![Jitpack Website](https://jitpack.io/v/StuyPulse/StuyLib.svg)](https://jitpack.io/#StuyPulse/StuyLib)
 
 ---
 
@@ -26,7 +26,7 @@ StuyLib is an FRC library / toolkit which includes many different utilities for 
 [Instructions from JitPack.io](https://jitpack.io/#StuyPulse/StuyLib)
 
 Step 0. This is done by default for robot projects, but if your doing a local project you must remember to include this at the top
-```python
+```groovy
 plugins {
     id "java"
     
@@ -36,24 +36,24 @@ plugins {
 }
 ```
 
-Step 1. Add the JitPack repository to your build.gradle
+Step 1. Add the JitPack repository to your `build.gradle`
 
-```python
-	allprojects {
-		repositories {
-			maven { url 'https://jitpack.io' }
-		}
-	}
+```groovy
+allprojects {
+    repositories {
+        maven { url 'https://jitpack.io' }
+    }
+}
 ```
 
- - Step 2. Add the dependency to build.gradle
+ - Step 2. Add the dependency to `build.gradle`
  
  [![Jitpack Website](https://jitpack.io/v/StuyPulse/StuyLib.svg)](https://jitpack.io/#StuyPulse/StuyLib)
-```python
-	dependencies {
-	    // check tag above for most recent version
-	    compile 'com.github.StuyPulse:StuyLib:VERSION'
-	}
+```groovy
+dependencies {
+    // check tag above for most recent version
+    compile 'com.github.StuyPulse:StuyLib:VERSION'
+}
 ```
 
 
