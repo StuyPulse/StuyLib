@@ -7,6 +7,7 @@ package com.stuypulse.stuylib.util.plot;
 import com.stuypulse.stuylib.math.Vector2D;
 import com.stuypulse.stuylib.math.interpolation.*;
 import com.stuypulse.stuylib.streams.*;
+import com.stuypulse.stuylib.streams.angles.AFuser;
 import com.stuypulse.stuylib.streams.angles.AStream;
 import com.stuypulse.stuylib.streams.angles.filters.AHighPassFilter;
 import com.stuypulse.stuylib.streams.angles.filters.ALowPassFilter;
@@ -71,17 +72,30 @@ public class Playground {
         Plot plot = new Plot(Constants.SETTINGS);
 
         VStream m = VStream.create(() -> plot.getMouse().sub(new Vector2D(0.5, 0.5)).mul(2));
-        AStream mouse = AStream.create(() -> m.get().getAngle());
-        AStream jerk = mouse.filtered(new AMotionProfile(-1, 4));
-        AStream rate = mouse.filtered(new ARateLimit(1));
-        AStream lpf = mouse.filtered(new ALowPassFilter(0.5));
-        AStream hpf = mouse.filtered(new AHighPassFilter(0.5));
+        
+        AStream angle_mouse = AStream.create(() -> m.get().getAngle());
+        AStream jerk_angle = angle_mouse.filtered(new AMotionProfile(-1, 4));
+        AStream rate_angle = angle_mouse.filtered(new ARateLimit(1));
+        AStream lpf_angle = angle_mouse.filtered(new ALowPassFilter(0.5));
+        AStream hpf_angle = angle_mouse.filtered(new AHighPassFilter(0.5));
+        AStream delay_angle = angle_mouse.filtered(new ALowPassFilter(0.25)).add(AStream.create(IStream.create(() -> Math.random() - 0.5).filtered(new LowPassFilter(1))));
+        AStream afuser_angle = new AFuser(1, delay_angle, angle_mouse);
 
-        plot.addSeries(Constants.make("Angle", mouse, 1))
-                .addSeries(Constants.make("Jerk", jerk, 0.95))
-                .addSeries(Constants.make("Rate", rate, 0.9))
-                .addSeries(Constants.make("LPF", lpf, 0.85))
-                .addSeries(Constants.make("HPF", hpf, 0.8))
+        VStream mouse = VStream.create(() -> angle_mouse.get().getVector().mul(1.0));
+        VStream jerk = VStream.create(() -> jerk_angle.get().getVector().mul(0.95));
+        VStream rate = VStream.create(() -> rate_angle.get().getVector().mul(0.9));
+        VStream lpf = VStream.create(() -> lpf_angle.get().getVector().mul(0.85));
+        VStream hpf = VStream.create(() -> hpf_angle.get().getVector().mul(0.8));
+        VStream delay = VStream.create(() -> delay_angle.get().getVector().mul(1.1));
+        VStream afuser = VStream.create(() -> afuser_angle.get().getVector().mul(1.05));
+
+        plot.addSeries(Constants.make("Angle", mouse))
+                .addSeries(Constants.make("Jerk", jerk))
+                .addSeries(Constants.make("Rate", rate))
+                .addSeries(Constants.make("LPF", lpf))
+                .addSeries(Constants.make("HPF", hpf))
+                .addSeries(Constants.make("afuser", afuser))
+                .addSeries(Constants.make("delayed", delay))
                 .addSeries(Constants.make("mouse", m));
         //
         // .addSeries(Constants.make("y=x", x -> x))

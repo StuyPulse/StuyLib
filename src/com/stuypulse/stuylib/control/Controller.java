@@ -72,4 +72,5 @@ public abstract class Controller {
     }
 
     protected abstract double calculate(double setpoint, double measurement);
+    
 }
