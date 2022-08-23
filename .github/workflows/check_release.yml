@@ -8,7 +8,7 @@ env:
   
 jobs:   
   spotless-check:
-    name: Check Spotless \- JVM ${{ env.JAVA_VERSION }} \- Gradle ${{ env.GRADLE_VERSION }}
+    name: Check Spotless | JVM ${{ env.JAVA_VERSION }} | Gradle ${{ env.GRADLE_VERSION }}
   
     runs-on: ubuntu-latest
     steps:
