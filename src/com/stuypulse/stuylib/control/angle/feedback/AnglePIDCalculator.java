@@ -88,13 +88,6 @@ public class AnglePIDCalculator extends AngleController {
         return this;
     }
 
-    /**
-     * Calculate the value that the controller wants to move at while calculating the values for the
-     * PIDController
-     *
-     * @param error the error that the controller will use
-     * @return the calculated result from the controller
-     */
     protected double calculate(Angle setpoint, Angle measurement) {
         // Calculate error & time step
         double error = setpoint.sub(measurement).toRadians(); // TODO: add configurable units

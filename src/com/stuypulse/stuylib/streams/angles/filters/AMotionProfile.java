@@ -11,8 +11,8 @@ import com.stuypulse.stuylib.util.StopWatch;
 /**
  * A filter, that when applied to the input of a motor, will profile it. Similar to the way in which
  * motion profiling can limit the amount of acceleration and jerk in an S-Curve, this can do that to
- * real time input. Because this will add a delay, it is recommended that the jerklimit is as high
- * as possible. Aside from the jerklimit, this is identicle to a SlewRateLimiter or TimedRateLimit.
+ * real time input. Because this will add a delay, it is recommended that the accelLimit is as high
+ * as possible. Aside from the accelLimit, this is identicle to a SlewRateLimiter or TimedRateLimit.
  *
  * @author Sam (sam.belliveau@gmail.com)
  */
@@ -36,8 +36,8 @@ public class AMotionProfile implements AFilter {
     private final int mSteps;
 
     /**
-     * @param accelLimit maximum change in velocity per second (u/s)
-     * @param jerkLimit maximum change in acceleration per second (u/s/s)
+     * @param velLimit maximum change in velocity per second (u/s)
+     * @param accelLimit maximum change in acceleration per second (u/s/s)
      * @param steps number of times to apply filter (improves accuracy)
      */
     public AMotionProfile(Number velLimit, Number accelLimit, int steps) {
@@ -53,18 +53,18 @@ public class AMotionProfile implements AFilter {
     }
 
     /**
-     * @param accelLimit maximum change in velocity per second (u/s)
-     * @param jerkLimit maximum change in acceleration per second (u/s/s)
+     * @param velLimit maximum change in velocity per second (u/s)
+     * @param accelLimit maximum change in acceleration per second (u/s/s)
      */
-    public AMotionProfile(Number accelLimit, Number jerkLimit) {
-        this(accelLimit, jerkLimit, kDefaultSteps);
+    public AMotionProfile(Number velLimit, Number accelLimit) {
+        this(velLimit, accelLimit, kDefaultSteps);
     }
 
     public Angle get(Angle target) {
         double dt = mTimer.reset() / mSteps;
 
         for (int i = 0; i < mSteps; ++i) {
-            // if there is a jerk limit, limit the amount the acceleration can change
+            // if there is a accel limit, limit the amount the acceleration can change
             if (0 < mAccelLimit.doubleValue()) {
                 // amount of windup in system (how long it would take to slow down)
                 double windup = Math.abs(mAccel) / mAccelLimit.doubleValue();
@@ -74,7 +74,7 @@ public class AMotionProfile implements AFilter {
                     // Calculate acceleration needed to reach target
                     double accel = target.velocityRadians(mOutput, dt) - mAccel;
 
-                    // Try to reach it while abiding by jerklimit
+                    // Try to reach it while abiding by accellimit
                     mAccel += SLMath.clamp(accel, dt * mAccelLimit.doubleValue());
                 } else {
                     // the position it would end up if it attempted to come to a full stop
@@ -85,7 +85,7 @@ public class AMotionProfile implements AFilter {
                     // Calculate acceleration needed to come to stop at target throughout windup
                     double accel = target.velocityRadians(future, windup);
 
-                    // Try to reach it while abiding by jerklimit
+                    // Try to reach it while abiding by accelLimit
                     mAccel += SLMath.clamp(accel, dt * mAccelLimit.doubleValue());
                 }
 

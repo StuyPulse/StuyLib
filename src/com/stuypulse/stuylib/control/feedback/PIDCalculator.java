@@ -87,13 +87,6 @@ public class PIDCalculator extends Controller {
         return this;
     }
 
-    /**
-     * Calculate the value that the controller wants to move at while calculating the values for the
-     * PIDController
-     *
-     * @param error the error that the controller will use
-     * @return the calculated result from the controller
-     */
     protected double calculate(double setpoint, double measurement) {
         // Calculate error & time step
         double error = setpoint - measurement;

@@ -25,43 +25,46 @@ public abstract class AngleController {
         mOutputFilter = x -> x;
     }
 
-    public AngleController setSetpointFilter(AFilter... setpointFilter) {
+    public final AngleController setSetpointFilter(AFilter... setpointFilter) {
         mSetpointFilter = AFilter.create(setpointFilter);
         return this;
     }
 
-    public AngleController setMeasurementFilter(AFilter... measurementFilter) {
+    public final AngleController setMeasurementFilter(AFilter... measurementFilter) {
         mMeasurementFilter = AFilter.create(measurementFilter);
         return this;
     }
 
-    public AngleController setOutputFilter(IFilter... outputFilter) {
+    public final AngleController setOutputFilter(IFilter... outputFilter) {
         mOutputFilter = IFilter.create(outputFilter);
         return this;
     }
 
-    public Angle getSetpoint() {
+    public final Angle getSetpoint() {
         return mSetpoint;
     }
 
-    public Angle getMeasurement() {
+    public final Angle getMeasurement() {
         return mMeasurement;
     }
 
-    public double getError() {
-        // TODO: add configurable units (for dummies)
-        return getSetpoint().sub(getMeasurement()).toRadians();
+    public final Angle getError() {
+        return getSetpoint().sub(getMeasurement());
     }
 
-    public boolean isDone(double acceptableError) {
-        return Math.abs(getError()) < acceptableError;
+    public final boolean isDoneRadians(double acceptableError) {
+        return Math.abs(getError().toRadians()) < acceptableError;
     }
 
-    public AngleControllerGroup add(AngleController... other) {
+    public final boolean isDoneDegrees(double acceptableError) {
+        return Math.abs(getError().toDegrees()) < acceptableError;
+    }
+
+    public final AngleControllerGroup add(AngleController... other) {
         return new AngleControllerGroup(this, other);
     }
 
-    public double update(Angle setpoint, Angle measurement) {
+    public final double update(Angle setpoint, Angle measurement) {
         mSetpoint = mSetpointFilter.get(setpoint);
         mMeasurement = mMeasurementFilter.get(measurement);
 

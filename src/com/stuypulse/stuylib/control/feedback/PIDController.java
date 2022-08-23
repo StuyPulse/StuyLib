@@ -69,12 +69,6 @@ public class PIDController extends Controller {
         mIntegral = 0;
     }
 
-    /**
-     * Calculate the value that the PIDController wants to move at.
-     *
-     * @param error the error that the controller will use
-     * @return the calculated result from the PIDController
-     */
     @Override
     protected double calculate(double setpoint, double measurement) {
         // Calculate error & time step

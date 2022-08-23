@@ -70,12 +70,6 @@ public class AnglePIDController extends AngleController {
         mIntegral = 0;
     }
 
-    /**
-     * Calculate the value that the PIDController wants to move at.
-     *
-     * @param error the error that the controller will use
-     * @return the calculated result from the PIDController
-     */
     @Override
     protected double calculate(Angle setpoint, Angle measurement) {
         // Calculate error & time step
@@ -179,7 +173,7 @@ public class AnglePIDController extends AngleController {
     public AnglePIDController setIntegratorFilter(Number range, Number limit) {
         mIFilter =
                 new IFilterGroup(
-                        x -> range.doubleValue() <= 0 || isDone(range.doubleValue()) ? x : 0,
+                        x -> range.doubleValue() <= 0 || isDoneRadians(range.doubleValue()) ? x : 0,
                         x -> limit.doubleValue() <= 0 ? x : SLMath.clamp(x, limit.doubleValue()));
         return this;
     }

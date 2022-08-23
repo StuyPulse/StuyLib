@@ -24,46 +24,42 @@ public abstract class Controller {
         mOutputFilter = x -> x;
     }
 
-    public Controller setSetpointFilter(IFilter... setpointFilter) {
+    public final Controller setSetpointFilter(IFilter... setpointFilter) {
         mSetpointFilter = IFilter.create(setpointFilter);
         return this;
     }
 
-    public Controller setMeasurementFilter(IFilter... measurementFilter) {
+    public final Controller setMeasurementFilter(IFilter... measurementFilter) {
         mMeasurementFilter = IFilter.create(measurementFilter);
         return this;
     }
 
-    public Controller setOutputFilter(IFilter... outputFilter) {
+    public final Controller setOutputFilter(IFilter... outputFilter) {
         mOutputFilter = IFilter.create(outputFilter);
         return this;
     }
 
-    public double getSetpoint() {
+    public final double getSetpoint() {
         return mSetpoint;
     }
 
-    public double getMeasurement() {
+    public final double getMeasurement() {
         return mMeasurement;
     }
 
-    public double getError() {
+    public final double getError() {
         return getSetpoint() - getMeasurement();
     }
 
-    public boolean isDone(double acceptableError) {
+    public final boolean isDone(double acceptableError) {
         return Math.abs(getError()) < acceptableError;
     }
 
-    public ControllerGroup add(Controller... other) {
+    public final ControllerGroup add(Controller... other) {
         return new ControllerGroup(this, other);
     }
 
-    public DerivativeController derivative() {
-        return new DerivativeController(this);
-    }
-
-    public double update(double setpoint, double measurement) {
+    public final double update(double setpoint, double measurement) {
         mSetpoint = mSetpointFilter.get(setpoint);
         mMeasurement = mMeasurementFilter.get(measurement);
 

@@ -320,7 +320,7 @@ public final class Angle {
     /**
      * Add two angles together
      *
-     * @param other the other angle in the sum
+     * @param radians the other angle in the sum
      * @return the sum of the two angles [normalized from (-pi, pi)]
      */
     public Angle addRadians(double radians) {
@@ -330,7 +330,7 @@ public final class Angle {
     /**
      * Add two angles together
      *
-     * @param other the other angle in the sum
+     * @param rotations the other angle in the sum
      * @return the sum of the two angles [normalized from (-pi, pi)]
      */
     public Angle addRotations(double rotations) {
@@ -340,7 +340,7 @@ public final class Angle {
     /**
      * Add two angles together
      *
-     * @param other the other angle in the sum
+     * @param degrees the other angle in the sum
      * @return the sum of the two angles [normalized from (-pi, pi)]
      */
     public Angle addDegrees(double degrees) {
@@ -360,7 +360,7 @@ public final class Angle {
     /**
      * Subtract two angles from each other
      *
-     * @param other the other angle to subtract
+     * @param radians the other angle to subtract
      * @return the second angle subtracted from the first [normalized from (-pi, pi)]
      */
     public Angle subRadians(double radians) {
@@ -370,7 +370,7 @@ public final class Angle {
     /**
      * Subtract two angles from each other
      *
-     * @param other the other angle to subtract
+     * @param rotations the other angle to subtract
      * @return the second angle subtracted from the first [normalized from (-pi, pi)]
      */
     public Angle subRotations(double rotations) {
@@ -380,7 +380,7 @@ public final class Angle {
     /**
      * Subtract two angles from each other
      *
-     * @param other the other angle to subtract
+     * @param degrees the other angle to subtract
      * @return the second angle subtracted from the first [normalized from (-pi, pi)]
      */
     public Angle subDegrees(double degrees) {

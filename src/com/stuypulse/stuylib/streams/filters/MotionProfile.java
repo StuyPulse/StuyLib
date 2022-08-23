@@ -52,8 +52,8 @@ public class MotionProfile implements IFilter {
     }
 
     /**
-     * @param accelLimit maximum change in velocity per second (u/s)
-     * @param jerkLimit maximum change in acceleration per second (u/s/s)
+     * @param velLimit maximum change in velocity per second (u/s)
+     * @param accelLimit maximum change in acceleration per second (u/s/s)
      */
     public MotionProfile(Number velLimit, Number accelLimit) {
         this(velLimit, accelLimit, kDefaultSteps);
