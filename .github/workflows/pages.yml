@@ -3,8 +3,7 @@ name: Pages
 
 on:
   # Runs on pushes targeting the default branch
-  push:
-    branches: ["main"]
+  release:
 
   # Allows you to run this workflow manually from the Actions tab
   workflow_dispatch:
@@ -44,7 +43,7 @@ jobs:
       - name: Build Javadocs - Gradle ${{ env.GRADLE_VERSION }}
         uses: gradle/gradle-build-action@v2.3.0-beta.1
         with:
-          arguments: javadoc
+          arguments: javadoc -Pversion=${{ github.event.release.tag_name }}
         
       - name: Setup Pages
         uses: actions/configure-pages@v1
