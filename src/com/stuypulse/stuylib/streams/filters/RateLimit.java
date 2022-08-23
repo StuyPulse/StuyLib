@@ -1,40 +1,42 @@
+/* Copyright (c) 2022 StuyPulse Robotics. All rights reserved. */
+/* This work is licensed under the terms of the MIT license */
+/* found in the root directory of this project. */
+
 package com.stuypulse.stuylib.streams.filters;
 
 import com.stuypulse.stuylib.math.SLMath;
+import com.stuypulse.stuylib.util.StopWatch;
 
 /**
  * This class lets you rate limit a stream of inputs
  *
- * That means that the value can not change more than a specified amount in one update
- *
- * This is not time dependant, so the values will change if you change the rate that you call this
- * filter, the filter will not adapt for that.
+ * <p>Instead of being based on the rate that update is called, the value you give it is based on
+ * how much it should be able to change in one second.
  *
  * @author Sam (sam.belliveau@gmail.com)
  */
+public class RateLimit implements IFilter {
 
-public class RateLimit extends IFilterGroup {
+    // Used to get the time since the last get call
+    private StopWatch mTimer;
 
     // Used to limit the change from the last value
     private double mLastValue;
-    private double mRateLimit;
+    private Number mRateLimit;
 
-    /**
-     * Makes a new rate limiter with specified rate limit
-     *
-     * @param rateLimit desired rate limit
-     */
-    public RateLimit(double rateLimit) {
-        if(rateLimit < 0.0) {
-            throw new IllegalArgumentException(
-                    "rateLimit must be a positive number");
+    /** @param rateLimit The amount that the value should be able to change in one second. */
+    public RateLimit(Number rateLimit) {
+        if (rateLimit.doubleValue() <= 0) {
+            throw new IllegalArgumentException("rateLimit must be a positive number");
         }
 
+        mTimer = new StopWatch();
+        mRateLimit = rateLimit;
         mLastValue = 0;
-        mRateLimit = 0;
     }
 
     public double get(double next) {
-        return mLastValue += SLMath.limit(next, mRateLimit);
+        return mLastValue +=
+                SLMath.clamp(next - mLastValue, mRateLimit.doubleValue() * mTimer.reset());
     }
 }

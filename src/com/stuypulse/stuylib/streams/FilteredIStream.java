@@ -1,16 +1,18 @@
+/* Copyright (c) 2022 StuyPulse Robotics. All rights reserved. */
+/* This work is licensed under the terms of the MIT license */
+/* found in the root directory of this project. */
+
 package com.stuypulse.stuylib.streams;
 
 import com.stuypulse.stuylib.streams.filters.IFilter;
-import com.stuypulse.stuylib.streams.filters.IFilterGroup;
 
 /**
- * Takes a Stream and a StreamFilter and makes a FilteredStream
+ * Takes an {@link IStream} and a {@link IFilter} and makes a {@link FilteredIStream}
  *
- * This could be used to automatically filter controller inputs
+ * <p>This could be used to automatically filter controller inputs
  *
  * @author Sam (sam.belliveau@gmail.com)
  */
-
 public class FilteredIStream implements IStream {
 
     private IStream mStream; // Stream used
@@ -24,7 +26,7 @@ public class FilteredIStream implements IStream {
      */
     public FilteredIStream(IStream stream, IFilter... filter) {
         mStream = stream;
-        mStreamFilter = new IFilterGroup(filter);
+        mStreamFilter = IFilter.create(filter);
     }
 
     /**

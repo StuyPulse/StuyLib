@@ -1,6 +1,8 @@
-![(Stuylib Logo)](https://github.com/StuyPulse/StuyLib/raw/main/pictures/StuyLib%20Banner.png)
+![(Stuylib Logo)](https://github.com/StuyPulse/StuyLib/blob/main/pictures/StuyLibREADME.png?raw=true)
 
-[![Jitpack Website](https://jitpack.io/v/StuyPulse/StuyLib.svg)](https://jitpack.io/#StuyPulse/StuyLib) ![Build StuyLib](https://github.com/StuyPulse/StuyLib/workflows/Build%20StuyLib/badge.svg)
+[![Jitpack Website](https://jitpack.io/v/StuyPulse/StuyLib.svg)](https://jitpack.io/#StuyPulse/StuyLib)
+
+---
 
 # What is StuyLib?
 
@@ -10,6 +12,12 @@ StuyLib is an FRC library / toolkit which includes many different utilities for 
 
 - IStreams / IStreamFilters: 
 	- [Innovation in Control Award sponsored by Rockwell Automation](https://www.thebluealliance.com/event/2020scmb#awards)
+- Limelight + Encoder Fusion / Drive Filters: 
+    - [Innovation in Control Award](https://www.thebluealliance.com/event/2022nyro#awards)
+- Clean & Concise Code / Smart Network Library:
+    - [Innovation in Control Award](https://www.thebluealliance.com/event/2022nyli2#awards)
+- Usage of Encoders / Limelight + Encoder Fusion:
+    - [Innovation in Control Award](https://www.thebluealliance.com/event/2022nyny#awards)
 
 # How do I use StuyLib?
 
@@ -18,7 +26,7 @@ StuyLib is an FRC library / toolkit which includes many different utilities for 
 [Instructions from JitPack.io](https://jitpack.io/#StuyPulse/StuyLib)
 
 Step 0. This is done by default for robot projects, but if your doing a local project you must remember to include this at the top
-```python
+```groovy
 plugins {
     id "java"
     
@@ -28,24 +36,24 @@ plugins {
 }
 ```
 
-Step 1. Add the JitPack repository to your build.gradle
+Step 1. Add the JitPack repository to your `build.gradle`
 
-```python
-	allprojects {
-		repositories {
-			maven { url 'https://jitpack.io' }
-		}
-	}
+```groovy
+allprojects {
+    repositories {
+        maven { url 'https://jitpack.io' }
+    }
+}
 ```
 
- - Step 2. Add the dependency to build.gradle
+ - Step 2. Add the dependency to `build.gradle`
  
  [![Jitpack Website](https://jitpack.io/v/StuyPulse/StuyLib.svg)](https://jitpack.io/#StuyPulse/StuyLib)
-```python
-	dependencies {
-	    // check tag above for most recent version
-	    compile 'com.github.StuyPulse:StuyLib:VERSION'
-	}
+```groovy
+dependencies {
+    // check tag above for most recent version
+    compile 'com.github.StuyPulse:StuyLib:VERSION'
+}
 ```
 
 
@@ -59,7 +67,7 @@ If you are using network tables anywhere else than the robot, ie. on a laptop, y
 
 When contributing code, as always, make a branch and a pull request.
 
-All code MUST be commented, and no single class should be to complicated.
+All code MUST be commented, and no single class should be too complicated.
 
 At the top of each class, give a brief description of the class, along with an author tag which contains an email just in case anybody has any questions on how to use it.
 

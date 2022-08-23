@@ -1,3 +1,7 @@
+/* Copyright (c) 2022 StuyPulse Robotics. All rights reserved. */
+/* This work is licensed under the terms of the MIT license */
+/* found in the root directory of this project. */
+
 package com.stuypulse.stuylib.network.limelight;
 
 import com.stuypulse.stuylib.math.Angle;
@@ -7,7 +11,6 @@ import com.stuypulse.stuylib.math.Angle;
  *
  * @author Sam (sam.belliveau@gmail.com)
  */
-
 public class Solve3DResult {
 
     // Position Data
@@ -23,15 +26,14 @@ public class Solve3DResult {
     /**
      * Initialize each part of the Solve3DResult
      *
-     * @param x     x position
-     * @param y     y position
-     * @param z     z position
+     * @param x x position
+     * @param y y position
+     * @param z z position
      * @param pitch pitch
-     * @param yaw   yaw
-     * @param roll  roll
+     * @param yaw yaw
+     * @param roll roll
      */
-    public Solve3DResult(double x, double y, double z, double pitch, double yaw,
-            double roll) {
+    public Solve3DResult(double x, double y, double z, double pitch, double yaw, double roll) {
         mX = x;
         mY = y;
         mZ = z;

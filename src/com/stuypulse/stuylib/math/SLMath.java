@@ -1,3 +1,7 @@
+/* Copyright (c) 2022 StuyPulse Robotics. All rights reserved. */
+/* This work is licensed under the terms of the MIT license */
+/* found in the root directory of this project. */
+
 package com.stuypulse.stuylib.math;
 
 /**
@@ -7,11 +11,40 @@ package com.stuypulse.stuylib.math;
  *
  * @author Sam (sam.belliveau@gmail.com)
  */
-
 public final class SLMath {
 
     // Prevent the class from being extended at all
-    private SLMath() {
+    private SLMath() {}
+
+    /*********************/
+    /*** INTERPOLATION ***/
+    /*********************/
+
+    /**
+     * Linear Interpolation from start to end using value t [0...1]
+     *
+     * @param start value of linear interpolation when t = 0
+     * @param end value of linear interpolation when t = 1
+     * @param t time value for linear interpolation [0...1]
+     * @return interpolated value
+     */
+    public static double lerp(double start, double end, double t) {
+        return start + (end - start) * clamp(t, 0.0, 1.0);
+    }
+
+    /**
+     * Maps an input in one range to an output in another range
+     *
+     * @param input value to map
+     * @param minInput minimum value of input
+     * @param maxInput maximum value of input
+     * @param minOutput minimum value of output
+     * @param maxOutput maximum value of output
+     * @return the mapped value
+     */
+    public static double map(
+            double input, double minInput, double maxInput, double minOutput, double maxOutput) {
+        return lerp(minOutput, maxOutput, (input - minInput) / (maxInput - minInput));
     }
 
     /**************/
@@ -19,40 +52,43 @@ public final class SLMath {
     /**************/
 
     /**
-     * Limit input from max to min
+     * clamp input from max to min
      *
-     * @param x   input
+     * @param x input
      * @param min min value for x
      * @param max max value for x
-     * @return limited input
+     * @return clamp input
      */
-    public static double limit(double x, double min, double max) {
-        if(x > max)
-            return max;
-        if(x < min)
-            return min;
+    public static double clamp(double x, double min, double max) {
+        if (min < max) {
+            if (x > max) return max;
+            if (x < min) return min;
+        } else {
+            if (x > min) return min;
+            if (x < max) return max;
+        }
         return x;
     }
 
     /**
-     * Limit input from max to -max
+     * clamp input from max to -max
      *
-     * @param x   input
+     * @param x input
      * @param max max and min value
-     * @return limited input
+     * @return clamped input
      */
-    public static double limit(double x, double max) {
-        return limit(x, -max, max);
+    public static double clamp(double x, double max) {
+        return clamp(x, -max, max);
     }
 
     /**
-     * Limit input from -1 to 1
+     * clamp input from -1 to 1
      *
      * @param x input
-     * @return limited input
+     * @return clamped input
      */
-    public static double limit(double x) {
-        return limit(x, 1.0);
+    public static double clamp(double x) {
+        return clamp(x, 1.0);
     }
 
     /**************************/
@@ -62,14 +98,14 @@ public final class SLMath {
     /**
      * Dead bands x value with window being the dead band. all values for this are [-1.0...1.0]
      *
-     * @param x      value
+     * @param x value
      * @param window deadband window
      * @return deadbanded value
      */
     public static double deadband(double x, double window) {
         window = Math.abs(window);
 
-        if(Math.abs(x) < window) {
+        if (Math.abs(x) < window) {
             return 0.0;
         } else {
             return (x - Math.copySign(window, x)) / (1.0 - window);
@@ -84,65 +120,31 @@ public final class SLMath {
      * [WARNING! THIS WILL KEEP THE SIGN OF THE INPUT NUMBER] Square number and keep sign
      *
      * @param x input
-     * @return square input
+     * @return squared input with the same sign
      */
     public static double square(double x) {
-        return limit(x * x * Math.signum(x));
+        return clamp(x * x * Math.signum(x));
     }
 
     /**
-     * Cube number
+     * Cube a number
      *
      * @param x input
-     * @return cubed input
+     * @return cubed input that
      */
     public static double cube(double x) {
-        return limit(x * x * x);
+        return x * x * x;
     }
 
     /**
      * spow (signless pow), raises a number to a power without affecting the sign of the number
      *
-     * @param x     input
+     * @param x input
      * @param power power to raise x to
      * @return input ^ power
      */
     public static double spow(double x, double power) {
-        return limit(Math.pow(Math.abs(x), power) * Math.signum(x));
-    }
-
-    /**************************/
-    /*** CIRCULAR ALGORITHM ***/
-    /**************************/
-
-    /**
-     * Use the shape of a circle with power p to scale the input
-     *
-     * @param x input
-     * @param p power (p greater than 1)
-     * @return circular return
-     */
-    public static double circular(double x, double p) {
-        double sign = Math.signum(x);
-        x = limit(Math.abs(x));
-
-        p = Math.max(1.0, p);
-
-        x = 1.0 - Math.pow(x, p);
-        x = 1.0 - Math.pow(x, 1.0 / p);
-        x *= sign;
-
-        return limit(x);
-    }
-
-    /**
-     * Use the shape of a circle to scale the input
-     *
-     * @param x input
-     * @return circular return
-     */
-    public static double circular(double x) {
-        return circular(x, 2);
+        return Math.pow(Math.abs(x), power) * Math.signum(x);
     }
 
     /*****************/
@@ -150,12 +152,12 @@ public final class SLMath {
     /*****************/
 
     /**
-     * fpow (fast pow), is a pow function that takes in an integer for the exponent. This allows it to
-     * be much faster on repeated calls due to the fact that it does not need to deal with fractional
-     * exponents.
+     * fpow (fast pow), is a pow function that takes in an integer for the exponent. This allows it
+     * to be much faster on repeated calls due to the fact that it does not need to deal with
+     * fractional exponents.
      *
      * @param base base of the power
-     * @param exp  integer exponent of power
+     * @param exp integer exponent of power
      * @return result of calculation
      */
     public static double fpow(double base, int exp) {
@@ -163,13 +165,13 @@ public final class SLMath {
         double out = 1.0;
 
         // If the exponent is negative, divide instead of multiply
-        if(exp < 0) {
+        if (exp < 0) {
             // Flip exponent to make calculations easier
             exp = -exp;
 
             // Fast integer power algorithm
-            while(exp > 0) {
-                if((exp & 1) == 1) {
+            while (exp > 0) {
+                if ((exp & 1) == 1) {
                     out /= base;
                 }
                 base *= base;
@@ -177,8 +179,8 @@ public final class SLMath {
             }
         } else {
             // Fast integer power algorithm
-            while(exp > 0) {
-                if((exp & 1) == 1) {
+            while (exp > 0) {
+                if ((exp & 1) == 1) {
                     out *= base;
                 }
                 base *= base;
@@ -193,13 +195,13 @@ public final class SLMath {
     /**
      * Round a double by a certain amount of sigfigs in base 10
      *
-     * @param n       number to round
+     * @param n number to round
      * @param sigfigs amount of sigfigs to round it to
      * @return rounded number
      */
     public static double round(double n, int sigfigs) {
         // The value 0 returns nan if not accounted for
-        if(n == 0.0) {
+        if (n == 0.0) {
             return 0.0;
         }
 
@@ -212,5 +214,17 @@ public final class SLMath {
 
         // Round number by the multiplier calculated
         return Math.round(n * mul) / mul;
+    }
+
+    private static final double FLT_ELIPSON = fpow(0.5, 32);
+
+    /**
+     * Compare a double to zero using a Elipson
+     *
+     * @param num number to compare to zero
+     * @return if the number equals a number close to zero
+     */
+    public static boolean isZero(double num) {
+        return Math.abs(num) < FLT_ELIPSON;
     }
 }

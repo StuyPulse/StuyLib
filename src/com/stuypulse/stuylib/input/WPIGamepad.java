@@ -1,46 +1,48 @@
+/* Copyright (c) 2022 StuyPulse Robotics. All rights reserved. */
+/* This work is licensed under the terms of the MIT license */
+/* found in the root directory of this project. */
+
 package com.stuypulse.stuylib.input;
 
-import com.stuypulse.stuylib.input.buttons.ButtonWrapper;
-
 import edu.wpi.first.wpilibj.Joystick;
+import edu.wpi.first.wpilibj2.command.button.Button;
 
 /**
  * WPI Gamepad extends Gamepad and adds functions that makes interacting with the underlying
  * Joystick class easy. The WPI joystick class is kept in a separate class to make it easy to update
  * if WPI updates.
  *
- * If you would like to get a button id that is not defined, or an axis id that is not defined, use
- * getRawButton(int id) or getRawAxis(int id). If you want it to return a button for an
- * unimplemented button, type getButton(int id).
+ * <p>If you would like to get a button id that is not defined, or an axis id that is not defined,
+ * use {@link #getRawButton(int)} or {@link #getRawAxis(int)}. If you want it to return a button for
+ * an unimplemented button, type {@link #getButton(int)}.
  *
- * To initialize this class, pass in a Joystick or an int set to the port number. This will be the
- * Joystick that the Gamepad class will interact with.
+ * <p>To initialize this class, pass in a Joystick or an int set to the port number. This will be
+ * the Joystick that the Gamepad class will interact with.
  *
- * If you do not initialize with a Joystick, everything will still work except for -
- * getRawButton(int id) - getButton(int id) - getRawAxis(int id) which will return either false or
- * 0.0
+ * <p>If you do not initialize with a Joystick, everything will still work except for - {@link
+ * #getRawButton(int)} - {@link #getRawAxis(int)} - {@link #getButton(int)} which will return either
+ * false or 0.0
  *
- * The difference between the implementations of the Gamepad class is how it interacts with the
+ * <p>The difference between the implementations of the Gamepad class is how it interacts with the
  * underlying Joystick class.
  *
  * @author Sam (sam.belliveau@gmail.com)
  */
-
 public class WPIGamepad extends Gamepad {
 
-    /**
-     * Underlying Joystick Class
-     */
+    /** Underlying Joystick Class */
     private Joystick mJoy;
 
     /*******************/
     /*** CONSTRUCTOR ***/
     /*******************/
 
+    /** @param joystick WPI Joystick that will be stored in this class */
     public WPIGamepad(Joystick joystick) {
         this.mJoy = joystick;
     }
 
+    /** @param port The port that the gamepad is plugged into */
     public WPIGamepad(int port) {
         this(new Joystick(port));
     }
@@ -49,65 +51,52 @@ public class WPIGamepad extends Gamepad {
     /*** JOYSTICK STUFF ***/
     /**********************/
 
-    /**
-     * Checks if Gamepad has a Joystick
-     *
-     * @return if Gamepad has a Joystick
-     */
+    @Override
+    public String getGamepadName() {
+        return "WPIGamepad";
+    }
+
+    /** @return if Gamepad has a Joystick */
     public final boolean hasJoystick() {
         return getJoystick() != null;
     }
 
-    /**
-     * Get underlying joystick
-     *
-     * @return Underlying joystick
-     */
+    /** @return Underlying joystick */
     public final Joystick getJoystick() {
         return this.mJoy;
     }
 
     /**
-     * Get button from underlying joystick
-     *
      * @param button Joystick button id
-     * @return the value of the button
+     * @return The value of the button
      */
     public final boolean getRawButton(int button) {
-        if(!hasJoystick()) {
+        if (!hasJoystick()) {
             return false;
         }
         return getJoystick().getRawButton(button);
     }
 
     /**
-     * Get button from underlying joystick
-     *
      * @param button Joystick button id
-     * @return the value of the button
+     * @return Button that activates with {@link #getRawButton(int)}
      */
-    public final ButtonWrapper getButton(int button) {
-        return new ButtonWrapper(() -> getRawButton(button));
+    public final Button getButton(int button) {
+        return new Button(() -> getRawButton(button));
     }
 
     /**
-     * Get axis from underlying joystick
-     *
      * @param axis Joystick axis id
-     * @return the value of the axis
+     * @return The value of the axis
      */
     public final double getRawAxis(int axis) {
-        if(!hasJoystick()) {
+        if (!hasJoystick()) {
             return 0.0;
         }
         return getJoystick().getRawAxis(axis);
     }
 
-    /**
-     * Set the rumble intensity of the gamepad
-     *
-     * @param intensity intensity of the rumble
-     */
+    /** @param intensity amount to make the gamepad rumble */
     public final void setRumble(double intensity) {
         getJoystick().setRumble(Joystick.RumbleType.kLeftRumble, intensity);
         getJoystick().setRumble(Joystick.RumbleType.kRightRumble, intensity);

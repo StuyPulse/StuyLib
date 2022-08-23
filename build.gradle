@@ -1,11 +1,18 @@
+buildscript {
+   ext.WPI_VER = "2022.4.1"
+}
+
 plugins {
    id "java"
-   id "edu.wpi.first.GradleRIO" version "2020.2.2"
-   id "com.diffplug.gradle.spotless" version "3.27.1"
+
+   id "maven-publish"
+
+   id "edu.wpi.first.GradleRIO" version "${WPI_VER}"
+   id "com.diffplug.spotless" version "6.1.0"
+   id "com.github.spotbugs" version "4.7.0"
 }
 
 group = 'com.stuypulse'
-version = '1.0.0'
 
 sourceCompatibility = JavaVersion.VERSION_11
 targetCompatibility = JavaVersion.VERSION_11
@@ -16,13 +23,6 @@ sourceSets {
          srcDir "src"
       }
    }
-
-   // If we ever write tests
-   // test {
-   //   java {
-   //      srcDir "test"
-   //   }
-   // }
 }
 
 configurations {
@@ -30,31 +30,69 @@ configurations {
 }
 
 dependencies { 
-   implementation wpi.deps.wpilib()
-   nativeZip wpi.deps.wpilibJni(wpi.platforms.roborio)
-   nativeDesktopZip wpi.deps.wpilibJni(wpi.platforms.desktop)
+   implementation wpi.java.deps.wpilib()
+   implementation wpi.java.vendor.java()
 
-   implementation wpi.deps.vendor.java()
-   nativeZip wpi.deps.vendor.jni(wpi.platforms.roborio)
-   nativeDesktopZip wpi.deps.vendor.jni(wpi.platforms.desktop)
+   nativeDebug wpi.java.deps.wpilibJniDebug(wpi.platforms.desktop)
+   nativeDebug wpi.java.vendor.jniDebug(wpi.platforms.desktop)
+   simulationDebug wpi.sim.enableDebug()
 
-   compile group: 'org.knowm.xchart', name: 'xchart', version: '3.2.2'
+   nativeRelease wpi.java.deps.wpilibJniRelease(wpi.platforms.desktop)
+   nativeRelease wpi.java.vendor.jniRelease(wpi.platforms.desktop)
+   simulationRelease wpi.sim.enableRelease()
+
+   implementation "edu.wpi.first.ntcore:ntcore-java:${WPI_VER}"
+   implementation "edu.wpi.first.wpiutil:wpiutil-java:${WPI_VER}"
+   runtimeOnly "edu.wpi.first.ntcore:ntcore-jni:${WPI_VER}:windowsx86"
+   runtimeOnly "edu.wpi.first.ntcore:ntcore-jni:${WPI_VER}:windowsx86-64"
+   runtimeOnly "edu.wpi.first.ntcore:ntcore-jni:${WPI_VER}:linuxx86-64"
+   runtimeOnly "edu.wpi.first.ntcore:ntcore-jni:${WPI_VER}:osxx86-64"
+
+   implementation group: 'org.knowm.xchart', name: 'xchart', version: '3.2.2'
 
    testImplementation 'junit:junit:4.12'
+}
 
-   // Enable simulation gui support. Must check the box in vscode to enable support
-   // upon debugging
-   simulation wpi.deps.sim.gui(wpi.platforms.desktop, false)
+publishing {
+   publications {
+      maven(MavenPublication) {
+         groupId = 'com.stuypulse.stuylib'
+         artifactId = 'library'
+         version = "${version}"
+
+         from components.java
+      }
+   }
 }
 
 spotless {
-    java {
-        trimTrailingWhitespace()
-        removeUnusedImports()
-        endWithNewline()
-        indentWithSpaces()
-        eclipse().configFile 'StuyPulseFormatter.xml'
+   java {
+      licenseHeaderFile 'LICENSE_SHORTENED'
+
+      googleJavaFormat().aosp()
+
+      trimTrailingWhitespace()
+      endWithNewline()
+
+      importOrder('com.stuypulse.stuylib', 'com.stuypulse', 'edu.wpi')
+      removeUnusedImports()
+   }
+}
+
+// Example to configure HTML report
+spotbugsMain {
+    reports {
+        html {
+            enabled = true
+            destination = file("$buildDir/reports/spotbugs/main/spotbugs.html")
+            stylesheet = 'fancy-hist.xsl'
+        }
     }
+}
+
+spotbugs {
+   ignoreFailures = true
+   effort = 'max'
 }
 
 javadoc {

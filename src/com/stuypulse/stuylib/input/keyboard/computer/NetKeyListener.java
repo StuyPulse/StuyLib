@@ -1,3 +1,7 @@
+/* Copyright (c) 2022 StuyPulse Robotics. All rights reserved. */
+/* This work is licensed under the terms of the MIT license */
+/* found in the root directory of this project. */
+
 package com.stuypulse.stuylib.input.keyboard.computer;
 
 import com.stuypulse.stuylib.input.keyboard.NetKeyboard;
@@ -9,18 +13,15 @@ import java.awt.event.KeyEvent;
  * A KeyListener that uploads all of the key strokes to a network table where they can then be
  * received and put into the robot
  *
- * This would not be used on the robot, but should be used on the users computer
+ * <p>This would not be used on the robot, but should be used on the users computer
  *
- * Make an AWT window to use this listener
+ * <p>Make an AWT window to use this listener
  *
  * @author Sam (sam.belliveau@gmail.com)
  */
-
 public class NetKeyListener extends KeyAdapter {
 
-    /**
-     * Network Table for which key presses go
-     */
+    /** Network Table for which key presses go */
     private NetKeyboard mNetKeyboard;
 
     /**

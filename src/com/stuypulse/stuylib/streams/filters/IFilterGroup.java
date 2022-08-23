@@ -1,3 +1,7 @@
+/* Copyright (c) 2022 StuyPulse Robotics. All rights reserved. */
+/* This work is licensed under the terms of the MIT license */
+/* found in the root directory of this project. */
+
 package com.stuypulse.stuylib.streams.filters;
 
 /**
@@ -5,7 +9,6 @@ package com.stuypulse.stuylib.streams.filters;
  *
  * @author Sam (sam.belliveau@gmail.com)
  */
-
 public class IFilterGroup implements IFilter {
 
     // Array of all the filters
@@ -22,7 +25,7 @@ public class IFilterGroup implements IFilter {
 
     public double get(double next) {
         // Put next through each of the filters
-        for(IFilter filter : mFilters) {
+        for (IFilter filter : mFilters) {
             next = filter.get(next);
         }
 

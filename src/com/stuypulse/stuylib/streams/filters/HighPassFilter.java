@@ -1,40 +1,24 @@
-package com.stuypulse.stuylib.streams.filters;
+/* Copyright (c) 2022 StuyPulse Robotics. All rights reserved. */
+/* This work is licensed under the terms of the MIT license */
+/* found in the root directory of this project. */
 
-import com.stuypulse.stuylib.util.StopWatch;
+package com.stuypulse.stuylib.streams.filters;
 
 /**
  * Implementation for of a real time IIR HighPassFilter
  *
  * @author Sam (sam.belliveau@gmail.com)
  */
-
 public class HighPassFilter implements IFilter {
 
-    private StopWatch mTimer;
+    private LowPassFilter mInverse;
 
-    private double mLastValue;
-    private double mLastInput;
-    private double mRC;
-
-    /**
-     * @param rc time constant for high pass filter
-     */
-    public HighPassFilter(double rc) {
-        if(rc < 0) {
-            throw new IllegalArgumentException("rc must be a positive number");
-        }
-
-        mTimer = new StopWatch();
-        mLastValue = 0;
-        mLastInput = 0;
-        mRC = rc;
+    /** @param rc time constant for high pass filter */
+    public HighPassFilter(Number rc) {
+        mInverse = new LowPassFilter(rc);
     }
 
     public double get(double next) {
-        double dt = mTimer.reset();
-        double a = mRC / (mRC + dt);
-        mLastValue = a * (mLastValue + next - mLastInput);
-        mLastInput = next;
-        return mLastValue;
+        return next - mInverse.get(next);
     }
 }

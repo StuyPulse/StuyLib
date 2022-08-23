@@ -1,10 +1,17 @@
+/* Copyright (c) 2022 StuyPulse Robotics. All rights reserved. */
+/* This work is licensed under the terms of the MIT license */
+/* found in the root directory of this project. */
+
 package com.stuypulse.stuylib.control;
 
+import com.stuypulse.stuylib.math.SLMath;
+import com.stuypulse.stuylib.network.SmartNumber;
 import com.stuypulse.stuylib.streams.filters.IFilter;
 import com.stuypulse.stuylib.streams.filters.IFilterGroup;
-import com.stuypulse.stuylib.streams.filters.MovingAverage;
+import com.stuypulse.stuylib.streams.filters.TimedMovingAverage;
 import com.stuypulse.stuylib.util.StopWatch;
-import com.stuypulse.stuylib.math.SLMath;
+
+import edu.wpi.first.util.sendable.SendableBuilder;
 
 /**
  * This is a Bang-Bang controller that while controlling the robot, will be able to calculate the
@@ -20,17 +27,18 @@ public class PIDCalculator extends Controller {
     private static final double kMaxTimeBeforeReset = 0.5;
 
     // The minimum period length that will be accepted as a valid period
-    private static final double kMinPeriodTime = 0.1;
+    private static final double kMinPeriodTime = 0.05;
 
     // The filter easuring the period and amplitude
     private static IFilter getMeasurementFilter() {
         // This is a mix between accuracy and speed of updating.
         // Takes about 6 periods to get accurate results
-        return new IFilterGroup(new MovingAverage(12));
+        return new IFilterGroup(new TimedMovingAverage(30));
     }
 
     // The speed that the bang bang controller will run at
-    private double mControlSpeed;
+    private Number mControlSpeed;
+    private double mCurrentSpeed;
 
     // The results of the period and amplitude
     private double mPeriod;
@@ -49,11 +57,10 @@ public class PIDCalculator extends Controller {
     // Whether or not the system will measure the oscillation
     private boolean mRunning;
 
-    /**
-     * @param speed motor output for bang bang controller
-     */
-    public PIDCalculator(double speed) {
+    /** @param speed motor output for bang bang controller */
+    public PIDCalculator(Number speed) {
         mControlSpeed = speed;
+        mCurrentSpeed = mControlSpeed.doubleValue();
 
         mPeriod = 0;
         mPeriodFilter = getMeasurementFilter();
@@ -71,8 +78,8 @@ public class PIDCalculator extends Controller {
      * @param speed sets speed for motor output of controller
      * @return the calculated result from the PIDController
      */
-    public PIDCalculator setControlSpeed(double speed) {
-        mControlSpeed = speed;
+    public PIDCalculator setControlSpeed(Number speed) {
+        mControlSpeed = SmartNumber.setNumber(mControlSpeed, speed);
         return this;
     }
 
@@ -85,19 +92,21 @@ public class PIDCalculator extends Controller {
      */
     protected double calculate(double error) {
         // If there is a gap in updates, then disable until next period
-        if(getRate() > kMaxTimeBeforeReset) {
+        if (getRate() > kMaxTimeBeforeReset) {
             mRunning = false;
         }
 
         // Check if we crossed 0, ie, time for next update
-        double sign = Math.signum(error);
-        if((error * sign) < (getRawVelocity() * sign)) {
+        if (Math.signum(mCurrentSpeed) != Math.signum(error)) {
+            // Update the controller
+            mCurrentSpeed = mControlSpeed.doubleValue() * Math.signum(error);
+
             // Get period and amplitude
             double period = mPeriodTimer.reset() * 2.0;
             double amplitude = mLocalMax;
 
             // If we are running and period is valid, record it
-            if(mRunning && kMinPeriodTime < period) {
+            if (mRunning && kMinPeriodTime < period) {
                 mPeriod = mPeriodFilter.get(period);
                 mAmplitude = mAmplitudeFilter.get(amplitude);
             }
@@ -111,11 +120,7 @@ public class PIDCalculator extends Controller {
         mLocalMax = Math.max(Math.abs(mLocalMax), Math.abs(error));
 
         // Return bang bang control
-        if(error < 0) {
-            return -mControlSpeed;
-        } else {
-            return mControlSpeed;
-        }
+        return mCurrentSpeed;
     }
 
     /**
@@ -124,7 +129,7 @@ public class PIDCalculator extends Controller {
      * @return Get calculated K value for PID value equation
      */
     public double getK() {
-        return (4.0 * mControlSpeed) / (Math.PI * mAmplitude);
+        return (4.0 * mControlSpeed.doubleValue()) / (Math.PI * mAmplitude);
     }
 
     /**
@@ -142,12 +147,12 @@ public class PIDCalculator extends Controller {
      * @param kD p multiplier when calculating values
      * @return calculated PID controller based off of measurements
      */
-    public PIDController getPIDController(double kP, double kI, double kD) {
+    private PIDController getPIDController(double kP, double kI, double kD) {
         kP = Math.max(kP, 0.0);
         kI = Math.max(kI, 0.0);
         kD = Math.max(kD, 0.0);
 
-        if(mAmplitude > 0) {
+        if (mAmplitude > 0) {
             double t = getT();
             double k = getK();
 
@@ -157,40 +162,52 @@ public class PIDCalculator extends Controller {
         }
     }
 
-    /**
-     * @return calculated PID controller based off of measurements
-     */
+    /** @return calculated PID controller based off of measurements */
     public PIDController getPIDController() {
         return getPIDController(0.6, 1.2, 3.0 / 40.0);
     }
 
-    /**
-     * @return calculated PI controller based off of measurements
-     */
+    /** @return calculated PI controller based off of measurements */
     public PIDController getPIController() {
         return getPIDController(0.45, 0.54, -1);
     }
 
-    /**
-     * @return calculated PD controller based off of measurements
-     */
+    /** @return calculated PD controller based off of measurements */
     public PIDController getPDController() {
         return getPIDController(0.8, -1, 1.0 / 10.0);
     }
 
-    /**
-     * @return calculated P controller based off of measurements
-     */
+    /** @return calculated P controller based off of measurements */
     public PIDController getPController() {
         return getPIDController(0.5, -1, -1);
     }
 
-    /**
-     * @return information about this PIDController
-     */
+    /** @return information about this PIDController */
     public String toString() {
-        return "(K: " + SLMath.round(getK(), 4) + ", T: "
-                + SLMath.round(getT(), 4) + ") "
+        return "(K: "
+                + SLMath.round(getK(), 4)
+                + ", T: "
+                + SLMath.round(getT(), 4)
+                + ") "
                 + getPIDController().toString();
+    }
+
+    /*********************/
+    /*** Sendable Data ***/
+    /*********************/
+
+    @Override
+    public void initSendable(SendableBuilder builder) {
+        super.initSendable(builder);
+
+        builder.addDoubleProperty("(PIDCalculator) Period [T]", this::getT, x -> {});
+        builder.addDoubleProperty("(PIDCalculator) Adjusted Amplitude [K]", this::getK, x -> {});
+
+        builder.addDoubleProperty(
+                "(PIDCalculator) Calculated kP", () -> this.getPIDController().getP(), x -> {});
+        builder.addDoubleProperty(
+                "(PIDCalculator) Calculated kI", () -> this.getPIDController().getI(), x -> {});
+        builder.addDoubleProperty(
+                "(PIDCalculator) Calculated kD", () -> this.getPIDController().getD(), x -> {});
     }
 }

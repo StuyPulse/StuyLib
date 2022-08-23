@@ -1,3 +1,7 @@
+/* Copyright (c) 2022 StuyPulse Robotics. All rights reserved. */
+/* This work is licensed under the terms of the MIT license */
+/* found in the root directory of this project. */
+
 package com.stuypulse.stuylib.input.keyboard;
 
 import com.stuypulse.stuylib.network.SLNetworkTable;
@@ -7,11 +11,10 @@ import java.util.Set;
 /**
  * This class lets you send and receive keyboard information over network tables
  *
- * Every other class will interact with the network keyboards through this class
+ * <p>Every other class will interact with the network keyboards through this class
  *
  * @author Sam (sam.belliveau@gmail.com)
  */
-
 public class NetKeyboard {
 
     private interface Constants {
@@ -23,7 +26,7 @@ public class NetKeyboard {
          * @return network table name
          */
         public static String getTableName(int port) {
-            return("NetworkKeyboard/port/" + Integer.toString(Math.abs(port)));
+            return ("NetworkKeyboard/port/" + Integer.toString(Math.abs(port)));
         }
 
         /**
@@ -37,9 +40,7 @@ public class NetKeyboard {
         }
     }
 
-    /**
-     * Table where key information is stored
-     */
+    /** Table where key information is stored */
     private SLNetworkTable mKeyboardTable;
 
     /**
@@ -58,8 +59,7 @@ public class NetKeyboard {
      * @param port virtual port number (unsure, use 0)
      */
     public NetKeyboard(int team, int port) {
-        mKeyboardTable = SLNetworkTable.open(team,
-                Constants.getTableName(port));
+        mKeyboardTable = SLNetworkTable.open(team, Constants.getTableName(port));
     }
 
     /**
@@ -98,8 +98,8 @@ public class NetKeyboard {
      */
     public Set<String> getKeysPressed() {
         Set<String> keysPressed = mKeyboardTable.getKeys();
-        for(String s : keysPressed) {
-            if(!mKeyboardTable.getBoolean(s)) {
+        for (String s : keysPressed) {
+            if (!mKeyboardTable.getBoolean(s)) {
                 keysPressed.remove(s);
             }
         }

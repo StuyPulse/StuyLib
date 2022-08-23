@@ -4,6 +4,7 @@
 bin/
 build/
 releases/
+docs/
 
 .project
 

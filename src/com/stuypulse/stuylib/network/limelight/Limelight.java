@@ -1,277 +1,200 @@
-/* Lime Light Docs: http://docs.limelightvision.io/en/latest/networktables_api.html# */
-/* StuyPulse 694, Stuyvesant Highschool, NY */
+/* Copyright (c) 2022 StuyPulse Robotics. All rights reserved. */
+/* This work is licensed under the terms of the MIT license */
+/* found in the root directory of this project. */
 
 package com.stuypulse.stuylib.network.limelight;
 
+import com.stuypulse.stuylib.math.SLMath;
 import com.stuypulse.stuylib.math.Vector2D;
-import edu.wpi.first.networktables.NetworkTable;
-import edu.wpi.first.networktables.NetworkTableEntry;
-import edu.wpi.first.networktables.NetworkTableInstance;
 
 /**
  * This is a class that lets you interface with the limelight network table.
  *
  * @author Sam (sam.belliveau@gmail.com)
  */
+public final class Limelight {
 
-public class Limelight {
+    /*****************/
+    /*** Singleton ***/
+    /*****************/
 
-    // Network Table used to contact Lime Light
-    private static final NetworkTableInstance mTableInstance = NetworkTableInstance
-            .getDefault();
-    private static final NetworkTable mTable = mTableInstance
-            .getTable("limelight");
-
-    // Uses network tables to check status of limelight
-    private static final NetworkTableEntry mTimingTestEntry = mTable
-            .getEntry("TIMING_TEST_ENTRY");
-    private static boolean mTimingTestEntryValue = false;
-
-    public static final long MAX_UPDATE_TIME = 250_000;
-    public static final long MIN_WARNING_TIME = 500_000;
-    public static final long MAX_WARNING_TIME = 2_500_000;
-
-    public static final boolean IS_CONNECTED_REQUIRED = true;
+    private static Limelight mDefaultInstance = null;
 
     /**
-     * Check if the limelight is connected by using a timing test
+     * Returns a Limelight Class using the default table name.
      *
-     * @return if limelight is connected
+     * <p>If you only have one limelight, this is most likely the constructor you want to use.
+     *
+     * @return instance of limelight
      */
-    public static boolean isConnected() {
-        // Force an update and get current time
-        mTimingTestEntryValue = !mTimingTestEntryValue; // flip test value
-        mTimingTestEntry.forceSetBoolean(mTimingTestEntryValue);
-        long currentTime = mTimingTestEntry.getLastChange();
-
-        // Get most recent update from limelight
-        long lastUpdate = mLatencyEntry.getLastChange(); // Latency is always
-                                                         // updated
-        lastUpdate = Math.max(lastUpdate, mXAngleEntry.getLastChange());
-        lastUpdate = Math.max(lastUpdate, mYAngleEntry.getLastChange());
-
-        // Calculate limelights last update
-        long timeDifference = currentTime - lastUpdate;
-        boolean connected = timeDifference < MAX_UPDATE_TIME;
-
-        if(MIN_WARNING_TIME < timeDifference
-                && timeDifference < MAX_WARNING_TIME) {
-            double milli = (double) timeDifference / 1000.0;
-
-            System.err.println(
-                    "WARNING: Limelight has disconnected and is not responding!");
-            System.err.println(
-                    "         Limelight last updated " + milli + "ms ago!");
-        }
-
-        return connected;
+    public static Limelight getInstance() {
+        if (mDefaultInstance == null) mDefaultInstance = new Limelight();
+        return mDefaultInstance;
     }
 
-    /* Commonly Used Contour Information */
-    // Whether the limelight has any valid targets (0 or 1)
-    private static final NetworkTableEntry mValidTargetEntry = mTable
-            .getEntry("tv");
-
     /**
-     * Get Whether the limelight has any valid targets
+     * Returns a Limelight Class using a custom table name.
      *
-     * @return Whether the limelight has any valid targets
+     * <p>If you have multiple limelights, this is most likely the constructor you want to use.
+     *
+     * @param tableName the table name of the limelight
+     * @return instance of limelight
      */
-    public static boolean hasValidTarget() {
-        // If the limelight is disconnected, then the valid target entry can
-        // freeze
-        return (mValidTargetEntry.getDouble(0) > 0.5) && (isConnected());
+    public static Limelight getInstance(String tableName) {
+        return new Limelight(tableName);
     }
 
-    // Horizontal Offset From Crosshair To Target (-27 degrees to 27 degrees)
-    public static final double MIN_X_ANGLE = -27;
-    public static final double MAX_X_ANGLE = 27;
-    private static final NetworkTableEntry mXAngleEntry = mTable.getEntry("tx");
+    /********************/
+    /*** Constructors ***/
+    /********************/
 
     /**
-     * Get The Horizontal Offset From Crosshair To Target (-27 degrees to 27 degrees)
+     * Construct a Limelight Class using the default table name.
      *
-     * @return Horizontal Offset From Crosshair To Target (-27 degrees to 27 degrees)
+     * <p>If you only have one limelight, this is most likely the constructor you want to use.
      */
-    public static double getTargetXAngle() {
-        return mXAngleEntry.getDouble(0);
+    private Limelight() {
+        table = new LimelightTable();
     }
 
-    // Vertical Offset From Crosshair To Target (-20.5 degrees to 20.5 degrees)
-    public static final double MIN_Y_ANGLE = -20.5;
-    public static final double MAX_Y_ANGLE = 20.5;
-    private static final NetworkTableEntry mYAngleEntry = mTable.getEntry("ty");
-
     /**
-     * Get The Vertical Offset From Crosshair To Target (-20.5 degrees to 20.5 degrees)
+     * Construct a Limelight Class using a custom table name.
      *
-     * @return Vertical Offset From Crosshair To Target (-20.5 degrees to 20.5 degrees)
+     * <p>If you have multiple limelights, this is most likely the constructor you want to use.
+     *
+     * @param tableName the table name of the limelight
      */
-    public static double getTargetYAngle() {
-        return mYAngleEntry.getDouble(0);
+    private Limelight(String tableName) {
+        table = new LimelightTable(tableName);
     }
 
-    // Target Area (0% of image to 100% of image)
-    public static final double MIN_TARGET_AREA = 0;
-    public static final double MAX_TARGET_AREA = 1;
-    private static final NetworkTableEntry mTargetAreaEntry = mTable
-            .getEntry("ta");
+    /****************************/
+    /*** Variable Definitions ***/
+    /****************************/
 
-    /**
-     * Get the percent of the screen the target takes up on a scale of 0 to 1
-     *
-     * @return Percent of the screen the target takes up on a scale of 0 to 1
-     */
-    public static double getTargetArea() {
+    private final LimelightTable table;
+
+    /************************/
+    /*** Connnection Test ***/
+    /************************/
+
+    /** @return time of last network table change from limelight */
+    public long getLastUpdate() {
+        long lastChange = table.latency.getLastChange();
+        lastChange = Math.max(lastChange, table.xAngle.getLastChange());
+        lastChange = Math.max(lastChange, table.yAngle.getLastChange());
+        return lastChange;
+    }
+
+    /** @return if the limelight has updated its */
+    public boolean isConnected() {
+        final long MAX_UPDATE_TIME = 250_000;
+
+        table.timingEntry.forceSetBoolean(!table.timingEntry.getBoolean(false));
+        long currentTime = table.timingEntry.getLastChange();
+
+        return Math.abs(currentTime - getLastUpdate()) < MAX_UPDATE_TIME;
+    }
+
+    /*****************************************/
+    /*** Commonly Used Contour Information ***/
+    /*****************************************/
+
+    /** @return Whether the limelight has any valid targets */
+    public boolean getValidTarget() {
+        return (table.validTarget.getDouble(0) > 0.5) && (isConnected());
+    }
+
+    /** @return Horizontal Offset From Crosshair To Target (-27 degrees to 27 degrees) */
+    public double getTargetXAngle() {
+        return table.xAngle.getDouble(0);
+    }
+
+    /** @return Vertical Offset From Crosshair To Target (-20.5 degrees to 20.5 degrees) */
+    public double getTargetYAngle() {
+        return table.yAngle.getDouble(0);
+    }
+
+    /** @return Percent of the screen the target takes up on a scale of 0 to 1 */
+    public double getTargetArea() {
         // Lime light returns a double from 0 - 100
         // Divide by 100 to scale number from 0 - 1
-        return Math.min(mTargetAreaEntry.getDouble(0) / 100.0, 1);
+        return SLMath.clamp(table.targetArea.getDouble(0) / 100.0, 0, 1);
     }
 
-    // Skew or rotation (-90 degrees to 0 degrees)
-    public static final double MIN_SKEW = -90;
-    public static final double MAX_SKEW = 0;
-    private static final NetworkTableEntry mTargetSkewEntry = mTable
-            .getEntry("ts");
-
-    /**
-     * Get the Skew or rotation (-90 degrees to 0 degrees)
-     *
-     * @return Skew or rotation (-90 degrees to 0 degrees)
-     */
-    public static double getTargetSkew() {
-        return mTargetSkewEntry.getDouble(0);
+    /** @return Skew or rotation (-90 degrees to 0 degrees) */
+    public double getTargetSkew() {
+        return table.targetSkew.getDouble(0);
     }
 
-    // The pipeline’s latency contribution (ms) Add at
-    // least 11ms for image capture latency.
-    public static final double IMAGE_CAPTURE_LATENCY = 11;
-    private static final NetworkTableEntry mLatencyEntry = mTable
-            .getEntry("tl");
-
-    /**
-     * Get the latency of limelight information in milli-seconds
-     *
-     * @return Latency of limelight information in milli-seconds
-     */
-    public static double getLatencyMs() {
+    /** @return Latency of limelight information in milli-seconds */
+    public double getLatencyMs() {
         // Add Image Capture Latency to get more accurate result
-        return mLatencyEntry.getDouble(0) + IMAGE_CAPTURE_LATENCY;
+        return table.latency.getDouble(0) + LimelightConstants.IMAGE_CAPTURE_LATENCY;
     }
 
-    // Pixel information returned from these functions
-    public static final double MIN_SIDE_LENGTH = 0;
-    public static final double MAX_SIDE_LENGTH = 320;
+    /********************/
+    /*** Side Lengths ***/
+    /********************/
 
-    private static final NetworkTableEntry mShortestSideLengthEntry = mTable
-            .getEntry("tshort");
-
-    /**
-     * Get the sidelength of shortest side of the fitted bounding box (0 - 320 pixels)
-     *
-     * @return Shortest side length of target in pixels
-     */
-    public static double getShortestSidelength() {
-        return mShortestSideLengthEntry.getDouble(0);
+    /** @return Shortest side length of target in pixels */
+    public double getShortestSidelength() {
+        return table.shortestSideLength.getDouble(0);
     }
 
-    private static final NetworkTableEntry mLongestSideLengthEntry = mTable
-            .getEntry("tlong");
-
-    /**
-     * Get the sidelength of longest side of the fitted bounding box (0 - 320 pixels)
-     *
-     * @return Longest side length of the target in pixels
-     */
-    public static double getLongestSidelength() {
-        return mLongestSideLengthEntry.getDouble(0);
+    /** @return Sidelength of longest side of the fitted bounding box (0 - 320 pixels) */
+    public double getLongestSidelength() {
+        return table.longestSideLength.getDouble(0);
     }
 
-    private static final NetworkTableEntry mHorizontalSideLengthEntry = mTable
-            .getEntry("thor");
-
-    /**
-     * Get the horizontal sidelength of the rough bounding box (0 - 320 pixels)
-     *
-     * @return Horizontal side length of target in pixels
-     */
-    public static double getHorizontalSidelength() {
-        return mHorizontalSideLengthEntry.getDouble(0);
+    /** @return Horizontal sidelength of the rough bounding box (0 - 320 pixels) */
+    public double getHorizontalSidelength() {
+        return table.horizontalSideLength.getDouble(0);
     }
 
-    private static final NetworkTableEntry mVerticalSideLengthEntry = mTable
-            .getEntry("tvert");
-
-    /**
-     * Get the vertical sidelength of the rough bounding box (0 - 320 pixels)
-     *
-     * @return Vertical side length of target in pixels
-     */
-    public static double getVerticalSidelength() {
-        return mVerticalSideLengthEntry.getDouble(0);
+    /** @return Vertical sidelength of the rough bounding box (0 - 320 pixels) */
+    public double getVerticalSidelength() {
+        return table.verticalSideLength.getDouble(0);
     }
 
-    /* Target Corner */
-    private static final NetworkTableEntry mTCornX = mTable.getEntry("tcornx");
+    /**********************/
+    /*** Target Corners ***/
+    /**********************/
 
-    /**
-     * Get a number array of corner x-coordinates
-     *
-     * @return Number array of corner x-coordinates
-     */
-    public static double[] getTargetCornerX() {
-        return mTCornX.getDoubleArray(new double[] {});
+    /** @return Number array of corner x-coordinates */
+    public double[] getRawTargetCornersX() {
+        return table.xCorners.getDoubleArray(new double[] {});
     }
 
-    /**
-     * Get the x axis of a corner on the target
-     *
-     * @return The x axis of a corner on the target
-     */
-    public static double getTargetCornerX(int corner) {
-        return getTargetCornerX()[corner];
+    /** @return Number array of corner y-coordinates */
+    public double[] getRawTargetCornersY() {
+        return table.yCorners.getDoubleArray(new double[] {});
     }
 
-    private static final NetworkTableEntry mTCornY = mTable.getEntry("tcorny");
+    /** @return Vector2D array of the target corners */
+    public Vector2D[] getTargetCorners() {
+        double[] rawX = getRawTargetCornersX();
+        double[] rawY = getRawTargetCornersX();
 
-    /**
-     * Get a number array of corner y-coordinates
-     *
-     * @return Number array of corner y-coordinates
-     */
-    public static double[] getTargetCornerY() {
-        return mTCornY.getDoubleArray(new double[] {});
-    }
+        if (rawX.length != 0 && rawY.length != 0 && rawX.length == rawY.length) {
+            int length = rawX.length;
 
-    /**
-     * Get the x axis of a corner on the target
-     *
-     * @return The x axis of a corner on the target
-     */
-    public static double getTargetCornerY(int corner) {
-        return getTargetCornerY()[corner];
-    }
+            Vector2D[] output = new Vector2D[length];
 
-    private static final NetworkTableEntry mCornerEntry = mTable
-            .getEntry("tcornxy");
+            for (int i = 0; i < length; ++i) {
+                output[i] = new Vector2D(rawX[i], rawY[i]);
+            }
 
-    /**
-     *
-     * @return Formatted 2D array of coordinates, consisting of an array of X * values and an array of Y
-     *         values.
-     */
-    public static Vector2D[] getTargetCorner() {
-        double[] rawData = mCornerEntry.getDoubleArray(new double[0]);
-        Vector2D[] data = new Vector2D[rawData.length / 2];
-
-        for(int i = 0; i < data.length; ++i) {
-            data[i] = new Vector2D(rawData[2 * i + 0], rawData[2 * i + 1]);
+            return output;
         }
 
-        return data;
+        return new Vector2D[] {};
     }
 
-    /* Advanced Usage with Raw Contours (Not sent by default) */
+    /**************************************************************/
+    /*** Advanced Usage with Raw Contours (Not sent by default) ***/
+    /**************************************************************/
+
     // Raw Contours are formatted as tx0, ty0, tx1, ty1, tx2, ty2
     // So to make this easier, you pass an int and it formats it
 
@@ -279,234 +202,270 @@ public class Limelight {
      * @param target Target to read X Angle from
      * @return X Angle of corresponding target
      */
-    public static double getRawTargetXAngle(int target) {
-        return mTable.getEntry("tx" + target).getDouble(0);
+    public double getRawTargetXAngle(int target) {
+        return table.getEntry("tx" + target).getDouble(0);
     }
 
     /**
      * @param target Target to read Y Angle from
      * @return Y Angle of corresponding target
      */
-    public static double getRawTargetYAngle(int target) {
-        return mTable.getEntry("ty" + target).getDouble(0);
+    public double getRawTargetYAngle(int target) {
+        return table.getEntry("ty" + target).getDouble(0);
     }
 
     /**
      * @param target Target to read Area from
      * @return Percent of the screen the corresponding target takes up on a scale of 0 to 1
      */
-    public static double getRawTargetArea(int target) {
+    public double getRawTargetArea(int target) {
         // Lime light returns a double from 0 - 100
         // Divide by 100 to scale number from 0 - 1
-        return Math.min(mTable.getEntry("ta" + target).getDouble(0) / 100.0, 1);
+        return SLMath.clamp(table.getEntry("ta" + target).getDouble(0) / 100.0, 0, 1);
     }
 
     /**
      * @param target Target to read Skew from
      * @return Skew of corresponding target
      */
-    public static double getRawTargetSkew(int target) {
-        return mTable.getEntry("ts" + target).getDouble(0);
+    public double getRawTargetSkew(int target) {
+        return table.getEntry("ts" + target).getDouble(0);
     }
 
     /**
      * @param crosshair Crosshair to read coords from
      * @return X Coordinate of corresponding crosshair
      */
-    public static double getCustomRawCrosshairX(int crosshair) {
-        return mTable.getEntry("cx" + crosshair).getDouble(0);
+    public double getCustomRawCrosshairX(int crosshair) {
+        return table.getEntry("cx" + crosshair).getDouble(0);
     }
 
     /**
      * @param crosshair Crosshair to read coords from
      * @return Y Coordinate of corresponding crosshair
      */
-    public static double getRawCrosshairY(int crosshair) {
-        return mTable.getEntry("cy" + crosshair).getDouble(0);
+    public double getRawCrosshairY(int crosshair) {
+        return table.getEntry("cy" + crosshair).getDouble(0);
     }
 
-    /* Solve 3D */
-    private static final NetworkTableEntry mSolve3DEntry = mTable
-            .getEntry("camtran");
+    /****************/
+    /*** Solve 3D ***/
+    /****************/
 
-    /**
-     * Get Solve3D Result from network table
-     *
-     * @return Solve 3D Result
-     */
-    public static Solve3DResult getSolve3D() {
-        return new Solve3DResult(mSolve3DEntry.getDoubleArray(new double[] {}));
+    /** @return The Solve 3D Result */
+    public Solve3DResult getSolve3D() {
+        return new Solve3DResult(table.solve3D.getDoubleArray(new double[] {}));
     }
 
-    /* Custom Grip Values */
-    // Return data given by custom GRIP pipeline
+    /***************************/
+    /*** Camera Mode Control ***/
+    /***************************/
+
+    /** @param mode Specified LED Mode to set the limelight to */
+    public void setLEDMode(LEDMode mode) {
+        table.ledMode.setNumber(mode.getCodeValue());
+    }
+
+    /** @param mode Specified Cam Mode to set the limelight to */
+    public void setCamMode(CamMode mode) {
+        table.camMode.setNumber(mode.getCodeValue());
+    }
+
+    /** @param mode Specified Snapshot Mode to set the limelight to */
+    public void setSnapshotMode(SnapshotMode mode) {
+        table.snapshotMode.setNumber(mode.getCodeValue());
+    }
+
+    /** @param stream Specified Camera Stream to set the limelight to */
+    public void setCameraStream(CameraStream stream) {
+        table.cameraStream.setNumber(stream.getCodeValue());
+    }
+
+    /** @param pipeline Specified pipeline to set the limelight to */
+    public void setPipeline(Pipeline pipeline) {
+        if (!pipeline.equals(Pipeline.INVALID_PIPELINE))
+            table.pipeline.setNumber(pipeline.getCodeValue());
+    }
+
+    /** @return The current pipeline the limelight is set to */
+    public Pipeline getPipeline() {
+        double ntValue = table.getPipeline.getDouble(0);
+        int pipelineID = (int) (ntValue + 0.5);
+        switch (pipelineID) {
+            case 0:
+                return Pipeline.SETTING_0;
+            case 1:
+                return Pipeline.SETTING_1;
+            case 2:
+                return Pipeline.SETTING_2;
+            case 3:
+                return Pipeline.SETTING_3;
+            case 4:
+                return Pipeline.SETTING_4;
+            case 5:
+                return Pipeline.SETTING_5;
+            case 6:
+                return Pipeline.SETTING_6;
+            case 7:
+                return Pipeline.SETTING_7;
+            case 8:
+                return Pipeline.SETTING_8;
+            case 9:
+                return Pipeline.SETTING_9;
+            default:
+                return Pipeline.INVALID_PIPELINE;
+        }
+    }
+
+    /*************************************/
+    /*** Camera Modes Enum Definitions ***/
+    /*************************************/
+
+    /** Modes for how the lights on the Limelight should be configured */
+    public enum LEDMode {
+        /* Use LED mode set in pipeline */
+        PIPELINE(0),
+
+        /* Force LEDs off */
+        FORCE_OFF(1),
+
+        /* Force LEDs to blink */
+        FORCE_BLINK(2),
+
+        /* Force LEDs on */
+        FORCE_ON(3);
+
+        private final int value;
+
+        LEDMode(int value) {
+            this.value = value;
+        }
+
+        public int getCodeValue() {
+            return value;
+        }
+    };
+
+    /** Modes for how the Camera should be configured */
+    public enum CamMode {
+        /* Use limelight for CV */
+        VISION(0),
+
+        /* Use limelight for Driving */
+        DRIVER(1);
+
+        private final int value;
+
+        CamMode(int value) {
+            this.value = value;
+        }
+
+        public int getCodeValue() {
+            return value;
+        }
+    };
+
+    /** Mode for how the limelight should take snapshots */
+    public enum SnapshotMode {
+        /* Don't take snapshots */
+        STOP(0),
+
+        /* Take two snapshots per second */
+        TWO_PER_SECOND(1);
+
+        private final int value;
+
+        SnapshotMode(int value) {
+            this.value = value;
+        }
+
+        public int getCodeValue() {
+            return value;
+        }
+    };
+
+    /** Modes for how the camera stream over the network should be delivered */
+    public enum CameraStream {
+        /* Shows limelight and secondary camera side by side */
+        STANDARD(0),
+
+        /** Shows the secondary camera along with and within the limelight camera */
+        PIP_MAIN(1),
+
+        /** Shows the limelight along with and within the limelight camera */
+        PIP_SECONDARY(2);
+
+        private final int value;
+
+        CameraStream(int value) {
+            this.value = value;
+        }
+
+        public int getCodeValue() {
+            return value;
+        }
+    };
+
+    /** The different Pipelines that the limelight camera can be set to */
+    public enum Pipeline {
+        INVALID_PIPELINE(-1),
+        SETTING_0(0),
+        SETTING_1(1),
+        SETTING_2(2),
+        SETTING_3(3),
+        SETTING_4(4),
+        SETTING_5(5),
+        SETTING_6(6),
+        SETTING_7(7),
+        SETTING_8(8),
+        SETTING_9(9);
+
+        private final int value;
+
+        Pipeline(int value) {
+            this.value = value;
+        }
+
+        public int getCodeValue() {
+            return value;
+        }
+    };
+
+    /**************************/
+    /*** Custom Grip Values ***/
+    /**************************/
 
     /**
      * @param element Name of double provided by GRIP Pipeline
      * @return Double provided by GRIP Pipeline
      */
-    public static double getCustomDouble(String element) {
-        return mTable.getEntry(element).getDouble(0);
+    public double getCustomDouble(String element) {
+        return table.getEntry(element).getDouble(0);
     }
 
     /**
      * @param element Name of Number to set on Network Table
-     * @param value   Value to set the Number on the Network Table to
+     * @param value Value to set the Number on the Network Table to
      * @return Whether or not the write was successful
      */
-    public static boolean setCustomNumber(String element, Number value) {
-        return mTable.getEntry(element).setNumber(value);
+    public boolean setCustomNumber(String element, Number value) {
+        return table.getEntry(element).setNumber(value);
     }
 
     /**
      * @param element Name of String provided by GRIP Pipeline
      * @return String provided by GRIP Pipeline
      */
-    public static String getCustomString(String element) {
-        return mTable.getEntry(element).getString("");
+    public String getCustomString(String element) {
+        return table.getEntry(element).getString("");
     }
 
     /**
      * @param element Name of String to set on Network Table
-     * @param value   Value to set the Sting on the Network Table to
+     * @param value Value to set the Sting on the Network Table to
      * @return Whether or not the write was successful
      */
-    public static boolean setCustomString(String element, String value) {
-        return mTable.getEntry(element).setString(value);
-    }
-
-    /* Camera Controls (Use Enums to prevent invalid inputs) */
-    // LEDMode
-    public enum LEDMode {
-
-        PIPELINE(0), // Use LED mode set in pipeline
-        FORCE_OFF(1), // Force LEDs off
-        FORCE_BLINK(2), // Force LEDs to blink
-        FORCE_ON(3); // Force LEDs on
-
-        LEDMode(int value) {
-            this.val = value;
-        }
-
-        public int getCodeValue() {
-            return val;
-        }
-
-        private int val;
-    };
-
-    private static final NetworkTableEntry mLEDModeEntry = mTable
-            .getEntry("ledMode");
-
-    /**
-     * @param mode Specified LED Mode to set the limelight to
-     */
-    public static void setLEDMode(LEDMode mode) {
-        mLEDModeEntry.setNumber(mode.getCodeValue());
-    }
-
-    // CAM_MODE
-    public enum CamMode {
-
-        VISION(0), // Use limelight for CV
-        DRIVER(1); // Use limelight for driving
-
-        CamMode(int value) {
-            this.val = value;
-        }
-
-        public int getCodeValue() {
-            return val;
-        }
-
-        private int val;
-    };
-
-    private static final NetworkTableEntry mCamModeEntry = mTable
-            .getEntry("camMode");
-
-    /**
-     * @param mode Specified Cam Mode to set the limelight to
-     */
-    public static void setCamMode(CamMode mode) {
-        mCamModeEntry.setNumber(mode.getCodeValue());
-    }
-
-    // PIPELINE
-    private static final NetworkTableEntry mPipelineEntry = mTable
-            .getEntry("pipeline");
-
-    /**
-     * @param pipeline Specified pipeline to set the limelight to
-     */
-    public static void setPipeline(int pipeline) {
-        // Prevent input of invalid pipelines
-        if(pipeline >= 0 && pipeline <= 9) {
-            mPipelineEntry.setNumber(pipeline);
-        }
-    }
-
-    private static final NetworkTableEntry mGetPipelineEntry = mTable
-            .getEntry("getpipe");
-
-    public static double getPipeline() {
-        return mGetPipelineEntry.getDouble(0);
-    }
-
-    // STREAM
-    public enum CameraStream { // PIP = Picture-In-Picture
-
-        STANDARD(0), // Shows limelight and secondary camera side by side
-        PIP_MAIN(1), // Shows the secondary camera along with and within the
-                     // limelight camera
-        PIP_SECONDARY(2); // Shows the limelight along with and within the
-                          // limelight camera
-
-        CameraStream(int value) {
-            this.val = value;
-        }
-
-        public int getCodeValue() {
-            return val;
-        }
-
-        private int val;
-    };
-
-    private static final NetworkTableEntry mCameraStreamEntry = mTable
-            .getEntry("stream");
-
-    /**
-     * @param stream Specified Camera Stream to set the limelight to
-     */
-    public static void setCameraStream(CameraStream stream) {
-        mCameraStreamEntry.setNumber(stream.getCodeValue());
-    }
-
-    // SNAPSHOT_MODE
-    public enum SnapshotMode {
-
-        STOP(0), // Don't take snapshots
-        TWO_PER_SECOND(1);
-
-        SnapshotMode(int value) {
-            this.val = value;
-        }
-
-        public int getCodeValue() {
-            return val;
-        }
-
-        private int val;
-    };
-
-    private static final NetworkTableEntry mSnapshotModeEntry = mTable
-            .getEntry("snapshot");
-
-    /**
-     * @param mode Specified Snapshot Mode to set the limelight to
-     */
-    public static void setSnapshotMode(SnapshotMode mode) {
-        mSnapshotModeEntry.setNumber(mode.getCodeValue());
+    public boolean setCustomString(String element, String value) {
+        return table.getEntry(element).setString(value);
     }
 }
