@@ -337,7 +337,7 @@ public final class Angle {
     public double velocityRadians(Angle prev, double dt) {
         return normalizeRadians(this.toRadians() - prev.toRadians(), 0.0) / dt;
     }
-    
+
     /**
      * Get the angular velocity in rotations/s given 2 angles and a dt
      *
@@ -348,7 +348,7 @@ public final class Angle {
     public double velocityRotations(Angle prev, double dt) {
         return normalizeRotations(this.toRotations() - prev.toRotations(), 0.0) / dt;
     }
-    
+
     /**
      * Get the angular velocity in degrees/s given 2 angles and a dt
      *
@@ -359,7 +359,7 @@ public final class Angle {
     public double velocityDegrees(Angle prev, double dt) {
         return normalizeDegrees(this.toDegrees() - prev.toDegrees(), 0.0) / dt;
     }
-    
+
     /**
      * Multiply the angle by a scalar value
      *
