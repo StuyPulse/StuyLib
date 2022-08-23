@@ -8,7 +8,7 @@ env:
   
 jobs:   
   spotless-check:
-    name: Check Spotless - JVM ${{ env.JAVA_VERSION }} - Gradle ${{ env.GRADLE_VERSION }}
+    name: Check Spotless \- JVM ${{ env.JAVA_VERSION }} \- Gradle ${{ env.GRADLE_VERSION }}
   
     runs-on: ubuntu-latest
     steps:
@@ -19,14 +19,14 @@ jobs:
       with:
         java-version: ${{ env.JAVA_VERSION }}
         
-    - name: Spotless Check
+    - name: Spotless Check \- Gradle ${{ env.GRADLE_VERSION }}
       uses: gradle/gradle-build-action@v2.3.0-beta.1
       with:
         gradle-version: ${{ env.GRADLE_VERSION }} 
         arguments: spotlessCheck
         
   javadocs-check:
-    name: Check Javadocs - JVM ${{ env.JAVA_VERSION }} - Gradle ${{ env.GRADLE_VERSION }}
+    name: Check Javadocs \- JVM ${{ env.JAVA_VERSION }} \- Gradle ${{ env.GRADLE_VERSION }}
     
     runs-on: ubuntu-latest
     steps:
@@ -37,13 +37,13 @@ jobs:
       with:
         java-version: ${{ env.JAVA_VERSION }}
       
-    - name: Javadocs Check
+    - name: Build Javadocs \- Gradle ${{ env.GRADLE_VERSION }}
       uses: gradle/gradle-build-action@v2.3.0-beta.1
       with:
         arguments: javadoc
         
   final-build-check:
-    name: Check Final Build - JVM ${{ env.JAVA_VERSION }} - Gradle ${{ env.GRADLE_VERSION }}
+    name: Check Final Build \- JVM ${{ env.JAVA_VERSION }} \- Gradle ${{ env.GRADLE_VERSION }}
     
     needs: 
     - spotless-check
@@ -58,7 +58,7 @@ jobs:
       with:
         java-version: ${{ env.JAVA_VERSION }}
         
-    - name: Build
+    - name: Build \- Gradle ${{ env.GRADLE_VERSION }}
       uses: gradle/gradle-build-action@v2.3.0-beta.1
       with:
         arguments: build
