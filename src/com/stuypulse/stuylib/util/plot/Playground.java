@@ -7,6 +7,7 @@ package com.stuypulse.stuylib.util.plot;
 import com.stuypulse.stuylib.math.Vector2D;
 import com.stuypulse.stuylib.math.interpolation.*;
 import com.stuypulse.stuylib.streams.*;
+import com.stuypulse.stuylib.streams.angles.AFuser;
 import com.stuypulse.stuylib.streams.angles.AStream;
 import com.stuypulse.stuylib.streams.angles.filters.AHighPassFilter;
 import com.stuypulse.stuylib.streams.angles.filters.ALowPassFilter;
@@ -72,18 +73,24 @@ public class Playground {
         AStream rate_angle = angle_mouse.filtered(new ARateLimit(1));
         AStream lpf_angle = angle_mouse.filtered(new ALowPassFilter(0.5));
         AStream hpf_angle = angle_mouse.filtered(new AHighPassFilter(0.5));
+        AStream delay_angle = angle_mouse.filtered(new ALowPassFilter(0.25)).add(AStream.create(IStream.create(() -> Math.random() - 0.5).filtered(new LowPassFilter(1))));
+        AStream afuser_angle = new AFuser(1, delay_angle, angle_mouse);
 
         VStream mouse = VStream.create(() -> angle_mouse.get().getVector().mul(1.0));
         VStream jerk = VStream.create(() -> jerk_angle.get().getVector().mul(0.95));
         VStream rate = VStream.create(() -> rate_angle.get().getVector().mul(0.9));
         VStream lpf = VStream.create(() -> lpf_angle.get().getVector().mul(0.85));
         VStream hpf = VStream.create(() -> hpf_angle.get().getVector().mul(0.8));
+        VStream delay = VStream.create(() -> delay_angle.get().getVector().mul(1.1));
+        VStream afuser = VStream.create(() -> afuser_angle.get().getVector().mul(1.05));
 
         plot.addSeries(Constants.make("Angle", mouse))
                 .addSeries(Constants.make("Jerk", jerk))
                 .addSeries(Constants.make("Rate", rate))
                 .addSeries(Constants.make("LPF", lpf))
                 .addSeries(Constants.make("HPF", hpf))
+                .addSeries(Constants.make("afuser", afuser))
+                .addSeries(Constants.make("delayed", delay))
                 .addSeries(Constants.make("mouse", m));
         //
         // .addSeries(Constants.make("y=x", x -> x))
