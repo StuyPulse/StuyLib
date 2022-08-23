@@ -1,21 +1,10 @@
-.gradle/
-.settings/
-.vscode/
-bin/
-build/
-releases/
-docs/
+*/
 
-.project
-
-*.class
-
-!lib/
-!src/
+!.github/
+!gradle/
 !pictures/
+!src/
 !vendordeps/
 
-.DS_Store
-
-.idea/
-StuyLib.iml
+.*
+!.gitignore

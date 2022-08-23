@@ -1,6 +1,8 @@
 ![(Stuylib Logo)](https://github.com/StuyPulse/StuyLib/blob/main/pictures/StuyLibREADME.png?raw=true)
 
 [![Jitpack Website](https://jitpack.io/v/StuyPulse/StuyLib.svg)](https://jitpack.io/#StuyPulse/StuyLib)
+[![Build](https://github.com/StuyPulse/StuyLib/actions/workflows/build.yml/badge.svg)](https://github.com/StuyPulse/StuyLib/actions/workflows/build.yml)
+[![Pages](https://github.com/StuyPulse/StuyLib/actions/workflows/pages.yml/badge.svg)](https://stuypulse.github.io/StuyLib/)
 
 ---
 
@@ -75,14 +77,11 @@ At the top of each class, give a brief description of the class, along with an a
 
 Current Lead Repository Maintainer
 
- - [Sam Belliveau (2022)](https://github.com/Sam-Belliveau)
-
-Future Lead Repository Maintainer
-
  - [Myles Pasetsky (2023)](https://github.com/selym3)
 
 Notable Contributors
 
+ - [Sam Belliveau (2022)](https://github.com/Sam-Belliveau)
  - [Ivan Wei (2022)](https://github.com/iwei20)
  - [Winston Peng (2020)](https://github.com/CreativePenguin)
  - [Kevin Cai (2020)](https://github.com/Kevin16777126)
