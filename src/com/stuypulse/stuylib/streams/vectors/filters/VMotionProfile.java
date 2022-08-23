@@ -2,9 +2,9 @@
 /* This work is licensed under the terms of the MIT license */
 /* found in the root directory of this project. */
 
-package com.stuypulse.stuylib.streams.filters;
+package com.stuypulse.stuylib.streams.vectors.filters;
 
-import com.stuypulse.stuylib.math.SLMath;
+import com.stuypulse.stuylib.math.Vector2D;
 import com.stuypulse.stuylib.util.StopWatch;
 
 /**
@@ -15,7 +15,7 @@ import com.stuypulse.stuylib.util.StopWatch;
  *
  * @author Sam (sam.belliveau@gmail.com)
  */
-public class MotionProfile implements IFilter {
+public class VMotionProfile implements VFilter {
 
     // Default number of times to apply filter (helps accuracy)
     private static final int kDefaultSteps = 64;
@@ -28,8 +28,8 @@ public class MotionProfile implements IFilter {
     private Number mAccelLimit;
 
     // The last output / acceleration
-    private double mOutput;
-    private double mAccel;
+    private Vector2D mOutput;
+    private Vector2D mAccel;
 
     // Number of times to apply filter (helps accuracy)
     private final int mSteps;
@@ -39,14 +39,14 @@ public class MotionProfile implements IFilter {
      * @param accelLimit maximum change in velocity per second (u/s/s)
      * @param steps number of times to apply filter (improves accuracy)
      */
-    public MotionProfile(Number velLimit, Number accelLimit, int steps) {
+    public VMotionProfile(Number velLimit, Number accelLimit, int steps) {
         mTimer = new StopWatch();
 
         mVelLimit = velLimit;
         mAccelLimit = accelLimit;
 
-        mOutput = 0;
-        mAccel = 0;
+        mOutput = Vector2D.kOrigin;
+        mAccel = Vector2D.kOrigin;
 
         mSteps = steps;
     }
@@ -55,50 +55,51 @@ public class MotionProfile implements IFilter {
      * @param velLimit maximum change in velocity per second (u/s)
      * @param accelLimit maximum change in acceleration per second (u/s/s)
      */
-    public MotionProfile(Number velLimit, Number accelLimit) {
+    public VMotionProfile(Number velLimit, Number accelLimit) {
         this(velLimit, accelLimit, kDefaultSteps);
     }
 
-    public double get(double target) {
+    public Vector2D get(Vector2D target) {
         double dt = mTimer.reset() / mSteps;
 
         for (int i = 0; i < mSteps; ++i) {
             // if there is a jerk limit, limit the amount the acceleration can change
             if (0 < mAccelLimit.doubleValue()) {
                 // amount of windup in system (how long it would take to slow down)
-                double windup = Math.abs(mAccel) / mAccelLimit.doubleValue();
+                double windup = mAccel.magnitude() / mAccelLimit.doubleValue();
 
                 // If the windup is too small, just use normal algorithm to limit acceleration
                 if (windup < dt) {
                     // Calculate acceleration needed to reach target
-                    double accel = (target - mOutput) / dt - mAccel;
+                    Vector2D accel = target.sub(mOutput).div(dt).sub(mAccel);
 
                     // Try to reach it while abiding by jerklimit
-                    mAccel += SLMath.clamp(accel, dt * mAccelLimit.doubleValue());
+                    mAccel = mAccel.add(accel.clamp(dt * mAccelLimit.doubleValue()));
                 } else {
                     // the position it would end up if it attempted to come to a full stop
-                    double windA = 0.5 * mAccel * (dt + windup); // windup caused by acceleration
-                    double future = mOutput + windA; // where the robot will end up
+                    Vector2D windA =
+                            mAccel.mul(0.5 * (dt + windup)); // windup caused by acceleration
+                    Vector2D future = mOutput.add(windA); // where the robot will end up
 
                     // Calculate acceleration needed to come to stop at target throughout windup
-                    double accel = (target - future) / windup;
+                    Vector2D accel = target.sub(future).div(windup);
 
                     // Try to reach it while abiding by jerklimit
-                    mAccel += SLMath.clamp(accel, dt * mAccelLimit.doubleValue());
+                    mAccel = mAccel.add(accel.clamp(dt * mAccelLimit.doubleValue()));
                 }
 
             } else {
                 // make the acceleration the difference between target and current
-                mAccel = (target - mOutput) / dt;
+                mAccel = target.sub(mOutput).div(dt);
             }
 
             // if there is an acceleration limit, limit the acceleration
             if (0 < mVelLimit.doubleValue()) {
-                mAccel = SLMath.clamp(mAccel, mVelLimit.doubleValue());
+                mAccel = mAccel.clamp(mVelLimit.doubleValue());
             }
 
             // adjust output by calculated acceleration
-            mOutput += dt * mAccel;
+            mOutput = mOutput.add(mAccel.mul(dt));
         }
 
         return mOutput;
