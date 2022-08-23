@@ -67,5 +67,5 @@ jobs:
       uses: actions/upload-artifact@v3.1.0
       with:
         name: StuyLib-Release
-        path: ./build/libs/StuyLib.jar
+        path: ./build/libs/*.jar
         retention-days: 90
