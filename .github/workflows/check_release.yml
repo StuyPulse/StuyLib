@@ -1,4 +1,4 @@
-name: StuyLib Checks / Tests
+name: StuyLib Checks / Build Release
 
 on: [push, fork, pull_request]
 
@@ -42,8 +42,8 @@ jobs:
       with:
         arguments: javadoc
         
-  final-build-check:
-    name: Check Final Build
+  final-build:
+    name: Final Build
     
     needs: 
     - spotless-check
@@ -62,3 +62,10 @@ jobs:
       uses: gradle/gradle-build-action@v2.3.0-beta.1
       with:
         arguments: build
+    
+    - name: Upload StuyLib Build
+      uses: actions/upload-artifact@v3.1.0
+      with:
+        name: StuyLib-Release
+        path: ./build/libs/StuyLib.jar
+        retention-days: 90

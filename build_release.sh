@@ -1,6 +1,6 @@
 #!/bin/bash
 
-BUILD_FILE="./build/libs/StuyLib-1.0.0.jar"
+BUILD_FILE="./build/libs/StuyLib.jar"
 OUTPUT_FILE="./releases/StuyLib-$1.jar"
 
 if [ -z "$1" ]
