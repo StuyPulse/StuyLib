@@ -18,10 +18,9 @@ import com.stuypulse.stuylib.streams.filters.Derivative;
  * calculated from desired velocities so that only sensible movements can be specified.
  *
  * <p>Feedforward *models* can be converted into *controllers* through 3 decorator methods:
- * `.velocity()`, `.position()`, and `.angle()`. These methods differ on what the controller's
- * setpoint unit is. `.velocity()` returns a velocity feedforward controller, while `.position()`
- * returns a position feedforward controller, and `.angle()` returns an angle feedforward
- * controller.
+ * `.velocity()`, `.position()`, and `.angle()`. `.velocity()` returns a velocity feedforward
+ * controller, while `.position()` returns a position feedforward controller, and `.angle()` returns
+ * an angle feedforward controller. These methods differ on what the controller's setpoint unit is.
  *
  * <p>For example, the velocity feedforward controller takes in velocity setpoints, which are
  * directly passed to the model. On the other hand, a position feedforward controller takes in
