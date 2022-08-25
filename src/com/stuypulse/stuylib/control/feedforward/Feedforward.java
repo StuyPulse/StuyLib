@@ -19,12 +19,15 @@ import com.stuypulse.stuylib.streams.filters.Derivative;
  * 
  * Feedforward *models* can be converted into *controllers* through 3 decorator methods: 
  * `.velocity()`, `.position()`, and `.angle()`. These methods differ on what the controller's
- * setpoint unit is. 
+ * setpoint unit is. `.velocity()` returns a velocity feedforward controller, while `.position()` 
+ * returns a position feedforward controller, and `.angle()` returns an angle feedforward controller.
  * 
  * For example, the velocity feedforward controller takes in velocity setpoints, which are 
  * directly passed to the model. On the other hand, a position feedforward controller takes 
  * in positional setpoints, which are then differentiated to get velocity and then fed to the
- * feedforward controller. An angle feedforward controller is a 
+ * feedforward controller. An angle feedforward controller is a positional controller that is
+ * forced to use angular units, so angular velocity is calculated and then fed to the feedforward
+ * model.
  * 
  * @author Myles Pasetsky (myles.pasetsky@gmail.com)
  */

@@ -12,7 +12,8 @@ import com.stuypulse.stuylib.streams.filters.Derivative;
  * motor outputs given positional setpoints. 
  * 
  * The feedforward model takes in velocity setpoints, so the derivative of the 
- * positional setpoints is calculated implicitly.
+ * positional setpoints must be calculated. This is done implicitly by this 
+ * controller though.
  * 
  * @author Myles Pasetsky (myles.pasetsky@gmail.com)
  */
