@@ -6,6 +6,24 @@ package com.stuypulse.stuylib.control;
 
 import com.stuypulse.stuylib.streams.filters.IFilter;
 
+/**
+ * A controller calculates an output variable given a setpoint and measurement
+ * of a single variable. 
+ * 
+ * This base class can be used to represent single-input single-output control 
+ * (SISO) algorithms (commonly PID and feedforward). 
+ * 
+ * For any controller, digital filters can be applied to the incoming setpoints 
+ * and measurements, or the outgoing outputs. This allows for the easy application 
+ * of filters often involved with control theory, like motion profile filters for 
+ * setpoints and low-pass filters for noisy measurements. *These filters are already
+ * provided in the StuyLib filters library.*
+ * 
+ * Becasue many SISO control schemes can be implemented under this class, they can be
+ * concisely composed together in another implementation.
+ * 
+ * @author Myles Pasetsky (myles.pasetsky@gmail.com)
+ */
 public abstract class Controller {
 
     private double mSetpoint;
