@@ -7,21 +7,19 @@ package com.stuypulse.stuylib.control;
 import com.stuypulse.stuylib.streams.filters.IFilter;
 
 /**
- * A controller calculates an output variable given a setpoint and measurement
- * of a single variable. 
- * 
- * This base class can be used to represent single-input single-output control 
- * (SISO) algorithms (commonly PID and feedforward). 
- * 
- * For any controller, digital filters can be applied to the incoming setpoints 
- * and measurements, or the outgoing outputs. This allows for the easy application 
- * of filters often involved with control theory, like motion profile filters for 
- * setpoints and low-pass filters for noisy measurements. *These filters are already
- * provided in the StuyLib filters library.*
- * 
- * Different control schemes that share the same setpoint and measurement can also be
- * concisely composed together if they all implement this class. 
- * 
+ * A controller calculates an output variable given a setpoint and measurement of a single variable.
+ *
+ * <p>This base class can be used to represent single-input single-output control (SISO) algorithms
+ * (commonly PID and feedforward).
+ *
+ * <p>For any controller, digital filters can be applied to the incoming setpoints and measurements,
+ * or the outgoing outputs. This allows for the easy application of filters often involved with
+ * control theory, like motion profile filters for setpoints and low-pass filters for noisy
+ * measurements. *These filters are already provided in the StuyLib filters library.*
+ *
+ * <p>Different control schemes that share the same setpoint and measurement can also be concisely
+ * composed together if they all implement this class.
+ *
  * @author Myles Pasetsky (myles.pasetsky@gmail.com)
  */
 public abstract class Controller {
@@ -57,8 +55,8 @@ public abstract class Controller {
 
     /**
      * Set the setpoint filter of the controller
-     * 
-     * @param setpointFilter setpoint filters 
+     *
+     * @param setpointFilter setpoint filters
      * @return reference to the controller
      */
     public final Controller setSetpointFilter(IFilter... setpointFilter) {
@@ -67,19 +65,19 @@ public abstract class Controller {
     }
 
     /**
-     * Set the measurement filter of the controller 
-     * 
-     * @param measurementFilter measurement filters 
+     * Set the measurement filter of the controller
+     *
+     * @param measurementFilter measurement filters
      * @return reference to the controller
      */
     public final Controller setMeasurementFilter(IFilter... measurementFilter) {
         mMeasurementFilter = IFilter.create(measurementFilter);
         return this;
     }
-    
+
     /**
      * Set the output filter of the controller
-     * 
+     *
      * @param outputFilter output filters
      * @return reference to the controller
      */
@@ -88,38 +86,29 @@ public abstract class Controller {
         return this;
     }
 
-    /**
-     * @return the most recent setpoint of the controller
-     */
+    /** @return the most recent setpoint of the controller */
     public final double getSetpoint() {
         return mSetpoint;
     }
 
-    /**
-     * @return the most recent measurement of the controller
-     */
+    /** @return the most recent measurement of the controller */
     public final double getMeasurement() {
         return mMeasurement;
     }
 
-    /**
-     * @return the most recent output of the controller
-     */
+    /** @return the most recent output of the controller */
     public final double getOutput() {
         return mOutput;
     }
 
-    /**
-     * @return the most recent error of the controller
-     */
+    /** @return the most recent error of the controller */
     public final double getError() {
         return getSetpoint() - getMeasurement();
     }
 
     /**
-     * Determines if the controller is finished based on an 
-     * acceptable error.
-     * 
+     * Determines if the controller is finished based on an acceptable error.
+     *
      * @param acceptableError acceptable error for the controller
      * @return whether or not the controller is done
      */
@@ -128,22 +117,22 @@ public abstract class Controller {
     }
 
     /**
-     * Combines this controller into a group with other controllers
-     * that share the same setpoint and measurement.
-     * 
+     * Combines this controller into a group with other controllers that share the same setpoint and
+     * measurement.
+     *
      * @param other the other controllers
-     * @return the group of controllers that 
+     * @return the group of controllers that
      */
     public final ControllerGroup add(Controller... other) {
         return new ControllerGroup(this, other);
     }
 
     /**
-     * Updates the state of the controller. 
-     * 
-     * Applies filters to setpoint and measurement, calculates output
-     * with filtered values, filters and returns output
-     * 
+     * Updates the state of the controller.
+     *
+     * <p>Applies filters to setpoint and measurement, calculates output with filtered values,
+     * filters and returns output
+     *
      * @param setpoint setpoint of the variable being controlled
      * @param measurement measurement of the variable being controlled
      * @return the final output
@@ -157,8 +146,8 @@ public abstract class Controller {
 
     /**
      * Calculates the output of the controller given a setpoint and measurement.
-     * 
-     * @param setpoint setpoint 
+     *
+     * @param setpoint setpoint
      * @param measurement measurement
      * @return calculated output
      */

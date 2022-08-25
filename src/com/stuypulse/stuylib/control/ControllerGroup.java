@@ -5,12 +5,12 @@
 package com.stuypulse.stuylib.control;
 
 /**
- * Controllers can be grouped together in a "controller group"
- * if they have the same setpoint and measurement. 
- * 
- * This allows different controller implementations that are controlling the 
- * same variable to be concisely composed together.
- * 
+ * Controllers can be grouped together in a "controller group" if they have the same setpoint and
+ * measurement.
+ *
+ * <p>This allows different controller implementations that are controlling the same variable to be
+ * concisely composed together.
+ *
  * @author Myles Pasetsky (myles.pasetsky@gmail.com)
  */
 public class ControllerGroup extends Controller {
@@ -28,9 +28,9 @@ public class ControllerGroup extends Controller {
     }
 
     /**
-     * Updates the internal controllers with the setpoint and measurement
-     * and returns their combined output.
-     * 
+     * Updates the internal controllers with the setpoint and measurement and returns their combined
+     * output.
+     *
      * @param setpoint setpoint
      * @param measurement measurement
      * @return summed output of the interal controllers

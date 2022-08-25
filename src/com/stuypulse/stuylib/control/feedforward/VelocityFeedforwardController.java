@@ -7,9 +7,9 @@ package com.stuypulse.stuylib.control.feedforward;
 import com.stuypulse.stuylib.control.Controller;
 
 /**
- * A velocity controller that uses a feedforward model to calculate
- * motor outputs given velocity setpoints.
- * 
+ * A velocity controller that uses a feedforward model to calculate motor outputs given velocity
+ * setpoints.
+ *
  * @author Myles Pasetsky (myles.pasetsky@gmail.com)
  */
 public class VelocityFeedforwardController extends Controller {
@@ -18,8 +18,8 @@ public class VelocityFeedforwardController extends Controller {
     private final Feedforward mFeedforward;
 
     /**
-     * Create a velocity controller with a feedforward model 
-     * 
+     * Create a velocity controller with a feedforward model
+     *
      * @param feedforward the model
      */
     public VelocityFeedforwardController(Feedforward feedforward) {
@@ -28,7 +28,7 @@ public class VelocityFeedforwardController extends Controller {
 
     /**
      * Calculates a motor output by feeding a velocity setpoint to a feedforward model.
-     * 
+     *
      * @param setpoint velocity setpoint of the controller
      * @param measurement measurement, which is not used in calculating an output
      * @return motor output from feedforward model
