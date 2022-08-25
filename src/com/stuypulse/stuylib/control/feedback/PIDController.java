@@ -12,9 +12,19 @@ import com.stuypulse.stuylib.streams.filters.IFilterGroup;
 import com.stuypulse.stuylib.util.StopWatch;
 
 /**
- * This PID controller is built by extending the Controller class. It has a dynamic rate, so it can
- * detect how much time has passed between each update. It is made to be easy to use and simple to
- * understand while still being accurate.
+ * The PID algorithm is a feedback control algorithm meant for calculating an output based on an
+ * error between a measurement and a setpoint.
+ *
+ * <p>PID takes into account the error itself, the rate of change of error, and built-up error over
+ * time to create a stable controller.
+ *
+ * <p>Because it's a feedback algorithm, it will only react when the system is already behind (there
+ * must be error for there to be any output). *However, a feedback contrller can be easily combined
+ * with a feedforward model to reduce the delay.*
+ *
+ * <p>This PID controller is built by extending the Controller class. It has a dynamic rate, so it
+ * can detect how much time has passed between each update. It is made to be easy to use and simple
+ * to understand while still being accurate.
  *
  * @author Sam (sam.belliveau@gmail.com)
  */
