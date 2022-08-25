@@ -4,16 +4,37 @@
 
 package com.stuypulse.stuylib.control;
 
+/**
+ * Controllers can be grouped together in another controller implementation
+ * if they have the same setpoint and measurement. 
+ * 
+ * This allows different controller implementations that are controlling the 
+ * same thing to be concisely composed together.
+ * 
+ * @author Myles Pasetsky
+ */
 public class ControllerGroup extends Controller {
 
+    /** Controller part of the group */
     private final Controller mController;
+
+    /** Controllers part of the group */
     private final Controller[] mControllers;
 
+    /** Create a controller group */
     public ControllerGroup(Controller controller, Controller... controllers) {
         mController = controller;
         mControllers = controllers;
     }
 
+    /**
+     * Updates the internal controllers with the setpoint and measurement
+     * and returns their combined output.
+     * 
+     * @param setpoint setpoint
+     * @param measurement measurement
+     * @return summed output of the interal controllers
+     */
     @Override
     protected double calculate(double setpoint, double measurement) {
         double output = mController.update(setpoint, measurement);
