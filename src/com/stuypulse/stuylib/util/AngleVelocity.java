@@ -17,7 +17,7 @@ public class AngleVelocity {
     }
 
     public double get(Angle angle) {
-        double velocity = angle.velocityRadians(mPreviousAngle, mTimer.getTime());
+        double velocity = angle.velocityRadians(mPreviousAngle, mTimer.reset());
         mPreviousAngle = angle;
         return velocity;
     }
