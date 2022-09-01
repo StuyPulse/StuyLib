@@ -11,7 +11,7 @@ import edu.wpi.first.util.sendable.SendableBuilder;
 import edu.wpi.first.wpilibj2.command.button.Button;
 
 /**
- * An class for using gamepads with different interfaces. You can implement this class in another
+ * A class for using gamepads with different interfaces. You can implement this class in another
  * file, and then use it with a standard interface.
  *
  * <p>Any unimplemented buttons will never be triggered, so if a certain controller is missing one,

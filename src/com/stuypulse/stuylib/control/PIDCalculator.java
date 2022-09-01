@@ -16,7 +16,7 @@ import edu.wpi.first.util.sendable.SendableBuilder;
 /**
  * This is a Bang-Bang controller that while controlling the robot, will be able to calculate the
  * values for the PID controller. It does this by taking the results of oscillations, then creating
- * a PIDController withe the correct values once the oscillations have been measured.
+ * a PIDController with the correct values once the oscillations have been measured.
  *
  * @author Sam (sam.belliveau@gmail.com)
  */
