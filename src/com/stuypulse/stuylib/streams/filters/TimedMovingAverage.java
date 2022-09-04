@@ -145,7 +145,7 @@ public class TimedMovingAverage implements IFilter {
 
         // Return running average value
         if (mCurrentTime <= 0) {
-            return 0.0;
+            return next;
         } else {
             return mTotal / mCurrentTime;
         }
