@@ -59,6 +59,10 @@ public class Playground {
             return new XYSeries(new Config(id, CAPACITY), series);
         }
 
+        public static Series make(String id, AStream series, double magnitude) {
+            return new AngleSeries(new Config(id, CAPACITY), series, magnitude);
+        }
+
         public static Series make(String id, BStream series) {
             return make(id, IStream.create(series));
         }
@@ -68,6 +72,7 @@ public class Playground {
         Plot plot = new Plot(Constants.SETTINGS);
 
         VStream m = VStream.create(() -> plot.getMouse().sub(new Vector2D(0.5, 0.5)).mul(2));
+        
         AStream angle_mouse = AStream.create(() -> m.get().getAngle());
         AStream jerk_angle = angle_mouse.filtered(new AMotionProfile(-1, 4));
         AStream rate_angle = angle_mouse.filtered(new ARateLimit(1));
