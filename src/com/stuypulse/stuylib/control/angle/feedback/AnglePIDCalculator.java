@@ -90,7 +90,7 @@ public class AnglePIDCalculator extends AngleController {
 
     protected double calculate(Angle setpoint, Angle measurement) {
         // Calculate error & time step
-        double error = setpoint.sub(measurement).toRadians(); // TODO: add configurable units
+        double error = setpoint.sub(measurement).toRadians();
         double dt = mTimer.reset();
 
         // If there is a gap in updates, then disable until next period
