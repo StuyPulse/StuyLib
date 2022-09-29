@@ -13,9 +13,11 @@ import com.stuypulse.stuylib.streams.filters.IFilterGroup;
 import com.stuypulse.stuylib.util.StopWatch;
 
 /**
- * This PID controller is built by extending the Controller class. It has a dynamic rate, so it can
+ * This PID controller is built by extending the AngleController class. It has a dynamic rate, so it can
  * detect how much time has passed between each update. It is made to be easy to use and simple to
  * understand while still being accurate.
+ * 
+ * The angle PID controller class is ALWAYS in units of *RADIANS*
  *
  * @author Sam (sam.belliveau@gmail.com)
  */
@@ -40,7 +42,7 @@ public class AnglePIDController extends AngleController {
     private IFilter mIFilter;
 
     // The Derivative of the error and the filter for the D Component
-    private double mLastError;
+    private Angle mLastError;
     private IFilter mDFilter;
 
     /**
@@ -73,20 +75,19 @@ public class AnglePIDController extends AngleController {
     @Override
     protected double calculate(Angle setpoint, Angle measurement) {
         // Calculate error & time step
-        // TODO: configurable controller units
-        double error = setpoint.sub(measurement).toRadians();
+        Angle error = setpoint.sub(measurement);
         double dt = mTimer.reset();
 
         // Calculate P Component
-        double p_out = error * getP();
+        double p_out = error.toRadians() * getP();
 
         // Calculate I Component
-        mIntegral += error * dt;
+        mIntegral += error.toRadians() * dt;
         mIntegral = mIFilter.get(mIntegral);
         double i_out = mIntegral * getI();
 
         // Calculate D Component
-        double derivative = mDFilter.get((error - mLastError) / dt);
+        double derivative = mDFilter.get(error.velocityRadians(mLastError, dt));
         mLastError = error;
         double d_out = derivative * getD();
 
