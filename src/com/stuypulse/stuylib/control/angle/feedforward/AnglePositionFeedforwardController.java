@@ -9,16 +9,38 @@ import com.stuypulse.stuylib.control.feedforward.Feedforward;
 import com.stuypulse.stuylib.math.Angle;
 import com.stuypulse.stuylib.util.AngleVelocity;
 
+/**
+ * A positional feedforward controller for angular systems. 
+ * 
+ * @see com.stuypulse.stuylib.control.feedforward.PositionFeedforwardController
+ * @author Myles Pasetsky (myles.pasetsky@gmail.com)
+ */
 public class AnglePositionFeedforwardController extends AngleController {
 
+    /** the feedforward model */
     private final Feedforward mFeedforward;
+    
+    /** find the derivative of angular setpoints */
     private final AngleVelocity mDerivative;
 
+    /**
+     * Create an angle position feedforward controller
+     * 
+     * @param feedforward model
+     */
     public AnglePositionFeedforwardController(Feedforward feedforward) {
         mFeedforward = feedforward;
         mDerivative = new AngleVelocity();
     }
 
+    /**
+     * Calculates a motor output by feeding the derivative of a positional setpoint to a feedforward
+     * model
+     *
+     * @param setpoint angular positional setpoint
+     * @param measurement angular position measurement, which is not used by the feedforward model
+     * @return motor output from feedforward model
+     */
     @Override
     protected double calculate(Angle setpoint, Angle measurement) {
         return mFeedforward.calculate(mDerivative.get(setpoint));
