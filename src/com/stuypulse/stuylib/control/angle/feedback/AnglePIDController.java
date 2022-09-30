@@ -13,11 +13,11 @@ import com.stuypulse.stuylib.streams.filters.IFilterGroup;
 import com.stuypulse.stuylib.util.StopWatch;
 
 /**
- * This PID controller is built by extending the AngleController class. It has a dynamic rate, so it can
- * detect how much time has passed between each update. It is made to be easy to use and simple to
- * understand while still being accurate.
- * 
- * The angle PID controller class is ALWAYS in units of *RADIANS*
+ * This PID controller is built by extending the AngleController class. It has a dynamic rate, so it
+ * can detect how much time has passed between each update. It is made to be easy to use and simple
+ * to understand while still being accurate.
+ *
+ * <p>The angle PID controller class is ALWAYS in units of *RADIANS*
  *
  * @author Sam (sam.belliveau@gmail.com)
  */

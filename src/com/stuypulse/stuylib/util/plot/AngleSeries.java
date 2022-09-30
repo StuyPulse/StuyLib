@@ -1,10 +1,14 @@
-package com.stuypulse.stuylib.util.plot;
+/* Copyright (c) 2022 StuyPulse Robotics. All rights reserved. */
+/* This work is licensed under the terms of the MIT license */
+/* found in the root directory of this project. */
 
-import java.util.LinkedList;
-import java.util.List;
+package com.stuypulse.stuylib.util.plot;
 
 import com.stuypulse.stuylib.math.Vector2D;
 import com.stuypulse.stuylib.streams.angles.AStream;
+
+import java.util.LinkedList;
+import java.util.List;
 
 /**
  * An AngleSeries is used to plot a stream of points (AStream) that changes over time.
@@ -12,7 +16,7 @@ import com.stuypulse.stuylib.streams.angles.AStream;
  * @author Benjamin Goldfisher (ben@goldfisher.com)
  */
 public class AngleSeries extends Series {
-    
+
     /** Contains the (x, y) data points */
     private List<Double> xValues;
 
@@ -74,5 +78,4 @@ public class AngleSeries extends Series {
     public int size() {
         return yValues.size();
     }
-
 }

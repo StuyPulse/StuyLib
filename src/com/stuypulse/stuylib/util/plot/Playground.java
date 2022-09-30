@@ -72,7 +72,7 @@ public class Playground {
         Plot plot = new Plot(Constants.SETTINGS);
 
         VStream m = VStream.create(() -> plot.getMouse().sub(new Vector2D(0.5, 0.5)).mul(2));
-        
+
         AStream angle_mouse = AStream.create(() -> m.get().getAngle());
         AStream jerk_angle = angle_mouse.filtered(new AMotionProfile(-1, 4));
         AStream rate_angle = angle_mouse.filtered(new ARateLimit(1));

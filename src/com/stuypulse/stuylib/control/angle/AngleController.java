@@ -9,22 +9,20 @@ import com.stuypulse.stuylib.streams.angles.filters.AFilter;
 import com.stuypulse.stuylib.streams.filters.IFilter;
 
 /**
- * Base class of controller classes of continuous systems. This means
- * that both the setpoint and measurement are angles, as opposed to just
- * numbers. 
- * 
- * Other than this, works the same as the Controller class.
- * 
+ * Base class of controller classes of continuous systems. This means that both the setpoint and
+ * measurement are angles, as opposed to just numbers.
+ *
+ * <p>Other than this, works the same as the Controller class.
+ *
  * @see com.stuypulse.stuylib.math.Angle
  * @see com.stuypulse.stuylib.control.Controller
- * 
  * @author Myles Pasetsky (myles.pasetsky@gmail.com)
  */
 public abstract class AngleController {
-    
+
     /** The most recent setpoint of the controller */
     private Angle mSetpoint;
-   
+
     /** The most recent measurement of the controller */
     private Angle mMeasurement;
 
@@ -72,7 +70,6 @@ public abstract class AngleController {
         mMeasurementFilter = AFilter.create(measurementFilter);
         return this;
     }
-
 
     /**
      * Set the output filter of the controller
