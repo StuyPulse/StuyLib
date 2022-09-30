@@ -2,16 +2,15 @@
 /* This work is licensed under the terms of the MIT license */
 /* found in the root directory of this project. */
 
-package com.stuypulse.stuylib.control;
+package com.stuypulse.stuylib.control.feedback;
 
+import com.stuypulse.stuylib.control.Controller;
 import com.stuypulse.stuylib.math.SLMath;
 import com.stuypulse.stuylib.network.SmartNumber;
 import com.stuypulse.stuylib.streams.filters.IFilter;
 import com.stuypulse.stuylib.streams.filters.IFilterGroup;
 import com.stuypulse.stuylib.streams.filters.TimedMovingAverage;
 import com.stuypulse.stuylib.util.StopWatch;
-
-import edu.wpi.first.util.sendable.SendableBuilder;
 
 /**
  * This is a Bang-Bang controller that while controlling the robot, will be able to calculate the
@@ -36,6 +35,9 @@ public class PIDCalculator extends Controller {
         return new IFilterGroup(new TimedMovingAverage(30));
     }
 
+    // Internal timer used by PID Calculator
+    private StopWatch mTimer;
+
     // The speed that the bang bang controller will run at
     private Number mControlSpeed;
     private double mCurrentSpeed;
@@ -59,6 +61,8 @@ public class PIDCalculator extends Controller {
 
     /** @param speed motor output for bang bang controller */
     public PIDCalculator(Number speed) {
+        mTimer = new StopWatch();
+
         mControlSpeed = speed;
         mCurrentSpeed = mControlSpeed.doubleValue();
 
@@ -83,16 +87,13 @@ public class PIDCalculator extends Controller {
         return this;
     }
 
-    /**
-     * Calculate the value that the controller wants to move at while calculating the values for the
-     * PIDController
-     *
-     * @param error the error that the controller will use
-     * @return the calculated result from the controller
-     */
-    protected double calculate(double error) {
+    protected double calculate(double setpoint, double measurement) {
+        // Calculate error & time step
+        double error = setpoint - measurement;
+        double dt = mTimer.reset();
+
         // If there is a gap in updates, then disable until next period
-        if (getRate() > kMaxTimeBeforeReset) {
+        if (dt > kMaxTimeBeforeReset) {
             mRunning = false;
         }
 
@@ -190,24 +191,5 @@ public class PIDCalculator extends Controller {
                 + SLMath.round(getT(), 4)
                 + ") "
                 + getPIDController().toString();
-    }
-
-    /*********************/
-    /*** Sendable Data ***/
-    /*********************/
-
-    @Override
-    public void initSendable(SendableBuilder builder) {
-        super.initSendable(builder);
-
-        builder.addDoubleProperty("(PIDCalculator) Period [T]", this::getT, x -> {});
-        builder.addDoubleProperty("(PIDCalculator) Adjusted Amplitude [K]", this::getK, x -> {});
-
-        builder.addDoubleProperty(
-                "(PIDCalculator) Calculated kP", () -> this.getPIDController().getP(), x -> {});
-        builder.addDoubleProperty(
-                "(PIDCalculator) Calculated kI", () -> this.getPIDController().getI(), x -> {});
-        builder.addDoubleProperty(
-                "(PIDCalculator) Calculated kD", () -> this.getPIDController().getD(), x -> {});
     }
 }

@@ -4,280 +4,152 @@
 
 package com.stuypulse.stuylib.control;
 
-import com.stuypulse.stuylib.control.angle.AngleController;
 import com.stuypulse.stuylib.streams.filters.IFilter;
-import com.stuypulse.stuylib.util.StopWatch;
-
-import edu.wpi.first.util.sendable.Sendable;
-import edu.wpi.first.util.sendable.SendableBuilder;
 
 /**
- * The controller class is an abstract class that is used to create different controllers. All a
- * class will need to do is implement calculate(double error), and then the user would use the
- * update() functions, which work as a sort of wrapper for the controllers. No matter what
- * controller is used, these functions will always work.
+ * A controller calculates an output variable given a setpoint and measurement of a single variable.
  *
- * <p>These functions in the controller are useful for an error based system, and are automatically
- * managed, making implementations of PID easy.
+ * <p>This base class can be used to represent single-input single-output control (SISO) algorithms
+ * (commonly PID and feedforward).
  *
- * @author Sam (sam.belliveau@gmail.com)
+ * <p>For any controller, digital filters can be applied to the incoming setpoints and measurements,
+ * or the outgoing outputs. This allows for the easy application of filters often involved with
+ * control theory, like motion profile filters for setpoints and low-pass filters for noisy
+ * measurements. *These filters are already provided in the StuyLib filters library.*
+ *
+ * <p>Different control schemes that share the same setpoint and measurement can also be concisely
+ * composed together if they all implement this class.
+ *
+ * @author Myles Pasetsky (myles.pasetsky@gmail.com)
  */
-public abstract class Controller implements Sendable {
+public abstract class Controller {
 
-    /**
-     * This function checks to see if a filter is null, if it is, it replaces it with a default
-     * filter that doesn't do anything.
-     *
-     * @param filter filter you want sanitized
-     * @return sanitized filter
-     */
-    private static final IFilter sanitize(IFilter filter) {
-        return (filter == null) ? (x -> x) : filter;
-    }
+    /** The most recent setpoint of the controller */
+    private double mSetpoint;
 
-    // Error and Error Filters
-    private double mError;
-    private IFilter mErrorFilter;
+    /** The most recent measurement of the controller */
+    private double mMeasurement;
 
-    // Velocity, Raw Velocity and Velocity Filter
-    private double mVelocity;
-    private IFilter mVelocityFilter;
-    private double mRawVelocity;
-
-    // Output and Output Filters
+    /** The most recent output of the controller */
     private double mOutput;
+
+    /** The filter that is applied to the supplied setpoints */
+    private IFilter mSetpointFilter;
+
+    /** The filter that is applied to the supplied measurements */
+    private IFilter mMeasurementFilter;
+
+    /** The filter that is applied to the calculated outputs */
     private IFilter mOutputFilter;
 
-    // Rate and Rate Timer
-    private double mRate;
-    private StopWatch mRateTimer;
-
-    /** Creates a basic controller with everything initialized */
-    protected Controller() {
-        mError = 0.0;
-        setErrorFilter(null);
-
-        mRawVelocity = 0.0;
-        mVelocity = 0.0;
-        setVelocityFilter(null);
-
+    /** Default initialization of a controller */
+    public Controller() {
+        mSetpoint = 0.0;
+        mMeasurement = 0.0;
         mOutput = 0.0;
-        setOutputFilter(null);
 
-        mRate = -1.0;
-        mRateTimer = new StopWatch();
+        mSetpointFilter = x -> x;
+        mMeasurementFilter = x -> x;
+        mOutputFilter = x -> x;
     }
 
     /**
-     * Lets you specify a filter that will be applied to all measurements that are given to the
-     * controller.
+     * Set the setpoint filter of the controller
      *
-     * <p>A highly recommended option is the LowPassFilter due to its ability to remove noise, and
-     * its ability to not lag behind when there has been a gap in calls. This will slightly degrade
-     * the performance of the controller, but it may be necessary sometimes in order to get
-     * consistent results.
-     *
-     * <p>This will change the way the controller interacts with the robot and may require more
-     * tuning to be done.
-     *
-     * <p>Passing in null will disable the filter.
-     *
-     * @param filter filter to be applied to error measurements
-     * @return reference to the controller (so you can chain the commands together)
+     * @param setpointFilter setpoint filters
+     * @return reference to the controller
      */
-    public final Controller setErrorFilter(IFilter filter) {
-        mErrorFilter = sanitize(filter);
+    public final Controller setSetpointFilter(IFilter... setpointFilter) {
+        mSetpointFilter = IFilter.create(setpointFilter);
         return this;
     }
 
     /**
-     * Lets you specify a filter that will be applied to the velocity measurements.
+     * Set the measurement filter of the controller
      *
-     * <p>This can be used to smooth out the otherwise noisy velocity values.
-     *
-     * <p>This can negatively affect things like the D in PID if set too high and it is recommended
-     * that you just filter the error instead.
-     *
-     * @param filter filter to be applied to velocity measurements
-     * @return reference to the controller (so you can chain the commands together)
+     * @param measurementFilter measurement filters
+     * @return reference to the controller
      */
-    public final Controller setVelocityFilter(IFilter filter) {
-        mVelocityFilter = sanitize(filter);
+    public final Controller setMeasurementFilter(IFilter... measurementFilter) {
+        mMeasurementFilter = IFilter.create(measurementFilter);
         return this;
     }
 
     /**
-     * Lets you specify a filter that will be applied to all of the outputs of the controller.
+     * Set the output filter of the controller
      *
-     * <p>If the robot has a tendency to jerk, or motions of the robot are too violent, a filter
-     * like the LowPassFilter can reduce jerk while still letting the robot get to max speed. This
-     * will slightly degrade the performance of the controller, but it may be necessary sometimes in
-     * order to get consistent results.
-     *
-     * <p>This will change the way the controller interacts with the robot and may require more
-     * tuning to be done.
-     *
-     * <p>Passing in null will disable the filter.
-     *
-     * @param filter filter to be applied to the outputs of the controller
-     * @return reference to the controller (so you can chain the commands together)
+     * @param outputFilter output filters
+     * @return reference to the controller
      */
-    public final Controller setOutputFilter(IFilter filter) {
-        mOutputFilter = sanitize(filter);
+    public final Controller setOutputFilter(IFilter... outputFilter) {
+        mOutputFilter = IFilter.create(outputFilter);
         return this;
     }
 
-    /**
-     * Gets the error from the last time that .update() was called
-     *
-     * @return error from the last time that .update() was called
-     */
-    public final double getError() {
-        return mError;
+    /** @return the most recent setpoint of the controller */
+    public final double getSetpoint() {
+        return mSetpoint;
     }
 
-    /**
-     * Gets the velocity, which is represented as the change in error since the last time that
-     * .update() was called
-     *
-     * @return velocity from the last time that .update() was called
-     */
-    public final double getRawVelocity() {
-        return mRawVelocity;
+    /** @return the most recent measurement of the controller */
+    public final double getMeasurement() {
+        return mMeasurement;
     }
 
-    /**
-     * Gets the velocity from the last time that .update() was called adjusted to velocity per
-     * second
-     *
-     * @return velocity from the last time that .update() was called
-     */
-    public final double getVelocity() {
-        return mVelocity;
-    }
-
-    /**
-     * Gets the motor output from the last time that .update() was called
-     *
-     * @return the motor output from the last time that .update() was called
-     */
+    /** @return the most recent output of the controller */
     public final double getOutput() {
         return mOutput;
     }
 
-    /**
-     * Gets the rate of the controller during the last .update() command. This will only return the
-     * interval between the last .update() command and the one before it. Thus, the rate may be
-     * slightly inconsistent if the update command is not called regularly.
-     *
-     * <p>This function may be overridden if a special controller needs a custom rate.
-     *
-     * @return the rate of the controller during the last .update() command
-     */
-    public double getRate() {
-        return mRate;
+    /** @return the most recent error of the controller */
+    public final double getError() {
+        return getSetpoint() - getMeasurement();
     }
 
     /**
-     * Get whether or not the Controller has arrived at the target.
+     * Determines if the controller is finished based on an acceptable error.
      *
-     * @param maxError the maximum amount of error allowed
-     * @return if the controller has arrived at the target
+     * @param acceptableError acceptable error for the controller
+     * @return whether or not the controller is done
      */
-    public boolean isDone(double maxError) {
-        return (Math.abs(getError()) < Math.abs(maxError));
+    public final boolean isDone(double acceptableError) {
+        return Math.abs(getError()) < acceptableError;
     }
 
     /**
-     * Get whether or not the Controller has arrived at the target.
+     * Combines this controller into a group with other controllers that share the same setpoint and
+     * measurement.
      *
-     * @param maxError the maximum amount of error allowed
-     * @param maxVelocity the maximum amount of change in error over a second allowed
-     * @return if the controller has arrived at the target
+     * @param other the other controllers
+     * @return the group of controllers that
      */
-    public boolean isDone(double maxError, double maxVelocity) {
-        return ((Math.abs(getError()) < Math.abs(maxError))
-                && (Math.abs(getVelocity()) < Math.abs(maxVelocity)));
+    public final ControllerGroup add(Controller... other) {
+        return new ControllerGroup(this, other);
     }
 
     /**
-     * Creates an angle controller out of this controller.
+     * Updates the state of the controller.
      *
-     * <p>An angle controller handles continuous systems that are (most often) measured on a circle,
-     * which means the error must be calculated slightly differently.
+     * <p>Applies filters to setpoint and measurement, calculates output with filtered values,
+     * filters and returns output
      *
-     * <p>The angle controller will use this controller internally, so all the configuration done to
-     * this controller will persist.
-     *
-     * <p>BY DEFAULT, this controller should be tuned to accept angles in the unit of radians, but
-     * this can be changed.
-     *
-     * @return an angle controller
-     */
-    public AngleController angle() {
-        return new AngleController(this);
-    }
-
-    /**
-     * Update the controller with the measurement that was just made and the set point you would
-     * like it to approach
-     *
-     * <p>This function just subtracts the two at this moment.
-     *
-     * @param setpoint desired result
-     * @param measurement measurement of device just made
-     * @return controller output
+     * @param setpoint setpoint of the variable being controlled
+     * @param measurement measurement of the variable being controlled
+     * @return the final output
      */
     public final double update(double setpoint, double measurement) {
-        return update(setpoint - measurement);
+        mSetpoint = mSetpointFilter.get(setpoint);
+        mMeasurement = mMeasurementFilter.get(measurement);
+
+        return mOutput = mOutputFilter.get(calculate(mSetpoint, mMeasurement));
     }
 
     /**
-     * Update the controller with the error from the destination that you want to reach
+     * Calculates the output of the controller given a setpoint and measurement.
      *
-     * @param error the amount of error from the destination
-     * @return controller output
+     * @param setpoint setpoint
+     * @param measurement measurement
+     * @return calculated output
      */
-    public final double update(double error) {
-        // Update rate with the amount of time since the last update
-        mRate = mRateTimer.reset();
-
-        // Filter the error with the error filter
-        error = mErrorFilter.get(error);
-
-        // Get the velocity based on the change in error
-        mRawVelocity = error - mError;
-        mVelocity = mVelocityFilter.get(mRawVelocity / getRate());
-
-        // Update the error variable
-        mError = error;
-
-        // Return and Update the calculated output
-        return (mOutput = mOutputFilter.get(calculate(mError)));
-    }
-
-    /**
-     * Update the controller with the error just measured
-     *
-     * @param error error that was just measured
-     * @return controller output.
-     */
-    protected abstract double calculate(double error);
-
-    /** Default to string funciton */
-    public String toString() {
-        return "(error: " + this.getError() + ")";
-    }
-
-    /*********************/
-    /*** Sendable Data ***/
-    /*********************/
-
-    @Override
-    public void initSendable(SendableBuilder builder) {
-        builder.addDoubleProperty("(Controller) System Error", this::getError, x -> {});
-        builder.addDoubleProperty("(Controller) System Velocity", this::getVelocity, x -> {});
-        builder.addDoubleProperty("(Controller) Control Rate", this::getRate, x -> {});
-        builder.addDoubleProperty("(Controller) Control Output", this::getOutput, x -> {});
-    }
+    protected abstract double calculate(double setpoint, double measurement);
 }

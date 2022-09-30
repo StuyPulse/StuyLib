@@ -6,6 +6,7 @@ package com.stuypulse.stuylib.streams.vectors;
 
 import com.stuypulse.stuylib.math.Vector2D;
 import com.stuypulse.stuylib.streams.IStream;
+import com.stuypulse.stuylib.streams.angles.AStream;
 import com.stuypulse.stuylib.streams.vectors.filters.VFilter;
 
 import java.util.function.Supplier;
@@ -20,6 +21,10 @@ public interface VStream extends Supplier<Vector2D> {
 
     public static VStream create(VStream stream) {
         return stream;
+    }
+
+    public static VStream create(AStream stream) {
+        return () -> stream.get().getVector();
     }
 
     public static VStream create(IStream x, IStream y) {

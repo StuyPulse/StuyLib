@@ -2,23 +2,29 @@
 /* This work is licensed under the terms of the MIT license */
 /* found in the root directory of this project. */
 
-package com.stuypulse.stuylib.control;
+package com.stuypulse.stuylib.control.feedback;
 
+import com.stuypulse.stuylib.control.Controller;
 import com.stuypulse.stuylib.math.SLMath;
 import com.stuypulse.stuylib.network.SmartNumber;
 import com.stuypulse.stuylib.streams.filters.IFilter;
 import com.stuypulse.stuylib.streams.filters.IFilterGroup;
-
-import edu.wpi.first.util.sendable.SendableBuilder;
+import com.stuypulse.stuylib.util.StopWatch;
 
 /**
- * This PID controller is built by extending the Controller class. It has a dynamic rate, so it can
- * detect how much time has passed between each update. It is made to be easy to use and simple to
- * understand while still being accurate.
+ * The PID algorithm is a feedback control algorithm meant for calculating an output based on an
+ * error between a measurement and a setpoint.
  *
- * <p>This PID controller resets the integral every time the error crosses 0 to prevent integral
- * windup / lag. This means that it may not be suitable for setups involving rate instead of
- * position
+ * <p>PID takes into account the error itself, the rate of change of error, and built-up error over
+ * time to create a stable controller.
+ *
+ * <p>Because it's a feedback algorithm, it will only react when the system is already behind (there
+ * must be error for there to be any output). *However, a feedback contrller can be easily combined
+ * with a feedforward model to reduce the delay.*
+ *
+ * <p>This PID controller is built by extending the Controller class. It has a dynamic rate, so it
+ * can detect how much time has passed between each update. It is made to be easy to use and simple
+ * to understand while still being accurate.
  *
  * @author Sam (sam.belliveau@gmail.com)
  */
@@ -30,6 +36,9 @@ public class PIDController extends Controller {
      */
     private static final double kMaxTimeBeforeReset = 0.5;
 
+    // Internal timer used by Controller
+    private StopWatch mTimer;
+
     // Constants used by the PID controller
     private Number mP;
     private Number mI;
@@ -39,13 +48,20 @@ public class PIDController extends Controller {
     private double mIntegral;
     private IFilter mIFilter;
 
+    // The Derivative of the error and the filter for the D Component
+    private double mLastError;
+    private IFilter mDFilter;
+
     /**
      * @param p The Proportional Multiplier
      * @param i The Integral Multiplier
      * @param d The Derivative Multiplier
      */
     public PIDController(Number p, Number i, Number d) {
+        mTimer = new StopWatch();
+
         setIntegratorFilter(0, 0);
+        setDerivativeFilter(x -> x);
         setPID(p, i, d);
         reset();
     }
@@ -63,27 +79,27 @@ public class PIDController extends Controller {
         mIntegral = 0;
     }
 
-    /**
-     * Calculate the value that the PIDController wants to move at.
-     *
-     * @param error the error that the controller will use
-     * @return the calculated result from the PIDController
-     */
     @Override
-    protected double calculate(double error) {
+    protected double calculate(double setpoint, double measurement) {
+        // Calculate error & time step
+        double error = setpoint - measurement;
+        double dt = mTimer.reset();
+
         // Calculate P Component
         double p_out = error * getP();
 
         // Calculate I Component
-        mIntegral += error * getRate();
+        mIntegral += error * dt;
         mIntegral = mIFilter.get(mIntegral);
         double i_out = mIntegral * getI();
 
         // Calculate D Component
-        double d_out = getVelocity() * getD();
+        double derivative = mDFilter.get((error - mLastError) / dt);
+        mLastError = error;
+        double d_out = derivative * getD();
 
         // Check if time passed exceeds reset limit
-        if (getRate() < kMaxTimeBeforeReset) {
+        if (dt < kMaxTimeBeforeReset) {
             // Return the calculated result
             return p_out + i_out + d_out;
         } else {
@@ -170,6 +186,17 @@ public class PIDController extends Controller {
         return this;
     }
 
+    /**
+     * Add a filter to the error velocity / derivative of the PID controller.
+     *
+     * @param derivativeFilter the filter to apply to derivative
+     * @return reference to PIDController (so you can chain the commands together)
+     */
+    public PIDController setDerivativeFilter(IFilter... derivativeFilter) {
+        mDFilter = IFilter.create(derivativeFilter);
+        return this;
+    }
+
     /** @return information about this PIDController */
     public String toString() {
         return "(P: "
@@ -179,20 +206,5 @@ public class PIDController extends Controller {
                 + ", D: "
                 + SLMath.round(getD(), 4)
                 + ")";
-    }
-
-    /*********************/
-    /*** Sendable Data ***/
-    /*********************/
-
-    @Override
-    public void initSendable(SendableBuilder builder) {
-        super.initSendable(builder);
-
-        builder.addDoubleProperty("(PID) kP", this::getP, this::setP);
-        builder.addDoubleProperty("(PID) kI", this::getI, this::setI);
-        builder.addDoubleProperty("(PID) kD", this::getD, this::setD);
-
-        builder.addDoubleProperty("(PID) Integral", () -> this.mIntegral, x -> {});
     }
 }

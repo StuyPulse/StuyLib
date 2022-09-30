@@ -4,113 +4,158 @@
 
 package com.stuypulse.stuylib.control.angle;
 
-import com.stuypulse.stuylib.control.Controller;
 import com.stuypulse.stuylib.math.Angle;
-
-import edu.wpi.first.math.geometry.Rotation2d;
-import java.util.function.Function;
+import com.stuypulse.stuylib.streams.angles.filters.AFilter;
+import com.stuypulse.stuylib.streams.filters.IFilter;
 
 /**
- * A continuous controller whose measurements and setpoints will be angles.
+ * Base class of controller classes of continuous systems. This means that both the setpoint and
+ * measurement are angles, as opposed to just numbers.
  *
- * <p>An angle controller handles continuous systems that are (most often) measured on a circle,
- * which means the error must be normalized into the range [-180, +180].
+ * <p>Other than this, works the same as the Controller class.
  *
- * @author Myles Pasetsky (@selym3)
+ * @see com.stuypulse.stuylib.math.Angle
+ * @see com.stuypulse.stuylib.control.Controller
+ * @author Myles Pasetsky (myles.pasetsky@gmail.com)
  */
-public class AngleController {
+public abstract class AngleController {
 
-    // the underlying controller
-    private Controller mController;
+    /** The most recent setpoint of the controller */
+    private Angle mSetpoint;
 
-    // a function that will convert an angle into the units
-    // that the underlying controller expects
-    private Function<Angle, Double> mUnits;
+    /** The most recent measurement of the controller */
+    private Angle mMeasurement;
 
-    /**
-     * Creates an angle controller from a controller.
-     *
-     * <p>The controller should be configured BEFORE being passed into the angle controller. Then
-     * .angle() should be called to create
-     *
-     * <p>BY DEFAULT, this controller should expect to receive error in the unit of radians.
-     *
-     * @param controller controller to wrap
-     */
-    public AngleController(Controller controller) {
-        mController = controller;
-        useRadians();
+    /** The most recent output of the controller */
+    private double mOutput;
+
+    /** The filter that is applied to the supplied setpoints */
+    private AFilter mSetpointFilter;
+
+    /** The filter that is applied to the supplied measurements */
+    private AFilter mMeasurementFilter;
+
+    /** The filter that is applied to the calculated outputs */
+    private IFilter mOutputFilter;
+
+    /** Default initialization of an angle controller */
+    public AngleController() {
+        mSetpoint = Angle.kZero;
+        mMeasurement = Angle.kZero;
+        mOutput = 0.0;
+
+        mSetpointFilter = x -> x;
+        mMeasurementFilter = x -> x;
+        mOutputFilter = x -> x;
     }
 
     /**
-     * Set what unit the angle error should be converted to before being passed to the underlying
-     * controller.
+     * Set the setpoint filter of the controller
      *
-     * @param units conversion function
-     * @return reference to this controller (to chain commands together)
+     * @param setpointFilter angular setpoint filters
+     * @return reference to the controller
      */
-    public AngleController setUnits(Function<Angle, Double> units) {
-        mUnits = units;
+    public final AngleController setSetpointFilter(AFilter... setpointFilter) {
+        mSetpointFilter = AFilter.create(setpointFilter);
         return this;
     }
 
     /**
-     * Sets the unit being passed to the controller to degrees.
+     * Set the measurement filter of the controller
      *
-     * @return reference to this controller (to chain commands together)
+     * @param measurementFilter angular measurement filters
+     * @return reference to the controller
      */
-    public AngleController useDegrees() {
-        return setUnits(a -> a.toDegrees());
+    public final AngleController setMeasurementFilter(AFilter... measurementFilter) {
+        mMeasurementFilter = AFilter.create(measurementFilter);
+        return this;
     }
 
     /**
-     * Sets the unit being passed to the controller to radians.
+     * Set the output filter of the controller
      *
-     * @return reference to this controller (to chain commands together)
+     * @param outputFilter output filters
+     * @return reference to the controller
      */
-    public AngleController useRadians() {
-        return setUnits(a -> a.toRadians());
+    public final AngleController setOutputFilter(IFilter... outputFilter) {
+        mOutputFilter = IFilter.create(outputFilter);
+        return this;
+    }
+
+    /** @return the most recent setpoint of the controller */
+    public final Angle getSetpoint() {
+        return mSetpoint;
+    }
+
+    /** @return the most recent measurement of the controller */
+    public final Angle getMeasurement() {
+        return mMeasurement;
+    }
+
+    /** @return the most recent output of the controller */
+    public final double getOutput() {
+        return mOutput;
+    }
+
+    /** @return the most recent error of the controller */
+    public final Angle getError() {
+        return getSetpoint().sub(getMeasurement());
     }
 
     /**
-     * Calculates the desired output based on an angular setpoint and measurement.
+     * Determines if the controller is finished based on an acceptable radian error.
      *
-     * @param setpoint target angle to reach
-     * @param measurement current angle of system
-     * @return output that will drive measurement to setpoint
+     * @param acceptableError acceptable error for the controller
+     * @return whether or not the controller is done
      */
-    public double update(Angle setpoint, Angle measurement) {
-        return update(setpoint.sub(measurement));
+    public final boolean isDoneRadians(double acceptableError) {
+        return Math.abs(getError().toRadians()) < acceptableError;
     }
 
     /**
-     * Calculates the desired output based on an angular error
+     * Determines if the controller is finished based on an acceptable degree error.
      *
-     * @param error the error given to contrller
-     * @return output that will drive measurement to setpoint
+     * @param acceptableError acceptable error for the controller
+     * @return whether or not the controller is done
      */
-    public double update(Angle error) {
-        return mController.update(mUnits.apply(error));
+    public final boolean isDoneDegrees(double acceptableError) {
+        return Math.abs(getError().toDegrees()) < acceptableError;
     }
 
     /**
-     * Calculates the desired output based on a rotation2d measurement and setpoint
+     * Combines this controller into a group with other controllers that share the same setpoint and
+     * measurement.
      *
-     * @param setpoint target angle to reach
-     * @param measurement current angle of system
-     * @return controller output
+     * @param other the other controllers
+     * @return the group of controllers that
      */
-    public double update(Rotation2d setpoint, Rotation2d measurement) {
-        return update(Angle.fromRadians(setpoint.getRadians() - measurement.getRadians()));
+    public final AngleControllerGroup add(AngleController... other) {
+        return new AngleControllerGroup(this, other);
     }
 
     /**
-     * Calculates the desired output based on a rotation2d angle error
+     * Updates the state of the controller.
      *
-     * @param error error given to controller
-     * @return controller output
+     * <p>Applies filters to setpoint and measurement, calculates output with filtered values,
+     * filters and returns output
+     *
+     * @param setpoint setpoint of the variable being controlled
+     * @param measurement measurement of the variable being controlled
+     * @return the final output
      */
-    public double update(Rotation2d error) {
-        return update(Angle.fromRadians(error.getRadians()));
+    public final double update(Angle setpoint, Angle measurement) {
+        mSetpoint = mSetpointFilter.get(setpoint);
+        mMeasurement = mMeasurementFilter.get(measurement);
+
+        return mOutput = mOutputFilter.get(calculate(mSetpoint, mMeasurement));
     }
+
+    /**
+     * Calculates the output of the controller given a setpoint and measurement.
+     *
+     * @param setpoint setpoint
+     * @param measurement measurement
+     * @return calculated output
+     */
+    protected abstract double calculate(Angle setpoint, Angle measurement);
 }
