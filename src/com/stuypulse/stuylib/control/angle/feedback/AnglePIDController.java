@@ -53,6 +53,7 @@ public class AnglePIDController extends AngleController {
     public AnglePIDController(Number p, Number i, Number d) {
         mTimer = new StopWatch();
 
+        mLastError = Angle.kZero;
         setIntegratorFilter(0, 0);
         setDerivativeFilter(x -> x);
         setPID(p, i, d);
