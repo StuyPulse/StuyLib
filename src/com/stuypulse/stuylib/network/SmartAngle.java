@@ -8,14 +8,15 @@ import com.stuypulse.stuylib.math.Angle;
 import com.stuypulse.stuylib.util.Conversion;
 
 import edu.wpi.first.math.geometry.Rotation2d;
-import edu.wpi.first.networktables.EntryListenerFlags;
-import edu.wpi.first.networktables.EntryNotification;
+import edu.wpi.first.networktables.NetworkTableEvent;
+import edu.wpi.first.networktables.NetworkTableListener;
 import edu.wpi.first.networktables.NetworkTableEntry;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import java.util.function.Supplier;
 
 /**
- * SmartAngle works as a wrapper for numbers on the network. This class handles converting a double
+ * SmartAngle works as a wrapper for numbers on the network. This class handles
+ * converting a double
  * on the network to an Angle
  *
  * @author Myles Pasetsky (myles.pasetsky@gmail.com)
@@ -23,13 +24,11 @@ import java.util.function.Supplier;
 public class SmartAngle implements Supplier<Angle> {
 
     // Flags for when the network table entry triggers an update
-    private static final int LISTENER_FLAGS = EntryListenerFlags.kUpdate | EntryListenerFlags.kNew;
+    private static final int LISTENER_FLAGS = NetworkTableEvent.kTopic | NetworkTableEvent.kPublish;
 
     // Built-in conversions from network doubles to Angles
-    public static final Conversion<Double, Angle> kDegrees =
-            Conversion.make(Angle::fromDegrees, a -> a.toDegrees());
-    public static final Conversion<Double, Angle> kRadians =
-            Conversion.make(Angle::fromRadians, a -> a.toRadians());
+    public static final Conversion<Double, Angle> kDegrees = Conversion.make(Angle::fromDegrees, a -> a.toDegrees());
+    public static final Conversion<Double, Angle> kRadians = Conversion.make(Angle::fromRadians, a -> a.toRadians());
 
     // network table entry and its default value
     private NetworkTableEntry mEntry;
@@ -55,13 +54,13 @@ public class SmartAngle implements Supplier<Angle> {
         mAngle = value;
         mEntry.setDefaultDouble(mConversion.from(mDefaultValue));
 
-        mEntry.addListener(this::update, LISTENER_FLAGS);
+        NetworkTableListener.createListener(mEntry, LISTENER_FLAGS, this::update);
     }
 
     /**
      * Create a SmartAngle with a network entry key and a default angle value
      *
-     * @param id network entry key
+     * @param id    network entry key
      * @param value default value
      */
     public SmartAngle(String id, Angle value) {
@@ -73,13 +72,14 @@ public class SmartAngle implements Supplier<Angle> {
      *
      * @param notif entry update notification
      */
-    private void update(EntryNotification notif) {
-        double value = notif.value.getDouble();
+    private void update(NetworkTableEvent notif) {
+        double value = notif.valueData.value.getDouble();
         mAngle = mConversion.to(value);
     }
 
     /**
-     * Sets the conversion from the double stored on the network to an Angle class (e.g. sets what
+     * Sets the conversion from the double stored on the network to an Angle class
+     * (e.g. sets what
      * unit the double on the network is in)
      *
      * @param conversion conversion between Double and Angle
@@ -126,7 +126,7 @@ public class SmartAngle implements Supplier<Angle> {
 
     /** @param angle angle to set SmartAngle to */
     public void set(Angle angle) {
-        mEntry.forceSetDouble(mConversion.from(angle));
+        mEntry.setValue(mConversion.from(angle));
     }
 
     /** resets the SmartAngle to its default value */
