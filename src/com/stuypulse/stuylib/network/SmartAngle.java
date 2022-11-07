@@ -8,10 +8,13 @@ import com.stuypulse.stuylib.math.Angle;
 import com.stuypulse.stuylib.util.Conversion;
 
 import edu.wpi.first.math.geometry.Rotation2d;
-import edu.wpi.first.networktables.NetworkTableEvent;
+import edu.wpi.first.networktables.NetworkTableEvent.Kind;
 import edu.wpi.first.networktables.NetworkTableListener;
 import edu.wpi.first.networktables.NetworkTableEntry;
+import edu.wpi.first.networktables.NetworkTableEvent;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
+
+import java.util.EnumSet;
 import java.util.function.Supplier;
 
 /**
@@ -24,7 +27,10 @@ import java.util.function.Supplier;
 public class SmartAngle implements Supplier<Angle> {
 
     // Flags for when the network table entry triggers an update
-    private static final int LISTENER_FLAGS = NetworkTableEvent.kTopic | NetworkTableEvent.kPublish;
+    private static final int LISTENER_FLAGS = Kind.kTopic.getValue()
+            | Kind.kPublish.getValue();
+    private static final EnumSet<Kind> LISTENER_KINDS = EnumSet.of(Kind.kTopic,
+            Kind.kPublish);
 
     // Built-in conversions from network doubles to Angles
     public static final Conversion<Double, Angle> kDegrees = Conversion.make(Angle::fromDegrees, a -> a.toDegrees());
@@ -54,7 +60,7 @@ public class SmartAngle implements Supplier<Angle> {
         mAngle = value;
         mEntry.setDefaultDouble(mConversion.from(mDefaultValue));
 
-        NetworkTableListener.createListener(mEntry, LISTENER_FLAGS, this::update);
+        NetworkTableListener.createListener(mEntry, LISTENER_KINDS, this::update);
     }
 
     /**
