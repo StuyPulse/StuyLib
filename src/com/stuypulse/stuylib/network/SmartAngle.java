@@ -8,18 +8,17 @@ import com.stuypulse.stuylib.math.Angle;
 import com.stuypulse.stuylib.util.Conversion;
 
 import edu.wpi.first.math.geometry.Rotation2d;
-import edu.wpi.first.networktables.NetworkTableEvent.Kind;
-import edu.wpi.first.networktables.NetworkTableListener;
 import edu.wpi.first.networktables.NetworkTableEntry;
 import edu.wpi.first.networktables.NetworkTableEvent;
+import edu.wpi.first.networktables.NetworkTableEvent.Kind;
+import edu.wpi.first.networktables.NetworkTableListener;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 
 import java.util.EnumSet;
 import java.util.function.Supplier;
 
 /**
- * SmartAngle works as a wrapper for numbers on the network. This class handles
- * converting a double
+ * SmartAngle works as a wrapper for numbers on the network. This class handles converting a double
  * on the network to an Angle
  *
  * @author Myles Pasetsky (myles.pasetsky@gmail.com)
@@ -30,8 +29,10 @@ public class SmartAngle implements Supplier<Angle> {
     private static final EnumSet<Kind> LISTENER_KINDS = EnumSet.of(Kind.kTopic, Kind.kPublish);
 
     // Built-in conversions from network doubles to Angles
-    public static final Conversion<Double, Angle> kDegrees = Conversion.make(Angle::fromDegrees, a -> a.toDegrees());
-    public static final Conversion<Double, Angle> kRadians = Conversion.make(Angle::fromRadians, a -> a.toRadians());
+    public static final Conversion<Double, Angle> kDegrees =
+            Conversion.make(Angle::fromDegrees, a -> a.toDegrees());
+    public static final Conversion<Double, Angle> kRadians =
+            Conversion.make(Angle::fromRadians, a -> a.toRadians());
 
     // network table entry and its default value
     private NetworkTableEntry mEntry;
@@ -63,7 +64,7 @@ public class SmartAngle implements Supplier<Angle> {
     /**
      * Create a SmartAngle with a network entry key and a default angle value
      *
-     * @param id    network entry key
+     * @param id network entry key
      * @param value default value
      */
     public SmartAngle(String id, Angle value) {
@@ -81,8 +82,7 @@ public class SmartAngle implements Supplier<Angle> {
     }
 
     /**
-     * Sets the conversion from the double stored on the network to an Angle class
-     * (e.g. sets what
+     * Sets the conversion from the double stored on the network to an Angle class (e.g. sets what
      * unit the double on the network is in)
      *
      * @param conversion conversion between Double and Angle
@@ -111,23 +111,31 @@ public class SmartAngle implements Supplier<Angle> {
         return useConversion(kDegrees);
     }
 
-    /** @return the angle stored by the SmartAngle */
+    /**
+     * @return the angle stored by the SmartAngle
+     */
     public Angle getAngle() {
         return mAngle;
     }
 
-    /** @return the angle stored by the SmartAngle as a Rotation2d */
+    /**
+     * @return the angle stored by the SmartAngle as a Rotation2d
+     */
     public Rotation2d getRotation2d() {
         return getAngle().getRotation2d();
     }
 
-    /** @return the angle stored by the SmartAngle */
+    /**
+     * @return the angle stored by the SmartAngle
+     */
     @Override
     public Angle get() {
         return getAngle();
     }
 
-    /** @param angle angle to set SmartAngle to */
+    /**
+     * @param angle angle to set SmartAngle to
+     */
     public void set(Angle angle) {
         mEntry.setValue(mConversion.from(angle));
     }
@@ -137,7 +145,9 @@ public class SmartAngle implements Supplier<Angle> {
         set(mDefaultValue);
     }
 
-    /** @return the default value of the SmartAngle */
+    /**
+     * @return the default value of the SmartAngle
+     */
     public Angle getDefault() {
         return mDefaultValue;
     }

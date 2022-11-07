@@ -13,7 +13,9 @@ public class HighPassFilter implements IFilter {
 
     private LowPassFilter mInverse;
 
-    /** @param rc time constant for high pass filter */
+    /**
+     * @param rc time constant for high pass filter
+     */
     public HighPassFilter(Number rc) {
         mInverse = new LowPassFilter(rc);
     }

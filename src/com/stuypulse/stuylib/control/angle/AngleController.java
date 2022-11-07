@@ -82,22 +82,30 @@ public abstract class AngleController {
         return this;
     }
 
-    /** @return the most recent setpoint of the controller */
+    /**
+     * @return the most recent setpoint of the controller
+     */
     public final Angle getSetpoint() {
         return mSetpoint;
     }
 
-    /** @return the most recent measurement of the controller */
+    /**
+     * @return the most recent measurement of the controller
+     */
     public final Angle getMeasurement() {
         return mMeasurement;
     }
 
-    /** @return the most recent output of the controller */
+    /**
+     * @return the most recent output of the controller
+     */
     public final double getOutput() {
         return mOutput;
     }
 
-    /** @return the most recent error of the controller */
+    /**
+     * @return the most recent error of the controller
+     */
     public final Angle getError() {
         return getSetpoint().sub(getMeasurement());
     }

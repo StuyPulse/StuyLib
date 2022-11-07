@@ -42,7 +42,9 @@ public final class AutoGamepad extends Gamepad {
     private StopWatch mTimer;
     private Gamepad mCurrent;
 
-    /** @param port the port that the gamepad should read from */
+    /**
+     * @param port the port that the gamepad should read from
+     */
     public AutoGamepad(int port) {
         this.port = port;
         mJoystick = new Joystick(this.port);
@@ -55,7 +57,9 @@ public final class AutoGamepad extends Gamepad {
         mCurrent = mNull;
     }
 
-    /** @return the correct type of gamepad coming from driverstation directly */
+    /**
+     * @return the correct type of gamepad coming from driverstation directly
+     */
     private Gamepad forceDetectGamepad() {
         // Check if joystick is connected
         if (!mJoystick.isConnected()) return mNull;
@@ -79,7 +83,9 @@ public final class AutoGamepad extends Gamepad {
         }
     }
 
-    /** @return the internal gamepad class that this gamepad will be reading from */
+    /**
+     * @return the internal gamepad class that this gamepad will be reading from
+     */
     public Gamepad getDetectedGamepad() {
         if (MIN_CONTROLLER_CHECK < mTimer.getTime()) {
             mTimer.reset();

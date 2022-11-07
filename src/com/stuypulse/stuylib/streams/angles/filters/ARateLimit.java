@@ -25,7 +25,9 @@ public class ARateLimit implements AFilter {
     private Angle mLastValue;
     private Number mRateLimit;
 
-    /** @param rateLimit The max speed in rad/s. */
+    /**
+     * @param rateLimit The max speed in rad/s.
+     */
     public ARateLimit(Number rateLimit) {
         if (rateLimit.doubleValue() <= 0) {
             throw new IllegalArgumentException("rateLimit must be a positive number");

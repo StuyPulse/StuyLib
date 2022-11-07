@@ -45,13 +45,17 @@ public class AngleSeries extends Series {
         this.magnitude = magnitude;
     }
 
-    /** @return copied list of x values */
+    /**
+     * @return copied list of x values
+     */
     @Override
     protected List<Double> getSafeXValues() {
         return new LinkedList<>(xValues);
     }
 
-    /** @return copied list of y values */
+    /**
+     * @return copied list of y values
+     */
     @Override
     protected List<Double> getSafeYValues() {
         return new LinkedList<>(yValues);
@@ -73,7 +77,9 @@ public class AngleSeries extends Series {
         yValues.remove(0);
     }
 
-    /** @return number of stored points */
+    /**
+     * @return number of stored points
+     */
     @Override
     public int size() {
         return yValues.size();

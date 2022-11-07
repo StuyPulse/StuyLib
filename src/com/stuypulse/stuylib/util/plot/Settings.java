@@ -70,47 +70,65 @@ public final class Settings {
         yMax = 1.0;
     }
 
-    /** @return title */
+    /**
+     * @return title
+     */
     public String getTitle() {
         return title;
     }
 
-    /** @return x-axis label */
+    /**
+     * @return x-axis label
+     */
     public String getXAxis() {
         return xAxis;
     }
 
-    /** @return y-axis label */
+    /**
+     * @return y-axis label
+     */
     public String getYAxis() {
         return yAxis;
     }
 
-    /** @return width of window */
+    /**
+     * @return width of window
+     */
     public int getWidth() {
         return width;
     }
 
-    /** @return height of window */
+    /**
+     * @return height of window
+     */
     public int getHeight() {
         return height;
     }
 
-    /** @return lower bound of x-axis */
+    /**
+     * @return lower bound of x-axis
+     */
     public double getXMin() {
         return xMin;
     }
 
-    /** @return upper bound of x-axis */
+    /**
+     * @return upper bound of x-axis
+     */
     public double getXMax() {
         return xMax;
     }
 
-    /** @return lower bound of y-axis */
+    /**
+     * @return lower bound of y-axis
+     */
     public double getYMin() {
         return yMin;
     }
 
-    /** @return upper bound of y-axis */
+    /**
+     * @return upper bound of y-axis
+     */
     public double getYMax() {
         return yMax;
     }

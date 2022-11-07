@@ -64,7 +64,9 @@ public class FuncSeries extends Series {
         }
     }
 
-    /** @return max number of stored (x, y) values */
+    /**
+     * @return max number of stored (x, y) values
+     */
     @Override
     public int size() {
         return getConfig().getCapacity();

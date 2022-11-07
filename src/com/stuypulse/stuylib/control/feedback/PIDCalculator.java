@@ -59,7 +59,9 @@ public class PIDCalculator extends Controller {
     // Whether or not the system will measure the oscillation
     private boolean mRunning;
 
-    /** @param speed motor output for bang bang controller */
+    /**
+     * @param speed motor output for bang bang controller
+     */
     public PIDCalculator(Number speed) {
         mTimer = new StopWatch();
 
@@ -163,27 +165,37 @@ public class PIDCalculator extends Controller {
         }
     }
 
-    /** @return calculated PID controller based off of measurements */
+    /**
+     * @return calculated PID controller based off of measurements
+     */
     public PIDController getPIDController() {
         return getPIDController(0.6, 1.2, 3.0 / 40.0);
     }
 
-    /** @return calculated PI controller based off of measurements */
+    /**
+     * @return calculated PI controller based off of measurements
+     */
     public PIDController getPIController() {
         return getPIDController(0.45, 0.54, -1);
     }
 
-    /** @return calculated PD controller based off of measurements */
+    /**
+     * @return calculated PD controller based off of measurements
+     */
     public PIDController getPDController() {
         return getPIDController(0.8, -1, 1.0 / 10.0);
     }
 
-    /** @return calculated P controller based off of measurements */
+    /**
+     * @return calculated P controller based off of measurements
+     */
     public PIDController getPController() {
         return getPIDController(0.5, -1, -1);
     }
 
-    /** @return information about this PIDController */
+    /**
+     * @return information about this PIDController
+     */
     public String toString() {
         return "(K: "
                 + SLMath.round(getK(), 4)

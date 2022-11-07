@@ -8,34 +8,22 @@ import edu.wpi.first.wpilibj.Joystick;
 import edu.wpi.first.wpilibj2.command.button.Trigger;
 
 /**
- * WPI Gamepad extends Gamepad and adds functions that makes interacting with
- * the underlying
- * Joystick class easy. The WPI joystick class is kept in a separate class to
- * make it easy to update
+ * WPI Gamepad extends Gamepad and adds functions that makes interacting with the underlying
+ * Joystick class easy. The WPI joystick class is kept in a separate class to make it easy to update
  * if WPI updates.
  *
- * <p>
- * If you would like to get a button id that is not defined, or an axis id that
- * is not defined,
- * use {@link #getRawButton(int)} or {@link #getRawAxis(int)}. If you want it to
- * return a button for
+ * <p>If you would like to get a button id that is not defined, or an axis id that is not defined,
+ * use {@link #getRawButton(int)} or {@link #getRawAxis(int)}. If you want it to return a button for
  * an unimplemented button, type {@link #getButton(int)}.
  *
- * <p>
- * To initialize this class, pass in a Joystick or an int set to the port
- * number. This will be
+ * <p>To initialize this class, pass in a Joystick or an int set to the port number. This will be
  * the Joystick that the Gamepad class will interact with.
  *
- * <p>
- * If you do not initialize with a Joystick, everything will still work except
- * for - {@link
- * #getRawButton(int)} - {@link #getRawAxis(int)} - {@link #getButton(int)}
- * which will return either
+ * <p>If you do not initialize with a Joystick, everything will still work except for - {@link
+ * #getRawButton(int)} - {@link #getRawAxis(int)} - {@link #getButton(int)} which will return either
  * false or 0.0
  *
- * <p>
- * The difference between the implementations of the Gamepad class is how it
- * interacts with the
+ * <p>The difference between the implementations of the Gamepad class is how it interacts with the
  * underlying Joystick class.
  *
  * @author Sam (sam.belliveau@gmail.com)
@@ -49,12 +37,16 @@ public class WPIGamepad extends Gamepad {
     /*** CONSTRUCTOR ***/
     /*******************/
 
-    /** @param joystick WPI Joystick that will be stored in this class */
+    /**
+     * @param joystick WPI Joystick that will be stored in this class
+     */
     public WPIGamepad(Joystick joystick) {
         this.mJoy = joystick;
     }
 
-    /** @param port The port that the gamepad is plugged into */
+    /**
+     * @param port The port that the gamepad is plugged into
+     */
     public WPIGamepad(int port) {
         this(new Joystick(port));
     }
@@ -68,12 +60,16 @@ public class WPIGamepad extends Gamepad {
         return "WPIGamepad";
     }
 
-    /** @return if Gamepad has a Joystick */
+    /**
+     * @return if Gamepad has a Joystick
+     */
     public final boolean hasJoystick() {
         return getJoystick() != null;
     }
 
-    /** @return Underlying joystick */
+    /**
+     * @return Underlying joystick
+     */
     public final Joystick getJoystick() {
         return this.mJoy;
     }
@@ -108,7 +104,9 @@ public class WPIGamepad extends Gamepad {
         return getJoystick().getRawAxis(axis);
     }
 
-    /** @param intensity amount to make the gamepad rumble */
+    /**
+     * @param intensity amount to make the gamepad rumble
+     */
     public final void setRumble(double intensity) {
         getJoystick().setRumble(Joystick.RumbleType.kLeftRumble, intensity);
         getJoystick().setRumble(Joystick.RumbleType.kRightRumble, intensity);

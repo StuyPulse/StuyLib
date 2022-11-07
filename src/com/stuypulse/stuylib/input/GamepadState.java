@@ -58,7 +58,9 @@ public class GamepadState extends Gamepad {
     /*** CONSTRUCTOR ***/
     /*******************/
 
-    /** @param gamepad Gamepad class to record in the state */
+    /**
+     * @param gamepad Gamepad class to record in the state
+     */
     public GamepadState(Gamepad gamepad) {
         this.stickLeftX = gamepad.getLeftX();
         this.stickLeftY = gamepad.getLeftY();

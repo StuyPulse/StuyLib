@@ -47,12 +47,16 @@ public abstract class Series {
             this.capacity = capacity;
         }
 
-        /** @return label */
+        /**
+         * @return label
+         */
         public String getLabel() {
             return label;
         }
 
-        /** @return capacity */
+        /**
+         * @return capacity
+         */
         public int getCapacity() {
             return capacity;
         }
@@ -75,18 +79,26 @@ public abstract class Series {
         this.polling = polling;
     }
 
-    /** @return series config */
+    /**
+     * @return series config
+     */
     public Config getConfig() {
         return config;
     }
 
-    /** @return the number of data points the series has */
+    /**
+     * @return the number of data points the series has
+     */
     public abstract int size();
 
-    /** @return a "safe" copy of the x-data that can be read by XYChart's threads */
+    /**
+     * @return a "safe" copy of the x-data that can be read by XYChart's threads
+     */
     protected abstract List<Double> getSafeXValues();
 
-    /** @return a "safe" copy of the y-data that can be read by XYChart's threads */
+    /**
+     * @return a "safe" copy of the y-data that can be read by XYChart's threads
+     */
     protected abstract List<Double> getSafeYValues();
 
     /** removes oldest data point (can be a no-op depending on implementation) */
@@ -95,7 +107,9 @@ public abstract class Series {
     /** pushes new data point (can be a no-op depending on implementation) */
     protected abstract void poll();
 
-    /** @return if the series is polling */
+    /**
+     * @return if the series is polling
+     */
     protected final boolean isPolling() {
         return polling;
     }

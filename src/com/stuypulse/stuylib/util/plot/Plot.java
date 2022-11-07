@@ -93,17 +93,23 @@ public class Plot {
         this(new Settings());
     }
 
-    /** @return mouse position */
+    /**
+     * @return mouse position
+     */
     public Vector2D getMouse() {
         return mouse.getPosition();
     }
 
-    /** @return mouse y position */
+    /**
+     * @return mouse y position
+     */
     public double getMouseY() {
         return mouse.getY();
     }
 
-    /** @return mouse x position */
+    /**
+     * @return mouse x position
+     */
     public double getMouseX() {
         return mouse.getX();
     }

@@ -25,7 +25,9 @@ public interface AStream extends Supplier<Angle> {
         return () -> stream.get().getAngle();
     }
 
-    /** @return next value in the stream */
+    /**
+     * @return next value in the stream
+     */
     public Angle get();
 
     /**

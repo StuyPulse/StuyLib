@@ -79,7 +79,9 @@ public class TimeSeries extends Series {
         return xValues;
     }
 
-    /** @return copy of y-values because the y-values changes from the stream */
+    /**
+     * @return copy of y-values because the y-values changes from the stream
+     */
     @Override
     protected List<Double> getSafeYValues() {
         return new LinkedList<>(yValues);

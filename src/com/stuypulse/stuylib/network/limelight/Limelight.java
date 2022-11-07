@@ -23,24 +23,19 @@ public final class Limelight {
     /**
      * Returns a Limelight Class using the default table name.
      *
-     * <p>
-     * If you only have one limelight, this is most likely the constructor you want
-     * to use.
+     * <p>If you only have one limelight, this is most likely the constructor you want to use.
      *
      * @return instance of limelight
      */
     public static Limelight getInstance() {
-        if (mDefaultInstance == null)
-            mDefaultInstance = new Limelight();
+        if (mDefaultInstance == null) mDefaultInstance = new Limelight();
         return mDefaultInstance;
     }
 
     /**
      * Returns a Limelight Class using a custom table name.
      *
-     * <p>
-     * If you have multiple limelights, this is most likely the constructor you want
-     * to use.
+     * <p>If you have multiple limelights, this is most likely the constructor you want to use.
      *
      * @param tableName the table name of the limelight
      * @return instance of limelight
@@ -56,9 +51,7 @@ public final class Limelight {
     /**
      * Construct a Limelight Class using the default table name.
      *
-     * <p>
-     * If you only have one limelight, this is most likely the constructor you want
-     * to use.
+     * <p>If you only have one limelight, this is most likely the constructor you want to use.
      */
     private Limelight() {
         table = new LimelightTable();
@@ -67,9 +60,7 @@ public final class Limelight {
     /**
      * Construct a Limelight Class using a custom table name.
      *
-     * <p>
-     * If you have multiple limelights, this is most likely the constructor you want
-     * to use.
+     * <p>If you have multiple limelights, this is most likely the constructor you want to use.
      *
      * @param tableName the table name of the limelight
      */
@@ -87,7 +78,9 @@ public final class Limelight {
     /*** Connnection Test ***/
     /************************/
 
-    /** @return time of last network table change from limelight */
+    /**
+     * @return time of last network table change from limelight
+     */
     public long getLastUpdate() {
         long lastChange = table.latency.getLastChange();
         lastChange = Math.max(lastChange, table.xAngle.getLastChange());
@@ -95,7 +88,9 @@ public final class Limelight {
         return lastChange;
     }
 
-    /** @return if the limelight has updated its */
+    /**
+     * @return if the limelight has updated its
+     */
     public boolean isConnected() {
         final long MAX_UPDATE_TIME = 250_000;
 
@@ -109,40 +104,46 @@ public final class Limelight {
     /*** Commonly Used Contour Information ***/
     /*****************************************/
 
-    /** @return Whether the limelight has any valid targets */
+    /**
+     * @return Whether the limelight has any valid targets
+     */
     public boolean getValidTarget() {
         return (table.validTarget.getDouble(0) > 0.5) && (isConnected());
     }
 
     /**
-     * @return Horizontal Offset From Crosshair To Target (-27 degrees to 27
-     *         degrees)
+     * @return Horizontal Offset From Crosshair To Target (-27 degrees to 27 degrees)
      */
     public double getTargetXAngle() {
         return table.xAngle.getDouble(0);
     }
 
     /**
-     * @return Vertical Offset From Crosshair To Target (-20.5 degrees to 20.5
-     *         degrees)
+     * @return Vertical Offset From Crosshair To Target (-20.5 degrees to 20.5 degrees)
      */
     public double getTargetYAngle() {
         return table.yAngle.getDouble(0);
     }
 
-    /** @return Percent of the screen the target takes up on a scale of 0 to 1 */
+    /**
+     * @return Percent of the screen the target takes up on a scale of 0 to 1
+     */
     public double getTargetArea() {
         // Lime light returns a double from 0 - 100
         // Divide by 100 to scale number from 0 - 1
         return SLMath.clamp(table.targetArea.getDouble(0) / 100.0, 0, 1);
     }
 
-    /** @return Skew or rotation (-90 degrees to 0 degrees) */
+    /**
+     * @return Skew or rotation (-90 degrees to 0 degrees)
+     */
     public double getTargetSkew() {
         return table.targetSkew.getDouble(0);
     }
 
-    /** @return Latency of limelight information in milli-seconds */
+    /**
+     * @return Latency of limelight information in milli-seconds
+     */
     public double getLatencyMs() {
         // Add Image Capture Latency to get more accurate result
         return table.latency.getDouble(0) + LimelightConstants.IMAGE_CAPTURE_LATENCY;
@@ -152,25 +153,30 @@ public final class Limelight {
     /*** Side Lengths ***/
     /********************/
 
-    /** @return Shortest side length of target in pixels */
+    /**
+     * @return Shortest side length of target in pixels
+     */
     public double getShortestSidelength() {
         return table.shortestSideLength.getDouble(0);
     }
 
     /**
-     * @return Sidelength of longest side of the fitted bounding box (0 - 320
-     *         pixels)
+     * @return Sidelength of longest side of the fitted bounding box (0 - 320 pixels)
      */
     public double getLongestSidelength() {
         return table.longestSideLength.getDouble(0);
     }
 
-    /** @return Horizontal sidelength of the rough bounding box (0 - 320 pixels) */
+    /**
+     * @return Horizontal sidelength of the rough bounding box (0 - 320 pixels)
+     */
     public double getHorizontalSidelength() {
         return table.horizontalSideLength.getDouble(0);
     }
 
-    /** @return Vertical sidelength of the rough bounding box (0 - 320 pixels) */
+    /**
+     * @return Vertical sidelength of the rough bounding box (0 - 320 pixels)
+     */
     public double getVerticalSidelength() {
         return table.verticalSideLength.getDouble(0);
     }
@@ -179,17 +185,23 @@ public final class Limelight {
     /*** Target Corners ***/
     /**********************/
 
-    /** @return Number array of corner x-coordinates */
+    /**
+     * @return Number array of corner x-coordinates
+     */
     public double[] getRawTargetCornersX() {
         return table.xCorners.getDoubleArray(new double[] {});
     }
 
-    /** @return Number array of corner y-coordinates */
+    /**
+     * @return Number array of corner y-coordinates
+     */
     public double[] getRawTargetCornersY() {
         return table.yCorners.getDoubleArray(new double[] {});
     }
 
-    /** @return Vector2D array of the target corners */
+    /**
+     * @return Vector2D array of the target corners
+     */
     public Vector2D[] getTargetCorners() {
         double[] rawX = getRawTargetCornersX();
         double[] rawY = getRawTargetCornersX();
@@ -234,8 +246,7 @@ public final class Limelight {
 
     /**
      * @param target Target to read Area from
-     * @return Percent of the screen the corresponding target takes up on a scale of
-     *         0 to 1
+     * @return Percent of the screen the corresponding target takes up on a scale of 0 to 1
      */
     public double getRawTargetArea(int target) {
         // Lime light returns a double from 0 - 100
@@ -271,7 +282,9 @@ public final class Limelight {
     /*** Solve 3D ***/
     /****************/
 
-    /** @return The Solve 3D Result */
+    /**
+     * @return The Solve 3D Result
+     */
     public Solve3DResult getSolve3D() {
         return new Solve3DResult(table.solve3D.getDoubleArray(new double[] {}));
     }
@@ -280,33 +293,45 @@ public final class Limelight {
     /*** Camera Mode Control ***/
     /***************************/
 
-    /** @param mode Specified LED Mode to set the limelight to */
+    /**
+     * @param mode Specified LED Mode to set the limelight to
+     */
     public void setLEDMode(LEDMode mode) {
         table.ledMode.setNumber(mode.getCodeValue());
     }
 
-    /** @param mode Specified Cam Mode to set the limelight to */
+    /**
+     * @param mode Specified Cam Mode to set the limelight to
+     */
     public void setCamMode(CamMode mode) {
         table.camMode.setNumber(mode.getCodeValue());
     }
 
-    /** @param mode Specified Snapshot Mode to set the limelight to */
+    /**
+     * @param mode Specified Snapshot Mode to set the limelight to
+     */
     public void setSnapshotMode(SnapshotMode mode) {
         table.snapshotMode.setNumber(mode.getCodeValue());
     }
 
-    /** @param stream Specified Camera Stream to set the limelight to */
+    /**
+     * @param stream Specified Camera Stream to set the limelight to
+     */
     public void setCameraStream(CameraStream stream) {
         table.cameraStream.setNumber(stream.getCodeValue());
     }
 
-    /** @param pipeline Specified pipeline to set the limelight to */
+    /**
+     * @param pipeline Specified pipeline to set the limelight to
+     */
     public void setPipeline(Pipeline pipeline) {
         if (!pipeline.equals(Pipeline.INVALID_PIPELINE))
             table.pipeline.setNumber(pipeline.getCodeValue());
     }
 
-    /** @return The current pipeline the limelight is set to */
+    /**
+     * @return The current pipeline the limelight is set to
+     */
     public Pipeline getPipeline() {
         double ntValue = table.getPipeline.getDouble(0);
         int pipelineID = (int) (ntValue + 0.5);
@@ -464,7 +489,7 @@ public final class Limelight {
 
     /**
      * @param element Name of Number to set on Network Table
-     * @param value   Value to set the Number on the Network Table to
+     * @param value Value to set the Number on the Network Table to
      * @return Whether or not the write was successful
      */
     public boolean setCustomNumber(String element, Number value) {
@@ -481,7 +506,7 @@ public final class Limelight {
 
     /**
      * @param element Name of String to set on Network Table
-     * @param value   Value to set the Sting on the Network Table to
+     * @param value Value to set the Sting on the Network Table to
      * @return Whether or not the write was successful
      */
     public boolean setCustomString(String element, String value) {
