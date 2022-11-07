@@ -8,8 +8,8 @@ plugins {
    id "maven-publish"
 
    id "edu.wpi.first.GradleRIO" version "${WPI_VER}"
-   id "com.diffplug.spotless" version "6.1.0"
-   id "com.github.spotbugs" version "4.7.0"
+   id "com.diffplug.spotless" version "6.11.0"
+   id "com.github.spotbugs" version "5.0.13"
 }
 
 group = 'com.stuypulse'
