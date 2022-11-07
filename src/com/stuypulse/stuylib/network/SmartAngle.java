@@ -27,10 +27,7 @@ import java.util.function.Supplier;
 public class SmartAngle implements Supplier<Angle> {
 
     // Flags for when the network table entry triggers an update
-    private static final int LISTENER_FLAGS = Kind.kTopic.getValue()
-            | Kind.kPublish.getValue();
-    private static final EnumSet<Kind> LISTENER_KINDS = EnumSet.of(Kind.kTopic,
-            Kind.kPublish);
+    private static final EnumSet<Kind> LISTENER_KINDS = EnumSet.of(Kind.kTopic, Kind.kPublish);
 
     // Built-in conversions from network doubles to Angles
     public static final Conversion<Double, Angle> kDegrees = Conversion.make(Angle::fromDegrees, a -> a.toDegrees());
