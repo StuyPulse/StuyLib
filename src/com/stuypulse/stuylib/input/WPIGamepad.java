@@ -91,7 +91,7 @@ public class WPIGamepad extends Gamepad {
 
     /**
      * @param button Joystick button id
-     * @return Button that activates with {@link #getRawButton(int)}
+     * @return Trigger that activates with {@link #getRawButton(int)}
      */
     public final Trigger getButton(int button) {
         return new Trigger(() -> getRawButton(button));

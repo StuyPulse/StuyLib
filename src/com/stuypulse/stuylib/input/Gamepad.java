@@ -222,7 +222,7 @@ public class Gamepad implements Sendable {
 
     // Sticks //
     /**
-     * @return Button that activates when {@link #getLeftY()} is greater than
+     * @return Trigger that activates when {@link #getLeftY()} is greater than
      *         +{@link
      *         #ANALOG_THRESHOLD}
      */
@@ -323,18 +323,18 @@ public class Gamepad implements Sendable {
 
     // Triggers //
     /** @return Trigger that activates with {@link #getLeftTriggerPressed()} */
-    public final Trigger getLeftTriggerTrigger() {
+    public final Trigger getLeftTriggerButton() {
         return new Trigger(this::getLeftTriggerPressed);
     }
 
     /** @return Trigger that activates with {@link #getRightTriggerPressed()} */
-    public final Trigger getRightTriggerTrigger() {
+    public final Trigger getRightTriggerButton() {
         return new Trigger(this::getRightTriggerPressed);
     }
 
     // Face Triggers //
     /** @return Trigger that activates with {@link #getRawTopButton()} */
-    public final Trigger getTopTrigger() {
+    public final Trigger getTopButton() {
         return new Trigger(this::getRawTopButton);
     }
 
@@ -348,29 +348,29 @@ public class Gamepad implements Sendable {
         return new Trigger(this::getRawLeftButton);
     }
 
-    /** @return Button that activates with {@link #getRawRightButton()} */
+    /** @return Trigger that activates with {@link #getRawRightButton()} */
     public final Trigger getRightButton() {
         return new Trigger(this::getRawRightButton);
     }
 
     // Select / Start / Option //
-    /** @return Button that activates with {@link #getRawSelectButton()} */
+    /** @return Trigger that activates with {@link #getRawSelectButton()} */
     public final Trigger getSelectButton() {
         return new Trigger(this::getRawSelectButton);
     }
 
-    /** @return Button that activates with {@link #getRawStartButton()} */
+    /** @return Trigger that activates with {@link #getRawStartButton()} */
     public final Trigger getStartButton() {
         return new Trigger(this::getRawStartButton);
     }
 
-    // Analog Stick Buttons //
-    /** @return Button that activates with {@link #getRawLeftStickButton()} */
+    // Analog Stick Trigger //
+    /** @return Trigger that activates with {@link #getRawLeftStickButton()} */
     public final Trigger getLeftStickButton() {
         return new Trigger(this::getRawLeftStickButton);
     }
 
-    /** @return Button that activates with {@link #getRawRightStickButton()} */
+    /** @return Trigger that activates with {@link #getRawRightStickButton()} */
     public final Trigger getRightStickButton() {
         return new Trigger(this::getRawRightStickButton);
     }
