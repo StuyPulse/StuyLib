@@ -5,25 +5,37 @@
 package com.stuypulse.stuylib.input;
 
 import edu.wpi.first.wpilibj.Joystick;
-import edu.wpi.first.wpilibj2.command.button.Button;
+import edu.wpi.first.wpilibj2.command.button.Trigger;
 
 /**
- * WPI Gamepad extends Gamepad and adds functions that makes interacting with the underlying
- * Joystick class easy. The WPI joystick class is kept in a separate class to make it easy to update
+ * WPI Gamepad extends Gamepad and adds functions that makes interacting with
+ * the underlying
+ * Joystick class easy. The WPI joystick class is kept in a separate class to
+ * make it easy to update
  * if WPI updates.
  *
- * <p>If you would like to get a button id that is not defined, or an axis id that is not defined,
- * use {@link #getRawButton(int)} or {@link #getRawAxis(int)}. If you want it to return a button for
+ * <p>
+ * If you would like to get a button id that is not defined, or an axis id that
+ * is not defined,
+ * use {@link #getRawButton(int)} or {@link #getRawAxis(int)}. If you want it to
+ * return a button for
  * an unimplemented button, type {@link #getButton(int)}.
  *
- * <p>To initialize this class, pass in a Joystick or an int set to the port number. This will be
+ * <p>
+ * To initialize this class, pass in a Joystick or an int set to the port
+ * number. This will be
  * the Joystick that the Gamepad class will interact with.
  *
- * <p>If you do not initialize with a Joystick, everything will still work except for - {@link
- * #getRawButton(int)} - {@link #getRawAxis(int)} - {@link #getButton(int)} which will return either
+ * <p>
+ * If you do not initialize with a Joystick, everything will still work except
+ * for - {@link
+ * #getRawButton(int)} - {@link #getRawAxis(int)} - {@link #getButton(int)}
+ * which will return either
  * false or 0.0
  *
- * <p>The difference between the implementations of the Gamepad class is how it interacts with the
+ * <p>
+ * The difference between the implementations of the Gamepad class is how it
+ * interacts with the
  * underlying Joystick class.
  *
  * @author Sam (sam.belliveau@gmail.com)
@@ -81,8 +93,8 @@ public class WPIGamepad extends Gamepad {
      * @param button Joystick button id
      * @return Button that activates with {@link #getRawButton(int)}
      */
-    public final Button getButton(int button) {
-        return new Button(() -> getRawButton(button));
+    public final Trigger getButton(int button) {
+        return new Trigger(() -> getRawButton(button));
     }
 
     /**
