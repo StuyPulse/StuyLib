@@ -53,14 +53,10 @@ public interface IStream extends DoubleSupplier {
         return () -> stream.get() ? 1.0 : 0.0;
     }
 
-    /**
-     * @return next value in the stream
-     */
+    /** @return next value in the stream */
     public double get();
 
-    /**
-     * @return get IStream as a double
-     */
+    /** @return get IStream as a double */
     public default double getAsDouble() {
         return get();
     }

@@ -23,9 +23,7 @@ public class WeightedMovingAverage implements IFilter {
     private double mLastAverage;
     private MovingAverage mAverage;
 
-    /**
-     * @param size size of weighted moving average
-     */
+    /** @param size size of weighted moving average */
     public WeightedMovingAverage(int size) {
         if (size <= 0) {
             throw new IllegalArgumentException("size must be greater than 0!");

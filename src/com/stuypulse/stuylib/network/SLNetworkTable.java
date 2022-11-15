@@ -10,10 +10,15 @@ import edu.wpi.first.networktables.NetworkTableInstance;
 import java.util.Set;
 
 /**
- * The SL NetworkTable is a very fast way to easily interface with a network table.
+ * The SL
+ * NetworkTable is a very fast way to easily interface with a network
+ * table.
  *
- * <p>If a function you want is not implemented, use {@link SLNetworkTable#getTable()}, {@link
- * SLNetworkTable#getRawEntry(String)}, or {@link SLNetworkTable#getInstance()} to call the function
+ * <p>
+ * If a function you want is not implemented, use
+ * {@link SLNetworkTable#getTable()}, {@link
+ * SLNetworkTable#getRawEntry(String)}, or {@link SLNetworkTable#getInstance()}
+ * to call the function
  * yourself
  *
  * @author Sam (sam.belliveau@gmail.com)
@@ -25,7 +30,8 @@ public class SLNetworkTable {
     /*********************/
 
     /**
-     * Opens network table on local device. IE a robot opens a network table for other devices to
+     * Opens network table on local device. IE a robot opens a network table for
+     * other devices to
      * connect to
      *
      * @param table network table name
@@ -36,9 +42,10 @@ public class SLNetworkTable {
     }
 
     /**
-     * Opens network table that is connected to a robot. IE a program connecting to a robot.
+     * Opens network table that is connected to a robot. IE a program connecting to
+     * a robot.
      *
-     * @param team team number
+     * @param team  team number
      * @param table network table name
      * @return Configured Network Table Wrapper
      */
@@ -53,7 +60,7 @@ public class SLNetworkTable {
      * Opens network table with special instance.
      *
      * @param instance NetworkTableInstance
-     * @param table network table name
+     * @param table    network table name
      * @return Configured Network Table Wrapper
      */
     public static SLNetworkTable open(NetworkTableInstance instance, String table) {
@@ -74,11 +81,12 @@ public class SLNetworkTable {
     /************************/
 
     /**
-     * Creates a Network Table Wrapper opened on table "tableName", and with the a special
+     * Creates a Network Table Wrapper opened on table "tableName", and with the a
+     * special
      * NetworkTableInstance (ie. if you are making a client)
      *
      * @param tableName network table name
-     * @param instance custom network table instance
+     * @param instance  custom network table instance
      */
     private SLNetworkTable(NetworkTableInstance instance, String table) {
         mInstance = instance;
@@ -232,7 +240,7 @@ public class SLNetworkTable {
     /**
      * Set boolean in network table
      *
-     * @param key key name
+     * @param key   key name
      * @param value desired value
      * @return returns false if entry exists with other type
      */
@@ -243,7 +251,7 @@ public class SLNetworkTable {
     /**
      * Set double in network table
      *
-     * @param key key name
+     * @param key   key name
      * @param value desired value
      * @return returns false if entry exists with other type
      */
@@ -254,7 +262,7 @@ public class SLNetworkTable {
     /**
      * Set Number in network table
      *
-     * @param key key name
+     * @param key   key name
      * @param value desired value
      * @return returns false if entry exists with other type
      */
@@ -265,7 +273,7 @@ public class SLNetworkTable {
     /**
      * Set String in network table
      *
-     * @param key key name
+     * @param key   key name
      * @param value desired value
      * @return returns false if entry exists with other type
      */

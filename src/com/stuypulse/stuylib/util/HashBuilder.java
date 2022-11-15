@@ -113,17 +113,13 @@ public final class HashBuilder {
 
     /*** Getting the HashCode Back ***/
 
-    /**
-     * @return the digested hashCode of everything that was added
-     */
+    /** @return the digested hashCode of everything that was added */
     @Override
     public int hashCode() {
         return mHashPool;
     }
 
-    /**
-     * @return the digested hashCode of everything that was added
-     */
+    /** @return the digested hashCode of everything that was added */
     public int toHashCode() {
         return this.hashCode();
     }

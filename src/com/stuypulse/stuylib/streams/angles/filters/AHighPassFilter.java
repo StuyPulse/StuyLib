@@ -15,9 +15,7 @@ public class AHighPassFilter implements AFilter {
 
     private ALowPassFilter mInverse;
 
-    /**
-     * @param rc time constant for high pass filter
-     */
+    /** @param rc time constant for high pass filter */
     public AHighPassFilter(Number rc) {
         mInverse = new ALowPassFilter(rc);
     }

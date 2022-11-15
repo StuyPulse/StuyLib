@@ -10,8 +10,10 @@ import edu.wpi.first.networktables.NetworkTableEntry;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 
 /**
- * SmartNumber works as a wrapper for values on {@link SmartDashboard}. The idea for this class was
- * to make getting values on {@link SmartDashboard} easier by making them variables that you know
+ * SmartNumber works as a wrapper for values on {@link SmartDashboard}. The idea
+ * for this class was
+ * to make getting values on {@link SmartDashboard} easier by making them
+ * variables that you know
  * were initialized.
  *
  * @author Sam (sam.belliveau@gmail.com)
@@ -27,12 +29,15 @@ public class SmartNumber extends Number implements IStream {
     private final double mDefaultValue;
 
     /**
-     * Creates a {@link SmartNumber} with a network table entry instead of a value for {@link
+     * Creates a {@link SmartNumber} with a network table entry instead of a value
+     * for {@link
      * SmartDashboard}. This allows you to put items on things like {@link
-     * edu.wpi.first.wpilibj.shuffleboard.Shuffleboard}, without having to use a raw {@link
+     * edu.wpi.first.wpilibj.shuffleboard.Shuffleboard}, without having to use a raw
+     * {@link
      * NetworkTableEntry}.
      *
-     * @param entry the {@link NetworkTableEntry} the {@link SmartNumber} should be set to.
+     * @param entry the {@link NetworkTableEntry} the {@link SmartNumber} should be
+     *              set to.
      * @param value the default value of the {@link SmartNumber}
      */
     public SmartNumber(NetworkTableEntry entry, double value) {
@@ -42,33 +47,28 @@ public class SmartNumber extends Number implements IStream {
     }
 
     /**
-     * Creates a SmartNumber with the element name and a default value. The value on {@link
+     * Creates a SmartNumber with the element name and a default value. The value on
+     * {@link
      * SmartDashboard} will be reset to the default value on initialization.
      *
-     * @param id the name of the number on SmartDashboard
+     * @param id    the name of the number on SmartDashboard
      * @param value the default / initialization value for the value
      */
     public SmartNumber(String id, double value) {
         this(SmartDashboard.getEntry(id), value);
     }
 
-    /**
-     * @return the value of the number from SmartDashboard
-     */
+    /** @return the value of the number from SmartDashboard */
     public double get() {
         return mEntry.getDouble(mDefaultValue);
     }
 
-    /**
-     * @return the default value of the number
-     */
+    /** @return the default value of the number */
     public double getDefault() {
         return mDefaultValue;
     }
 
-    /**
-     * @param value what the value on {@link SmartDashboard} will be set to
-     */
+    /** @param value what the value on {@link SmartDashboard} will be set to */
     public void set(Number value) {
         mEntry.setValue(value);
     }
@@ -79,14 +79,16 @@ public class SmartNumber extends Number implements IStream {
     }
 
     /**
-     * @return the value of the number from {@link SmartDashboard} (casted to a double)
+     * @return the value of the number from {@link SmartDashboard} (casted to a
+     *         double)
      */
     public double doubleValue() {
         return (double) this.get();
     }
 
     /**
-     * @return the value of the number from {@link SmartDashboard} (casted to a float)
+     * @return the value of the number from {@link SmartDashboard} (casted to a
+     *         float)
      */
     public float floatValue() {
         return (float) this.get();
@@ -100,22 +102,27 @@ public class SmartNumber extends Number implements IStream {
     }
 
     /**
-     * @return the value of the number from {@link SmartDashboard} (casted to a long)
+     * @return the value of the number from {@link SmartDashboard} (casted to a
+     *         long)
      */
     public long longValue() {
         return (long) this.get();
     }
 
     /**
-     * This function checks to see if {@code oldNumber} is a {@link SmartNumber}, if it is, then it
-     * sets the {@code oldNumber} to {@code newNumber} and returns the {@code oldNumber}. Otherwise,
+     * This function checks to see if {@code oldNumber} is a {@link SmartNumber}, if
+     * it is, then it
+     * sets the {@code oldNumber} to {@code newNumber} and returns the
+     * {@code oldNumber}. Otherwise,
      * it just returns {@code newNumber}.
      *
      * @param oldNumber number that is being replaced
      * @param newNumber number representing the value of the new number
-     * @return if {@code oldNumber} is not a {@link SmartNumber}, then this function will return
-     *     {@code newNumber}. If {@code oldNumber} is a {@link SmartNumber}, then this function will
-     *     return {@code oldNumber} with its value set to {@code newNumber}
+     * @return if {@code oldNumber} is not a {@link SmartNumber}, then this function
+     *         will return
+     *         {@code newNumber}. If {@code oldNumber} is a {@link SmartNumber},
+     *         then this function will
+     *         return {@code oldNumber} with its value set to {@code newNumber}
      */
     public static Number setNumber(Number oldNumber, Number newNumber) {
         if (oldNumber instanceof SmartNumber) {

@@ -25,41 +25,31 @@ public class NumberStream extends Number implements IStream {
         mStream = stream;
     }
 
-    /**
-     * @return value from stream
-     */
+    /** @return value from stream */
     @Override
     public double get() {
         return mStream.get();
     }
 
-    /**
-     * @return value from stream
-     */
+    /** @return value from stream */
     @Override
     public double doubleValue() {
         return get();
     }
 
-    /**
-     * @return value from stream as float
-     */
+    /** @return value from stream as float */
     @Override
     public float floatValue() {
         return (float) get();
     }
 
-    /**
-     * @return value from stream as integer
-     */
+    /** @return value from stream as integer */
     @Override
     public int intValue() {
         return (int) get();
     }
 
-    /**
-     * @return value from stream as long
-     */
+    /** @return value from stream as long */
     @Override
     public long longValue() {
         return (long) get();

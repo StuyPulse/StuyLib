@@ -52,9 +52,7 @@ public class MouseTracker {
         return 1.0 - y;
     }
 
-    /**
-     * @return position of mouse
-     */
+    /** @return position of mouse */
     public Vector2D getPosition() {
         return new Vector2D(getX(), getY());
     }

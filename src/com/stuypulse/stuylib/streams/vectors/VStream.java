@@ -31,9 +31,7 @@ public interface VStream extends Supplier<Vector2D> {
         return () -> new Vector2D(x.get(), y.get());
     }
 
-    /**
-     * @return next value in the stream
-     */
+    /** @return next value in the stream */
     public Vector2D get();
 
     /**

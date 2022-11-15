@@ -60,30 +60,22 @@ public class Polar2D {
         return Math.sqrt(a * a + b * b - 2.0 * a * b * t.cos());
     }
 
-    /**
-     * @return distance from 0, 0
-     */
+    /** @return distance from 0, 0 */
     public double distance() {
         return this.magnitude;
     }
 
-    /**
-     * @return magnitude
-     */
+    /** @return magnitude */
     public double magnitude() {
         return magnitude;
     }
 
-    /**
-     * @return angle
-     */
+    /** @return angle */
     public Angle getAngle() {
         return angle;
     }
 
-    /**
-     * @return Polar Coordinates as a Vector2D
-     */
+    /** @return Polar Coordinates as a Vector2D */
     public Vector2D getVector() {
         return new Vector2D(angle.cos() * magnitude, angle.sin() * magnitude);
     }
@@ -112,16 +104,12 @@ public class Polar2D {
         return new Polar2D(magnitude, angle.add(a));
     }
 
-    /**
-     * @return Polar2D object with a negated magnitude
-     */
+    /** @return Polar2D object with a negated magnitude */
     public Polar2D negative() {
         return new Polar2D(-magnitude, angle);
     }
 
-    /**
-     * @return normalized polar coordinates
-     */
+    /** @return normalized polar coordinates */
     public Polar2D normalize() {
         return new Polar2D(1, angle);
     }
@@ -153,9 +141,7 @@ public class Polar2D {
         return HashBuilder.combineHash(Double.hashCode(magnitude), angle);
     }
 
-    /**
-     * @return String representation of the Polar2D class
-     */
+    /** @return String representation of the Polar2D class */
     @Override
     public String toString() {
         StringBuilder out = new StringBuilder();

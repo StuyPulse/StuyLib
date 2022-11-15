@@ -24,9 +24,7 @@ public class RateLimit implements IFilter {
     private double mLastValue;
     private Number mRateLimit;
 
-    /**
-     * @param rateLimit The amount that the value should be able to change in one second.
-     */
+    /** @param rateLimit The amount that the value should be able to change in one second. */
     public RateLimit(Number rateLimit) {
         if (rateLimit.doubleValue() <= 0) {
             throw new IllegalArgumentException("rateLimit must be a positive number");

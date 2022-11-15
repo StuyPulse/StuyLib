@@ -62,9 +62,7 @@ public final class Vector3D {
         this.z = axis[2];
     }
 
-    /**
-     * @return double array of size 3 defined as {x, y, z}
-     */
+    /** @return double array of size 3 defined as {x, y, z} */
     public double[] getArray() {
         return new double[] {x, y, z};
     }
@@ -81,16 +79,12 @@ public final class Vector3D {
         return Math.sqrt(dx * dx + dy * dy + dz * dz);
     }
 
-    /**
-     * @return distance from 0, 0, 0
-     */
+    /** @return distance from 0, 0, 0 */
     public double distance() {
         return Math.sqrt(this.x * this.x + this.y * this.y + this.z * this.z);
     }
 
-    /**
-     * @return magnitude of the vector (same as distance from 0, 0, 0)
-     */
+    /** @return magnitude of the vector (same as distance from 0, 0, 0) */
     public double magnitude() {
         return this.distance();
     }
@@ -195,9 +189,7 @@ public final class Vector3D {
                 this.x * other.y - this.y * other.x);
     }
 
-    /**
-     * @return result of normalizing the Vector3D so that the magnitude is 1.0
-     */
+    /** @return result of normalizing the Vector3D so that the magnitude is 1.0 */
     public Vector3D normalize() {
         double magnitude = this.distance();
         if (SLMath.isZero(magnitude)) {
@@ -207,9 +199,7 @@ public final class Vector3D {
         }
     }
 
-    /**
-     * @return result of negating the x, y, and z components
-     */
+    /** @return result of negating the x, y, and z components */
     public Vector3D negative() {
         return new Vector3D(-this.x, -this.y, -this.z);
     }
@@ -241,9 +231,7 @@ public final class Vector3D {
         return new HashBuilder().append(this.x).append(this.y).append(this.z).toHashCode();
     }
 
-    /**
-     * @return string representation of Vector3D
-     */
+    /** @return string representation of Vector3D */
     @Override
     public String toString() {
         StringBuilder out = new StringBuilder();

@@ -104,23 +104,17 @@ public class AnglePIDController extends AngleController {
         }
     }
 
-    /**
-     * @return the P value being used by the PID controller.
-     */
+    /** @return the P value being used by the PID controller. */
     public double getP() {
         return Math.max(mP.doubleValue(), 0.0);
     }
 
-    /**
-     * @return the P value being used by the PID controller.
-     */
+    /** @return the P value being used by the PID controller. */
     public double getI() {
         return Math.max(mI.doubleValue(), 0.0);
     }
 
-    /**
-     * @return the P value being used by the PID controller.
-     */
+    /** @return the P value being used by the PID controller. */
     public double getD() {
         return Math.max(mD.doubleValue(), 0.0);
     }
@@ -197,9 +191,7 @@ public class AnglePIDController extends AngleController {
         return this;
     }
 
-    /**
-     * @return information about this PIDController
-     */
+    /** @return information about this PIDController */
     public String toString() {
         return "(P: "
                 + SLMath.round(getP(), 4)
