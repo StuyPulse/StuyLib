@@ -23,19 +23,24 @@ public final class Limelight {
     /**
      * Returns a Limelight Class using the default table name.
      *
-     * <p>If you only have one limelight, this is most likely the constructor you want to use.
+     * <p>
+     * If you only have one limelight, this is most likely the constructor you want
+     * to use.
      *
      * @return instance of limelight
      */
     public static Limelight getInstance() {
-        if (mDefaultInstance == null) mDefaultInstance = new Limelight();
+        if (mDefaultInstance == null)
+            mDefaultInstance = new Limelight();
         return mDefaultInstance;
     }
 
     /**
      * Returns a Limelight Class using a custom table name.
      *
-     * <p>If you have multiple limelights, this is most likely the constructor you want to use.
+     * <p>
+     * If you have multiple limelights, this is most likely the constructor you want
+     * to use.
      *
      * @param tableName the table name of the limelight
      * @return instance of limelight
@@ -51,7 +56,9 @@ public final class Limelight {
     /**
      * Construct a Limelight Class using the default table name.
      *
-     * <p>If you only have one limelight, this is most likely the constructor you want to use.
+     * <p>
+     * If you only have one limelight, this is most likely the constructor you want
+     * to use.
      */
     private Limelight() {
         table = new LimelightTable();
@@ -60,7 +67,9 @@ public final class Limelight {
     /**
      * Construct a Limelight Class using a custom table name.
      *
-     * <p>If you have multiple limelights, this is most likely the constructor you want to use.
+     * <p>
+     * If you have multiple limelights, this is most likely the constructor you want
+     * to use.
      *
      * @param tableName the table name of the limelight
      */
@@ -90,7 +99,7 @@ public final class Limelight {
     public boolean isConnected() {
         final long MAX_UPDATE_TIME = 250_000;
 
-        table.timingEntry.forceSetBoolean(!table.timingEntry.getBoolean(false));
+        table.timingEntry.setValue(!table.timingEntry.getBoolean(false));
         long currentTime = table.timingEntry.getLastChange();
 
         return Math.abs(currentTime - getLastUpdate()) < MAX_UPDATE_TIME;
@@ -105,12 +114,18 @@ public final class Limelight {
         return (table.validTarget.getDouble(0) > 0.5) && (isConnected());
     }
 
-    /** @return Horizontal Offset From Crosshair To Target (-27 degrees to 27 degrees) */
+    /**
+     * @return Horizontal Offset From Crosshair To Target (-27 degrees to 27
+     *         degrees)
+     */
     public double getTargetXAngle() {
         return table.xAngle.getDouble(0);
     }
 
-    /** @return Vertical Offset From Crosshair To Target (-20.5 degrees to 20.5 degrees) */
+    /**
+     * @return Vertical Offset From Crosshair To Target (-20.5 degrees to 20.5
+     *         degrees)
+     */
     public double getTargetYAngle() {
         return table.yAngle.getDouble(0);
     }
@@ -142,7 +157,10 @@ public final class Limelight {
         return table.shortestSideLength.getDouble(0);
     }
 
-    /** @return Sidelength of longest side of the fitted bounding box (0 - 320 pixels) */
+    /**
+     * @return Sidelength of longest side of the fitted bounding box (0 - 320
+     *         pixels)
+     */
     public double getLongestSidelength() {
         return table.longestSideLength.getDouble(0);
     }
@@ -216,7 +234,8 @@ public final class Limelight {
 
     /**
      * @param target Target to read Area from
-     * @return Percent of the screen the corresponding target takes up on a scale of 0 to 1
+     * @return Percent of the screen the corresponding target takes up on a scale of
+     *         0 to 1
      */
     public double getRawTargetArea(int target) {
         // Lime light returns a double from 0 - 100
@@ -445,7 +464,7 @@ public final class Limelight {
 
     /**
      * @param element Name of Number to set on Network Table
-     * @param value Value to set the Number on the Network Table to
+     * @param value   Value to set the Number on the Network Table to
      * @return Whether or not the write was successful
      */
     public boolean setCustomNumber(String element, Number value) {
@@ -462,7 +481,7 @@ public final class Limelight {
 
     /**
      * @param element Name of String to set on Network Table
-     * @param value Value to set the Sting on the Network Table to
+     * @param value   Value to set the Sting on the Network Table to
      * @return Whether or not the write was successful
      */
     public boolean setCustomString(String element, String value) {
