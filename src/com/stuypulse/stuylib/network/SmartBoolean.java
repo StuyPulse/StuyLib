@@ -6,12 +6,16 @@ package com.stuypulse.stuylib.network;
 
 import com.stuypulse.stuylib.streams.booleans.BStream;
 
-import edu.wpi.first.networktables.NetworkTableEntry;
+import edu.wpi.first.networktables.BooleanEntry;
+import edu.wpi.first.networktables.BooleanTopic;
+import edu.wpi.first.networktables.NetworkTableInstance;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 
 /**
- * {@link SmartBoolean} works as a wrapper for values on {@link SmartDashboard}. The idea for this
- * class was to make getting values on {@link SmartDashboard} easier by making them variables that
+ * {@link SmartBoolean} works as a wrapper for values on {@link SmartDashboard}.
+ * The idea for this
+ * class was to make getting values on {@link SmartDashboard} easier by making
+ * them variables that
  * you know were initialized.
  *
  * @author Sam (sam.belliveau@gmail.com)
@@ -19,40 +23,49 @@ import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 public class SmartBoolean implements BStream {
 
     /** The ID / Name for the value on {@link SmartDashboard}. */
-    private final NetworkTableEntry mEntry;
+    private final BooleanEntry mEntry;
 
     /** The default value that the {@link SmartDashboard} value was set too. */
     private final boolean mDefaultValue;
 
     /**
-     * Creates a {@link SmartBoolean} with a network table entry instead of a value for {@link
+     * Creates a {@link SmartBoolean} with a network table entry instead of a value
+     * for {@link
      * SmartDashboard}. This allows you to put items on things like {@link
-     * edu.wpi.first.wpilibj.shuffleboard.Shuffleboard}, without having to use a raw {@link
+     * edu.wpi.first.wpilibj.shuffleboard.Shuffleboard}, without having to use a raw
+     * {@link
      * NetworkTableEntry}.
      *
-     * @param entry the {@link NetworkTableEntry} the {@link SmartBoolean} should be set to.
+     * @param entry the {@link NetworkTableEntry} the {@link SmartBoolean} should be
+     *              set to.
      * @param value the default value of the {@link SmartBoolean}
      */
-    public SmartBoolean(NetworkTableEntry entry, boolean value) {
+    public SmartBoolean(BooleanEntry entry, boolean value) {
         mEntry = entry;
         mDefaultValue = value;
-        mEntry.forceSetBoolean(value);
+        entry.setDefault(value);
+    }
+
+    public SmartBoolean(BooleanTopic topic, boolean value) {
+        mEntry = topic.getEntry(value);
+        mDefaultValue = value;
     }
 
     /**
-     * Creates a {@link SmartBoolean} with the element name and a default value. The value on {@link
+     * Creates a {@link SmartBoolean} with the element name and a default value. The
+     * value on {@link
      * SmartDashboard} will be reset to the default value on initialization.
      *
-     * @param id the name of the boolean on {@link SmartDashboard}
+     * @param id    the name of the boolean on {@link SmartDashboard}
      * @param value the default / initialization value for the value
      */
     public SmartBoolean(String id, boolean value) {
-        this(SmartDashboard.getEntry(id), value);
+        this(NetworkTableInstance.getDefault().getBooleanTopic(id), value);
     }
 
     /** @return the value of the boolean from {@link SmartDashboard} */
     public boolean get() {
-        return mEntry.getBoolean(mDefaultValue);
+        return mEntry.get(mDefaultValue);
     }
 
     /** @return the default value of the boolean */
@@ -62,7 +75,7 @@ public class SmartBoolean implements BStream {
 
     /** @param value what the value on {@link SmartDashboard} will be set to */
     public void set(boolean value) {
-        mEntry.forceSetBoolean(value);
+        mEntry.set(value);
     }
 
     /** Resets the value on {@link SmartDashboard} to the default value */
