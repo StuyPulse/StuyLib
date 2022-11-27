@@ -11,10 +11,8 @@ import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import java.util.function.Supplier;
 
 /**
- * SmartString works as a wrapper for values on {@link SmartDashboard}. The idea
- * for this class was
- * to make getting values on {@link SmartDashboard} easier by making them
- * variables that you know
+ * SmartString works as a wrapper for values on {@link SmartDashboard}. The idea for this class was
+ * to make getting values on {@link SmartDashboard} easier by making them variables that you know
  * were initialized.
  *
  * @author Sam (sam.belliveau@gmail.com)
@@ -28,15 +26,12 @@ public class SmartString implements Supplier<String> {
     private final String mDefaultValue;
 
     /**
-     * Creates a {@link SmartString} with a StringEntry instead of a value
-     * for {@link
+     * Creates a {@link SmartString} with a StringEntry instead of a value for {@link
      * SmartDashboard}. This allows you to put items on things like {@link
-     * edu.wpi.first.wpilibj.shuffleboard.Shuffleboard}, without having to use a raw
-     * {@link
+     * edu.wpi.first.wpilibj.shuffleboard.Shuffleboard}, without having to use a raw {@link
      * StringEntry}.
      *
-     * @param entry the {@link StringEntry} the {@link SmartString} should be
-     *              set to.
+     * @param entry the {@link StringEntry} the {@link SmartString} should be set to.
      * @param value the default value of the {@link SmartString}
      */
     public SmartString(StringEntry entry, String value) {
@@ -45,15 +40,12 @@ public class SmartString implements Supplier<String> {
     }
 
     /**
-     * Creates a {@link SmartString} with a StringTopic instead of a value
-     * for {@link
+     * Creates a {@link SmartString} with a StringTopic instead of a value for {@link
      * SmartDashboard}. This allows you to put items on things like {@link
-     * edu.wpi.first.wpilibj.shuffleboard.Shuffleboard}, without having to use a raw
-     * {@link
+     * edu.wpi.first.wpilibj.shuffleboard.Shuffleboard}, without having to use a raw {@link
      * StringTopic}.
      *
-     * @param topic the {@link StringTopic} the {@link SmartString} should be
-     *              set to.
+     * @param topic the {@link StringTopic} the {@link SmartString} should be set to.
      * @param value the default value of the {@link SmartString}
      */
     public SmartString(StringTopic topic, String value) {
@@ -62,11 +54,10 @@ public class SmartString implements Supplier<String> {
     }
 
     /**
-     * Creates a SmartString with the element name and a default value. The value on
-     * {@link
+     * Creates a SmartString with the element name and a default value. The value on {@link
      * SmartDashboard} will be reset to the default value on initialization.
      *
-     * @param id    the name of the String on {@link SmartDashboard}
+     * @param id the name of the String on {@link SmartDashboard}
      * @param value the default / initialization value for the value
      */
     public SmartString(String id, String value) {

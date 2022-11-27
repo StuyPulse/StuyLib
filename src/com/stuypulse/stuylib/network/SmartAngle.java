@@ -14,8 +14,7 @@ import edu.wpi.first.networktables.NetworkTableInstance;
 import java.util.function.Supplier;
 
 /**
- * SmartAngle works as a wrapper for numbers on the network. This class handles
- * converting a double
+ * SmartAngle works as a wrapper for numbers on the network. This class handles converting a double
  * on the network to an Angle
  *
  * @author Myles Pasetsky (myles.pasetsky@gmail.com)
@@ -23,8 +22,10 @@ import java.util.function.Supplier;
 public class SmartAngle implements Supplier<Angle> {
 
     // Built-in conversions from network doubles to Angles
-    public static final Conversion<Double, Angle> kDegrees = Conversion.make(Angle::fromDegrees, a -> a.toDegrees());
-    public static final Conversion<Double, Angle> kRadians = Conversion.make(Angle::fromRadians, a -> a.toRadians());
+    public static final Conversion<Double, Angle> kDegrees =
+            Conversion.make(Angle::fromDegrees, a -> a.toDegrees());
+    public static final Conversion<Double, Angle> kRadians =
+            Conversion.make(Angle::fromRadians, a -> a.toRadians());
 
     // network table entry and its default value
     private DoubleEntry mEntry;
@@ -66,7 +67,7 @@ public class SmartAngle implements Supplier<Angle> {
     /**
      * Create a SmartAngle with a network entry key and a default angle value
      *
-     * @param id    network entry key
+     * @param id network entry key
      * @param value default value
      */
     public SmartAngle(String id, Angle value) {
@@ -74,8 +75,7 @@ public class SmartAngle implements Supplier<Angle> {
     }
 
     /**
-     * Sets the conversion from the double stored on the network to an Angle class
-     * (e.g. sets what
+     * Sets the conversion from the double stored on the network to an Angle class (e.g. sets what
      * unit the double on the network is in)
      *
      * @param conversion conversion between Double and Angle
