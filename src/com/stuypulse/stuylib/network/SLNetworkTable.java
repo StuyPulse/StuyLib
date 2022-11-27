@@ -4,9 +4,9 @@
 
 package com.stuypulse.stuylib.network;
 
+import edu.wpi.first.networktables.GenericEntry;
 import edu.wpi.first.networktables.NetworkTable;
 import edu.wpi.first.networktables.NetworkTableInstance;
-import edu.wpi.first.networktables.Topic;
 
 import java.util.Set;
 
@@ -153,8 +153,8 @@ public class SLNetworkTable {
      * @param key key name
      * @return Topic for key
      */
-    public Topic getRawTopic(String key) {
-        return mTable.getTopic(key);
+    public GenericEntry getGenericEntry(String key) {
+        return mTable.getTopic(key).getGenericEntry();
     }
 
     /**
@@ -164,7 +164,7 @@ public class SLNetworkTable {
      * @return if key is a valid entry
      */
     public boolean isEntryValid(String key) {
-        return getRawTopic(key).isValid();
+        return getGenericEntry(key).isValid();
     }
 
     /**
@@ -191,7 +191,7 @@ public class SLNetworkTable {
      * @return value
      */
     public boolean getBoolean(String key) {
-        return getRawTopic(key).genericSubscribe().getBoolean(DEFAULT_BOOLEAN);
+        return getGenericEntry(key).getBoolean(DEFAULT_BOOLEAN);
     }
 
     /** Double returned if no entry is found */
@@ -204,7 +204,7 @@ public class SLNetworkTable {
      * @return value
      */
     public double getDouble(String key) {
-        return getRawTopic(key).genericSubscribe().getDouble(DEFAULT_DOUBLE);
+        return getGenericEntry(key).getDouble(DEFAULT_DOUBLE);
     }
 
     /** Number returned if no entry is found */
@@ -217,7 +217,7 @@ public class SLNetworkTable {
      * @return value
      */
     public Number getNumber(String key) {
-        return getRawTopic(key).genericSubscribe().getDouble((double) DEFAULT_NUMBER);
+        return getGenericEntry(key).getDouble((double) DEFAULT_NUMBER);
     }
 
     /** String returned if no entry is found */
@@ -230,7 +230,7 @@ public class SLNetworkTable {
      * @return value
      */
     public String getString(String key) {
-        return getRawTopic(key).genericSubscribe().getString(DEFAULT_STRING);
+        return getGenericEntry(key).getString(DEFAULT_STRING);
     }
 
     /****************************************/
@@ -245,7 +245,7 @@ public class SLNetworkTable {
      * @return returns false if entry exists with other type
      */
     public boolean setBoolean(String key, boolean value) {
-        return getRawTopic(key).genericPublish("boolean").setBoolean(value);
+        return getGenericEntry(key).setBoolean(value);
     }
 
     /**
@@ -256,7 +256,7 @@ public class SLNetworkTable {
      * @return returns false if entry exists with other type
      */
     public boolean setDouble(String key, double value) {
-        return getRawTopic(key).genericPublish("double").setDouble(value);
+        return getGenericEntry(key).setDouble(value);
     }
 
     /**
@@ -267,7 +267,7 @@ public class SLNetworkTable {
      * @return returns false if entry exists with other type
      */
     public boolean setNumber(String key, Number value) {
-        return getRawTopic(key).genericPublish("double").setDouble((double) value);
+        return getGenericEntry(key).setDouble((double) value);
     }
 
     /**
@@ -278,6 +278,6 @@ public class SLNetworkTable {
      * @return returns false if entry exists with other type
      */
     public boolean setString(String key, String value) {
-        return getRawTopic(key).genericPublish("string").setString(value);
+        return getGenericEntry(key).setString(value);
     }
 }

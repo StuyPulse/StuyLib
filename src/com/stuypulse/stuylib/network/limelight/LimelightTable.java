@@ -4,9 +4,9 @@
 
 package com.stuypulse.stuylib.network.limelight;
 
+import edu.wpi.first.networktables.GenericEntry;
 import edu.wpi.first.networktables.NetworkTable;
 import edu.wpi.first.networktables.NetworkTableInstance;
-import edu.wpi.first.networktables.Topic;
 
 /**
  * This class provides an extremely low level implementation construction of the limelight network
@@ -32,33 +32,33 @@ public final class LimelightTable {
         tableInstance = NetworkTableInstance.getDefault();
         table = tableInstance.getTable(tableName);
 
-        validTarget = table.getTopic("tv");
+        validTarget = table.getTopic("tv").getGenericEntry();
 
-        xAngle = table.getTopic("tx");
-        yAngle = table.getTopic("ty");
+        xAngle = table.getTopic("tx").getGenericEntry();
+        yAngle = table.getTopic("ty").getGenericEntry();
 
-        targetArea = table.getTopic("ta");
-        targetSkew = table.getTopic("ts");
+        targetArea = table.getTopic("ta").getGenericEntry();
+        targetSkew = table.getTopic("ts").getGenericEntry();
 
-        latency = table.getTopic("tl");
+        latency = table.getTopic("tl").getGenericEntry();
 
-        shortestSideLength = table.getTopic("tshort");
-        longestSideLength = table.getTopic("tlong");
-        horizontalSideLength = table.getTopic("thor");
-        verticalSideLength = table.getTopic("tvert");
+        shortestSideLength = table.getTopic("tshort").getGenericEntry();
+        longestSideLength = table.getTopic("tlong").getGenericEntry();
+        horizontalSideLength = table.getTopic("thor").getGenericEntry();
+        verticalSideLength = table.getTopic("tvert").getGenericEntry();
 
-        xCorners = table.getTopic("tcornx");
-        yCorners = table.getTopic("tcorny");
+        xCorners = table.getTopic("tcornx").getGenericEntry();
+        yCorners = table.getTopic("tcorny").getGenericEntry();
 
-        solve3D = table.getTopic("camtran");
-        ledMode = table.getTopic("ledMode");
-        camMode = table.getTopic("camMode");
-        pipeline = table.getTopic("pipeline");
-        getPipeline = table.getTopic("getpipe");
-        cameraStream = table.getTopic("stream");
-        snapshotMode = table.getTopic("snapshot");
+        solve3D = table.getTopic("camtran").getGenericEntry();
+        ledMode = table.getTopic("ledMode").getGenericEntry();
+        camMode = table.getTopic("camMode").getGenericEntry();
+        pipeline = table.getTopic("pipeline").getGenericEntry();
+        getPipeline = table.getTopic("getpipe").getGenericEntry();
+        cameraStream = table.getTopic("stream").getGenericEntry();
+        snapshotMode = table.getTopic("snapshot").getGenericEntry();
 
-        timingEntry = table.getTopic(".timing_data");
+        timingEntry = table.getTopic(".timing_data").getGenericEntry();
     }
 
     /****************************************************/
@@ -74,47 +74,47 @@ public final class LimelightTable {
     /****************************************************************/
 
     // Whether the limelight has any valid targets (0 or 1)
-    public final Topic validTarget;
+    public final GenericEntry validTarget;
 
     // Horizontal Offset From Crosshair To Target (-27 degrees to 27 degrees)
-    public final Topic xAngle;
+    public final GenericEntry xAngle;
 
     // Vertical Offset From Crosshair To Target (-20.5 degrees to 20.5 degrees)
-    public final Topic yAngle;
+    public final GenericEntry yAngle;
 
     // Target Area (0% of image to 100% of image)
-    public final Topic targetArea;
+    public final GenericEntry targetArea;
 
     // Skew or rotation (-90 degrees to 0 degrees)
-    public final Topic targetSkew;
+    public final GenericEntry targetSkew;
 
     // The pipeline’s latency contribution (ms) Add at
     // least 11ms for image capture latency.
-    public final Topic latency;
+    public final GenericEntry latency;
 
     // Pixel information returned from these functions
-    public final Topic shortestSideLength;
-    public final Topic longestSideLength;
-    public final Topic horizontalSideLength;
-    public final Topic verticalSideLength;
+    public final GenericEntry shortestSideLength;
+    public final GenericEntry longestSideLength;
+    public final GenericEntry horizontalSideLength;
+    public final GenericEntry verticalSideLength;
 
-    // Corner Topics
-    public final Topic xCorners;
-    public final Topic yCorners;
+    // Corner GenericEntrys
+    public final GenericEntry xCorners;
+    public final GenericEntry yCorners;
 
-    // Solve 3D Topics
-    public final Topic solve3D;
+    // Solve 3D GenericEntrys
+    public final GenericEntry solve3D;
 
-    // Camera Control Topics
-    public final Topic ledMode;
-    public final Topic camMode;
-    public final Topic pipeline;
-    public final Topic getPipeline;
-    public final Topic cameraStream;
-    public final Topic snapshotMode;
+    // Camera Control GenericEntrys
+    public final GenericEntry ledMode;
+    public final GenericEntry camMode;
+    public final GenericEntry pipeline;
+    public final GenericEntry getPipeline;
+    public final GenericEntry cameraStream;
+    public final GenericEntry snapshotMode;
 
-    // Custom Timing Topics
-    public final Topic timingEntry;
+    // Custom Timing GenericEntrys
+    public final GenericEntry timingEntry;
 
     /************************************************/
     /*** Functions to get Entries not listed here ***/
@@ -122,9 +122,9 @@ public final class LimelightTable {
 
     /**
      * @param key ID of value on the network table
-     * @return The Topic of the network table value on the Limelight Table
+     * @return The {@link GenericEntry} of the network table value on the Limelight Table
      */
-    public Topic getTopic(String key) {
-        return table.getTopic(key);
+    public GenericEntry getGenericEntry(String key) {
+        return table.getTopic(key).getGenericEntry();
     }
 }

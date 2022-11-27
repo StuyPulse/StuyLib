@@ -80,9 +80,9 @@ public final class Limelight {
 
     /** @return time of last network table change from limelight */
     public long getLastUpdate() {
-        long lastChange = table.latency.genericSubscribe().getLastChange();
-        lastChange = Math.max(lastChange, table.xAngle.genericSubscribe().getLastChange());
-        lastChange = Math.max(lastChange, table.yAngle.genericSubscribe().getLastChange());
+        long lastChange = table.latency.getLastChange();
+        lastChange = Math.max(lastChange, table.xAngle.getLastChange());
+        lastChange = Math.max(lastChange, table.yAngle.getLastChange());
         return lastChange;
     }
 
@@ -90,8 +90,8 @@ public final class Limelight {
     public boolean isConnected() {
         final long MAX_UPDATE_TIME = 250_000;
 
-        table.timingEntry.genericPublish("double").setBoolean(!table.timingEntry.genericSubscribe().getBoolean(false));
-        long currentTime = table.timingEntry.genericSubscribe().getLastChange();
+        table.timingEntry.setBoolean(!table.timingEntry.getBoolean(false));
+        long currentTime = table.timingEntry.getLastChange();
 
         return Math.abs(currentTime - getLastUpdate()) < MAX_UPDATE_TIME;
     }
@@ -102,35 +102,35 @@ public final class Limelight {
 
     /** @return Whether the limelight has any valid targets */
     public boolean getValidTarget() {
-        return (table.validTarget.genericSubscribe().getDouble(0) > 0.5) && (isConnected());
+        return (table.validTarget.getDouble(0) > 0.5) && (isConnected());
     }
 
     /** @return Horizontal Offset From Crosshair To Target (-27 degrees to 27 degrees) */
     public double getTargetXAngle() {
-        return table.xAngle.genericSubscribe().getDouble(0);
+        return table.xAngle.getDouble(0);
     }
 
     /** @return Vertical Offset From Crosshair To Target (-20.5 degrees to 20.5 degrees) */
     public double getTargetYAngle() {
-        return table.yAngle.genericSubscribe().getDouble(0);
+        return table.yAngle.getDouble(0);
     }
 
     /** @return Percent of the screen the target takes up on a scale of 0 to 1 */
     public double getTargetArea() {
         // Lime light returns a double from 0 - 100
         // Divide by 100 to scale number from 0 - 1
-        return SLMath.clamp(table.targetArea.genericSubscribe().getDouble(0) / 100.0, 0, 1);
+        return SLMath.clamp(table.targetArea.getDouble(0) / 100.0, 0, 1);
     }
 
     /** @return Skew or rotation (-90 degrees to 0 degrees) */
     public double getTargetSkew() {
-        return table.targetSkew.genericSubscribe().getDouble(0);
+        return table.targetSkew.getDouble(0);
     }
 
     /** @return Latency of limelight information in milli-seconds */
     public double getLatencyMs() {
         // Add Image Capture Latency to get more accurate result
-        return table.latency.genericSubscribe().getDouble(0) + LimelightConstants.IMAGE_CAPTURE_LATENCY;
+        return table.latency.getDouble(0) + LimelightConstants.IMAGE_CAPTURE_LATENCY;
     }
 
     /********************/
@@ -139,22 +139,22 @@ public final class Limelight {
 
     /** @return Shortest side length of target in pixels */
     public double getShortestSidelength() {
-        return table.shortestSideLength.genericSubscribe().getDouble(0);
+        return table.shortestSideLength.getDouble(0);
     }
 
     /** @return Sidelength of longest side of the fitted bounding box (0 - 320 pixels) */
     public double getLongestSidelength() {
-        return table.longestSideLength.genericSubscribe().getDouble(0);
+        return table.longestSideLength.getDouble(0);
     }
 
     /** @return Horizontal sidelength of the rough bounding box (0 - 320 pixels) */
     public double getHorizontalSidelength() {
-        return table.horizontalSideLength.genericSubscribe().getDouble(0);
+        return table.horizontalSideLength.getDouble(0);
     }
 
     /** @return Vertical sidelength of the rough bounding box (0 - 320 pixels) */
     public double getVerticalSidelength() {
-        return table.verticalSideLength.genericSubscribe().getDouble(0);
+        return table.verticalSideLength.getDouble(0);
     }
 
     /**********************/
@@ -163,12 +163,12 @@ public final class Limelight {
 
     /** @return Number array of corner x-coordinates */
     public double[] getRawTargetCornersX() {
-        return table.xCorners.genericSubscribe().getDoubleArray(new double[] {});
+        return table.xCorners.getDoubleArray(new double[] {});
     }
 
     /** @return Number array of corner y-coordinates */
     public double[] getRawTargetCornersY() {
-        return table.yCorners.genericSubscribe().getDoubleArray(new double[] {});
+        return table.yCorners.getDoubleArray(new double[] {});
     }
 
     /** @return Vector2D array of the target corners */
@@ -203,7 +203,7 @@ public final class Limelight {
      * @return X Angle of corresponding target
      */
     public double getRawTargetXAngle(int target) {
-        return table.getTopic("tx" + target).genericSubscribe().getDouble(0);
+        return table.getGenericEntry("tx" + target).getDouble(0);
     }
 
     /**
@@ -211,7 +211,7 @@ public final class Limelight {
      * @return Y Angle of corresponding target
      */
     public double getRawTargetYAngle(int target) {
-        return table.getTopic("ty" + target).genericSubscribe().getDouble(0);
+        return table.getGenericEntry("ty" + target).getDouble(0);
     }
 
     /**
@@ -221,7 +221,7 @@ public final class Limelight {
     public double getRawTargetArea(int target) {
         // Lime light returns a double from 0 - 100
         // Divide by 100 to scale number from 0 - 1
-        return SLMath.clamp(table.getTopic("ta" + target).genericSubscribe().getDouble(0) / 100.0, 0, 1);
+        return SLMath.clamp(table.getGenericEntry("ta" + target).getDouble(0) / 100.0, 0, 1);
     }
 
     /**
@@ -229,7 +229,7 @@ public final class Limelight {
      * @return Skew of corresponding target
      */
     public double getRawTargetSkew(int target) {
-        return table.getTopic("ts" + target).genericSubscribe().getDouble(0);
+        return table.getGenericEntry("ts" + target).getDouble(0);
     }
 
     /**
@@ -237,7 +237,7 @@ public final class Limelight {
      * @return X Coordinate of corresponding crosshair
      */
     public double getCustomRawCrosshairX(int crosshair) {
-        return table.getTopic("cx" + crosshair).genericSubscribe().getDouble(0);
+        return table.getGenericEntry("cx" + crosshair).getDouble(0);
     }
 
     /**
@@ -245,7 +245,7 @@ public final class Limelight {
      * @return Y Coordinate of corresponding crosshair
      */
     public double getRawCrosshairY(int crosshair) {
-        return table.getTopic("cy" + crosshair).genericSubscribe().getDouble(0);
+        return table.getGenericEntry("cy" + crosshair).getDouble(0);
     }
 
     /****************/
@@ -254,7 +254,7 @@ public final class Limelight {
 
     /** @return The Solve 3D Result */
     public Solve3DResult getSolve3D() {
-        return new Solve3DResult(table.solve3D.genericSubscribe().getDoubleArray(new double[] {}));
+        return new Solve3DResult(table.solve3D.getDoubleArray(new double[] {}));
     }
 
     /***************************/
@@ -263,33 +263,33 @@ public final class Limelight {
 
     /** @param mode Specified LED Mode to set the limelight to */
     public void setLEDMode(LEDMode mode) {
-        table.ledMode.genericPublish("double").setDouble(mode.getCodeValue());
+        table.ledMode.setDouble(mode.getCodeValue());
     }
 
     /** @param mode Specified Cam Mode to set the limelight to */
     public void setCamMode(CamMode mode) {
-        table.camMode.genericPublish("double").setDouble(mode.getCodeValue());
+        table.camMode.setDouble(mode.getCodeValue());
     }
 
     /** @param mode Specified Snapshot Mode to set the limelight to */
     public void setSnapshotMode(SnapshotMode mode) {
-        table.snapshotMode.genericPublish("double").setDouble(mode.getCodeValue());
+        table.snapshotMode.setDouble(mode.getCodeValue());
     }
 
     /** @param stream Specified Camera Stream to set the limelight to */
     public void setCameraStream(CameraStream stream) {
-        table.cameraStream.genericPublish("double").setDouble(stream.getCodeValue());
+        table.cameraStream.setDouble(stream.getCodeValue());
     }
 
     /** @param pipeline Specified pipeline to set the limelight to */
     public void setPipeline(Pipeline pipeline) {
         if (!pipeline.equals(Pipeline.INVALID_PIPELINE))
-            table.pipeline.genericPublish("double").setDouble(pipeline.getCodeValue());
+            table.pipeline.setDouble(pipeline.getCodeValue());
     }
 
     /** @return The current pipeline the limelight is set to */
     public Pipeline getPipeline() {
-        double ntValue = table.getPipeline.genericSubscribe().getDouble(0);
+        double ntValue = table.getPipeline.getDouble(0);
         int pipelineID = (int) (ntValue + 0.5);
         switch (pipelineID) {
             case 0:
@@ -440,7 +440,7 @@ public final class Limelight {
      * @return Double provided by GRIP Pipeline
      */
     public double getCustomDouble(String element) {
-        return table.getTopic(element).genericSubscribe().getDouble(0);
+        return table.getGenericEntry(element).getDouble(0);
     }
 
     /**
@@ -449,7 +449,7 @@ public final class Limelight {
      * @return Whether or not the write was successful
      */
     public boolean setCustomNumber(String element, Number value) {
-        return table.getTopic(element).genericPublish("double").setDouble((double) value);
+        return table.getGenericEntry(element).setDouble((double) value);
     }
 
     /**
@@ -457,7 +457,7 @@ public final class Limelight {
      * @return String provided by GRIP Pipeline
      */
     public String getCustomString(String element) {
-        return table.getTopic(element).genericSubscribe().getString("");
+        return table.getGenericEntry(element).getString("");
     }
 
     /**
@@ -466,6 +466,6 @@ public final class Limelight {
      * @return Whether or not the write was successful
      */
     public boolean setCustomString(String element, String value) {
-        return table.getTopic(element).genericPublish("string").setString(value);
+        return table.getGenericEntry(element).setString(value);
     }
 }
