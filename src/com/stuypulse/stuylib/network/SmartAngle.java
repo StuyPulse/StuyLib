@@ -37,7 +37,7 @@ public class SmartAngle implements Supplier<Angle> {
     private Angle mAngle;
 
     /**
-     * Create a SmartAngle with a NetworkTableEntry and a default angle value
+     * Create a SmartAngle with a DoubleEntry and a default angle value
      *
      * @param entry entry to wrap
      * @param value default angle value
@@ -51,6 +51,12 @@ public class SmartAngle implements Supplier<Angle> {
         mEntry.setDefault(mConversion.from(mDefaultValue));
     }
 
+    /**
+     * Create a SmartAngle with a DoubleTopic and a default angle value
+     *
+     * @param entry entry to wrap
+     * @param value default angle value
+     */
     public SmartAngle(DoubleTopic topic, Angle value) {
         useDegrees();
 

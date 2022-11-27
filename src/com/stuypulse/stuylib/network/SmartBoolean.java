@@ -29,14 +29,14 @@ public class SmartBoolean implements BStream {
     private final boolean mDefaultValue;
 
     /**
-     * Creates a {@link SmartBoolean} with a network table entry instead of a value
+     * Creates a {@link SmartBoolean} with a BooleanEntry instead of a value
      * for {@link
      * SmartDashboard}. This allows you to put items on things like {@link
      * edu.wpi.first.wpilibj.shuffleboard.Shuffleboard}, without having to use a raw
      * {@link
-     * NetworkTableEntry}.
+     * BooleanEntry}.
      *
-     * @param entry the {@link NetworkTableEntry} the {@link SmartBoolean} should be
+     * @param entry the {@link BooleanEntry} the {@link SmartBoolean} should be
      *              set to.
      * @param value the default value of the {@link SmartBoolean}
      */
@@ -46,6 +46,18 @@ public class SmartBoolean implements BStream {
         entry.setDefault(value);
     }
 
+    /**
+     * Creates a {@link SmartBoolean} with a BooleanTopic instead of a value
+     * for {@link
+     * SmartDashboard}. This allows you to put items on things like {@link
+     * edu.wpi.first.wpilibj.shuffleboard.Shuffleboard}, without having to use a raw
+     * {@link
+     * BooleanTopic}.
+     *
+     * @param entry the {@link BooleanTopic} the {@link SmartBoolean} should be
+     *              set to.
+     * @param value the default value of the {@link SmartBoolean}
+     */
     public SmartBoolean(BooleanTopic topic, boolean value) {
         mEntry = topic.getEntry(value);
         mDefaultValue = value;

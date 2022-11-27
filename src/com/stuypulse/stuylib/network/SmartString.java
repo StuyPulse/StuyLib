@@ -4,7 +4,6 @@
 
 package com.stuypulse.stuylib.network;
 
-import edu.wpi.first.networktables.NetworkTableEntry;
 import edu.wpi.first.networktables.NetworkTableInstance;
 import edu.wpi.first.networktables.StringEntry;
 import edu.wpi.first.networktables.StringTopic;
@@ -29,24 +28,36 @@ public class SmartString implements Supplier<String> {
     private final String mDefaultValue;
 
     /**
-     * Creates a {@link SmartString} with a network table entry instead of a value
+     * Creates a {@link SmartString} with a StringEntry instead of a value
      * for {@link
      * SmartDashboard}. This allows you to put items on things like {@link
      * edu.wpi.first.wpilibj.shuffleboard.Shuffleboard}, without having to use a raw
      * {@link
-     * NetworkTableEntry}.
+     * StringEntry}.
      *
-     * @param entry the {@link NetworkTableEntry} the {@link SmartString} should be
+     * @param entry the {@link StringEntry} the {@link SmartString} should be
+     *              set to.
+     * @param value the default value of the {@link SmartString}
+     */
+    public SmartString(StringEntry entry, String value) {
+        mEntry = entry;
+        mDefaultValue = value;
+    }
+
+    /**
+     * Creates a {@link SmartString} with a StringTopic instead of a value
+     * for {@link
+     * SmartDashboard}. This allows you to put items on things like {@link
+     * edu.wpi.first.wpilibj.shuffleboard.Shuffleboard}, without having to use a raw
+     * {@link
+     * StringTopic}.
+     *
+     * @param entry the {@link StringTopic} the {@link SmartString} should be
      *              set to.
      * @param value the default value of the {@link SmartString}
      */
     public SmartString(StringTopic topic, String value) {
         mEntry = topic.getEntry(value);
-        mDefaultValue = value;
-    }
-
-    public SmartString(StringEntry entry, String value) {
-        mEntry = entry;
         mDefaultValue = value;
     }
 

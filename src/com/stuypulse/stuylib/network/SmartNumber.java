@@ -8,7 +8,6 @@ import com.stuypulse.stuylib.streams.IStream;
 
 import edu.wpi.first.networktables.DoubleEntry;
 import edu.wpi.first.networktables.DoubleTopic;
-import edu.wpi.first.networktables.NetworkTableEntry;
 import edu.wpi.first.networktables.NetworkTableInstance;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 
@@ -32,26 +31,38 @@ public class SmartNumber extends Number implements IStream {
     private final double mDefaultValue;
 
     /**
-     * Creates a {@link SmartNumber} with a network table entry instead of a value
+     * Creates a {@link SmartNumber} with a DoubleEntry instead of a value
      * for {@link
      * SmartDashboard}. This allows you to put items on things like {@link
      * edu.wpi.first.wpilibj.shuffleboard.Shuffleboard}, without having to use a raw
      * {@link
-     * NetworkTableEntry}.
+     * DoubleEntry}.
      *
-     * @param entry the {@link NetworkTableEntry} the {@link SmartNumber} should be
+     * @param entry the {@link DoubleEntry} the {@link SmartNumber} should be
+     *              set to.
+     * @param value the default value of the {@link SmartNumber}
+     */
+    public SmartNumber(DoubleEntry entry, double value) {
+        mEntry = entry;
+        mDefaultValue = value;
+        entry.setDefault(value);
+    }
+
+    /**
+     * Creates a {@link SmartNumber} with a DOubleTopic instead of a value
+     * for {@link
+     * SmartDashboard}. This allows you to put items on things like {@link
+     * edu.wpi.first.wpilibj.shuffleboard.Shuffleboard}, without having to use a raw
+     * {@link
+     * DOubleTopic}.
+     *
+     * @param entry the {@link DoubleTopic} the {@link SmartNumber} should be
      *              set to.
      * @param value the default value of the {@link SmartNumber}
      */
     public SmartNumber(DoubleTopic topic, double value) {
         mEntry = topic.getEntry(value);
         mDefaultValue = value;
-    }
-
-    public SmartNumber(DoubleEntry entry, double value) {
-        mEntry = entry;
-        mDefaultValue = value;
-        entry.setDefault(value);
     }
 
     /**
