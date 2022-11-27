@@ -54,7 +54,7 @@ public class SmartBoolean implements BStream {
      * {@link
      * BooleanTopic}.
      *
-     * @param entry the {@link BooleanTopic} the {@link SmartBoolean} should be
+     * @param topic the {@link BooleanTopic} the {@link SmartBoolean} should be
      *              set to.
      * @param value the default value of the {@link SmartBoolean}
      */

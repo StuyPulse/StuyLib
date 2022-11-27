@@ -54,7 +54,7 @@ public class SmartAngle implements Supplier<Angle> {
     /**
      * Create a SmartAngle with a DoubleTopic and a default angle value
      *
-     * @param entry entry to wrap
+     * @param topic topic to wrap
      * @param value default angle value
      */
     public SmartAngle(DoubleTopic topic, Angle value) {

@@ -17,7 +17,7 @@ import java.util.Set;
  * <p>
  * If a function you want is not implemented, use
  * {@link SLNetworkTable#getTable()}, {@link
- * SLNetworkTable#getRawTopic(String)}, or {@link SLNetworkTable#getInstance()}
+ * SLNetworkTable#getGenericEntry(String)}, or {@link SLNetworkTable#getInstance()}
  * to call the function
  * yourself
  *

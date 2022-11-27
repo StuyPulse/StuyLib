@@ -49,14 +49,14 @@ public class SmartNumber extends Number implements IStream {
     }
 
     /**
-     * Creates a {@link SmartNumber} with a DOubleTopic instead of a value
+     * Creates a {@link SmartNumber} with a DoubleTopic instead of a value
      * for {@link
      * SmartDashboard}. This allows you to put items on things like {@link
      * edu.wpi.first.wpilibj.shuffleboard.Shuffleboard}, without having to use a raw
      * {@link
-     * DOubleTopic}.
+     * DoubleTopic}.
      *
-     * @param entry the {@link DoubleTopic} the {@link SmartNumber} should be
+     * @param topic the {@link DoubleTopic} the {@link SmartNumber} should be
      *              set to.
      * @param value the default value of the {@link SmartNumber}
      */

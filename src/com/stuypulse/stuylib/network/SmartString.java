@@ -52,7 +52,7 @@ public class SmartString implements Supplier<String> {
      * {@link
      * StringTopic}.
      *
-     * @param entry the {@link StringTopic} the {@link SmartString} should be
+     * @param topic the {@link StringTopic} the {@link SmartString} should be
      *              set to.
      * @param value the default value of the {@link SmartString}
      */
