@@ -5,15 +5,20 @@
 package com.stuypulse.stuylib.network;
 
 import edu.wpi.first.networktables.NetworkTable;
-import edu.wpi.first.networktables.NetworkTableEntry;
 import edu.wpi.first.networktables.NetworkTableInstance;
+import edu.wpi.first.networktables.Topic;
+
 import java.util.Set;
 
 /**
- * The SLNetworkTable is a very fast way to easily interface with a network table.
+ * The SLNetworkTable is a very fast way to easily interface with a network
+ * table.
  *
- * <p>If a function you want is not implemented, use {@link SLNetworkTable#getTable()}, {@link
- * SLNetworkTable#getRawEntry(String)}, or {@link SLNetworkTable#getInstance()} to call the function
+ * <p>
+ * If a function you want is not implemented, use
+ * {@link SLNetworkTable#getTable()}, {@link
+ * SLNetworkTable#getRawTopic(String)}, or {@link SLNetworkTable#getInstance()}
+ * to call the function
  * yourself
  *
  * @author Sam (sam.belliveau@gmail.com)
@@ -25,7 +30,8 @@ public class SLNetworkTable {
     /*********************/
 
     /**
-     * Opens network table on local device. IE a robot opens a network table for other devices to
+     * Opens network table on local device. IE a robot opens a network table for
+     * other devices to
      * connect to
      *
      * @param table network table name
@@ -36,15 +42,17 @@ public class SLNetworkTable {
     }
 
     /**
-     * Opens network table that is connected to a robot. IE a program connecting to a robot.
+     * Opens network table that is connected to a robot. IE a program connecting to
+     * a robot.
      *
-     * @param team team number
+     * @param team  team number
      * @param table network table name
      * @return Configured Network Table Wrapper
      */
     public static SLNetworkTable open(int team, String table) {
         NetworkTableInstance instance = NetworkTableInstance.create();
-        instance.startClientTeam(team);
+        instance.startClient4("stuylib");
+        instance.setServerTeam(team);
         return open(instance, table);
     }
 
@@ -52,7 +60,7 @@ public class SLNetworkTable {
      * Opens network table with special instance.
      *
      * @param instance NetworkTableInstance
-     * @param table network table name
+     * @param table    network table name
      * @return Configured Network Table Wrapper
      */
     public static SLNetworkTable open(NetworkTableInstance instance, String table) {
@@ -73,11 +81,12 @@ public class SLNetworkTable {
     /************************/
 
     /**
-     * Creates a Network Table Wrapper opened on table "tableName", and with the a special
+     * Creates a Network Table Wrapper opened on table "tableName", and with the a
+     * special
      * NetworkTableInstance (ie. if you are making a client)
      *
      * @param tableName network table name
-     * @param instance custom network table instance
+     * @param instance  custom network table instance
      */
     private SLNetworkTable(NetworkTableInstance instance, String table) {
         mInstance = instance;
@@ -139,13 +148,13 @@ public class SLNetworkTable {
     }
 
     /**
-     * Get a NetworkTableEntry for a key
+     * Get a Topic for a key
      *
      * @param key key name
-     * @return NetworkTableEntry for key
+     * @return Topic for key
      */
-    public NetworkTableEntry getRawEntry(String key) {
-        return mTable.getEntry(key);
+    public Topic getRawTopic(String key) {
+        return mTable.getTopic(key);
     }
 
     /**
@@ -155,7 +164,7 @@ public class SLNetworkTable {
      * @return if key is a valid entry
      */
     public boolean isEntryValid(String key) {
-        return getRawEntry(key).isValid();
+        return getRawTopic(key).isValid();
     }
 
     /**
@@ -182,7 +191,7 @@ public class SLNetworkTable {
      * @return value
      */
     public boolean getBoolean(String key) {
-        return getRawEntry(key).getBoolean(DEFAULT_BOOLEAN);
+        return getRawTopic(key).genericSubscribe().getBoolean(DEFAULT_BOOLEAN);
     }
 
     /** Double returned if no entry is found */
@@ -195,7 +204,7 @@ public class SLNetworkTable {
      * @return value
      */
     public double getDouble(String key) {
-        return getRawEntry(key).getDouble(DEFAULT_DOUBLE);
+        return getRawTopic(key).genericSubscribe().getDouble(DEFAULT_DOUBLE);
     }
 
     /** Number returned if no entry is found */
@@ -208,7 +217,7 @@ public class SLNetworkTable {
      * @return value
      */
     public Number getNumber(String key) {
-        return getRawEntry(key).getNumber(DEFAULT_NUMBER);
+        return getRawTopic(key).genericSubscribe().getDouble((double) DEFAULT_NUMBER);
     }
 
     /** String returned if no entry is found */
@@ -221,7 +230,7 @@ public class SLNetworkTable {
      * @return value
      */
     public String getString(String key) {
-        return getRawEntry(key).getString(DEFAULT_STRING);
+        return getRawTopic(key).genericSubscribe().getString(DEFAULT_STRING);
     }
 
     /****************************************/
@@ -231,44 +240,44 @@ public class SLNetworkTable {
     /**
      * Set boolean in network table
      *
-     * @param key key name
+     * @param key   key name
      * @param value desired value
      * @return returns false if entry exists with other type
      */
     public boolean setBoolean(String key, boolean value) {
-        return getRawEntry(key).setBoolean(value);
+        return getRawTopic(key).genericPublish("boolean").setBoolean(value);
     }
 
     /**
      * Set double in network table
      *
-     * @param key key name
+     * @param key   key name
      * @param value desired value
      * @return returns false if entry exists with other type
      */
     public boolean setDouble(String key, double value) {
-        return getRawEntry(key).setDouble(value);
+        return getRawTopic(key).genericPublish("double").setDouble(value);
     }
 
     /**
      * Set Number in network table
      *
-     * @param key key name
+     * @param key   key name
      * @param value desired value
      * @return returns false if entry exists with other type
      */
     public boolean setNumber(String key, Number value) {
-        return getRawEntry(key).setNumber(value);
+        return getRawTopic(key).genericPublish("double").setDouble((double) value);
     }
 
     /**
      * Set String in network table
      *
-     * @param key key name
+     * @param key   key name
      * @param value desired value
      * @return returns false if entry exists with other type
      */
     public boolean setString(String key, String value) {
-        return getRawEntry(key).setString(value);
+        return getRawTopic(key).genericPublish("string").setString(value);
     }
 }
