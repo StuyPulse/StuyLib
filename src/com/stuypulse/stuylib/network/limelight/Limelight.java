@@ -102,35 +102,35 @@ public final class Limelight {
 
     /** @return Whether the limelight has any valid targets */
     public boolean getValidTarget() {
-        return (table.validTarget.getDouble(0) > 0.5) && (isConnected());
+        return (table.validTarget.get() > 0.5) && (isConnected());
     }
 
     /** @return Horizontal Offset From Crosshair To Target (-27 degrees to 27 degrees) */
     public double getTargetXAngle() {
-        return table.xAngle.getDouble(0);
+        return table.xAngle.get();
     }
 
     /** @return Vertical Offset From Crosshair To Target (-20.5 degrees to 20.5 degrees) */
     public double getTargetYAngle() {
-        return table.yAngle.getDouble(0);
+        return table.yAngle.get();
     }
 
     /** @return Percent of the screen the target takes up on a scale of 0 to 1 */
     public double getTargetArea() {
         // Lime light returns a double from 0 - 100
         // Divide by 100 to scale number from 0 - 1
-        return SLMath.clamp(table.targetArea.getDouble(0) / 100.0, 0, 1);
+        return SLMath.clamp(table.targetArea.get(0) / 100.0, 0, 1);
     }
 
     /** @return Skew or rotation (-90 degrees to 0 degrees) */
     public double getTargetSkew() {
-        return table.targetSkew.getDouble(0);
+        return table.targetSkew.get();
     }
 
     /** @return Latency of limelight information in milli-seconds */
     public double getLatencyMs() {
         // Add Image Capture Latency to get more accurate result
-        return table.latency.getDouble(0) + LimelightConstants.IMAGE_CAPTURE_LATENCY;
+        return table.latency.get() + LimelightConstants.IMAGE_CAPTURE_LATENCY;
     }
 
     /********************/
@@ -139,22 +139,22 @@ public final class Limelight {
 
     /** @return Shortest side length of target in pixels */
     public double getShortestSidelength() {
-        return table.shortestSideLength.getDouble(0);
+        return table.shortestSideLength.get();
     }
 
     /** @return Sidelength of longest side of the fitted bounding box (0 - 320 pixels) */
     public double getLongestSidelength() {
-        return table.longestSideLength.getDouble(0);
+        return table.longestSideLength.get();
     }
 
     /** @return Horizontal sidelength of the rough bounding box (0 - 320 pixels) */
     public double getHorizontalSidelength() {
-        return table.horizontalSideLength.getDouble(0);
+        return table.horizontalSideLength.get();
     }
 
     /** @return Vertical sidelength of the rough bounding box (0 - 320 pixels) */
     public double getVerticalSidelength() {
-        return table.verticalSideLength.getDouble(0);
+        return table.verticalSideLength.get();
     }
 
     /**********************/
@@ -163,12 +163,12 @@ public final class Limelight {
 
     /** @return Number array of corner x-coordinates */
     public double[] getRawTargetCornersX() {
-        return table.xCorners.getDoubleArray(new double[] {});
+        return table.xCorners.get();
     }
 
     /** @return Number array of corner y-coordinates */
     public double[] getRawTargetCornersY() {
-        return table.yCorners.getDoubleArray(new double[] {});
+        return table.yCorners.get();
     }
 
     /** @return Vector2D array of the target corners */
@@ -254,7 +254,7 @@ public final class Limelight {
 
     /** @return The Solve 3D Result */
     public Solve3DResult getSolve3D() {
-        return new Solve3DResult(table.solve3D.getDoubleArray(new double[] {}));
+        return new Solve3DResult(table.solve3D.get(new double[] {}));
     }
 
     /***************************/
@@ -263,33 +263,33 @@ public final class Limelight {
 
     /** @param mode Specified LED Mode to set the limelight to */
     public void setLEDMode(LEDMode mode) {
-        table.ledMode.setDouble(mode.getCodeValue());
+        table.ledMode.set(mode.getCodeValue());
     }
 
     /** @param mode Specified Cam Mode to set the limelight to */
     public void setCamMode(CamMode mode) {
-        table.camMode.setDouble(mode.getCodeValue());
+        table.camMode.set(mode.getCodeValue());
     }
 
     /** @param mode Specified Snapshot Mode to set the limelight to */
     public void setSnapshotMode(SnapshotMode mode) {
-        table.snapshotMode.setDouble(mode.getCodeValue());
+        table.snapshotMode.set(mode.getCodeValue());
     }
 
     /** @param stream Specified Camera Stream to set the limelight to */
     public void setCameraStream(CameraStream stream) {
-        table.cameraStream.setDouble(stream.getCodeValue());
+        table.cameraStream.set(stream.getCodeValue());
     }
 
     /** @param pipeline Specified pipeline to set the limelight to */
     public void setPipeline(Pipeline pipeline) {
         if (!pipeline.equals(Pipeline.INVALID_PIPELINE))
-            table.pipeline.setDouble(pipeline.getCodeValue());
+            table.pipeline.set(pipeline.getCodeValue());
     }
 
     /** @return The current pipeline the limelight is set to */
     public Pipeline getPipeline() {
-        double ntValue = table.getPipeline.getDouble(0);
+        double ntValue = table.getPipeline.get();
         int pipelineID = (int) (ntValue + 0.5);
         switch (pipelineID) {
             case 0:

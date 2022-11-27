@@ -4,6 +4,8 @@
 
 package com.stuypulse.stuylib.network.limelight;
 
+import edu.wpi.first.networktables.DoubleArrayEntry;
+import edu.wpi.first.networktables.DoubleEntry;
 import edu.wpi.first.networktables.GenericEntry;
 import edu.wpi.first.networktables.NetworkTable;
 import edu.wpi.first.networktables.NetworkTableInstance;
@@ -32,31 +34,31 @@ public final class LimelightTable {
         tableInstance = NetworkTableInstance.getDefault();
         table = tableInstance.getTable(tableName);
 
-        validTarget = table.getTopic("tv").getGenericEntry();
+        validTarget = table.getDoubleTopic("tv").getEntry(0);
 
-        xAngle = table.getTopic("tx").getGenericEntry();
-        yAngle = table.getTopic("ty").getGenericEntry();
+        xAngle = table.getDoubleTopic("tx").getEntry(0);
+        yAngle = table.getDoubleTopic("ty").getEntry(0);
 
-        targetArea = table.getTopic("ta").getGenericEntry();
-        targetSkew = table.getTopic("ts").getGenericEntry();
+        targetArea = table.getDoubleTopic("ta").getEntry(0);
+        targetSkew = table.getDoubleTopic("ts").getEntry(0);
 
-        latency = table.getTopic("tl").getGenericEntry();
+        latency = table.getDoubleTopic("tl").getEntry(0);
 
-        shortestSideLength = table.getTopic("tshort").getGenericEntry();
-        longestSideLength = table.getTopic("tlong").getGenericEntry();
-        horizontalSideLength = table.getTopic("thor").getGenericEntry();
-        verticalSideLength = table.getTopic("tvert").getGenericEntry();
+        shortestSideLength = table.getDoubleTopic("tshort").getEntry(0);
+        longestSideLength = table.getDoubleTopic("tlong").getEntry(0);
+        horizontalSideLength = table.getDoubleTopic("thor").getEntry(0);
+        verticalSideLength = table.getDoubleTopic("tvert").getEntry(0);
 
-        xCorners = table.getTopic("tcornx").getGenericEntry();
-        yCorners = table.getTopic("tcorny").getGenericEntry();
+        xCorners = table.getDoubleArrayTopic("tcornx").getEntry(new double[] {});
+        yCorners = table.getDoubleArrayTopic("tcorny").getEntry(new double[] {});
 
-        solve3D = table.getTopic("camtran").getGenericEntry();
-        ledMode = table.getTopic("ledMode").getGenericEntry();
-        camMode = table.getTopic("camMode").getGenericEntry();
-        pipeline = table.getTopic("pipeline").getGenericEntry();
-        getPipeline = table.getTopic("getpipe").getGenericEntry();
-        cameraStream = table.getTopic("stream").getGenericEntry();
-        snapshotMode = table.getTopic("snapshot").getGenericEntry();
+        solve3D = table.getDoubleArrayTopic("camtran").getEntry(new double[] {});
+        ledMode = table.getDoubleTopic("ledMode").getEntry(0);
+        camMode = table.getDoubleTopic("camMode").getEntry(0);
+        pipeline = table.getDoubleTopic("pipeline").getEntry(0);
+        getPipeline = table.getDoubleTopic("getpipe").getEntry(0);
+        cameraStream = table.getDoubleTopic("stream").getEntry(0);
+        snapshotMode = table.getDoubleTopic("snapshot").getEntry(0);
 
         timingEntry = table.getTopic(".timing_data").getGenericEntry();
     }
@@ -74,46 +76,46 @@ public final class LimelightTable {
     /****************************************************************/
 
     // Whether the limelight has any valid targets (0 or 1)
-    public final GenericEntry validTarget;
+    public final DoubleEntry validTarget;
 
     // Horizontal Offset From Crosshair To Target (-27 degrees to 27 degrees)
-    public final GenericEntry xAngle;
+    public final DoubleEntry xAngle;
 
     // Vertical Offset From Crosshair To Target (-20.5 degrees to 20.5 degrees)
-    public final GenericEntry yAngle;
+    public final DoubleEntry yAngle;
 
     // Target Area (0% of image to 100% of image)
-    public final GenericEntry targetArea;
+    public final DoubleEntry targetArea;
 
     // Skew or rotation (-90 degrees to 0 degrees)
-    public final GenericEntry targetSkew;
+    public final DoubleEntry targetSkew;
 
     // The pipeline’s latency contribution (ms) Add at
     // least 11ms for image capture latency.
-    public final GenericEntry latency;
+    public final DoubleEntry latency;
 
     // Pixel information returned from these functions
-    public final GenericEntry shortestSideLength;
-    public final GenericEntry longestSideLength;
-    public final GenericEntry horizontalSideLength;
-    public final GenericEntry verticalSideLength;
+    public final DoubleEntry shortestSideLength;
+    public final DoubleEntry longestSideLength;
+    public final DoubleEntry horizontalSideLength;
+    public final DoubleEntry verticalSideLength;
 
-    // Corner GenericEntrys
-    public final GenericEntry xCorners;
-    public final GenericEntry yCorners;
+    // Corner DoubleArrayEntry
+    public final DoubleArrayEntry xCorners;
+    public final DoubleArrayEntry yCorners;
 
-    // Solve 3D GenericEntrys
-    public final GenericEntry solve3D;
+    // Solve 3D DoubleArrayEntrys
+    public final DoubleArrayEntry solve3D;
 
-    // Camera Control GenericEntrys
-    public final GenericEntry ledMode;
-    public final GenericEntry camMode;
-    public final GenericEntry pipeline;
-    public final GenericEntry getPipeline;
-    public final GenericEntry cameraStream;
-    public final GenericEntry snapshotMode;
+    // Camera Control DoubleEntrys
+    public final DoubleEntry ledMode;
+    public final DoubleEntry camMode;
+    public final DoubleEntry pipeline;
+    public final DoubleEntry getPipeline;
+    public final DoubleEntry cameraStream;
+    public final DoubleEntry snapshotMode;
 
-    // Custom Timing GenericEntrys
+    // Custom Timing DoubleEntrys
     public final GenericEntry timingEntry;
 
     /************************************************/
