@@ -8,7 +8,7 @@ import com.stuypulse.stuylib.math.Vector2D;
 
 import edu.wpi.first.util.sendable.Sendable;
 import edu.wpi.first.util.sendable.SendableBuilder;
-import edu.wpi.first.wpilibj2.command.button.Button;
+import edu.wpi.first.wpilibj2.command.button.Trigger;
 
 /**
  * An class for using gamepads with different interfaces. You can implement this class in another
@@ -201,159 +201,159 @@ public class Gamepad implements Sendable {
         return getRightTrigger() > ANALOG_THRESHOLD;
     }
 
-    /**************************************************/
-    /*** BUTTONS BASED OFF OF IMPLEMENTED FUNCTIONS ***/
-    /**************************************************/
+    /***************************************************/
+    /*** TRIGGERS BASED OFF OF IMPLEMENTED FUNCTIONS ***/
+    /***************************************************/
 
     // Sticks //
     /**
-     * @return Button that activates when {@link #getLeftY()} is greater than +{@link
+     * @return Trigger that activates when {@link #getLeftY()} is greater than +{@link
      *     #ANALOG_THRESHOLD}
      */
-    public final Button getLeftStickUp() {
-        return new Button(() -> getLeftY() > +ANALOG_THRESHOLD);
+    public final Trigger getLeftStickUp() {
+        return new Trigger(() -> getLeftY() > +ANALOG_THRESHOLD);
     }
 
     /**
-     * @return Button that activates when {@link #getLeftY()} is less than -{@link
+     * @return Trigger that activates when {@link #getLeftY()} is less than -{@link
      *     #ANALOG_THRESHOLD}
      */
-    public final Button getLeftStickDown() {
-        return new Button(() -> getLeftY() < -ANALOG_THRESHOLD);
+    public final Trigger getLeftStickDown() {
+        return new Trigger(() -> getLeftY() < -ANALOG_THRESHOLD);
     }
 
     /**
-     * @return Button that activates when {@link #getLeftX()} is less than -{@link
+     * @return Trigger that activates when {@link #getLeftX()} is less than -{@link
      *     #ANALOG_THRESHOLD}
      */
-    public final Button getLeftStickLeft() {
-        return new Button(() -> getLeftX() < -ANALOG_THRESHOLD);
+    public final Trigger getLeftStickLeft() {
+        return new Trigger(() -> getLeftX() < -ANALOG_THRESHOLD);
     }
 
     /**
-     * @return Button that activates when {@link #getLeftX()} is greater than +{@link
+     * @return Trigger that activates when {@link #getLeftX()} is greater than +{@link
      *     #ANALOG_THRESHOLD}
      */
-    public final Button getLeftStickRight() {
-        return new Button(() -> getLeftX() > +ANALOG_THRESHOLD);
+    public final Trigger getLeftStickRight() {
+        return new Trigger(() -> getLeftX() > +ANALOG_THRESHOLD);
     }
 
     /**
-     * @return Button that activates when {@link #getRightY()} is greater than +{@link
+     * @return Trigger that activates when {@link #getRightY()} is greater than +{@link
      *     #ANALOG_THRESHOLD}
      */
-    public final Button getRightStickUp() {
-        return new Button(() -> getRightY() > +ANALOG_THRESHOLD);
+    public final Trigger getRightStickUp() {
+        return new Trigger(() -> getRightY() > +ANALOG_THRESHOLD);
     }
 
     /**
-     * @return Button that activates when {@link #getRightY()} is less than -{@link
+     * @return Trigger that activates when {@link #getRightY()} is less than -{@link
      *     #ANALOG_THRESHOLD}
      */
-    public final Button getRightStickDown() {
-        return new Button(() -> getRightY() < -ANALOG_THRESHOLD);
+    public final Trigger getRightStickDown() {
+        return new Trigger(() -> getRightY() < -ANALOG_THRESHOLD);
     }
 
     /**
-     * @return Button that activates when {@link #getRightX()} is less than -{@link
+     * @return Trigger that activates when {@link #getRightX()} is less than -{@link
      *     #ANALOG_THRESHOLD}
      */
-    public final Button getRightStickLeft() {
-        return new Button(() -> getRightX() < -ANALOG_THRESHOLD);
+    public final Trigger getRightStickLeft() {
+        return new Trigger(() -> getRightX() < -ANALOG_THRESHOLD);
     }
 
     /**
-     * @return Button that activates when {@link #getRightX()} is greater than +{@link
+     * @return Trigger that activates when {@link #getRightX()} is greater than +{@link
      *     #ANALOG_THRESHOLD}
      */
-    public final Button getRightStickRight() {
-        return new Button(() -> getRightX() > +ANALOG_THRESHOLD);
+    public final Trigger getRightStickRight() {
+        return new Trigger(() -> getRightX() > +ANALOG_THRESHOLD);
     }
 
     // D-Pad //
-    /** @return Button that activates with {@link #getRawDPadUp()} */
-    public final Button getDPadUp() {
-        return new Button(this::getRawDPadUp);
+    /** @return Trigger that activates with {@link #getRawDPadUp()} */
+    public final Trigger getDPadUp() {
+        return new Trigger(this::getRawDPadUp);
     }
 
-    /** @return Button that activates with {@link #getRawDPadDown()} */
-    public final Button getDPadDown() {
-        return new Button(this::getRawDPadDown);
+    /** @return Trigger that activates with {@link #getRawDPadDown()} */
+    public final Trigger getDPadDown() {
+        return new Trigger(this::getRawDPadDown);
     }
 
-    /** @return Button that activates with {@link #getRawDPadLeft()} */
-    public final Button getDPadLeft() {
-        return new Button(this::getRawDPadLeft);
+    /** @return Trigger that activates with {@link #getRawDPadLeft()} */
+    public final Trigger getDPadLeft() {
+        return new Trigger(this::getRawDPadLeft);
     }
 
-    /** @return Button that activates with {@link #getRawDPadRight()} */
-    public final Button getDPadRight() {
-        return new Button(this::getRawDPadRight);
+    /** @return Trigger that activates with {@link #getRawDPadRight()} */
+    public final Trigger getDPadRight() {
+        return new Trigger(this::getRawDPadRight);
     }
 
     // Bumpers //
-    /** @return Button that activates with {@link #getRawLeftBumper()} */
-    public final Button getLeftBumper() {
-        return new Button(this::getRawLeftBumper);
+    /** @return Trigger that activates with {@link #getRawLeftBumper()} */
+    public final Trigger getLeftBumper() {
+        return new Trigger(this::getRawLeftBumper);
     }
 
-    /** @return Button that activates with {@link #getRawRightBumper()} */
-    public final Button getRightBumper() {
-        return new Button(this::getRawRightBumper);
+    /** @return Trigger that activates with {@link #getRawRightBumper()} */
+    public final Trigger getRightBumper() {
+        return new Trigger(this::getRawRightBumper);
     }
 
     // Triggers //
-    /** @return Button that activates with {@link #getLeftTriggerPressed()} */
-    public final Button getLeftTriggerButton() {
-        return new Button(this::getLeftTriggerPressed);
+    /** @return Trigger that activates with {@link #getLeftTriggerPressed()} */
+    public final Trigger getLeftTriggerButton() {
+        return new Trigger(this::getLeftTriggerPressed);
     }
 
-    /** @return Button that activates with {@link #getRightTriggerPressed()} */
-    public final Button getRightTriggerButton() {
-        return new Button(this::getRightTriggerPressed);
+    /** @return Trigger that activates with {@link #getRightTriggerPressed()} */
+    public final Trigger getRightTriggerButton() {
+        return new Trigger(this::getRightTriggerPressed);
     }
 
-    // Face Buttons //
-    /** @return Button that activates with {@link #getRawTopButton()} */
-    public final Button getTopButton() {
-        return new Button(this::getRawTopButton);
+    // Face Triggers //
+    /** @return Trigger that activates with {@link #getRawTopButton()} */
+    public final Trigger getTopButton() {
+        return new Trigger(this::getRawTopButton);
     }
 
-    /** @return Button that activates with {@link #getRawBottomButton()} */
-    public final Button getBottomButton() {
-        return new Button(this::getRawBottomButton);
+    /** @return Trigger that activates with {@link #getRawBottomButton()} */
+    public final Trigger getBottomButton() {
+        return new Trigger(this::getRawBottomButton);
     }
 
-    /** @return Button that activates with {@link #getRawLeftButton()} */
-    public final Button getLeftButton() {
-        return new Button(this::getRawLeftButton);
+    /** @return Trigger that activates with {@link #getRawLeftButton()} */
+    public final Trigger getLeftButton() {
+        return new Trigger(this::getRawLeftButton);
     }
 
-    /** @return Button that activates with {@link #getRawRightButton()} */
-    public final Button getRightButton() {
-        return new Button(this::getRawRightButton);
+    /** @return Trigger that activates with {@link #getRawRightButton()} */
+    public final Trigger getRightButton() {
+        return new Trigger(this::getRawRightButton);
     }
 
     // Select / Start / Option //
-    /** @return Button that activates with {@link #getRawSelectButton()} */
-    public final Button getSelectButton() {
-        return new Button(this::getRawSelectButton);
+    /** @return Trigger that activates with {@link #getRawSelectButton()} */
+    public final Trigger getSelectButton() {
+        return new Trigger(this::getRawSelectButton);
     }
 
-    /** @return Button that activates with {@link #getRawStartButton()} */
-    public final Button getStartButton() {
-        return new Button(this::getRawStartButton);
+    /** @return Trigger that activates with {@link #getRawStartButton()} */
+    public final Trigger getStartButton() {
+        return new Trigger(this::getRawStartButton);
     }
 
-    // Analog Stick Buttons //
-    /** @return Button that activates with {@link #getRawLeftStickButton()} */
-    public final Button getLeftStickButton() {
-        return new Button(this::getRawLeftStickButton);
+    // Analog Stick Triggers //
+    /** @return Trigger that activates with {@link #getRawLeftStickButton()} */
+    public final Trigger getLeftStickButton() {
+        return new Trigger(this::getRawLeftStickButton);
     }
 
-    /** @return Button that activates with {@link #getRawRightStickButton()} */
-    public final Button getRightStickButton() {
-        return new Button(this::getRawRightStickButton);
+    /** @return Trigger that activates with {@link #getRawRightStickButton()} */
+    public final Trigger getRightStickButton() {
+        return new Trigger(this::getRawRightStickButton);
     }
 
     /*******************************/
