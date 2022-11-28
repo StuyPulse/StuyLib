@@ -4,6 +4,7 @@
 
 package com.stuypulse.stuylib.network.limelight;
 
+import edu.wpi.first.networktables.BooleanEntry;
 import edu.wpi.first.networktables.DoubleArrayEntry;
 import edu.wpi.first.networktables.DoubleEntry;
 import edu.wpi.first.networktables.GenericEntry;
@@ -60,7 +61,7 @@ public final class LimelightTable {
         cameraStream = table.getDoubleTopic("stream").getEntry(0);
         snapshotMode = table.getDoubleTopic("snapshot").getEntry(0);
 
-        timingEntry = table.getTopic(".timing_data").getGenericEntry();
+        timingEntry = table.getBooleanTopic(".timing_data").getEntry(false);
     }
 
     /****************************************************/
@@ -116,7 +117,7 @@ public final class LimelightTable {
     public final DoubleEntry snapshotMode;
 
     // Custom Timing DoubleEntrys
-    public final GenericEntry timingEntry;
+    public final BooleanEntry timingEntry;
 
     /************************************************/
     /*** Functions to get Entries not listed here ***/

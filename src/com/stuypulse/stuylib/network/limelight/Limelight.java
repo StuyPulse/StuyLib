@@ -90,7 +90,7 @@ public final class Limelight {
     public boolean isConnected() {
         final long MAX_UPDATE_TIME = 250_000;
 
-        table.timingEntry.setBoolean(!table.timingEntry.getBoolean(false));
+        table.timingEntry.set(!table.timingEntry.get());
         long currentTime = table.timingEntry.getLastChange();
 
         return Math.abs(currentTime - getLastUpdate()) < MAX_UPDATE_TIME;
