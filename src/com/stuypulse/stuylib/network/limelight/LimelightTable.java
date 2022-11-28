@@ -35,7 +35,7 @@ public final class LimelightTable {
         tableInstance = NetworkTableInstance.getDefault();
         table = tableInstance.getTable(tableName);
 
-        validTarget = table.getDoubleTopic("tv").getEntry(0);
+        validTarget = table.getIntegerTopic("tv").getEntry(0);
 
         xAngle = table.getDoubleTopic("tx").getEntry(0);
         yAngle = table.getDoubleTopic("ty").getEntry(0);
@@ -43,7 +43,7 @@ public final class LimelightTable {
         targetArea = table.getDoubleTopic("ta").getEntry(0);
         targetSkew = table.getDoubleTopic("ts").getEntry(0);
 
-        latency = table.getDoubleTopic("tl").getEntry(0);
+        latency = table.getIntegerTopic("tl").getEntry(0);
 
         shortestSideLength = table.getDoubleTopic("tshort").getEntry(0);
         longestSideLength = table.getDoubleTopic("tlong").getEntry(0);
@@ -54,12 +54,13 @@ public final class LimelightTable {
         yCorners = table.getDoubleArrayTopic("tcorny").getEntry(new double[] {});
 
         solve3D = table.getDoubleArrayTopic("camtran").getEntry(new double[] {});
-        ledMode = table.getDoubleTopic("ledMode").getEntry(0);
-        camMode = table.getDoubleTopic("camMode").getEntry(0);
-        pipeline = table.getDoubleTopic("pipeline").getEntry(0);
-        getPipeline = table.getDoubleTopic("getpipe").getEntry(0);
-        cameraStream = table.getDoubleTopic("stream").getEntry(0);
-        snapshotMode = table.getDoubleTopic("snapshot").getEntry(0);
+
+        ledMode = table.getIntegerTopic("ledMode").getEntry(0);
+        camMode = table.getIntegerTopic("camMode").getEntry(0);
+        pipeline = table.getIntegerTopic("pipeline").getEntry(0);
+        getPipeline = table.getIntegerTopic("getpipe").getEntry(0);
+        cameraStream = table.getIntegerTopic("stream").getEntry(0);
+        snapshotMode = table.getIntegerTopic("snapshot").getEntry(0);
 
         timingEntry = table.getBooleanTopic(".timing_data").getEntry(false);
     }
@@ -77,7 +78,7 @@ public final class LimelightTable {
     /****************************************************************/
 
     // Whether the limelight has any valid targets (0 or 1)
-    public final DoubleEntry validTarget;
+    public final IntegerEntry validTarget;
 
     // Horizontal Offset From Crosshair To Target (-27 degrees to 27 degrees)
     public final DoubleEntry xAngle;
@@ -93,7 +94,7 @@ public final class LimelightTable {
 
     // The pipeline’s latency contribution (ms) Add at
     // least 11ms for image capture latency.
-    public final DoubleEntry latency;
+    public final IntegerEntry latency;
 
     // Pixel information returned from these functions
     public final DoubleEntry shortestSideLength;
@@ -109,12 +110,12 @@ public final class LimelightTable {
     public final DoubleArrayEntry solve3D;
 
     // Camera Control DoubleEntrys
-    public final DoubleEntry ledMode;
-    public final DoubleEntry camMode;
-    public final DoubleEntry pipeline;
-    public final DoubleEntry getPipeline;
-    public final DoubleEntry cameraStream;
-    public final DoubleEntry snapshotMode;
+    public final IntegerEntry ledMode;
+    public final IntegerEntry camMode;
+    public final IntegerEntry pipeline;
+    public final IntegerEntry getPipeline;
+    public final IntegerEntry cameraStream;
+    public final IntegerEntry snapshotMode;
 
     // Custom Timing DoubleEntrys
     public final BooleanEntry timingEntry;
