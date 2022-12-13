@@ -40,7 +40,7 @@ public class SmartNumber extends Number implements IStream {
     public SmartNumber(DoubleEntry entry, double value) {
         mEntry = entry;
         mDefaultValue = value;
-        entry.setDefault(value);
+        mEntry.setDefault(value);
     }
 
     /**
@@ -55,6 +55,7 @@ public class SmartNumber extends Number implements IStream {
     public SmartNumber(DoubleTopic topic, double value) {
         mEntry = topic.getEntry(value);
         mDefaultValue = value;
+        mEntry.setDefault(value);
     }
 
     /**
@@ -65,7 +66,9 @@ public class SmartNumber extends Number implements IStream {
      * @param value the default / initialization value for the value
      */
     public SmartNumber(String id, double value) {
-        this(NetworkTableInstance.getDefault().getDoubleTopic(id), value);
+        this(
+                NetworkTableInstance.getDefault().getTable("SmartDashboard").getDoubleTopic(id),
+                value);
     }
 
     /** @return the value of the number from SmartDashboard */

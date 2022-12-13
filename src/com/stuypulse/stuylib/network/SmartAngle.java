@@ -62,6 +62,9 @@ public class SmartAngle implements Supplier<Angle> {
         useDegrees();
 
         mEntry = topic.getEntry(mConversion.from(value));
+        mDefaultValue = value;
+        mAngle = value;
+        mEntry.setDefault(mConversion.from(mDefaultValue));
     }
 
     /**
@@ -71,7 +74,9 @@ public class SmartAngle implements Supplier<Angle> {
      * @param value default value
      */
     public SmartAngle(String id, Angle value) {
-        this(NetworkTableInstance.getDefault().getDoubleTopic(id), value);
+        this(
+                NetworkTableInstance.getDefault().getTable("SmartDashboard").getDoubleTopic(id),
+                value);
     }
 
     /**

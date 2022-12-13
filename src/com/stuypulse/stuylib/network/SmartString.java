@@ -37,6 +37,7 @@ public class SmartString implements Supplier<String> {
     public SmartString(StringEntry entry, String value) {
         mEntry = entry;
         mDefaultValue = value;
+        mEntry.setDefault(value);
     }
 
     /**
@@ -51,6 +52,7 @@ public class SmartString implements Supplier<String> {
     public SmartString(StringTopic topic, String value) {
         mEntry = topic.getEntry(value);
         mDefaultValue = value;
+        mEntry.setDefault(value);
     }
 
     /**
@@ -61,7 +63,9 @@ public class SmartString implements Supplier<String> {
      * @param value the default / initialization value for the value
      */
     public SmartString(String id, String value) {
-        this(NetworkTableInstance.getDefault().getStringTopic(id), value);
+        this(
+                NetworkTableInstance.getDefault().getTable("SmartDashboard").getStringTopic(id),
+                value);
     }
 
     /** @return the value of the String from SmartDashboard */

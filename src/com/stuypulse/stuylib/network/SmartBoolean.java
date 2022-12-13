@@ -53,6 +53,7 @@ public class SmartBoolean implements BStream {
     public SmartBoolean(BooleanTopic topic, boolean value) {
         mEntry = topic.getEntry(value);
         mDefaultValue = value;
+        mEntry.setDefault(value);
     }
 
     /**
@@ -63,7 +64,9 @@ public class SmartBoolean implements BStream {
      * @param value the default / initialization value for the value
      */
     public SmartBoolean(String id, boolean value) {
-        this(NetworkTableInstance.getDefault().getBooleanTopic(id), value);
+        this(
+                NetworkTableInstance.getDefault().getTable("SmartDashboard").getBooleanTopic(id),
+                value);
     }
 
     /** @return the value of the boolean from {@link SmartDashboard} */
