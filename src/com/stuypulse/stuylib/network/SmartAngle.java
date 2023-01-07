@@ -1,4 +1,4 @@
-/* Copyright (c) 2022 StuyPulse Robotics. All rights reserved. */
+/* Copyright (c) 2023 StuyPulse Robotics. All rights reserved. */
 /* This work is licensed under the terms of the MIT license */
 /* found in the root directory of this project. */
 
@@ -8,10 +8,9 @@ import com.stuypulse.stuylib.math.Angle;
 import com.stuypulse.stuylib.util.Conversion;
 
 import edu.wpi.first.math.geometry.Rotation2d;
-import edu.wpi.first.networktables.EntryListenerFlags;
-import edu.wpi.first.networktables.EntryNotification;
-import edu.wpi.first.networktables.NetworkTableEntry;
-import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
+import edu.wpi.first.networktables.DoubleEntry;
+import edu.wpi.first.networktables.DoubleTopic;
+import edu.wpi.first.networktables.NetworkTableInstance;
 import java.util.function.Supplier;
 
 /**
@@ -22,9 +21,6 @@ import java.util.function.Supplier;
  */
 public class SmartAngle implements Supplier<Angle> {
 
-    // Flags for when the network table entry triggers an update
-    private static final int LISTENER_FLAGS = EntryListenerFlags.kUpdate | EntryListenerFlags.kNew;
-
     // Built-in conversions from network doubles to Angles
     public static final Conversion<Double, Angle> kDegrees =
             Conversion.make(Angle::fromDegrees, a -> a.toDegrees());
@@ -32,7 +28,7 @@ public class SmartAngle implements Supplier<Angle> {
             Conversion.make(Angle::fromRadians, a -> a.toRadians());
 
     // network table entry and its default value
-    private NetworkTableEntry mEntry;
+    private DoubleEntry mEntry;
     private Angle mDefaultValue;
 
     // the double<->angle conversion being used by this smart angle
@@ -42,20 +38,33 @@ public class SmartAngle implements Supplier<Angle> {
     private Angle mAngle;
 
     /**
-     * Create a SmartAngle with a NetworkTableEntry and a default angle value
+     * Create a SmartAngle with a DoubleEntry and a default angle value
      *
      * @param entry entry to wrap
      * @param value default angle value
      */
-    public SmartAngle(NetworkTableEntry entry, Angle value) {
+    public SmartAngle(DoubleEntry entry, Angle value) {
         useDegrees();
 
         mEntry = entry;
         mDefaultValue = value;
         mAngle = value;
-        mEntry.setDefaultDouble(mConversion.from(mDefaultValue));
+        mEntry.setDefault(mConversion.from(mDefaultValue));
+    }
 
-        mEntry.addListener(this::update, LISTENER_FLAGS);
+    /**
+     * Create a SmartAngle with a DoubleTopic and a default angle value
+     *
+     * @param topic topic to wrap
+     * @param value default angle value
+     */
+    public SmartAngle(DoubleTopic topic, Angle value) {
+        useDegrees();
+
+        mEntry = topic.getEntry(mConversion.from(value));
+        mDefaultValue = value;
+        mAngle = value;
+        mEntry.setDefault(mConversion.from(mDefaultValue));
     }
 
     /**
@@ -65,17 +74,9 @@ public class SmartAngle implements Supplier<Angle> {
      * @param value default value
      */
     public SmartAngle(String id, Angle value) {
-        this(SmartDashboard.getEntry(id), value);
-    }
-
-    /**
-     * Forcibly updates the stored angle given an entry update object
-     *
-     * @param notif entry update notification
-     */
-    private void update(EntryNotification notif) {
-        double value = notif.value.getDouble();
-        mAngle = mConversion.to(value);
+        this(
+                NetworkTableInstance.getDefault().getTable("SmartDashboard").getDoubleTopic(id),
+                value);
     }
 
     /**
@@ -126,7 +127,7 @@ public class SmartAngle implements Supplier<Angle> {
 
     /** @param angle angle to set SmartAngle to */
     public void set(Angle angle) {
-        mEntry.forceSetDouble(mConversion.from(angle));
+        mEntry.set(mConversion.from(angle));
     }
 
     /** resets the SmartAngle to its default value */

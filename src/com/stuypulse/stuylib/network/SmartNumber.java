@@ -1,4 +1,4 @@
-/* Copyright (c) 2022 StuyPulse Robotics. All rights reserved. */
+/* Copyright (c) 2023 StuyPulse Robotics. All rights reserved. */
 /* This work is licensed under the terms of the MIT license */
 /* found in the root directory of this project. */
 
@@ -6,7 +6,9 @@ package com.stuypulse.stuylib.network;
 
 import com.stuypulse.stuylib.streams.IStream;
 
-import edu.wpi.first.networktables.NetworkTableEntry;
+import edu.wpi.first.networktables.DoubleEntry;
+import edu.wpi.first.networktables.DoubleTopic;
+import edu.wpi.first.networktables.NetworkTableInstance;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 
 /**
@@ -21,24 +23,39 @@ public class SmartNumber extends Number implements IStream {
     private static final long serialVersionUID = 1L;
 
     /** The ID / Name for the value on {@link SmartDashboard}. */
-    private final NetworkTableEntry mEntry;
+    private final DoubleEntry mEntry;
 
     /** The default value that the {@link SmartDashboard} value was set too. */
     private final double mDefaultValue;
 
     /**
-     * Creates a {@link SmartNumber} with a network table entry instead of a value for {@link
+     * Creates a {@link SmartNumber} with a DoubleEntry instead of a value for {@link
      * SmartDashboard}. This allows you to put items on things like {@link
      * edu.wpi.first.wpilibj.shuffleboard.Shuffleboard}, without having to use a raw {@link
-     * NetworkTableEntry}.
+     * DoubleEntry}.
      *
-     * @param entry the {@link NetworkTableEntry} the {@link SmartNumber} should be set to.
+     * @param entry the {@link DoubleEntry} the {@link SmartNumber} should be set to.
      * @param value the default value of the {@link SmartNumber}
      */
-    public SmartNumber(NetworkTableEntry entry, double value) {
+    public SmartNumber(DoubleEntry entry, double value) {
         mEntry = entry;
         mDefaultValue = value;
-        mEntry.forceSetNumber(value);
+        mEntry.setDefault(value);
+    }
+
+    /**
+     * Creates a {@link SmartNumber} with a DoubleTopic instead of a value for {@link
+     * SmartDashboard}. This allows you to put items on things like {@link
+     * edu.wpi.first.wpilibj.shuffleboard.Shuffleboard}, without having to use a raw {@link
+     * DoubleTopic}.
+     *
+     * @param topic the {@link DoubleTopic} the {@link SmartNumber} should be set to.
+     * @param value the default value of the {@link SmartNumber}
+     */
+    public SmartNumber(DoubleTopic topic, double value) {
+        mEntry = topic.getEntry(value);
+        mDefaultValue = value;
+        mEntry.setDefault(value);
     }
 
     /**
@@ -49,12 +66,14 @@ public class SmartNumber extends Number implements IStream {
      * @param value the default / initialization value for the value
      */
     public SmartNumber(String id, double value) {
-        this(SmartDashboard.getEntry(id), value);
+        this(
+                NetworkTableInstance.getDefault().getTable("SmartDashboard").getDoubleTopic(id),
+                value);
     }
 
     /** @return the value of the number from SmartDashboard */
     public double get() {
-        return mEntry.getDouble(mDefaultValue);
+        return mEntry.get();
     }
 
     /** @return the default value of the number */
@@ -64,7 +83,7 @@ public class SmartNumber extends Number implements IStream {
 
     /** @param value what the value on {@link SmartDashboard} will be set to */
     public void set(Number value) {
-        mEntry.forceSetNumber(value);
+        mEntry.set(value.doubleValue());
     }
 
     /** Resets the value on {@link SmartDashboard} to the default value */

@@ -1,4 +1,4 @@
-/* Copyright (c) 2022 StuyPulse Robotics. All rights reserved. */
+/* Copyright (c) 2023 StuyPulse Robotics. All rights reserved. */
 /* This work is licensed under the terms of the MIT license */
 /* found in the root directory of this project. */
 
@@ -7,7 +7,7 @@ package com.stuypulse.stuylib.streams.booleans;
 import com.stuypulse.stuylib.streams.booleans.filters.BFilter;
 
 import edu.wpi.first.wpilibj.DigitalInput;
-import edu.wpi.first.wpilibj2.command.button.Button;
+import edu.wpi.first.wpilibj2.command.button.Trigger;
 import java.util.function.BooleanSupplier;
 
 /**
@@ -107,8 +107,8 @@ public interface BStream extends BooleanSupplier {
         return () -> !get();
     }
 
-    /** @return a WPILib Button that is pressed when this class is true */
-    public default Button toButton() {
-        return new Button(this);
+    /** @return a WPILib Trigger that is pressed when this class is true */
+    public default Trigger toButton() {
+        return new Trigger(this);
     }
 }
