@@ -260,15 +260,15 @@ public final class Limelight {
      * @return Pose3d from array
      */
     private Pose3d arrayToPose3d(final double[] arr) {
-        if (arr != null && arr.length == 6){
+        if (arr != null && arr.length == 6) {
             return new Pose3d(
-                arr[0], arr[1], arr[2],
-                new Rotation3d(
-                    Math.toRadians(arr[3]),
-                    Math.toRadians(arr[4]),
-                    Math.toRadians(arr[5])
-                )
-            );
+                    arr[0],
+                    arr[1],
+                    arr[2],
+                    new Rotation3d(
+                            Math.toRadians(arr[3]),
+                            Math.toRadians(arr[4]),
+                            Math.toRadians(arr[5])));
         }
 
         return null;
