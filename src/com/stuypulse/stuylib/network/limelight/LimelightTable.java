@@ -18,6 +18,7 @@ import edu.wpi.first.networktables.NetworkTableInstance;
  * robot code, but instead to assist other API's that use the limelight.
  *
  * @author Sam B (sam.belliveau@gmail.com)
+ * @author Vincent Wang (vincentw921)
  */
 public final class LimelightTable {
 

@@ -14,6 +14,7 @@ import edu.wpi.first.math.geometry.Rotation3d;
  * This is a class that lets you interface with the limelight network table.
  *
  * @author Sam (sam.belliveau@gmail.com)
+ * @author Vincent Wang (vincentw921)
  */
 public final class Limelight {
 
