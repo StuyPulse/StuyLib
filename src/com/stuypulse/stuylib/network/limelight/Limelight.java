@@ -7,6 +7,9 @@ package com.stuypulse.stuylib.network.limelight;
 import com.stuypulse.stuylib.math.SLMath;
 import com.stuypulse.stuylib.math.Vector2D;
 
+import edu.wpi.first.math.geometry.Pose3d;
+import edu.wpi.first.math.geometry.Rotation3d;
+
 /**
  * This is a class that lets you interface with the limelight network table.
  *
@@ -252,9 +255,29 @@ public final class Limelight {
     /*** Solve 3D ***/
     /****************/
 
+    private Pose3d arrayToPose3d(final double[] arr) {
+        if (arr != null && arr.length == 6){
+            return new Pose3d(
+                arr[0], arr[1], arr[2],
+                new Rotation3d(
+                    Math.toRadians(arr[3]),
+                    Math.toRadians(arr[4]),
+                    Math.toRadians(arr[5])
+                )
+            );
+        }
+
+        return null;
+    }
+
     /** @return The Solve 3D Result */
-    public Solve3DResult getSolve3D() {
-        return new Solve3DResult(table.solve3D.get(new double[] {}));
+    public Pose3d getSolve3D() {
+        return arrayToPose3d(table.solve3D.get(new double[] {}));
+    }
+
+    /** @return The pose of the robot in the field */
+    public Pose3d getRobotPose() {
+        return arrayToPose3d(table.botpose.get(new double[] {}));
     }
 
     /***************************/

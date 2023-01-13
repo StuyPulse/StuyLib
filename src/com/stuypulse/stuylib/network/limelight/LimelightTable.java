@@ -55,6 +55,7 @@ public final class LimelightTable {
         yCorners = table.getDoubleArrayTopic("tcorny").getEntry(new double[] {});
 
         solve3D = table.getDoubleArrayTopic("camtran").getEntry(new double[] {});
+        botpose = table.getDoubleArrayTopic("botpose").getEntry(new double[] {});
 
         ledMode = table.getIntegerTopic("ledMode").getEntry(0);
         camMode = table.getIntegerTopic("camMode").getEntry(0);
@@ -109,6 +110,7 @@ public final class LimelightTable {
 
     // Solve 3D DoubleArrayEntrys
     public final DoubleArrayEntry solve3D;
+    public final DoubleArrayEntry botpose;
 
     // Camera Control DoubleEntrys
     public final IntegerEntry ledMode;
