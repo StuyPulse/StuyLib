@@ -255,6 +255,10 @@ public final class Limelight {
     /*** Solve 3D ***/
     /****************/
 
+    /**
+     * @param arr Array of doubles to convert to a Pose3d
+     * @return Pose3d from array
+     */
     private Pose3d arrayToPose3d(final double[] arr) {
         if (arr != null && arr.length == 6){
             return new Pose3d(
@@ -275,7 +279,7 @@ public final class Limelight {
         return arrayToPose3d(table.solve3D.get(new double[] {}));
     }
 
-    /** @return The pose of the robot in the field */
+    /** @return The Pose3d of the robot in the field */
     public Pose3d getRobotPose() {
         return arrayToPose3d(table.botpose.get(new double[] {}));
     }
