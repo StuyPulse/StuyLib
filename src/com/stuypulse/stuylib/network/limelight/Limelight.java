@@ -285,6 +285,15 @@ public final class Limelight {
         return arrayToPose3d(table.botpose.get(new double[] {}));
     }
 
+    /****************************/
+    /*** AprilTag Information ***/
+    /****************************/
+
+    /** @return ID of the primary AprilTag */
+    public long getTagID() {
+        return table.tagID.get();
+    }
+
     /***************************/
     /*** Camera Mode Control ***/
     /***************************/

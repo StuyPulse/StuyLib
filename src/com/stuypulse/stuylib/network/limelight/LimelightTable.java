@@ -58,6 +58,8 @@ public final class LimelightTable {
         solve3D = table.getDoubleArrayTopic("camtran").getEntry(new double[] {});
         botpose = table.getDoubleArrayTopic("botpose").getEntry(new double[] {});
 
+        tagID = table.getIntegerTopic("tid").getEntry(-1);
+
         ledMode = table.getIntegerTopic("ledMode").getEntry(0);
         camMode = table.getIntegerTopic("camMode").getEntry(0);
         pipeline = table.getIntegerTopic("pipeline").getEntry(0);
@@ -112,6 +114,9 @@ public final class LimelightTable {
     // Solve 3D DoubleArrayEntrys
     public final DoubleArrayEntry solve3D;
     public final DoubleArrayEntry botpose;
+
+    // AprilTag Information
+    public final IntegerEntry tagID;
 
     // Camera Control DoubleEntrys
     public final IntegerEntry ledMode;
