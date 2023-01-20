@@ -55,7 +55,7 @@ public final class LimelightTable {
         xCorners = table.getDoubleArrayTopic("tcornx").getEntry(new double[] {});
         yCorners = table.getDoubleArrayTopic("tcorny").getEntry(new double[] {});
 
-        solve3D = table.getDoubleArrayTopic("camtran").getEntry(new double[] {});
+        solve3D = table.getDoubleArrayTopic("campose").getEntry(new double[] {});
         botpose = table.getDoubleArrayTopic("botpose").getEntry(new double[] {});
 
         tagID = table.getIntegerTopic("tid").getEntry(-1);
