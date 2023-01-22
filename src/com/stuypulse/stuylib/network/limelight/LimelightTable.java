@@ -18,6 +18,7 @@ import edu.wpi.first.networktables.NetworkTableInstance;
  * robot code, but instead to assist other API's that use the limelight.
  *
  * @author Sam B (sam.belliveau@gmail.com)
+ * @author Vincent Wang (vincentw921)
  */
 public final class LimelightTable {
 
@@ -54,7 +55,10 @@ public final class LimelightTable {
         xCorners = table.getDoubleArrayTopic("tcornx").getEntry(new double[] {});
         yCorners = table.getDoubleArrayTopic("tcorny").getEntry(new double[] {});
 
-        solve3D = table.getDoubleArrayTopic("camtran").getEntry(new double[] {});
+        solve3D = table.getDoubleArrayTopic("campose").getEntry(new double[] {});
+        botpose = table.getDoubleArrayTopic("botpose").getEntry(new double[] {});
+
+        tagID = table.getIntegerTopic("tid").getEntry(-1);
 
         ledMode = table.getIntegerTopic("ledMode").getEntry(0);
         camMode = table.getIntegerTopic("camMode").getEntry(0);
@@ -109,6 +113,10 @@ public final class LimelightTable {
 
     // Solve 3D DoubleArrayEntrys
     public final DoubleArrayEntry solve3D;
+    public final DoubleArrayEntry botpose;
+
+    // AprilTag Information
+    public final IntegerEntry tagID;
 
     // Camera Control DoubleEntrys
     public final IntegerEntry ledMode;
