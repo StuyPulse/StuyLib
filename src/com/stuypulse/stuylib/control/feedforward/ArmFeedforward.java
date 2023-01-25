@@ -33,7 +33,7 @@ public class ArmFeedforward extends Controller {
      * @param kG term to hold arm vertical against gravity (volts)
      */
     public ArmFeedforward(Number kG) {
-        this(kG, Math::cos);
+        this(kG, x -> Math.cos(Math.toRadians(x)));
     }
 
     /**
