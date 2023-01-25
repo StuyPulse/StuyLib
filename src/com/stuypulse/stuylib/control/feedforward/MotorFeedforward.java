@@ -39,6 +39,7 @@ public class MotorFeedforward {
 
     /** The constants for the feedforward equation */
     private final Number kS;
+
     private final Number kV;
     private final Number kA;
 
@@ -47,8 +48,7 @@ public class MotorFeedforward {
      *
      * @param kS volts, describes portion of voltage to overcome static friction
      * @param kV volts * seconds / distance, describes voltage needed to hold constant velocity
-     * @param kA volts * seconds^2 / distance, describes voltage needed to move at an
-     *     acceleration
+     * @param kA volts * seconds^2 / distance, describes voltage needed to move at an acceleration
      */
     public MotorFeedforward(Number kS, Number kV, Number kA) {
         mDerivative = new Derivative();
@@ -105,9 +105,8 @@ public class MotorFeedforward {
     public final double calculate(double velocity) {
         double acceleration = mDerivative.get(velocity);
 
-        return kS.doubleValue() * Math.signum(velocity) +
-            kV.doubleValue() * velocity +
-            kA.doubleValue() * acceleration;
+        return kS.doubleValue() * Math.signum(velocity)
+                + kV.doubleValue() * velocity
+                + kA.doubleValue() * acceleration;
     }
-
 }
