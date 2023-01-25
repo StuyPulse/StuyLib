@@ -5,7 +5,7 @@
 package com.stuypulse.stuylib.control.angle.feedforward;
 
 import com.stuypulse.stuylib.control.angle.AngleController;
-import com.stuypulse.stuylib.control.feedforward.Feedforward;
+import com.stuypulse.stuylib.control.feedforward.MotorFeedforward;
 import com.stuypulse.stuylib.math.Angle;
 import com.stuypulse.stuylib.util.AngleVelocity;
 
@@ -18,7 +18,7 @@ import com.stuypulse.stuylib.util.AngleVelocity;
 public class AnglePositionFeedforwardController extends AngleController {
 
     /** the feedforward model */
-    private final Feedforward mFeedforward;
+    private final MotorFeedforward mFeedforward;
 
     /** find the derivative of angular setpoints */
     private final AngleVelocity mDerivative;
@@ -28,7 +28,7 @@ public class AnglePositionFeedforwardController extends AngleController {
      *
      * @param feedforward model
      */
-    public AnglePositionFeedforwardController(Feedforward feedforward) {
+    public AnglePositionFeedforwardController(MotorFeedforward feedforward) {
         mFeedforward = feedforward;
         mDerivative = new AngleVelocity();
     }

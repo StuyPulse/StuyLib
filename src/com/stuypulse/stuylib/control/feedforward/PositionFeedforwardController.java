@@ -22,14 +22,14 @@ public class PositionFeedforwardController extends Controller {
     private final Derivative mVelocity;
 
     /** Internal feedforward model */
-    private final Feedforward mFeedforward;
+    private final MotorFeedforward mFeedforward;
 
     /**
      * Create a position controller with a feedforward model
      *
      * @param feedforward feedforward model
      */
-    public PositionFeedforwardController(Feedforward feedforward) {
+    public PositionFeedforwardController(MotorFeedforward feedforward) {
         mVelocity = new Derivative();
         mFeedforward = feedforward;
     }
