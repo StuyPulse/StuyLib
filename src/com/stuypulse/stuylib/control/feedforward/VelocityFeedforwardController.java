@@ -15,14 +15,14 @@ import com.stuypulse.stuylib.control.Controller;
 public class VelocityFeedforwardController extends Controller {
 
     /** Internal feedforward model */
-    private final Feedforward mFeedforward;
+    private final MotorFeedforward mFeedforward;
 
     /**
      * Create a velocity controller with a feedforward model
      *
      * @param feedforward the model
      */
-    public VelocityFeedforwardController(Feedforward feedforward) {
+    public VelocityFeedforwardController(MotorFeedforward feedforward) {
         mFeedforward = feedforward;
     }
 
