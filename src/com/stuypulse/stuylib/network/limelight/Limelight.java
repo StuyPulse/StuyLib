@@ -82,6 +82,11 @@ public final class Limelight {
     /*** Connnection Test ***/
     /************************/
 
+    /** @return name of Limelight NetworkTables */
+    public String getTableName() {
+        return table.tableName;
+    }
+
     /** @return time of last network table change from limelight */
     public long getLastUpdate() {
         long lastChange = table.latency.getLastChange();
