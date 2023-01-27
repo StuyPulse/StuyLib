@@ -82,7 +82,7 @@ public final class Limelight {
     /*** Connnection Test ***/
     /************************/
 
-    /** @return name of Limelight Network Table */
+    /** @return name of Limelight NetworkTables */
     public String getTableName() {
         return table.tableName;
     }
