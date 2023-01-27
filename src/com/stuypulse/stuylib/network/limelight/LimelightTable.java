@@ -37,6 +37,8 @@ public final class LimelightTable {
         tableInstance = NetworkTableInstance.getDefault();
         table = tableInstance.getTable(tableName);
 
+        this.tableName = tableName;
+
         validTarget = table.getIntegerTopic("tv").getEntry(0);
 
         xAngle = table.getDoubleTopic("tx").getEntry(0);
@@ -77,6 +79,8 @@ public final class LimelightTable {
     public final NetworkTableInstance tableInstance;
 
     public final NetworkTable table;
+
+    public final String tableName;
 
     /****************************************************************/
     /*** Network Table Entries used to communicate with Limelight ***/
