@@ -31,19 +31,23 @@ public class PollingBStream implements BStream {
         }
 
         mResult = false;
-        mPoller = new Notifier(() -> mResult = stream.get());
+        mPoller = new Notifier(() -> this.set(stream.get()));
         mPoller.startPeriodic(dt);
     }
 
-    public boolean get() {
+    private final synchronized void set(boolean result) {
+        mResult = result;
+    }
+
+    public final synchronized boolean get() {
         return mResult;
     }
 
-    protected void finalize() {
+    protected synchronized void finalize() {
         close();
     }
 
-    public void close() {
+    public synchronized void close() {
         mPoller.close();
         mResult = false;
     }
