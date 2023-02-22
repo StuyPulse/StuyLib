@@ -6,7 +6,6 @@ package com.stuypulse.stuylib.network;
 
 import com.stuypulse.stuylib.streams.IStream;
 
-import edu.wpi.first.hal.HALUtil;
 import edu.wpi.first.networktables.NetworkTablesJNI;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 
@@ -52,7 +51,7 @@ public final class SmartNumber extends Number implements IStream {
 
     /** @param value what the value on {@link SmartDashboard} will be set to */
     public void set(Number value) {
-        NetworkTablesJNI.setDouble(mHandle, HALUtil.getFPGATime(), value.doubleValue());
+        NetworkTablesJNI.setDouble(mHandle, 0, value.doubleValue());
     }
 
     /** Resets the value on {@link SmartDashboard} to the default value */

@@ -6,7 +6,6 @@ package com.stuypulse.stuylib.network;
 
 import com.stuypulse.stuylib.streams.booleans.BStream;
 
-import edu.wpi.first.hal.HALUtil;
 import edu.wpi.first.networktables.NetworkTablesJNI;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 
@@ -50,7 +49,7 @@ public class SmartBoolean implements BStream {
 
     /** @param value what the value on {@link SmartDashboard} will be set to */
     public void set(boolean value) {
-        NetworkTablesJNI.setBoolean(mHandle, HALUtil.getFPGATime(), value);
+        NetworkTablesJNI.setBoolean(mHandle, 0, value);
     }
 
     /** Resets the value on {@link SmartDashboard} to the default value */

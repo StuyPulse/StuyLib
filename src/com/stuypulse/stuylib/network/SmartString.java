@@ -4,7 +4,6 @@
 
 package com.stuypulse.stuylib.network;
 
-import edu.wpi.first.hal.HALUtil;
 import edu.wpi.first.networktables.NetworkTablesJNI;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import java.util.function.Supplier;
@@ -49,7 +48,7 @@ public class SmartString implements Supplier<String> {
 
     /** @param value what the value on {@link SmartDashboard} will be set to */
     public void set(String value) {
-        NetworkTablesJNI.setString(mHandle, HALUtil.getFPGATime(), value);
+        NetworkTablesJNI.setString(mHandle, 0, value);
     }
 
     /** Resets the value on {@link SmartDashboard} to the default value */
