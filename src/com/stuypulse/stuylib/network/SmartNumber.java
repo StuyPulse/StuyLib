@@ -37,7 +37,7 @@ public final class SmartNumber extends Number implements IStream {
     public SmartNumber(String id, double value) {
         mHandle = NetworkTablesJNI.getEntry(NetworkTablesJNI.getDefaultInstance(), "SmartDashboard/" + id);
         mDefaultValue = value;
-        set(mDefaultValue);
+        reset();
     }
 
     /** @return the value of the number from SmartDashboard */
