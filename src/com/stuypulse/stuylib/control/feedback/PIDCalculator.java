@@ -12,6 +12,8 @@ import com.stuypulse.stuylib.streams.filters.IFilterGroup;
 import com.stuypulse.stuylib.streams.filters.TimedMovingAverage;
 import com.stuypulse.stuylib.util.StopWatch;
 
+import edu.wpi.first.util.sendable.SendableBuilder;
+
 /**
  * This is a Bang-Bang controller that while controlling the robot, will be able to calculate the
  * values for the PID controller. It does this by taking the results of oscillations, then creating
@@ -76,6 +78,15 @@ public class PIDCalculator extends Controller {
         mLocalMax = 0;
 
         mRunning = false;
+    }
+
+    @Override
+    public void initSendable(SendableBuilder builder) {
+        builder.setSmartDashboardType("PID Calculator");
+        builder.addDoubleProperty("Setpoint", this::getSetpoint, null);
+        builder.addDoubleProperty("Measurement", this::getMeasurement, null);
+        builder.addDoubleProperty("Output", this::getOutput, null);
+        builder.addDoubleProperty("Error", this::getError, null);
     }
 
     /**

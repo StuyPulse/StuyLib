@@ -6,6 +6,9 @@ package com.stuypulse.stuylib.control;
 
 import com.stuypulse.stuylib.streams.filters.IFilter;
 
+import edu.wpi.first.util.sendable.Sendable;
+import edu.wpi.first.util.sendable.SendableBuilder;
+
 /**
  * A controller calculates an output variable given a setpoint and measurement of a single variable.
  *
@@ -22,7 +25,7 @@ import com.stuypulse.stuylib.streams.filters.IFilter;
  *
  * @author Myles Pasetsky (myles.pasetsky@gmail.com)
  */
-public abstract class Controller {
+public abstract class Controller implements Sendable {
 
     /** The most recent setpoint of the controller */
     private double mSetpoint;
@@ -51,6 +54,15 @@ public abstract class Controller {
         mSetpointFilter = x -> x;
         mMeasurementFilter = x -> x;
         mOutputFilter = x -> x;
+    }
+
+    @Override
+    public void initSendable(SendableBuilder builder) {
+        builder.setSmartDashboardType("Controller");
+        builder.addDoubleProperty("Setpoint", this::getSetpoint, null);
+        builder.addDoubleProperty("Measurement", this::getMeasurement, null);
+        builder.addDoubleProperty("Output", this::getOutput, null);
+        builder.addDoubleProperty("Error", this::getError, null);
     }
 
     /**
@@ -123,7 +135,7 @@ public abstract class Controller {
      * @param other the other controllers
      * @return the group of controllers that
      */
-    public final ControllerGroup add(Controller... other) {
+    public ControllerGroup add(Controller... other) {
         return new ControllerGroup(this, other);
     }
 

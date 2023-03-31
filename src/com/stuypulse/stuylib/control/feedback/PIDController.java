@@ -11,6 +11,8 @@ import com.stuypulse.stuylib.streams.filters.IFilter;
 import com.stuypulse.stuylib.streams.filters.IFilterGroup;
 import com.stuypulse.stuylib.util.StopWatch;
 
+import edu.wpi.first.util.sendable.SendableBuilder;
+
 /**
  * The PID algorithm is a feedback control algorithm meant for calculating an output based on an
  * error between a measurement and a setpoint.
@@ -64,6 +66,15 @@ public class PIDController extends Controller {
         setDerivativeFilter(x -> x);
         setPID(p, i, d);
         reset();
+    }
+
+    @Override
+    public void initSendable(SendableBuilder builder) {
+        builder.setSmartDashboardType("PID Controller");
+        builder.addDoubleProperty("Setpoint", this::getSetpoint, null);
+        builder.addDoubleProperty("Measurement", this::getMeasurement, null);
+        builder.addDoubleProperty("Output", this::getOutput, null);
+        builder.addDoubleProperty("Error", this::getError, null);
     }
 
     /** Creates a blank PIDController that doesn't move */

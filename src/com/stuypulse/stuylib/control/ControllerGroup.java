@@ -4,6 +4,11 @@
 
 package com.stuypulse.stuylib.control;
 
+import java.util.ArrayList;
+import java.util.ResourceBundle.Control;
+
+import edu.wpi.first.util.sendable.SendableBuilder;
+
 /**
  * Controllers can be grouped together in a "controller group" if they have the same setpoint and
  * measurement.
@@ -19,12 +24,38 @@ public class ControllerGroup extends Controller {
     private final Controller mController;
 
     /** Controllers part of the group */
-    private final Controller[] mControllers;
+    private final ArrayList<Controller> mControllers;
 
     /** Create a controller group */
     public ControllerGroup(Controller controller, Controller... controllers) {
         mController = controller;
-        mControllers = controllers;
+        mControllers = new ArrayList<>();
+
+        for (Controller tmpController : controllers) {
+            if (controller == null) {
+                throw new IllegalArgumentException("Controller cannot be null");
+            }
+            mControllers.add(tmpController);
+        }
+    }
+
+    @Override
+    public void initSendable(SendableBuilder builder) {
+        mController.initSendable(builder);
+        for (Controller controller : mControllers) {
+            controller.initSendable(builder);
+        }
+    }
+
+    @Override
+    public ControllerGroup add(Controller... controller) {
+        for (Controller tmpController : controller) {
+            if (tmpController == null) {
+                throw new IllegalArgumentException("Controller cannot be null");
+            }
+            mControllers.add(tmpController);
+        }
+        return this;
     }
 
     /**
