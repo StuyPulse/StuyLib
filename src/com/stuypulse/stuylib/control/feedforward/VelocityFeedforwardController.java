@@ -6,6 +6,8 @@ package com.stuypulse.stuylib.control.feedforward;
 
 import com.stuypulse.stuylib.control.Controller;
 
+import edu.wpi.first.util.sendable.SendableBuilder;
+
 /**
  * A velocity controller that uses a feedforward model to calculate motor outputs given velocity
  * setpoints.
@@ -24,6 +26,15 @@ public class VelocityFeedforwardController extends Controller {
      */
     public VelocityFeedforwardController(MotorFeedforward feedforward) {
         mFeedforward = feedforward;
+    }
+
+    @Override
+    public void initSendable(SendableBuilder builder) {
+        builder.setSmartDashboardType("Velocity Feed Forward Controller");
+        builder.addDoubleProperty("Velocity FF Setpoint", this::getSetpoint, null);
+        builder.addDoubleProperty("Velocity FF Measurement", this::getMeasurement, null);
+        builder.addDoubleProperty("Velocity FF Output", this::getOutput, null);
+        builder.addDoubleProperty("Velocity FF Error", this::getError, null);
     }
 
     /**

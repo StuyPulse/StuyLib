@@ -7,6 +7,8 @@ package com.stuypulse.stuylib.control.feedforward;
 import com.stuypulse.stuylib.control.Controller;
 import com.stuypulse.stuylib.streams.filters.IFilter;
 
+import edu.wpi.first.util.sendable.SendableBuilder;
+
 /**
  * A feedforward term to account for gravity for motorized arms.
  *
@@ -45,6 +47,15 @@ public class ArmFeedforward extends Controller {
     public ArmFeedforward(Number kG, IFilter cosine) {
         this.kG = kG;
         this.cosine = cosine;
+    }
+
+    @Override
+    public void initSendable(SendableBuilder builder) {
+        builder.setSmartDashboardType("Arm Feed Forward");
+        builder.addDoubleProperty("Arm FF Setpoint", this::getSetpoint, null);
+        builder.addDoubleProperty("Arm FF Measurement", this::getMeasurement, null);
+        builder.addDoubleProperty("Arm FF Output", this::getOutput, null);
+        builder.addDoubleProperty("Arm FF Error", this::getError, null);
     }
 
     /**

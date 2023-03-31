@@ -9,6 +9,8 @@ import com.stuypulse.stuylib.control.feedforward.MotorFeedforward;
 import com.stuypulse.stuylib.math.Angle;
 import com.stuypulse.stuylib.util.AngleVelocity;
 
+import edu.wpi.first.util.sendable.SendableBuilder;
+
 /**
  * A positional feedforward controller for angular systems.
  *
@@ -31,6 +33,15 @@ public class AnglePositionFeedforwardController extends AngleController {
     public AnglePositionFeedforwardController(MotorFeedforward feedforward) {
         mFeedforward = feedforward;
         mDerivative = new AngleVelocity();
+    }
+
+    @Override
+    public void initSendable(SendableBuilder builder) {
+        builder.setSmartDashboardType("Angle Position Feed Forward Controller");
+        builder.addDoubleProperty("Angle Position FF Setpoint", () -> getSetpoint().toDegrees(), null);
+        builder.addDoubleProperty("Angle Position FF Measurement", () -> getMeasurement().toDegrees(), null);
+        builder.addDoubleProperty("Angle Position FF Output", this::getOutput, null);
+        builder.addDoubleProperty("Angle Position FF Error", () -> getError().toDegrees(), null);
     }
 
     /**

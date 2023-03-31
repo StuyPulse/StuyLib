@@ -7,6 +7,8 @@ package com.stuypulse.stuylib.control.angle.feedforward;
 import com.stuypulse.stuylib.control.angle.AngleController;
 import com.stuypulse.stuylib.math.Angle;
 
+import edu.wpi.first.util.sendable.SendableBuilder;
+
 /**
  * A feedforward term to account for gravity for motorized arms that can move continuously (if not
  * use `ArmFeedforward`)
@@ -30,6 +32,15 @@ public class AngleArmFeedforward extends AngleController {
      */
     public AngleArmFeedforward(Number kG) {
         this.kG = kG;
+    }
+
+    @Override
+    public void initSendable(SendableBuilder builder) {
+        builder.setSmartDashboardType("Angle Arm Feed Forward");
+        builder.addDoubleProperty("Angle Arm FF Setpoint", () -> getSetpoint().toDegrees(), null);
+        builder.addDoubleProperty("Angle Arm FF Measurement", () -> getMeasurement().toDegrees(), null);
+        builder.addDoubleProperty("Angle Arm FF Output", this::getOutput, null);
+        builder.addDoubleProperty("Angle Arm FF Error", () -> getError().toDegrees(), null);
     }
 
     /**

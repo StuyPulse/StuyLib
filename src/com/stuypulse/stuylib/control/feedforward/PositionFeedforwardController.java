@@ -7,6 +7,8 @@ package com.stuypulse.stuylib.control.feedforward;
 import com.stuypulse.stuylib.control.Controller;
 import com.stuypulse.stuylib.streams.filters.Derivative;
 
+import edu.wpi.first.util.sendable.SendableBuilder;
+
 /**
  * A positional controller that uses a feedforward model to calculate motor outputs given positional
  * setpoints.
@@ -32,6 +34,15 @@ public class PositionFeedforwardController extends Controller {
     public PositionFeedforwardController(MotorFeedforward feedforward) {
         mVelocity = new Derivative();
         mFeedforward = feedforward;
+    }
+
+    @Override
+    public void initSendable(SendableBuilder builder) {
+        builder.setSmartDashboardType("Position Feed Forward Controller");
+        builder.addDoubleProperty("Position FF Setpoint", this::getSetpoint, null);
+        builder.addDoubleProperty("Position FF Measurement", this::getMeasurement, null);
+        builder.addDoubleProperty("Position FF Output", this::getOutput, null);
+        builder.addDoubleProperty("Position FF Error", this::getError, null);
     }
 
     /**

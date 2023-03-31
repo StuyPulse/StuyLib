@@ -6,6 +6,8 @@ package com.stuypulse.stuylib.control.feedforward;
 
 import com.stuypulse.stuylib.control.Controller;
 
+import edu.wpi.first.util.sendable.SendableBuilder;
+
 /**
  * A feedforward term to account for gravity for motorized lifts.
  *
@@ -28,6 +30,15 @@ public class ElevatorFeedforward extends Controller {
      */
     public ElevatorFeedforward(Number kG) {
         this.kG = kG;
+    }
+
+    @Override
+    public void initSendable(SendableBuilder builder) {
+        builder.setSmartDashboardType("Elevator Feed Forward");
+        builder.addDoubleProperty("Elevator FF Setpoint", this::getSetpoint, null);
+        builder.addDoubleProperty("Elevator FF Measurement", this::getMeasurement, null);
+        builder.addDoubleProperty("Elevator FF Output", this::getOutput, null);
+        builder.addDoubleProperty("Elevator FF Error", this::getError, null);
     }
 
     /**

@@ -8,6 +8,10 @@ import com.stuypulse.stuylib.math.Angle;
 import com.stuypulse.stuylib.streams.angles.filters.AFilter;
 import com.stuypulse.stuylib.streams.filters.IFilter;
 
+import edu.wpi.first.util.sendable.Sendable;
+import edu.wpi.first.util.sendable.SendableBuilder;
+import edu.wpi.first.wpilibj.smartdashboard.SendableBuilderImpl;
+
 /**
  * Base class of controller classes of continuous systems. This means that both the setpoint and
  * measurement are angles, as opposed to just numbers.
@@ -18,7 +22,7 @@ import com.stuypulse.stuylib.streams.filters.IFilter;
  * @see com.stuypulse.stuylib.control.Controller
  * @author Myles Pasetsky (myles.pasetsky@gmail.com)
  */
-public abstract class AngleController {
+public abstract class AngleController implements Sendable {
 
     /** The most recent setpoint of the controller */
     private Angle mSetpoint;
@@ -47,6 +51,15 @@ public abstract class AngleController {
         mSetpointFilter = x -> x;
         mMeasurementFilter = x -> x;
         mOutputFilter = x -> x;
+    }
+
+    @Override
+    public void initSendable(SendableBuilder builder) {
+        builder.setSmartDashboardType("Angle Controller");
+        builder.addDoubleProperty("Angle Controller Setpoint", () -> getSetpoint().toDegrees(), null);
+        builder.addDoubleProperty("Angle Controller Measurement", () -> getMeasurement().toDegrees(), null);
+        builder.addDoubleProperty("Angle Controller Output", this::getOutput, null);
+        builder.addDoubleProperty("Angle Controller Error", () -> getError().toDegrees(), null);
     }
 
     /**
