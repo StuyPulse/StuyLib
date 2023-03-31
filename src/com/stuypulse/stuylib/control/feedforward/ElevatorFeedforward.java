@@ -35,10 +35,10 @@ public class ElevatorFeedforward extends Controller {
     @Override
     public void initSendable(SendableBuilder builder) {
         builder.setSmartDashboardType("Elevator Feed Forward");
-        builder.addDoubleProperty("Setpoint", this::getSetpoint, null);
-        builder.addDoubleProperty("Measurement", this::getMeasurement, null);
-        builder.addDoubleProperty("Output", this::getOutput, null);
-        builder.addDoubleProperty("Error", this::getError, null);
+        builder.addDoubleProperty("Elevator FF Setpoint", this::getSetpoint, null);
+        builder.addDoubleProperty("Elevator FF Measurement", this::getMeasurement, null);
+        builder.addDoubleProperty("Elevator FF Output", this::getOutput, null);
+        builder.addDoubleProperty("Elevator FF Error", this::getError, null);
     }
 
     /**

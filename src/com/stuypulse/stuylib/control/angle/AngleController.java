@@ -56,10 +56,10 @@ public abstract class AngleController implements Sendable {
     @Override
     public void initSendable(SendableBuilder builder) {
         builder.setSmartDashboardType("Angle Controller");
-        builder.addDoubleProperty("Setpoint", () -> getSetpoint().toDegrees(), null);
-        builder.addDoubleProperty("Measurement", () -> getMeasurement().toDegrees(), null);
-        builder.addDoubleProperty("Output", this::getOutput, null);
-        builder.addDoubleProperty("Error", () -> getError().toDegrees(), null);
+        builder.addDoubleProperty("Angle Controller Setpoint", () -> getSetpoint().toDegrees(), null);
+        builder.addDoubleProperty("Angle Controller Measurement", () -> getMeasurement().toDegrees(), null);
+        builder.addDoubleProperty("Angle Controller Output", this::getOutput, null);
+        builder.addDoubleProperty("Angle Controller Error", () -> getError().toDegrees(), null);
     }
 
     /**

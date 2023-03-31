@@ -39,10 +39,10 @@ public class PositionFeedforwardController extends Controller {
     @Override
     public void initSendable(SendableBuilder builder) {
         builder.setSmartDashboardType("Position Feed Forward Controller");
-        builder.addDoubleProperty("Setpoint", this::getSetpoint, null);
-        builder.addDoubleProperty("Measurement", this::getMeasurement, null);
-        builder.addDoubleProperty("Output", this::getOutput, null);
-        builder.addDoubleProperty("Error", this::getError, null);
+        builder.addDoubleProperty("Position FF Setpoint", this::getSetpoint, null);
+        builder.addDoubleProperty("Position FF Measurement", this::getMeasurement, null);
+        builder.addDoubleProperty("Position FF Output", this::getOutput, null);
+        builder.addDoubleProperty("Position FF Error", this::getError, null);
     }
 
     /**

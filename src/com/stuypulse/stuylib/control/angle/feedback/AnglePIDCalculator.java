@@ -84,10 +84,10 @@ public class AnglePIDCalculator extends AngleController {
     @Override
     public void initSendable(SendableBuilder builder) {
         builder.setSmartDashboardType("Angle PID Calculator");
-        builder.addDoubleProperty("Setpoint", () -> getSetpoint().toDegrees(), null);
-        builder.addDoubleProperty("Measurement", () -> getMeasurement().toDegrees(), null);
-        builder.addDoubleProperty("Output", this::getOutput, null);
-        builder.addDoubleProperty("Error", () -> getError().toDegrees(), null);
+        builder.addDoubleProperty("PID Calculator Setpoint", () -> getSetpoint().toDegrees(), null);
+        builder.addDoubleProperty("PID Calculator Measurement", () -> getMeasurement().toDegrees(), null);
+        builder.addDoubleProperty("PID Calculator Output", this::getOutput, null);
+        builder.addDoubleProperty("PID Calculator Error", () -> getError().toDegrees(), null);
     }
 
     /**

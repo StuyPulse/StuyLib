@@ -83,10 +83,10 @@ public class PIDCalculator extends Controller {
     @Override
     public void initSendable(SendableBuilder builder) {
         builder.setSmartDashboardType("PID Calculator");
-        builder.addDoubleProperty("Setpoint", this::getSetpoint, null);
-        builder.addDoubleProperty("Measurement", this::getMeasurement, null);
-        builder.addDoubleProperty("Output", this::getOutput, null);
-        builder.addDoubleProperty("Error", this::getError, null);
+        builder.addDoubleProperty("PID Calculator Setpoint", this::getSetpoint, null);
+        builder.addDoubleProperty("PID Calculator Measurement", this::getMeasurement, null);
+        builder.addDoubleProperty("PID Calculator Output", this::getOutput, null);
+        builder.addDoubleProperty("PID Calculator Error", this::getError, null);
     }
 
     /**

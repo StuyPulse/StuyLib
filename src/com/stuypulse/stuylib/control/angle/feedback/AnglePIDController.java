@@ -65,10 +65,10 @@ public class AnglePIDController extends AngleController {
     @Override
     public void initSendable(SendableBuilder builder) {
         builder.setSmartDashboardType("Angle PID Controller");
-        builder.addDoubleProperty("Setpoint", () -> getSetpoint().toDegrees(), null);
-        builder.addDoubleProperty("Measurement", () -> getMeasurement().toDegrees(), null);
-        builder.addDoubleProperty("Output", this::getOutput, null);
-        builder.addDoubleProperty("Error", () -> getError().toDegrees(), null);
+        builder.addDoubleProperty("PID Setpoint", () -> getSetpoint().toDegrees(), null);
+        builder.addDoubleProperty("PID Measurement", () -> getMeasurement().toDegrees(), null);
+        builder.addDoubleProperty("PID Output", this::getOutput, null);
+        builder.addDoubleProperty("PID Error", () -> getError().toDegrees(), null);
     }
 
     /** Creates a blank PIDController that doesn't move */

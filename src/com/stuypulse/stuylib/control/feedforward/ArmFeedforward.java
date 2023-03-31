@@ -52,10 +52,10 @@ public class ArmFeedforward extends Controller {
     @Override
     public void initSendable(SendableBuilder builder) {
         builder.setSmartDashboardType("Arm Feed Forward");
-        builder.addDoubleProperty("Setpoint", this::getSetpoint, null);
-        builder.addDoubleProperty("Measurement", this::getMeasurement, null);
-        builder.addDoubleProperty("Output", this::getOutput, null);
-        builder.addDoubleProperty("Error", this::getError, null);
+        builder.addDoubleProperty("Arm FF Setpoint", this::getSetpoint, null);
+        builder.addDoubleProperty("Arm FF Measurement", this::getMeasurement, null);
+        builder.addDoubleProperty("Arm FF Output", this::getOutput, null);
+        builder.addDoubleProperty("Arm FF Error", this::getError, null);
     }
 
     /**

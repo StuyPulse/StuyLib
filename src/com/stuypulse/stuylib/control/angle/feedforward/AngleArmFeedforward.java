@@ -37,10 +37,10 @@ public class AngleArmFeedforward extends AngleController {
     @Override
     public void initSendable(SendableBuilder builder) {
         builder.setSmartDashboardType("Angle Arm Feed Forward");
-        builder.addDoubleProperty("Setpoint", () -> getSetpoint().toDegrees(), null);
-        builder.addDoubleProperty("Measurement", () -> getMeasurement().toDegrees(), null);
-        builder.addDoubleProperty("Output", this::getOutput, null);
-        builder.addDoubleProperty("Error", () -> getError().toDegrees(), null);
+        builder.addDoubleProperty("Angle Arm FF Setpoint", () -> getSetpoint().toDegrees(), null);
+        builder.addDoubleProperty("Angle Arm FF Measurement", () -> getMeasurement().toDegrees(), null);
+        builder.addDoubleProperty("Angle Arm FF Output", this::getOutput, null);
+        builder.addDoubleProperty("Angle Arm FF Error", () -> getError().toDegrees(), null);
     }
 
     /**

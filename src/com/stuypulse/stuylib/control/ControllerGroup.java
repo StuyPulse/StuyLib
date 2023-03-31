@@ -20,28 +20,21 @@ import edu.wpi.first.util.sendable.SendableBuilder;
  */
 public class ControllerGroup extends Controller {
 
-    /** Controller part of the group */
-    private final Controller mController;
-
     /** Controllers part of the group */
     private final ArrayList<Controller> mControllers;
 
     /** Create a controller group */
     public ControllerGroup(Controller controller, Controller... controllers) {
-        mController = controller;
         mControllers = new ArrayList<>();
 
+        mControllers.add(controller);
         for (Controller tmpController : controllers) {
-            if (controller == null) {
-                throw new IllegalArgumentException("Controller cannot be null");
-            }
             mControllers.add(tmpController);
         }
     }
 
     @Override
     public void initSendable(SendableBuilder builder) {
-        mController.initSendable(builder);
         for (Controller controller : mControllers) {
             controller.initSendable(builder);
         }
@@ -68,7 +61,7 @@ public class ControllerGroup extends Controller {
      */
     @Override
     protected double calculate(double setpoint, double measurement) {
-        double output = mController.update(setpoint, measurement);
+        double output = 0;
 
         for (Controller controller : mControllers) {
             output += controller.update(setpoint, measurement);

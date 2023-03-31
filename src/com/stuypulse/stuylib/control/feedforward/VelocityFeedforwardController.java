@@ -31,10 +31,10 @@ public class VelocityFeedforwardController extends Controller {
     @Override
     public void initSendable(SendableBuilder builder) {
         builder.setSmartDashboardType("Velocity Feed Forward Controller");
-        builder.addDoubleProperty("Setpoint", this::getSetpoint, null);
-        builder.addDoubleProperty("Measurement", this::getMeasurement, null);
-        builder.addDoubleProperty("Output", this::getOutput, null);
-        builder.addDoubleProperty("Error", this::getError, null);
+        builder.addDoubleProperty("Velocity FF Setpoint", this::getSetpoint, null);
+        builder.addDoubleProperty("Velocity FF Measurement", this::getMeasurement, null);
+        builder.addDoubleProperty("Velocity FF Output", this::getOutput, null);
+        builder.addDoubleProperty("Velocity FF Error", this::getError, null);
     }
 
     /**
