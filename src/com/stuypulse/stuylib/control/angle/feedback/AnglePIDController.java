@@ -12,6 +12,8 @@ import com.stuypulse.stuylib.streams.filters.IFilter;
 import com.stuypulse.stuylib.streams.filters.IFilterGroup;
 import com.stuypulse.stuylib.util.StopWatch;
 
+import edu.wpi.first.util.sendable.SendableBuilder;
+
 /**
  * This PID controller is built by extending the AngleController class. It has a dynamic rate, so it
  * can detect how much time has passed between each update. It is made to be easy to use and simple
@@ -58,6 +60,15 @@ public class AnglePIDController extends AngleController {
         setDerivativeFilter(x -> x);
         setPID(p, i, d);
         reset();
+    }
+
+    @Override
+    public void initSendable(SendableBuilder builder) {
+        builder.setSmartDashboardType("Angle PID Controller");
+        builder.addDoubleProperty("Setpoint", () -> getSetpoint().toDegrees(), null);
+        builder.addDoubleProperty("Measurement", () -> getMeasurement().toDegrees(), null);
+        builder.addDoubleProperty("Output", this::getOutput, null);
+        builder.addDoubleProperty("Error", () -> getError().toDegrees(), null);
     }
 
     /** Creates a blank PIDController that doesn't move */

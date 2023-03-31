@@ -4,7 +4,11 @@
 
 package com.stuypulse.stuylib.control.angle;
 
+import java.util.ArrayList;
+
 import com.stuypulse.stuylib.math.Angle;
+
+import edu.wpi.first.util.sendable.SendableBuilder;
 
 /**
  * Angle controllers can be grouped together in a "controller group" if they have the same setpoint
@@ -21,12 +25,28 @@ public class AngleControllerGroup extends AngleController {
     private final AngleController mController;
 
     /** Controllers part of the group */
-    private final AngleController[] mControllers;
+    private final ArrayList<AngleController> mControllers;
 
     /** Create a controller group */
     public AngleControllerGroup(AngleController controller, AngleController... controllers) {
         mController = controller;
-        mControllers = controllers;
+
+        mControllers = new ArrayList<>();
+        
+        for (AngleController tmpController : controllers) {
+            if (controller == null) {
+                throw new IllegalArgumentException("Controller cannot be null");
+            }
+            mControllers.add(tmpController);
+        }
+    }
+
+    @Override
+    public void initSendable(SendableBuilder builder) {
+        mController.initSendable(builder);
+        for (AngleController controller : mControllers) {
+            controller.initSendable(builder);
+        }
     }
 
     /**
