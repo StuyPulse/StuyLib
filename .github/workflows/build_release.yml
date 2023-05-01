@@ -30,7 +30,7 @@ jobs:
           java-version: ${{ env.JAVA_VERSION }}
 
       - name: Build Javadocs - Gradle ${{ env.GRADLE_VERSION }}
-        uses: gradle/gradle-build-action@v2.3.0-beta.1
+        uses: gradle/gradle-build-action@v2.4.2
         with:
           arguments: javadoc -Pversion=${{ github.event.release.tag_name }}
         
@@ -60,7 +60,7 @@ jobs:
           java-version: ${{ env.JAVA_VERSION }}
 
       - name: Build - Gradle ${{ env.GRADLE_VERSION }}
-        uses: gradle/gradle-build-action@v2.3.0-beta.1
+        uses: gradle/gradle-build-action@v2.4.2
         with:
           arguments: build -Pversion=${{ github.event.release.tag_name }}
 
