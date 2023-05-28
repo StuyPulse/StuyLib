@@ -15,12 +15,14 @@ import org.opencv.core.Scalar;
 import org.opencv.imgproc.Imgproc;
 
 /**
- * The RioAprilTagDetection class is designed to detect AprilTags with OpenCV on a RoboRIO. It has
+ * This class is designed to detect AprilTags with OpenCV on a RoboRIO. It has
  * methods for detecting AprilTags via a USB camera connected to any of the USB ports on the
  * RoboRIO. As well as helper functions that retrieve some data from the detection.
  *
  * <p>The detector is optimized to use as little memory and processor power as possible, through the
  * use of sets (avoids duplication of data), and a seperate Thread to perform the vision processing.
+ * 
+ * @author Mansour Quddus (mansourquddus@protonmail.com)
  */
 public class RioAprilTagDetector {
 
