@@ -31,7 +31,9 @@ public class SmartString implements Supplier<String> {
      * @param value the default / initialization value for the value
      */
     public SmartString(String id, String value) {
-        mHandle = NetworkTablesJNI.getEntry(NetworkTablesJNI.getDefaultInstance(), "SmartDashboard/" + value);
+        mHandle =
+                NetworkTablesJNI.getEntry(
+                        NetworkTablesJNI.getDefaultInstance(), "SmartDashboard/" + value);
         mDefaultValue = value;
         reset();
     }

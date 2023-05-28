@@ -34,7 +34,9 @@ public final class SmartNumber extends Number implements IStream {
      * @param value the default / initialization value for the value
      */
     public SmartNumber(String id, double value) {
-        mHandle = NetworkTablesJNI.getEntry(NetworkTablesJNI.getDefaultInstance(), "SmartDashboard/" + id);
+        mHandle =
+                NetworkTablesJNI.getEntry(
+                        NetworkTablesJNI.getDefaultInstance(), "SmartDashboard/" + id);
         mDefaultValue = value;
         reset();
     }
