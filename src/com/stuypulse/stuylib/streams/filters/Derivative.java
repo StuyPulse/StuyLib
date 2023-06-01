@@ -26,4 +26,8 @@ public class Derivative implements IFilter {
         mLastValue = next;
         return diff / mTimer.reset();
     }
+
+    public double getOutput(){
+        return mLastValue;
+    }
 }
