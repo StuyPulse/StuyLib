@@ -5,8 +5,6 @@
 package com.stuypulse.stuylib.control.feedforward;
 
 import com.stuypulse.stuylib.control.Controller;
-import com.stuypulse.stuylib.control.angle.AngleController;
-import com.stuypulse.stuylib.control.angle.feedforward.AnglePositionFeedforwardController;
 import com.stuypulse.stuylib.streams.filters.Derivative;
 
 /**
@@ -79,19 +77,6 @@ public class MotorFeedforward {
      */
     public final Controller position() {
         return new PositionFeedforwardController(this);
-    }
-
-    /**
-     * Creates a controller that uses this feedforward model to calculate a motor output given angle
-     * setpoints.
-     *
-     * <p>NOTE: the angular velocity of the angle setpoints is calculated and then plugged into this
-     * model.
-     *
-     * @return the angle controller for this feedforward model
-     */
-    public final AngleController angle() {
-        return new AnglePositionFeedforwardController(this);
     }
 
     /**

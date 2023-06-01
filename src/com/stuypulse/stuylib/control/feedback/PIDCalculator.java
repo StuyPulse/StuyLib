@@ -5,7 +5,6 @@
 package com.stuypulse.stuylib.control.feedback;
 
 import com.stuypulse.stuylib.control.Controller;
-import com.stuypulse.stuylib.math.SLMath;
 import com.stuypulse.stuylib.network.SmartNumber;
 import com.stuypulse.stuylib.streams.filters.IFilter;
 import com.stuypulse.stuylib.streams.filters.IFilterGroup;
@@ -186,9 +185,9 @@ public class PIDCalculator extends Controller {
     /** @return information about this PIDController */
     public String toString() {
         return "(K: "
-                + SLMath.round(getK(), 4)
+                + getK()
                 + ", T: "
-                + SLMath.round(getT(), 4)
+                + getT()
                 + ") "
                 + getPIDController().toString();
     }

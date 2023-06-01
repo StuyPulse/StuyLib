@@ -5,11 +5,12 @@
 package com.stuypulse.stuylib.control.feedback;
 
 import com.stuypulse.stuylib.control.Controller;
-import com.stuypulse.stuylib.math.SLMath;
 import com.stuypulse.stuylib.network.SmartNumber;
 import com.stuypulse.stuylib.streams.filters.IFilter;
 import com.stuypulse.stuylib.streams.filters.IFilterGroup;
 import com.stuypulse.stuylib.util.StopWatch;
+
+import edu.wpi.first.math.MathUtil;
 
 /**
  * The PID algorithm is a feedback control algorithm meant for calculating an output based on an
@@ -182,7 +183,7 @@ public class PIDController extends Controller {
         mIFilter =
                 new IFilterGroup(
                         x -> range.doubleValue() <= 0 || isDone(range.doubleValue()) ? x : 0,
-                        x -> limit.doubleValue() <= 0 ? x : SLMath.clamp(x, limit.doubleValue()));
+                        x -> limit.doubleValue() <= 0 ? x : MathUtil.clamp(x, -limit.doubleValue(), limit.doubleValue()));
         return this;
     }
 
@@ -200,11 +201,11 @@ public class PIDController extends Controller {
     /** @return information about this PIDController */
     public String toString() {
         return "(P: "
-                + SLMath.round(getP(), 4)
+                + getP()
                 + ", I: "
-                + SLMath.round(getI(), 4)
+                + getI()
                 + ", D: "
-                + SLMath.round(getD(), 4)
+                + getD()
                 + ")";
     }
 }
