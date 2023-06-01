@@ -105,4 +105,9 @@ public class MotionProfile implements IFilter {
 
         return mOutput;
     }
+
+    public void reset(double current) {
+        mOutput = current;
+        mAccel = 0;
+    }
 }
