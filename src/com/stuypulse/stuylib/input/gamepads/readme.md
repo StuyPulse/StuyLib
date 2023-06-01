@@ -1,3 +1,0 @@
-# StuyLib Gamepad Implementations
-
-WIP...

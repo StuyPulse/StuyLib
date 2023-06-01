@@ -1,3 +1,0 @@
-# StuyLib Network Keyboard
-
-WIP...
