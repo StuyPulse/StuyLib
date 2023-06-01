@@ -6,6 +6,8 @@ package com.stuypulse.stuylib.math;
 
 import com.stuypulse.stuylib.util.HashBuilder;
 
+import edu.wpi.first.math.geometry.Rotation2d;
+
 /**
  * A Vector3D class that stores x, y, and z position data. It is made to work with the StuyLib Angle
  * class and be easy to use. It is a standard Vector3D class with all of the functions that you
@@ -93,32 +95,32 @@ public final class Vector3D {
      * @param angle angle to rotate by
      * @return result of rotation
      */
-    public Vector3D rotateX(Angle angle) {
+    public Vector3D rotateX(Rotation2d angle) {
         return new Vector3D(
                 +this.x,
-                +this.y * angle.cos() + +this.x * angle.sin(),
-                -this.x * angle.sin() + +this.z * angle.cos());
+                +this.y * angle.getCos() + +this.x * angle.getSin(),
+                -this.x * angle.getSin() + +this.z * angle.getCos());
     }
 
     /**
      * @param angle angle to rotate by
      * @return result of rotation
      */
-    public Vector3D rotateY(Angle angle) {
+    public Vector3D rotateY(Rotation2d angle) {
         return new Vector3D(
-                +this.x * angle.cos() + +this.z * angle.sin(),
+                +this.x * angle.getCos() + +this.z * angle.getSin(),
                 +this.y,
-                -this.x * angle.sin() + +this.z * angle.cos());
+                -this.x * angle.getSin() + +this.z * angle.getCos());
     }
 
     /**
      * @param angle angle to rotate by
      * @return result of rotation
      */
-    public Vector3D rotateZ(Angle angle) {
+    public Vector3D rotateZ(Rotation2d angle) {
         return new Vector3D(
-                +this.x * angle.cos() + -this.y * angle.sin(),
-                +this.x * angle.sin() + +this.y * angle.cos(),
+                +this.x * angle.getCos() + -this.y * angle.getSin(),
+                +this.x * angle.getSin() + +this.y * angle.getCos(),
                 +this.z);
     }
 
@@ -192,7 +194,7 @@ public final class Vector3D {
     /** @return result of normalizing the Vector3D so that the magnitude is 1.0 */
     public Vector3D normalize() {
         double magnitude = this.distance();
-        if (SLMath.isZero(magnitude)) {
+        if (Math.abs(magnitude) <= Math.pow(0.5, 32)) {
             return Vector3D.kI;
         } else {
             return this.div(magnitude);
@@ -236,11 +238,11 @@ public final class Vector3D {
     public String toString() {
         StringBuilder out = new StringBuilder();
         out.append("Vector3D(");
-        out.append(SLMath.round(x, STRING_SIGFIGS));
+        out.append(x);
         out.append(", ");
-        out.append(SLMath.round(y, STRING_SIGFIGS));
+        out.append(y);
         out.append(", ");
-        out.append(SLMath.round(z, STRING_SIGFIGS));
+        out.append(z);
         out.append(")");
         return out.toString();
     }

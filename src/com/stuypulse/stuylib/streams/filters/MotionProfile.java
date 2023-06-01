@@ -4,8 +4,9 @@
 
 package com.stuypulse.stuylib.streams.filters;
 
-import com.stuypulse.stuylib.math.SLMath;
 import com.stuypulse.stuylib.util.StopWatch;
+
+import edu.wpi.first.math.MathUtil;
 
 /**
  * A filter, that when applied to the input of a motor, will profile it. Similar to the way in which
@@ -69,12 +70,13 @@ public class MotionProfile implements IFilter {
                 double windup = Math.abs(mAccel) / mAccelLimit.doubleValue();
 
                 // If the windup is too small, just use normal algorithm to limit acceleration
+                double accelLimit = dt * mAccelLimit.doubleValue();
                 if (windup < dt) {
                     // Calculate acceleration needed to reach target
                     double accel = (target - mOutput) / dt - mAccel;
 
                     // Try to reach it while abiding by jerklimit
-                    mAccel += SLMath.clamp(accel, dt * mAccelLimit.doubleValue());
+                    mAccel += MathUtil.clamp(accel, -accelLimit, accelLimit);
                 } else {
                     // the position it would end up if it attempted to come to a full stop
                     double windA = 0.5 * mAccel * (dt + windup); // windup caused by acceleration
@@ -84,7 +86,7 @@ public class MotionProfile implements IFilter {
                     double accel = (target - future) / windup;
 
                     // Try to reach it while abiding by jerklimit
-                    mAccel += SLMath.clamp(accel, dt * mAccelLimit.doubleValue());
+                    mAccel += MathUtil.clamp(accel, -accelLimit, accelLimit);
                 }
 
             } else {
@@ -94,7 +96,7 @@ public class MotionProfile implements IFilter {
 
             // if there is an acceleration limit, limit the acceleration
             if (0 < mVelLimit.doubleValue()) {
-                mAccel = SLMath.clamp(mAccel, mVelLimit.doubleValue());
+                mAccel = MathUtil.clamp(mAccel, -mVelLimit.doubleValue(), mVelLimit.doubleValue());
             }
 
             // adjust output by calculated acceleration

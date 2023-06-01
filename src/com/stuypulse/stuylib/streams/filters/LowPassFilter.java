@@ -4,8 +4,9 @@
 
 package com.stuypulse.stuylib.streams.filters;
 
-import com.stuypulse.stuylib.math.SLMath;
 import com.stuypulse.stuylib.util.StopWatch;
+
+import edu.wpi.first.math.MathUtil;
 
 /**
  * Implementation of a real time IIR LowPassFilter
@@ -42,6 +43,6 @@ public class LowPassFilter implements IFilter {
 
         // Based on the value of a (which is determined by dt), the next value
         // could either change a lot, or not by much. (smaller dt = smaller change)
-        return mLastValue = SLMath.lerp(next, mLastValue, a);
+        return mLastValue = MathUtil.interpolate(next, mLastValue, a);
     }
 }

@@ -6,6 +6,7 @@ package com.stuypulse.stuylib.math;
 
 import com.stuypulse.stuylib.util.HashBuilder;
 
+import edu.wpi.first.math.geometry.Rotation2d;
 import edu.wpi.first.math.geometry.Translation2d;
 
 /**
@@ -98,35 +99,25 @@ public final class Vector2D {
         return this.distance();
     }
 
-    /** @return the angle of the Vector2D around 0, 0 */
-    public Angle getAngle() {
-        return Angle.fromVector(this);
-    }
-
-    /** @return polar coordinates created from this vector */
-    public Polar2D getPolar() {
-        return new Polar2D(this);
-    }
-
     /**
      * @param angle angle to rotate by
      * @param origin point to rotate around
      * @return result of rotation
      */
-    public Vector2D rotate(Angle angle, Vector2D origin) {
+    public Vector2D rotate(Rotation2d angle, Vector2D origin) {
         return new Vector2D(
-                origin.x + (this.x - origin.x) * angle.cos() - (this.y - origin.y) * angle.sin(),
-                origin.y + (this.y - origin.y) * angle.cos() + (this.x - origin.x) * angle.sin());
+                origin.x + (this.x - origin.x) * angle.getCos() - (this.y - origin.y) * angle.getSin(),
+                origin.y + (this.y - origin.y) * angle.getCos() + (this.x - origin.x) * angle.getSin());
     }
 
     /**
      * @param angle angle to rotate by
      * @return result of rotation
      */
-    public Vector2D rotate(Angle angle) {
+    public Vector2D rotate(Rotation2d angle) {
         return new Vector2D(
-                this.x * angle.cos() - this.y * angle.sin(),
-                this.y * angle.cos() + this.x * angle.sin());
+                this.x * angle.getCos() - this.y * angle.getSin(),
+                this.y * angle.getCos() + this.x * angle.getSin());
     }
 
     /**
@@ -196,7 +187,7 @@ public final class Vector2D {
     /** @return result of normalizing the Vector2D so that the magnitude is 1.0 */
     public Vector2D normalize() {
         final double magnitude = this.distance();
-        if (SLMath.isZero(magnitude)) {
+        if (Math.abs(magnitude) <= Math.pow(0.5, 32)) {
             return Vector2D.kI;
         } else {
             return this.div(magnitude);
@@ -258,9 +249,9 @@ public final class Vector2D {
     public String toString() {
         StringBuilder out = new StringBuilder();
         out.append("Vector2D(");
-        out.append(SLMath.round(x, STRING_SIGFIGS));
+        out.append(x);
         out.append(", ");
-        out.append(SLMath.round(y, STRING_SIGFIGS));
+        out.append(y);
         out.append(")");
         return out.toString();
     }

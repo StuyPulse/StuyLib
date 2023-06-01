@@ -4,7 +4,7 @@
 
 package com.stuypulse.stuylib.network.limelight;
 
-import com.stuypulse.stuylib.math.Angle;
+import edu.wpi.first.math.geometry.Rotation2d;
 
 /**
  * Class that is used to return solve 3D results from the limelight
@@ -19,9 +19,9 @@ public class Solve3DResult {
     private double mZ;
 
     // Rotation Data
-    private Angle mPitch;
-    private Angle mYaw;
-    private Angle mRoll;
+    private Rotation2d mPitch;
+    private Rotation2d mYaw;
+    private Rotation2d mRoll;
 
     /**
      * Initialize each part of the Solve3DResult
@@ -38,9 +38,9 @@ public class Solve3DResult {
         mY = y;
         mZ = z;
 
-        mPitch = Angle.fromDegrees(pitch);
-        mYaw = Angle.fromDegrees(yaw);
-        mRoll = Angle.fromDegrees(roll);
+        mPitch = Rotation2d.fromDegrees(pitch);
+        mYaw = Rotation2d.fromDegrees(yaw);
+        mRoll = Rotation2d.fromDegrees(roll);
     }
 
     /**
@@ -84,7 +84,7 @@ public class Solve3DResult {
      *
      * @return pitch
      */
-    public Angle getPitch() {
+    public Rotation2d getPitch() {
         return mPitch;
     }
 
@@ -93,7 +93,7 @@ public class Solve3DResult {
      *
      * @return yaw
      */
-    public Angle getYaw() {
+    public Rotation2d getYaw() {
         return mYaw;
     }
 
@@ -102,7 +102,7 @@ public class Solve3DResult {
      *
      * @return roll
      */
-    public Angle getRoll() {
+    public Rotation2d getRoll() {
         return mRoll;
     }
 }

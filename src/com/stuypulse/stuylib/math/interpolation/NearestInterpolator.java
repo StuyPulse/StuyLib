@@ -4,7 +4,6 @@
 
 package com.stuypulse.stuylib.math.interpolation;
 
-import com.stuypulse.stuylib.math.SLMath;
 import com.stuypulse.stuylib.math.Vector2D;
 
 import java.util.function.BiFunction;
@@ -110,7 +109,7 @@ public class NearestInterpolator implements Interpolator {
                     new NearestInterpolator(bias, new Vector2D(+0.25, +1), new Vector2D(+0.75, -1));
 
             for (double i = 0; i <= 1.0; i += 0.05) {
-                System.out.println(SLMath.round(i, 2) + " -> " + interp.get(i));
+                System.out.println(i + " -> " + interp.get(i));
             }
             System.out.println();
         }

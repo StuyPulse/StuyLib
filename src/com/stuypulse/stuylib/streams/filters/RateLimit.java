@@ -4,8 +4,9 @@
 
 package com.stuypulse.stuylib.streams.filters;
 
-import com.stuypulse.stuylib.math.SLMath;
 import com.stuypulse.stuylib.util.StopWatch;
+
+import edu.wpi.first.math.MathUtil;
 
 /**
  * This class lets you rate limit a stream of inputs
@@ -36,7 +37,8 @@ public class RateLimit implements IFilter {
     }
 
     public double get(double next) {
+        double rateLimit = mRateLimit.doubleValue() * mTimer.reset();
         return mLastValue +=
-                SLMath.clamp(next - mLastValue, mRateLimit.doubleValue() * mTimer.reset());
+                MathUtil.clamp(next - mLastValue, -rateLimit, rateLimit);
     }
 }
