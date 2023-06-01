@@ -4,21 +4,19 @@
 
 package com.stuypulse.stuylib.util;
 
-import com.stuypulse.stuylib.math.Angle;
+import com.stuypulse.stuylib.streams.filters.Derivative;
+
+import edu.wpi.first.math.geometry.Rotation2d;
 
 public class AngleVelocity {
 
-    private final StopWatch mTimer;
-    private Angle mPreviousAngle;
+    private Derivative velocity;
 
     public AngleVelocity() {
-        mTimer = new StopWatch();
-        mPreviousAngle = Angle.kZero;
+        velocity = new Derivative();
     }
 
-    public double get(Angle angle) {
-        double velocity = angle.velocityRadians(mPreviousAngle, mTimer.reset());
-        mPreviousAngle = angle;
-        return velocity;
+    public double get(Rotation2d angle) {
+        return velocity.get(angle.getDegrees());
     }
 }
