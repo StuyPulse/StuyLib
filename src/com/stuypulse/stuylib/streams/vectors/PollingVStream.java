@@ -31,19 +31,23 @@ public class PollingVStream implements VStream {
         }
 
         mResult = Vector2D.kOrigin;
-        mPoller = new Notifier(() -> mResult = stream.get());
+        mPoller = new Notifier(() -> this.set(stream.get()));
         mPoller.startPeriodic(dt);
     }
 
-    public Vector2D get() {
+    private final synchronized void set(Vector2D result) {
+        mResult = result;
+    }
+
+    public final synchronized Vector2D get() {
         return mResult;
     }
 
-    protected void finalize() {
+    protected synchronized void finalize() {
         close();
     }
 
-    public void close() {
+    public synchronized void close() {
         mPoller.close();
         mResult = Vector2D.kOrigin;
     }

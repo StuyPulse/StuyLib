@@ -29,19 +29,23 @@ public class PollingIStream implements IStream, AutoCloseable {
         }
 
         mResult = 0.0;
-        mPoller = new Notifier(() -> mResult = stream.get());
+        mPoller = new Notifier(() -> this.set(stream.get()));
         mPoller.startPeriodic(dt);
     }
 
-    public double get() {
+    private final synchronized void set(double result) {
+        mResult = result;
+    }
+
+    public final synchronized double get() {
         return mResult;
     }
 
-    protected void finalize() {
+    protected synchronized void finalize() {
         close();
     }
 
-    public void close() {
+    public synchronized void close() {
         mPoller.close();
         mResult = 0.0;
     }
