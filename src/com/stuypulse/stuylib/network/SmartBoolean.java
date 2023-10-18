@@ -32,7 +32,9 @@ public class SmartBoolean implements BStream {
      * @param value the default / initialization value for the value
      */
     public SmartBoolean(String id, boolean value) {
-        mHandle = NetworkTablesJNI.getEntry(NetworkTablesJNI.getDefaultInstance(), "SmartDashboard/" + id);
+        mHandle =
+                NetworkTablesJNI.getEntry(
+                        NetworkTablesJNI.getDefaultInstance(), "SmartDashboard/" + id);
         mDefaultValue = value;
         reset();
     }

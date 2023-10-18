@@ -7,6 +7,7 @@ package com.stuypulse.stuylib.network;
 import edu.wpi.first.networktables.GenericEntry;
 import edu.wpi.first.networktables.NetworkTable;
 import edu.wpi.first.networktables.NetworkTableInstance;
+
 import java.util.Set;
 
 /**
