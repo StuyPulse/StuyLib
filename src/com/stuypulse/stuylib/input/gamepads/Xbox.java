@@ -54,7 +54,7 @@ public class Xbox extends Gamepad {
 
     @Override
     public double getLeftY() {
-        return (flipped ? +1 : -1) * getJoystick().getLeftY();
+        return (flipped ? -1 : +1) * getJoystick().getLeftY();
     }
 
     // Right Stick //
@@ -65,7 +65,7 @@ public class Xbox extends Gamepad {
 
     @Override
     public double getRightY() {
-        return (flipped ? +1 : -1) * getJoystick().getRightY();
+        return (flipped ? -1 : +1) * getJoystick().getRightY();
     }
 
     // D-Pad //
