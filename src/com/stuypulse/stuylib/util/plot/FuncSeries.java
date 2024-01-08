@@ -1,13 +1,13 @@
-/* Copyright (c) 2023 StuyPulse Robotics. All rights reserved. */
+/* Copyright (c) 2024 StuyPulse Robotics. All rights reserved. */
 /* This work is licensed under the terms of the MIT license */
 /* found in the root directory of this project. */
 
 package com.stuypulse.stuylib.util.plot;
 
+import com.stuypulse.stuylib.streams.numbers.filters.IFilter;
+
 import java.util.ArrayList;
 import java.util.List;
-
-import com.stuypulse.stuylib.streams.numbers.filters.IFilter;
 
 /**
  * A FuncSeries plots a function (IFilter) over a given domain.

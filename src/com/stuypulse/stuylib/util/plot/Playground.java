@@ -1,4 +1,4 @@
-/* Copyright (c) 2023 StuyPulse Robotics. All rights reserved. */
+/* Copyright (c) 2024 StuyPulse Robotics. All rights reserved. */
 /* This work is licensed under the terms of the MIT license */
 /* found in the root directory of this project. */
 
@@ -6,7 +6,6 @@ package com.stuypulse.stuylib.util.plot;
 
 import com.stuypulse.stuylib.math.Vector2D;
 import com.stuypulse.stuylib.math.interpolation.*;
-import com.stuypulse.stuylib.streams.*;
 import com.stuypulse.stuylib.streams.angles.AFuser;
 import com.stuypulse.stuylib.streams.angles.AStream;
 import com.stuypulse.stuylib.streams.angles.filters.AHighPassFilter;
@@ -15,6 +14,7 @@ import com.stuypulse.stuylib.streams.angles.filters.AMotionProfile;
 import com.stuypulse.stuylib.streams.angles.filters.ARateLimit;
 import com.stuypulse.stuylib.streams.booleans.*;
 import com.stuypulse.stuylib.streams.booleans.filters.*;
+import com.stuypulse.stuylib.streams.numbers.*;
 import com.stuypulse.stuylib.streams.numbers.IStream;
 import com.stuypulse.stuylib.streams.numbers.filters.*;
 import com.stuypulse.stuylib.streams.vectors.*;
