@@ -22,7 +22,7 @@ public class Xbox extends Gamepad {
 
     // Constructor //
     public Xbox(XboxController joystick) {
-        this(joystick, false);
+        this(joystick, true);
     }
 
     protected Xbox(XboxController joystick, boolean flipped) {
@@ -162,6 +162,6 @@ public class Xbox extends Gamepad {
     }
 
     public Xbox flipped() {
-        return new Xbox(mJoystick, true);
+        return new Xbox(mJoystick, !flipped);
     }
 }
