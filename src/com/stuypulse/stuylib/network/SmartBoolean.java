@@ -16,7 +16,7 @@ import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
  *
  * @author Sam (sam.belliveau@gmail.com)
  */
-public class SmartBoolean implements BStream {
+public final class SmartBoolean implements BStream {
 
     /** The ID / Name for the value on {@link SmartDashboard}. */
     private final int mHandle;

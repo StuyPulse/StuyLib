@@ -16,7 +16,7 @@ import java.util.function.Supplier;
  *
  * @author Sam (sam.belliveau@gmail.com)
  */
-public class SmartString implements Supplier<String> {
+public final class SmartString implements Supplier<String> {
 
     /** The ID / Name for the value on {@link SmartDashboard}. */
     private final int mHandle;
