@@ -18,13 +18,17 @@ public class Xbox extends Gamepad {
 
     private XboxController mJoystick;
 
-    private boolean flipped;
+    private final boolean flipped;
 
     // Constructor //
     public Xbox(XboxController joystick) {
+        this(joystick, false);
+    }
+
+    protected Xbox(XboxController joystick, boolean flipped) {
         mJoystick = joystick;
 
-        flipped = false;
+        this.flipped = flipped;
     }
 
     public Xbox(int port) {
@@ -50,13 +54,13 @@ public class Xbox extends Gamepad {
 
     @Override
     public double getLeftY() {
-        return -getJoystick().getLeftY();
+        return (flipped ? +1 : -1) * getJoystick().getLeftY();
     }
 
     // Right Stick //
     @Override
     public double getRightX() {
-        return (flipped ? +1 : -1) * getJoystick().getRightX();
+        return getJoystick().getRightX();
     }
 
     @Override
@@ -158,7 +162,6 @@ public class Xbox extends Gamepad {
     }
 
     public Xbox flipped() {
-        flipped = true;
-        return this;
+        return new Xbox(mJoystick, true);
     }
 }
