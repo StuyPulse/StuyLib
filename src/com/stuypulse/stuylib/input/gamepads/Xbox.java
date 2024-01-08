@@ -18,9 +18,13 @@ public class Xbox extends Gamepad {
 
     private XboxController mJoystick;
 
+    private boolean flipped;
+
     // Constructor //
     public Xbox(XboxController joystick) {
         mJoystick = joystick;
+
+        flipped = false;
     }
 
     public Xbox(int port) {
@@ -46,18 +50,18 @@ public class Xbox extends Gamepad {
 
     @Override
     public double getLeftY() {
-        return getJoystick().getLeftY();
+        return -getJoystick().getLeftY();
     }
 
     // Right Stick //
     @Override
     public double getRightX() {
-        return getJoystick().getRightX();
+        return (flipped ? +1 : -1) * getJoystick().getRightX();
     }
 
     @Override
     public double getRightY() {
-        return getJoystick().getRightY();
+        return (flipped ? +1 : -1) * getJoystick().getRightY();
     }
 
     // D-Pad //
@@ -151,5 +155,10 @@ public class Xbox extends Gamepad {
     public void setRumble(double intensity) {
         mJoystick.setRumble(RumbleType.kLeftRumble, intensity);
         mJoystick.setRumble(RumbleType.kRightRumble, intensity);
+    }
+
+    public Xbox flipped() {
+        flipped = true;
+        return this;
     }
 }
