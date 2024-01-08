@@ -4,7 +4,7 @@
 
 package com.stuypulse.stuylib.streams.vectors.filters;
 
-import com.stuypulse.stuylib.streams.filters.Derivative;
+import com.stuypulse.stuylib.streams.numbers.filters.Derivative;
 
 /**
  * Filter that takes the derivative of a VStream with respect to time.

@@ -4,10 +4,10 @@
 
 package com.stuypulse.stuylib.util.plot;
 
-import com.stuypulse.stuylib.streams.filters.IFilter;
-
 import java.util.ArrayList;
 import java.util.List;
+
+import com.stuypulse.stuylib.streams.numbers.filters.IFilter;
 
 /**
  * A FuncSeries plots a function (IFilter) over a given domain.

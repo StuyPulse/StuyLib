@@ -4,7 +4,7 @@
 
 package com.stuypulse.stuylib.streams.vectors.filters;
 
-import com.stuypulse.stuylib.streams.filters.Integral;
+import com.stuypulse.stuylib.streams.numbers.filters.Integral;
 
 /**
  * A filter that integrates a VStream with respect to time.

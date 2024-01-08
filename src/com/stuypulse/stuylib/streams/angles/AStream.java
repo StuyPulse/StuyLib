@@ -5,8 +5,8 @@
 package com.stuypulse.stuylib.streams.angles;
 
 import com.stuypulse.stuylib.math.Angle;
-import com.stuypulse.stuylib.streams.IStream;
 import com.stuypulse.stuylib.streams.angles.filters.AFilter;
+import com.stuypulse.stuylib.streams.numbers.IStream;
 import com.stuypulse.stuylib.streams.vectors.VStream;
 
 import java.util.function.Supplier;

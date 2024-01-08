@@ -5,7 +5,7 @@
 package com.stuypulse.stuylib.streams.vectors.filters;
 
 import com.stuypulse.stuylib.math.Vector2D;
-import com.stuypulse.stuylib.streams.filters.IFilter;
+import com.stuypulse.stuylib.streams.numbers.filters.IFilter;
 
 /**
  * This is the VFilter interface class that gives a definition for how to implement a filter.

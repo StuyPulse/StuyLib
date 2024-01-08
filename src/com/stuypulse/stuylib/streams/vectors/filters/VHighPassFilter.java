@@ -4,7 +4,7 @@
 
 package com.stuypulse.stuylib.streams.vectors.filters;
 
-import com.stuypulse.stuylib.streams.filters.HighPassFilter;
+import com.stuypulse.stuylib.streams.numbers.filters.HighPassFilter;
 
 /**
  * A filter that applies a HighPassFilter to a VStream

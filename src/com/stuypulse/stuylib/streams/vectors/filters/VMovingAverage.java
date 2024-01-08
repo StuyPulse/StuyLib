@@ -4,7 +4,7 @@
 
 package com.stuypulse.stuylib.streams.vectors.filters;
 
-import com.stuypulse.stuylib.streams.filters.MovingAverage;
+import com.stuypulse.stuylib.streams.numbers.filters.MovingAverage;
 
 /**
  * A filter that takes a moving average of a VStream

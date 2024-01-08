@@ -5,7 +5,7 @@
 package com.stuypulse.stuylib.control.feedforward;
 
 import com.stuypulse.stuylib.control.Controller;
-import com.stuypulse.stuylib.streams.filters.IFilter;
+import com.stuypulse.stuylib.streams.numbers.filters.IFilter;
 
 /**
  * A feedforward term to account for gravity for motorized arms.

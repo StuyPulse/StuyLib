@@ -4,7 +4,7 @@
 
 package com.stuypulse.stuylib.streams.booleans.filters;
 
-import com.stuypulse.stuylib.streams.filters.HighPassFilter;
+import com.stuypulse.stuylib.streams.numbers.filters.HighPassFilter;
 
 /**
  * A simple boolean filter that returns true when a boolean stream changes depending on the type.

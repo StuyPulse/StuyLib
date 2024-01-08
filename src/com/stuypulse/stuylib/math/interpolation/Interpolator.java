@@ -5,7 +5,7 @@
 package com.stuypulse.stuylib.math.interpolation;
 
 import com.stuypulse.stuylib.math.Vector2D;
-import com.stuypulse.stuylib.streams.filters.IFilter;
+import com.stuypulse.stuylib.streams.numbers.filters.IFilter;
 
 import java.util.Arrays;
 

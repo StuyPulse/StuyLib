@@ -4,7 +4,7 @@
 
 package com.stuypulse.stuylib.streams.vectors.filters;
 
-import com.stuypulse.stuylib.streams.filters.LowPassFilter;
+import com.stuypulse.stuylib.streams.numbers.filters.LowPassFilter;
 
 /**
  * A filter that applies a LowPassFilter to a VStream

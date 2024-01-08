@@ -7,9 +7,9 @@ package com.stuypulse.stuylib.control.feedback;
 import com.stuypulse.stuylib.control.Controller;
 import com.stuypulse.stuylib.math.SLMath;
 import com.stuypulse.stuylib.network.SmartNumber;
-import com.stuypulse.stuylib.streams.filters.IFilter;
-import com.stuypulse.stuylib.streams.filters.IFilterGroup;
-import com.stuypulse.stuylib.streams.filters.TimedMovingAverage;
+import com.stuypulse.stuylib.streams.numbers.filters.IFilter;
+import com.stuypulse.stuylib.streams.numbers.filters.IFilterGroup;
+import com.stuypulse.stuylib.streams.numbers.filters.TimedMovingAverage;
 import com.stuypulse.stuylib.util.StopWatch;
 
 /**

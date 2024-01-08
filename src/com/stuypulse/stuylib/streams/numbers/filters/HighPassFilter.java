@@ -2,7 +2,7 @@
 /* This work is licensed under the terms of the MIT license */
 /* found in the root directory of this project. */
 
-package com.stuypulse.stuylib.streams.filters;
+package com.stuypulse.stuylib.streams.numbers.filters;
 
 /**
  * Implementation for of a real time IIR HighPassFilter

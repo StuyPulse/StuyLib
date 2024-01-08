@@ -2,7 +2,7 @@
 /* This work is licensed under the terms of the MIT license */
 /* found in the root directory of this project. */
 
-package com.stuypulse.stuylib.streams.filters;
+package com.stuypulse.stuylib.streams.numbers.filters;
 
 /**
  * This is the Filter interface class that gives a definition for how to implement a filter.

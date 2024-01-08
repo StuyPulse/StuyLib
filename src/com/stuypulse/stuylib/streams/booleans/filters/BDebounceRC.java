@@ -4,7 +4,7 @@
 
 package com.stuypulse.stuylib.streams.booleans.filters;
 
-import com.stuypulse.stuylib.streams.filters.LowPassFilter;
+import com.stuypulse.stuylib.streams.numbers.filters.LowPassFilter;
 
 /**
  * An RC Debounce class takes the average of the past few boolean values to remove noise.

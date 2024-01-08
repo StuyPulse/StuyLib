@@ -5,7 +5,7 @@
 package com.stuypulse.stuylib.control.feedforward;
 
 import com.stuypulse.stuylib.control.Controller;
-import com.stuypulse.stuylib.streams.filters.Derivative;
+import com.stuypulse.stuylib.streams.numbers.filters.Derivative;
 
 /**
  * A positional controller that uses a feedforward model to calculate motor outputs given positional

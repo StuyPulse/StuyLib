@@ -4,11 +4,11 @@
 
 package com.stuypulse.stuylib.util.plot;
 
-import com.stuypulse.stuylib.streams.IStream;
-
 import java.util.ArrayList;
 import java.util.LinkedList;
 import java.util.List;
+
+import com.stuypulse.stuylib.streams.numbers.IStream;
 
 /**
  * A TimeSeries is used to plot a stream of values (IStream) that changes over time.

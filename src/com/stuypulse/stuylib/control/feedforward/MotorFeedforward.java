@@ -7,7 +7,7 @@ package com.stuypulse.stuylib.control.feedforward;
 import com.stuypulse.stuylib.control.Controller;
 import com.stuypulse.stuylib.control.angle.AngleController;
 import com.stuypulse.stuylib.control.angle.feedforward.AnglePositionFeedforwardController;
-import com.stuypulse.stuylib.streams.filters.Derivative;
+import com.stuypulse.stuylib.streams.numbers.filters.Derivative;
 
 /**
  * A motor feedforward model, which can be used to calculate an output voltage given a desired

@@ -4,7 +4,7 @@
 
 package com.stuypulse.stuylib.network;
 
-import com.stuypulse.stuylib.streams.IStream;
+import com.stuypulse.stuylib.streams.numbers.IStream;
 
 import edu.wpi.first.networktables.NetworkTablesJNI;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;

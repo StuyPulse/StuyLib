@@ -6,7 +6,7 @@ package com.stuypulse.stuylib.control.angle;
 
 import com.stuypulse.stuylib.math.Angle;
 import com.stuypulse.stuylib.streams.angles.filters.AFilter;
-import com.stuypulse.stuylib.streams.filters.IFilter;
+import com.stuypulse.stuylib.streams.numbers.filters.IFilter;
 
 /**
  * Base class of controller classes of continuous systems. This means that both the setpoint and

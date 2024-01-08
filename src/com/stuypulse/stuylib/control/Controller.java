@@ -4,7 +4,7 @@
 
 package com.stuypulse.stuylib.control;
 
-import com.stuypulse.stuylib.streams.filters.IFilter;
+import com.stuypulse.stuylib.streams.numbers.filters.IFilter;
 
 /**
  * A controller calculates an output variable given a setpoint and measurement of a single variable.

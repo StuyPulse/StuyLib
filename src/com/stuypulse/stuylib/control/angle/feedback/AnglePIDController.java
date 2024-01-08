@@ -8,8 +8,8 @@ import com.stuypulse.stuylib.control.angle.AngleController;
 import com.stuypulse.stuylib.math.Angle;
 import com.stuypulse.stuylib.math.SLMath;
 import com.stuypulse.stuylib.network.SmartNumber;
-import com.stuypulse.stuylib.streams.filters.IFilter;
-import com.stuypulse.stuylib.streams.filters.IFilterGroup;
+import com.stuypulse.stuylib.streams.numbers.filters.IFilter;
+import com.stuypulse.stuylib.streams.numbers.filters.IFilterGroup;
 import com.stuypulse.stuylib.util.StopWatch;
 
 /**

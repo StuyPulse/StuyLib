@@ -5,8 +5,8 @@
 package com.stuypulse.stuylib.streams.vectors;
 
 import com.stuypulse.stuylib.math.Vector2D;
-import com.stuypulse.stuylib.streams.IStream;
 import com.stuypulse.stuylib.streams.angles.AStream;
+import com.stuypulse.stuylib.streams.numbers.IStream;
 import com.stuypulse.stuylib.streams.vectors.filters.VFilter;
 
 import java.util.function.Supplier;
