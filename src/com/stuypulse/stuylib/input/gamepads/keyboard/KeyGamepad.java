@@ -1,4 +1,4 @@
-/* Copyright (c) 2023 StuyPulse Robotics. All rights reserved. */
+/* Copyright (c) 2024 StuyPulse Robotics. All rights reserved. */
 /* This work is licensed under the terms of the MIT license */
 /* found in the root directory of this project. */
 
@@ -19,7 +19,7 @@ import com.stuypulse.stuylib.input.Gamepad;
  *
  * <br>
  *
- * @see com.stuypulse.stuylib.streams.filters.IFilter
+ * @see com.stuypulse.stuylib.streams.numbers.filters.IFilter
  * @author Myles Pasetsky (selym3)
  */
 public class KeyGamepad extends Gamepad {

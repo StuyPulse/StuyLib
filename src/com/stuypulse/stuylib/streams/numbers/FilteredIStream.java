@@ -1,10 +1,10 @@
-/* Copyright (c) 2023 StuyPulse Robotics. All rights reserved. */
+/* Copyright (c) 2024 StuyPulse Robotics. All rights reserved. */
 /* This work is licensed under the terms of the MIT license */
 /* found in the root directory of this project. */
 
-package com.stuypulse.stuylib.streams;
+package com.stuypulse.stuylib.streams.numbers;
 
-import com.stuypulse.stuylib.streams.filters.IFilter;
+import com.stuypulse.stuylib.streams.numbers.filters.IFilter;
 
 /**
  * Takes an {@link IStream} and a {@link IFilter} and makes a {@link FilteredIStream}

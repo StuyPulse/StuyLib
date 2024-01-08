@@ -1,10 +1,10 @@
-/* Copyright (c) 2023 StuyPulse Robotics. All rights reserved. */
+/* Copyright (c) 2024 StuyPulse Robotics. All rights reserved. */
 /* This work is licensed under the terms of the MIT license */
 /* found in the root directory of this project. */
 
 package com.stuypulse.stuylib.streams.booleans.filters;
 
-import com.stuypulse.stuylib.streams.filters.HighPassFilter;
+import com.stuypulse.stuylib.streams.numbers.filters.HighPassFilter;
 
 /**
  * A simple boolean filter that returns true when a boolean stream changes depending on the type.

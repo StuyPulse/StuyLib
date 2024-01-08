@@ -1,4 +1,4 @@
-/* Copyright (c) 2023 StuyPulse Robotics. All rights reserved. */
+/* Copyright (c) 2024 StuyPulse Robotics. All rights reserved. */
 /* This work is licensed under the terms of the MIT license */
 /* found in the root directory of this project. */
 
@@ -7,9 +7,9 @@ package com.stuypulse.stuylib.control.feedback;
 import com.stuypulse.stuylib.control.Controller;
 import com.stuypulse.stuylib.math.SLMath;
 import com.stuypulse.stuylib.network.SmartNumber;
-import com.stuypulse.stuylib.streams.filters.IFilter;
-import com.stuypulse.stuylib.streams.filters.IFilterGroup;
-import com.stuypulse.stuylib.streams.filters.TimedMovingAverage;
+import com.stuypulse.stuylib.streams.numbers.filters.IFilter;
+import com.stuypulse.stuylib.streams.numbers.filters.IFilterGroup;
+import com.stuypulse.stuylib.streams.numbers.filters.TimedMovingAverage;
 import com.stuypulse.stuylib.util.StopWatch;
 
 /**

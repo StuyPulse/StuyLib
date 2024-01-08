@@ -1,10 +1,10 @@
-/* Copyright (c) 2023 StuyPulse Robotics. All rights reserved. */
+/* Copyright (c) 2024 StuyPulse Robotics. All rights reserved. */
 /* This work is licensed under the terms of the MIT license */
 /* found in the root directory of this project. */
 
 package com.stuypulse.stuylib.network;
 
-import com.stuypulse.stuylib.streams.IStream;
+import com.stuypulse.stuylib.streams.numbers.IStream;
 
 import edu.wpi.first.networktables.NetworkTablesJNI;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
@@ -34,7 +34,9 @@ public final class SmartNumber extends Number implements IStream {
      * @param value the default / initialization value for the value
      */
     public SmartNumber(String id, double value) {
-        mHandle = NetworkTablesJNI.getEntry(NetworkTablesJNI.getDefaultInstance(), "SmartDashboard/" + id);
+        mHandle =
+                NetworkTablesJNI.getEntry(
+                        NetworkTablesJNI.getDefaultInstance(), "SmartDashboard/" + id);
         mDefaultValue = value;
         reset();
     }

@@ -1,4 +1,4 @@
-/* Copyright (c) 2023 StuyPulse Robotics. All rights reserved. */
+/* Copyright (c) 2024 StuyPulse Robotics. All rights reserved. */
 /* This work is licensed under the terms of the MIT license */
 /* found in the root directory of this project. */
 
@@ -18,9 +18,17 @@ public class Xbox extends Gamepad {
 
     private XboxController mJoystick;
 
+    private final boolean flipped;
+
     // Constructor //
     public Xbox(XboxController joystick) {
+        this(joystick, true);
+    }
+
+    protected Xbox(XboxController joystick, boolean flipped) {
         mJoystick = joystick;
+
+        this.flipped = flipped;
     }
 
     public Xbox(int port) {
@@ -46,7 +54,7 @@ public class Xbox extends Gamepad {
 
     @Override
     public double getLeftY() {
-        return getJoystick().getLeftY();
+        return (flipped ? -1 : +1) * getJoystick().getLeftY();
     }
 
     // Right Stick //
@@ -57,7 +65,7 @@ public class Xbox extends Gamepad {
 
     @Override
     public double getRightY() {
-        return getJoystick().getRightY();
+        return (flipped ? -1 : +1) * getJoystick().getRightY();
     }
 
     // D-Pad //
@@ -151,5 +159,9 @@ public class Xbox extends Gamepad {
     public void setRumble(double intensity) {
         mJoystick.setRumble(RumbleType.kLeftRumble, intensity);
         mJoystick.setRumble(RumbleType.kRightRumble, intensity);
+    }
+
+    public Xbox flipped() {
+        return new Xbox(mJoystick, !flipped);
     }
 }

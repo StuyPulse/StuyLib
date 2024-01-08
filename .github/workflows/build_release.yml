@@ -10,8 +10,8 @@ permissions:
   id-token: write
 
 env:
-  JAVA_VERSION: 1.11
-  GRADLE_VERSION: 7.2
+  JAVA_VERSION: 1.17
+  GRADLE_VERSION: 8.4
 
 jobs:
   pages:

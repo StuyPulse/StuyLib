@@ -1,12 +1,12 @@
-/* Copyright (c) 2023 StuyPulse Robotics. All rights reserved. */
+/* Copyright (c) 2024 StuyPulse Robotics. All rights reserved. */
 /* This work is licensed under the terms of the MIT license */
 /* found in the root directory of this project. */
 
 package com.stuypulse.stuylib.streams.vectors;
 
 import com.stuypulse.stuylib.math.Vector2D;
-import com.stuypulse.stuylib.streams.IStream;
 import com.stuypulse.stuylib.streams.angles.AStream;
+import com.stuypulse.stuylib.streams.numbers.IStream;
 import com.stuypulse.stuylib.streams.vectors.filters.VFilter;
 
 import java.util.function.Supplier;

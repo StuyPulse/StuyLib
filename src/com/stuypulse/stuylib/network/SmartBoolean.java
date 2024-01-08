@@ -1,4 +1,4 @@
-/* Copyright (c) 2023 StuyPulse Robotics. All rights reserved. */
+/* Copyright (c) 2024 StuyPulse Robotics. All rights reserved. */
 /* This work is licensed under the terms of the MIT license */
 /* found in the root directory of this project. */
 
@@ -16,7 +16,7 @@ import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
  *
  * @author Sam (sam.belliveau@gmail.com)
  */
-public class SmartBoolean implements BStream {
+public final class SmartBoolean implements BStream {
 
     /** The ID / Name for the value on {@link SmartDashboard}. */
     private final int mHandle;
@@ -32,7 +32,9 @@ public class SmartBoolean implements BStream {
      * @param value the default / initialization value for the value
      */
     public SmartBoolean(String id, boolean value) {
-        mHandle = NetworkTablesJNI.getEntry(NetworkTablesJNI.getDefaultInstance(), "SmartDashboard/" + id);
+        mHandle =
+                NetworkTablesJNI.getEntry(
+                        NetworkTablesJNI.getDefaultInstance(), "SmartDashboard/" + id);
         mDefaultValue = value;
         reset();
     }
