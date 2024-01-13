@@ -5,6 +5,7 @@
 package com.stuypulse.stuylib.util.plot;
 
 import com.stuypulse.stuylib.math.Vector2D;
+import com.stuypulse.stuylib.math.Regression.LinearRegression;
 import com.stuypulse.stuylib.math.interpolation.*;
 import com.stuypulse.stuylib.streams.angles.AFuser;
 import com.stuypulse.stuylib.streams.angles.AStream;
@@ -35,11 +36,11 @@ public class Playground {
         int WIDTH = 800;
         int HEIGHT = 600;
 
-        double MIN_X = -1.0;
-        double MAX_X = 1.0;
+        double MIN_X = 0.0;
+        double MAX_X = 10.0;
 
-        double MIN_Y = -1.0;
-        double MAX_Y = 1.0;
+        double MIN_Y = 0.0;
+        double MAX_Y = 10.0;
 
         Settings SETTINGS =
                 new Settings()
@@ -70,6 +71,11 @@ public class Playground {
     }
 
     public static void main(String[] args) throws InterruptedException {
+
+
+
+
+
         Plot plot = new Plot(Constants.SETTINGS);
 
         VStream m = VStream.create(() -> plot.getMouse().sub(new Vector2D(0.5, 0.5)).mul(2));
@@ -96,14 +102,22 @@ public class Playground {
         VStream delay = VStream.create(() -> delay_angle.get().getVector().mul(1.1));
         VStream afuser = VStream.create(() -> afuser_angle.get().getVector().mul(1.05));
 
-        plot.addSeries(Constants.make("Angle", mouse))
-                .addSeries(Constants.make("Jerk", jerk))
-                .addSeries(Constants.make("Rate", rate))
-                .addSeries(Constants.make("LPF", lpf))
-                .addSeries(Constants.make("HPF", hpf))
-                .addSeries(Constants.make("afuser", afuser))
-                .addSeries(Constants.make("delayed", delay))
-                .addSeries(Constants.make("mouse", m));
+        Vector2D[] refPoints = {new Vector2D(1,2), new  Vector2D(2,5), new Vector2D(6, 10)};
+        LinearRegression LinearRegression = new LinearRegression(refPoints);
+        plot.addSeries(new FuncSeries(
+            new Config("linear regression", 1000),
+            new Domain(0, 10),
+            x -> LinearRegression.predictedValue(x)
+        ));
+
+        // plot.addSeries(Constants.make("Angle", mouse))
+        //         .addSeries(Constants.make("Jerk", jerk))
+        //         .addSeries(Constants.make("Rate", rate))
+        //         .addSeries(Constants.make("LPF", lpf))
+        //         .addSeries(Constants.make("HPF", hpf))
+        //         .addSeries(Constants.make("afuser", afuser))
+        //         .addSeries(Constants.make("delayed", delay))
+        //         .addSeries(Constants.make("mouse", m));
         //
         // .addSeries(Constants.make("y=x", x -> x))
         // .addSeries(
