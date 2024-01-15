@@ -1,4 +1,4 @@
-# StuyLib Streams Library 
+# StuyLib Streams Library
 
 ## What is a Stream
 
@@ -23,7 +23,7 @@ An [IStream](https://github.com/StuyPulse/StuyLib/blob/main/src/com/stuypulse/st
 
 ### [Filtered IStream](https://github.com/StuyPulse/StuyLib/blob/main/src/com/stuypulse/stuylib/streams/FilteredIStream.java)
 
-A [Filtered ISteam](https://github.com/StuyPulse/StuyLib/blob/main/src/com/stuypulse/stuylib/streams/FilteredIStream.java) applies a [Filter](https://github.com/StuyPulse/StuyLib/tree/main/src/com/stuypulse/stuylib/streams/filters) to a stream, and returns that value instead. 
+A [Filtered ISteam](https://github.com/StuyPulse/StuyLib/blob/main/src/com/stuypulse/stuylib/streams/FilteredIStream.java) applies a [Filter](https://github.com/StuyPulse/StuyLib/tree/main/src/com/stuypulse/stuylib/streams/filters) to a stream, and returns that value instead.
 
 Continuing from the example above, we could do:
 
@@ -37,7 +37,7 @@ System.out.println(filtered_speed.get()); // Prints the filtered value of the st
 
 CSVIStream has two child classes in it, `CSVIStream.Writer` and `CSVIStream.Reader`.
 
-`CSVIStream.Writer` is used to save the values of a stream as you read it, and can be used as so. 
+`CSVIStream.Writer` is used to save the values of a stream as you read it, and can be used as so.
 
 ```java
 IStream recorded_speed = new CSVIStream.Writer("./speeds.csv", speed);

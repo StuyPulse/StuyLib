@@ -14,11 +14,7 @@ import edu.wpi.first.math.geometry.Rotation2d;
  * @author Sam (sam.belliveau@gmail.com)
  */
 public final class Angle {
-
-    // Configuration for toString() function
-    private static final boolean STRING_RADIANS = false;
-    private static final int STRING_SIGFIGS = 5;
-
+    
     /******************************************************/
     /*** CONSTANT ANGLE VALUES, SET AT BENCHMARK VALUES ***/
     /******************************************************/
@@ -493,20 +489,5 @@ public final class Angle {
     @Override
     public int hashCode() {
         return Double.hashCode(this.toRadians());
-    }
-
-    /** @return the string representation of the angle */
-    @Override
-    public String toString() {
-        StringBuilder out = new StringBuilder();
-        out.append("Angle(");
-
-        if (STRING_RADIANS) {
-            out.append(SLMath.round(this.toRadians(), STRING_SIGFIGS)).append("pi, ");
-        }
-
-        out.append(SLMath.round(this.toDegrees(), STRING_SIGFIGS)).append("deg)");
-
-        return out.toString();
     }
 }

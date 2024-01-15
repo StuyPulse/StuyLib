@@ -1,3 +1,3 @@
-# StuyLib Misc Utils.
+# StuyLib Misc Utils
 
 WIP...

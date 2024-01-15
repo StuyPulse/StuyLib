@@ -1,3 +1,0 @@
-# StuyLib Limelight Library
-
-WIP...
