@@ -41,10 +41,13 @@ jobs:
         uses: actions/upload-pages-artifact@v3.0.0
         with:
           path: './docs/'
+          name: github-pages
       
       - name: Deploy to GitHub Pages
         id: deployment
         uses: actions/deploy-pages@v4.0.3
+        with:
+          artifact_name: github-pages
 
   deploy:
     name: Prepare Jar & JitPack
