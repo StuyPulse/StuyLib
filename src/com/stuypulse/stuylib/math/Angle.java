@@ -14,7 +14,7 @@ import edu.wpi.first.math.geometry.Rotation2d;
  * @author Sam (sam.belliveau@gmail.com)
  */
 public final class Angle {
-    
+
     /******************************************************/
     /*** CONSTANT ANGLE VALUES, SET AT BENCHMARK VALUES ***/
     /******************************************************/
