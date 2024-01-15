@@ -30,7 +30,7 @@ jobs:
           java-version: ${{ env.JAVA_VERSION }}
 
       - name: Build Javadocs - Gradle ${{ env.GRADLE_VERSION }}
-        uses: gradle/gradle-build-action@v2.3.0-beta.1
+        uses: gradle/gradle-build-action@v2.11.1
         with:
           arguments: javadoc -Pversion=${{ github.event.release.tag_name }}
         
@@ -38,13 +38,13 @@ jobs:
         uses: actions/configure-pages@v2.0.0
       
       - name: Upload artifact
-        uses: actions/upload-pages-artifact@v1.0.3
+        uses: actions/upload-pages-artifact@v3.0.0
         with:
           path: './docs/'
       
       - name: Deploy to GitHub Pages
         id: deployment
-        uses: actions/deploy-pages@v1.0.9
+        uses: actions/deploy-pages@v4.0.3
 
   deploy:
     name: Prepare Jar & JitPack
@@ -60,7 +60,7 @@ jobs:
           java-version: ${{ env.JAVA_VERSION }}
 
       - name: Build - Gradle ${{ env.GRADLE_VERSION }}
-        uses: gradle/gradle-build-action@v2.3.0-beta.1
+        uses: gradle/gradle-build-action@v2.11.1
         with:
           arguments: build -Pversion=${{ github.event.release.tag_name }}
 
