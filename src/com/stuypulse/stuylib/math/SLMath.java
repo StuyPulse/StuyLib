@@ -16,37 +16,6 @@ public final class SLMath {
     // Prevent the class from being extended at all
     private SLMath() {}
 
-    /*********************/
-    /*** INTERPOLATION ***/
-    /*********************/
-
-    /**
-     * Linear Interpolation from start to end using value t [0...1]
-     *
-     * @param start value of linear interpolation when t = 0
-     * @param end value of linear interpolation when t = 1
-     * @param t time value for linear interpolation [0...1]
-     * @return interpolated value
-     */
-    public static double lerp(double start, double end, double t) {
-        return start + (end - start) * clamp(t, 0.0, 1.0);
-    }
-
-    /**
-     * Maps an input in one range to an output in another range
-     *
-     * @param input value to map
-     * @param minInput minimum value of input
-     * @param maxInput maximum value of input
-     * @param minOutput minimum value of output
-     * @param maxOutput maximum value of output
-     * @return the mapped value
-     */
-    public static double map(
-            double input, double minInput, double maxInput, double minOutput, double maxOutput) {
-        return lerp(minOutput, maxOutput, (input - minInput) / (maxInput - minInput));
-    }
-
     /**************/
     /*** LIMITS ***/
     /**************/
@@ -117,26 +86,6 @@ public final class SLMath {
     /*****************************************/
 
     /**
-     * [WARNING! THIS WILL KEEP THE SIGN OF THE INPUT NUMBER] Square number and keep sign
-     *
-     * @param x input
-     * @return squared input with the same sign
-     */
-    public static double square(double x) {
-        return clamp(x * x * Math.signum(x));
-    }
-
-    /**
-     * Cube a number
-     *
-     * @param x input
-     * @return cubed input that
-     */
-    public static double cube(double x) {
-        return x * x * x;
-    }
-
-    /**
      * spow (signless pow), raises a number to a power without affecting the sign of the number
      *
      * @param x input
@@ -145,86 +94,5 @@ public final class SLMath {
      */
     public static double spow(double x, double power) {
         return Math.pow(Math.abs(x), power) * Math.signum(x);
-    }
-
-    /*****************/
-    /*** MISC MATH ***/
-    /*****************/
-
-    /**
-     * fpow (fast pow), is a pow function that takes in an integer for the exponent. This allows it
-     * to be much faster on repeated calls due to the fact that it does not need to deal with
-     * fractional exponents.
-     *
-     * @param base base of the power
-     * @param exp integer exponent of power
-     * @return result of calculation
-     */
-    public static double fpow(double base, int exp) {
-        // Output of the fpow function
-        double out = 1.0;
-
-        // If the exponent is negative, divide instead of multiply
-        if (exp < 0) {
-            // Flip exponent to make calculations easier
-            exp = -exp;
-
-            // Fast integer power algorithm
-            while (exp > 0) {
-                if ((exp & 1) == 1) {
-                    out /= base;
-                }
-                base *= base;
-                exp >>= 1;
-            }
-        } else {
-            // Fast integer power algorithm
-            while (exp > 0) {
-                if ((exp & 1) == 1) {
-                    out *= base;
-                }
-                base *= base;
-                exp >>= 1;
-            }
-        }
-
-        // Return
-        return out;
-    }
-
-    /**
-     * Round a double by a certain amount of sigfigs in base 10
-     *
-     * @param n number to round
-     * @param sigfigs amount of sigfigs to round it to
-     * @return rounded number
-     */
-    public static double round(double n, int sigfigs) {
-        // The value 0 returns nan if not accounted for
-        if (n == 0.0) {
-            return 0.0;
-        }
-
-        // Digit place that number starts at
-        int digits = (int) Math.floor(Math.log10(Math.abs(n)));
-
-        // Amount to multiply before multiplying based on
-        // the sigfigs and digits in the number
-        double mul = fpow(10.0, sigfigs - digits);
-
-        // Round number by the multiplier calculated
-        return Math.round(n * mul) / mul;
-    }
-
-    private static final double FLT_ELIPSON = fpow(0.5, 32);
-
-    /**
-     * Compare a double to zero using a Elipson
-     *
-     * @param num number to compare to zero
-     * @return if the number equals a number close to zero
-     */
-    public static boolean isZero(double num) {
-        return Math.abs(num) < FLT_ELIPSON;
     }
 }

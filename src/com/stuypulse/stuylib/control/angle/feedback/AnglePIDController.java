@@ -190,15 +190,4 @@ public class AnglePIDController extends AngleController {
         mDFilter = IFilter.create(derivativeFilter);
         return this;
     }
-
-    /** @return information about this PIDController */
-    public String toString() {
-        return "(P: "
-                + SLMath.round(getP(), 4)
-                + ", I: "
-                + SLMath.round(getI(), 4)
-                + ", D: "
-                + SLMath.round(getD(), 4)
-                + ")";
-    }
 }
