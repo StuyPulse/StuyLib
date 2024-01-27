@@ -168,6 +168,14 @@ public final class Vector2D {
     }
 
     /**
+     * @param power power to raise magnitude of vector to
+     * @return result of raising the magnitude of the vector to the power
+     */
+    public Vector2D pow(double power) {
+        return this.mul(Math.pow(magnitude(), power - 1));
+    }
+
+    /**
      * @param other Vector2D to perform dot product with
      * @return result of performing the dot product with the other Vector2D
      */
