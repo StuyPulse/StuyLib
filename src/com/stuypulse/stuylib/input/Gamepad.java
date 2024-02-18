@@ -128,14 +128,14 @@ public class Gamepad implements Sendable {
         return false;
     }
 
-    // Start / Select / Option //
-    /** @return If the select button is pressed */
-    public boolean getRawSelectButton() {
+    // Alt-Left / Alt-Right //
+    /** @return If the alt-left button is pressed */
+    public boolean getRawAltLeftButton() {
         return false;
     }
 
-    /** @return If the start button is pressed */
-    public boolean getRawStartButton() {
+    /** @return If the alt-right button is pressed */
+    public boolean getRawAltRightButton() {
         return false;
     }
 
@@ -334,15 +334,15 @@ public class Gamepad implements Sendable {
         return new Trigger(this::getRawRightButton);
     }
 
-    // Select / Start / Option //
-    /** @return Trigger that activates with {@link #getRawSelectButton()} */
-    public final Trigger getSelectButton() {
-        return new Trigger(this::getRawSelectButton);
+    // Alt-Left / Alt-Right //
+    /** @return Trigger that activates with {@link #getRawAltLeftButton()} */
+    public final Trigger getAltLeftButton() {
+        return new Trigger(this::getRawAltLeftButton);
     }
 
-    /** @return Trigger that activates with {@link #getRawStartButton()} */
-    public final Trigger getStartButton() {
-        return new Trigger(this::getRawStartButton);
+    /** @return Trigger that activates with {@link #getRawAltRightButton()} */
+    public final Trigger getAltRightButton() {
+        return new Trigger(this::getRawAltRightButton);
     }
 
     // Analog Stick Triggers //
@@ -393,9 +393,9 @@ public class Gamepad implements Sendable {
         builder.addBooleanProperty("Face Button Left", this::getRawLeftButton, x -> {});
         builder.addBooleanProperty("Face Button Right", this::getRawRightButton, x -> {});
 
-        // Start / Select / Option
-        builder.addBooleanProperty("Button Select", this::getRawSelectButton, x -> {});
-        builder.addBooleanProperty("Button Start", this::getRawStartButton, x -> {});
+        // Alt-Left / Alt-Right //
+        builder.addBooleanProperty("Button Alt Left", this::getRawAltLeftButton, x -> {});
+        builder.addBooleanProperty("Button Alt Right", this::getRawAltRightButton, x -> {});
 
         // Analog Stick Buttons
         builder.addBooleanProperty("Left Stick Button", this::getRawLeftStickButton, x -> {});
