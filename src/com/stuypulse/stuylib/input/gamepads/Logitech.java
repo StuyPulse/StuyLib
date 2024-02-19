@@ -132,14 +132,14 @@ public class Logitech extends WPIGamepad {
             return getRawButton(4);
         }
 
-        // Alt-Left / Alt-Right //
+        // Left Menu / Right Menu //
         @Override
-        public boolean getRawAltLeftButton() {
+        public boolean getRawLeftMenuButton() {
             return getRawButton(9);
         }
 
         @Override
-        public boolean getRawAltRightButton() {
+        public boolean getRawRightMenuButton() {
             return getRawButton(10);
         }
 
