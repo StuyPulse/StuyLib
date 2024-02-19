@@ -132,14 +132,14 @@ public class Xbox extends Gamepad {
         return getJoystick().getYButton();
     }
 
-    // Start / Select //
+    // Left Menu / Right Menu //
     @Override
-    public boolean getRawSelectButton() {
+    public boolean getRawLeftMenuButton() {
         return getJoystick().getBackButton();
     }
 
     @Override
-    public boolean getRawStartButton() {
+    public boolean getRawRightMenuButton() {
         return getJoystick().getStartButton();
     }
 

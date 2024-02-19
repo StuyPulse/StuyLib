@@ -128,14 +128,14 @@ public class Gamepad implements Sendable {
         return false;
     }
 
-    // Start / Select / Option //
-    /** @return If the select button is pressed */
-    public boolean getRawSelectButton() {
+    // Left Menu / Right Menu //
+    /** @return If the left menu button is pressed */
+    public boolean getRawLeftMenuButton() {
         return false;
     }
 
-    /** @return If the start button is pressed */
-    public boolean getRawStartButton() {
+    /** @return If the right menu button is pressed */
+    public boolean getRawRightMenuButton() {
         return false;
     }
 
@@ -334,15 +334,15 @@ public class Gamepad implements Sendable {
         return new Trigger(this::getRawRightButton);
     }
 
-    // Select / Start / Option //
-    /** @return Trigger that activates with {@link #getRawSelectButton()} */
-    public final Trigger getSelectButton() {
-        return new Trigger(this::getRawSelectButton);
+    // Left Menu / Right Menu //
+    /** @return Trigger that activates with {@link #getRawLeftMenuButton()} */
+    public final Trigger getLeftMenuButton() {
+        return new Trigger(this::getRawLeftMenuButton);
     }
 
-    /** @return Trigger that activates with {@link #getRawStartButton()} */
-    public final Trigger getStartButton() {
-        return new Trigger(this::getRawStartButton);
+    /** @return Trigger that activates with {@link #getRawRightMenuButton()} */
+    public final Trigger getRightMenuButton() {
+        return new Trigger(this::getRawRightMenuButton);
     }
 
     // Analog Stick Triggers //
@@ -393,9 +393,9 @@ public class Gamepad implements Sendable {
         builder.addBooleanProperty("Face Button Left", this::getRawLeftButton, x -> {});
         builder.addBooleanProperty("Face Button Right", this::getRawRightButton, x -> {});
 
-        // Start / Select / Option
-        builder.addBooleanProperty("Button Select", this::getRawSelectButton, x -> {});
-        builder.addBooleanProperty("Button Start", this::getRawStartButton, x -> {});
+        // Left Menu / Right Menu //
+        builder.addBooleanProperty("Button Left Menu", this::getRawLeftMenuButton, x -> {});
+        builder.addBooleanProperty("Button Right Menu", this::getRawRightMenuButton, x -> {});
 
         // Analog Stick Buttons
         builder.addBooleanProperty("Left Stick Button", this::getRawLeftStickButton, x -> {});

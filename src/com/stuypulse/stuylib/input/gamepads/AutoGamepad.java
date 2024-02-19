@@ -169,13 +169,13 @@ public final class AutoGamepad extends Gamepad {
         return getDetectedGamepad().getRawTopButton();
     }
 
-    // Start / Select //
-    public boolean getRawSelectButton() {
-        return getDetectedGamepad().getRawSelectButton();
+    // Left Menu / Right Menu //
+    public boolean getRawLeftMenuButton() {
+        return getDetectedGamepad().getRawLeftMenuButton();
     }
 
-    public boolean getRawStartButton() {
-        return getDetectedGamepad().getRawStartButton();
+    public boolean getRawRightMenuButton() {
+        return getDetectedGamepad().getRawRightMenuButton();
     }
 
     // Analog Stick Buttons //
