@@ -72,15 +72,6 @@ All code MUST be commented, and no single class should be too complicated.
 
 At the top of each class, give a brief description of the class, along with an author tag which contains an email just in case anybody has any questions on how to use it.
 
-# Current Positions
+# Star History
 
-Current Lead Repository Maintainer
-
- - [Myles Pasetsky (2023)](https://github.com/selym3)
-
-Notable Contributors
-
- - [Sam Belliveau (2022)](https://github.com/Sam-Belliveau)
- - [Ivan Wei (2022)](https://github.com/iwei20)
- - [Winston Peng (2020)](https://github.com/CreativePenguin)
- - [Kevin Cai (2020)](https://github.com/Kevin16777126)
+[![Star History Chart](https://api.star-history.com/svg?repos=StuyPulse/StuyLib&type=Date)](https://star-history.com/#StuyPulse/StuyLib&Date)
