@@ -1,5 +1,5 @@
 buildscript {
-   ext.WPI_VER = "2024.1.1"
+   ext.WPI_VER = "2025.1.1"
 }
 
 plugins {
@@ -7,7 +7,7 @@ plugins {
 
    id "maven-publish"
 
-   id "edu.wpi.first.GradleRIO" version "${WPI_VER}"
+   id "edu.wpi.first.GradleRIO" version "2025.1.1"
    id "com.diffplug.spotless" version "6.22.0"
    id "com.github.spotbugs" version "5.2.0"
 }
