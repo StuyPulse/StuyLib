@@ -4,7 +4,7 @@ on: [push, fork, pull_request]
 
 env:
   JAVA_VERSION: 1.17
-  GRADLE_VERSION: 8.4
+  GRADLE_VERSION: 8.12.1
   
 jobs:   
   spotless-check:
@@ -67,7 +67,7 @@ jobs:
         arguments: build
     
     - name: Upload StuyLib Build
-      uses: actions/upload-artifact@v3.1.0
+      uses: actions/upload-artifact@v4.0.0
       with:
         name: StuyLib-Release
         path: ./build/libs/*.jar
