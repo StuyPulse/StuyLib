@@ -1,117 +1,100 @@
-buildscript {
-   ext.WPI_VER = "2025.2.1"
-}
-
 plugins {
-   id "java"
-
-   id "maven-publish"
-
-   id "edu.wpi.first.GradleRIO" version "2025.2.1"
-   id "com.diffplug.spotless" version "6.22.0"
-   id "com.github.spotbugs" version "5.2.0"
+    id "java"
+    id "edu.wpi.first.GradleRIO2027" version "2027.0.0-alpha-1"
+    id "maven-publish"
 }
-
-group = 'com.stuypulse'
 
 java {
-   sourceCompatibility = JavaVersion.VERSION_17
-   targetCompatibility = JavaVersion.VERSION_17
+    sourceCompatibility = JavaVersion.VERSION_17
+    targetCompatibility = JavaVersion.VERSION_17
 }
 
-sourceSets {
-   main {
-      java {
-         srcDir "src"
-      }
-   }
-}
+def ROBOT_MAIN_CLASS = "com.stuypulse.robot.Main"
 
-configurations {
-   jaxDoclet
-}
+deploy {
+    targets {
+        systemcore(getTargetTypeClass('SystemCore')) {
+            team = project.frc.getTeamOrDefault(694)
+            debug = project.frc.getDebugOrDefault(false)
 
-dependencies { 
-   implementation wpi.java.deps.wpilib()
-   implementation wpi.java.vendor.java()
-
-   nativeDebug wpi.java.deps.wpilibJniDebug(wpi.platforms.desktop)
-   nativeDebug wpi.java.vendor.jniDebug(wpi.platforms.desktop)
-   simulationDebug wpi.sim.enableDebug()
-
-   nativeRelease wpi.java.deps.wpilibJniRelease(wpi.platforms.desktop)
-   nativeRelease wpi.java.vendor.jniRelease(wpi.platforms.desktop)
-   simulationRelease wpi.sim.enableRelease()
-
-   implementation "edu.wpi.first.ntcore:ntcore-java:${WPI_VER}"
-   implementation "edu.wpi.first.wpiutil:wpiutil-java:${WPI_VER}"
-   runtimeOnly "edu.wpi.first.ntcore:ntcore-jni:${WPI_VER}:windowsx86"
-   runtimeOnly "edu.wpi.first.ntcore:ntcore-jni:${WPI_VER}:windowsx86-64"
-   runtimeOnly "edu.wpi.first.ntcore:ntcore-jni:${WPI_VER}:linuxx86-64"
-   runtimeOnly "edu.wpi.first.ntcore:ntcore-jni:${WPI_VER}:osxx86-64"
-
-   implementation group: 'org.knowm.xchart', name: 'xchart', version: '3.2.2'
-
-   testImplementation 'junit:junit:4.12'
-}
-
-publishing {
-   publications {
-      maven(MavenPublication) {
-         groupId = 'com.stuypulse.stuylib'
-         artifactId = 'library'
-         version = "${version}"
-
-         from components.java
-      }
-   }
-}
-
-final YEAR = new Date().format('yyyy')
-
-spotless {
-   java {
-      licenseHeader """
-/* Copyright (c) ${YEAR} StuyPulse Robotics. All rights reserved. */
-/* This work is licensed under the terms of the MIT license */
-/* found in the root directory of this project. */
-
-"""
-
-      googleJavaFormat('1.13.0').aosp()
-
-      trimTrailingWhitespace()
-      endWithNewline()
-
-      importOrder('com.stuypulse.stuylib', 'com.stuypulse', 'edu.wpi')
-      removeUnusedImports()
-   }
-}
-
-// Example to configure HTML report
-spotbugsMain {
-    reports {
-        html {
-            enabled = true
-            destination = file("$buildDir/reports/spotbugs/main/spotbugs.html")
-            stylesheet = 'fancy-hist.xsl'
+            artifacts {
+                frcJava(getArtifactTypeClass('FRCJavaArtifact')) {
+                }
+                frcStaticFileDeploy(getArtifactTypeClass('FileTreeArtifact')) {
+                    files = project.fileTree('src/main/deploy')
+                    directory = '/home/systemcore/deploy'
+                    deleteOldFiles = false
+                }
+            }
         }
     }
 }
 
-spotbugs {
-   ignoreFailures = true
-   effort = 'max'
+def deployArtifact = deploy.targets.systemcore.artifacts.frcJava
+
+wpi.java.debugJni = false
+
+dependencies {
+    annotationProcessor wpi.java.deps.wpilibAnnotations()
+    implementation wpi.java.deps.wpilib()
+    implementation wpi.java.vendor.java()
+
+    systemcoreDebug wpi.java.deps.wpilibJniDebug(wpi.platforms.systemcore)
+    systemcoreDebug wpi.java.vendor.jniDebug(wpi.platforms.systemcore)
+
+    systemcoreRelease wpi.java.deps.wpilibJniRelease(wpi.platforms.systemcore)
+    systemcoreRelease wpi.java.vendor.jniRelease(wpi.platforms.systemcore)
+
+    nativeDebug wpi.java.deps.wpilibJniDebug(wpi.platforms.desktop)
+    nativeDebug wpi.java.vendor.jniDebug(wpi.platforms.desktop)
+    simulationDebug wpi.sim.enableDebug()
+
+    nativeRelease wpi.java.deps.wpilibJniRelease(wpi.platforms.desktop)
+    nativeRelease wpi.java.vendor.jniRelease(wpi.platforms.desktop)
+    simulationRelease wpi.sim.enableRelease()
+
+    testImplementation 'org.junit.jupiter:junit-jupiter:5.10.1'
+    testRuntimeOnly 'org.junit.platform:junit-platform-launcher'
 }
 
-javadoc {
-  destinationDir = file('docs/')
+test {
+    useJUnitPlatform()
+    systemProperty 'junit.jupiter.extensions.autodetection.enabled', 'true'
 }
 
-build {
-   dependsOn javadoc
-}
+wpi.sim.addGui().defaultEnabled = true
+wpi.sim.addDriverstation()
 
 jar {
-   from sourceSets.main.allSource
+    from sourceSets.main.output
+
+    manifest {
+        attributes(
+            'Implementation-Title': 'StuyLib',
+            'Implementation-Version': version,
+            'Main-Class': ROBOT_MAIN_CLASS
+        )
+    }
+
+    duplicatesStrategy = DuplicatesStrategy.EXCLUDE
+}
+
+publishing {
+    publications {
+        mavenJava(MavenPublication) {
+            from components.java
+            groupId = 'com.github.StuyPulse'
+            artifactId = 'StuyLib'
+            version = project.version
+        }
+    }
+}
+
+deployArtifact.jarTask = jar
+
+wpi.java.configureExecutableTasks(jar)
+wpi.java.configureTestTasks(test)
+
+tasks.withType(JavaCompile) {
+    options.compilerArgs.add '-XDstringConcat=inline'
 }
