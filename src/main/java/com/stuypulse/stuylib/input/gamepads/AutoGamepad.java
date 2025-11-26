@@ -67,7 +67,7 @@ public final class AutoGamepad extends Gamepad {
         if (type == null) return mNull;
         else {
             switch (type) {
-                case kXInputGamepad:
+                case kXInputUnknown:
                     return mXbox;
                 case kHIDJoystick:
                     return mLogitech;
