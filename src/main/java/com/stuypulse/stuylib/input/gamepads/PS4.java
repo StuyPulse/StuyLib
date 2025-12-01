@@ -6,6 +6,7 @@ package com.stuypulse.stuylib.input.gamepads;
 
 import com.stuypulse.stuylib.input.WPIGamepad;
 
+import edu.wpi.first.wpilibj.DriverStation;
 import edu.wpi.first.wpilibj.Joystick;
 
 /**
@@ -53,24 +54,24 @@ public class PS4 extends WPIGamepad {
     }
 
     // D-Pad //
-    @Override
+     @Override
     public boolean getRawDPadUp() {
-        return getJoystick().getPOV() == 0;
+        return getJoystick().getPOV().equals(DriverStation.POVDirection.Up);
     }
 
     @Override
     public boolean getRawDPadDown() {
-        return getJoystick().getPOV() == 180;
+        return getJoystick().getPOV().equals(DriverStation.POVDirection.Down);
     }
 
     @Override
     public boolean getRawDPadLeft() {
-        return getJoystick().getPOV() == 270;
+        return getJoystick().getPOV().equals(DriverStation.POVDirection.Left);
     }
 
     @Override
     public boolean getRawDPadRight() {
-        return getJoystick().getPOV() == 90;
+        return getJoystick().getPOV().equals(DriverStation.POVDirection.Right);
     }
 
     // Bumpers //
