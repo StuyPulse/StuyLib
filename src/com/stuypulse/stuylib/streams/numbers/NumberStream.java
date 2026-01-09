@@ -1,4 +1,4 @@
-/* Copyright (c) 2025 StuyPulse Robotics. All rights reserved. */
+/* Copyright (c) 2026 StuyPulse Robotics. All rights reserved. */
 /* This work is licensed under the terms of the MIT license */
 /* found in the root directory of this project. */
 
@@ -25,31 +25,41 @@ public class NumberStream extends Number implements IStream {
         mStream = stream;
     }
 
-    /** @return value from stream */
+    /**
+     * @return value from stream
+     */
     @Override
     public double get() {
         return mStream.get();
     }
 
-    /** @return value from stream */
+    /**
+     * @return value from stream
+     */
     @Override
     public double doubleValue() {
         return get();
     }
 
-    /** @return value from stream as float */
+    /**
+     * @return value from stream as float
+     */
     @Override
     public float floatValue() {
         return (float) get();
     }
 
-    /** @return value from stream as integer */
+    /**
+     * @return value from stream as integer
+     */
     @Override
     public int intValue() {
         return (int) get();
     }
 
-    /** @return value from stream as long */
+    /**
+     * @return value from stream as long
+     */
     @Override
     public long longValue() {
         return (long) get();

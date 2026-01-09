@@ -1,4 +1,4 @@
-/* Copyright (c) 2025 StuyPulse Robotics. All rights reserved. */
+/* Copyright (c) 2026 StuyPulse Robotics. All rights reserved. */
 /* This work is licensed under the terms of the MIT license */
 /* found in the root directory of this project. */
 
@@ -110,17 +110,23 @@ public class PIDController extends Controller {
         }
     }
 
-    /** @return the P value being used by the PID controller. */
+    /**
+     * @return the P value being used by the PID controller.
+     */
     public double getP() {
         return Math.max(mP.doubleValue(), 0.0);
     }
 
-    /** @return the P value being used by the PID controller. */
+    /**
+     * @return the P value being used by the PID controller.
+     */
     public double getI() {
         return Math.max(mI.doubleValue(), 0.0);
     }
 
-    /** @return the P value being used by the PID controller. */
+    /**
+     * @return the P value being used by the PID controller.
+     */
     public double getD() {
         return Math.max(mD.doubleValue(), 0.0);
     }

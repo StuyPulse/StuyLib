@@ -1,4 +1,4 @@
-/* Copyright (c) 2025 StuyPulse Robotics. All rights reserved. */
+/* Copyright (c) 2026 StuyPulse Robotics. All rights reserved. */
 /* This work is licensed under the terms of the MIT license */
 /* found in the root directory of this project. */
 
@@ -86,22 +86,30 @@ public abstract class Controller {
         return this;
     }
 
-    /** @return the most recent setpoint of the controller */
+    /**
+     * @return the most recent setpoint of the controller
+     */
     public final double getSetpoint() {
         return mSetpoint;
     }
 
-    /** @return the most recent measurement of the controller */
+    /**
+     * @return the most recent measurement of the controller
+     */
     public final double getMeasurement() {
         return mMeasurement;
     }
 
-    /** @return the most recent output of the controller */
+    /**
+     * @return the most recent output of the controller
+     */
     public final double getOutput() {
         return mOutput;
     }
 
-    /** @return the most recent error of the controller */
+    /**
+     * @return the most recent error of the controller
+     */
     public final double getError() {
         return getSetpoint() - getMeasurement();
     }

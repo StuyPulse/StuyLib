@@ -1,4 +1,4 @@
-/* Copyright (c) 2025 StuyPulse Robotics. All rights reserved. */
+/* Copyright (c) 2026 StuyPulse Robotics. All rights reserved. */
 /* This work is licensed under the terms of the MIT license */
 /* found in the root directory of this project. */
 
@@ -25,7 +25,9 @@ public class ARateLimit implements AFilter {
     private Angle mLastValue;
     private Number mRateLimit;
 
-    /** @param rateLimit The max speed in rad/s. */
+    /**
+     * @param rateLimit The max speed in rad/s.
+     */
     public ARateLimit(Number rateLimit) {
         if (rateLimit.doubleValue() <= 0) {
             throw new IllegalArgumentException("rateLimit must be a positive number");

@@ -1,4 +1,4 @@
-/* Copyright (c) 2025 StuyPulse Robotics. All rights reserved. */
+/* Copyright (c) 2026 StuyPulse Robotics. All rights reserved. */
 /* This work is licensed under the terms of the MIT license */
 /* found in the root directory of this project. */
 
@@ -245,14 +245,18 @@ public final class Angle {
         mCos = 0.0;
     }
 
-    /** @param radians the value of the new angle */
+    /**
+     * @param radians the value of the new angle
+     */
     private Angle(double radians) {
         mRadians = normalizeRadians(radians, 0.0);
         mSin = Math.sin(mRadians);
         mCos = Math.cos(mRadians);
     }
 
-    /** @return the value of the angle in radians centered around 0.0 (+/- pi) */
+    /**
+     * @return the value of the angle in radians centered around 0.0 (+/- pi)
+     */
     public double toRadians() {
         return mRadians;
     }
@@ -265,7 +269,9 @@ public final class Angle {
         return normalizeRadians(this.toRadians(), center);
     }
 
-    /** @return the value of the angle in rotations centered around 0.0 (+/- 0.5) */
+    /**
+     * @return the value of the angle in rotations centered around 0.0 (+/- 0.5)
+     */
     public double toRotations() {
         return this.toRadians() / TAU;
     }
@@ -278,7 +284,9 @@ public final class Angle {
         return normalizeRotations(this.toRotations(), center);
     }
 
-    /** @return the value of the angle in degrees centered around 0.0 (+/- 180) */
+    /**
+     * @return the value of the angle in degrees centered around 0.0 (+/- 180)
+     */
     public double toDegrees() {
         return Math.toDegrees(this.toRadians());
     }
@@ -436,32 +444,44 @@ public final class Angle {
         return fromRadians(this.toRadians() / scale);
     }
 
-    /** @return an angle with a negative value */
+    /**
+     * @return an angle with a negative value
+     */
     public Angle negative() {
         return fromRadians(0.0 - this.toRadians());
     }
 
-    /** @return an angle rotated by 180 degrees or Pi radians */
+    /**
+     * @return an angle rotated by 180 degrees or Pi radians
+     */
     public Angle opposite() {
         return fromRadians(PI + this.toRadians());
     }
 
-    /** @return the sine value of this angle */
+    /**
+     * @return the sine value of this angle
+     */
     public double sin() {
         return mSin;
     }
 
-    /** @return the cosine value of this angle */
+    /**
+     * @return the cosine value of this angle
+     */
     public double cos() {
         return mCos;
     }
 
-    /** @return the tangent value of this angle */
+    /**
+     * @return the tangent value of this angle
+     */
     public double tan() {
         return mSin / mCos;
     }
 
-    /** @return the angle as a point on the unit circle */
+    /**
+     * @return the angle as a point on the unit circle
+     */
     public Vector2D getVector() {
         return new Vector2D(this.cos(), this.sin());
     }
@@ -485,7 +505,9 @@ public final class Angle {
         return false;
     }
 
-    /** @return the hashCode of the double for the value in radians */
+    /**
+     * @return the hashCode of the double for the value in radians
+     */
     @Override
     public int hashCode() {
         return Double.hashCode(this.toRadians());

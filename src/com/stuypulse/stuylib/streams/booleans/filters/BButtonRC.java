@@ -1,4 +1,4 @@
-/* Copyright (c) 2025 StuyPulse Robotics. All rights reserved. */
+/* Copyright (c) 2026 StuyPulse Robotics. All rights reserved. */
 /* This work is licensed under the terms of the MIT license */
 /* found in the root directory of this project. */
 
@@ -29,7 +29,9 @@ public interface BButtonRC extends BFilter {
     public static class Both implements BButtonRC {
         private HighPassFilter mFilter;
 
-        /** @param decay time in seconds to remain true after the BStream is pressed or released */
+        /**
+         * @param decay time in seconds to remain true after the BStream is pressed or released
+         */
         public Both(Number decay) {
             mFilter = new HighPassFilter(decay);
         }
@@ -43,7 +45,9 @@ public interface BButtonRC extends BFilter {
     public static class Pressed implements BButtonRC {
         private HighPassFilter mFilter;
 
-        /** @param decay time in seconds to remain true after the BStream has been pressed */
+        /**
+         * @param decay time in seconds to remain true after the BStream has been pressed
+         */
         public Pressed(Number decay) {
             mFilter = new HighPassFilter(decay);
         }
@@ -56,7 +60,9 @@ public interface BButtonRC extends BFilter {
     public static class Released implements BButtonRC {
         private HighPassFilter mFilter;
 
-        /** @param decay time in seconds to remain true after the BStream has been released */
+        /**
+         * @param decay time in seconds to remain true after the BStream has been released
+         */
         public Released(Number decay) {
             mFilter = new HighPassFilter(decay);
         }

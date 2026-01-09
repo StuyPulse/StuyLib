@@ -1,4 +1,4 @@
-/* Copyright (c) 2025 StuyPulse Robotics. All rights reserved. */
+/* Copyright (c) 2026 StuyPulse Robotics. All rights reserved. */
 /* This work is licensed under the terms of the MIT license */
 /* found in the root directory of this project. */
 
@@ -24,7 +24,9 @@ public class RateLimit implements IFilter {
     private double mLastValue;
     private Number mRateLimit;
 
-    /** @param rateLimit The amount that the value should be able to change in one second. */
+    /**
+     * @param rateLimit The amount that the value should be able to change in one second.
+     */
     public RateLimit(Number rateLimit) {
         if (rateLimit.doubleValue() <= 0) {
             throw new IllegalArgumentException("rateLimit must be a positive number");

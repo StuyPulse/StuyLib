@@ -1,4 +1,4 @@
-/* Copyright (c) 2025 StuyPulse Robotics. All rights reserved. */
+/* Copyright (c) 2026 StuyPulse Robotics. All rights reserved. */
 /* This work is licensed under the terms of the MIT license */
 /* found in the root directory of this project. */
 
@@ -53,10 +53,14 @@ public interface IStream extends DoubleSupplier {
         return () -> stream.get() ? 1.0 : 0.0;
     }
 
-    /** @return next value in the stream */
+    /**
+     * @return next value in the stream
+     */
     public double get();
 
-    /** @return get IStream as a double */
+    /**
+     * @return get IStream as a double
+     */
     public default double getAsDouble() {
         return get();
     }

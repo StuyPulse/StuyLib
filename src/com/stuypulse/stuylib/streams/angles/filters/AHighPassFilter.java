@@ -1,4 +1,4 @@
-/* Copyright (c) 2025 StuyPulse Robotics. All rights reserved. */
+/* Copyright (c) 2026 StuyPulse Robotics. All rights reserved. */
 /* This work is licensed under the terms of the MIT license */
 /* found in the root directory of this project. */
 
@@ -15,7 +15,9 @@ public class AHighPassFilter implements AFilter {
 
     private ALowPassFilter mInverse;
 
-    /** @param rc time constant for high pass filter */
+    /**
+     * @param rc time constant for high pass filter
+     */
     public AHighPassFilter(Number rc) {
         mInverse = new ALowPassFilter(rc);
     }

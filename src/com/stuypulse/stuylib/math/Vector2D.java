@@ -1,4 +1,4 @@
-/* Copyright (c) 2025 StuyPulse Robotics. All rights reserved. */
+/* Copyright (c) 2026 StuyPulse Robotics. All rights reserved. */
 /* This work is licensed under the terms of the MIT license */
 /* found in the root directory of this project. */
 
@@ -52,13 +52,17 @@ public final class Vector2D {
         this.y = axis[1];
     }
 
-    /** @param translation Translation2d to copy this vector into */
+    /**
+     * @param translation Translation2d to copy this vector into
+     */
     public Vector2D(Translation2d translation) {
         this.x = translation.getX();
         this.y = translation.getY();
     }
 
-    /** @return double array of size 2 defined as {x, y} */
+    /**
+     * @return double array of size 2 defined as {x, y}
+     */
     public double[] getArray() {
         return new double[] {x, y};
     }
@@ -83,17 +87,23 @@ public final class Vector2D {
         return Math.hypot(other.x - this.x, other.y - this.y);
     }
 
-    /** @return distance from 0, 0 */
+    /**
+     * @return distance from 0, 0
+     */
     public double distance() {
         return Math.hypot(this.x, this.y);
     }
 
-    /** @return magnitude of the vector (same as distance from 0, 0) */
+    /**
+     * @return magnitude of the vector (same as distance from 0, 0)
+     */
     public double magnitude() {
         return this.distance();
     }
 
-    /** @return the angle of the Vector2D around 0, 0 */
+    /**
+     * @return the angle of the Vector2D around 0, 0
+     */
     public Angle getAngle() {
         return Angle.fromVector(this);
     }
@@ -191,7 +201,9 @@ public final class Vector2D {
         return this.x * other.y - this.y * other.x;
     }
 
-    /** @return result of normalizing the Vector2D so that the magnitude is 1.0 */
+    /**
+     * @return result of normalizing the Vector2D so that the magnitude is 1.0
+     */
     public Vector2D normalize() {
         final double magnitude = this.distance();
         if (magnitude <= 1e-9) {
@@ -219,7 +231,9 @@ public final class Vector2D {
         return this;
     }
 
-    /** @return result of negating the x and y components */
+    /**
+     * @return result of negating the x and y components
+     */
     public Vector2D negative() {
         return new Vector2D(-this.x, -this.y);
     }

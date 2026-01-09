@@ -1,4 +1,4 @@
-/* Copyright (c) 2025 StuyPulse Robotics. All rights reserved. */
+/* Copyright (c) 2026 StuyPulse Robotics. All rights reserved. */
 /* This work is licensed under the terms of the MIT license */
 /* found in the root directory of this project. */
 
@@ -41,17 +41,23 @@ public final class SmartNumber extends Number implements IStream {
         reset();
     }
 
-    /** @return the value of the number from SmartDashboard */
+    /**
+     * @return the value of the number from SmartDashboard
+     */
     public double get() {
         return NetworkTablesJNI.getDouble(mHandle, mDefaultValue);
     }
 
-    /** @return the default value of the number */
+    /**
+     * @return the default value of the number
+     */
     public double getDefault() {
         return mDefaultValue;
     }
 
-    /** @param value what the value on {@link SmartDashboard} will be set to */
+    /**
+     * @param value what the value on {@link SmartDashboard} will be set to
+     */
     public void set(Number value) {
         NetworkTablesJNI.setDouble(mHandle, 0, value.doubleValue());
     }
@@ -61,22 +67,30 @@ public final class SmartNumber extends Number implements IStream {
         set(getDefault());
     }
 
-    /** @return the value of the number from {@link SmartDashboard} (casted to a double) */
+    /**
+     * @return the value of the number from {@link SmartDashboard} (casted to a double)
+     */
     public double doubleValue() {
         return (double) this.get();
     }
 
-    /** @return the value of the number from {@link SmartDashboard} (casted to a float) */
+    /**
+     * @return the value of the number from {@link SmartDashboard} (casted to a float)
+     */
     public float floatValue() {
         return (float) this.get();
     }
 
-    /** @return the value of the number from {@link SmartDashboard} (casted to a int) */
+    /**
+     * @return the value of the number from {@link SmartDashboard} (casted to a int)
+     */
     public int intValue() {
         return (int) this.get();
     }
 
-    /** @return the value of the number from {@link SmartDashboard} (casted to a long) */
+    /**
+     * @return the value of the number from {@link SmartDashboard} (casted to a long)
+     */
     public long longValue() {
         return (long) this.get();
     }

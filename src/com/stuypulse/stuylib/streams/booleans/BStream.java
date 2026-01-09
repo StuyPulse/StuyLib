@@ -1,4 +1,4 @@
-/* Copyright (c) 2025 StuyPulse Robotics. All rights reserved. */
+/* Copyright (c) 2026 StuyPulse Robotics. All rights reserved. */
 /* This work is licensed under the terms of the MIT license */
 /* found in the root directory of this project. */
 
@@ -41,10 +41,14 @@ public interface BStream extends BooleanSupplier {
         return input::get;
     }
 
-    /** @return next value in the stream */
+    /**
+     * @return next value in the stream
+     */
     public boolean get();
 
-    /** @return get BStream as a Boolean */
+    /**
+     * @return get BStream as a Boolean
+     */
     public default boolean getAsBoolean() {
         return get();
     }
@@ -108,7 +112,9 @@ public interface BStream extends BooleanSupplier {
         return () -> !get();
     }
 
-    /** @return a WPILib Trigger that is pressed when this class is true */
+    /**
+     * @return a WPILib Trigger that is pressed when this class is true
+     */
     public default Trigger toButton() {
         return new Trigger(this);
     }

@@ -1,4 +1,4 @@
-/* Copyright (c) 2025 StuyPulse Robotics. All rights reserved. */
+/* Copyright (c) 2026 StuyPulse Robotics. All rights reserved. */
 /* This work is licensed under the terms of the MIT license */
 /* found in the root directory of this project. */
 
@@ -25,7 +25,9 @@ public interface AStream extends Supplier<Angle> {
         return () -> stream.get().getAngle();
     }
 
-    /** @return next value in the stream */
+    /**
+     * @return next value in the stream
+     */
     public Angle get();
 
     /**

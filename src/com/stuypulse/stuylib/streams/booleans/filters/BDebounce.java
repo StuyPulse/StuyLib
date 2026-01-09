@@ -1,4 +1,4 @@
-/* Copyright (c) 2025 StuyPulse Robotics. All rights reserved. */
+/* Copyright (c) 2026 StuyPulse Robotics. All rights reserved. */
 /* This work is licensed under the terms of the MIT license */
 /* found in the root directory of this project. */
 
@@ -29,7 +29,9 @@ public interface BDebounce extends BFilter {
         private final StopWatch mTimer;
         private final Number mDebounceTime;
 
-        /** @param debounceTime amount of time the BStream must remain true before returning true */
+        /**
+         * @param debounceTime amount of time the BStream must remain true before returning true
+         */
         public Rising(Number debounceTime) {
             mTimer = new StopWatch();
             mDebounceTime = debounceTime;
@@ -85,7 +87,9 @@ public interface BDebounce extends BFilter {
         private final Number mDebounceTime;
         private boolean mLastValue;
 
-        /** @param debounceTime amount of time the BStream must remain constant before changing */
+        /**
+         * @param debounceTime amount of time the BStream must remain constant before changing
+         */
         public Both(Number debounceTime) {
             mTimer = new StopWatch();
             mDebounceTime = debounceTime;

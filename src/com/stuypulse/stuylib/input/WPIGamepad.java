@@ -1,4 +1,4 @@
-/* Copyright (c) 2025 StuyPulse Robotics. All rights reserved. */
+/* Copyright (c) 2026 StuyPulse Robotics. All rights reserved. */
 /* This work is licensed under the terms of the MIT license */
 /* found in the root directory of this project. */
 
@@ -37,12 +37,16 @@ public class WPIGamepad extends Gamepad {
     /*** CONSTRUCTOR ***/
     /*******************/
 
-    /** @param joystick WPI Joystick that will be stored in this class */
+    /**
+     * @param joystick WPI Joystick that will be stored in this class
+     */
     public WPIGamepad(Joystick joystick) {
         this.mJoy = joystick;
     }
 
-    /** @param port The port that the gamepad is plugged into */
+    /**
+     * @param port The port that the gamepad is plugged into
+     */
     public WPIGamepad(int port) {
         this(new Joystick(port));
     }
@@ -56,12 +60,16 @@ public class WPIGamepad extends Gamepad {
         return "WPIGamepad";
     }
 
-    /** @return if Gamepad has a Joystick */
+    /**
+     * @return if Gamepad has a Joystick
+     */
     public final boolean hasJoystick() {
         return getJoystick() != null;
     }
 
-    /** @return Underlying joystick */
+    /**
+     * @return Underlying joystick
+     */
     public final Joystick getJoystick() {
         return this.mJoy;
     }
@@ -96,7 +104,9 @@ public class WPIGamepad extends Gamepad {
         return getJoystick().getRawAxis(axis);
     }
 
-    /** @param intensity amount to make the gamepad rumble */
+    /**
+     * @param intensity amount to make the gamepad rumble
+     */
     public final void setRumble(double intensity) {
         getJoystick().setRumble(Joystick.RumbleType.kLeftRumble, intensity);
         getJoystick().setRumble(Joystick.RumbleType.kRightRumble, intensity);

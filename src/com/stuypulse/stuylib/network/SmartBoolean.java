@@ -1,4 +1,4 @@
-/* Copyright (c) 2025 StuyPulse Robotics. All rights reserved. */
+/* Copyright (c) 2026 StuyPulse Robotics. All rights reserved. */
 /* This work is licensed under the terms of the MIT license */
 /* found in the root directory of this project. */
 
@@ -39,17 +39,23 @@ public final class SmartBoolean implements BStream {
         reset();
     }
 
-    /** @return the value of the boolean from {@link SmartDashboard} */
+    /**
+     * @return the value of the boolean from {@link SmartDashboard}
+     */
     public boolean get() {
         return NetworkTablesJNI.getBoolean(mHandle, mDefaultValue);
     }
 
-    /** @return the default value of the boolean */
+    /**
+     * @return the default value of the boolean
+     */
     public boolean getDefault() {
         return mDefaultValue;
     }
 
-    /** @param value what the value on {@link SmartDashboard} will be set to */
+    /**
+     * @param value what the value on {@link SmartDashboard} will be set to
+     */
     public void set(boolean value) {
         NetworkTablesJNI.setBoolean(mHandle, 0, value);
     }
