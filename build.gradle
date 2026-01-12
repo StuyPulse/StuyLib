@@ -43,12 +43,6 @@ dependencies {
    nativeRelease wpi.java.vendor.jniRelease(wpi.platforms.desktop)
    simulationRelease wpi.sim.enableRelease()
 
-   implementation "edu.wpi.first.ntcore:ntcore-java:${WPI_VER}"
-   implementation "edu.wpi.first.wpiutil:wpiutil-java:${WPI_VER}"
-   runtimeOnly "edu.wpi.first.ntcore:ntcore-jni:${WPI_VER}:windowsx86"
-   runtimeOnly "edu.wpi.first.ntcore:ntcore-jni:${WPI_VER}:windowsx86-64"
-   runtimeOnly "edu.wpi.first.ntcore:ntcore-jni:${WPI_VER}:linuxx86-64"
-   runtimeOnly "edu.wpi.first.ntcore:ntcore-jni:${WPI_VER}:osxx86-64"
 
    implementation group: 'org.knowm.xchart', name: 'xchart', version: '3.2.2'
 
