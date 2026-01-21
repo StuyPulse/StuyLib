@@ -16,7 +16,7 @@ import edu.wpi.first.wpilibj.Notifier;
  */
 public class PollingAStream implements AStream, AutoCloseable {
 
-    private Notifier mPoller;
+    private final Notifier mPoller;
     private volatile Angle mResult;
 
     /**
@@ -31,19 +31,23 @@ public class PollingAStream implements AStream, AutoCloseable {
         }
 
         mResult = Angle.kNull;
-        mPoller = new Notifier(() -> mResult = stream.get());
+        mPoller = new Notifier(() -> this.set(stream.get()));
         mPoller.startPeriodic(dt);
     }
 
-    public Angle get() {
+    private final synchronized set(Angle result) {
+        mResult = result;
+    }
+    
+    public final synchronized Angle get() {
         return mResult;
     }
 
-    protected void finalize() {
+    protected final synchronized void finalize() {
         close();
     }
 
-    public void close() {
+    public final synchronized void close() {
         mPoller.close();
         mResult = Angle.kNull;
     }
