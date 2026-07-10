@@ -21,7 +21,7 @@ public final class SLMath {
     /**************/
 
     /**
-     * Clamps a value to the inclusive range defined by {@code min} and {@code max}.
+     * Clamps input to the range defined by {@code min} and {@code max}.
      * The order of {@code min} and {@code max} does not matter.
      *
      * @param x input
