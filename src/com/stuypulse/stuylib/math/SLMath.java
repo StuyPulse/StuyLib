@@ -21,21 +21,20 @@ public final class SLMath {
     /**************/
 
     /**
-     * clamp input from max to min
+     * Clamps input to the range defined by {@code min} and {@code max}.
+     * The order of {@code min} and {@code max} does not matter.
      *
      * @param x input
-     * @param min min value for x
-     * @param max max value for x
-     * @return clamp input
+     * @param min one bound of the range
+     * @param max the other bound of the range
+     * @return clamped input
      */
     public static double clamp(double x, double min, double max) {
-        if (min < max) {
-            if (x > max) return max;
-            if (x < min) return min;
-        } else {
-            if (x > min) return min;
-            if (x < max) return max;
-        }
+        double lower = Math.min(min, max);
+        double upper = Math.max(min, max);
+    
+        if (x < lower) return lower;
+        if (x > upper) return upper;
         return x;
     }
 
