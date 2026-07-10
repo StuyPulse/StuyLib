@@ -15,7 +15,7 @@ import edu.wpi.first.math.geometry.Translation2d;
  */
 public final class Vector2D {
 
-    // Vector Constnants
+    // Vector Constants
     public static final Vector2D kOrigin = new Vector2D(0, 0);
     public static final Vector2D kI = new Vector2D(1, 0);
     public static final Vector2D kJ = new Vector2D(0, 1);
@@ -194,7 +194,7 @@ public final class Vector2D {
     }
 
     /**
-     * @param other Vector3D to perform cross product with
+     * @param other Vector2D to perform cross product with
      * @return result of performing the cross product with the other Vector2D
      */
     public double cross(Vector2D other) {
@@ -216,7 +216,7 @@ public final class Vector2D {
     /**
      * limit the magnitude of a vector to a maximum
      *
-     * @param maxMagnitude max magitude of resulting vector
+     * @param maxMagnitude max magnitude of resulting vector
      * @return vector with limited magnitude
      */
     public Vector2D clamp(double maxMagnitude) {
