@@ -24,10 +24,10 @@ public final class SLMath {
      * Clamps a value to the inclusive range defined by {@code min} and {@code max}.
      * The order of {@code min} and {@code max} does not matter.
      *
-     * @param x the value to clamp
+     * @param x input
      * @param min one bound of the range
      * @param max the other bound of the range
-     * @return {@code x} clamped to the specified range
+     * @return clamped input
      */
     public static double clamp(double x, double min, double max) {
         double lower = Math.min(min, max);
@@ -36,7 +36,7 @@ public final class SLMath {
         if (x < lower) return lower;
         if (x > upper) return upper;
         return x;
-}
+    }
 
     /**
      * clamp input from max to -max
